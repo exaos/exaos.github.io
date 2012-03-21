@@ -1,2 +1,2 @@
-# Exaos' personal using org-mode
+# Exaos' personal site powered by org-mode
 
