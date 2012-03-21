@@ -1,1 +1,2 @@
-# Exaos' personal site on BB
+# Exaos' personal using org-mode
+
