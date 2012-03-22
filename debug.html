@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <title>调试</title>
+    <link rel="stylesheet" type="text/less" href="./style/less/o-blog.less">
+    <script src="./style/js/less-1.2.2.min.js" type="text/javascript"></script>
+    <script src="./style/js/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="./style/bootstrap/js/bootstrap-modal.js" type="text/javascript"></script>
+    <script src="./style/bootstrap/js/bootstrap-transition.js" type="text/javascript"></script>
+    <script src="./style/bootstrap/js/bootstrap-dropdown.js" type="text/javascript"></script>
+    <script src="./style/js/prettify.js" type="text/javascript"></script>
+    <script src="./style/js/o-blog.linenumber.js" type="text/javascript"></script>
+    <script src="./style/js/o-blog-fix.js" type="text/javascript"></script>
+    <script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+  </head>
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+	<div class="container">
+	  <a class="brand" href="./index.html">心蛛笔记</a>
+	  <div class="nav-collapse">
+	    <ul>
+<li><a href="#"><i>icon-book icon-white</i> 存档</a>
+<ul>
+<li><a href="./attic/index.html">资料</a>
+</li>
+<li><a href="./attic/exaos.html">心蛛资料</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="#"><i>icon-file icon-white</i> 近期博文</a>
+<ul>
+<li><a href="./blog/2012/03/22_aeda1ad134391065aba93d91713c7386.html">切换到 o-blog 页面系统</a>
+</li>
+<li><a href="Lisp error in nil: (wrong-type-argument arrayp nil)">Lisp error in nil: (wrong-type-argument arrayp nil)</a>
+</li>
+<li><a href="Lisp error in nil: (wrong-type-argument arrayp nil)">Lisp error in nil: (wrong-type-argument arrayp nil)</a>
+</li>
+<li><a href="Lisp error in nil: (wrong-type-argument arrayp nil)">Lisp error in nil: (wrong-type-argument arrayp nil)</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="./tags/index.html"><i>icon-tags icon-white</i> 标签</a>
+
+</li>
+<li><a href="./archives.html"><i>icon-list icon-white</i> 归档博文</a>
+
+</li>
+<li><a href="./index.xml">RSS</a>
+</li>
+</ul>
+
+
+	  </div>
+	</div>
+      </div>
+    </div>
+    <div class="subnav subnav-fixed">
+      <div class="container">
+	<ul class="breadcrumb">
+  <li><a href="./index.html">Home</a> <span class="divider">/</span></li>
+  <li>调试</li>
+  </ul>
+
+      </div>
+    </div>
+    <div id="page" class="container">
+
+ <div id="toc"></div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+  $("#toc").append('<p>Debug tree</p>')
+  $('.topbar').css('position', 'relative')
+  $("#debug h1, #debug h2, #debug h3, #debug h4, #debug h5, #debug h6").each(function(i) {
+  var current = $(this);
+  current.attr("id", "title" + i);
+  
+  $("#toc").append("<a id='link" + i + "' href='#title" + i + "' title='" + current[0].tagName + "'>" + current.html() + "</a>");
+  });
+  });
+</script>
+
+<style type="text/css">
+  #toc {
+  position: fixed;
+  top: 40px;
+  background: white;
+  left: 10px;
+  z-index: 50000;
+  }
+
+  #toc a {
+  display: block;
+  }
+
+  #toc a[title=H1] { font-size: 14pt; margin-left: 10px;}
+  #toc a[title=H2] { font-size: 13pt; margin-left: 20px;}
+  #toc a[title=H3] { font-size: 12pt; margin-left: 30px;}
+  #toc a[title=H4] { font-size: 11pt; margin-left: 40px;}
+  #toc a[title=H5] { font-size: 10pt; margin-left: 50px;}
+  #toc a[title=H6] { font-size: 9pt; margin-left: 60px;}
+  
+</style>
+
+<div id="debug">
+  <h1>Blog</h1>
+  <div class="debug blog">
+  <table>
+    <caption>Dump information for blog</caption>
+    <thead><tr><th>Property</th><th>Value</th></tr></thead>
+    <tbody>
+      <tr><td class="property"><code>file</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>buffer</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>publish-dir</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>template-dir</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>style-dir</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>posts-filter</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>static-filter</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>snippet-filter</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>title</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>description</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>post-build-shell</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+    </tbody>
+  </table>
+</div>
+
+  <h1>Posts</h1>
+  <div class="debug post">
+  <div class="debug post">
+  <h2>切换到 o-blog 页面系统</h2>
+  <table>
+    <caption>Dump information for post 切换到 o-blog 页面系统</caption>
+    <thead><tr><th>Property</th><th>Value</th></tr></thead>
+    <tbody>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>title</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>year</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>month</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>category</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>tags</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>template</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>filepath</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>filename</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>htmlfile</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>path-to-root</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>content</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>content-html</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+    </tbody>
+  </table>
+</div>
+
+</div>
+
+  <h1>Static pages</h1>
+  <div class="debug post">
+  <div class="debug post">
+  <h2>首页</h2>
+  <table>
+    <caption>Dump information for post 首页</caption>
+    <thead><tr><th>Property</th><th>Value</th></tr></thead>
+    <tbody>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>title</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>year</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>month</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>category</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>tags</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>template</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>filepath</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>filename</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>htmlfile</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>path-to-root</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>content</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>content-html</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="debug post">
+  <h2>资料</h2>
+  <table>
+    <caption>Dump information for post 资料</caption>
+    <thead><tr><th>Property</th><th>Value</th></tr></thead>
+    <tbody>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>title</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>year</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>month</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>category</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>tags</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>template</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>filepath</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>filename</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>htmlfile</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>path-to-root</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>content</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>content-html</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="debug post">
+  <h2>私人资料</h2>
+  <table>
+    <caption>Dump information for post 私人资料</caption>
+    <thead><tr><th>Property</th><th>Value</th></tr></thead>
+    <tbody>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>title</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>year</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>month</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>category</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>tags</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>template</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>filepath</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>filename</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>htmlfile</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>path-to-root</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>content</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>content-html</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="debug post">
+  <h2>调试</h2>
+  <table>
+    <caption>Dump information for post 调试</caption>
+    <thead><tr><th>Property</th><th>Value</th></tr></thead>
+    <tbody>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>title</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>year</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>month</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>category</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>tags</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>template</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>filepath</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>filename</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>htmlfile</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>path-to-root</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>content</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>content-html</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="debug post">
+  <h2>更新记录</h2>
+  <table>
+    <caption>Dump information for post 更新记录</caption>
+    <thead><tr><th>Property</th><th>Value</th></tr></thead>
+    <tbody>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>title</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>year</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>month</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>category</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>tags</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>template</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>filepath</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>filename</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>htmlfile</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>path-to-root</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>content</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>content-html</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+    </tbody>
+  </table>
+</div>
+
+</div>
+
+  <h1>Snippets</h1>
+  <div class="debug post">
+  <div class="debug post">
+  <h2>版权</h2>
+  <table>
+    <caption>Dump information for post 版权</caption>
+    <thead><tr><th>Property</th><th>Value</th></tr></thead>
+    <tbody>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>title</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>year</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>month</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>category</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>tags</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>template</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>filepath</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>filename</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>htmlfile</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>path-to-root</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>content</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>content-html</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="debug post">
+  <h2>关于</h2>
+  <table>
+    <caption>Dump information for post 关于</caption>
+    <thead><tr><th>Property</th><th>Value</th></tr></thead>
+    <tbody>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>title</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>year</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>month</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>category</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>tags</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>template</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>filepath</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>filename</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>htmlfile</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>path-to-root</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>content</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>content-html</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="debug post">
+  <h2>导航</h2>
+  <table>
+    <caption>Dump information for post 导航</caption>
+    <thead><tr><th>Property</th><th>Value</th></tr></thead>
+    <tbody>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>title</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>year</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>month</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>category</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>tags</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>template</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>filepath</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>filename</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>htmlfile</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>path-to-root</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>content</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>content-html</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+    </tbody>
+  </table>
+</div>
+
+</div>
+
+  <h1>Tags</h1>
+  <div class="debug tags">
+  <div class="debug tag">
+  <h2>orgmode</h2>
+  <table>
+    <caption>Dump information for tags Lisp error in nil: (void-function htmlize-protect-string)</caption>
+    <thead><tr><th>Property</th><th>Value</th></tr></thead>
+    <tbody>
+      <tr><td class="property"><code>name</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>safe</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>count</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+      <tr><td class="property"><code>size</code></td><td class="value"><pre>Lisp error in nil: (void-function htmlize-protect-string)</pre></td></tr>
+    </tbody>
+  </table>
+</div>
+
+</div>
+
+</div>
+      </div>
+      <div id="footer">
+	<div class="container">
+	  <div class="row">
+	    <section class="span3">
+	      <h1>关于</h1>
+	      <p>
+心蛛的个人站点，记录一点私人的收藏或点滴。
+</p>
+	    </section>
+	    <nav id="links" class="span3">
+	      <h1>链接</h1>
+	      <ul>
+		  <li class="home"><a href="./index.html">首页</a></li>
+  <li class="blog"><a href="Lisp error in nil: (wrong-type-argument arrayp nil)">博文</a></li>
+  <li class="tags"><a href="./tags/index.html">标签</a></li>
+  <li class="archives"><a href="./archives.html">归档</a></li>
+  <li class="rss"><a href="./index.xml">RSS</a></li>
+
+	      </ul>
+	    </nav>
+	    <nav id="archives" class="span3">
+	      <h1>归档</h1>
+	      <ul>
+		<li><a href="./blog/2012/03/22_aeda1ad134391065aba93d91713c7386.html">切换到 o-blog 页面系统</a></li> 
+	      </ul>
+	    </nav>
+	    <nav class="tags span3">
+	      <h1>标签</h1>
+	      <ul>
+  <li style="font-size: 80.00%;"><a href="./tags/d41668dae176276ad74635757ce6e080.html">orgmode</a></li> 
+</ul>
+
+	    </nav>
+	  </div>
+	</div>
+	<div class="copyright" style="text-align: center;">
+	  <p>
+版权所有 ©2012 <a href="mailto:exaos.lee(at)gmail.com">心蛛</a>. <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a>
+</p>
+	  <p>Powered by <a href="https://github.com/renard/o-blog">o-blog</a>.</p>
+	</div>
+      </div>
+</body>
+</html>
+
