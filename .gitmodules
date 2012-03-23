@@ -1,3 +1,3 @@
 [submodule "org-src"]
 	path = org-src
-	url = git://github.com/exaos/o-blog.git
+	url = git://github.com/exaos/el-orgsite.git
