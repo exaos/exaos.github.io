@@ -3,7 +3,7 @@
   <title>心蛛笔记</title>
   <link href="http://exaos.github.com/index.xml" rel="self" />
   <link href="http://exaos.github.com/"/>
-  <updated>2012-03-22T05:15:06Z</updated>
+  <updated>2012-03-22T08:47:01Z</updated>
   <id>http://exaos.github.com/index.xml</id>
   <entry><title type="html">切换到 o-blog 页面系统</title><author><name>nil</name></author><link href="http://exaos.github.com//blog/2012/03/22_aeda1ad134391065aba93d91713c7386.html"/><updated>2012-03-22T04:45:00Z</updated><published>2012-03-22T04:45:00Z</published><id>blog/2012/03/22_aeda1ad134391065aba93d91713c7386.html</id><category scheme="/tags/d41668dae176276ad74635757ce6e080.html" term="orgmode" label="orgmode"/>Lisp error in nil: (void-function htmlize-protect-string)
 </feed>
