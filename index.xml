@@ -3,7 +3,18 @@
   <title>心蛛小站</title>
   <link href="http://exaos.github.com/index.xml" rel="self" />
   <link href="http://exaos.github.com/"/>
-  <updated>2012-03-25T21:56:02Z</updated>
+  <updated>2012-03-25T22:34:36Z</updated>
   <id>http://exaos.github.com/index.xml</id>
-  <entry><title type="html">关于 dotsies 字体的想法</title><author><name>nil</name></author><link href="http://exaos.github.com//blog/2012/03/25_9b5b957ab4820c2eafc4cc46d6cef4e8.html"/><updated>2012-03-25T19:23:00Z</updated><published>2012-03-25T19:23:00Z</published><id>blog/2012/03/25_9b5b957ab4820c2eafc4cc46d6cef4e8.html</id>Lisp error in nil: (void-function htmlize-protect-string)
+  <entry><title type="html">关于 dotsies 字体的想法</title><author><name>nil</name></author><link href="http://exaos.github.com//blog/2012/03/25_9b5b957ab4820c2eafc4cc46d6cef4e8.html"/><updated>2012-03-25T19:23:00Z</updated><published>2012-03-25T19:23:00Z</published><id>blog/2012/03/25_9b5b957ab4820c2eafc4cc46d6cef4e8.html</id><content type="html">&lt;p&gt;
+&lt;a href="http://dotsies.org/"&gt;Dotsies&lt;/a&gt; &#26159;&#20351;&#29992;&#28857;&#20195;&#26367;&#24120;&#35268;&#23383;&#27597;&#20070;&#20889;&#30340;&#19968;&#31181;&#25289;&#19969;&#23383;&#27597;&#26174;&#31034;&#20307;&#31995;&#65292;&#27599;&#20010;&#23383;&#27597;&#30001;&#20116;&#20010;&#28857;&#30340;&#26174;&#38544;&#26469;&#34920;&#31034;&#12290;
+&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;&#24819;&#27861;&#19968;&#65306;&#21046;&#20316;&#22362;&#25490;&#26174;&#31034;&#30340;&#23383;&#20307;&#12290;
+&lt;/li&gt;
+&lt;li&gt;&#24819;&#27861;&#20108;&#65306;&#25913;&#36827;&#65292;&#28155;&#21152;&#23450;&#20301;&#26631;&#35782;&#65292;&#29992;&#20110;&#22270;&#24418;&#35782;&#21035;&#12290;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+</content></entry><entry><title type="html">切换到 o-blog 页面系统</title><author><name>nil</name></author><link href="http://exaos.github.com//blog/2012/03/22_aeda1ad134391065aba93d91713c7386.html"/><updated>2012-03-22T04:45:00Z</updated><published>2012-03-22T04:45:00Z</published><id>blog/2012/03/22_aeda1ad134391065aba93d91713c7386.html</id><category scheme="/tags/d41668dae176276ad74635757ce6e080.html" term="orgmode" label="orgmode"/><content type="html">&lt;p&gt;
+&#21407;&#26469;&#23581;&#35797;&#29992; &lt;a href="https://github.com/mojombo/jekyll"&gt;jekyll&lt;/a&gt; &#26469;&#21019;&#24314;&#33258;&#24049;&#30340;&#21338;&#23458;&#65292;&#20294;&#30495;&#30340;&#19981;&#20064;&#24815; ruby, &#36824;&#26159; org-mode &#29992;&#24471;&#26368;&#39034;&#25163;&#20102;&#12290;&#21069;&#22825;&#21457;&#29616;&#20102;&#36825;&#20010; &lt;a href="https://github.com/renard/o-blog"&gt;o-blog&lt;/a&gt;, &#24863;&#35273;&#25402;&#22909;&#65292;&#23601;&#20999;&#25442;&#36807;&#26469;&#20102;&#12290;
+&lt;/p&gt;</content></entry>
 </feed>
