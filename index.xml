@@ -3,7 +3,7 @@
   <title>心蛛小站</title>
   <link href="http://exaos.github.com/index.xml" rel="self" />
   <link href="http://exaos.github.com/"/>
-  <updated>2012-03-26T06:27:47Z</updated>
+  <updated>2012-03-26T06:41:24Z</updated>
   <id>http://exaos.github.com/index.xml</id>
   <entry><title type="html">关于 dotsies 字体的想法</title><author><name>nil</name></author><link href="http://exaos.github.com//blog/2012/03/25_9b5b957ab4820c2eafc4cc46d6cef4e8.html"/><updated>2012-03-25T19:23:00Z</updated><published>2012-03-25T19:23:00Z</published><id>blog/2012/03/25_9b5b957ab4820c2eafc4cc46d6cef4e8.html</id><content type="html">&lt;p&gt;
 &lt;a href="http://dotsies.org/"&gt;Dotsies&lt;/a&gt; &#26159;&#20351;&#29992;&#28857;&#20195;&#26367;&#24120;&#35268;&#23383;&#27597;&#20070;&#20889;&#30340;&#19968;&#31181;&#25289;&#19969;&#23383;&#27597;&#26174;&#31034;&#20307;&#31995;&#65292;&#27599;&#20010;&#23383;&#27597;&#30001;&#20116;&#20010;&#28857;&#30340;&#26174;&#38544;&#26469;&#34920;&#31034;&#12290;
@@ -32,13 +32,27 @@ function dotsies_hover() {
 &lt;/script&gt;
 &lt;a href="javascript:dotsies_hover()"&gt;&#28857;&#36825;&#20799;&#35797;&#35797;&lt;/a&gt; Dotest &#30340;&#26679;&#23376;&#65306;&lt;a href="javascript:dotsies_hover()"&gt;See it in action&lt;/a&gt;.&lt;br /&gt;
 &lt;pre&gt;
-"TRUST love even if it brings sorrow. 
-Do not close up you heart."
+TRUST love even if it brings sorrow. 
+Do not close up you heart.
 &lt;/pre&gt;
 
 &lt;p&gt;
-(&#27880;&#65306;&#19978;&#36848;&#20195;&#30721;&#26469;&#33258;&#21338;&#23458; &lt;a href="http://allthingswordy.blogspot.com/2012/03/reading-dotsies.html"&gt;All Things Wordy&lt;/a&gt;.)
+(&#27880;&#65306;&#19978;&#36848;&#28436;&#31034;&#20195;&#30721;&#26469;&#33258;&#21338;&#23458; &lt;a href="http://allthingswordy.blogspot.com/2012/03/reading-dotsies.html"&gt;All Things Wordy&lt;/a&gt;.)
 &lt;/p&gt;</content></entry><entry><title type="html">切换到 o-blog 页面系统</title><author><name>nil</name></author><link href="http://exaos.github.com//blog/2012/03/22_aeda1ad134391065aba93d91713c7386.html"/><updated>2012-03-22T04:45:00Z</updated><published>2012-03-22T04:45:00Z</published><id>blog/2012/03/22_aeda1ad134391065aba93d91713c7386.html</id><category scheme="/tags/d41668dae176276ad74635757ce6e080.html" term="orgmode" label="orgmode"/><content type="html">&lt;p&gt;
 &#21407;&#26469;&#23581;&#35797;&#29992; &lt;a href="https://github.com/mojombo/jekyll"&gt;jekyll&lt;/a&gt; &#26469;&#21019;&#24314;&#33258;&#24049;&#30340;&#21338;&#23458;&#65292;&#20294;&#30495;&#30340;&#19981;&#20064;&#24815; ruby, &#36824;&#26159; org-mode &#29992;&#24471;&#26368;&#39034;&#25163;&#20102;&#12290;&#21069;&#22825;&#21457;&#29616;&#20102;&#36825;&#20010; &lt;a href="https://github.com/renard/o-blog"&gt;o-blog&lt;/a&gt;, &#24863;&#35273;&#25402;&#22909;&#65292;&#23601;&#20999;&#25442;&#36807;&#26469;&#20102;&#12290;
-&lt;/p&gt;</content></entry>
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://exaos.github.com/o-blog"&gt;o-blog &#30340;&#20013;&#25991;&#28436;&#31034;&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/exaos/o-blog"&gt;o-blog &#20013;&#25991;&#28436;&#31034;&#30340;&#28304;&#30721;&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;o-blog &#21407;&#22987;&#20195;&#30721;&#65306;&lt;a href="https://github.com/renard/o-blog"&gt;renard/o-blog&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;
+&#20351;&#29992; &lt;a href="http://orgmode.org"&gt;orgmode&lt;/a&gt; &#21019;&#24314;&#38745;&#24577;&#39029;&#38754;&#30340;&#21338;&#23458;&#24863;&#35273;&#19981;&#38169;&#12290;&#22312; &lt;a href="http://orgmode.org/worg/"&gt;worg&lt;/a&gt; &#19978;&#26377;&#19968;&#20010;&#19987;&#38376;&#30340;&#39029;&#38754;&#20171;&#32461;&#36825;&#20010;&#24212;&#29992;&#65306;&lt;a href="http://orgmode.org/worg/org-blog-wiki.html"&gt;Org Blogs and Wikis&lt;/a&gt;.
+&lt;/p&gt;
+</content></entry>
 </feed>
