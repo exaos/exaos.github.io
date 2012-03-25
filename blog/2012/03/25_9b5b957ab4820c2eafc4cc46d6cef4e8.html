@@ -122,6 +122,30 @@
 </ul>
 
 
+
+
+<!-- link href='http://dotsies.org/dotsies.css' rel='stylesheet' type='text/css' -->
+<script type="text/javascript">
+function dotsies_hover() {
+  var l = document.createElement('link');
+  document.getElementsByTagName('head')[0].appendChild(l);
+  l.setAttribute('href', 'http://dotsies.org/dotsies.css');
+  l.setAttribute('type', 'text/css');
+  l.setAttribute('rel', 'stylesheet');
+  var s = document.createElement('style');
+  document.getElementsByTagName('head')[0].appendChild(s);
+  s.innerHTML = ('body, p, div, span, a, li, textarea, pre, input {font-family: Dotsies !important}');
+}
+</script>
+<a href="javascript:dotsies_hover()">点这儿试试</a> Dotest 的样子：<a href="javascript:dotsies_hover()">See it in action</a>.<br />
+<pre>
+"TRUST love even if it brings sorrow. 
+Do not close up you heart."
+</pre>
+
+<p>
+(注：上述代码来自博客 <a href="http://allthingswordy.blogspot.com/2012/03/reading-dotsies.html">All Things Wordy</a>.)
+</p>
   </div>
   
   <footer class="well article-footer">
