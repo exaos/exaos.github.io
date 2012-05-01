@@ -2,7 +2,7 @@
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8"/>
-    <title>Emacs --- 能够显示地图的编辑器？</title>
+    <title>文学编程与 orgmode</title>
     <link rel="stylesheet" type="text/less" href="../../../style/less/o-blog.less">
     <script src="../../../style/js/less-1.2.2.min.js" type="text/javascript"></script>
     <script src="../../../style/js/jquery-1.7.1.min.js" type="text/javascript"></script>
@@ -88,7 +88,7 @@
       <div class="container">
 	<ul class="breadcrumb">
   <li><a href="../../../index.html">首页</a> <span class="divider">/</span></li>
-  <li><a href="../../../blog/index.html">blog</a> <span class="divider">/</span></li><li><a href="../../../blog/2012/index.html">2012</a> <span class="divider">/</span></li><li><a href="../../../blog/2012/04/index.html">04</a> <span class="divider">/</span></li><li>Emacs --- 能够显示地图的编辑器？</li>
+  <li><a href="../../../blog/index.html">blog</a> <span class="divider">/</span></li><li><a href="../../../blog/2012/index.html">2012</a> <span class="divider">/</span></li><li><a href="../../../blog/2012/05/index.html">05</a> <span class="divider">/</span></li><li>文学编程与 orgmode</li>
   </ul>
 
       </div>
@@ -100,23 +100,23 @@
     <div class="well">
       <div class="row">
 	<div class="date span1">
-	  <div class=" date-d">14</div>
-	  <div class=" date-m"><a href="../../../blog/2012/04/index.html"> 4月</a></div>
+	  <div class=" date-d">02</div>
+	  <div class=" date-m"><a href="../../../blog/2012/05/index.html"> 5月</a></div>
 	  <div class=" date-y"><a href="../../../blog/2012/index.html">2012</a>
 	  </div>
 	</div>
 	<div class="span1">
 	  <div class="qr-code">
-  <img src="http://chart.apis.google.com/chart?chs=50x50&cht=qr&chld=|0&chl=http%3a%2f%2fexaos.github.com%2f%2fblog%2f2012%2f04%2f14_my-emacs-usage.html"
+  <img src="http://chart.apis.google.com/chart?chs=50x50&cht=qr&chld=|0&chl=http%3a%2f%2fexaos.github.com%2f%2fblog%2f2012%2f05%2f02_lp-orgmode.html"
        alt="qr-code" />
 </div>
 
 	</div>
-	<h1 class="offset2">Emacs --- 能够显示地图的编辑器？</h1>
+	<h1 class="offset2">文学编程与 orgmode</h1>
       </div>
       <nav>
 	<ul class="pager">
-	  <li class="previous"><a href="../../../blog/2012/03/28_UNU.html"><i class="icon-chevron-left"></i>&nbsp;联合国大学 (UNU)</a></li><li class="next" style="text-align: right;"><a href="../../../blog/2012/04/16_computer-ocd-users.html">强迫症 (OCD) 者的计算机使用表现&nbsp;<i class="icon-chevron-right"></i></a></li>
+	  <li class="previous"><a href="../../../blog/2012/04/27_it_lp_physics.html"><i class="icon-chevron-left"></i>&nbsp;信息技术、文学编程与物理学纲要</a></li><li class="next">&nbsp;</li>
 	</ul>
       </nav>
     </div>
@@ -124,98 +124,81 @@
   </header>
   <div class="article-content">
     <p>
-今天转移到了 Windows 7 64-bit 下做点事情，在使用 Emacs 时出现了许多问题：首先，程
-序打开失去响应，后来发现是 NTFS 文件系统出错，重启系统进行硬盘检查后排除；再后来
-发现我的 <a href="http://orgmode.org/">org-mode</a> 设置中的 <code>org-contacts</code> 工作不正常，出现如下错误：
+（按：其实，几天前我就写下了这篇博文的标题与构思，前两日的思路都在物理学纲要上，
+就把这篇耽搁了下来。博客，主要还是起一个引子的作用，因此，本篇主要谈谈 org-babel
+的功能与想法，希望能够引起你的兴趣。）
+</p>
+<p>
+《银河系漫游指南》中有一种小巧、黄色的 <b>巴比鱼</b>, 它可以将人说的话同步翻译成任何其
+它语言，这儿的 <b>巴比</b> 与《旧约》创世纪第十一章中那个塔是一个意思。还有个威尔士北
+部的语言学狂热份子葛善明 (Simon Ager) 建了个网站叫 <a href="http://omniglot.com/">Omniglot</a>, 除了将 <a href="http://www.un.org/zh/documents/udhr/">世界人权宣言</a>
+第一条翻译成诸多文字外，还提供了关于巴比塔故事的 <a href="http://omniglot.com/babel/index.htm">上百种语言的翻译</a> 。毫无疑问，这
+个世界上 <a href="http://en.wikipedia.org/wiki/Tower_of_Babel">巴比塔</a> 的粉丝不计其数，本篇要谈的是在 <a href="http://orgmode.org">org-mode</a> 中的巴比塔 ---
+<a href="http://orgmode.org/worg/org-contrib/babel/">org-babel</a>, 一种在 org-mode 中处理程序源码的工具。
+</p>
+<p>
+Org-mode 从诞生起，就是一批程序员在用，因此，用它来整理程序相关的笔记、任务列表及
+工程计划等，是再自然不过的。在整理编程笔记的过程中，一个想法对应一段代码，这是显
+尔易见的。如果使用 org-mode 的程序员没有用过 org-babel, 那就象错过了电影中的高潮
+情节一样。至于这个高潮是什么样子的，不妨读一下这篇论述 <a href="http://www.jstatsoft.org/v46/i03">基于 orgmode 的多语言文学 编程环境</a> 的论文。如果你有耐心去阅读这篇论文，就可以忽略本篇博文了，这儿只是个引子
+罢了。
+</p>
+<p>
+Org-mode 版本 7.0 以后将原来属于 contrib 中的 org-babel 采纳到核心中，完整的内容
+参见 org-info §14 "<a href="http://orgmode.org/manual/Working-With-Source-Code.html">Working with source code</a>". Org-babel 最简单的用法就是以
+<code>#+begin_src &lt;language&gt;</code> 方式嵌入一段代码。完整的格式如下：
 </p>
 
 
-<pre class="example">File mode specification error: (wrong-type-argument number-or-marker-p nil) [4 times]
-Bad sexp at line 27 in d:/Exaos/Workspace/exaos/daily/myorg/contacts.org: (org-contacts-anniversaries)
-Preparing diary...done
-Preparing diary...done
-Bad sexp at line 27 in d:/Exaos/Workspace/exaos/daily/myorg/contacts.org: (org-contacts-anniversaries)
-...
+<pre class="example">
+#+NAME: &lt;name&gt;
+#+BEGIN_SRC &lt;language&gt; &lt;switches&gt; &lt;header arguments&gt;
+  &lt;body&gt;
+#+END_SRC
+
 </pre>
 
+
 <p>
-搜索了一翻，仍然没有解决这个问题。首先， <code>org-contacts</code> 已经正确加载了，但在我的
-联系人列表中有一些人的生日要早于 1970 年，这个在 32-位的 Emacs 上似乎无法解决。
-（参见 <a href="http://goo.gl/WNmi4">Stack Overflow</a> 上的相关提问，其中有我的注释。）
+其中的 <code>#+NAME:</code> 一行是可选的，用于对后面的代码段命名。已命名的代码段可以在文件的
+其它地方被引用。代码的命名在 org-mode 中被假设是唯一的，如果有重名的， org-mode
+默认会忽略对该名字的处理。 <code>&lt;language&gt;</code> 就是代码所使用的计算机语言。在 <a href="http://orgmode.org/worg/org-contrib/babel/languages.html">org-babel 语言列表</a> 中目前有 39 种计算机语言，也就是说，你可以在 org 文档中嵌入基于大部分流
+行的计算机语言编写的程序。 (有点小遗憾的是，好象没有我喜爱的一门小巧语言 <a href="http://www.lua.org">Lua</a>. 不
+过，懂得 emacs-lisp 的话，倒可以根据 <code>ob-template.el</code> 尝试添加一个。)
+<code>&lt;switches&gt;</code> 是用于控制代码段导出的功能选项 (org-info §11.3: "Literal
+examples"). 代码头选项 <code>&lt;header arguments&gt;</code> 用于控制代码的求值、导出及“绕出”
+(文学编程的概念), 参见 org-info §14.8. 上述参数中的命名、功能选项及代码头选项都
+是可选的。除了 <code>#+begin_src</code> 外，你还可以在文中以 <code>src_&lt;language&gt;{&lt;body&gt;}</code> 方式来
+嵌入代码，比如用 Python 打印著名的 "Hello World": <code>src_python{print("Hello, Pythonist!")}</code>. 对于以 <code>#+begin_src</code> 方式嵌入的代码，还可以用快捷键调用相应语言的
+major-mode 来编辑。
 </p>
 <p>
-在调试这个问题的过程，我发现新版的 <code>org-mode</code> 中自带的 <code>org-contacts</code> 新添了一个
-功能：在 google 地图上显示联系人的地址。（当然，这个地图是在 Emacs 中显示的哦。）
-<b>你有想过在编辑器中显示 Google 地图吗？</b> Emacs 就可以，不过，能够显示地图的编辑器
-还能算是单纯的编辑器吗？所以，有人说， Emacs 不应该叫编辑器，应该叫基于编辑器的操
-作系统。从这种调侃中可见这个软件确实有点牛气冲天。不过，也许会有人反驳说：也有其
-它的编辑器能够显示地图，比如某某 IDE 之类的。我想说的是，那是在其它的软件中嵌入编
-辑器，而 Emacs 是在编辑器中嵌入其它的软件，这其中的微妙差异还需要仔细体会。
-</p>
-<p>
-关于 <code>google-maps.el</code>, 请参见： 
+由 <b>高德纳</b> (<a href="http://www-cs-faculty.stanford.edu/~knuth/">Donald E. knuth</a>) 提出的 <a href="http://en.wikipedia.org/wiki/Literate_programming">文学编程</a> 概念，除了 TeX 排版系统外，另一个流
+行的程序就是 <a href="http://www.cs.tufts.edu/~nr/noweb/">noweb</a>. 在 org-babel 中的文学编程采用的是 noweb 格式的引用。
+org-babel 文学编程体现在它的 <code>&lt;header arguments&gt;</code> 里，也是其中最好玩的部分。全部
+的参数列表参见 org-info §14.8.2 "Specific header arguments", 其中与文学编程相关
+的参数有：
 </p><ul>
-<li><a href="http://julien.danjou.info/software/google-maps.el">http://julien.danjou.info/software/google-maps.el</a>
+<li><code>:noweb</code> &ndash; 用于打开或关闭 noweb 格式的引用
 </li>
-<li><a href="http://git.naquadah.org/?p=google-maps.git">http://git.naquadah.org/?p=google-maps.git</a>
+<li><code>:tangle</code> &ndash; 用于打开或关闭源码导出的选项
 </li>
-<li><a href="http://julien.danjou.info/blog/2010/google-maps.el">http://julien.danjou.info/blog/2010/google-maps.el</a>
-</li>
-</ul>
-
-
-<p>
-但 elisp 本身也有许多缺点而被人诟病。因此，有人希望采用其它语言来重新实现 Emacs
-类似的功能，比如：
-</p><ul>
-<li>使用 <a href="http://www.haskell.org/">Haskell</a> 的 <a href="http://www.haskell.org/haskellwiki/Yi">Yi (義)</a> 编辑器
-</li>
-<li>使用 <a href="http://en.wikipedia.org/wiki/Common_Lisp">Common Lisp</a> 的 <a href="http://common-lisp.net/project/climacs/">Climacs</a>
-</li>
-<li>还有人在计划着使用 <a href="http://en.wikipedia.org/wiki/Scheme_(programming_language)">Scheme</a> 的方言 <a href="http://www.gnu.org/software/guile/">GNU Guile</a> 来重新实现 Emacs, 这个有点值得期待哟 ---
-<ul>
-<li><a href="http://lists.gnu.org/archive/html/emacs-devel/2010-04/msg00665.html">http://lists.gnu.org/archive/html/emacs-devel/2010-04/msg00665.html</a>
-</li>
-<li><a href="http://lists.gnu.org/archive/html/emacs-devel/2012-04/msg00276.html">http://lists.gnu.org/archive/html/emacs-devel/2012-04/msg00276.html</a>
-</li>
-<li><a href="http://www.google-melange.com/gsoc/proposal/review/google/gsoc2012/bpt/23002">http://www.google-melange.com/gsoc/proposal/review/google/gsoc2012/bpt/23002</a>
-</li>
-</ul>
-
+<li><code>:noweb-ref</code> &ndash; 引用一些公用的代码设置 (org-info §14.8.2.13)
 </li>
 </ul>
 
 
 <p>
-带有 Lisp 方言编程环境的 Emacs 编辑器以其深厚的历史感、实用性和强大的扩展功能，在
-编辑器程序中难有出有右者。作为非程序员的程序开发者，我用它主要完成一些如下的工作：
-</p><ol>
-<li>写文档 (LaTeX)
-</li>
-<li>写程序 (C/C++, Python, Shell, Lua, &hellip;)
-</li>
-<li>写博客 (org-mode + o-blog)
-</li>
-<li>写日记 (org-mode: Capture-Refile-Archive)
-</li>
-<li>读文档 (info + woman)
-</li>
-<li>继续开发中哦 :-D
-</li>
-</ol>
-
-
-<p>
-你是否注意到本篇博文的标签中含有一个 <b>OCD</b>? 至于什么是 OCD, 我们下回见！
+最直观的文学编程示例参见： <a href="http://orgmode.org/worg/org-contrib/babel/how-to-use-Org-Babel-for-R.html">How to use org-bable for R</a>.
 </p>
   </div>
   
   <footer class="well article-footer">
-    发布于 <time datetime=\"2012-04-14T19:57:00Z\"> 2012-04-14 19:57:00</time>.
+    发布于 <time datetime=\"2012-05-02T01:36:00Z\"> 2012-05-02 01:36:00</time>.
     <nav class="tag-cloud">
       <h1><i class="icon-tags"></i> 相关标签</h1>
       <ul>
-	<li><a href="../../../tags/orgmode.html">orgmode</a></li><li><a href="../../../tags/emacs.html">Emacs</a></li><li><a href="../../../tags/ocd.html">OCD</a></li>
+	<li><a href="../../../tags/orgmode.html">orgmode</a></li><li><a href="../../../tags/baa5a3ccb5b09a889de80c125e7ddea9.html">文学编程</a></li>
       </ul>
     </nav>
   </footer>
