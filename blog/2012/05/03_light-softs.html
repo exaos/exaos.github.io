@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8"/>
+    <title>那些小巧的程序们</title>
+    <link rel="stylesheet" type="text/less" href="../../../style/less/o-blog.less">
+    <script src="../../../style/js/less-1.3.0.min.js" type="text/javascript"></script>
+    <script src="../../../style/js/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="../../../style/bootstrap/js/bootstrap-modal.js" type="text/javascript"></script>
+    <script src="../../../style/bootstrap/js/bootstrap-transition.js" type="text/javascript"></script>
+    <script src="../../../style/bootstrap/js/bootstrap-dropdown.js" type="text/javascript"></script>
+    <script src="../../../style/js/prettify.js" type="text/javascript"></script>
+    <script src="../../../style/js/o-blog.linenumber.js" type="text/javascript"></script>
+    <script src="../../../style/js/o-blog-fix.js" type="text/javascript"></script>
+    <script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+  </head>
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+	<div class="container">
+	  <a class="brand" href="../../../index.html">心蛛小站</a>
+	  <div class="nav-collapse">
+	    <ul>
+<li><a href="#"><i>icon-book icon-white</i> 存档</a>
+<ul>
+<li><a href="../../../notes/index.html">笔记</a>
+</li>
+<li><a href="../../../attic/index.html">资料</a>
+</li>
+<li><a href="../../../attic/exaos.html">心蛛资料</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="#"><i>icon-file icon-white</i> 近期博文</a>
+<ul>
+<li><a href="../../../blog/2012/05/03_light-softs.html">那些小巧的程序们</a>
+</li>
+<li><a href="../../../blog/2012/05/02_lp-orgmode.html">文学编程与 orgmode</a>
+</li>
+<li><a href="../../../blog/2012/04/27_it_lp_physics.html">信息技术、文学编程与物理学纲要</a>
+</li>
+<li><a href="../../../blog/2012/04/27_mill-donkeys.html">磨驴法则之头驴利益</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="../../../tags/index.html"><i>icon-tags icon-white</i> 标签</a>
+
+</li>
+<li><a href="../../../archives.html"><i>icon-list icon-white</i> 归档博文</a>
+
+</li>
+<li><a href="../../../index.xml">RSS</a>
+</li>
+</ul>
+
+
+	  </div>
+	</div>
+      </div>
+    </div>
+    <div class="subnav subnav-fixed">
+      <div class="container">
+	<ul class="breadcrumb">
+  <li><a href="../../../index.html">首页</a> <span class="divider">/</span></li>
+  <li><a href="../../../blog/index.html">blog</a> <span class="divider">/</span></li><li><a href="../../../blog/2012/index.html">2012</a> <span class="divider">/</span></li><li><a href="../../../blog/2012/05/index.html">05</a> <span class="divider">/</span></li><li>那些小巧的程序们</li>
+  </ul>
+
+      </div>
+    </div>
+    <div id="page" class="container">
+
+  <header class="article-header">
+
+    <div class="well">
+      <div class="row">
+	<div class="date span1">
+	  <div class=" date-d">03</div>
+	  <div class=" date-m"><a href="../../../blog/2012/05/index.html"> 5月</a></div>
+	  <div class=" date-y"><a href="../../../blog/2012/index.html">2012</a>
+	  </div>
+	</div>
+	<div class="span1">
+	  <div class="qr-code">
+  <img src="http://chart.apis.google.com/chart?chs=50x50&cht=qr&chld=|0&chl=http%3a%2f%2fexaos.github.com%2f%2fblog%2f2012%2f05%2f03_light-softs.html"
+       alt="qr-code" />
+</div>
+
+	</div>
+	<h1 class="offset2">那些小巧的程序们</h1>
+      </div>
+      <nav>
+	<ul class="pager">
+	  <li class="previous"><a href="../../../blog/2012/05/02_lp-orgmode.html"><i class="icon-chevron-left"></i>&nbsp;文学编程与 orgmode</a></li><li class="next">&nbsp;</li>
+	</ul>
+      </nav>
+    </div>
+
+  </header>
+  <div class="article-content">
+    <p>
+在尝试过许多的大型程序之后，受大道至简或 KISS (Keep It Simple and Stupid) 的影响，
+越来越对一些小巧的程序倍儿感兴趣了。在我看来，计算机水平的评价标准不仅在能否用它
+完成某项工作，还包括完成这项工作所花费的成本与效率。小巧的程序不一定就功能欠缺，
+而效率往往很高。这儿简介下我曾经接触过的一些好玩的东西。
+</p>
+
+
+<h3>操作系统</h3>
+
+<p>
+*<a href="http://www.oby.ro/os/">Sol_OS</a>* :: 完全用汇编写的运行于 x86 平台上的 32-位操作系统，整个可运行的操作系统
+加上示例压缩包仅 350 KiB, 解压后系统为一张软盘 1.44 MiB 大小，其中包括完整的图形
+界面等。特点：
+</p><ul>
+<li>小巧、快速、实时
+</li>
+<li>现代的图形界面，窗口操作、透明效果、事件驱动等
+</li>
+<li>启动超快，开机后 1 到 2 秒即进入图形界面
+</li>
+</ul>
+
+
+<p>
+我们通常将计算机软件环境与操作系统混在一起，其实操作系统只是软件与计算机硬件之间
+的通讯员，本身并没有那么复杂。这个 Sol_OS 功能并不完善。作者是个宅男，只是想用这
+个系统告诉大家: <b>开发一套操作系统并不是件很困难的事情！</b> 如果把 Windows 8 比作商
+务大巴，则 Windows 8 操作系统是这个大巴的发动机和车身支架，其余的 Metro 界面之类
+的属于大巴上的座椅、挡风玻璃、窗帘、扶手之类的装饰，那么 Sol_OS 就是个手工搭建的
+太阳能电瓶车，玩玩可以，离真正干活还很远。但如果你只是做一点非常简单的应用呢？
+</p>
+<p>
+小巧的 OS 很多，比如 <a href="http://www.freedos.org/">FreeDOS</a>, <a href="http://www.tinyos.net">TinyOS</a> (适用于低功率无线设备的开源操作系统) 等。
+（另注：本来想将小巧的 OS 统称为 Tiny OS, 但这儿 TinyOS 已经是个固定的名词了。）
+而流行的 GNU/Linux 本身也可以做得非常小巧，象 Puppy Linux, Damn Small Linux 等，
+参见 <a href="http://goo.gl/hi7nx">http://goo.gl/hi7nx</a>.
+</p>
+<p>
+这些小巧的 OS 必然会受到一些功能上的限制，但如果你想在一台 20 世纪 90 年代的
+Intel 80386 机器上鼓捣点什么，这些小巧的 OS 本身相对于它们已经非常非常现代了，不
+是吗？现在， Tiny PC 开始流行起来了，比如网络硬盘 Seagate Dockstar, 媒体播放机
+HTPC 等。在这些 Tiny PC 上除了运行 Android 类似的系统外，还可以整合这些小巧的
+OS, 完成某些特定的任务。Tiny PC 加上小巧的 OS, 成本非常低廉，非常适合于那些功能单
+一、环境枯燥的场合，比如卫星、公共场所的实时信息更新等。在我们核物理实验室中需要
+对一组探测器状态进行监控，需要实时输出探测系统的电压、温度等状态，而这样的监控计
+算机往往需要 24x7 地运行，如果实验系统本身很复杂，用一个 U 盘大小的计算机嵌入在探
+测器阵列中会大大降低系统的冗余度。这时候，使用 Tiny PC 加上小巧的 OS 会很不错哦。
+</p>
+
+
+<h3>窗口管理</h3>
+
+<p>
+不得不说苹果的 OS X, iOS 等将图形界面的体验在现有的硬件条件下几乎做到了极致。其它
+流行的窗口管理器或多或少借鉴了许多苹果系统的优点，比如 Microsoft Windows 95 抄袭
+了 Mac OS 7, Microsoft Windows 7 抄袭了一部分 OS X 的体验等。在开源世界中，流行的
+就是 Gnome 与 KDE 这两大阵营了。上述提到的这些窗口系统，无论哪一个都越来越臃肿。
+其实，图形界面也可以非常非常简洁的。
+</p>
+<p>
+不得不说 <a href="http://suckless.org">Suckless.org</a> 的程序员们是一群比较疯狂的人，比如 Joel Spolsky 所说的 <a href="http://www.joelonsoftware.com/items/2009/09/23.html">The Duct Tape Programmer</a>. 他们将 <a href="http://plan9.bell-labs.com/plan9/">Plan 9</a> 上的好东西四处移植，以开发小巧优雅的软件为
+乐，当然这些软件面向的仅仅是高级和有经验的用户。这儿介绍两款由 Suckless 维护的窗
+口管理软件：
+</p><dl>
+<dt><a href="http://dwm.suckless.org/">dwm</a></dt><dd>Dynamic Windows Manager, X 下的动态窗口管理器，支持层叠、平铺、浮动、多
+         标签等功能。 6.0 版本的代码共 20 KiB, Debian 安装包 89 KiB, 安装完 239
+         KiB. 嗯，一个不到 240 KiB 大小的窗口管理器，并且体验不错哦。除了日常使用
+         外，它的另一个作用是演示如何开发一个窗口管理软件，因为开发者的另一个目标
+         是让代码保持在 2000 行以内。作为软件开发者，你不会连 2000 行代码也读不下
+         来吧？
+</dd>
+<dt><a href="http://wmii.suckless.org/">wmii</a></dt><dd>Windows Manager II, 一个 X11 下的小巧的动态窗口管理器，吸收了许多 Plan
+          9 中的元素，比如 acme 类似的窗口管理。 3.9.2 版本的源码共 465 KiB,
+          Debian 安装包 410 KiB, 安装后大小不到 410 KiB. 但具备窗口管理的完整功
+          能，并且某些功能是你在 Windows 7 下完全找不到的。
+</dd>
+</dl>
+
+
+<p>
+除了 suckless 提供的小巧窗口管理器外，其它的窗口管理器也非常多，并且各具特色，比
+如 lxde, enlightment (e17-svn), fvwm, WindowMaker, fluxbox, i3, 使用 Haskell 的
+Xmonad 等等。这儿只介绍下我的小爱好 Awesome WM 吧，因为我用它来练习 Lua. :-)
+</p>
+<p>
+<a href="http://awesome.naquadah.org/">Awesome WM</a> &ndash; 它提供了一个窗口管理的框架结构 (framework), 使用 <a href="http://www.lua.org">Lua</a> 作为扩展语言。
+桌面也通过 Lua 脚本进行配置，你可以在 <a href="https://github.com/exaos/el-scripts/tree/master/misc/awesome">这儿</a> 找到我的配置文件。桌面的任何元素均可以
+实时通过 Lua 代码进行操控，可用 Lua 任意添加你喜欢的元素。 awesome 3.4.11 的源码
+741 KiB, Debian Squeeze 下 awesome 3.4.6 的安装包 830 KiB, 安装完 2.7 MiB.
+</p>
+
+
+<h3>程序开发及编译器等</h3>
+
+<p>
+程序开发已经是现代人必备的技能之一了，因此选用什么样的开发语言是件比较重要的事情。
+许多怪物级别的人会告诉你一堆听都没有听说过的东西，比如 Lisp, Haskell, Prolog,
+Scala, Ada, Fortran 等等。别紧张，那只是他们圈子内的东西罢了。除了了解一下圈子外
+的那些美丽之外，真正适合你的还需要到你自己圈子里仔细挖掘。但我还是忍不住说一些稍
+微通用的东西：作为程序员，你至少应该能够使用 C 以及 Python/Ruby/Perl 等语言中的任
+何一种，一种是静态编译语言用于处理特殊任务，另一种是脚本语言用于处理日常杂务；其
+余的语言就根据你的圈子来决定吧。
+</p>
+<p>
+现代的开发工具如此之丰富，以至于许多人误入歧途，认为学会使用某个 VS 类的 IDE 工具
+就是大牛了，就可以号称程序员横行天下了。随他去吧！因为这些所谓的牛程序员离开了他
+们所依赖的 IDE 就什么都不是了，他们的工具也决定了他们眼界的狭窄。当然，如果你和我
+一样，只是个业余的程序员，在其它工作中加些写代码的任务，并且 VS 是你的初次，情难
+割舍，那就不必去纠结眼界的问题了，因为我们是业余选手嘛。但业余选手也可以追求专业
+的品质哦。
+</p>
+
+
+<h4>C 编译器 -- tcc</h4>
+
+<p>
+在维基百科上列出了 30 多种 C 语言编译器，大家日常接触到的有 icc, gcc, clang, VC
+等。这儿介绍一个小巧的 C 编译器： tcc &ndash; <a href="http://bellard.org/tcc/">Tiny C Compiler</a>.
+</p>
+<p>
+TinyCC 的特点是小、快、猛，具体如下：
+</p><ul>
+<li><b>小！</b> &ndash; 你可以在任何地方进行编译并执行 C 代码，比如在紧急启动盘上。 x86
+    tcc 可执行程序在 100 KiB 左右，这已经包括了 C 预处理器、编译器、汇编及连接器。
+</li>
+<li><b>快！</b> &ndash; tcc 生成 x86 代码在编译、汇编和连接上比 GCC 快几倍。
+</li>
+<li><b>猛！</b> &ndash; 任何 C 的动态库可直接使用，它完全兼容 ISO C99 标准。
+</li>
+<li><b>安全！</b> &ndash; tcc 包含有优化的内存管理和边界检查。
+</li>
+<li>可直接编译并执行 C 源码，不需要链接和汇编。
+</li>
+<li>支持 C 脚本，只要在你的 C 源码第一行添加上 '<code>#!/usr/local/bin/tcc -run</code>', 即
+    可从命令行执行 (注：这也有潜在的危险啊！)
+</li>
+<li>你可以将 <b>libtcc</b> 用作动态的代码产生器，比如在你的程序中内嵌一个 C 语言编译器。
+</li>
+</ul>
+
+
+<p>
+比较遗憾， Fabrice Bellard 自 2009 年 0.9.25 版本起就停止了 tcc 的开发。但这是个
+使用 GPL 授权的软件，意味着你也可以接手开发。 tcc 0.9.25 有一个比较严重的 BUG, 参
+见 <a href="http://blog.codingnow.com/2009/06/tcc_bug.html">http://blog.codingnow.com/2009/06/tcc_bug.html</a>. 虽然这个接近成熟的软件已经停止
+了更新，你仍然可以回避或者修正其中的 BUG, 然后将 tcc 嵌入到你的应用软件中去。
+</p>
+<p>
+前面介绍的小巧的 OS 中如果加入 clang 或 gcc 这样的庞然大物是不现实的，但嵌入一个
+100 KiB 左右的 C 语言编译器则完全可行。因此，你大概知道在哪儿用它了吧？这么小巧的
+编译器也是有些其它问题的，对代码的规范程度要求很高，不符合 C99 标准的代码可能直接
+无法编译。因此，养成良好的符合语言规范的程序开发习惯很重要。 :-)
+</p>
+
+
+<h4>小巧的编程语言 Lua</h4>
+
+<p>
+Lua (<a href="http://www.lua.org/">http://www.lua.org/</a>) 语言很小巧, 定位也非常明确：强大、快速、轻量级的嵌入式
+脚本语言。在一些游戏中 Lua 已经成为事实上的标准开发脚本语言。
+</p>
+<p>
+我已经忘记怎么了解到 Lua 的了，可能是从 <a href="http://www.tiobe.com/">TIOBE</a> 排行榜，也可能是其它地方，当时并没
+有在意。最近在编写一点数据获取的程序时，突然想到了 Lua: 在前端利用 C 编写好 VME
+总线支持的库，封装一个 Lua 接口，然后在后端再利用 Lua 编写具体的寄存器操作脚本。
+这样，就没有必要为每一种 VME 插件编写一套 API 函数了，并且测试某种 VME 硬件时只需
+要用 Lua 快速编写几行脚本程序即可，就可以抛开 C 语言那套编写、编译、测试、调试的
+流程，并且能够即时验证程序逻辑与功能。
+</p>
+<p>
+为了熟悉 Lua 环境，我转移到了 Awesome WM 下，并且用 Lua 重新编写了我的日常脚本，
+参见 <a href="https://github.com/exaos/el-scripts/blob/master/repos/repos-up.lua">repos-up.lua</a>. 在阅读 Lua 源码的过程，我发现 Lua 的 C 源码是我见过最简洁规范
+的代码，这种简洁规范透着一种程序之美。:-)
+</p>
+<p>
+Lua 5.1 总共 21 个关键字，23 个保留符号 (包括运行算、关系运行符、注释符号、括号
+等), 语言只有 8 种数据类型： boolean, number, string, table, function, thread,
+userdata, nil. 实际上，任何一个有编程经验的人，即使从没有接触过 Lua, 也可以在一天
+之内学会并编写一些简单的程序。而对于 C/C++ 程序员们，甚至只要花上半个到一个小时读
+一读 <a href="http://goo.gl/Ewmtr">这篇快速入门</a> 就够了。当然，如果你想深入了解 Lua 的 Closure 环境，在你的程序
+中嵌入 Lua 解析器，还是要认真阅读一下 <a href="http://www.lua.org/pil/">Programming in Lua</a> (PIL) 这本书。这本书不算
+长，第二版中译本才 300 多页，两三天即可读完。
+</p>
+<p>
+Lua 目前最新版本是 5.2.0, 源码压缩包 241 KiB, 解压后 1.1 MiB, 编译安装完 820 多
+KiB. 除了这么小巧之外, Lua 本身的执行速度也非常快，并且，如果使用 <a href="http://luajit.org/">LuaJIT</a> 2.0 还可
+以更快，快到接近 C 语言的速度。这样，在某些硬件处理 (比如程控电话系统) 中嵌入
+Lua 不失为一种便利的选择。
+</p>
+<p>
+Lua 语言的简洁、C 接口的优雅，使得用 C 编写 Lua 的库比使用 swig 或者 Python API
+编写 Python 之类的库要舒服得多。你可以在任意语言中嵌入 Lua, 比如在 Python 中可以
+使用 <a href="http://pypi.python.org/pypi/lupa">Lupa</a> 来载入 Lua 程序（在 ArchLinux AUR 中的 <a href="https://aur.archlinux.org/packages.php?ID=58304">python2-lupa</a> 是由我上传的）。在
+构思设计数据获取的程序时，我原本我还在 Tcl, Lua, Stackless Python 之间犹豫；在尝
+试了 Lua 之后，感觉到这正是我想要的。
+</p>
+
+
+<h3>编辑器</h3>
+
+<p>
+Emacs, VIM 等流行的都是巨无霸式的编辑器，功能及插件异常非常，当然，使用体验也绝佳，
+比如 Emacs. :-) 但在某些场合 (比如 busybox 中), 这些功能强大的编辑器反而是累辍。
+因此，一些小巧的编辑器反而更派得上用场。仅给出一些列表，不多介绍：
+</p><ul>
+<li>类 emacs 的小巧编辑器: zile, mg, ng
+</li>
+<li>类 VIM 的编辑器: vi
+</li>
+<li>其它: nano, joe
+</li>
+</ul>
+
+
+
+
+<h3>KISS 的哲学</h3>
+
+<p>
+我有种感觉：精巧的程序是一件艺术品。艺术品不仅需要熟练的技能，还需要思想。在设计
+程序时能够保持 KISS 的原则，将要完成的任务流程与逻辑进行精减、抽象与实现，最终的
+程序必然是小巧优雅的，这种小巧优雅中就融入了你的思想。这种 KISS 的原则与科学理论
+的删减中的奥卡姆剃刀原则是有共振的，对吗？
+</p>
+<p>
+像欣赏艺术品那样去阅读、学习一些精巧的小程序，这应该是个享受的过程。
+</p>
+<p>
+<b>KISS = Keep It Simple and Stupid</b>
+</p>
+  </div>
+  
+  <footer class="well article-footer">
+    发布于 <time datetime=\"2012-05-03T01:57:00Z\"> 2012-05-03 01:57:00</time>.
+    <nav class="tag-cloud">
+      <h1><i class="icon-tags"></i> 相关标签</h1>
+      <ul>
+	<li><a href="../../../tags/8a2b56e293ee788f1057ad236e06559e.html">计算机</a></li>
+      </ul>
+    </nav>
+  </footer>
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'exaos-github'; // required: replace example with your forum shortname
+
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+      </div>
+      <div id="footer">
+	<div class="container">
+	  <div class="row">
+	    <section class="span3">
+	      <h1>关于</h1>
+	      <p>
+心蛛的个人站点，记录一点私人的收藏或点滴。
+</p>
+	    </section>
+	    <nav id="links" class="span3">
+	      <h1>链接</h1>
+	      <ul>
+		<li class="home"><a href="../../../index.html">首页</a></li>
+<li class="blog"><a href="../../../blog/2012/05/03_light-softs.html">Blog</a></li>
+<li class="tags"><a href="../../../tags/index.html">标签</a></li>
+<li class="archives"><a href="../../../archives.html">归档</a></li>
+<li class="rss"><a href="../../../index.xml">RSS</a></li>
+
+	      </ul>
+	    </nav>
+	    <nav id="archives" class="span3">
+	      <h1>归档</h1>
+	      <ul>
+		<li><a href="../../../blog/2012/05/03_light-softs.html">那些小巧的程序们</a></li> <li><a href="../../../blog/2012/05/02_lp-orgmode.html">文学编程与 orgmode</a></li> <li><a href="../../../blog/2012/04/27_it_lp_physics.html">信息技术、文学编程与物理学纲要</a></li> <li><a href="../../../blog/2012/04/27_mill-donkeys.html">磨驴法则之头驴利益</a></li> <li><a href="../../../blog/2012/04/16_computer-ocd-users.html">强迫症 (OCD) 者的计算机使用表现</a></li> 
+	      </ul>
+	    </nav>
+	    <nav class="tags span3">
+	      <h1>标签</h1>
+	      <ul>
+  <li style="font-size: 80.00%;"><a href="../../../tags/emacs.html">Emacs</a></li> <li style="font-size: 220.00%;"><a href="../../../tags/ocd.html">OCD</a></li> <li style="font-size: 220.00%;"><a href="../../../tags/orgmode.html">orgmode</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/8640cb1581c2ae2de5a1462405b2943b.html">教育</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/ca746b1ff10193a3ce20878dec04a733.html">文字</a></li> <li style="font-size: 150.00%;"><a href="../../../tags/baa5a3ccb5b09a889de80c125e7ddea9.html">文学编程</a></li> <li style="font-size: 220.00%;"><a href="../../../tags/920632dabac77e0e51002a969396ea04.html">物理</a></li> <li style="font-size: 150.00%;"><a href="../../../tags/ce4ba240fbd95d4863684f78453c8877.html">社会</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/4a27f6167d4c1d052343a084b6a90b10.html">科学</a></li> <li style="font-size: 150.00%;"><a href="../../../tags/8a2b56e293ee788f1057ad236e06559e.html">计算机</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/295bb704f5205801d57d672780b94117.html">语言</a></li> 
+</ul>
+
+	    </nav>
+	  </div>
+	</div>
+	<div class="copyright" style="text-align: center;">
+	  <p>
+版权所有 ©2012 <a href="mailto:exaos.lee(at)gmail.com">心蛛</a>. <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a>
+</p>
+	  <p>(ob:gettext powered-by) <a href="https://github.com/renard/o-blog">o-blog</a>.</p>
+	</div>
+      </div>
+</body>
+</html>
+
