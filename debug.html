@@ -64,13 +64,13 @@
 </li>
 <li><a href="#"><i>icon-file icon-white</i> 近期博文</a>
 <ul>
+<li><a href="./blog/2012/06/20_nix-in-hpc.html">函数式包管理器 Nix 与高性能计算</a>
+</li>
 <li><a href="./blog/2012/06/12_appellation.html">称呼紊乱的年代之家庭称谓</a>
 </li>
 <li><a href="./blog/2012/05/30_online-encyclopedia.html">网络上的百科全书、辞典与词典</a>
 </li>
 <li><a href="./blog/2012/05/26_bf09263d06e8620578c59b069391166d.html">称呼紊乱的年代</a>
-</li>
-<li><a href="./blog/2012/05/17_pioneer.html">“先驱者的故事”（《宽容》之序）</a>
 
 </li>
 </ul>
@@ -80,6 +80,20 @@
 
 </li>
 <li><a href="./archives.html"><i>icon-list icon-white</i> 归档博文</a>
+
+</li>
+<li><a href="#"><i>icon-link icon-white</i> 友情链接</a>
+<ul>
+<li><a href="http://blog.163.com/y.feng_cn/">freeboy 在网易的博客：NMR</a>
+</li>
+<li><a href="http://www.changhai.org/">卢昌海的个人主页</a>
+</li>
+<li><a href="http://www.scipark.net/">科学公园</a>
+</li>
+<li><a href="http://scienceblogging.org/">ScienceBlogging</a>
+
+</li>
+</ul>
 
 </li>
 <li><a href="./index.xml">RSS</a>
@@ -164,12 +178,101 @@
   <h1>博文</h1>
   <div class="debug post">
   <div class="debug post">
+  <h2>函数式包管理器 Nix 与高性能计算</h2>
+  <table>
+    <caption>导出博文信息 函数式包管理器 Nix 与高性能计算</caption>
+    <thead><tr><th>属性</th><th>值</th></tr></thead>
+    <tbody>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>0</pre></td></tr>
+      <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#20989;&#25968;&#24335;&#21253;&#31649;&#29702;&#22120; Nix &#19982;&#39640;&#24615;&#33021;&#35745;&#31639;"</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20449 31556)</pre></td></tr>
+      <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
+      <tr><td class="property"><code>month</code></td><td class="value"><pre>6</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>20</pre></td></tr>
+      <tr><td class="property"><code>category</code></td><td class="value"><pre>"blog"</pre></td></tr>
+      <tr><td class="property"><code>tags</code></td><td class="value"><pre>([cl-struct-ob:tags "&#35745;&#31639;&#26426;" "8a2b56e293ee788f1057ad236e06559e" nil nil])</pre></td></tr>
+      <tr><td class="property"><code>template</code></td><td class="value"><pre>"blog_post.html"</pre></td></tr>
+      <tr><td class="property"><code>filepath</code></td><td class="value"><pre>"blog/2012/06"</pre></td></tr>
+      <tr><td class="property"><code>filename</code></td><td class="value"><pre>"nix-in-hpc"</pre></td></tr>
+      <tr><td class="property"><code>htmlfile</code></td><td class="value"><pre>"blog/2012/06/20_nix-in-hpc.html"</pre></td></tr>
+      <tr><td class="property"><code>path-to-root</code></td><td class="value"><pre>"../../.."</pre></td></tr>
+      <tr><td class="property"><code>content</code></td><td class="value"><pre>"#+OPTIONS: H:7 num:nil  toc:nil d:nil todo:nil &lt;:nil pri:nil tags:nil
+
+
+&#21069;&#38754;&#30340;&#21338;&#25991;&#24050;&#32463;&#31616;&#21333;&#20171;&#32461;&#36807;&#20102; Nix, &#21442;&#35265; [[NixOS -- &#20840;&#23616;&#29256;&#26412;&#25511;&#21046;&#30340;&#25805;&#20316;&#31995;&#32479;&#65311;]] 
+
+Nix, &#31616;&#21333;&#22320;&#26469;&#35762;&#65292;&#23601;&#26159;&#19968;&#20010;&#36719;&#20214;&#21253;&#31649;&#29702;&#22120;&#65292;&#31867;&#20284;&#20110;&#25105;&#20204;&#29087;&#24713;&#30340; Debian apt &#30340; dpkg &#25110;&#32773;
+RedHat yum &#25152;&#29992;&#30340; rpm. &#20854;&#29305;&#33394;&#20043;&#22788;&#22312;&#20110;&#23427;&#25243;&#24323;&#20102;&#20256;&#32479;&#30340; Unix &#30446;&#24405;&#32467;&#26500; (&#21442;&#35265; [[http://www.linuxfoundation.org/collaborate/workgroups/lsb/fhs][FHS]] &#25110;
+[[http://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard][Wikipedia]])&#65292;&#19981;&#20877;&#23558;&#36719;&#20214;&#23433;&#35013;&#22312;&#35832;&#22914; =/usr=, =/bin=, =/sbin= &#20043;&#31867;&#30340;&#30446;&#24405;&#37324;&#65292;&#32780;&#26159;&#38598;&#20013;&#23433;
+&#35013;&#22312; =/nix/store= &#36825;&#26679;&#30340;&#30446;&#24405;&#19979;&#65292;&#28982;&#21518;&#22312;&#19982; FHS &#20860;&#23481;&#30340;&#30446;&#24405;&#20013;&#20570;&#31616;&#21333;&#30340;&#31526;&#21495;&#38142;&#25509;&#12290;&#27599;&#19968;&#20010;
+&#36719;&#20214;&#21253;&#23433;&#35013;&#22312;&#33258;&#24049;&#30340;&#30446;&#24405;&#20013;&#65292;&#20854;&#23433;&#35013;&#30340;&#30446;&#24405;&#21517;&#31216;&#31867;&#20284;&#20110;&#36825;&#26679;&#65306;
+  : g8xxs1sqvrxwjk55g04y1zba4g4ca2n4-nix-1.0
+&#20854;&#20013;&#30340; =g8xxs1sq&#8230;= &#26159;&#36719;&#20214;&#21253;&#30340;&#29305;&#27530;&#26631;&#35782;&#65292;&#36825;&#26159;&#36719;&#20214;&#21253;&#22312;&#32534;&#35793;&#37197;&#32622;&#26102;&#26681;&#25454;&#20381;&#36182;&#20851;&#31995;&#35745;&#31639;&#20986;
+&#26469;&#30340;&#21152;&#23494;&#30340;&#21704;&#24076;&#20540;&#65292;&#20063;&#26159;&#36719;&#20214;&#21253;&#30340;&#21807;&#19968;&#26631;&#35782;&#12290;&#25152;&#26377;&#22312; =/nix/store= &#30446;&#24405;&#19979;&#30340;&#30446;&#24405;&#25110;&#25991;&#20214;&#26500;
+&#25104;&#20102;&#30456;&#20114;&#20043;&#38388;&#30340;&#38169;&#32508;&#22797;&#26434;&#30340;&#20381;&#36182;&#20851;&#31995;&#65292;&#32780;&#36825;&#20123;&#20851;&#31995;&#37117;&#38598;&#20013;&#20307;&#29616;&#22312;&#30446;&#24405;&#25110;&#25991;&#20214;&#21517;&#31216;&#21069;&#38754;&#30340;&#26631;&#35782;
+&#20013;&#12290; Nix &#23545;&#36719;&#20214;&#21253;&#30340;&#32534;&#35793;&#20197;&#21450;&#29615;&#22659;&#30340;&#37197;&#32622;&#22522;&#20110;&#19968;&#22871;&#20989;&#25968;&#24335;&#30340;&#32534;&#31243;&#35821;&#35328;&#65292;&#22240;&#27492;&#20063;&#31216;&#20043;&#20026;&#20989;&#25968;&#24335;
+&#21253;&#31649;&#29702;&#22120;&#12290;
+
+Nix &#26159;&#19968;&#20010;&#36328;&#24179;&#21488;&#30340;&#21253;&#31649;&#29702;&#36719;&#20214;&#65292;&#19981;&#20165;&#25903;&#25345; GNU/Linux &#31995;&#32479;&#65292;&#36824;&#25903;&#25345; Mac OS X, FreeBSD
+&#20197;&#21450; Windows Cygwin &#31561;&#24179;&#21488;&#12290;&#23454;&#38469;&#19978;&#65292;&#20320;&#21487;&#20197;&#23558;&#23427;&#31227;&#26893;&#21040;&#26356;&#22810;&#30340;&#24179;&#21488;&#19978;&#12290;
+
+&#39640;&#24615;&#33021;&#35745;&#31639;&#65292;&#29992;&#25143;&#30340;&#36719;&#20214;&#29615;&#22659;&#36890;&#24120;&#38480;&#23450;&#22312;&#25351;&#23450;&#30340;&#20960;&#31181;&#32534;&#35793;&#22120;&#12289;&#25110;&#20381;&#36182;&#30340;&#24211;&#19978;&#12290;&#26377;&#19968;&#20123;&#36719;&#20214;&#25110;
+&#20195;&#30721;&#65292;&#30001;&#20110;&#21382;&#21490;&#30340;&#21407;&#22240;&#21482;&#33021;&#20351;&#29992;&#25351;&#23450;&#30340;&#25968;&#23398;&#24211;&#20043;&#31867;&#65292;&#23613;&#31649;&#26377;&#28304;&#20195;&#30721;&#65292;&#36825;&#20123;&#24211;&#22312;&#29616;&#20195;&#30340;&#26426;&#22120;&#19978;
+&#21487;&#33021;&#24050;&#32463;&#25214;&#19981;&#21040;&#33021;&#36816;&#34892;&#30340;&#20381;&#36182;&#29615;&#22659;&#65292;&#20026;&#23427;&#37325;&#26032;&#37197;&#32622;&#19968;&#22871;&#29615;&#22659;&#20063;&#24456;&#40635;&#28902;&#29978;&#33267;&#26159;&#19981;&#29616;&#23454;&#12290;&#22914;&#20309;&#33021;
+&#22815;&#35753;&#36719;&#20214;&#20195;&#30721;&#30340;&#20381;&#36182;&#20851;&#31995;&#33258;&#25104;&#20307;&#31995;&#65292;&#24182;&#19988;&#30456;&#20114;&#20043;&#38388;&#19981;&#24433;&#21709;&#20351;&#29992;&#21602;&#65311;&#25110;&#35768; Nix &#26159;&#19968;&#20010;&#19981;&#38169;&#30340;&#36873;
+&#25321;&#12290;
+
+&#30446;&#21069;&#65292;Nix &#30340;&#24320;&#21457;&#32452;&#20351;&#29992;&#38598;&#32676;&#31995;&#32479;&#36827;&#34892;&#36719;&#20214;&#30340;&#33258;&#21160;&#32534;&#35793;&#27979;&#35797;&#12290;&#25105;&#36824;&#27809;&#26377;&#35265;&#21040;&#26377;&#39640;&#24615;&#33021;&#38598;&#32676;&#20013;
+&#20351;&#29992; Nix &#30340;&#25253;&#36947;&#12290;&#25110;&#35768;&#26377;&#30340;&#20154;&#24050;&#32463;&#26377;&#23581;&#35797;&#36824;&#26410;&#20844;&#24067;&#32467;&#26524;&#12290;&#36523;&#36793;&#26377;&#19968;&#20010;&#22522;&#20110; Rocks &#30340;&#38598;&#32676;&#65292;
+&#20294;&#30001;&#20110;&#35745;&#31639;&#20219;&#21153;&#32321;&#37325;&#65292;&#19981;&#21487;&#33021;&#36827;&#34892;&#36825;&#26679;&#30340;&#23454;&#39564;&#12290;&#26399;&#24453;&#26377;&#20154;&#33021;&#22815;&#27719;&#25253;&#19968;&#19979; Nix &#22312;&#39640;&#24615;&#33021;&#35745;&#31639;&#19978;
+&#30340;&#34920;&#29616;&#12290;
+"</pre></td></tr>
+      <tr><td class="property"><code>content-html</code></td><td class="value"><pre>"&lt;p&gt;
+&#21069;&#38754;&#30340;&#21338;&#25991;&#24050;&#32463;&#31616;&#21333;&#20171;&#32461;&#36807;&#20102; Nix, &#21442;&#35265; &lt;a href=\"#NixOS---\"&gt;NixOS &amp;ndash; &#20840;&#23616;&#29256;&#26412;&#25511;&#21046;&#30340;&#25805;&#20316;&#31995;&#32479;&#65311;&lt;/a&gt; 
+&lt;/p&gt;
+&lt;p&gt;
+Nix, &#31616;&#21333;&#22320;&#26469;&#35762;&#65292;&#23601;&#26159;&#19968;&#20010;&#36719;&#20214;&#21253;&#31649;&#29702;&#22120;&#65292;&#31867;&#20284;&#20110;&#25105;&#20204;&#29087;&#24713;&#30340; Debian apt &#30340; dpkg &#25110;&#32773;
+RedHat yum &#25152;&#29992;&#30340; rpm. &#20854;&#29305;&#33394;&#20043;&#22788;&#22312;&#20110;&#23427;&#25243;&#24323;&#20102;&#20256;&#32479;&#30340; Unix &#30446;&#24405;&#32467;&#26500; (&#21442;&#35265; &lt;a href=\"http://www.linuxfoundation.org/collaborate/workgroups/lsb/fhs\"&gt;FHS&lt;/a&gt; &#25110;
+&lt;a href=\"http://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard\"&gt;Wikipedia&lt;/a&gt;)&#65292;&#19981;&#20877;&#23558;&#36719;&#20214;&#23433;&#35013;&#22312;&#35832;&#22914; &lt;code&gt;/usr&lt;/code&gt;, &lt;code&gt;/bin&lt;/code&gt;, &lt;code&gt;/sbin&lt;/code&gt; &#20043;&#31867;&#30340;&#30446;&#24405;&#37324;&#65292;&#32780;&#26159;&#38598;&#20013;&#23433;
+&#35013;&#22312; &lt;code&gt;/nix/store&lt;/code&gt; &#36825;&#26679;&#30340;&#30446;&#24405;&#19979;&#65292;&#28982;&#21518;&#22312;&#19982; FHS &#20860;&#23481;&#30340;&#30446;&#24405;&#20013;&#20570;&#31616;&#21333;&#30340;&#31526;&#21495;&#38142;&#25509;&#12290;&#27599;&#19968;&#20010;
+&#36719;&#20214;&#21253;&#23433;&#35013;&#22312;&#33258;&#24049;&#30340;&#30446;&#24405;&#20013;&#65292;&#20854;&#23433;&#35013;&#30340;&#30446;&#24405;&#21517;&#31216;&#31867;&#20284;&#20110;&#36825;&#26679;&#65306;
+&lt;/p&gt;&lt;pre class=\"example\"&gt;
+g8xxs1sqvrxwjk55g04y1zba4g4ca2n4-nix-1.0
+&lt;/pre&gt;
+
+&lt;p&gt;&#20854;&#20013;&#30340; &lt;code&gt;g8xxs1sq&#8230;&lt;/code&gt; &#26159;&#36719;&#20214;&#21253;&#30340;&#29305;&#27530;&#26631;&#35782;&#65292;&#36825;&#26159;&#36719;&#20214;&#21253;&#22312;&#32534;&#35793;&#37197;&#32622;&#26102;&#26681;&#25454;&#20381;&#36182;&#20851;&#31995;&#35745;&#31639;&#20986;
+&#26469;&#30340;&#21152;&#23494;&#30340;&#21704;&#24076;&#20540;&#65292;&#20063;&#26159;&#36719;&#20214;&#21253;&#30340;&#21807;&#19968;&#26631;&#35782;&#12290;&#25152;&#26377;&#22312; &lt;code&gt;/nix/store&lt;/code&gt; &#30446;&#24405;&#19979;&#30340;&#30446;&#24405;&#25110;&#25991;&#20214;&#26500;
+&#25104;&#20102;&#30456;&#20114;&#20043;&#38388;&#30340;&#38169;&#32508;&#22797;&#26434;&#30340;&#20381;&#36182;&#20851;&#31995;&#65292;&#32780;&#36825;&#20123;&#20851;&#31995;&#37117;&#38598;&#20013;&#20307;&#29616;&#22312;&#30446;&#24405;&#25110;&#25991;&#20214;&#21517;&#31216;&#21069;&#38754;&#30340;&#26631;&#35782;
+&#20013;&#12290; Nix &#23545;&#36719;&#20214;&#21253;&#30340;&#32534;&#35793;&#20197;&#21450;&#29615;&#22659;&#30340;&#37197;&#32622;&#22522;&#20110;&#19968;&#22871;&#20989;&#25968;&#24335;&#30340;&#32534;&#31243;&#35821;&#35328;&#65292;&#22240;&#27492;&#20063;&#31216;&#20043;&#20026;&#20989;&#25968;&#24335;
+&#21253;&#31649;&#29702;&#22120;&#12290;
+&lt;/p&gt;
+&lt;p&gt;
+Nix &#26159;&#19968;&#20010;&#36328;&#24179;&#21488;&#30340;&#21253;&#31649;&#29702;&#36719;&#20214;&#65292;&#19981;&#20165;&#25903;&#25345; GNU/Linux &#31995;&#32479;&#65292;&#36824;&#25903;&#25345; Mac OS X, FreeBSD
+&#20197;&#21450; Windows Cygwin &#31561;&#24179;&#21488;&#12290;&#23454;&#38469;&#19978;&#65292;&#20320;&#21487;&#20197;&#23558;&#23427;&#31227;&#26893;&#21040;&#26356;&#22810;&#30340;&#24179;&#21488;&#19978;&#12290;
+&lt;/p&gt;
+&lt;p&gt;
+&#39640;&#24615;&#33021;&#35745;&#31639;&#65292;&#29992;&#25143;&#30340;&#36719;&#20214;&#29615;&#22659;&#36890;&#24120;&#38480;&#23450;&#22312;&#25351;&#23450;&#30340;&#20960;&#31181;&#32534;&#35793;&#22120;&#12289;&#25110;&#20381;&#36182;&#30340;&#24211;&#19978;&#12290;&#26377;&#19968;&#20123;&#36719;&#20214;&#25110;
+&#20195;&#30721;&#65292;&#30001;&#20110;&#21382;&#21490;&#30340;&#21407;&#22240;&#21482;&#33021;&#20351;&#29992;&#25351;&#23450;&#30340;&#25968;&#23398;&#24211;&#20043;&#31867;&#65292;&#23613;&#31649;&#26377;&#28304;&#20195;&#30721;&#65292;&#36825;&#20123;&#24211;&#22312;&#29616;&#20195;&#30340;&#26426;&#22120;&#19978;
+&#21487;&#33021;&#24050;&#32463;&#25214;&#19981;&#21040;&#33021;&#36816;&#34892;&#30340;&#20381;&#36182;&#29615;&#22659;&#65292;&#20026;&#23427;&#37325;&#26032;&#37197;&#32622;&#19968;&#22871;&#29615;&#22659;&#20063;&#24456;&#40635;&#28902;&#29978;&#33267;&#26159;&#19981;&#29616;&#23454;&#12290;&#22914;&#20309;&#33021;
+&#22815;&#35753;&#36719;&#20214;&#20195;&#30721;&#30340;&#20381;&#36182;&#20851;&#31995;&#33258;&#25104;&#20307;&#31995;&#65292;&#24182;&#19988;&#30456;&#20114;&#20043;&#38388;&#19981;&#24433;&#21709;&#20351;&#29992;&#21602;&#65311;&#25110;&#35768; Nix &#26159;&#19968;&#20010;&#19981;&#38169;&#30340;&#36873;
+&#25321;&#12290;
+&lt;/p&gt;
+&lt;p&gt;
+&#30446;&#21069;&#65292;Nix &#30340;&#24320;&#21457;&#32452;&#20351;&#29992;&#38598;&#32676;&#31995;&#32479;&#36827;&#34892;&#36719;&#20214;&#30340;&#33258;&#21160;&#32534;&#35793;&#27979;&#35797;&#12290;&#25105;&#36824;&#27809;&#26377;&#35265;&#21040;&#26377;&#39640;&#24615;&#33021;&#38598;&#32676;&#20013;
+&#20351;&#29992; Nix &#30340;&#25253;&#36947;&#12290;&#25110;&#35768;&#26377;&#30340;&#20154;&#24050;&#32463;&#26377;&#23581;&#35797;&#36824;&#26410;&#20844;&#24067;&#32467;&#26524;&#12290;&#36523;&#36793;&#26377;&#19968;&#20010;&#22522;&#20110; Rocks &#30340;&#38598;&#32676;&#65292;
+&#20294;&#30001;&#20110;&#35745;&#31639;&#20219;&#21153;&#32321;&#37325;&#65292;&#19981;&#21487;&#33021;&#36827;&#34892;&#36825;&#26679;&#30340;&#23454;&#39564;&#12290;&#26399;&#24453;&#26377;&#20154;&#33021;&#22815;&#27719;&#25253;&#19968;&#19979; Nix &#22312;&#39640;&#24615;&#33021;&#35745;&#31639;&#19978;
+&#30340;&#34920;&#29616;&#12290;
+&lt;/p&gt;"</pre></td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="debug post">
   <h2>称呼紊乱的年代之家庭称谓</h2>
   <table>
     <caption>导出博文信息 称呼紊乱的年代之家庭称谓</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>0</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>1</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#31216;&#21628;&#32010;&#20081;&#30340;&#24180;&#20195;&#20043;&#23478;&#24237;&#31216;&#35859;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20438 62212)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -496,7 +599,7 @@ http://paper.wenweipo.com/2011/10/10/OT1110100004.htm
     <caption>导出博文信息 网络上的百科全书、辞典与词典</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>1</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>2</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#32593;&#32476;&#19978;&#30340;&#30334;&#31185;&#20840;&#20070;&#12289;&#36766;&#20856;&#19982;&#35789;&#20856;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20421 33804)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -690,7 +793,7 @@ http://paper.wenweipo.com/2011/10/10/OT1110100004.htm
     <caption>导出博文信息 称呼紊乱的年代</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>2</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>3</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#31216;&#21628;&#32010;&#20081;&#30340;&#24180;&#20195;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20416 59864)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -804,7 +907,7 @@ http://paper.wenweipo.com/2011/10/10/OT1110100004.htm
     <caption>导出博文信息 “先驱者的故事”（《宽容》之序）</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>3</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>4</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#8220;&#20808;&#39537;&#32773;&#30340;&#25925;&#20107;&#8221;&#65288;&#12298;&#23485;&#23481;&#12299;&#20043;&#24207;&#65289;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20404 23516)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -1351,7 +1454,7 @@ http://paper.wenweipo.com/2011/10/10/OT1110100004.htm
     <caption>导出博文信息 NixOS -- 全局版本控制的操作系统？</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>4</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>5</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"NixOS -- &#20840;&#23616;&#29256;&#26412;&#25511;&#21046;&#30340;&#25805;&#20316;&#31995;&#32479;&#65311;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20399 54376)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -1552,7 +1655,7 @@ NixOS &#20063;&#21482;&#25552;&#20379;&#20102;&#19968;&#20010; LiveCD (0.1pre340
     <caption>导出博文信息 那些小巧的程序们</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>5</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>6</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#37027;&#20123;&#23567;&#24039;&#30340;&#31243;&#24207;&#20204;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20385 30060)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -1973,7 +2076,7 @@ Emacs, VIM &#31561;&#27969;&#34892;&#30340;&#37117;&#26159;&#24040;&#26080;&#387
     <caption>导出博文信息 文学编程与 orgmode</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>6</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>7</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#25991;&#23398;&#32534;&#31243;&#19982; orgmode"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20384 7936)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -2117,7 +2220,7 @@ org-babel &#25991;&#23398;&#32534;&#31243;&#20307;&#29616;&#22312;&#23427;&#3034
     <caption>导出博文信息 信息技术、文学编程与物理学纲要</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>7</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>8</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#20449;&#24687;&#25216;&#26415;&#12289;&#25991;&#23398;&#32534;&#31243;&#19982;&#29289;&#29702;&#23398;&#32434;&#35201;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20378 39172)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -2509,7 +2612,7 @@ Guile &#37325;&#26032;&#32534;&#20889;&#21602;&#12290; :-)
     <caption>导出博文信息 磨驴法则之头驴利益</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>8</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>9</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#30952;&#39540;&#27861;&#21017;&#20043;&#22836;&#39540;&#21033;&#30410;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20377 60488)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -2618,7 +2721,7 @@ crazycat   &#31561;&#32423;&#65306;&#20061;&#21697;&#25226;&#24635;   1&#27004; 
     <caption>导出博文信息 强迫症 (OCD) 者的计算机使用表现</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>9</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>10</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#24378;&#36843;&#30151; (OCD) &#32773;&#30340;&#35745;&#31639;&#26426;&#20351;&#29992;&#34920;&#29616;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20363 31552)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -2766,7 +2869,7 @@ crazycat   &#31561;&#32423;&#65306;&#20061;&#21697;&#25226;&#24635;   1&#27004; 
     <caption>导出博文信息 Emacs --- 能够显示地图的编辑器？</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>10</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>11</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"Emacs --- &#33021;&#22815;&#26174;&#31034;&#22320;&#22270;&#30340;&#32534;&#36753;&#22120;&#65311;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20361 26124)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -2924,7 +3027,7 @@ Bad sexp at line 27 in d:/Exaos/Workspace/exaos/daily/myorg/contacts.org: (org-c
     <caption>导出博文信息 联合国大学 (UNU)</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>11</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>12</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#32852;&#21512;&#22269;&#22823;&#23398; (UNU)"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20338 44072)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -3014,7 +3117,7 @@ Bad sexp at line 27 in d:/Exaos/Workspace/exaos/daily/myorg/contacts.org: (org-c
     <caption>导出博文信息 用中子探测器识别核武器</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>12</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>13</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#29992;&#20013;&#23376;&#25506;&#27979;&#22120;&#35782;&#21035;&#26680;&#27494;&#22120;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20337 56988)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -3067,7 +3170,7 @@ Bad sexp at line 27 in d:/Exaos/Workspace/exaos/daily/myorg/contacts.org: (org-c
     <caption>导出博文信息 一些关于宇宙与粒子物理的科普网站作品</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>13</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>14</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#19968;&#20123;&#20851;&#20110;&#23431;&#23449;&#19982;&#31890;&#23376;&#29289;&#29702;&#30340;&#31185;&#26222;&#32593;&#31449;&#20316;&#21697;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20337 7248)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -3151,7 +3254,7 @@ Bad sexp at line 27 in d:/Exaos/Workspace/exaos/daily/myorg/contacts.org: (org-c
     <caption>导出博文信息 关于 dotsies 字体的想法</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>14</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>15</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#20851;&#20110; dotsies &#23383;&#20307;&#30340;&#24819;&#27861;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20335 20)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -3239,7 +3342,7 @@ Do not close up you heart.
     <caption>导出博文信息 切换到 o-blog 页面系统</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>15</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>16</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#20999;&#25442;&#21040; o-blog &#39029;&#38754;&#31995;&#32479;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20330 15820)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -3310,10 +3413,10 @@ Do not close up you heart.
     <tbody>
       <tr><td class="property"><code>id</code></td><td class="value"><pre>0</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#24515;&#34523;&#23567;&#31449;"</pre></td></tr>
-      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20438 5632)</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20448 41472)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
       <tr><td class="property"><code>month</code></td><td class="value"><pre>6</pre></td></tr>
-      <tr><td class="property"><code>day</code></td><td class="value"><pre>12</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>20</pre></td></tr>
       <tr><td class="property"><code>category</code></td><td class="value"><pre>"blog"</pre></td></tr>
       <tr><td class="property"><code>tags</code></td><td class="value"><pre>nil</pre></td></tr>
       <tr><td class="property"><code>template</code></td><td class="value"><pre>"blog_static.html"</pre></td></tr>
@@ -3438,10 +3541,10 @@ Do not close up you heart.
     <tbody>
       <tr><td class="property"><code>id</code></td><td class="value"><pre>1</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#36164;&#26009;"</pre></td></tr>
-      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20438 5632)</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20448 41472)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
       <tr><td class="property"><code>month</code></td><td class="value"><pre>6</pre></td></tr>
-      <tr><td class="property"><code>day</code></td><td class="value"><pre>12</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>20</pre></td></tr>
       <tr><td class="property"><code>category</code></td><td class="value"><pre>"&#38745;&#24577;&#39029;&#38754;"</pre></td></tr>
       <tr><td class="property"><code>tags</code></td><td class="value"><pre>nil</pre></td></tr>
       <tr><td class="property"><code>template</code></td><td class="value"><pre>"blog_static.html"</pre></td></tr>
@@ -3474,10 +3577,10 @@ Do not close up you heart.
     <tbody>
       <tr><td class="property"><code>id</code></td><td class="value"><pre>2</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#31169;&#20154;&#36164;&#26009;"</pre></td></tr>
-      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20438 5632)</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20448 41472)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
       <tr><td class="property"><code>month</code></td><td class="value"><pre>6</pre></td></tr>
-      <tr><td class="property"><code>day</code></td><td class="value"><pre>12</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>20</pre></td></tr>
       <tr><td class="property"><code>category</code></td><td class="value"><pre>"&#38745;&#24577;&#39029;&#38754;"</pre></td></tr>
       <tr><td class="property"><code>tags</code></td><td class="value"><pre>nil</pre></td></tr>
       <tr><td class="property"><code>template</code></td><td class="value"><pre>"blog_static.html"</pre></td></tr>
@@ -3513,10 +3616,10 @@ Do not close up you heart.
     <tbody>
       <tr><td class="property"><code>id</code></td><td class="value"><pre>3</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#31508;&#35760;"</pre></td></tr>
-      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20438 5632)</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20448 41472)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
       <tr><td class="property"><code>month</code></td><td class="value"><pre>6</pre></td></tr>
-      <tr><td class="property"><code>day</code></td><td class="value"><pre>12</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>20</pre></td></tr>
       <tr><td class="property"><code>category</code></td><td class="value"><pre>"&#38745;&#24577;&#39029;&#38754;"</pre></td></tr>
       <tr><td class="property"><code>tags</code></td><td class="value"><pre>nil</pre></td></tr>
       <tr><td class="property"><code>template</code></td><td class="value"><pre>"blog_static.html"</pre></td></tr>
@@ -3552,10 +3655,10 @@ Do not close up you heart.
     <tbody>
       <tr><td class="property"><code>id</code></td><td class="value"><pre>4</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#35843;&#35797;"</pre></td></tr>
-      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20438 5632)</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20448 41472)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
       <tr><td class="property"><code>month</code></td><td class="value"><pre>6</pre></td></tr>
-      <tr><td class="property"><code>day</code></td><td class="value"><pre>12</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>20</pre></td></tr>
       <tr><td class="property"><code>category</code></td><td class="value"><pre>"&#38745;&#24577;&#39029;&#38754;"</pre></td></tr>
       <tr><td class="property"><code>tags</code></td><td class="value"><pre>nil</pre></td></tr>
       <tr><td class="property"><code>template</code></td><td class="value"><pre>"debug.html"</pre></td></tr>
@@ -3579,10 +3682,10 @@ Do not close up you heart.
     <tbody>
       <tr><td class="property"><code>id</code></td><td class="value"><pre>5</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#26356;&#26032;&#35760;&#24405;"</pre></td></tr>
-      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20438 5632)</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20448 41472)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
       <tr><td class="property"><code>month</code></td><td class="value"><pre>6</pre></td></tr>
-      <tr><td class="property"><code>day</code></td><td class="value"><pre>12</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>20</pre></td></tr>
       <tr><td class="property"><code>category</code></td><td class="value"><pre>"&#21338;&#23458;&#35774;&#32622;"</pre></td></tr>
       <tr><td class="property"><code>tags</code></td><td class="value"><pre>nil</pre></td></tr>
       <tr><td class="property"><code>template</code></td><td class="value"><pre>"blog_static.html"</pre></td></tr>
@@ -3656,16 +3759,16 @@ Do not close up you heart.
     <tbody>
       <tr><td class="property"><code>id</code></td><td class="value"><pre>0</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"Copyright"</pre></td></tr>
-      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20438 5632)</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20448 41472)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
       <tr><td class="property"><code>month</code></td><td class="value"><pre>6</pre></td></tr>
-      <tr><td class="property"><code>day</code></td><td class="value"><pre>12</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>20</pre></td></tr>
       <tr><td class="property"><code>category</code></td><td class="value"><pre>"&#21338;&#23458;&#35774;&#32622;"</pre></td></tr>
       <tr><td class="property"><code>tags</code></td><td class="value"><pre>nil</pre></td></tr>
       <tr><td class="property"><code>template</code></td><td class="value"><pre>"blog_post.html"</pre></td></tr>
       <tr><td class="property"><code>filepath</code></td><td class="value"><pre>"&#21338;&#23458;&#35774;&#32622;/2012/06"</pre></td></tr>
       <tr><td class="property"><code>filename</code></td><td class="value"><pre>"copyright"</pre></td></tr>
-      <tr><td class="property"><code>htmlfile</code></td><td class="value"><pre>"&#21338;&#23458;&#35774;&#32622;/2012/06/12_copyright.html"</pre></td></tr>
+      <tr><td class="property"><code>htmlfile</code></td><td class="value"><pre>"&#21338;&#23458;&#35774;&#32622;/2012/06/20_copyright.html"</pre></td></tr>
       <tr><td class="property"><code>path-to-root</code></td><td class="value"><pre>"../../.."</pre></td></tr>
       <tr><td class="property"><code>content</code></td><td class="value"><pre>"#+OPTIONS: H:7 num:nil  toc:nil d:nil todo:nil &lt;:nil pri:nil tags:nil
 
@@ -3686,16 +3789,16 @@ Do not close up you heart.
     <tbody>
       <tr><td class="property"><code>id</code></td><td class="value"><pre>1</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"About"</pre></td></tr>
-      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20438 5632)</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20448 41472)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
       <tr><td class="property"><code>month</code></td><td class="value"><pre>6</pre></td></tr>
-      <tr><td class="property"><code>day</code></td><td class="value"><pre>12</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>20</pre></td></tr>
       <tr><td class="property"><code>category</code></td><td class="value"><pre>"&#21338;&#23458;&#35774;&#32622;"</pre></td></tr>
       <tr><td class="property"><code>tags</code></td><td class="value"><pre>nil</pre></td></tr>
       <tr><td class="property"><code>template</code></td><td class="value"><pre>"blog_post.html"</pre></td></tr>
       <tr><td class="property"><code>filepath</code></td><td class="value"><pre>"&#21338;&#23458;&#35774;&#32622;/2012/06"</pre></td></tr>
       <tr><td class="property"><code>filename</code></td><td class="value"><pre>"about"</pre></td></tr>
-      <tr><td class="property"><code>htmlfile</code></td><td class="value"><pre>"&#21338;&#23458;&#35774;&#32622;/2012/06/12_about.html"</pre></td></tr>
+      <tr><td class="property"><code>htmlfile</code></td><td class="value"><pre>"&#21338;&#23458;&#35774;&#32622;/2012/06/20_about.html"</pre></td></tr>
       <tr><td class="property"><code>path-to-root</code></td><td class="value"><pre>"../../.."</pre></td></tr>
       <tr><td class="property"><code>content</code></td><td class="value"><pre>"#+OPTIONS: H:7 num:nil  toc:nil d:nil todo:nil &lt;:nil pri:nil tags:nil
 
@@ -3716,16 +3819,16 @@ Do not close up you heart.
     <tbody>
       <tr><td class="property"><code>id</code></td><td class="value"><pre>2</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"Navigation"</pre></td></tr>
-      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20438 5632)</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20448 41472)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
       <tr><td class="property"><code>month</code></td><td class="value"><pre>6</pre></td></tr>
-      <tr><td class="property"><code>day</code></td><td class="value"><pre>12</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>20</pre></td></tr>
       <tr><td class="property"><code>category</code></td><td class="value"><pre>"&#21338;&#23458;&#35774;&#32622;"</pre></td></tr>
       <tr><td class="property"><code>tags</code></td><td class="value"><pre>nil</pre></td></tr>
       <tr><td class="property"><code>template</code></td><td class="value"><pre>"blog_post.html"</pre></td></tr>
       <tr><td class="property"><code>filepath</code></td><td class="value"><pre>"&#21338;&#23458;&#35774;&#32622;/2012/06"</pre></td></tr>
       <tr><td class="property"><code>filename</code></td><td class="value"><pre>"navigation"</pre></td></tr>
-      <tr><td class="property"><code>htmlfile</code></td><td class="value"><pre>"&#21338;&#23458;&#35774;&#32622;/2012/06/12_navigation.html"</pre></td></tr>
+      <tr><td class="property"><code>htmlfile</code></td><td class="value"><pre>"&#21338;&#23458;&#35774;&#32622;/2012/06/20_navigation.html"</pre></td></tr>
       <tr><td class="property"><code>path-to-root</code></td><td class="value"><pre>"../../.."</pre></td></tr>
       <tr><td class="property"><code>content</code></td><td class="value"><pre>"#+OPTIONS: H:7 num:nil  toc:nil d:nil todo:nil &lt;:nil pri:nil tags:nil
 
@@ -3744,6 +3847,12 @@ Do not close up you heart.
 - [[file:../../../tags/index.html][/icon-tags icon-white/ &#26631;&#31614;]]
 
 - [[file:../../../archives.html][/icon-list icon-white/ &#24402;&#26723;&#21338;&#25991;]]
+
+- [[#][/icon-link icon-white/ &#21451;&#24773;&#38142;&#25509;]]
+  - [[http://blog.163.com/y.feng_cn/][freeboy &#22312;&#32593;&#26131;&#30340;&#21338;&#23458;&#65306;NMR]]
+  - [[http://www.changhai.org/][&#21346;&#26124;&#28023;&#30340;&#20010;&#20154;&#20027;&#39029;]]
+  - [[http://www.scipark.net/][&#31185;&#23398;&#20844;&#22253;]]
+  - [[http://scienceblogging.org/][ScienceBlogging]]
 
 - [[file:../../../index.xml][RSS]]
 "</pre></td></tr>
@@ -3778,6 +3887,73 @@ Do not close up you heart.
 
 &lt;/li&gt;
 &lt;li&gt;&lt;a href=\"../../../archives.html\"&gt;&lt;i&gt;icon-list icon-white&lt;/i&gt; &#24402;&#26723;&#21338;&#25991;&lt;/a&gt;
+
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=\"#\"&gt;&lt;i&gt;icon-link icon-white&lt;/i&gt; &#21451;&#24773;&#38142;&#25509;&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=\"http://blog.163.com/y.feng_cn/\"&gt;freeboy &#22312;&#32593;&#26131;&#30340;&#21338;&#23458;&#65306;NMR&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=\"http://www.changhai.org/\"&gt;&#21346;&#26124;&#28023;&#30340;&#20010;&#20154;&#20027;&#39029;&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=\"http://www.scipark.net/\"&gt;&#31185;&#23398;&#20844;&#22253;&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=\"http://scienceblogging.org/\"&gt;ScienceBlogging&lt;/a&gt;
+
+&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=\"../../../index.xml\"&gt;RSS&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+"</pre></td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="debug post">
+  <h2>Navigation Footer</h2>
+  <table>
+    <caption>导出博文信息 Navigation Footer</caption>
+    <thead><tr><th>属性</th><th>值</th></tr></thead>
+    <tbody>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>3</pre></td></tr>
+      <tr><td class="property"><code>title</code></td><td class="value"><pre>"Navigation Footer"</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20448 41472)</pre></td></tr>
+      <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
+      <tr><td class="property"><code>month</code></td><td class="value"><pre>6</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>20</pre></td></tr>
+      <tr><td class="property"><code>category</code></td><td class="value"><pre>"&#21338;&#23458;&#35774;&#32622;"</pre></td></tr>
+      <tr><td class="property"><code>tags</code></td><td class="value"><pre>nil</pre></td></tr>
+      <tr><td class="property"><code>template</code></td><td class="value"><pre>"blog_post.html"</pre></td></tr>
+      <tr><td class="property"><code>filepath</code></td><td class="value"><pre>"&#21338;&#23458;&#35774;&#32622;/2012/06"</pre></td></tr>
+      <tr><td class="property"><code>filename</code></td><td class="value"><pre>"navigation-footer"</pre></td></tr>
+      <tr><td class="property"><code>htmlfile</code></td><td class="value"><pre>"&#21338;&#23458;&#35774;&#32622;/2012/06/20_navigation-footer.html"</pre></td></tr>
+      <tr><td class="property"><code>path-to-root</code></td><td class="value"><pre>"../../.."</pre></td></tr>
+      <tr><td class="property"><code>content</code></td><td class="value"><pre>"#+OPTIONS: H:7 num:nil  toc:nil d:nil todo:nil &lt;:nil pri:nil tags:nil
+
+
+ - [[file:../../../index.html][/icon-home icon-white/ 首页]]
+
+ - [[file:Lisp error in nil: (void-function let%20)][/icon-file icon-white/ &#21338;&#25991;]]
+
+ - [[file:../../../tags/index.html][/icon-tags icon-white/ &#26631;&#31614;]]
+
+ - [[file:../../../archives.html][/icon-list icon-white/ &#24402;&#26723;]]
+
+ - [[file:../../../index.xml][RSS]]
+"</pre></td></tr>
+      <tr><td class="property"><code>content-html</code></td><td class="value"><pre>"&lt;ul&gt;
+&lt;li&gt;&lt;a href=\"../../../index.html\"&gt;&lt;i&gt;icon-home icon-white&lt;/i&gt; 首页&lt;/a&gt;
+
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=\"Lisp error in nil: (void-variable "%s/%s")\"&gt;&lt;i&gt;icon-file icon-white&lt;/i&gt; &#21338;&#25991;&lt;/a&gt;
+
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=\"../../../tags/index.html\"&gt;&lt;i&gt;icon-tags icon-white&lt;/i&gt; &#26631;&#31614;&lt;/a&gt;
+
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=\"../../../archives.html\"&gt;&lt;i&gt;icon-list icon-white&lt;/i&gt; &#24402;&#26723;&lt;/a&gt;
 
 &lt;/li&gt;
 &lt;li&gt;&lt;a href=\"../../../index.xml\"&gt;RSS&lt;/a&gt;
@@ -3918,8 +4094,8 @@ Do not close up you heart.
     <tbody>
       <tr><td class="property"><code>name</code></td><td class="value"><pre>"&#35745;&#31639;&#26426;"</pre></td></tr>
       <tr><td class="property"><code>safe</code></td><td class="value"><pre>"8a2b56e293ee788f1057ad236e06559e"</pre></td></tr>
-      <tr><td class="property"><code>count</code></td><td class="value"><pre>3</pre></td></tr>
-      <tr><td class="property"><code>size</code></td><td class="value"><pre>150.0</pre></td></tr>
+      <tr><td class="property"><code>count</code></td><td class="value"><pre>4</pre></td></tr>
+      <tr><td class="property"><code>size</code></td><td class="value"><pre>185.0</pre></td></tr>
     </tbody>
   </table>
 </div>
@@ -3953,24 +4129,36 @@ Do not close up you heart.
 	    <nav id="links" class="span3">
 	      <h1>链接</h1>
 	      <ul>
-		<li class="home"><a href="./index.html">首页</a></li>
-<li class="blog"><a href="./blog/2012/06/12_appellation.html">Blog</a></li>
-<li class="tags"><a href="./tags/index.html">标签</a></li>
-<li class="archives"><a href="./archives.html">归档</a></li>
-<li class="rss"><a href="./index.xml">RSS</a></li>
+		<ul>
+<li><a href="./index.html"><i>icon-home icon-white</i> 首页</a>
+
+</li>
+<li><a href="./blog/2012/06/20_nix-in-hpc.html"><i>icon-file icon-white</i> 博文</a>
+
+</li>
+<li><a href="./tags/index.html"><i>icon-tags icon-white</i> 标签</a>
+
+</li>
+<li><a href="./archives.html"><i>icon-list icon-white</i> 归档</a>
+
+</li>
+<li><a href="./index.xml">RSS</a>
+</li>
+</ul>
+
 
 	      </ul>
 	    </nav>
 	    <nav id="archives" class="span3">
 	      <h1>归档</h1>
 	      <ul>
-		<li><a href="./blog/2012/06/12_appellation.html">称呼紊乱的年代之家庭称谓</a></li> <li><a href="./blog/2012/05/30_online-encyclopedia.html">网络上的百科全书、辞典与词典</a></li> <li><a href="./blog/2012/05/26_bf09263d06e8620578c59b069391166d.html">称呼紊乱的年代</a></li> <li><a href="./blog/2012/05/17_pioneer.html">“先驱者的故事”（《宽容》之序）</a></li> <li><a href="./blog/2012/05/13_nixos.html">NixOS -- 全局版本控制的操作系统？</a></li> 
+		<li><a href="./blog/2012/06/20_nix-in-hpc.html">函数式包管理器 Nix 与高性能计算</a></li> <li><a href="./blog/2012/06/12_appellation.html">称呼紊乱的年代之家庭称谓</a></li> <li><a href="./blog/2012/05/30_online-encyclopedia.html">网络上的百科全书、辞典与词典</a></li> <li><a href="./blog/2012/05/26_bf09263d06e8620578c59b069391166d.html">称呼紊乱的年代</a></li> <li><a href="./blog/2012/05/17_pioneer.html">“先驱者的故事”（《宽容》之序）</a></li> <li><a href="./blog/2012/05/13_nixos.html">NixOS -- 全局版本控制的操作系统？</a></li> <li><a href="./blog/2012/05/03_light-softs.html">那些小巧的程序们</a></li> <li><a href="./blog/2012/05/02_lp-orgmode.html">文学编程与 orgmode</a></li> <li><a href="./blog/2012/04/27_it_lp_physics.html">信息技术、文学编程与物理学纲要</a></li> <li><a href="./blog/2012/04/27_mill-donkeys.html">磨驴法则之头驴利益</a></li> 
 	      </ul>
 	    </nav>
 	    <nav class="tags span3">
 	      <h1>标签</h1>
 	      <ul>
-  <li style="font-size: 80.00%;"><a href="./tags/emacs.html">Emacs</a></li> <li style="font-size: 150.00%;"><a href="./tags/ocd.html">OCD</a></li> <li style="font-size: 150.00%;"><a href="./tags/orgmode.html">orgmode</a></li> <li style="font-size: 80.00%;"><a href="./tags/8640cb1581c2ae2de5a1462405b2943b.html">教育</a></li> <li style="font-size: 80.00%;"><a href="./tags/ca746b1ff10193a3ce20878dec04a733.html">文字</a></li> <li style="font-size: 115.00%;"><a href="./tags/baa5a3ccb5b09a889de80c125e7ddea9.html">文学编程</a></li> <li style="font-size: 150.00%;"><a href="./tags/920632dabac77e0e51002a969396ea04.html">物理</a></li> <li style="font-size: 220.00%;"><a href="./tags/ce4ba240fbd95d4863684f78453c8877.html">社会</a></li> <li style="font-size: 80.00%;"><a href="./tags/7ddbe15c845fa27a2bab496183042ca6.html">网络</a></li> <li style="font-size: 150.00%;"><a href="./tags/8a2b56e293ee788f1057ad236e06559e.html">计算机</a></li> <li style="font-size: 80.00%;"><a href="./tags/295bb704f5205801d57d672780b94117.html">语言</a></li> 
+  <li style="font-size: 80.00%;"><a href="./tags/emacs.html">Emacs</a></li> <li style="font-size: 150.00%;"><a href="./tags/ocd.html">OCD</a></li> <li style="font-size: 150.00%;"><a href="./tags/orgmode.html">orgmode</a></li> <li style="font-size: 80.00%;"><a href="./tags/8640cb1581c2ae2de5a1462405b2943b.html">教育</a></li> <li style="font-size: 80.00%;"><a href="./tags/ca746b1ff10193a3ce20878dec04a733.html">文字</a></li> <li style="font-size: 115.00%;"><a href="./tags/baa5a3ccb5b09a889de80c125e7ddea9.html">文学编程</a></li> <li style="font-size: 150.00%;"><a href="./tags/920632dabac77e0e51002a969396ea04.html">物理</a></li> <li style="font-size: 220.00%;"><a href="./tags/ce4ba240fbd95d4863684f78453c8877.html">社会</a></li> <li style="font-size: 80.00%;"><a href="./tags/7ddbe15c845fa27a2bab496183042ca6.html">网络</a></li> <li style="font-size: 185.00%;"><a href="./tags/8a2b56e293ee788f1057ad236e06559e.html">计算机</a></li> <li style="font-size: 80.00%;"><a href="./tags/295bb704f5205801d57d672780b94117.html">语言</a></li> 
 </ul>
 
 	    </nav>
