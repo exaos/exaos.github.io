@@ -1,0 +1,164 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <url>
+    <loc>http://exaos.github.com//</loc>
+    <lastmod>2012-09-12T10:41:01Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://exaos.github.com//index.html</loc>
+    <lastmod>2012-09-12T00:00:00Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+<url>
+    <loc>http://exaos.github.com//attic/index.html</loc>
+    <lastmod>2012-09-12T00:00:00Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+<url>
+    <loc>http://exaos.github.com//attic/exaos.html</loc>
+    <lastmod>2012-09-12T00:00:00Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+<url>
+    <loc>http://exaos.github.com//notes/index.html</loc>
+    <lastmod>2012-09-12T00:00:00Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+<url>
+    <loc>http://exaos.github.com//debug.html</loc>
+    <lastmod>2012-09-12T00:00:00Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+<url>
+    <loc>http://exaos.github.com//changelog.html</loc>
+    <lastmod>2012-09-12T00:00:00Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+
+
+  <url>
+    <loc>http://exaos.github.com//blog/2012/09/12_anti-TCM-medicine.html</loc>
+    <lastmod>2012-09-12T10:28:00Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+<url>
+    <loc>http://exaos.github.com//blog/2012/06/20_nix-in-hpc.html</loc>
+    <lastmod>2012-06-20T15:27:00Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+<url>
+    <loc>http://exaos.github.com//blog/2012/06/12_appellation.html</loc>
+    <lastmod>2012-06-12T15:43:00Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+<url>
+    <loc>http://exaos.github.com//blog/2012/05/30_online-encyclopedia.html</loc>
+    <lastmod>2012-05-30T10:21:00Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+<url>
+    <loc>http://exaos.github.com//blog/2012/05/26_bf09263d06e8620578c59b069391166d.html</loc>
+    <lastmod>2012-05-26T22:34:00Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+<url>
+    <loc>http://exaos.github.com//blog/2012/05/17_pioneer.html</loc>
+    <lastmod>2012-05-17T10:01:00Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+<url>
+    <loc>http://exaos.github.com//blog/2012/05/13_nixos.html</loc>
+    <lastmod>2012-05-13T23:34:00Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+<url>
+    <loc>http://exaos.github.com//blog/2012/05/03_light-softs.html</loc>
+    <lastmod>2012-05-03T01:57:00Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+<url>
+    <loc>http://exaos.github.com//blog/2012/05/02_lp-orgmode.html</loc>
+    <lastmod>2012-05-02T01:36:00Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+<url>
+    <loc>http://exaos.github.com//blog/2012/04/27_it_lp_physics.html</loc>
+    <lastmod>2012-04-27T21:03:00Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+<url>
+    <loc>http://exaos.github.com//blog/2012/04/27_mill-donkeys.html</loc>
+    <lastmod>2012-04-27T08:46:00Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+<url>
+    <loc>http://exaos.github.com//blog/2012/04/16_computer-ocd-users.html</loc>
+    <lastmod>2012-04-16T09:52:00Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+<url>
+    <loc>http://exaos.github.com//blog/2012/04/14_my-emacs-usage.html</loc>
+    <lastmod>2012-04-14T19:57:00Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+<url>
+    <loc>http://exaos.github.com//blog/2012/03/28_UNU.html</loc>
+    <lastmod>2012-03-28T14:14:00Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+<url>
+    <loc>http://exaos.github.com//blog/2012/03/27_4207ab14665cc8d016faa74461b58c5d.html</loc>
+    <lastmod>2012-03-27T23:37:00Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+<url>
+    <loc>http://exaos.github.com//blog/2012/03/27_cosmos.html</loc>
+    <lastmod>2012-03-27T09:48:00Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+<url>
+    <loc>http://exaos.github.com//blog/2012/03/25_dotsies.html</loc>
+    <lastmod>2012-03-25T19:23:00Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+<url>
+    <loc>http://exaos.github.com//blog/2012/03/22_o-blog.html</loc>
+    <lastmod>2012-03-22T04:45:00Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+</urlset>
+

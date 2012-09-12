@@ -1,3 +1,11 @@
+@media (min-width: 768px) {
+    @import "font-Yanone-Kaffeesatz.less";
+    @import "font-Ubuntu-Mono.less";
+    @import "font-Andika.less";
+    @monoFontFamily: "Ubuntu Mono", Menlo, Monaco, Consolas, "Courier New";
+    @sansFontFamily: "Andika", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+}
 @import "../bootstrap/less/bootstrap.less";
 @import "../bootstrap/less/responsive.less";
 @import "o-blog-default.less";
@@ -227,6 +235,15 @@ html {
 		li {
 		    display: inline;
 		    padding-right: 0.5em;
+		    margin-left: 0.5em;
+		    font-size: 0.80 * @baseFontSize / (18/13);
+		    line-height: 0.92 * @baseLineHeight / (18/13);
+		    a {
+		    	color: lighten(#f5f5f5, 1%);
+		    }
+		    a:hover {
+			zoom: 1;
+		    }
 		}
 	    }
 	}
@@ -241,7 +258,7 @@ html {
 }
 
 #footer {
-    #gradient > .vertical(@navbarBackgroundHighlight, @black);
+    #gradient > .vertical(lighten(@black, 15%), @black);
     color: darken(@gray, 2%);
 
     .footer-font-size();
@@ -254,6 +271,12 @@ html {
 
     h1 {
 	color: darken(@blue, 20%);
+	a {
+	    color: darken(@blue, 20%);
+	}
+	a:hover {
+	    zoom: 1.1;
+	}
     }
 
     .copyright {
@@ -274,4 +297,25 @@ html {
 
     .navtags(100%);
 
+}
+
+
+.multicolumn(@cols, @gap)  {
+	-moz-column-count: @cols;
+	-moz-column-gap: @gap;
+	-webkit-column-count: @cols;
+	-webkit-column-gap: @gap;
+	column-count: @cols;
+	column-gap: @gap;
+}
+
+.multicolumn3  {
+    .multicolumn(3, 20px)
+}
+
+#toc {
+    a {
+	font-size: 75%;
+	line-height: 15px;
+    }
 }
