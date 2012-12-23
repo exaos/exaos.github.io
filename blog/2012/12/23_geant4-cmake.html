@@ -2,7 +2,7 @@
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8"/>
-    <title>联合国大学 (UNU)</title>
+    <title>使用 CMake 安装 Geant4 (>=9.5)</title>
     <link rel="stylesheet" type="text/less" href="../../../style/less/o-blog.less"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="generator" content="o-blog version fatal: Invalid symlink 'd:/Exaos/.emacs.d/o-blog': Function not implemented"/>
@@ -89,7 +89,7 @@
       <div class="container">
 	<ul class="breadcrumb">
   <li><a href="../../../index.html">首页</a> <span class="divider">/</span></li>
-  <li><a href="../../../blog/index.html">blog</a> <span class="divider">/</span></li><li><a href="../../../blog/2012/index.html">2012</a> <span class="divider">/</span></li><li><a href="../../../blog/2012/03/index.html">03</a> <span class="divider">/</span></li><li>联合国大学 (UNU)</li>
+  <li><a href="../../../blog/index.html">blog</a> <span class="divider">/</span></li><li><a href="../../../blog/2012/index.html">2012</a> <span class="divider">/</span></li><li><a href="../../../blog/2012/12/index.html">12</a> <span class="divider">/</span></li><li>使用 CMake 安装 Geant4 (>=9.5)</li>
   </ul>
 
       </div>
@@ -101,23 +101,23 @@
     <div class="well">
       <div class="row">
 	<div class="date span1">
-	  <div class=" date-d">28</div>
-	  <div class=" date-m"><a href="../../../blog/2012/03/index.html">三月</a></div>
+	  <div class=" date-d">23</div>
+	  <div class=" date-m"><a href="../../../blog/2012/12/index.html">十二月</a></div>
 	  <div class=" date-y"><a href="../../../blog/2012/index.html">2012</a>
 	  </div>
 	</div>
 	<div class="span1">
 	  <div class="qr-code">
-  <img src="http://chart.apis.google.com/chart?chs=50x50&cht=qr&chld=|0&chl=http%3a%2f%2fexaos.github.com%2f%2fblog%2f2012%2f03%2f28_UNU.html"
+  <img src="http://chart.apis.google.com/chart?chs=50x50&cht=qr&chld=|0&chl=http%3a%2f%2fexaos.github.com%2f%2fblog%2f2012%2f12%2f23_geant4-cmake.html"
        alt="qr-code" />
 </div>
 
 	</div>
-	<h1 class="offset2" style="font-size: 250%">联合国大学 (UNU)</h1>
+	<h1 class="offset2" style="font-size: 250%">使用 CMake 安装 Geant4 (>=9.5)</h1>
       </div>
       <nav>
 	<ul class="pager">
-	  <li class="previous"><a href="../../../blog/2012/03/27_96b973ad8335b341eb30f188a9d14bc3.html"><i class="icon-chevron-left"></i>&nbsp;用中子探测器识别核武器</a></li><li class="next" style="text-align: right;"><a href="../../../blog/2012/04/14_my-emacs-usage.html">Emacs --- 能够显示地图的编辑器？&nbsp;<i class="icon-chevron-right"></i></a></li>
+	  <li class="previous"><a href="../../../blog/2012/12/22_geant4-debian.html"><i class="icon-chevron-left"></i>&nbsp;Geant4 在 Debian 下的安装与使用</a></li><li class="next" style="text-align: right;"><a href="../../../blog/2012/12/23_coin3d-mswin.html">在 Windows 下使用 Coin3D&nbsp;<i class="icon-chevron-right"></i></a></li>
 	</ul>
       </nav>
     </div>
@@ -125,52 +125,246 @@
   </header>
   <div class="article-content">
     <p>
-以前有个中医骗子刘太医，自称获得联合国大学科学与医学双博士。原以为这个“联合国大
-学”是子虚乌有的，仔细阅读了一些 <a href="http://www.un.org">联合国</a> 相关内容后，我知道自己错了。关于“联合国
-大学”的信息参见：<a href="http://unu.edu/about">联合国大学介绍</a> 以及 <a href="http://www.un.org/zh/development/progareas/global/research.shtml">联合国研究与培训内容</a>。
+自从了解并自学了一点 <a href="http://cern.ch/geant4">Geant4</a> 之后，有很多人曾经问过我不少问题，大部分都是与安装、
+编译有关，还有一部分是 C++ 基础知识方面的问题。鲜有人问及深入一点的内容，比如如何
+选择物理过程、物理过程的适用范围、如何选择高效的数据输出方式等。其实，那些基础问
+题在手册中仔细查找，都能够获得满意的答案。另外，我想提醒一点：
+</p><blockquote>
+
+<p>使用 Geant4, 除非你只是运行一下别人开发好的程序，否则，你就应该掌握作为一名程序员
+所需要的基本知识。无论是使用 GNU Make 还是 CMake, 无论是在 Linux/OSX 平台还是
+Windows 平台，你都需要对编程的基本流程了解，你都需要对自己的工具熟悉。
 </p>
+</blockquote>
+
+
 <p>
-<a href="http://unu.edu/" alt="联合国大学图标" title="联合国大学图标" align="center"><img src="http://unu.edu/wp-content/mu-plugins/unu-framework/Common/BluePrint/images/logo.gif" alt="logo.gif"/></a>
-</p>
+Geant4 9.4 及以前的版本都使用安装脚本程序 <code>Configure</code>, 它依赖于 GNUmake, awk,
+sed, m4 等一系列 GNU + POSIX 工具，并且对 POSIX 平台的各种库依赖严重，这导致在
+Windows 平台上编译安装 Geant4 必须依赖 Cygwin 环境。自从 Geant4 9.5 版本转向
+<a href="http://cmake.org/">CMake</a> 之后，由于 CMake 能够与Visual Studio, XCode 等平台完美衔接，使得用这些 IDE
+编译 Geant4 不再那么麻烦。基本思路也非常简单：
+</p><ol>
+<li>用 CMake 生成相应编译环境的配置文件，如 <code>*.sln</code> (MS Windows, Visual
+     Studio), <code>*.xcodeproj</code> (Mac OS X, Xcode) 或 <code>Makefile</code> (Unix Makefile)
+</li>
+<li>使用相应的工具 (VS, XCode 或 Make) 打开这些配置文件进行编译、安装、使用。
+</li>
+</ol>
+
+
 <p>
-联合国大学是联合国系统中的学术分支，在可持续发展领域开展一些研究与教育活动，其特
-别目的是辅助发展中国家。
-</p>
-<p>
-它由联合国大会于1973年创立，旨在成为“一个国际性的学术社团，为促进联合国宪章的目
-的与原则而开展研究、进修与普及工作”。联合国大学通过全球性的联合研究机构进行运
-作，在位于东京的联合国大学中心的指导下执行程序。
-</p>
-<p>
-联合国大学志在成为国际一流的研究、教育和能力培养的研究机构，在和平、发展和可持续
-性方面提供全球性的指导。联合国大学作为联合国系统的智囊团，在联合国、国际学术界和
-政策制定团体间牵线搭桥。
-</p>
-<p>
-为寻求应对全球性挑战的可持续解决方案进行系统性的探索，大学的活动可分为五类相互交
-织的领域：
+安装 Geant4 9.5 及以上版本的基本环境需要：
 </p><ul>
-<li>和平、安全和人权
+<li>CMake (&gt;= 2.6.4)
 </li>
-<li>发展管理
+<li>Linux GCC (g++)
 </li>
-<li>人口和健康
+<li>Linux/OSX: make
 </li>
-<li>全球变化与可持续发展
+<li>Mac OS X GCC(g++): Xcode 3 or 4
 </li>
-<li>科学、技术和社会
+<li>Windows: VS 2010 Express or higher
 </li>
 </ul>
 
 
+<p>
+可能需要依赖的开发库：
+</p><ul>
+<li>XML 解析库(所有平台)：使用 GDML 时需要
+<ul>
+<li>Xerces-C++: <a href="http://xerces.apache.org/xerces-c/download.cgi">http://xerces.apache.org/xerces-c/download.cgi</a>
+</li>
+</ul>
+
+</li>
+<li>Qt4 (所有平台)
+<ul>
+<li>Qt4 开发库: <a href="http://qt-project.org/downloads">http://qt-project.org/downloads</a>
+</li>
+<li>OpenGL &ndash; <a href="http://www.opengl.org/">http://www.opengl.org/</a>
+</li>
+<li>MesaGL &ndash; <a href="http://www.mesa3d.org/">http://www.mesa3d.org/</a>
+</li>
+</ul>
+
+</li>
+<li>X11 OpenGL 可视化 (Linux/OSX)
+<ul>
+<li>X11 devel
+</li>
+<li>OpenGL/MesaGL
+</li>
+<li>XQuartz (OSX 10.8)
+</li>
+</ul>
+
+</li>
+<li>X11 径迹可视化 (Linux/Mac) &ndash; 依赖 X11 开发包，适用于 Unix/Linux, 或者 Mac
+    OS X 上的 XQuartz 平台，理论上也适用于 Windows 平台的 Cygwin-X.
+</li>
+<li>WIN32 OpenGL (Windows)
+<ul>
+<li>OpenGL / MesaGL
+</li>
+</ul>
+
+</li>
+<li>Open Inventor 可视化 (所有平台)
+<ul>
+<li>Coin3D: <a href="https://bitbucket.org/Coin3D/coin/wiki/Home">https://bitbucket.org/Coin3D/coin/wiki/Home</a>
+</li>
+</ul>
+
+</li>
+<li>Motif UI (Linux/OSX)
+<ul>
+<li>Motif &ndash; <a href="http://www.openmotif.org/">http://www.openmotif.org/</a>
+</li>
+<li>OpenGL/MesaGL
+</li>
+</ul>
+
+</li>
+</ul>
+
+
+<p>
+其它一些配合 Geant4 使用的软件：
+</p><ul>
+<li>DAWN: postscript 图形引擎 (太老，不推荐，除非你特别需要与 ps 配合，如
+    pstricks 等)
+</li>
+<li>HepRApp Browser (使用 HepRep 图形驱动)
+</li>
+<li>WIRED4 JAS 插件 (配合 HepRep 图形驱动)
+</li>
+<li>VRML Browser (配置 VRML 图形驱动)
+</li>
+<li>OpenScientist 交互分析环境
+</li>
+<li>AIDA 接口 (配置 OpenScientist, iAIDA, JAS3 及 rAIDA)
+<ul>
+<li>iAIDA: <a href="http://iaida.dynalias.net/Intro.html">http://iaida.dynalias.net/Intro.html</a>
+<ul>
+<li>一个 C++ 的 AIDA 接口
+</li>
+</ul>
+
+</li>
+<li>RAIDA: <a href="http://ilcsoft.desy.de/portal/software_packages/raida/">http://ilcsoft.desy.de/portal/software_packages/raida/</a>
+<ul>
+<li>基于 ROOT 的 AIDA 接口
+</li>
+<li>目前版本： v01-06-02
+</li>
+</ul>
+
+</li>
+<li>AIDA: <a href="http://aida.freehep.org/">http://aida.freehep.org/</a>
+<ul>
+<li>最初的 Java 实现接口
+</li>
+<li>AIDA-JNI 使用 JNI (Java Native Interface) 技术让使用 AIDA 接口的 C++ 程
+        序与 Java 实现 (JAIDA) 相链接工作。 Geant4 中最初使用 AIDAJNI。目前
+        AIDAJNI 已经停止开发（停止在 3.2.x 版本）。
+</li>
+</ul>
+
+</li>
+</ul>
+
+</li>
+</ul>
+
+
+<p>
+关于 AIDA, ROOT, HDF5 等数据格式，以及 AIDA 与 ROOT 开发组之间的八卦，我会另文介
+绍。推荐使用 OpenInventor, 我也会另文介绍。
+</p>
+<p>
+以 Geant4 9.6 版本为例，从源码安装，过程如下：
+</p><ol>
+<li>解压源码包：
+<pre class="example">
+cd /path/to/
+tar -axvf geant4.9.6.tar.gz
+</pre>
+
+</li>
+<li>创建专门的编译路径：
+<pre class="example">
+cd /path/to
+mkdir geant4.9.6-build
+</pre>
+
+</li>
+<li>配置并执行 CMake:
+<pre class="example">
+cd /path/to/geant4.9.6-build
+cmake -DCMAKE_INSTALL_PREFIX=/path/to/g4.9.6-inst /path/to/geant4.9.6
+</pre>
+
+</li>
+<li>数据库的设置：Geant4的 CMake 默认将数据库放在安装路径的
+     <code>share/Geant4-9.6.0/data</code> 路径下。如果在执行 CMake 时加上参数
+<pre class="example">
+cmake -DGEANT4_INSTALL_DATA=ON &lt;other-args&gt;
+</pre>
+
+<p>     则会自动从网上下载依赖的数据包。也可以使用如下参数指定路径：
+</p><pre class="example">
+cmake -DGEANT4_INSTALL_DATADIR=&lt;path-to-data&gt; &lt;other-args&gt;
+</pre>
+
+<p>     这时，CMake 会自动从 <code>&lt;path-to-data&gt;</code> 路径下寻找你已经下载解压的数据库。
+</p></li>
+<li>编译：
+<pre class="example">
+make
+</pre>
+
+<p>     由于现在的机器大部分都拥有多个核心（至少双核以上），则可用如下参数加快编译
+     速度：
+</p><pre class="example">
+make -jN
+</pre>
+
+<p>     其中的 N 是你希望的并行编译的进程数（比如双核的可设为 2）。如果想查看编译过
+     程中的详细信息，可执行：
+</p><pre class="example">
+make -jN VERBOSE=1
+</pre>
+
+</li>
+<li>安装：
+<pre class="example">
+make install
+</pre>
+
+</li>
+</ol>
+
+
+<p>
+安装之后，试着编译 <code>examples/novice</code> 下的示例，并运行，看看安装的是否正常。在
+Linux/OSX 环境下，打开终端切换到 <code>examples/novice/N01</code> 路径下，执行：
+</p><pre class="example">
+mkdir build &amp;&amp; cd build
+cmake .. &amp;&amp; make
+</pre>
+
+<p>其中 <code>cmake</code> 默认调用的参数是 /-G "Unix Makefiles"/.
+</p>
   </div>
   
   <footer class="well article-footer">
-    发布于 <time datetime="2012-03-28T14:14:00Z"> 2012-03-28 14:14:00</time>.
+    发布于 <time datetime="2012-12-23T10:21:00Z"> 2012-12-23 10:21:00</time>.
     <nav class="tag-cloud">
       <h1><i class="icon-tags"></i> 相关标签</h1>
       <ul>
-	<li class="label label-inverse small"><a href="../../../tags/706bc9a8dc0f96c6a7efd8cc68bf169b.html">社会</a></li><li class="label label-inverse small"><a href="../../../tags/1fbfe9377cdb09d45615279f238e83f0.html">教育</a></li>
+	<li class="label label-inverse small"><a href="../../../tags/geant4.html">geant4</a></li><li class="label label-inverse small"><a href="../../../tags/cmake.html">cmake</a></li><li class="label label-inverse small"><a href="../../../tags/devel.html">devel</a></li>
       </ul>
     </nav>
   </footer>

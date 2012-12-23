@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8"/>
+    <title>在 Windows 下使用 Coin3D</title>
+    <link rel="stylesheet" type="text/less" href="../../../style/less/o-blog.less"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="generator" content="o-blog version fatal: Invalid symlink 'd:/Exaos/.emacs.d/o-blog': Function not implemented"/>
+    <script src="../../../style/js/less-1.3.0.min.js" type="text/javascript"></script>
+    <script src="../../../style/js/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="../../../style/bootstrap/js/bootstrap-modal.js" type="text/javascript"></script>
+    <script src="../../../style/bootstrap/js/bootstrap-transition.js" type="text/javascript"></script>
+    <script src="../../../style/bootstrap/js/bootstrap-dropdown.js" type="text/javascript"></script>
+    <script src="../../../style/bootstrap/js/bootstrap-collapse.js" type="text/javascript"></script>
+    <script src="../../../style/js/prettify.js" type="text/javascript"></script>
+    <script src="../../../style/js/o-blog.linenumber.js" type="text/javascript"></script>
+    <script src="../../../style/js/o-blog-fix.js" type="text/javascript"></script>
+    
+  </head>
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+	<div class="container">
+	  <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+	  <a class="brand" href="../../../index.html">心蛛小站</a>
+	  <div class="nav-collapse collapse">
+	    <ul>
+<li><a href="#"><i>icon-book icon-white</i> 存档</a>
+<ul>
+<li><a href="../../../notes/index.html">笔记</a>
+</li>
+<li><a href="../../../attic/index.html">资料</a>
+</li>
+<li><a href="../../../attic/exaos.html">心蛛资料</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="#"><i>icon-file icon-white</i> 近期博文</a>
+<ul>
+<li><a href="../../../blog/2012/12/23_geant4-mswin.html">Geant4 在 Windows 下的安装与使用</a>
+</li>
+<li><a href="../../../blog/2012/12/23_coin3d-mswin.html">在 Windows 下使用 Coin3D</a>
+</li>
+<li><a href="../../../blog/2012/12/23_geant4-cmake.html">使用 CMake 安装 Geant4 (>=9.5)</a>
+</li>
+<li><a href="../../../blog/2012/12/22_geant4-debian.html">Geant4 在 Debian 下的安装与使用</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="../../../tags/index.html"><i>icon-tags icon-white</i> 标签</a>
+
+</li>
+<li><a href="../../../archives.html"><i>icon-list icon-white</i> 归档博文</a>
+
+</li>
+<li><a href="#"><i>icon-link icon-white</i> 友情链接</a>
+<ul>
+<li><a href="http://blog.163.com/y.feng_cn/">freeboy 在网易的博客：NMR</a>
+</li>
+<li><a href="http://www.changhai.org/">卢昌海的个人主页</a>
+</li>
+<li><a href="http://www.scipark.net/">科学公园</a>
+</li>
+<li><a href="http://scienceblogging.org/">ScienceBlogging</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="../../../index.xml"><i>icon-rss icon-white</i> RSS订阅</a>
+</li>
+</ul>
+
+
+	  </div>
+	</div>
+      </div>
+    </div>
+    <div class="subnav subnav-fixed visible-desktop">
+      <div class="container">
+	<ul class="breadcrumb">
+  <li><a href="../../../index.html">首页</a> <span class="divider">/</span></li>
+  <li><a href="../../../blog/index.html">blog</a> <span class="divider">/</span></li><li><a href="../../../blog/2012/index.html">2012</a> <span class="divider">/</span></li><li><a href="../../../blog/2012/12/index.html">12</a> <span class="divider">/</span></li><li>在 Windows 下使用 Coin3D</li>
+  </ul>
+
+      </div>
+    </div>
+    <div id="page" class="container">
+
+  <header class="article-header">
+
+    <div class="well">
+      <div class="row">
+	<div class="date span1">
+	  <div class=" date-d">23</div>
+	  <div class=" date-m"><a href="../../../blog/2012/12/index.html">十二月</a></div>
+	  <div class=" date-y"><a href="../../../blog/2012/index.html">2012</a>
+	  </div>
+	</div>
+	<div class="span1">
+	  <div class="qr-code">
+  <img src="http://chart.apis.google.com/chart?chs=50x50&cht=qr&chld=|0&chl=http%3a%2f%2fexaos.github.com%2f%2fblog%2f2012%2f12%2f23_coin3d-mswin.html"
+       alt="qr-code" />
+</div>
+
+	</div>
+	<h1 class="offset2" style="font-size: 250%">在 Windows 下使用 Coin3D</h1>
+      </div>
+      <nav>
+	<ul class="pager">
+	  <li class="previous"><a href="../../../blog/2012/12/23_geant4-cmake.html"><i class="icon-chevron-left"></i>&nbsp;使用 CMake 安装 Geant4 (>=9.5)</a></li><li class="next" style="text-align: right;"><a href="../../../blog/2012/12/23_geant4-mswin.html">Geant4 在 Windows 下的安装与使用&nbsp;<i class="icon-chevron-right"></i></a></li>
+	</ul>
+      </nav>
+    </div>
+
+  </header>
+  <div class="article-content">
+    <p>
+<a href="https://bitbucket.org/Coin3D/coin/wiki/Home">Coin</a> 是基于 OpenGL 的 3D 图形库，它源自 Open Inventor 2.1 API (目前 Coin 仍然与它
+兼容). Open Inventor (常简写为 OIV) 最初由 SGI 开发，是一个的基于场景提供图像保持、
+渲染与模型操作的 C++ 类库。它在发布后不久就成为科学与工程领域的 3D 图像显示与可视
+化模拟软件事实上的标准图形库。它也是 VRML1 文档标准的基础。目前有好几本与 Open
+Inventor 相关主题的书，比如 <b>The Inventor Mentor</b>, <b>The Inventor Toolmaker</b>.
+</p>
+<p>
+Coin 是在 SGI 将 Open Inventor 开源之前基于 OIV 库的 API 从头开发的，它未借用任何
+SGI OIV 的代码。 Coin 在 2000 年秋达到与 OIV 2.1 完全兼容的目标，此后添加了许多额
+外的特性，如支持文件格式 VRML97 等。
+</p>
+<p>
+Coin 代码目前托管在 <a href="https://bitbucket.org/">BitBucket</a> 上 (ps. 我在该网站上的帐号仍然是 exaos)，属于
+<a href="https://bitbucket.org/Coin3D">Coin3D 组</a>下。该组下提供的主要软件源码如下：
+</p><ul>
+<li>Coin &ndash; Coin3D 基础包。
+</li>
+<li>SoWin &ndash; Coin 与 Windows 平台的接口。
+</li>
+<li>SoXt &ndash; Coin 与 X11 平台 (Linux, OSX XQartz 或 Cygwin-X) 的接口。
+</li>
+<li>SoQt &ndash; Coin 的 Qt 接口，与 SGI 及 TGS Open Inventor 兼容。兼容 Unix/Linux,
+    Win32 及 Mac OS X 平台。
+</li>
+<li>Sc21 &ndash; Objective-C++ 框架，是 Coin 库与 OSX UI 的接口，适用于 Mac OS X.
+</li>
+</ul>
+
+
+<p>
+我的编译环境： Windows 7 (64-bit) + Visual Studio 2010 Express (32-bit).
+</p>
+
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1">Coin3D 基本库的安装 (Coin 3.1.3)</h3>
+<div class="outline-text-3" id="text-1">
+
+
+<p>
+在 Windows Visual Studio 2010 Express 上编译配置 Coin3D 可参考：
+</p><ul>
+<li><a href="http://te.ugm.ac.id/~wibirama/tutorial/coin3d/Tutorial_Coin3D_VS2010.pdf">http://te.ugm.ac.id/~wibirama/tutorial/coin3d/Tutorial_Coin3D_VS2010.pdf</a>
+</li>
+<li>www.cse.ohio-state.edu/~hwshen/681/Site/lab<sub>help</sub><sub>files</sub>/windows<sub>help</sub>.pdf
+</li>
+</ul>
+
+
+<p>
+安装步骤如下：
+</p><ol>
+<li>从 Coin3D 下载 zip 包并解压。
+</li>
+<li>修改系统环境变量，添加 <code>COINDIR</code> 变量，指向你的 Coin3D 安装目录，比如我的系
+     统上为 <code>D:\Exaos\Utils\Coin3D</code>. 在 <code>CMD.exe</code> 下执行：
+<pre class="example">
+setx COINDIR D:\Exaos\Utils\Coin3D
+</pre>
+
+</li>
+<li>将源码目录 <code>build\msvc9\</code> 备份一下，然后用 VS2010 打开目录下的项目解决方案文
+     件 <code>coin3.sln</code>. VS2010会提示你要进行格式转换，同意即可。
+</li>
+<li>此时直接编译 3.1.3 版本会有不少错误，按后面的介绍修正之。然后继续编译。
+</li>
+<li>创建好你的 Coin3D 安装目录，在项目解决方案中生成 <code>coin3_install</code>, 则会自动安
+     装到你预设的 <code>COINDIR</code> 路径下。
+</li>
+<li>下载测试文件，测试你的安装是否可用：
+<ul>
+<li><a href="http://te.ugm.ac.id/~wibirama/tutorial/coin3d/test.7z">http://te.ugm.ac.id/~wibirama/tutorial/coin3d/test.7z</a>
+</li>
+</ul>
+
+</li>
+</ol>
+
+
+<p>
+在 VS2010 Express 上编译 Coin 3.1.3 主要问题有：
+</p><ol>
+<li><code>ScXMLStateMachine.cpp</code> 第 334 行错误 (error C2440):
+<pre class="example">
+transitions.push_back(PImpl::StateTransition(NULL, PRIVATE(this)-&gt;initializer.get()));
+</pre>
+
+<p>     将其中的 <code>NULL</code> 修改为 <code>(ScXMLObject *)NULL</code>.
+</p></li>
+<li>其余是 C4819 警告：
+<pre class="example">
+warning C4819: 该文件包含不能在当前代码页(936)中表示的字符
+</pre>
+
+<p>     出现这样的警告，将相应的文件打开，重新以 UTF-8 格式保存即可。另外修改 "工程
+     &ndash;&gt; 属性 &ndash;&gt; 配置属性 &ndash;&gt; 常规 &ndash;&gt; 字符集", 将之修改为 Unicode 字符集。
+</p></li>
+</ol>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2">SoQt: Windows VS2010 Express</h3>
+<div class="outline-text-3" id="text-2">
+
+
+<p>
+编译安装完 Coin 3.1.3 后，可编译 SoQt 1.5.0，步骤与编译 Coin 类似，只不过要将对
+Coin 及 Qt 的依赖关系添加到项目属性中，包括“包含目录”及“引用目录”。熟悉一下
+VS2010, 你很快就知道如何去做，不辍述。
+</p>
+<p>
+安装错误与警告等：
+</p><ol>
+<li>一连串的引用头文件方式已过期警告，可忽略
+<pre class="example">
+warning : Inclusion of header files from include/Qt is deprecated.
+</pre>
+
+</li>
+<li>头文件缺失错误 (error C1083)
+<pre class="example">
+src\Inventor\Qt\editors\SoQtMaterialEditor.cpp(41): fatal error C1083:
+无法打开包括文件:“Inventor/Qt/editors/SoQtMaterialEditor.h”
+: No such file or directory
+</pre>
+
+<p>     此错误已经在 Mailing List 中有汇报：
+</p><ul>
+<li><a href="http://mailman.coin3d.org/pipermail/coin-discuss/2012-July/018438.html">http://mailman.coin3d.org/pipermail/coin-discuss/2012-July/018438.html</a>
+</li>
+</ul>
+
+<p>     源码目录 <code>src/Inventor/Qt/editors/old/</code> 下保存有旧版本的头文件。编译时
+     <code>SoQtMaterialEditor.cpp</code> 是自动生成的，错误的原因是因为引用的头文件路径已经
+     更改了。解决办法：修改模版文件
+     <code>src\Inventor\Qt\common\editors\SoQtMaterialEditor.cpp.in</code>, 将如下行
+</p><pre class="example">
+#include &lt;Inventor/@Gui@/editors/So@Gui@MaterialEditor.h&gt;
+</pre>
+
+<p>     变更为
+</p><pre class="example">
+#include &lt;Inventor/@Gui@/So@Gui@MaterialEditor.h&gt;
+</pre>
+
+</li>
+<li>其它一些是直接从 msvc9 转换过来导致的一些应该由 <code>moc.exe</code> 自动生成的文件未能
+     正常生成，从而导致文件缺失的错误，这些文件有：
+<ul>
+<li>src\Inventor\Qt\viewers\ExaminerViewer.cpp(59):
+       Inventor/Qt/viewers/moc<sub>SoQtExaminerViewerP</sub>.icc
+</li>
+<li>src\Inventor\Qt\viewers\FullViewer.cpp(67):
+       Inventor/Qt/viewers/moc<sub>SoQtFullViewerP</sub>.icc
+</li>
+<li>src\Inventor\Qt\viewers\PlaneViewer.cpp(50):
+       Inventor/Qt/viewers/moc<sub>SoQtPlaneViewerP</sub>.icc
+</li>
+<li>src\Inventor\Qt\SoQt.cpp(263): Inventor/Qt/moc<sub>SoQtP</sub>.icc
+</li>
+<li>src\Inventor\Qt\SoQtComponent.cpp(44):
+       Inventor/Qt/moc<sub>SoQtComponentP</sub>.icc
+</li>
+<li>src\Inventor\Qt\SoQtGLWidget.cpp(84): Inventor/Qt/moc<sub>SoQtGLWidgetP</sub>.icc
+</li>
+<li>src\Inventor\Qt\SoQtSignalThread.cpp(25):
+       Inventor/Qt/moc<sub>SoQtSignalThread</sub>.icc
+</li>
+</ul>
+
+<p>     可由 Qt <code>moc.exe</code> 生成相应丢失的文件：
+</p><pre class="example">
+moc -i -o &lt;output_moc_file&gt; &lt;header&gt;
+</pre>
+
+<p>     由于生成的文件较多，你可以用一个批处理脚本进行，可将如下内容保存在编译目录下
+     的 <code>gen-moc.bat</code> 文件，然后执行（注意，修改其中的 <code>moc.exe</code> 路径与便与你的系
+     统相符）：
+</p><pre class="example">
+FOR %%H IN (viewers\SoQtExaminerViewerP.h  viewers\SoQtFullViewerP.h ^
+ viewers\SoQtPlaneViewerP.h SoQtP.h SoQtComponentP.h SoQtGLWidgetP.h ^
+SoQtSignalThread.h) ^
+DO (C:\Apps\Qt\4.8.4\bin\moc.exe -i -o src\Inventor\Qt\moc_%%H ..\..\src\Inventor\Qt\%%H)
+</pre>
+
+</li>
+<li>如果编译 Debug 版，则可能出现找不到 <code>coin3d.lib</code> 文件的链接错误，编译并安装
+     一个 Debug 版本的 Coin3D 即可。
+</li>
+</ol>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3">SoWin</h3>
+<div class="outline-text-3" id="text-3">
+
+
+<p>
+与 SoQt 安装类似。安装时出现的错误与警告：
+</p><ol>
+<li>头文件缺失错误 <code>Inventor/Win/editors/SoWinColorEditor.h</code>
+<ul>
+<li>修改 <code>Inventor/Win/common/editors/</code> 目录下的模版文件
+       <code>SoGuiMaterialEditor.cpp.in</code> 及 <code>SoGuiColorEditor.cpp.in</code>, 将其中如下行
+<pre class="example">
+#include &lt;Inventor/@Gui@/editors/So@Gui@ColorEditor.h&gt;
+</pre>
+
+<p>       修改为：
+</p><pre class="example">
+#include &lt;Inventor/@Gui@/So@Gui@ColorEditor.h&gt;
+</pre>
+
+</li>
+</ul>
+
+</li>
+</ol>
+
+
+<p>
+安装完 SoWin 后可参考如下网址运行一个示例，看看你是否安装正确：
+</p><ul>
+<li><a href="http://blog.csdn.net/robinhao/article/details/1770204">http://blog.csdn.net/robinhao/article/details/1770204</a>
+</li>
+</ul>
+
+</div>
+</div>
+
+  </div>
+  
+  <footer class="well article-footer">
+    发布于 <time datetime="2012-12-23T11:45:00Z"> 2012-12-23 11:45:00</time>.
+    <nav class="tag-cloud">
+      <h1><i class="icon-tags"></i> 相关标签</h1>
+      <ul>
+	<li class="label label-inverse small"><a href="../../../tags/342609b17a48585ed342740ad42b8aa3.html">开发</a></li><li class="label label-inverse small"><a href="../../../tags/mswin.html">MSWIN</a></li><li class="label label-inverse small"><a href="../../../tags/devel.html">devel</a></li>
+      </ul>
+    </nav>
+  </footer>
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'exaos-github'; // required: replace example with your forum shortname
+
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+      </div>
+      <div id="footer">
+	<div class="container">
+	  <div class="row">
+	    <section class="span3">
+	      <h1>关于</h1>
+	      <p>
+心蛛的个人站点，记录一点私人的收藏或点滴。
+</p>
+	    </section>
+	    <nav id="links" class="span3">
+	      <h1>链接</h1>
+	      <ul>
+		<ul>
+<li><a href="../../../index.html"><i>icon-home icon-white</i> 首页</a>
+
+</li>
+<li><a href="Lisp error in nil: (error ob:post-htmlfile accessing a non-ob:post)"><i>icon-file icon-white</i> 博文</a>
+
+</li>
+<li><a href="../../../tags/index.html"><i>icon-tags icon-white</i> 标签</a>
+
+</li>
+<li><a href="../../../archives.html"><i>icon-list icon-white</i> 归档</a>
+
+</li>
+<li><a href="../../../index.xml"><i>icon-rss icon-white</i> RSS订阅</a>
+</li>
+</ul>
+
+
+	      </ul>
+	    </nav>
+	    <nav id="archives" class="span3">
+	      <h1><a href="../../../archives.html">归档</a></h1>
+	      <ul>
+		<li><a href="../../../blog/2012/12/23_geant4-mswin.html">Geant4 在 Windows 下的安装与使用</a></li> <li><a href="../../../blog/2012/12/23_coin3d-mswin.html">在 Windows 下使用 Coin3D</a></li> <li><a href="../../../blog/2012/12/23_geant4-cmake.html">使用 CMake 安装 Geant4 (>=9.5)</a></li> <li><a href="../../../blog/2012/12/22_geant4-debian.html">Geant4 在 Debian 下的安装与使用</a></li> <li><a href="../../../blog/2012/09/12_anti-TCM-medicine.html">“中药过敏”与医生的尴尬</a></li> <li><a href="../../../blog/2012/06/20_nix-in-hpc.html">函数式包管理器 Nix 与高性能计算</a></li> <li><a href="../../../blog/2012/06/12_appellation.html">称呼紊乱的年代之家庭称谓</a></li> <li><a href="../../../blog/2012/05/30_online-encyclopedia.html">网络上的百科全书、辞典与词典</a></li> <li><a href="../../../blog/2012/05/26_85f32bb7c14b9cddb63d04974fbbe8c8.html">称呼紊乱的年代</a></li> <li><a href="../../../blog/2012/05/17_pioneer.html">“先驱者的故事”（《宽容》之序）</a></li> 
+	      </ul>
+	    </nav>
+	    <nav class="tags span3">
+	      <h1><a href="../../../tags/index.html">标签</a></h1>
+	      <ul>
+  <li style="font-size: 80.00%;"><a href="../../../tags/emacs.html">Emacs</a></li> <li style="font-size: 108.00%;"><a href="../../../tags/mswin.html">MSWIN</a></li> <li style="font-size: 136.00%;"><a href="../../../tags/ocd.html">OCD</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/cmake.html">cmake</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/debian.html">debian</a></li> <li style="font-size: 164.00%;"><a href="../../../tags/devel.html">devel</a></li> <li style="font-size: 136.00%;"><a href="../../../tags/geant4.html">geant4</a></li> <li style="font-size: 136.00%;"><a href="../../../tags/orgmode.html">orgmode</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/4b15327569d54614fea288fbc14dfb08.html">健康</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/342609b17a48585ed342740ad42b8aa3.html">开发</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/1fbfe9377cdb09d45615279f238e83f0.html">教育</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/2858917e1842eae215891e784e325389.html">文字</a></li> <li style="font-size: 108.00%;"><a href="../../../tags/d78b87bf7aba232c48b3b659298f2a2e.html">文学编程</a></li> <li style="font-size: 108.00%;"><a href="../../../tags/902e0d9d573627f0a7f9f52176bcceba.html">模拟</a></li> <li style="font-size: 136.00%;"><a href="../../../tags/3b9cdb1a88c4c30a0adf2c7fd4e40779.html">物理</a></li> <li style="font-size: 220.00%;"><a href="../../../tags/706bc9a8dc0f96c6a7efd8cc68bf169b.html">社会</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/65b9fc935cdca52df1b62d1292498295.html">网络</a></li> <li style="font-size: 164.00%;"><a href="../../../tags/d8bfe5763d0817599d0fdec14567e16f.html">计算机</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/28dc853d025bd20113842b17ab6446fe.html">语言</a></li> 
+</ul>
+
+	    </nav>
+	  </div>
+	</div>
+	<div class="copyright" style="text-align: center;">
+	  <p>
+版权所有 ©2012 <a href="mailto:exaos.lee(at)gmail.com">心蛛</a>. <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a>
+</p>
+	  <p>功能取自 <a href="https://github.com/renard/o-blog">o-blog</a>.</p>
+	</div>
+      </div>
+</body>
+</html>
+

@@ -2,7 +2,7 @@
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8"/>
-    <title>心蛛小站</title>
+    <title>Geant4 在 Debian 下的安装与使用</title>
     <link rel="stylesheet" type="text/less" href="../../../style/less/o-blog.less"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="generator" content="o-blog version fatal: Invalid symlink 'd:/Exaos/.emacs.d/o-blog': Function not implemented"/>
@@ -89,23 +89,169 @@
       <div class="container">
 	<ul class="breadcrumb">
   <li><a href="../../../index.html">首页</a> <span class="divider">/</span></li>
-  <li><a href="../../../archives.html">Archives</a> <span class="divider">/</span></li><li><a href="../../index.html">blog</a> <span class="divider">/</span></li><li><a href="../index.html">2012</a> <span class="divider">/</span></li><li>04</li>
+  <li><a href="../../../blog/index.html">blog</a> <span class="divider">/</span></li><li><a href="../../../blog/2012/index.html">2012</a> <span class="divider">/</span></li><li><a href="../../../blog/2012/12/index.html">12</a> <span class="divider">/</span></li><li>Geant4 在 Debian 下的安装与使用</li>
   </ul>
 
       </div>
     </div>
     <div id="page" class="container">
 
-<article>
+  <header class="article-header">
+
+    <div class="well">
+      <div class="row">
+	<div class="date span1">
+	  <div class=" date-d">22</div>
+	  <div class=" date-m"><a href="../../../blog/2012/12/index.html">十二月</a></div>
+	  <div class=" date-y"><a href="../../../blog/2012/index.html">2012</a>
+	  </div>
+	</div>
+	<div class="span1">
+	  <div class="qr-code">
+  <img src="http://chart.apis.google.com/chart?chs=50x50&cht=qr&chld=|0&chl=http%3a%2f%2fexaos.github.com%2f%2fblog%2f2012%2f12%2f22_geant4-debian.html"
+       alt="qr-code" />
+</div>
+
+	</div>
+	<h1 class="offset2" style="font-size: 250%">Geant4 在 Debian 下的安装与使用</h1>
+      </div>
+      <nav>
+	<ul class="pager">
+	  <li class="previous"><a href="../../../blog/2012/09/12_anti-TCM-medicine.html"><i class="icon-chevron-left"></i>&nbsp;“中药过敏”与医生的尴尬</a></li><li class="next" style="text-align: right;"><a href="../../../blog/2012/12/23_geant4-cmake.html">使用 CMake 安装 Geant4 (>=9.5)&nbsp;<i class="icon-chevron-right"></i></a></li>
+	</ul>
+      </nav>
+    </div>
+
+  </header>
   <div class="article-content">
-    <nav class="archives">
-      <ul class="month 2012 4">
-  <li>27 <a href="../../../blog/2012/04/27_it_lp_physics.html">信息技术、文学编程与物理学纲要</a></li><li>27 <a href="../../../blog/2012/04/27_mill-donkeys.html">磨驴法则之头驴利益</a></li><li>16 <a href="../../../blog/2012/04/16_computer-ocd-users.html">强迫症 (OCD) 者的计算机使用表现</a></li><li>14 <a href="../../../blog/2012/04/14_my-emacs-usage.html">Emacs --- 能够显示地图的编辑器？</a></li>
+    <p>
+参见
+</p><ul>
+<li><a href="http://wiki.debian.org/DebianScience/Geant4">http://wiki.debian.org/DebianScience/Geant4</a>
+</li>
+<li><a href="http://lcg-heppkg.web.cern.ch/lcg-heppkg/debian/">http://lcg-heppkg.web.cern.ch/lcg-heppkg/debian/</a>
+</li>
 </ul>
 
-    </nav>
+
+<p>
+较新版本的 Geant4 在 Debian Squeeze (6.0) 下安装步骤如下：
+</p><ol>
+<li>添加 CERN 的软件源（提供 ROOT, GEANT4 等软件包）：
+<pre class="example">
+deb http://lcg-heppkg.web.cern.ch/lcg-heppkg/debian stable hep
+deb-src http://lcg-heppkg.web.cern.ch/lcg-heppkg/debian stable hep
+</pre>
+
+</li>
+<li>更新软件源信息：
+<pre class="example">
+apt-get update
+</pre>
+
+</li>
+<li>安装软件源签名公钥：
+<pre class="example">
+apt-get install cern-archive-keyring
+</pre>
+
+<p>     忽略错误提示，直接安装。
+</p></li>
+<li>安装 Geant4:
+<pre class="example">
+apt-get install geant4
+</pre>
+
+</li>
+</ol>
+
+
+<p>
+CERN 软件源中打包的 Geant4 提供了三个脚本程序：
+</p><ol>
+<li><code>g4run</code> &ndash; 用于加载 Geant4 的运行环境来运行编译好的 G4 程序。
+</li>
+<li><code>g4env</code> &ndash; 用于显示设置的 Geant4 运行环境。
+</li>
+<li><code>g4make</code> &ndash; 用于加载安装的 Geant4 运行环境来编译源代码。
+</li>
+</ol>
+
+
+<p>
+因此，如果你使用 CERN 源中的 Geant4, 则运行很简单。假如你在 Geant4 的
+<code>examples/novice/N01</code> 目录下，按如下步骤编译并运行 Geant4 程序即可：
+</p><ol>
+<li>编译：
+<pre class="example">
+g4make
+</pre>
+
+</li>
+<li>执行
+<pre class="example">
+g4run exampleN01
+</pre>
+
+</li>
+</ol>
+
+
+<p>
+系统的 Geant4 数据库设置为 <code>G4DATA=/usr/share/geant4/data</code>, 你可以将数据库位置更
+改到其它的地方。假如你的 Geant4 数据库放置在 <code>/home/me/geant4/data</code> 目录下，按
+如下步骤操作：
+</p><ol>
+<li>打开你的脚本启动文件： <code>gedit ~/.bashrc</code>
+</li>
+<li>在该文件的末尾添加如下一行：
+<pre class="example">
+export G4DATA=/home/me/geant4/data
+</pre>
+
+<p>     保存并关闭文件。
+</p></li>
+<li>重新打开新的终端，运行 <code>g4env</code>, 即可查看你设置好的新的数据库路径。
+</li>
+</ol>
+
+
+<p>
+同数据库设置类似，其它的 Geant4 环境变量也可按上述方法设置。比如你希望自己的
+Geant4 可执行程序都放置在同一个地方 <code>/home/me/geant4</code>, 则可以在 <code>~/.bashrc</code>
+中添加：
+</p><pre class="example">
+export G4WORKDIR=/home/me/geant4
+</pre>
+
+<p>默认的 <code>G4WORKDIR</code> 是当前目录。
+</p>
   </div>
-</article>
+  
+  <footer class="well article-footer">
+    发布于 <time datetime="2012-12-22T09:22:00Z"> 2012-12-22 09:22:00</time>.
+    <nav class="tag-cloud">
+      <h1><i class="icon-tags"></i> 相关标签</h1>
+      <ul>
+	<li class="label label-inverse small"><a href="../../../tags/902e0d9d573627f0a7f9f52176bcceba.html">模拟</a></li><li class="label label-inverse small"><a href="../../../tags/geant4.html">geant4</a></li><li class="label label-inverse small"><a href="../../../tags/debian.html">debian</a></li><li class="label label-inverse small"><a href="../../../tags/devel.html">devel</a></li>
+      </ul>
+    </nav>
+  </footer>
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'exaos-github'; // required: replace example with your forum shortname
+
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
       </div>
       <div id="footer">
 	<div class="container">
@@ -142,7 +288,7 @@
 	    <nav id="archives" class="span3">
 	      <h1><a href="../../../archives.html">归档</a></h1>
 	      <ul>
-		<li><a href="../../../blog/2012/04/27_it_lp_physics.html">信息技术、文学编程与物理学纲要</a></li> <li><a href="../../../blog/2012/04/27_mill-donkeys.html">磨驴法则之头驴利益</a></li> <li><a href="../../../blog/2012/04/16_computer-ocd-users.html">强迫症 (OCD) 者的计算机使用表现</a></li> <li><a href="../../../blog/2012/04/14_my-emacs-usage.html">Emacs --- 能够显示地图的编辑器？</a></li> 
+		<li><a href="../../../blog/2012/12/23_geant4-mswin.html">Geant4 在 Windows 下的安装与使用</a></li> <li><a href="../../../blog/2012/12/23_coin3d-mswin.html">在 Windows 下使用 Coin3D</a></li> <li><a href="../../../blog/2012/12/23_geant4-cmake.html">使用 CMake 安装 Geant4 (>=9.5)</a></li> <li><a href="../../../blog/2012/12/22_geant4-debian.html">Geant4 在 Debian 下的安装与使用</a></li> <li><a href="../../../blog/2012/09/12_anti-TCM-medicine.html">“中药过敏”与医生的尴尬</a></li> <li><a href="../../../blog/2012/06/20_nix-in-hpc.html">函数式包管理器 Nix 与高性能计算</a></li> <li><a href="../../../blog/2012/06/12_appellation.html">称呼紊乱的年代之家庭称谓</a></li> <li><a href="../../../blog/2012/05/30_online-encyclopedia.html">网络上的百科全书、辞典与词典</a></li> <li><a href="../../../blog/2012/05/26_85f32bb7c14b9cddb63d04974fbbe8c8.html">称呼紊乱的年代</a></li> <li><a href="../../../blog/2012/05/17_pioneer.html">“先驱者的故事”（《宽容》之序）</a></li> 
 	      </ul>
 	    </nav>
 	    <nav class="tags span3">
