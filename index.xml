@@ -3,7 +3,7 @@
   <title>心蛛小站</title>
   <link href="http://exaos.github.com/index.xml" rel="self" />
   <link href="http://exaos.github.com/"/>
-  <updated>2012-12-23T15:07:53Z</updated>
+  <updated>2012-12-23T17:27:30Z</updated>
   <id>http://exaos.github.com/index.xml</id>
   <entry><title type="html">Geant4 在 Windows 下的安装与使用</title><author><name>nil</name></author><link href="http://exaos.github.com//blog/2012/12/23_geant4-mswin.html"/><updated>2012-12-23T13:50:00Z</updated><published>2012-12-23T13:50:00Z</published><id>blog/2012/12/23_geant4-mswin.html</id><category scheme="/tags/902e0d9d573627f0a7f9f52176bcceba.html" term="模拟" label="模拟"/><category scheme="/tags/geant4.html" term="geant4" label="geant4"/><category scheme="/tags/mswin.html" term="MSWIN" label="MSWIN"/><category scheme="/tags/devel.html" term="devel" label="devel"/><content type="html">&lt;p&gt;
 Geant4 9.4 &#21450;&#20197;&#21069;&#30340;&#29256;&#26412;&#20351;&#29992;&#23433;&#35013;&#33050;&#26412; &lt;code&gt;Configure&lt;/code&gt;, &#23427;&#20381;&#36182;&#20110; GNUmake, awk, sed &#31561;&#19968;
@@ -239,9 +239,10 @@ G4OpenInventorWin.cc(54): error C2039: &#8220;dispatchWin32Event&#8221;:
 
 &lt;p&gt;
 &#22914;&#26524;&#20320;&#24819;&#29992; VS2010 &#35843;&#35797; Geant4 &#31243;&#24207;&#65292;&#21017;&#38656;&#35201;&#32534;&#35793;&#23433;&#35013; Debug &#29256;&#26412;&#12290;&#20294;&#27880;&#24847;&#65292; Debug &#29256;
-&#26412;&#38750;&#24120;&#24222;&#22823;&#65292;&#25105;&#22312; Windows 7 + VS2010 &#19978;&#32534;&#35793;&#29983;&#25104;&#30340; Win32 Debug Geant4 9.6 &#30340;&#23433;&#35013;&#25991;
-&#20214;&#26377; 1.82 GiB, &#32780;&#19979;&#36733;&#30340;&#32534;&#35793;&#22909;&#30340; Release &#29256;&#26412;&#21017;&#21482;&#26377; 204 MiB. &#30001;&#20110; Geant4 &#20195;&#30721;&#27604;&#36739;
-&#24222;&#22823;&#65292;&#32534;&#35793;&#26102;&#38388;&#20063;&#27604;&#36739;&#38271;&#12290;&#25105;&#30340;&#31508;&#35760;&#26412; i7-2620M + 8 GB &#20869;&#23384;&#65292;&#32534;&#35793;&#22823;&#27010;&#33457;&#20102;&#19968;&#20010;&#23567;&#26102;&#12290;
+&#26412;&#29983;&#25104;&#30340;&#24211;&#27604;&#36739;&#22823;&#65292;&#25105;&#22312; Windows 7 + VS2010 &#19978;&#32534;&#35793;&#29983;&#25104;&#30340; Win32 Debug Geant4 9.6 &#30340;
+&#32422;&#26377; 200 MiB, (&#19979;&#36733;&#30340;&#32534;&#35793;&#22909;&#30340; Release &#29256;&#26412;&#21017;&#26377; 204 MiB), &#21253;&#21547;&#25968;&#25454;&#24211;&#20849;&#26377; 1.82
+GiB. &#32534;&#35793;&#30340;&#20020;&#26102;&#25991;&#20214;&#21344;&#20102; 3.11 GiB &#31354;&#38388;&#12290;&#30001;&#20110; Geant4 &#20195;&#30721;&#27604;&#36739;&#24222;&#22823;&#65292;&#32534;&#35793;&#26102;&#38388;&#20063;&#27604;&#36739;&#38271;&#12290;
+&#25105;&#30340;&#31508;&#35760;&#26412; i7-2620M + 8 GB &#20869;&#23384;&#65292;&#32534;&#35793;&#22823;&#27010;&#33457;&#20102;&#19968;&#20010;&#23567;&#26102;&#12290;
 &lt;/p&gt;&lt;/div&gt;
 &lt;/div&gt;
 </content></entry><entry><title type="html">在 Windows 下使用 Coin3D</title><author><name>nil</name></author><link href="http://exaos.github.com//blog/2012/12/23_coin3d-mswin.html"/><updated>2012-12-23T11:45:00Z</updated><published>2012-12-23T11:45:00Z</published><id>blog/2012/12/23_coin3d-mswin.html</id><category scheme="/tags/342609b17a48585ed342740ad42b8aa3.html" term="开发" label="开发"/><category scheme="/tags/mswin.html" term="MSWIN" label="MSWIN"/><category scheme="/tags/devel.html" term="devel" label="devel"/><content type="html">&lt;p&gt;
