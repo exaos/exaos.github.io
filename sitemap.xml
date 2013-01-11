@@ -2,49 +2,49 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
     <loc>http://exaos.github.com//</loc>
-    <lastmod>2012-12-23T17:27:31Z</lastmod>
+    <lastmod>2013-01-11T22:20:01Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   
   <url>
     <loc>http://exaos.github.com//index.html</loc>
-    <lastmod>2012-12-23T17:27:00Z</lastmod>
+    <lastmod>2013-01-11T22:19:00Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
 <url>
     <loc>http://exaos.github.com//attic/index.html</loc>
-    <lastmod>2012-12-23T17:27:00Z</lastmod>
+    <lastmod>2013-01-11T22:19:00Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
 <url>
     <loc>http://exaos.github.com//attic/exaos.html</loc>
-    <lastmod>2012-12-23T17:27:00Z</lastmod>
+    <lastmod>2013-01-11T22:19:00Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
 <url>
     <loc>http://exaos.github.com//notes/index.html</loc>
-    <lastmod>2012-12-23T17:27:00Z</lastmod>
+    <lastmod>2013-01-11T22:19:00Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
 <url>
     <loc>http://exaos.github.com//debug.html</loc>
-    <lastmod>2012-12-23T17:27:00Z</lastmod>
+    <lastmod>2013-01-11T22:19:00Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
 <url>
     <loc>http://exaos.github.com//changelog.html</loc>
-    <lastmod>2012-12-23T17:27:00Z</lastmod>
+    <lastmod>2013-01-11T22:19:00Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -52,6 +52,12 @@
 
 
   <url>
+    <loc>http://exaos.github.com//blog/2013/01/11_work-under-win7.html</loc>
+    <lastmod>2013-01-11T19:51:00Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+<url>
     <loc>http://exaos.github.com//blog/2012/12/23_geant4-mswin.html</loc>
     <lastmod>2012-12-23T13:50:00Z</lastmod>
     <changefreq>weekly</changefreq>
@@ -100,7 +106,7 @@
     <priority>0.6</priority>
   </url>
 <url>
-    <loc>http://exaos.github.com//blog/2012/05/26_85f32bb7c14b9cddb63d04974fbbe8c8.html</loc>
+    <loc>http://exaos.github.com//blog/2012/05/26_bf09263d06e8620578c59b069391166d.html</loc>
     <lastmod>2012-05-26T22:34:00Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -160,7 +166,7 @@
     <priority>0.6</priority>
   </url>
 <url>
-    <loc>http://exaos.github.com//blog/2012/03/27_96b973ad8335b341eb30f188a9d14bc3.html</loc>
+    <loc>http://exaos.github.com//blog/2012/03/27_4207ab14665cc8d016faa74461b58c5d.html</loc>
     <lastmod>2012-03-27T23:37:00Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
