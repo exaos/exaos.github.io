@@ -3,9 +3,9 @@
   <title>心蛛小站</title>
   <link href="http://exaos.github.com/index.xml" rel="self" />
   <link href="http://exaos.github.com/"/>
-  <updated>2013-01-11T22:20:01Z</updated>
+  <updated>2013-01-12T13:00:28Z</updated>
   <id>http://exaos.github.com/index.xml</id>
-  <entry><title type="html">在 Windows 7 下工作</title><author><name>nil</name></author><link href="http://exaos.github.com//blog/2013/01/11_work-under-win7.html"/><updated>2013-01-11T19:51:00Z</updated><published>2013-01-11T19:51:00Z</published><id>blog/2013/01/11_work-under-win7.html</id><category scheme="/tags/8a2b56e293ee788f1057ad236e06559e.html" term="计算机" label="计算机"/><content type="html">&lt;p&gt;
+  <entry><title type="html">在 Windows 7 下工作</title><author><name>nil</name></author><link href="http://exaos.github.com//blog/2013/01/11_work-under-win7.html"/><updated>2013-01-11T19:51:00Z</updated><published>2013-01-11T19:51:00Z</published><id>blog/2013/01/11_work-under-win7.html</id><category scheme="/tags/d8bfe5763d0817599d0fdec14567e16f.html" term="计算机" label="计算机"/><content type="html">&lt;p&gt;
 &#30001;&#20110;&#25105;&#30340; Dell N4110 &#31508;&#35760;&#26412;&#22312;&#23433;&#35013; Linux &#26102;&#36935;&#21040;&#19981;&#23569;&#38382;&#39064;&#65292;&#20027;&#35201;&#26159;&#21457;&#28909;&#37327;&#22823;&#21450;&#21452;&#26174;&#21345;&#20999;&#25442;&#12290;
 &#20174; Ubuntu &#20999;&#25442;&#21040;&#25105;&#21916;&#29233;&#30340; Arch Linux, &#35797;&#20102;&#19981;&#23569;&#21150;&#27861;&#65292;&#20173;&#27809;&#26377;&#35299;&#20915;&#20027;&#35201;&#38382;&#39064;&#12290;&#23613;&#31649;&#25105;&#26368;&#39034;
 &#25163;&#30340;&#31995;&#32479;&#20173;&#28982;&#26159; Linux, &#20294;&#22312; Windows 7 &#19979;&#24037;&#20316;&#20102;&#19968;&#27573;&#26102;&#38388;&#20498;&#20063;&#39034;&#25163;&#20102;&#65292;&#20063;&#27809;&#26377;&#24517;&#35201;&#22312;&#21452;&#31995;
@@ -25,6 +25,9 @@
 &#19968;&#20123;&#19987;&#38376;&#30340;&#31243;&#24207;&#12290;&#26412;&#25991;&#20013;&#25552;&#21040;&#30340;&#36719;&#20214;&#22522;&#26412;&#19978;&#37117;&#26377;&#20013;&#25991;&#29256;&#26412;&#65292;&#20294;&#22823;&#37096;&#20998;&#25552;&#21450;&#30340;&#32593;&#39029;&#20869;&#23481;&#37117;&#26159;&#33521;
 &#25991;&#30340;&#65292;&#25105;&#19981;&#22826;&#20102;&#35299;&#26377;&#22810;&#23569;&#20013;&#25991;&#39029;&#38754;&#20171;&#32461;&#23427;&#20204;&#65292;&#22914;&#26524;&#20320;&#30340;&#33521;&#25991;&#38405;&#35835;&#21507;&#21147;&#65292;&#35831;&#33258;&#34892;&#25628;&#32034;&#30456;&#24212;&#30340;&#20013;
 &#25991;&#20171;&#32461;&#12290;&#35831;&#35265;&#35845;&#12290;
+&lt;/p&gt;
+&lt;p&gt;
+&#19968;&#20010;&#29305;&#33394;&#20043;&#22788;&#65306;&#25105;&#36873;&#25321;&#30340;&#36719;&#20214;&#32477;&#22823;&#37096;&#20998;&#37117;&#26159;&#24320;&#28304;&#25110;&#20813;&#36153;&#30340;&#20135;&#21697;&#12290;
 &lt;/p&gt;
 
 &lt;div id="outline-container-1" class="outline-3"&gt;
@@ -426,6 +429,10 @@ Windows &#19979;&#39069;&#22806;&#30340;&#24037;&#20316;&#25105;&#36873;&#29992;
 &lt;/ul&gt;
 
 
+&lt;p&gt;
+&#22312; Linux &#19979;&#25105;&#20351;&#29992; ClamAV &#26432;&#27602;&#12290;&#22312; Windows &#19979;&#21516;&#26679;&#21487;&#29992;&#12290;&#21478;&#19968;&#20010;&#26367;&#20195;&#23601;&#26159;&#24494;&#36719;&#33258;&#24049;&#24320;&#21457;
+&#30340; Microsoft Security Essentials (MSE), &#21487;&#20174;&#24494;&#36719;&#30340;&#23448;&#26041;&#32593;&#31449;&#19978;&#19979;&#36733;&#23433;&#35013;&#12290;
+&lt;/p&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -448,7 +455,7 @@ Win7 &#19979;&#21487;&#30001; zsh (cygwin) &#23436;&#25104;&#24456;&#22810;&#240
 &#20998;&#20154;&#20173;&#28982;&#29992;&#30340;&#26159;&#36825;&#20010;&#12290;
 &lt;/p&gt;&lt;/div&gt;
 &lt;/div&gt;
-</content></entry><entry><title type="html">Geant4 在 Windows 下的安装与使用</title><author><name>nil</name></author><link href="http://exaos.github.com//blog/2012/12/23_geant4-mswin.html"/><updated>2012-12-23T13:50:00Z</updated><published>2012-12-23T13:50:00Z</published><id>blog/2012/12/23_geant4-mswin.html</id><category scheme="/tags/dc723a61b3f6f05dfbe431cd1c3aee7b.html" term="模拟" label="模拟"/><category scheme="/tags/geant4.html" term="geant4" label="geant4"/><category scheme="/tags/mswin.html" term="MSWIN" label="MSWIN"/><category scheme="/tags/devel.html" term="devel" label="devel"/><content type="html">&lt;p&gt;
+</content></entry><entry><title type="html">Geant4 在 Windows 下的安装与使用</title><author><name>nil</name></author><link href="http://exaos.github.com//blog/2012/12/23_geant4-mswin.html"/><updated>2012-12-23T13:50:00Z</updated><published>2012-12-23T13:50:00Z</published><id>blog/2012/12/23_geant4-mswin.html</id><category scheme="/tags/902e0d9d573627f0a7f9f52176bcceba.html" term="模拟" label="模拟"/><category scheme="/tags/geant4.html" term="geant4" label="geant4"/><category scheme="/tags/mswin.html" term="MSWIN" label="MSWIN"/><category scheme="/tags/devel.html" term="devel" label="devel"/><content type="html">&lt;p&gt;
 Geant4 9.4 &#21450;&#20197;&#21069;&#30340;&#29256;&#26412;&#20351;&#29992;&#23433;&#35013;&#33050;&#26412; &lt;code&gt;Configure&lt;/code&gt;, &#23427;&#20381;&#36182;&#20110; GNUmake, awk, sed &#31561;&#19968;
 &#31995;&#21015; GNU + POSIX &#24037;&#20855;&#65292;&#24182;&#19988;&#23545; POSIX &#24179;&#21488;&#30340;&#21508;&#31181;&#24211;&#20381;&#36182;&#20005;&#37325;&#65292;&#36825;&#23548;&#33268;&#22312; Windows &#24179;&#21488;&#19978;
 &#32534;&#35793;&#23433;&#35013; Geant4 &#24517;&#39035;&#20381;&#36182; Cygwin &#65288;&#23613;&#31649;&#36824;&#26377;&#20854;&#23427;&#30340; Windows &#19979;&#30340; POSIX &#29615;&#22659;&#65292;&#22914;
@@ -688,7 +695,7 @@ GiB. &#32534;&#35793;&#30340;&#20020;&#26102;&#25991;&#20214;&#21344;&#20102; 3.
 &#25105;&#30340;&#31508;&#35760;&#26412; i7-2620M + 8 GB &#20869;&#23384;&#65292;&#32534;&#35793;&#22823;&#27010;&#33457;&#20102;&#19968;&#20010;&#23567;&#26102;&#12290;
 &lt;/p&gt;&lt;/div&gt;
 &lt;/div&gt;
-</content></entry><entry><title type="html">在 Windows 下使用 Coin3D</title><author><name>nil</name></author><link href="http://exaos.github.com//blog/2012/12/23_coin3d-mswin.html"/><updated>2012-12-23T11:45:00Z</updated><published>2012-12-23T11:45:00Z</published><id>blog/2012/12/23_coin3d-mswin.html</id><category scheme="/tags/3ff3c3e26a68112c11c3e80f2a26896e.html" term="开发" label="开发"/><category scheme="/tags/mswin.html" term="MSWIN" label="MSWIN"/><category scheme="/tags/devel.html" term="devel" label="devel"/><content type="html">&lt;p&gt;
+</content></entry><entry><title type="html">在 Windows 下使用 Coin3D</title><author><name>nil</name></author><link href="http://exaos.github.com//blog/2012/12/23_coin3d-mswin.html"/><updated>2012-12-23T11:45:00Z</updated><published>2012-12-23T11:45:00Z</published><id>blog/2012/12/23_coin3d-mswin.html</id><category scheme="/tags/342609b17a48585ed342740ad42b8aa3.html" term="开发" label="开发"/><category scheme="/tags/mswin.html" term="MSWIN" label="MSWIN"/><category scheme="/tags/devel.html" term="devel" label="devel"/><content type="html">&lt;p&gt;
 &lt;a href="https://bitbucket.org/Coin3D/coin/wiki/Home"&gt;Coin&lt;/a&gt; &#26159;&#22522;&#20110; OpenGL &#30340; 3D &#22270;&#24418;&#24211;&#65292;&#23427;&#28304;&#33258; Open Inventor 2.1 API (&#30446;&#21069; Coin &#20173;&#28982;&#19982;&#23427;
 &#20860;&#23481;). Open Inventor (&#24120;&#31616;&#20889;&#20026; OIV) &#26368;&#21021;&#30001; SGI &#24320;&#21457;&#65292;&#26159;&#19968;&#20010;&#30340;&#22522;&#20110;&#22330;&#26223;&#25552;&#20379;&#22270;&#20687;&#20445;&#25345;&#12289;
 &#28210;&#26579;&#19982;&#27169;&#22411;&#25805;&#20316;&#30340; C++ &#31867;&#24211;&#12290;&#23427;&#22312;&#21457;&#24067;&#21518;&#19981;&#20037;&#23601;&#25104;&#20026;&#31185;&#23398;&#19982;&#24037;&#31243;&#39046;&#22495;&#30340; 3D &#22270;&#20687;&#26174;&#31034;&#19982;&#21487;&#35270;
@@ -1157,7 +1164,7 @@ cmake .. &amp;amp;&amp;amp; make
 &lt;/pre&gt;
 
 &lt;p&gt;&#20854;&#20013; &lt;code&gt;cmake&lt;/code&gt; &#40664;&#35748;&#35843;&#29992;&#30340;&#21442;&#25968;&#26159; /-G "Unix Makefiles"/.
-&lt;/p&gt;</content></entry><entry><title type="html">Geant4 在 Debian 下的安装与使用</title><author><name>nil</name></author><link href="http://exaos.github.com//blog/2012/12/22_geant4-debian.html"/><updated>2012-12-22T09:22:00Z</updated><published>2012-12-22T09:22:00Z</published><id>blog/2012/12/22_geant4-debian.html</id><category scheme="/tags/dc723a61b3f6f05dfbe431cd1c3aee7b.html" term="模拟" label="模拟"/><category scheme="/tags/geant4.html" term="geant4" label="geant4"/><category scheme="/tags/debian.html" term="debian" label="debian"/><category scheme="/tags/devel.html" term="devel" label="devel"/><content type="html">&lt;p&gt;
+&lt;/p&gt;</content></entry><entry><title type="html">Geant4 在 Debian 下的安装与使用</title><author><name>nil</name></author><link href="http://exaos.github.com//blog/2012/12/22_geant4-debian.html"/><updated>2012-12-22T09:22:00Z</updated><published>2012-12-22T09:22:00Z</published><id>blog/2012/12/22_geant4-debian.html</id><category scheme="/tags/902e0d9d573627f0a7f9f52176bcceba.html" term="模拟" label="模拟"/><category scheme="/tags/geant4.html" term="geant4" label="geant4"/><category scheme="/tags/debian.html" term="debian" label="debian"/><category scheme="/tags/devel.html" term="devel" label="devel"/><content type="html">&lt;p&gt;
 &#21442;&#35265;
 &lt;/p&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="http://wiki.debian.org/DebianScience/Geant4"&gt;http://wiki.debian.org/DebianScience/Geant4&lt;/a&gt;
@@ -1258,7 +1265,7 @@ export G4WORKDIR=/home/me/geant4
 &lt;/pre&gt;
 
 &lt;p&gt;&#40664;&#35748;&#30340; &lt;code&gt;G4WORKDIR&lt;/code&gt; &#26159;&#24403;&#21069;&#30446;&#24405;&#12290;
-&lt;/p&gt;</content></entry><entry><title type="html">“中药过敏”与医生的尴尬</title><author><name>nil</name></author><link href="http://exaos.github.com//blog/2012/09/12_anti-TCM-medicine.html"/><updated>2012-09-12T10:28:00Z</updated><published>2012-09-12T10:28:00Z</published><id>blog/2012/09/12_anti-TCM-medicine.html</id><category scheme="/tags/ce4ba240fbd95d4863684f78453c8877.html" term="社会" label="社会"/><category scheme="/tags/fbc026c9fb552701f8db2b0df2aa9114.html" term="健康" label="健康"/><content type="html">&lt;p&gt;
+&lt;/p&gt;</content></entry><entry><title type="html">“中药过敏”与医生的尴尬</title><author><name>nil</name></author><link href="http://exaos.github.com//blog/2012/09/12_anti-TCM-medicine.html"/><updated>2012-09-12T10:28:00Z</updated><published>2012-09-12T10:28:00Z</published><id>blog/2012/09/12_anti-TCM-medicine.html</id><category scheme="/tags/706bc9a8dc0f96c6a7efd8cc68bf169b.html" term="社会" label="社会"/><category scheme="/tags/4b15327569d54614fea288fbc14dfb08.html" term="健康" label="健康"/><content type="html">&lt;p&gt;
 &lt;code&gt;&#27880;&#65306;&#21407;&#25991;&#24352;&#36148;&#20110;&#21333;&#20301;&#20869;&#37096;&#30340;&#32593;&#32476;&#65292;&#36716;&#36733;&#20110;&#27492;&#12290;&lt;/code&gt;
 &lt;/p&gt;
 &lt;p&gt;
@@ -1313,7 +1320,7 @@ export G4WORKDIR=/home/me/geant4
 &#24819;&#26469;&#24819;&#21435;&#65292;&#19968;&#20010;&#8220;&#20013;&#33647;&#12289;&#20013;&#25104;&#33647;&#36807;&#25935;&#8221;&#30340;&#26631;&#35782;&#65292;&#21482;&#19981;&#36807;&#19981;&#24819;&#35753;&#21307;&#29983;&#23604;&#23596;&#65292;&#32780;&#25105;&#20063;&#21487;&#20197;&#22362;&#25345;&#21453;
 &#23545;&#20013;&#21307;&#30340;&#31435;&#22330;&#65292;&#22823;&#23478;&#24515;&#39046;&#31070;&#20250;&#21363;&#21487;&#12290;&#20294;&#20559;&#20559;&#26377;&#21307;&#29983;&#19981;&#35782;&#36825;&#31181;&#33510;&#24515;&#65292;&#35201;&#19982;&#20320;&#8220;&#36777;&#35770;&#8221;&#65292;&#37027;&#20063;&#19981;
 &#24517;&#23458;&#27668;&#20102;&#65292;&#19981;&#22952;&#30452;&#25509;&#36136;&#38382;&#65306;&#20320;&#21040;&#24213;&#23398;&#30340;&#26159;&#31185;&#23398;&#65292;&#36824;&#26159;&#36339;&#22823;&#31070;&#65311;
-&lt;/p&gt;</content></entry><entry><title type="html">函数式包管理器 Nix 与高性能计算</title><author><name>nil</name></author><link href="http://exaos.github.com//blog/2012/06/20_nix-in-hpc.html"/><updated>2012-06-20T15:27:00Z</updated><published>2012-06-20T15:27:00Z</published><id>blog/2012/06/20_nix-in-hpc.html</id><category scheme="/tags/8a2b56e293ee788f1057ad236e06559e.html" term="计算机" label="计算机"/><content type="html">&lt;p&gt;
+&lt;/p&gt;</content></entry><entry><title type="html">函数式包管理器 Nix 与高性能计算</title><author><name>nil</name></author><link href="http://exaos.github.com//blog/2012/06/20_nix-in-hpc.html"/><updated>2012-06-20T15:27:00Z</updated><published>2012-06-20T15:27:00Z</published><id>blog/2012/06/20_nix-in-hpc.html</id><category scheme="/tags/d8bfe5763d0817599d0fdec14567e16f.html" term="计算机" label="计算机"/><content type="html">&lt;p&gt;
 &#21069;&#38754;&#30340;&#21338;&#25991;&#24050;&#32463;&#31616;&#21333;&#20171;&#32461;&#36807;&#20102; Nix, &#21442;&#35265; &lt;a href="#NixOS---"&gt;NixOS &amp;ndash; &#20840;&#23616;&#29256;&#26412;&#25511;&#21046;&#30340;&#25805;&#20316;&#31995;&#32479;&#65311;&lt;/a&gt; 
 &lt;/p&gt;
 &lt;p&gt;
@@ -1348,7 +1355,7 @@ Nix &#26159;&#19968;&#20010;&#36328;&#24179;&#21488;&#30340;&#21253;&#31649;&#29
 &#20351;&#29992; Nix &#30340;&#25253;&#36947;&#12290;&#25110;&#35768;&#26377;&#30340;&#20154;&#24050;&#32463;&#26377;&#23581;&#35797;&#36824;&#26410;&#20844;&#24067;&#32467;&#26524;&#12290;&#36523;&#36793;&#26377;&#19968;&#20010;&#22522;&#20110; Rocks &#30340;&#38598;&#32676;&#65292;
 &#20294;&#30001;&#20110;&#35745;&#31639;&#20219;&#21153;&#32321;&#37325;&#65292;&#19981;&#21487;&#33021;&#36827;&#34892;&#36825;&#26679;&#30340;&#23454;&#39564;&#12290;&#26399;&#24453;&#26377;&#20154;&#33021;&#22815;&#27719;&#25253;&#19968;&#19979; Nix &#22312;&#39640;&#24615;&#33021;&#35745;&#31639;&#19978;
 &#30340;&#34920;&#29616;&#12290;
-&lt;/p&gt;</content></entry><entry><title type="html">称呼紊乱的年代之家庭称谓</title><author><name>nil</name></author><link href="http://exaos.github.com//blog/2012/06/12_appellation.html"/><updated>2012-06-12T15:43:00Z</updated><published>2012-06-12T15:43:00Z</published><id>blog/2012/06/12_appellation.html</id><category scheme="/tags/ce4ba240fbd95d4863684f78453c8877.html" term="社会" label="社会"/><content type="html">&lt;p&gt;
+&lt;/p&gt;</content></entry><entry><title type="html">称呼紊乱的年代之家庭称谓</title><author><name>nil</name></author><link href="http://exaos.github.com//blog/2012/06/12_appellation.html"/><updated>2012-06-12T15:43:00Z</updated><published>2012-06-12T15:43:00Z</published><id>blog/2012/06/12_appellation.html</id><category scheme="/tags/706bc9a8dc0f96c6a7efd8cc68bf169b.html" term="社会" label="社会"/><content type="html">&lt;p&gt;
 &#22914;&#20170;&#65292;&#19981;&#20165;&#22312;&#21508;&#34892;&#19994;&#30340;&#31216;&#21628;&#19978;&#20986;&#29616;&#32010;&#20081;&#30340;&#29616;&#35937;&#65292;&#22312;&#23478;&#24237;&#20851;&#31995;&#30340;&#31216;&#35859;&#19978;&#20063;&#26377;&#20123;&#20081;&#65292;&#22320;&#21306;&#24615;&#30340;&#24046;
 &#24322;&#24456;&#26126;&#26174;&#12290;&#36825;&#20010;&#24863;&#24936;&#26469;&#33258;&#20110;&#27700;&#26408;&#31038;&#21306;&#30340;&lt;a href="http://www.newsmth.net/nForum/#!article/Joke/2977098"&gt;&#19968;&#36148;&#35752;&#35770;&lt;/a&gt;, &#20851;&#20110;&#8220;&#23016;&#8221;&#19982;&#8220;&#22806;&#29989;&#8221;&#30340;&#31216;&#21628;&#38382;&#39064;&#12290;&#20013;&#22269;
 &#20154;&#30340;&#23478;&#24237;&#31216;&#35859;&#20197;&#30007;&#24615;&#20026;&#20027;&#23548;&#65292;&#26377;&#36739;&#20005;&#26684;&#30340;&#21306;&#20998;&#12290;&#22914;&#21518;&#30340;&#35752;&#35770;&#20013;&#20551;&#35774;&#23567;&#26126;&#26159;&#30007;&#23401;&#65292;&#20197;&#20182;&#20026;&#20013;&#24515;&#12290;
@@ -1512,7 +1519,7 @@ http://paper.wenweipo.com/2011/10/10/OT1110100004.htm
 &#30410;&#12290;&#29983;&#20135;&#31649;&#29702;&#25235;&#22909;&#65292;&#21512;&#29702;&#25670;&#24067;&#21171;&#21160;&#12290;&#25913;&#33391;&#32789;&#20316;&#25216;&#26415;&#65292;&#25552;&#39640;&#29983;&#20135;&#25928;&#29575;&#12290;
 &lt;/pre&gt;
 
-</content></entry><entry><title type="html">网络上的百科全书、辞典与词典</title><author><name>nil</name></author><link href="http://exaos.github.com//blog/2012/05/30_online-encyclopedia.html"/><updated>2012-05-30T10:21:00Z</updated><published>2012-05-30T10:21:00Z</published><id>blog/2012/05/30_online-encyclopedia.html</id><category scheme="/tags/7ddbe15c845fa27a2bab496183042ca6.html" term="网络" label="网络"/><content type="html">&lt;p&gt;
+</content></entry><entry><title type="html">网络上的百科全书、辞典与词典</title><author><name>nil</name></author><link href="http://exaos.github.com//blog/2012/05/30_online-encyclopedia.html"/><updated>2012-05-30T10:21:00Z</updated><published>2012-05-30T10:21:00Z</published><id>blog/2012/05/30_online-encyclopedia.html</id><category scheme="/tags/65b9fc935cdca52df1b62d1292498295.html" term="网络" label="网络"/><content type="html">&lt;p&gt;
 &#20114;&#32852;&#32593;&#30340;&#29305;&#24615;&#20043;&#19968;&#65306;&#20154;&#20154;&#30342;&#21487;&#21442;&#19982;&#12290;&#32780;&#20687;&#30334;&#31185;&#20840;&#20070;&#12289;&#36766;&#20856;&#12289;&#35789;&#20856;&#20043;&#31867;&#30340;&#36164;&#26009;&#22343;&#26159;&#38752;&#20154;&#28023;&#22534;&#20986;
 &#26469;&#30340;&#32467;&#26524;&#12290;&#19968;&#20010;&#20154;&#20877;&#33879;&#20316;&#31561;&#36523;&#65292;&#24656;&#24597;&#20063;&#24456;&#38590;&#38752;&#19968;&#24050;&#20043;&#21147;&#23436;&#25104;&#20687;&#12298;&#22823;&#33521;&#30334;&#31185;&#20840;&#20070;&#12299;&#36825;&#26679;&#30340;&#23439;&#31687;
 &#24040;&#33879;&#12290;&#22823;&#37096;&#20998;&#20154;&#21482;&#19987;&#27880;&#20110;&#19968;&#20010;&#26041;&#21521;&#65292;&#26368;&#22810;&#20960;&#20010;&#26041;&#21521;&#36275;&#30691;&#12290;&#22240;&#27492;&#65292;&#22312;&#19968;&#20010;&#20154;&#20154;&#30342;&#21487;&#21442;&#19982;&#30340;&#29615;&#22659;
@@ -1620,7 +1627,7 @@ http://paper.wenweipo.com/2011/10/10/OT1110100004.htm
 &lt;/dd&gt;
 &lt;/dl&gt;
 
-</content></entry><entry><title type="html">称呼紊乱的年代</title><author><name>nil</name></author><link href="http://exaos.github.com//blog/2012/05/26_bf09263d06e8620578c59b069391166d.html"/><updated>2012-05-26T22:34:00Z</updated><published>2012-05-26T22:34:00Z</published><id>blog/2012/05/26_bf09263d06e8620578c59b069391166d.html</id><category scheme="/tags/ce4ba240fbd95d4863684f78453c8877.html" term="社会" label="社会"/><content type="html">&lt;p&gt;
+</content></entry><entry><title type="html">称呼紊乱的年代</title><author><name>nil</name></author><link href="http://exaos.github.com//blog/2012/05/26_85f32bb7c14b9cddb63d04974fbbe8c8.html"/><updated>2012-05-26T22:34:00Z</updated><published>2012-05-26T22:34:00Z</published><id>blog/2012/05/26_85f32bb7c14b9cddb63d04974fbbe8c8.html</id><category scheme="/tags/706bc9a8dc0f96c6a7efd8cc68bf169b.html" term="社会" label="社会"/><content type="html">&lt;p&gt;
 &#36825;&#26159;&#19968;&#20010;&#31216;&#21628;&#32010;&#20081;&#30340;&#26102;&#20195;&#65306;&#8220;&#32769;&#24072;&#8221;&#19981;&#20165;&#21487;&#31216;&#21628;&#32769;&#24072;&#65292;&#20063;&#21487;&#31216;&#21628; AV &#22899;&#28436;&#21592;&#65307;&#8220;&#24178;&#29241;&#8221;&#19981;&#20165;
 &#25351;&#26377;&#35748;&#20859;&#20851;&#31995;&#30340;&#29238;&#22899;&#65292;&#36824;&#21487;&#25351;&#24773;&#20154;&#65307;&#8220;&#32769;&#21733;&#8221;&#19981;&#20165;&#25351;&#20804;&#24351;&#65292;&#36824;&#21487;&#26159;&#29238;&#23376;&#65307;&#8220;&#19987;&#23478;&#8221;&#19981;&#20165;&#25351;&#26377;
 &#19987;&#19994;&#32032;&#20859;&#30340;&#20154;&#25165;&#65292;&#36824;&#21487;&#25351;&#36339;&#22823;&#31070;&#30340;&#39575;&#23376;&#25110;&#20250;&#25171;&#36890;&#20219;&#30563;&#20108;&#33033;&#30340;&#21355;&#29983;&#21381;&#38271;&#65307;&#8230;&#8230;&#36825;&#26679;&#65292;&#26377;&#26102;&#20320;&#26080;
