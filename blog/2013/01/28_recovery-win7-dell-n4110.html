@@ -2,7 +2,7 @@
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8"/>
-    <title>网络上的百科全书、辞典与词典</title>
+    <title>恢复一次严重的系统故障 (Windows 7)</title>
     <link rel="stylesheet" type="text/less" href="../../../style/less/o-blog.less"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="generator" content="o-blog version 1.2-zh-133-gcf9fd86"/>
@@ -89,7 +89,7 @@
       <div class="container">
 	<ul class="breadcrumb">
   <li><a href="../../../index.html">首页</a> <span class="divider">/</span></li>
-  <li><a href="../../../blog/index.html">blog</a> <span class="divider">/</span></li><li><a href="../../../blog/2012/index.html">2012</a> <span class="divider">/</span></li><li><a href="../../../blog/2012/05/index.html">05</a> <span class="divider">/</span></li><li>网络上的百科全书、辞典与词典</li>
+  <li><a href="../../../blog/index.html">blog</a> <span class="divider">/</span></li><li><a href="../../../blog/2013/index.html">2013</a> <span class="divider">/</span></li><li><a href="../../../blog/2013/01/index.html">01</a> <span class="divider">/</span></li><li>恢复一次严重的系统故障 (Windows 7)</li>
   </ul>
 
       </div>
@@ -101,23 +101,23 @@
     <div class="well">
       <div class="row">
 	<div class="date span1">
-	  <div class=" date-d">30</div>
-	  <div class=" date-m"><a href="../../../blog/2012/05/index.html">5月</a></div>
-	  <div class=" date-y"><a href="../../../blog/2012/index.html">2012</a>
+	  <div class=" date-d">28</div>
+	  <div class=" date-m"><a href="../../../blog/2013/01/index.html">1月</a></div>
+	  <div class=" date-y"><a href="../../../blog/2013/index.html">2013</a>
 	  </div>
 	</div>
 	<div class="span1">
 	  <div class="qr-code">
-  <img src="http://chart.apis.google.com/chart?chs=50x50&cht=qr&chld=|0&chl=http%3a%2f%2fexaos.github.com%2f%2fblog%2f2012%2f05%2f30_online-encyclopedia.html"
+  <img src="http://chart.apis.google.com/chart?chs=50x50&cht=qr&chld=|0&chl=http%3a%2f%2fexaos.github.com%2f%2fblog%2f2013%2f01%2f28_recovery-win7-dell-n4110.html"
        alt="qr-code" />
 </div>
 
 	</div>
-	<h1 class="offset2" style="font-size: 250%">网络上的百科全书、辞典与词典</h1>
+	<h1 class="offset2" style="font-size: 250%">恢复一次严重的系统故障 (Windows 7)</h1>
       </div>
       <nav>
 	<ul class="pager">
-	  <li class="previous"><a href="../../../blog/2012/05/26_bf09263d06e8620578c59b069391166d.html"><i class="icon-chevron-left"></i>&nbsp;称呼紊乱的年代</a></li><li class="next" style="text-align: right;"><a href="../../../blog/2012/06/12_appellation.html">称呼紊乱的年代之家庭称谓&nbsp;<i class="icon-chevron-right"></i></a></li>
+	  <li class="previous"><a href="../../../blog/2013/01/11_work-under-win7.html"><i class="icon-chevron-left"></i>&nbsp;在 Windows 7 下工作</a></li><li class="next">&nbsp;</li>
 	</ul>
       </nav>
     </div>
@@ -125,122 +125,181 @@
   </header>
   <div class="article-content">
     <p>
-互联网的特性之一：人人皆可参与。而像百科全书、辞典、词典之类的资料均是靠人海堆出
-来的结果。一个人再著作等身，恐怕也很难靠一已之力完成像《大英百科全书》这样的宏篇
-巨著。大部分人只专注于一个方向，最多几个方向足矣。因此，在一个人人皆可参与的环境
-中汇编百科全书类的资料是最理想的。这儿简单整理一些我现在日常使用或者曾经使用过的
-一些网络上的百科类及辞典、词典类资源。
+上周五，我在 Dell N4110 笔记本上犯了一个严重的错误。我在 <a href="http://cygwin.org">cygwin</a> 下使用 <code>rsync</code> 与
+Linux 机器同步数据时，误删除了一些本地更新的文件 (该死的 <code>--delete</code> 参数，一定要
+慎用！)。 然后我试图使用 <a href="http://www.cgsecurity.org/wiki/TestDisk">TeskDisk</a> 来恢复数据时，被告之文件分区表没有对齐，问我是
+否修复。一时大意，同意并写入磁盘，然后 TeskDisk 告诉我要重新启动系统。结果悲剧产
+生了，重新启动系统时，回到了 Dell 工具的 DOS 界面下，无法启动 Win7 系统了。
 </p>
-
-
-<h3>百科类网络资源</h3>
-
 <p>
-所谓的百科全书，是对人类现有的全部知识或者某一大类知识进行概要性介绍的工具书，往
-往以条目为单元，按辞典形式进行排列。中国的古代有《永乐大典》、《古今图书集成》
-等，民国初年有《辞源》、《中国学术百科全书》，现代有《中国大百科全书》。现代的百
-科全书纸质媒介的已经逐渐让位于电子媒介。
-</p>
-<dl>
-<dt>大英百科全书</dt><dd><a href="http://www.britannica.com/">http://www.britannica.com/</a>, 其正式名称为拉丁文 <b>Encylopædia                   Britannica</b> (即 British Encyclopaedia). 第一版于 1768 至 1771
-                  于爱丁堡，共三卷；2010 年最后一次印刷版本为 32 卷。2012 年 3 月
-                  起，大英百科全书公司发表声明不再出版印刷版本，以网络版本为主。
-
-</dd>
-<dt>维基百科</dt><dd><a href="http://www.wikipedia.org">http://www.wikipedia.org</a>, 这个不多解释了。截止此文时，维基百科英文
-              共有词条近四百万条。
-</dd>
-</dl>
-
-
-<p>
-至于什么“百度百科”类的网络资源基本上就是一批搬运工将维基百科上的内容搬运过去，
-并将内容肆意篡改以满足某些人的要求，很难在其中找到公正、真实的资料，建议读者不要
-在这些东西上浪费时间。
-</p>
-
-
-<h3>语言类百科，辞典及词典类网络资源</h3>
-
-<dl>
-<dt>Omniglot</dt><dd><a href="http://omniglot.com/">http://omniglot.com/</a>, <b>the online encyclopedia of writing systems               and languages</b>, 在线的书写系统及语言百科，它目前包含有 180 种书写系
-              统，超过 500 种语言的相关资料， 300 多种人造的书写系统，以及各种语
-              言学习的资源。这个网站的作者叫 <a href="http://omniglot.com/aboutme.htm">葛善明</a>, 靠这个网站为生。你可以用英语、
-              法语、德语、西班牙语、葡萄牙语、世界语、中文等十二种语言给他写信。
-              当然，如果他的网站对你有用，最直接的感谢方式还是捐款。 :-)
-</dd>
-</dl>
-
-
-<p>
-对于汉语，推荐如下一些网站：
+我的 N4110 硬盘默认的是出厂的 4 个分区：
 </p><ul>
-<li>汉典 &ndash; <a href="http://www.zdic.net/">http://www.zdic.net/</a>
+<li>sda1, DellUtility
 </li>
-<li>中国哲学书电子化计划 &ndash; <a href="http://ctext.org/">http://ctext.org/</a>
+<li>sda2, RECOVERY
 </li>
-<li>汉字叔叔的汉字字源网站 &ndash; <a href="http://www.chineseetymology.org/">http://www.chineseetymology.org/</a>
+<li>sda3, WIN7SYS
+</li>
+<li>sda4, DATA
 </li>
 </ul>
 
 
 <p>
-其中关于汉字叔叔的字源网，可参见新闻: <a href="http://news.xinhuanet.com/world/2011-01/26/c_121026034.htm">把甲骨文搬上网络的美国老头</a>。
+当时正在做的工作被迫打断，我试图修复启动，结果在忙乱之下，连续犯了一系列错误：
+</p><ol>
+<li>用 Win7 安装 U 盘启动，修复启动分区。重启，仍回到 DOS 下。
+</li>
+<li>用 GRML Linux U 盘启动，删除了分区 1 (DellUtility)。用 Win7 U 盘启动，修复启动分区。
+     重启，出现错误如下：
+<pre class="example">
+BOOTMGR is missing
+Press Ctrl Alt Del to restart
+</pre>
+
+</li>
+<li>用 Win7 安装 U 盘启动，无法修复分区表，出现“无法兼容”的错误。重启，错误如
+     前。
+</li>
+<li>用 GRML U 盘启动，删除了分区 2 (RECOVERY). 再用 Win7 U 盘启动，仍无法修复启
+     动分区。重启，错误如前： <code>BOOTMGR is missing</code>
+</li>
+<li>用 GRML 启动盘启动，用 testdisk 检查分区，使用 EFI GPT 选项，找回了删除的分
+     区。用 Win7 U 盘启动，仍因“兼容”问题，无法修复启动分区。此时用硬盘启动，出
+     现的错误为：
+<pre class="example">
+Operation System not found
+</pre>
+
+</li>
+</ol>
+
+
+<p>
+到目前为止，用 GRML Linux U 盘启动系统，检查一下，硬盘上所有数据都在，意味着系统
+仍然可以修复。只是我对 Windows 7 不太熟悉，不知道如何去做。针对我的情况，系统原来
+的问题可能只是 BCD 损坏。后来我试图修复过程中错误地删除了分区。再后来，又将分区表
+转换成了 GPT 格式 (好在找回了全部的数据)，从而由 <code>BOOTMGR</code> 错误转变成了
+<code>Operation System not found</code> 错误。
 </p>
 <p>
-词典类：
+冷静下来，仔细分析问题，首要任务是保证数据不丢失。那么要解决的问题就是：
+</p><ol>
+<li>将在 Linux TeskDisk 找回的 GPT 分区数据转换成 Windows 7 启动可识别的 MBR 分区
+     格式。
+</li>
+<li>修复 Windows 启动配置数据 (Boot Configuration Data, BCD)。
+</li>
+</ol>
+
+
+<p>
+要解决的第一个问题是针对错误 <code>Operation System not found</code> (因为原来安装的
+Windows 7 不是针对 GPT 分区，并且 N4110 不支持 EFI), 第二个则是针对 <a href="http://pcsupport.about.com/od/termsb/g/bootmgr.htm">BOOTMGR</a> 错误。
+</p>
+<p>
+将 GPT 转换为 Windows 7 兼容的 MBR 分区表，检索了一下，参考如下：
+</p><ol>
+<li><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/gg463525.aspx">http://msdn.microsoft.com/en-us/library/windows/hardware/gg463525.aspx</a>
+</li>
+<li><a href="http://www.rodsbooks.com/gdisk/booting.html">http://www.rodsbooks.com/gdisk/booting.html</a>
+</li>
+<li><a href="http://www.wilderssecurity.com/showthread.php?t=332544">http://www.wilderssecurity.com/showthread.php?t=332544</a>
+</li>
+<li><a href="http://www.sevenforums.com/tutorials/26203-convert-gpt-disk-mbr-disk.html">http://www.sevenforums.com/tutorials/26203-convert-gpt-disk-mbr-disk.html</a>
+</li>
+<li><a href="http://ljmichael.hubpages.com/hub/Convert-MBR-to-GPT-or-convert-GPT-to-MBR">http://ljmichael.hubpages.com/hub/Convert-MBR-to-GPT-or-convert-GPT-to-MBR</a>
+</li>
+<li><a href="http://www.firewing1.com/node/610">http://www.firewing1.com/node/610</a>
+</li>
+<li><a href="http://www.rodsbooks.com/gdisk/mbr2gpt.html">http://www.rodsbooks.com/gdisk/mbr2gpt.html</a>
+</li>
+</ol>
+
+
+<p>
+按照上述参考中的 (6), (7) 恢复了 MBR 分区表，重新启动后仍然回到了 DOS 界面。
+</p>
+<p>
+修复 BCD, 可参考：
 </p><ul>
-<li>林語堂《當代漢英詞典》 &ndash;  <a href="http://humanum.arts.cuhk.edu.hk/Lexis/Lindict/">网络版</a>
+<li><a href="http://support.microsoft.com/kb/927392">http://support.microsoft.com/kb/927392</a>
 </li>
-<li>韦氏词典网络版 &ndash; <a href="http://www.merriam-webster.com/">http://www.merriam-webster.com/</a>
-</li>
-<li>海词 &ndash; <a href="http://dict.cn/">http://dict.cn/</a>
+<li><a href="http://pcsupport.about.com/od/findbyerrormessage/a/bootmgr-is-missing.htm">http://pcsupport.about.com/od/findbyerrormessage/a/bootmgr-is-missing.htm</a>
 </li>
 </ul>
 
 
-
-
-<h3>学术性的百科</h3>
-
 <p>
-<b>数学</b> 类：
-</p><dl>
-<dt>PlanetMath</dt><dd><a href="http://planetmath.org/">http://planetmath.org/</a>
-</dd>
-<dt>Wolfram MathWorld</dt><dd><a href="http://mathworld.wolfram.com/">http://mathworld.wolfram.com/</a>
-</dd>
-<dt>Encyclopedia of Mathematics</dt><dd><a href="http://www.encyclopediaofmath.org">http://www.encyclopediaofmath.org</a>
-</dd>
-</dl>
+但此时修复 BCD 一直出现如下错误：
+</p><pre class="example">
+此版本的系统恢复选项与您试图修复的 Windows 版本不兼
+容。请尝试使用与此版本的 Windows 兼容的恢复光盘。
+</pre>
 
 
 <p>
-<b>物理学</b> 类：
-</p><dl>
-<dt>Physics Encyclopedia (网络资源)</dt><dd><a href="http://igorivanov.tripod.com/physics/">http://igorivanov.tripod.com/physics/</a>
-</dd>
-<dt>HyperPhysics (教学)</dt><dd><a href="http://hyperphysics.phy-astr.gsu.edu/hbase/hframe.html">http://hyperphysics.phy-astr.gsu.edu/hbase/hframe.html</a>
-</dd>
-</dl>
+经检查，属于 NTFS 文件系统故障。用 Win7 U 盘启动机器，进行命令行下，用 diskpart
+检查，发现原来的 RECOVERY 和 DATA 分区的文件系统全部变成了 RAW. 我不知道如何在
+Windows 下修复这个问题，就启动到 GRML 下，使用 ntfsfix 修复了文件系统。
+</p>
+<p>
+然后继续使用 Win7 U 盘启动，可以修复启动了。但出现一个问题：使用硬盘启动，则进入
+DOS; 使用 Win7 U 盘启动，则正常进入系统了。仔细检查后发现，原来 DELL N4110 默认出
+厂的设置是将启动放置在隐藏的 RECOVERY 分区上，将该分区标志为“活动”即可。具体的
+操作如下：
+</p><ol>
+<li>用 Win7 U 盘启动，进行命令行，执行 <code>diskpart</code>
+</li>
+<li>去掉 DellUtility 及 RECOVERY 分配的盘符
+<pre class="example">
+select volume=1
+remove
+select volume=2
+remove
+</pre>
+
+</li>
+<li>标识 RECOVERY 为活动：
+<pre class="example">
+select volume=2
+active
+</pre>
+
+</li>
+<li>重新分配盘符 <code>C</code> 给 <code>WIN7SYS</code> 分区：
+<pre class="example">
+select volume=3
+remove
+assign letter=C
+</pre>
+
+</li>
+<li>退出 <code>diskpart</code>, 使用如下命令修复 BCD:
+<pre class="example">
+bcdboot C:\Windows
+bootrec /FixMBR
+bootrec /FixBoot
+bootrec /RebuildBCD
+bootrec /ScanOS
+</pre>
+
+</li>
+</ol>
 
 
 <p>
-<b>化学</b> 类：
-</p><dl>
-<dt>IUPAC Gold Book</dt><dd><a href="http://goldbook.iupac.org/">http://goldbook.iupac.org/</a>
-</dd>
-</dl>
-
-
+这样看来，原来第一次 TestDisk 所导致的问题只不过是把 DellUtility 变成了活动分区了。
+害得我折腾了那么久！
+</p>
   </div>
   
   <footer class="well article-footer">
-    发布于 <time datetime="2012-05-30T10:21:00Z"> 2012-05-30 10:21:00</time>.
+    发布于 <time datetime="2013-01-28T05:03:00Z"> 2013-01-28 05:03:00</time>.
     <nav class="tag-cloud">
       <h1><i class="icon-tags"></i> 相关标签</h1>
       <ul>
-	<li class="label label-inverse small"><a href="../../../tags/7ddbe15c845fa27a2bab496183042ca6.html">网络</a></li>
+	<li class="label label-inverse small"><a href="../../../tags/mswin.html">MSWIN</a></li><li class="label label-inverse small"><a href="../../../tags/8a2b56e293ee788f1057ad236e06559e.html">计算机</a></li>
       </ul>
     </nav>
   </footer>
