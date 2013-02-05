@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8"/>
+    <title>用户主目录的使用及我的文档管理习惯</title>
+    <link rel="stylesheet" type="text/less" href="../../../style/less/o-blog.less"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="generator" content="o-blog version 1.2-zh-133-gcf9fd86"/>
+    <script src="../../../style/js/less-1.3.0.min.js" type="text/javascript"></script>
+    <script src="../../../style/js/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="../../../style/bootstrap/js/bootstrap-modal.js" type="text/javascript"></script>
+    <script src="../../../style/bootstrap/js/bootstrap-transition.js" type="text/javascript"></script>
+    <script src="../../../style/bootstrap/js/bootstrap-dropdown.js" type="text/javascript"></script>
+    <script src="../../../style/bootstrap/js/bootstrap-collapse.js" type="text/javascript"></script>
+    <script src="../../../style/js/prettify.js" type="text/javascript"></script>
+    <script src="../../../style/js/o-blog.linenumber.js" type="text/javascript"></script>
+    <script src="../../../style/js/o-blog-fix.js" type="text/javascript"></script>
+    
+  </head>
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+	<div class="container">
+	  <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+	  <a class="brand" href="../../../index.html">心蛛小站</a>
+	  <div class="nav-collapse collapse">
+	    <ul>
+<li><a href="#"><i>icon-book icon-white</i> 存档</a>
+<ul>
+<li><a href="../../../notes/index.html">笔记</a>
+</li>
+<li><a href="../../../attic/index.html">资料</a>
+</li>
+<li><a href="../../../attic/exaos.html">心蛛资料</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="#"><i>icon-file icon-white</i> 近期博文</a>
+<ul>
+<li><a href="../../../blog/2013/02/06_my-archiving.html">用户主目录的使用及我的文档管理习惯</a>
+</li>
+<li><a href="../../../blog/2013/02/04_tagfs-summary.html">标签式文件系统，构想与实现</a>
+</li>
+<li><a href="../../../blog/2013/02/03_tips-for-new-programming-language.html">[译] 怎样学习一门新的编程语言？</a>
+</li>
+<li><a href="../../../blog/2013/01/28_recovery-win7-dell-n4110.html">恢复一次严重的系统故障 (Windows 7)</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="../../../tags/index.html"><i>icon-tags icon-white</i> 标签</a>
+
+</li>
+<li><a href="../../../archives.html"><i>icon-list icon-white</i> 归档博文</a>
+
+</li>
+<li><a href="#"><i>icon-link icon-white</i> 友情链接</a>
+<ul>
+<li><a href="http://blog.163.com/y.feng_cn/">freeboy 在网易的博客：NMR</a>
+</li>
+<li><a href="http://www.scipark.net/">科学公园</a>
+</li>
+<li><a href="http://scienceblogging.org/">ScienceBlogging</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="../../../index.xml"><i>icon-rss icon-white</i> RSS订阅</a>
+</li>
+</ul>
+
+
+	  </div>
+	</div>
+      </div>
+    </div>
+    <div class="subnav subnav-fixed visible-desktop">
+      <div class="container">
+	<ul class="breadcrumb">
+  <li><a href="../../../index.html">首页</a> <span class="divider">/</span></li>
+  <li><a href="../../../blog/index.html">blog</a> <span class="divider">/</span></li><li><a href="../../../blog/2013/index.html">2013</a> <span class="divider">/</span></li><li><a href="../../../blog/2013/02/index.html">02</a> <span class="divider">/</span></li><li>用户主目录的使用及我的文档管理习惯</li>
+  </ul>
+
+      </div>
+    </div>
+    <div id="page" class="container">
+
+  <header class="article-header">
+
+    <div class="well">
+      <div class="row">
+	<div class="date span1">
+	  <div class=" date-d">06</div>
+	  <div class=" date-m"><a href="../../../blog/2013/02/index.html">2月</a></div>
+	  <div class=" date-y"><a href="../../../blog/2013/index.html">2013</a>
+	  </div>
+	</div>
+	<div class="span1">
+	  <div class="qr-code">
+  <img src="http://chart.apis.google.com/chart?chs=50x50&cht=qr&chld=|0&chl=http%3a%2f%2fexaos.github.com%2f%2fblog%2f2013%2f02%2f06_my-archiving.html"
+       alt="qr-code" />
+</div>
+
+	</div>
+	<h1 class="offset2" style="font-size: 250%">用户主目录的使用及我的文档管理习惯</h1>
+      </div>
+      <nav>
+	<ul class="pager">
+	  <li class="previous"><a href="../../../blog/2013/02/04_tagfs-summary.html"><i class="icon-chevron-left"></i>&nbsp;标签式文件系统，构想与实现</a></li><li class="next">&nbsp;</li>
+	</ul>
+      </nav>
+    </div>
+
+  </header>
+  <div class="article-content">
+    <p>
+做研究工作，需要查阅的资料通常很多：论文、手册、设计图纸、程序源代码、数据、图表，
+等等。比如我的硬盘中有近百 GiB 的这类资料，这其中还不包括实验的原始数据（有些实验
+光原始数据就在数百 GiB 的量级）。通常还会有一点电子图书、音乐、视频、照片等生活或
+学习资料。当资料很多时，如果随便散乱在你的硬盘中，在寻找时就会很麻烦，因此需要一
+点文档管理的约定。
+</p>
+<p>
+在此介绍一下个人基于层次文件系统的一些资料管理习惯。
+</p>
+
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1">原则一：尽可能遵守操作系统默认的目录设置习惯</h3>
+<div class="outline-text-3" id="text-1">
+
+
+<p>
+不同的操作系统会默认在用户主目录下创建一些子目录（且称之为“功能目录”）。很多人
+喜欢更改这些功能目录的名称，或者删掉认为无用的。这样的习惯不好，因为应用程序会默
+认寻找这些目录。建议不要随便更名或删除，应保持其默认值。
+</p>
+<p>
+对于用户，学会使用这些功能目录，会养成了你资料分类的好习惯。
+</p>
+<p>
+对于程序员，你应该熟悉那些系统默认的功能目录，这会让你的程序不那么令人讨厌。例如
+一些国产软件，它们会强制在不该出现的地方建立一个自己的目录用于存放数据，对于这类
+玩意，我的第一反应就是离得越远越好。
+</p>
+<p>
+分别介绍三种流行的操作系统下用户的功能目录设置习惯。
+</p>
+
+</div>
+
+<div id="outline-container-1-1" class="outline-4">
+<h4 id="sec-1-1">Mac OS X 的用户功能目录</h4>
+<div class="outline-text-4" id="text-1-1">
+
+
+<p>
+Mac OS X 默认会创建如下功能目录:
+</p><ul>
+<li><code>Desktop</code> &ndash; 即用户的“桌面”
+</li>
+<li><code>Documents</code> &ndash; “文档”
+</li>
+<li><code>Library</code> &ndash; 用于保存用户的各种数据及系统相关的信息，比如地址簿、邮件、收藏夹、
+    各种配置文件，等等
+</li>
+<li><code>Movies</code> &ndash; “视频”
+</li>
+<li><code>Music</code> &ndash; “音乐”
+</li>
+<li><code>Pictures</code> &ndash; “图片”，包括照片等
+</li>
+<li><code>Public</code> &ndash; 与其他用户共享的目录
+</li>
+<li><code>Sites</code> &ndash; 保存用于共享的网页等
+</li>
+</ul>
+
+
+<p>
+这些功能目录实际均以英文命名，但用 <code>Finder</code> 打开时，系统会根据用户的语言环境自动
+进行翻译。这些翻译保存在系统核心服务中，比如简体中文环境的系统目录别名保存在：
+</p><pre class="example">
+/System/Library/CoreServices/SystemFolderLocalizations/zh_cn.lproj/SystemFolderLocalizations.strings
+</pre>
+
+<p>（注：上述的文件以 UTF-16 编码保存，普通用户并没有修改的权限，也不建议你这么改，
+因为会很危险。）
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-4">
+<h4 id="sec-1-2">MS Windows 的用户功能目录</h4>
+<div class="outline-text-4" id="text-1-2">
+
+
+<p>
+微软从 Windows 95 开始才引入“用户配置文件”的概念，直到 Windows 2000 才算基本完
+善其功能。
+</p>
+<blockquote>
+
+<p>说点无关话题：在中国，绝大部分 Windows 用户实际上并没有“用户”概念，无论是 XP 还
+是 Windows 7, 通常都用 Administrator 帐户登陆，随心所欲地更改系统。而大部分的国产
+软件也没有将“用户／帐号”这个概念当回事，随便一点小事都申请用管理员权限处理，这
+又强化了大多数人认为“不是管理员就无法用计算机”的意识。这种恶习也导致国内大部分
+计算机的安全设置在默认情况下十分恶劣。这种恶劣的习惯也是国产流氓软件生存的土壤。
+</p>
+</blockquote>
+
+
+<p>
+在 Windows 2000/XP 下，用户的主目录由环境变量 <code>HOMEPATH</code> 表示，其值通常为
+</p><pre class="example">
+%SystemDrive%\Documents and Settings\%USERNAME%\
+</pre>
+
+<p>这儿的环境变量 <code>SystemDrive</code> 默认是 <code>C:</code>. 在 Windows Vista/7/8 下面，则变为：
+</p><pre class="example">
+%SystemDrive%\Users\%USERNAME%\
+</pre>
+
+<p>可能是微软也觉得 <code>Documents and Settings</code> 这样的名称实在有些烦琐了。
+</p>
+<p>
+系统默认将用户的数据文件都放置在其主目录下，一些关键的程序数据是隐藏起来的。在
+XP 以前通常可见的只有“我的文档”，其使用也非常频繁， 几乎每个程序都要在其中建立
+一个子目录，以彰显自己的控制权。
+</p>
+<p>
+在 Vista 以后，多了几个与 Mac OS X 下类似的功能目录：
+</p><ul>
+<li>Desktop
+</li>
+<li>Documents
+</li>
+<li>Contacts
+</li>
+<li>Downloads
+</li>
+<li>Favorites
+</li>
+<li>Links
+</li>
+<li>Music
+</li>
+<li>Pictures
+</li>
+<li>Videos
+</li>
+</ul>
+
+<p>其中 <code>Documents</code> 目录与 XP 下“我的文档”功能一样。其余的算是模仿 Mac OS X 的设置。
+不过，这个模仿可以有。系统也会根据用户的区域设置自动将这些目录名翻译成相应的语言，
+在简体中文下 <code>Documents</code> 还叫“我的文档”。这些功能目录下都有一个隐藏文件
+<code>desktop.ini</code>, 用于保存相关的设置。
+</p>
+<p>
+Windows Vista 还引入了“虚拟文件夹” (Windows 7 以后改名叫“库”)，可以把一组目录
+归到某个虚拟目录下。（实际上，这原本是要在 WinFS 中引入的语义目录，但 WinFS 不了
+了之了。）“虚拟文件夹”（或“库”）可以把一些逻辑上相关的资料包含在一起，习惯了
+也挺方便。可将 Vista 的“虚拟文件夹”或 Windows 7 的“库”当成另一种功能目录。
+</p>
+<p>
+在 Windows Vista/7 下，用户主目录默认设置为 <code>C:\Users\&lt;用户名&gt;</code>, 而通常系统盘空间
+又比较小。因此，许多人就放弃使用默认的功能目录，而在其它盘下随意保存数据。即便有
+人使用这些功能目录，也需要一个个设置属性并移植到新位置，显得很麻烦。其实，可通过
+修改注册链表把用户主目录移植到其它盘下，相应的功能目录也自动移动了，此法最为方便。
+</p>
+<p>
+<b>小技巧</b>: Windows Vista/7 下修改默认的用户主目录创建位置：
+</p><ol>
+<li>以管理员用户登陆，打开注册链接编辑器 (<code>regedit.exe</code>)
+</li>
+<li>定位到 <code>ProfileList</code> 项:
+<pre class="example">
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList
+</pre>
+
+</li>
+<li>修改 <code>REG_EXPAND_SZ</code> 类型的键 <code>ProfilesDirectory</code> (默认值为 <code>C:\Users</code>) 为
+     你想要的值，比如 <code>D:\Users</code>
+</li>
+<li>创建新的帐号，比如 <code>new</code>
+</li>
+<li>退出管理员，用新帐号重新登陆，这时，系统就会自动将帐号主目录创建在
+     <code>D:\Users\new</code> 下
+</li>
+</ol>
+
+
+<p>
+如果是一个已经存在的帐号 (如 <code>ali</code>)，也可以用管理员帐号先把用户数据移植到新目录下，
+然后在注册链表 <code>ProfileList\S-1-....</code> 项中寻找类型为 <code>REG_EXPAND_SZ</code> 的键
+<code>ProfileImagePath</code> (若没有，就创建一个), 修改其值指向新的位置。但这样做有潜在的风
+险：可能有大量的程序已经把原来的用户主目录写入到了注册链表中，这样，你就需要手动
+修改许多程序配置。为防止意外，不妨把原来的目录 (如 <code>C:\Users\ali</code>) 删除，然后用命
+令 <code>mklink.exe</code> 把新位置链接到旧的目录处。
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-3" class="outline-4">
+<h4 id="sec-1-3">Linux 下的用户目录设置</h4>
+<div class="outline-text-4" id="text-1-3">
+
+
+<p>
+在 Unix/Linux 下，比较流行的重量级桌面系统有 GNOME, KDE, XFce 等 (此处先忽略一下
+那些轻量级的 awesome, fvwm 等)。起初，不同的桌面系统对用户目录都有一套自己的习惯，
+这样会导致一种乱相，就是不同的应用程序往往会在用户目录下产生一堆各式各样的目录：
+隐藏／显示的、配置文件、数据文件、临时文件、缓冲数据，等等。这样，不仅目录显得杂
+乱，而且程序之间相互通讯有时也会很麻烦。而这样的问题其实很好解决，就是大家开发程
+序都遵守同样的目录使用约定。针对这类问题就产生了 <a href="http://http://www.freedesktop.org">FreeDesktop.org</a> 组织。
+</p>
+<p>
+FreeDesktop.org 并非一个正式的标准化组织，尽管它比较松散，但一些工作内容却确实与
+标准化相关。其主要工作内容是定义一些 <a href="http://www.freedesktop.org/wiki/Desktops">X 桌面环境</a> 的 <a href="http://www.freedesktop.org/wiki/Specifications">规范</a>，包括基本目录设定、图标主
+题、缩略图、 MIME 类型、声音主题、文件管理的 D-Bus 接口、回收站配置，等等。
+FreeDesktop.org 的一些工作令各种 X 桌面之间相互协调，用户体验更佳，比如：
+</p><ul>
+<li>在 Mac OS X 的终端里，你可以用命令 <code>open</code> 让系统调用默认的程序打开一些文档，
+    在 Linux 的终端下你可以使用 <code>xdg-open</code>, 这个命令就是 FreeDesktop.org 的软件包
+    <code>xdg-utils</code> 中的工具之一。
+</li>
+<li>许多 Unix 程序默认在用户主目录下创建以 <code>.</code> 开头的隐藏文件用于保存用户配置。
+    FreeDesktop.org 定义了一个 <a href="http://www.freedesktop.org/wiki/Specifications/basedir-spec">basedir-spec</a> 规范，它规定：
+<ul>
+<li>程序应该将用户数据保存在 <code>$XDG_DATA_HOME</code> 定义的目录 (通常是
+      <code>$HOME/.local/share</code>)
+</li>
+<li>用户的配置文件应该保存在 <code>$XDG_CONFIG_HOME</code> 定义的目录 (通常是
+      <code>$HOME/.config</code>)
+</li>
+<li>程序的缓冲或临时数据应该保存在 <code>$XDG_CACHE_HOME</code> 定义的目录 (通常是
+      <code>$HOME/.cache</code>)
+</li>
+</ul>
+
+</li>
+</ul>
+
+
+<p>
+用户功能目录的设置对应的 FreeDesktop.org 工具为 <a href="http://www.freedesktop.org/wiki/Software/xdg-user-dirs">xdg-user-dirs</a>, 它会在每个用户主目
+录下创建类似于 Mac OS X 下的用户功能目录 (如 <code>Desktop</code>, <code>Documents</code>,
+<code>Templates</code>, <code>Downloads</code> 等), 并且这些目录名称会随着系统语言环境而被自动翻译，它
+们的使用与 Mac OS X 或 Windows Vista/7 下类似。
+</p>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2">原则二：要养成自己的资料管理约定</h3>
+<div class="outline-text-3" id="text-2">
+
+
+<p>
+除了系统默认的功能目录下，我的用户主目录下通常还有这些子目录：
+</p><ul>
+<li><code>Documents/</code>  &ndash; 文档
+<ul>
+<li><code>Draft/</code>  &ndash; 草稿
+</li>
+<li><code>References/</code> &ndash; 常用参考文献、手册等
+</li>
+</ul>
+
+</li>
+<li><code>Projects/</code> &ndash; 项目内容
+</li>
+<li><code>Utilities/</code> &ndash; 实用程序目录
+</li>
+<li><code>Workspace/</code> &ndash; 程序开发目录
+</li>
+<li><code>Learn/</code> &ndash; 学习资料
+</li>
+</ul>
+
+
+<p>
+在 <code>Projects/</code> 下，通常是每个项目一个子目录，包含与该项目相关的参考文献、程序、数
+据、会议报告，等等。一般目录名称用项目名称简写，比如 <code>NINT-MRPC</code> 表示与 NINT 单位
+合作的 <code>MRPC</code> 项目。常用的子目录有：
+</p><ul>
+<li><code>Attic/</code> &ndash; 过期的或归档的项目资料，当一个项目完结时会移到这儿来
+</li>
+<li><code>Meetings/</code> &ndash; 定期召开的会议资料
+</li>
+<li><code>EDU-ThesisDefence/</code> &ndash; 研究生教育中论文答辩相关的资料
+</li>
+<li><code>Incubation/</code> &ndash; 待孵化的项目
+</li>
+<li><code>Misc/</code> &ndash; 未归类或临时的项目资料
+</li>
+</ul>
+
+
+<p>
+在实用程序目录 <code>Utilities</code> 下保存一些无须安装到系统路径下的程序，通常是一些自己编
+写的小程序，或者偶尔运行一次的程序，也包括一些测试程序和专业计算程序。这个目录采
+用 Unix 的目录惯例，包含有 <code>bin</code>, <code>lib</code>, <code>share</code> 等子目录。
+</p>
+<p>
+由于我喜欢收集程序源代码，并且偶尔写一点小程序，就全放置在 <code>Workspace</code> 下了。这个
+目录采用层次结构，大致如下：
+</p><ul>
+<li><code>build</code> &ndash; 用于编译他人的代码
+</li>
+<li><code>devel</code> &ndash; 一些编程语言类的工具，如 Lua, Python 的小工具
+</li>
+<li><code>doc</code> &ndash; 文档，如 <code>progit</code> 的本地 git 镜像
+</li>
+<li><code>test</code> &ndash; 测试代码
+</li>
+</ul>
+
+<p>在 <code>Workspace</code> 下绝大部分目录都采用了 Git 或者 Mercurial (hg) 版本控制。由于收集
+的源代码比较多，挨个进行同步时会很麻烦，我编写了一个Python 脚本 <a href="https://github.com/exaos/el-scripts/blob/master/repos/repos-up.py">repos-up.py</a> 来管
+理 (还有一个 Lua 版本 <a href="https://github.com/exaos/el-scripts/blob/master/repos/repos-up.lua">repos-up.lua</a> 是我学习 Lua 时的练习题). 如 <code>doc/</code> 下有许多文
+档源码，把需要同步的源码目录填写在配置文件=repos.yaml= 中，当需要与互联网上的源同
+步时，一个命令即可：
+</p><pre class="example">
+repos-up.py ~/Workspace/doc/
+</pre>
+
+<p>其中 <code>repos.yaml</code> 按 <a href="http://yaml.org/">YAML</a> 的格式，比如：
+</p>
+
+
+<pre class="example"># mode: yaml; coding: utf-8
+
+doc: |
+  这是文档区，本文件的说明。
+  这儿列出的是一些文档的仓库。
+
+git:
+  - gitbook
+  - goldify
+  - progit
+  - tex/luaTeX-ja/luatexja
+  - debian-handbook
+  - cll
+
+git_svn:
+  - tex/ctex-kit
+  - tex/pithesis
+
+hg:
+  - hgbook
+  - python-peps
+</pre>
+
+
+<p>
+目录 <code>Learn</code> 下保存一些学习资料，包括语言 (如英文听力)、专业图书等，不辍述。
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3">小结</h3>
+<div class="outline-text-3" id="text-3">
+
+
+<p>
+在“标签式文件系统”（或“语义文件系统”）等相关的工具还不成熟时，在现有的层次结
+构文件系统上养成良好的目录使用习惯，会对你的工作带来许多方便。
+</p></div>
+</div>
+
+  </div>
+  
+  <footer class="well article-footer">
+    发布于 <time datetime="2013-02-06T01:41:00Z"> 2013-02-06 01:41:00</time>.
+    <nav class="tag-cloud">
+      <h1><i class="icon-tags"></i> 相关标签</h1>
+      <ul>
+	<li class="label label-inverse small"><a href="../../../tags/8a2b56e293ee788f1057ad236e06559e.html">计算机</a></li>
+      </ul>
+    </nav>
+  </footer>
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'exaos-github'; // required: replace example with your forum shortname
+
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+      </div>
+      <div id="footer">
+	<div class="container">
+	  <div class="row">
+	    <section class="span3">
+	      <h1>关于</h1>
+	      <p>
+心蛛的个人站点，记录一点私人的收藏或点滴。
+</p>
+	    </section>
+	    <nav id="links" class="span3">
+	      <h1>链接</h1>
+	      <ul>
+		<ul>
+<li><a href="../../../index.html"><i>icon-home icon-white</i> 首页</a>
+
+</li>
+<li><a href="Lisp error in nil: (error ob:post-htmlfile accessing a non-ob:post)"><i>icon-file icon-white</i> 博文</a>
+
+</li>
+<li><a href="../../../tags/index.html"><i>icon-tags icon-white</i> 标签</a>
+
+</li>
+<li><a href="../../../archives.html"><i>icon-list icon-white</i> 归档</a>
+
+</li>
+<li><a href="../../../index.xml"><i>icon-rss icon-white</i> RSS订阅</a>
+</li>
+</ul>
+
+
+	      </ul>
+	    </nav>
+	    <nav id="archives" class="span3">
+	      <h1><a href="../../../archives.html">归档</a></h1>
+	      <ul>
+		<li><a href="../../../blog/2013/02/06_my-archiving.html">用户主目录的使用及我的文档管理习惯</a></li> <li><a href="../../../blog/2013/02/04_tagfs-summary.html">标签式文件系统，构想与实现</a></li> <li><a href="../../../blog/2013/02/03_tips-for-new-programming-language.html">[译] 怎样学习一门新的编程语言？</a></li> <li><a href="../../../blog/2013/01/28_recovery-win7-dell-n4110.html">恢复一次严重的系统故障 (Windows 7)</a></li> <li><a href="../../../blog/2013/01/11_work-under-win7.html">在 Windows 7 下工作</a></li> <li><a href="../../../blog/2012/12/23_geant4-mswin.html">Geant4 在 Windows 下的安装与使用</a></li> <li><a href="../../../blog/2012/12/23_coin3d-mswin.html">在 Windows 下使用 Coin3D</a></li> <li><a href="../../../blog/2012/12/23_geant4-cmake.html">使用 CMake 安装 Geant4 (>=9.5)</a></li> <li><a href="../../../blog/2012/12/22_geant4-debian.html">Geant4 在 Debian 下的安装与使用</a></li> <li><a href="../../../blog/2012/09/12_anti-TCM-medicine.html">“中药过敏”与医生的尴尬</a></li> 
+	      </ul>
+	    </nav>
+	    <nav class="tags span3">
+	      <h1><a href="../../../tags/index.html">标签</a></h1>
+	      <ul>
+  <li style="font-size: 80.00%;"><a href="../../../tags/emacs.html">Emacs</a></li> <li style="font-size: 132.50%;"><a href="../../../tags/mswin.html">MSWIN</a></li> <li style="font-size: 115.00%;"><a href="../../../tags/ocd.html">OCD</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/cmake.html">cmake</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/debian.html">debian</a></li> <li style="font-size: 167.50%;"><a href="../../../tags/devel.html">devel</a></li> <li style="font-size: 115.00%;"><a href="../../../tags/geant4.html">geant4</a></li> <li style="font-size: 115.00%;"><a href="../../../tags/orgmode.html">orgmode</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/fbc026c9fb552701f8db2b0df2aa9114.html">健康</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/3ff3c3e26a68112c11c3e80f2a26896e.html">开发</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/8640cb1581c2ae2de5a1462405b2943b.html">教育</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/ca746b1ff10193a3ce20878dec04a733.html">文字</a></li> <li style="font-size: 97.50%;"><a href="../../../tags/baa5a3ccb5b09a889de80c125e7ddea9.html">文学编程</a></li> <li style="font-size: 97.50%;"><a href="../../../tags/dc723a61b3f6f05dfbe431cd1c3aee7b.html">模拟</a></li> <li style="font-size: 115.00%;"><a href="../../../tags/920632dabac77e0e51002a969396ea04.html">物理</a></li> <li style="font-size: 167.50%;"><a href="../../../tags/ce4ba240fbd95d4863684f78453c8877.html">社会</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/7ddbe15c845fa27a2bab496183042ca6.html">网络</a></li> <li style="font-size: 220.00%;"><a href="../../../tags/8a2b56e293ee788f1057ad236e06559e.html">计算机</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/cd2589e0ae26e3e82ecf567d1d6045c7.html">译文</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/295bb704f5205801d57d672780b94117.html">语言</a></li> 
+</ul>
+
+	    </nav>
+	  </div>
+	</div>
+	<div class="copyright" style="text-align: center;">
+	  <p>
+版权所有 ©2012 <a href="mailto:exaos.lee(at)gmail.com">心蛛</a>. <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a>
+</p>
+	  <p>功能取自 <a href="https://github.com/renard/o-blog">o-blog</a>.</p>
+	</div>
+      </div>
+</body>
+</html>
+
