@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="300"
+   height="240"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.47 r22583"
+   sodipodi:docname="knowledge-spiral.svg"
+   inkscape:export-filename="/home/exaos/Pictures/Misc/knowledge-spiral.png"
+   inkscape:export-xdpi="180"
+   inkscape:export-ydpi="180">
+  <defs
+     id="defs4">
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend"
+       style="overflow:visible">
+      <path
+         id="path3686"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       id="perspective10" />
+    <inkscape:perspective
+       id="perspective3611"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3649"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective4335"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective4335-6"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective4375"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective4420"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective4445"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective4445-0"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective4900"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-0"
+       style="overflow:visible">
+      <path
+         id="path3686-2"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:perspective
+       id="perspective4900-3"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-2"
+       style="overflow:visible">
+      <path
+         id="path3686-6"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:perspective
+       id="perspective4900-0"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-9"
+       style="overflow:visible">
+      <path
+         id="path3686-27"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:perspective
+       id="perspective4958"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective4958-9"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective4994"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective4994-0"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective5030"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective5055"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective5080"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.0366667"
+     inkscape:cx="90.3437"
+     inkscape:cy="100"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     width="47px"
+     inkscape:snap-bbox="true"
+     inkscape:snap-global="true"
+     inkscape:window-width="1041"
+     inkscape:window-height="907"
+     inkscape:window-x="85"
+     inkscape:window-y="51"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-812.3622)">
+    <g
+       id="g4319"
+       transform="translate(51.421662,-4.4913763)">
+      <path
+         d="m 97.52044,887.94942 0,71.41116 M 50.168517,923.655 l 94.703853,0"
+         style="fill:none;stroke:#000000;stroke-width:0.421;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         id="path3639-6" />
+      <path
+         id="path3678"
+         d="m 93.247284,923.44403 c -1.059466,-1.93075 0.03366,-4.55022 1.925111,-5.962 4.447919,-3.31986 11.451375,-1.80849 14.839315,1.81935 4.97193,5.32401 2.255,12.90165 -4.25824,16.46687 -8.681129,4.75187 -20.499101,1.84564 -25.907877,-5.06406 -6.806393,-8.69514 -2.318025,-20.24496 8.272749,-25.41296 12.826848,-6.25916 29.604008,-1.90429 36.976428,8.30875 8.68813,12.03572 2.39634,27.6132 -12.28724,34.35908 -16.952784,7.78838 -38.727667,1.97056 -48.04499,-11.55346 -7.012051,-10.17795 -5.823819,-22.22365 1.235504,-31.61368"
+         style="fill:none;stroke:#000000;stroke-width:0.54680824;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1Lend)" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:10px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       x="147.21701"
+       y="861.07037"
+       id="text4323"><tspan
+         sodipodi:role="line"
+         id="tspan4325"
+         x="147.21701"
+         y="861.07037"
+         style="text-align:center;text-anchor:middle;font-family:'Adobe 黑体 Std';-inkscape-font-specification:'Adobe 黑体 Std'">对话</tspan><tspan
+         sodipodi:role="line"
+         x="147.21701"
+         y="873.57037"
+         style="text-align:center;text-anchor:middle;font-family:'Adobe 黑体 Std';-inkscape-font-specification:'Adobe 黑体 Std'"
+         id="tspan2988">Dialogue</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       x="152.46451"
+       y="974.57904"
+       id="text4323-1"><tspan
+         sodipodi:role="line"
+         id="tspan4325-8"
+         x="152.46451"
+         y="974.57904"
+         style="text-align:center;text-anchor:middle;font-family:'Adobe 黑体 Std';-inkscape-font-specification:'Adobe 黑体 Std'">通过行动的学习</tspan><tspan
+         sodipodi:role="line"
+         x="152.46451"
+         y="987.07904"
+         style="text-align:center;text-anchor:middle;font-family:'Adobe 黑体 Std';-inkscape-font-specification:'Adobe 黑体 Std'"
+         id="tspan2990">Learning by</tspan><tspan
+         sodipodi:role="line"
+         x="152.46451"
+         y="999.57904"
+         style="text-align:center;text-anchor:middle;font-family:'Adobe 黑体 Std';-inkscape-font-specification:'Adobe 黑体 Std'"
+         id="tspan2992">Doing</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       x="217.0352"
+       y="890.9386"
+       id="text4323-8"><tspan
+         sodipodi:role="line"
+         id="tspan4325-5"
+         x="217.0352"
+         y="890.9386"
+         style="text-align:center;text-anchor:middle;font-family:'Adobe 黑体 Std';-inkscape-font-specification:'Adobe 黑体 Std'">链接</tspan><tspan
+         sodipodi:role="line"
+         x="217.0352"
+         y="903.4386"
+         style="text-align:center;text-anchor:middle;font-family:'Adobe 黑体 Std';-inkscape-font-specification:'Adobe 黑体 Std'"
+         id="tspan4363">外部</tspan><tspan
+         sodipodi:role="line"
+         x="217.0352"
+         y="915.9386"
+         style="text-align:center;text-anchor:middle;font-family:'Adobe 黑体 Std';-inkscape-font-specification:'Adobe 黑体 Std'"
+         id="tspan4365">的知识</tspan><tspan
+         id="tspan2949"
+         sodipodi:role="line"
+         x="217.0352"
+         y="928.4386"
+         style="text-align:center;text-anchor:middle;font-family:'Adobe 黑体 Std';-inkscape-font-specification:'Adobe 黑体 Std'">Linking</tspan><tspan
+         id="tspan2951"
+         sodipodi:role="line"
+         x="217.0352"
+         y="940.9386"
+         style="text-align:center;text-anchor:middle;font-family:'Adobe 黑体 Std';-inkscape-font-specification:'Adobe 黑体 Std'">Explicit</tspan><tspan
+         id="tspan2953"
+         sodipodi:role="line"
+         x="217.0352"
+         y="953.4386"
+         style="text-align:center;text-anchor:middle;font-family:'Adobe 黑体 Std';-inkscape-font-specification:'Adobe 黑体 Std'">Knowledge</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       x="82.104065"
+       y="903.40863"
+       id="text4323-8-8"><tspan
+         sodipodi:role="line"
+         x="82.104065"
+         y="903.40863"
+         style="text-align:center;text-anchor:middle;font-family:'Adobe 黑体 Std';-inkscape-font-specification:'Adobe 黑体 Std'"
+         id="tspan4365-5">领域</tspan><tspan
+         sodipodi:role="line"
+         x="82.104065"
+         y="915.90863"
+         style="text-align:center;text-anchor:middle;font-family:'Adobe 黑体 Std';-inkscape-font-specification:'Adobe 黑体 Std'"
+         id="tspan4404">的组建</tspan><tspan
+         id="tspan2945"
+         sodipodi:role="line"
+         x="82.104065"
+         y="928.40863"
+         style="text-align:center;text-anchor:middle;font-family:'Adobe 黑体 Std';-inkscape-font-specification:'Adobe 黑体 Std'">Field</tspan><tspan
+         id="tspan2947"
+         sodipodi:role="line"
+         x="82.104065"
+         y="940.90863"
+         style="text-align:center;text-anchor:middle;font-family:'Adobe 黑体 Std';-inkscape-font-specification:'Adobe 黑体 Std'">Building</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:'Adobe 明體 Std';-inkscape-font-specification:'Adobe 明體 Std'"
+       x="82.414062"
+       y="861.18036"
+       id="text4408"><tspan
+         sodipodi:role="line"
+         id="tspan4410"
+         x="82.414062"
+         y="861.18036"
+         style="font-family:'Adobe 仿宋 Std';-inkscape-font-specification:'Adobe 仿宋 Std'">社交化</tspan><tspan
+         id="tspan2941"
+         sodipodi:role="line"
+         x="82.414062"
+         y="873.68036"
+         style="font-style:italic;font-family:'Adobe 仿宋 Std';-inkscape-font-specification:'Adobe 仿宋 Std Italic'">Socialization</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:'Adobe 明體 Std';-inkscape-font-specification:'Adobe 明體 Std'"
+       x="217.4852"
+       y="861.25037"
+       id="text4408-8"><tspan
+         sodipodi:role="line"
+         id="tspan4410-4"
+         x="217.4852"
+         y="861.25037"
+         style="font-family:'Adobe 仿宋 Std';-inkscape-font-specification:'Adobe 仿宋 Std'">表面化</tspan><tspan
+         id="tspan2943"
+         sodipodi:role="line"
+         x="217.4852"
+         y="873.75037"
+         style="font-style:italic;font-family:'Adobe 仿宋 Std';-inkscape-font-specification:'Adobe 仿宋 Std Italic'">Externalization</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:'Adobe 明體 Std';-inkscape-font-specification:'Adobe 明體 Std'"
+       x="217.3252"
+       y="974.72906"
+       id="text4408-8-4"><tspan
+         sodipodi:role="line"
+         id="tspan4410-4-5"
+         x="217.3252"
+         y="974.72906"
+         style="font-family:'Adobe 仿宋 Std';-inkscape-font-specification:'Adobe 仿宋 Std'">组合转化</tspan><tspan
+         sodipodi:role="line"
+         x="217.3252"
+         y="987.22906"
+         style="font-style:italic;font-family:'Adobe 仿宋 Std';-inkscape-font-specification:'Adobe 仿宋 Std Italic'"
+         id="tspan2986">Combination</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:'Adobe 明體 Std';-inkscape-font-specification:'Adobe 明體 Std'"
+       x="81.829063"
+       y="974.84906"
+       id="text4408-8-7"><tspan
+         sodipodi:role="line"
+         id="tspan4410-4-6"
+         x="81.829063"
+         y="974.84906"
+         style="font-family:'Adobe 仿宋 Std';-inkscape-font-specification:'Adobe 仿宋 Std'">内在转化</tspan><tspan
+         sodipodi:role="line"
+         x="81.829063"
+         y="987.34906"
+         style="font-style:italic;font-family:'Adobe 仿宋 Std';-inkscape-font-specification:'Adobe 仿宋 Std Italic'"
+         id="tspan2984">Internalization</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:'Adobe 明體 Std';-inkscape-font-specification:'Adobe 明體 Std'"
+       x="70.435356"
+       y="953.23737"
+       id="text4473"><tspan
+         sodipodi:role="line"
+         id="tspan4475"
+         x="70.435356"
+         y="953.23737" /></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.30000001;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1Lend)"
+       d="m 20.860395,838.0372 -0.0586,-14.59061 14.066495,-8.2e-4"
+       id="path4522"
+       sodipodi:nodetypes="ccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.30000001;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1Lend)"
+       d="m 262.17075,822.3046 14.5906,-0.0586 8.1e-4,14.0665"
+       id="path4522-4"
+       sodipodi:nodetypes="ccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.30000001;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1Lend)"
+       d="m 36.592973,1021.4299 -14.59061,0.059 -8.1e-4,-14.0665"
+       id="path4522-3"
+       sodipodi:nodetypes="ccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.30000001;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1Lend)"
+       d="m 277.90292,1005.6976 0.059,14.5907 -14.0665,8e-4"
+       id="path4522-5"
+       sodipodi:nodetypes="ccc" />
+    <text
+       xml:space="preserve"
+       style="font-size:10px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:'Adobe 明體 Std';-inkscape-font-specification:'Adobe 明體 Std'"
+       x="101.18197"
+       y="830.58234"
+       id="text4946"><tspan
+         sodipodi:role="line"
+         x="101.18197"
+         y="830.58234"
+         id="tspan2937"> 隐性的 (Tacit)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:'Adobe 明體 Std';-inkscape-font-specification:'Adobe 明體 Std'"
+       x="197.65604"
+       y="830.58234"
+       id="text4946-5"><tspan
+         sodipodi:role="line"
+         id="tspan4948-9"
+         x="197.65604"
+         y="830.58234">隐性的 (Tacit)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:'Adobe 明體 Std';-inkscape-font-specification:'Adobe 明體 Std'"
+       x="100.22762"
+       y="1020.6788"
+       id="text4946-0"><tspan
+         sodipodi:role="line"
+         id="tspan4948-3"
+         x="100.22762"
+         y="1020.6788">显性的 (Explicit)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:'Adobe 明體 Std';-inkscape-font-specification:'Adobe 明體 Std'"
+       x="200.29218"
+       y="1020.6788"
+       id="text4946-0-4"><tspan
+         sodipodi:role="line"
+         id="tspan4948-3-5"
+         x="200.29218"
+         y="1020.6788">显性的 (Explicit)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:'Adobe 明體 Std';-inkscape-font-specification:'Adobe 明體 Std'"
+       x="881.14929"
+       y="-269.8219"
+       id="text4946-0-3"
+       transform="matrix(0,1,-1,0,0,0)"><tspan
+         sodipodi:role="line"
+         id="tspan4948-3-8"
+         x="881.14929"
+         y="-269.8219"
+         style="font-family:'Adobe 黑体 Std';-inkscape-font-specification:'Adobe 黑体 Std'">显性的 (Explicit)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:'Adobe 明體 Std';-inkscape-font-specification:'Adobe 明體 Std'"
+       x="960.97345"
+       y="-269.8219"
+       id="text4946-0-3-4"
+       transform="matrix(0,1,-1,0,0,0)"><tspan
+         sodipodi:role="line"
+         id="tspan4948-3-8-0"
+         x="960.97345"
+         y="-269.8219"
+         style="font-family:'Adobe 黑体 Std';-inkscape-font-specification:'Adobe 黑体 Std'">显性的 (Explicit)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:'Adobe 明體 Std';-inkscape-font-specification:'Adobe 明體 Std'"
+       x="-960.79688"
+       y="29.101795"
+       id="text4946-4"
+       transform="matrix(0,-1,1,0,0,0)"><tspan
+         sodipodi:role="line"
+         id="tspan4948-36"
+         x="-960.79688"
+         y="29.101795"
+         style="font-family:'Adobe 黑体 Std';-inkscape-font-specification:'Adobe 黑体 Std'">隐性的 (Tacit)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:'Adobe 明體 Std';-inkscape-font-specification:'Adobe 明體 Std'"
+       x="-884.76007"
+       y="29.101795"
+       id="text4946-4-5"
+       transform="matrix(0,-1,1,0,0,0)"><tspan
+         sodipodi:role="line"
+         id="tspan4948-36-7"
+         x="-884.76007"
+         y="29.101795"
+         style="font-family:'Adobe 黑体 Std';-inkscape-font-specification:'Adobe 黑体 Std'">隐性的 (Tacit)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:9px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       x="200.43535"
+       y="1043.1052"
+       id="text5148"><tspan
+         sodipodi:role="line"
+         id="tspan5150"
+         x="200.43535"
+         y="1043.1052"
+         style="font-size:6px;font-family:Times New Roman;-inkscape-font-specification:Times New Roman">In Nonaka and Takeuchi, The Knowledge-Creating Company 1995, page71</tspan></text>
+  </g>
+</svg>
