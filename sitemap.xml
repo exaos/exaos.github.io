@@ -2,56 +2,56 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
     <loc>http://exaos.github.com//</loc>
-    <lastmod>2013-02-22T16:11:17Z</lastmod>
+    <lastmod>2013-02-27T15:25:10Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   
   <url>
     <loc>http://exaos.github.com//index.html</loc>
-    <lastmod>2013-02-22T16:11:00Z</lastmod>
+    <lastmod>2013-02-27T15:24:00Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
 <url>
     <loc>http://exaos.github.com//attic/index.html</loc>
-    <lastmod>2013-02-22T16:11:00Z</lastmod>
+    <lastmod>2013-02-27T15:24:00Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
 <url>
     <loc>http://exaos.github.com//attic/exaos.html</loc>
-    <lastmod>2013-02-22T16:11:00Z</lastmod>
+    <lastmod>2013-02-27T15:24:00Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
 <url>
     <loc>http://exaos.github.com//notes/index.html</loc>
-    <lastmod>2013-02-22T16:11:00Z</lastmod>
+    <lastmod>2013-02-27T15:24:00Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
 <url>
     <loc>http://exaos.github.com//debug.html</loc>
-    <lastmod>2013-02-22T16:11:00Z</lastmod>
+    <lastmod>2013-02-27T15:24:00Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
 <url>
     <loc>http://exaos.github.com//changelog.html</loc>
-    <lastmod>2013-02-22T16:11:00Z</lastmod>
+    <lastmod>2013-02-27T15:24:00Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
 <url>
     <loc>http://exaos.github.com//blog/2013/02/22_wisdom-in-information-era/index.html</loc>
-    <lastmod>2013-02-22T16:11:00Z</lastmod>
+    <lastmod>2013-02-27T15:25:00Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -59,6 +59,12 @@
 
 
   <url>
+    <loc>http://exaos.github.com//blog/2013/02/27_wisdom-be-with-you.html</loc>
+    <lastmod>2013-02-27T15:13:00Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+<url>
     <loc>http://exaos.github.com//blog/2013/02/22_wisdom-in-information-era.html</loc>
     <lastmod>2013-02-22T15:12:00Z</lastmod>
     <changefreq>weekly</changefreq>
