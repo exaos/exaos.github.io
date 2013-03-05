@@ -44,13 +44,13 @@
 </li>
 <li><a href="#"><i>icon-file icon-white</i> 近期博文</a>
 <ul>
+<li><a href="./blog/2013/03/05_fix-bad-ext4.html">修复损坏的 ext4 大分区数据</a>
+</li>
 <li><a href="./blog/2013/03/03_fear-and-death.html">与妻书：《关于生、死与恐惧》</a>
 </li>
 <li><a href="./blog/2013/02/27_wisdom-be-with-you.html">“与智慧同在！”</a>
 </li>
 <li><a href="./blog/2013/02/22_wisdom-in-information-era.html">信息时代的智慧——兼谈科普</a>
-</li>
-<li><a href="./blog/2013/02/15_communicate-effectively.html">[译] 如何高效地交流？</a>
 
 </li>
 </ul>
@@ -156,12 +156,218 @@
   <h1>博文</h1>
   <div class="debug post">
   <div class="debug post">
+  <h2>修复损坏的 ext4 大分区数据</h2>
+  <table>
+    <caption>导出博文信息 修复损坏的 ext4 大分区数据</caption>
+    <thead><tr><th>属性</th><th>值</th></tr></thead>
+    <tbody>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>0</pre></td></tr>
+      <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#20462;&#22797;&#25439;&#22351;&#30340; ext4 &#22823;&#20998;&#21306;&#25968;&#25454;"</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20789 42376)</pre></td></tr>
+      <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
+      <tr><td class="property"><code>month</code></td><td class="value"><pre>3</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>5</pre></td></tr>
+      <tr><td class="property"><code>category</code></td><td class="value"><pre>[cl-struct-ob:category "blog" "blog"]</pre></td></tr>
+      <tr><td class="property"><code>tags</code></td><td class="value"><pre>([cl-struct-ob:tags "Computer" "computer" nil nil])</pre></td></tr>
+      <tr><td class="property"><code>template</code></td><td class="value"><pre>"blog_post.html"</pre></td></tr>
+      <tr><td class="property"><code>filepath</code></td><td class="value"><pre>"blog/2013/03"</pre></td></tr>
+      <tr><td class="property"><code>filename</code></td><td class="value"><pre>"fix-bad-ext4"</pre></td></tr>
+      <tr><td class="property"><code>htmlfile</code></td><td class="value"><pre>"blog/2013/03/05_fix-bad-ext4.html"</pre></td></tr>
+      <tr><td class="property"><code>path-to-root</code></td><td class="value"><pre>"../../.."</pre></td></tr>
+      <tr><td class="property"><code>sitemap</code></td><td class="value"><pre>nil</pre></td></tr>
+      <tr><td class="property"><code>content</code></td><td class="value"><pre>"#+OPTIONS: H:7 num:nil  toc:nil d:nil todo:nil &lt;:nil pri:nil tags:nil
+
+
+&#26032;&#20080;&#20102;&#19968;&#22359; 3TB &#30340;&#30828;&#30424;&#21644;&#19968;&#20010;&#20004;&#24231;&#30340;&#30828;&#30424;&#24213;&#24231;&#65292;&#24456;&#24320;&#24515;&#12290;&#30001;&#20110;&#25105;&#30340;&#20027;&#31995;&#32479;&#26159; Linux, &#25152;&#20197;&#23601;
+&#25972;&#22359;&#30424;&#26684;&#24335;&#21270;&#25104;&#20102;&#19968;&#20010; ext4 &#20998;&#21306;&#65292;&#21487;&#29992;&#31354;&#38388;&#32422; 2.7 TiB. &#36825;&#26679;&#30340;&#20998;&#21306;&#22312; Windows &#31995;&#32479;&#19979;&#21487;
+&#36890;&#36807;&#24037;&#20855; ext2fsd &#26469;&#35775;&#38382;&#12290;&#26379;&#21451;&#35828;&#26377;&#24456;&#22810;&#39640;&#28165;&#30005;&#24433;&#31561;&#36164;&#26009;&#21487;&#20197;&#20998;&#20139;&#65292;&#23601;&#25226;&#30828;&#30424;&#20511;&#32473;&#20182;&#65292;&#32467;&#26524;
+&#24754;&#21095;&#20102;&#65306;&#20182;&#35828;&#22312;&#25335;&#36125;&#25991;&#20214;&#21040; 2TB &#24038;&#21491;&#26102;&#65292;&#30828;&#30424;&#25346;&#20102;&#65292;&#35782;&#21035;&#19981;&#20102;&#20102;&#12290;&#27809;&#21150;&#27861;&#65292;&#25105;&#21482;&#22909;&#33258;&#24049;&#35797;&#30528;
+&#20462;&#22797;&#19968;&#19979;&#12290;&#22914;&#21518;&#26159;&#25968;&#25454;&#24674;&#22797;&#36807;&#31243;&#30340;&#25688;&#35201;&#12290;
+
+&#36890;&#36807; =dmesg= &#24471;&#21040;&#31995;&#32479;&#25552;&#31034;&#65292; GPT &#20998;&#21306;&#34920;&#34987;&#30772;&#22351;&#12290;&#20351;&#29992; GNU Parted &#24037;&#20855;&#24674;&#22797;&#19968;&#19979; GPT &#20998;
+&#21306;&#34920;&#65292;&#38382;&#39064;&#35299;&#20915;&#12290;
+
+&#27492;&#26102;&#20351;&#29992; =gdisk= &#24037;&#20855;&#26597;&#30475;&#30828;&#30424;&#20998;&#21306;&#65292;&#26174;&#31034;&#20998;&#21306;&#20026; /Microsoft basic data/ &#26684;&#24335;&#65292;&#32780;&#25105;&#21407;
+&#26469;&#30340;&#20998;&#21306;&#20026; /ext4/. &#29992; =gdisk= &#30340;&#21629;&#20196; =t= &#26356;&#25442;&#20998;&#21306;&#31867;&#22411;&#20026; =0x8300=, &#21363; /Linux
+filesystem/. &#20445;&#23384;&#36864;&#20986;&#65292;&#38382;&#39064;&#35299;&#20915;&#12290;
+
+&#27492;&#26102;&#26080;&#27861;&#21152;&#36733;&#20998;&#21306;&#65292;&#20986;&#29616;&#30340;&#38169;&#35823;&#22914;&#19979;&#65306;
+#+BEGIN_EXAMPLE
+e2fsck: &#36229;&#32423;&#22359;&#26080;&#25928;, trying backup blocks...
+e2fsck: Bad magic number in super-block &#24403;&#23581;&#35797;&#25171;&#24320; /dev/sdh1 &#26102;
+
+The &#36229;&#32423;&#22359; could not be read or does not describe a correct ext2
+&#25991;&#20214;&#31995;&#32479;.  If the &#35774;&#22791; is valid and it really contains an ext2
+&#25991;&#20214;&#31995;&#32479; (and not swap or ufs or something else), then the &#36229;&#32423;&#22359;
+is corrupt, and you might try running e2fsck with an alternate &#36229;&#32423;&#22359;:
+    e2fsck -b 8193 &lt;&#35774;&#22791;&gt;
+#+END_EXAMPLE
+
+&#27492;&#26102;&#29992; =dumpe2fs= &#24037;&#20855;&#26597;&#30475;&#20998;&#21306;&#20449;&#24687;&#65292;&#24471;&#21040;&#22914;&#19979;&#30340;&#38169;&#35823;&#20449;&#24687;&#65306;
+#+BEGIN_EXAMPLE
+dumpe2fs 1.41.12 (17-May-2010)
+dumpe2fs: Bad magic number in super-block &#24403;&#23581;&#35797;&#25171;&#24320; /dev/sdh1 &#26102;
+&#25214;&#19981;&#21040;&#26377;&#25928;&#30340;&#25991;&#20214;&#31995;&#32479;&#36229;&#32423;&#22359;.
+#+END_EXAMPLE
+
+&#20351;&#29992; =testdisk= &#26816;&#27979;&#30828;&#30424;&#65292;&#25214;&#21040;&#20998;&#21306;&#30340; superblock &#20301;&#32622;&#22914;&#19979;&#65306;
+  - 819200, 884736, 1605632, 2654208, 4096000, 7962624, 11239424, 20480000,
+    23887872, 71663616
+
+&#23581;&#35797;&#20351;&#29992;&#22791;&#20221;&#30340;&#36229;&#32423;&#22359;&#21152;&#36733;&#30828;&#30424;&#20998;&#21306;&#65306;
+#+BEGIN_EXAMPLE
+-&gt; % sudo mount -t ext4 -r -o sb=819200 /dev/sdh1 /mnt
+mount: wrong fs type, bad option, bad superblock on /dev/sdh1,
+       missing codepage or helper program, or other error
+       In some cases useful info is found in syslog - try
+       dmesg | tail  or so
+#+END_EXAMPLE
+
+&#19981;&#31649;&#36825;&#20123;&#65292;&#30452;&#25509;&#23581;&#35797;&#20174; =819200= &#36229;&#32423;&#22359;&#30340;&#20301;&#32622;&#24674;&#22797;&#25991;&#20214;&#31995;&#32479;&#65306;
+#+BEGIN_EXAMPLE
+root@memes:~# fsck.ext4 -b 819200 -p -v /dev/sdh1 
+EADEPOT was not cleanly unmounted, &#24378;&#21046;&#26816;&#26597;.
+EADEPOT: Inode 1598038, i_&#22359;s is 7830912, &#24212;&#20026; 7822912.  &#24050;&#22788;&#29702;.
+... ...
+#+END_EXAMPLE
+
+&#20998;&#21306;&#25968;&#25454;&#24635;&#31639;&#26159;&#27491;&#24120;&#25214;&#22238;&#20102;&#65292;&#20002;&#22833;&#30340;&#20869;&#23481;&#19981;&#22810;&#12290;
+
+&#23567;&#32467;&#65306;
+  - &#22312;&#30828;&#30424;&#20986;&#29616;&#25925;&#38556;&#26102;&#65292;&#27809;&#24819;&#28165;&#26970;&#21069;&#19981;&#35201;&#30528;&#24613;&#30528;&#21160;&#25163;&#20462;&#22797;&#12290;
+  - &#20998;&#26512;&#25925;&#38556;&#65292;&#39318;&#20808;&#25490;&#38500;&#30828;&#20214;&#25925;&#38556;&#65292;&#20854;&#21518;&#25490;&#26597;&#26159;&#21542;&#20998;&#21306;&#34920;&#26377;&#35823;&#12290;&#26412;&#27425;&#20462;&#22797;&#25968;&#25454;&#32463;&#21382;&#20013;&#28041;&#21450;&#21040;
+    &#30340;&#20998;&#21306;&#34920;&#20351;&#29992;&#30340;&#26159; GPT &#26684;&#24335;&#65292;&#22240;&#27492;&#65292;&#32477;&#19981;&#21487;&#25353;&#22788;&#29702; MBR &#20998;&#21306;&#26684;&#24335;&#30340;&#26041;&#27861;&#23545;&#24453;&#12290;&#29616;&#22312;,
+    2TB &#20197;&#19978;&#30340;&#30828;&#30424;&#36234;&#26469;&#36234;&#26222;&#36941;&#65292;&#32769;&#26087;&#30340; MBR &#20998;&#21306;&#26684;&#24335;&#36880;&#28176;&#34987;&#28120;&#27760;&#65292;&#20320;&#30340;&#24037;&#20855;&#24212;&#35813;&#36319;&#19978;&#26102;&#20195;&#12290;
+    &#22312; Linux &#19979;&#24212;&#35813;&#23398;&#20250;&#20351;&#29992; =gdisk=, =parted= &#31561;&#36739;&#26032;&#30340;&#24037;&#20855;&#12290; =fdisk= &#31561;&#24456;&#23454;&#29992;&#65292;&#20294;
+    &#21482;&#36866;&#29992;&#20110; MBR &#26684;&#24335;&#30340;&#20998;&#21306;&#34920;&#12290;
+  - &#20462;&#22797;&#30828;&#30424;&#25968;&#25454;&#26102;&#65292;&#39318;&#20808;&#35201;&#23558;&#20998;&#21306;&#26684;&#24335;&#24674;&#22797;&#21040;&#27491;&#30830;&#30340;&#37197;&#32622;&#19978;&#12290;&#27604;&#22914; EXT3, NTFS, &#31561;&#12290;
+  - &#20462;&#22797;&#25968;&#25454;&#26102;&#65292;&#19981;&#35201;&#30528;&#24613;&#30528;&#30452;&#25509;&#20462;&#22797;&#65292;&#19981;&#22952;&#20808;&#20351;&#29992;&#21442;&#25968; =-n= &#20043;&#31867;&#30340;&#20808;&#30475;&#30475;&#20855;&#20307;&#24773;&#20917;&#65292;&#22914;
+    &#26524;&#27809;&#20160;&#20040;&#38382;&#39064;&#65292;&#20877;&#30452;&#25509;&#20462;&#22797;&#12290;&#19982; ext2/3/4 &#30456;&#20851;&#30340;&#24037;&#20855;&#37117;&#22312;&#36719;&#20214;&#21253; *e2progs* &#20013;&#65292;&#21253;&#25324;
+    =e2fsck=, =dumpe2fs=, &#31561;&#12290;
+  - =testdisk= &#24037;&#20855;&#24456;&#22909;&#29992;&#65292;&#20294;&#28041;&#21450;&#24213;&#23618;&#65292;&#25805;&#20316;&#39035;&#35880;&#24910;&#12290;
+
+&#21442;&#32771;&#65306;
+  - http://www.cyberciti.biz/faq/recover-bad-superblock-from-corrupted-partition/
+"</pre></td></tr>
+      <tr><td class="property"><code>content-html</code></td><td class="value"><pre>"&lt;p&gt;
+&#26032;&#20080;&#20102;&#19968;&#22359; 3TB &#30340;&#30828;&#30424;&#21644;&#19968;&#20010;&#20004;&#24231;&#30340;&#30828;&#30424;&#24213;&#24231;&#65292;&#24456;&#24320;&#24515;&#12290;&#30001;&#20110;&#25105;&#30340;&#20027;&#31995;&#32479;&#26159; Linux, &#25152;&#20197;&#23601;
+&#25972;&#22359;&#30424;&#26684;&#24335;&#21270;&#25104;&#20102;&#19968;&#20010; ext4 &#20998;&#21306;&#65292;&#21487;&#29992;&#31354;&#38388;&#32422; 2.7 TiB. &#36825;&#26679;&#30340;&#20998;&#21306;&#22312; Windows &#31995;&#32479;&#19979;&#21487;
+&#36890;&#36807;&#24037;&#20855; ext2fsd &#26469;&#35775;&#38382;&#12290;&#26379;&#21451;&#35828;&#26377;&#24456;&#22810;&#39640;&#28165;&#30005;&#24433;&#31561;&#36164;&#26009;&#21487;&#20197;&#20998;&#20139;&#65292;&#23601;&#25226;&#30828;&#30424;&#20511;&#32473;&#20182;&#65292;&#32467;&#26524;
+&#24754;&#21095;&#20102;&#65306;&#20182;&#35828;&#22312;&#25335;&#36125;&#25991;&#20214;&#21040; 2TB &#24038;&#21491;&#26102;&#65292;&#30828;&#30424;&#25346;&#20102;&#65292;&#35782;&#21035;&#19981;&#20102;&#20102;&#12290;&#27809;&#21150;&#27861;&#65292;&#25105;&#21482;&#22909;&#33258;&#24049;&#35797;&#30528;
+&#20462;&#22797;&#19968;&#19979;&#12290;&#22914;&#21518;&#26159;&#25968;&#25454;&#24674;&#22797;&#36807;&#31243;&#30340;&#25688;&#35201;&#12290;
+&lt;/p&gt;
+&lt;p&gt;
+&#36890;&#36807; &lt;code&gt;dmesg&lt;/code&gt; &#24471;&#21040;&#31995;&#32479;&#25552;&#31034;&#65292; GPT &#20998;&#21306;&#34920;&#34987;&#30772;&#22351;&#12290;&#20351;&#29992; GNU Parted &#24037;&#20855;&#24674;&#22797;&#19968;&#19979; GPT &#20998;
+&#21306;&#34920;&#65292;&#38382;&#39064;&#35299;&#20915;&#12290;
+&lt;/p&gt;
+&lt;p&gt;
+&#27492;&#26102;&#20351;&#29992; &lt;code&gt;gdisk&lt;/code&gt; &#24037;&#20855;&#26597;&#30475;&#30828;&#30424;&#20998;&#21306;&#65292;&#26174;&#31034;&#20998;&#21306;&#20026; &lt;i&gt;Microsoft basic data&lt;/i&gt; &#26684;&#24335;&#65292;&#32780;&#25105;&#21407;
+&#26469;&#30340;&#20998;&#21306;&#20026; &lt;i&gt;ext4&lt;/i&gt;. &#29992; &lt;code&gt;gdisk&lt;/code&gt; &#30340;&#21629;&#20196; &lt;code&gt;t&lt;/code&gt; &#26356;&#25442;&#20998;&#21306;&#31867;&#22411;&#20026; &lt;code&gt;0x8300&lt;/code&gt;, &#21363; &lt;i&gt;Linux filesystem&lt;/i&gt;. &#20445;&#23384;&#36864;&#20986;&#65292;&#38382;&#39064;&#35299;&#20915;&#12290;
+&lt;/p&gt;
+&lt;p&gt;
+&#27492;&#26102;&#26080;&#27861;&#21152;&#36733;&#20998;&#21306;&#65292;&#20986;&#29616;&#30340;&#38169;&#35823;&#22914;&#19979;&#65306;
+&lt;/p&gt;
+
+
+&lt;pre class=\"example\"&gt;e2fsck: &#36229;&#32423;&#22359;&#26080;&#25928;, trying backup blocks...
+e2fsck: Bad magic number in super-block &#24403;&#23581;&#35797;&#25171;&#24320; /dev/sdh1 &#26102;
+
+The &#36229;&#32423;&#22359; could not be read or does not describe a correct ext2
+&#25991;&#20214;&#31995;&#32479;.  If the &#35774;&#22791; is valid and it really contains an ext2
+&#25991;&#20214;&#31995;&#32479; (and not swap or ufs or something else), then the &#36229;&#32423;&#22359;
+is corrupt, and you might try running e2fsck with an alternate &#36229;&#32423;&#22359;:
+    e2fsck -b 8193 &amp;lt;&#35774;&#22791;&amp;gt;
+&lt;/pre&gt;
+
+
+&lt;p&gt;
+&#27492;&#26102;&#29992; &lt;code&gt;dumpe2fs&lt;/code&gt; &#24037;&#20855;&#26597;&#30475;&#20998;&#21306;&#20449;&#24687;&#65292;&#24471;&#21040;&#22914;&#19979;&#30340;&#38169;&#35823;&#20449;&#24687;&#65306;
+&lt;/p&gt;
+
+
+&lt;pre class=\"example\"&gt;dumpe2fs 1.41.12 (17-May-2010)
+dumpe2fs: Bad magic number in super-block &#24403;&#23581;&#35797;&#25171;&#24320; /dev/sdh1 &#26102;
+&#25214;&#19981;&#21040;&#26377;&#25928;&#30340;&#25991;&#20214;&#31995;&#32479;&#36229;&#32423;&#22359;.
+&lt;/pre&gt;
+
+
+&lt;p&gt;
+&#20351;&#29992; &lt;code&gt;testdisk&lt;/code&gt; &#26816;&#27979;&#30828;&#30424;&#65292;&#25214;&#21040;&#20998;&#21306;&#30340; superblock &#20301;&#32622;&#22914;&#19979;&#65306;
+&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;819200, 884736, 1605632, 2654208, 4096000, 7962624, 11239424, 20480000,
+    23887872, 71663616
+&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;
+&#23581;&#35797;&#20351;&#29992;&#22791;&#20221;&#30340;&#36229;&#32423;&#22359;&#21152;&#36733;&#30828;&#30424;&#20998;&#21306;&#65306;
+&lt;/p&gt;
+
+
+&lt;pre class=\"example\"&gt;-&amp;gt; % sudo mount -t ext4 -r -o sb=819200 /dev/sdh1 /mnt
+mount: wrong fs type, bad option, bad superblock on /dev/sdh1,
+       missing codepage or helper program, or other error
+       In some cases useful info is found in syslog - try
+       dmesg | tail  or so
+&lt;/pre&gt;
+
+
+&lt;p&gt;
+&#19981;&#31649;&#36825;&#20123;&#65292;&#30452;&#25509;&#23581;&#35797;&#20174; &lt;code&gt;819200&lt;/code&gt; &#36229;&#32423;&#22359;&#30340;&#20301;&#32622;&#24674;&#22797;&#25991;&#20214;&#31995;&#32479;&#65306;
+&lt;/p&gt;
+
+
+&lt;pre class=\"example\"&gt;root@memes:~# fsck.ext4 -b 819200 -p -v /dev/sdh1 
+EADEPOT was not cleanly unmounted, &#24378;&#21046;&#26816;&#26597;.
+EADEPOT: Inode 1598038, i_&#22359;s is 7830912, &#24212;&#20026; 7822912.  &#24050;&#22788;&#29702;.
+... ...
+&lt;/pre&gt;
+
+
+&lt;p&gt;
+&#20998;&#21306;&#25968;&#25454;&#24635;&#31639;&#26159;&#27491;&#24120;&#25214;&#22238;&#20102;&#65292;&#20002;&#22833;&#30340;&#20869;&#23481;&#19981;&#22810;&#12290;
+&lt;/p&gt;
+&lt;p&gt;
+&#23567;&#32467;&#65306;
+&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;&#22312;&#30828;&#30424;&#20986;&#29616;&#25925;&#38556;&#26102;&#65292;&#27809;&#24819;&#28165;&#26970;&#21069;&#19981;&#35201;&#30528;&#24613;&#30528;&#21160;&#25163;&#20462;&#22797;&#12290;
+&lt;/li&gt;
+&lt;li&gt;&#20998;&#26512;&#25925;&#38556;&#65292;&#39318;&#20808;&#25490;&#38500;&#30828;&#20214;&#25925;&#38556;&#65292;&#20854;&#21518;&#25490;&#26597;&#26159;&#21542;&#20998;&#21306;&#34920;&#26377;&#35823;&#12290;&#26412;&#27425;&#20462;&#22797;&#25968;&#25454;&#32463;&#21382;&#20013;&#28041;&#21450;&#21040;
+    &#30340;&#20998;&#21306;&#34920;&#20351;&#29992;&#30340;&#26159; GPT &#26684;&#24335;&#65292;&#22240;&#27492;&#65292;&#32477;&#19981;&#21487;&#25353;&#22788;&#29702; MBR &#20998;&#21306;&#26684;&#24335;&#30340;&#26041;&#27861;&#23545;&#24453;&#12290;&#29616;&#22312;,
+    2TB &#20197;&#19978;&#30340;&#30828;&#30424;&#36234;&#26469;&#36234;&#26222;&#36941;&#65292;&#32769;&#26087;&#30340; MBR &#20998;&#21306;&#26684;&#24335;&#36880;&#28176;&#34987;&#28120;&#27760;&#65292;&#20320;&#30340;&#24037;&#20855;&#24212;&#35813;&#36319;&#19978;&#26102;&#20195;&#12290;
+    &#22312; Linux &#19979;&#24212;&#35813;&#23398;&#20250;&#20351;&#29992; &lt;code&gt;gdisk&lt;/code&gt;, &lt;code&gt;parted&lt;/code&gt; &#31561;&#36739;&#26032;&#30340;&#24037;&#20855;&#12290; &lt;code&gt;fdisk&lt;/code&gt; &#31561;&#24456;&#23454;&#29992;&#65292;&#20294;
+    &#21482;&#36866;&#29992;&#20110; MBR &#26684;&#24335;&#30340;&#20998;&#21306;&#34920;&#12290;
+&lt;/li&gt;
+&lt;li&gt;&#20462;&#22797;&#30828;&#30424;&#25968;&#25454;&#26102;&#65292;&#39318;&#20808;&#35201;&#23558;&#20998;&#21306;&#26684;&#24335;&#24674;&#22797;&#21040;&#27491;&#30830;&#30340;&#37197;&#32622;&#19978;&#12290;&#27604;&#22914; EXT3, NTFS, &#31561;&#12290;
+&lt;/li&gt;
+&lt;li&gt;&#20462;&#22797;&#25968;&#25454;&#26102;&#65292;&#19981;&#35201;&#30528;&#24613;&#30528;&#30452;&#25509;&#20462;&#22797;&#65292;&#19981;&#22952;&#20808;&#20351;&#29992;&#21442;&#25968; &lt;code&gt;-n&lt;/code&gt; &#20043;&#31867;&#30340;&#20808;&#30475;&#30475;&#20855;&#20307;&#24773;&#20917;&#65292;&#22914;
+    &#26524;&#27809;&#20160;&#20040;&#38382;&#39064;&#65292;&#20877;&#30452;&#25509;&#20462;&#22797;&#12290;&#19982; ext2/3/4 &#30456;&#20851;&#30340;&#24037;&#20855;&#37117;&#22312;&#36719;&#20214;&#21253; &lt;b&gt;e2progs&lt;/b&gt; &#20013;&#65292;&#21253;&#25324;
+    &lt;code&gt;e2fsck&lt;/code&gt;, &lt;code&gt;dumpe2fs&lt;/code&gt;, &#31561;&#12290;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;testdisk&lt;/code&gt; &#24037;&#20855;&#24456;&#22909;&#29992;&#65292;&#20294;&#28041;&#21450;&#24213;&#23618;&#65292;&#25805;&#20316;&#39035;&#35880;&#24910;&#12290;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;
+&#21442;&#32771;&#65306;
+&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=\"http://www.cyberciti.biz/faq/recover-bad-superblock-from-corrupted-partition/\"&gt;http://www.cyberciti.biz/faq/recover-bad-superblock-from-corrupted-partition/&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+"</pre></td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="debug post">
   <h2>与妻书：《关于生、死与恐惧》</h2>
   <table>
     <caption>导出博文信息 与妻书：《关于生、死与恐惧》</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>0</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>1</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#19982;&#22971;&#20070;&#65306;&#12298;&#20851;&#20110;&#29983;&#12289;&#27515;&#19982;&#24656;&#24807;&#12299;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20786 57304)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
@@ -431,7 +637,7 @@ p.s. &#22909;&#22810;&#20010;3, &#26159;&#21542;&#26263;&#21547;&#30528;&#25105;
     <caption>导出博文信息 “与智慧同在！”</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>1</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>2</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#8220;&#19982;&#26234;&#24935;&#21516;&#22312;&#65281;&#8221;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20781 45564)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
@@ -551,7 +757,7 @@ p.s. &#22909;&#22810;&#20010;3, &#26159;&#21542;&#26263;&#21547;&#30528;&#25105;
     <caption>导出博文信息 信息时代的智慧——兼谈科普</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>2</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>3</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#20449;&#24687;&#26102;&#20195;&#30340;&#26234;&#24935;&#8212;&#8212;&#20860;&#35848;&#31185;&#26222;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20775 6720)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
@@ -2055,7 +2261,7 @@ lojban [&#712;lo&#658;ban]. &#20854;&#29305;&#28857;&#26159;&#65306;&#35328;&#25
     <caption>导出博文信息 [译] 如何高效地交流？</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>3</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>4</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"[&#35793;] &#22914;&#20309;&#39640;&#25928;&#22320;&#20132;&#27969;&#65311;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20765 55000)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
@@ -2607,7 +2813,7 @@ you can overcome them/, (2010), p. 94, ISBN 978-0-670-07431-0
     <caption>导出博文信息 用户主目录的使用及我的文档管理习惯</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>4</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>5</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#29992;&#25143;&#20027;&#30446;&#24405;&#30340;&#20351;&#29992;&#21450;&#25105;&#30340;&#25991;&#26723;&#31649;&#29702;&#20064;&#24815;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20753 17452)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
@@ -3197,7 +3403,7 @@ hg:
     <caption>导出博文信息 标签式文件系统，构想与实现</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>5</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>6</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#26631;&#31614;&#24335;&#25991;&#20214;&#31995;&#32479;&#65292;&#26500;&#24819;&#19982;&#23454;&#29616;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20751 44724)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
@@ -3715,7 +3921,7 @@ Nepomuk &#30340;&#27169;&#25311;&#22120;&#65292;&#20173;&#28982;&#27809;&#26377;
     <caption>导出博文信息 [译] 怎样学习一门新的编程语言？</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>6</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>7</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"[&#35793;] &#24590;&#26679;&#23398;&#20064;&#19968;&#38376;&#26032;&#30340;&#32534;&#31243;&#35821;&#35328;&#65311;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20750 17140)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
@@ -3913,7 +4119,7 @@ language\"]], &#35273;&#24471;&#26377;&#24517;&#35201;&#21521;&#22823;&#23478;&#
     <caption>导出博文信息 恢复一次严重的系统故障 (Windows 7)</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>7</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>8</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#24674;&#22797;&#19968;&#27425;&#20005;&#37325;&#30340;&#31995;&#32479;&#25925;&#38556; (Windows 7)"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20741 38404)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
@@ -4197,7 +4403,7 @@ bootrec /ScanOS
     <caption>导出博文信息 在 Windows 7 下工作</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>8</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>9</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#22312; Windows 7 &#19979;&#24037;&#20316;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20719 64676)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
@@ -4912,7 +5118,7 @@ Win7 &#19979;&#21487;&#30001; zsh (cygwin) &#23436;&#25104;&#24456;&#22810;&#240
     <caption>导出博文信息 Geant4 在 Windows 下的安装与使用</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>9</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>10</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"Geant4 &#22312; Windows &#19979;&#30340;&#23433;&#35013;&#19982;&#20351;&#29992;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20694 39816)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -5312,7 +5518,7 @@ GiB. &#32534;&#35793;&#30340;&#20020;&#26102;&#25991;&#20214;&#21344;&#20102; 3.
     <caption>导出博文信息 在 Windows 下使用 Coin3D</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>10</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>11</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#22312; Windows &#19979;&#20351;&#29992; Coin3D"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20694 32316)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -5686,7 +5892,7 @@ DO (C:\\Apps\\Qt\\4.8.4\\bin\\moc.exe -i -o src\\Inventor\\Qt\\moc_%%H ..\\..\\s
     <caption>导出博文信息 使用 CMake 安装 Geant4 (>=9.5)</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>11</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>12</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#20351;&#29992; CMake &#23433;&#35013; Geant4 (&gt;=9.5)"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20694 27276)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -6047,7 +6253,7 @@ cmake .. &amp;amp;&amp;amp; make
     <caption>导出博文信息 Geant4 在 Debian 下的安装与使用</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>12</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>13</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"Geant4 &#22312; Debian &#19979;&#30340;&#23433;&#35013;&#19982;&#20351;&#29992;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20693 2872)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -6218,7 +6424,7 @@ export G4WORKDIR=/home/me/geant4
     <caption>导出博文信息 “中药过敏”与医生的尴尬</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>13</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>14</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#8220;&#20013;&#33647;&#36807;&#25935;&#8221;&#19982;&#21307;&#29983;&#30340;&#23604;&#23596;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20559 62256)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -6349,7 +6555,7 @@ export G4WORKDIR=/home/me/geant4
     <caption>导出博文信息 函数式包管理器 Nix 与高性能计算</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>14</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>15</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#20989;&#25968;&#24335;&#21253;&#31649;&#29702;&#22120; Nix &#19982;&#39640;&#24615;&#33021;&#35745;&#31639;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20449 31556)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -6439,7 +6645,7 @@ Nix &#26159;&#19968;&#20010;&#36328;&#24179;&#21488;&#30340;&#21253;&#31649;&#29
     <caption>导出博文信息 称呼紊乱的年代之家庭称谓</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>15</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>16</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#31216;&#21628;&#32010;&#20081;&#30340;&#24180;&#20195;&#20043;&#23478;&#24237;&#31216;&#35859;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20438 62212)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -6767,7 +6973,7 @@ http://paper.wenweipo.com/2011/10/10/OT1110100004.htm
     <caption>导出博文信息 网络上的百科全书、辞典与词典</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>16</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>17</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#32593;&#32476;&#19978;&#30340;&#30334;&#31185;&#20840;&#20070;&#12289;&#36766;&#20856;&#19982;&#35789;&#20856;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20421 33804)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -6962,7 +7168,7 @@ http://paper.wenweipo.com/2011/10/10/OT1110100004.htm
     <caption>导出博文信息 称呼紊乱的年代</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>17</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>18</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#31216;&#21628;&#32010;&#20081;&#30340;&#24180;&#20195;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20416 59864)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -7077,7 +7283,7 @@ http://paper.wenweipo.com/2011/10/10/OT1110100004.htm
     <caption>导出博文信息 “先驱者的故事”（《宽容》之序）</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>18</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>19</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#8220;&#20808;&#39537;&#32773;&#30340;&#25925;&#20107;&#8221;&#65288;&#12298;&#23485;&#23481;&#12299;&#20043;&#24207;&#65289;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20404 23516)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -7627,7 +7833,7 @@ http://paper.wenweipo.com/2011/10/10/OT1110100004.htm
     <caption>导出博文信息 NixOS -- 全局版本控制的操作系统？</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>19</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>20</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"NixOS -- &#20840;&#23616;&#29256;&#26412;&#25511;&#21046;&#30340;&#25805;&#20316;&#31995;&#32479;&#65311;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20399 54376)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -7829,7 +8035,7 @@ NixOS &#20063;&#21482;&#25552;&#20379;&#20102;&#19968;&#20010; LiveCD (0.1pre340
     <caption>导出博文信息 那些小巧的程序们</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>20</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>21</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#37027;&#20123;&#23567;&#24039;&#30340;&#31243;&#24207;&#20204;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20385 30060)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -8251,7 +8457,7 @@ Emacs, VIM &#31561;&#27969;&#34892;&#30340;&#37117;&#26159;&#24040;&#26080;&#387
     <caption>导出博文信息 文学编程与 orgmode</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>21</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>22</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#25991;&#23398;&#32534;&#31243;&#19982; orgmode"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20384 7936)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -8396,7 +8602,7 @@ org-babel &#25991;&#23398;&#32534;&#31243;&#20307;&#29616;&#22312;&#23427;&#3034
     <caption>导出博文信息 信息技术、文学编程与物理学纲要</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>22</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>23</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#20449;&#24687;&#25216;&#26415;&#12289;&#25991;&#23398;&#32534;&#31243;&#19982;&#29289;&#29702;&#23398;&#32434;&#35201;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20378 39172)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -8789,7 +8995,7 @@ Guile &#37325;&#26032;&#32534;&#20889;&#21602;&#12290; :-)
     <caption>导出博文信息 磨驴法则之头驴利益</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>23</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>24</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#30952;&#39540;&#27861;&#21017;&#20043;&#22836;&#39540;&#21033;&#30410;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20377 60488)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -8899,7 +9105,7 @@ crazycat   &#31561;&#32423;&#65306;&#20061;&#21697;&#25226;&#24635;   1&#27004; 
     <caption>导出博文信息 强迫症 (OCD) 者的计算机使用表现</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>24</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>25</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#24378;&#36843;&#30151; (OCD) &#32773;&#30340;&#35745;&#31639;&#26426;&#20351;&#29992;&#34920;&#29616;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20363 31552)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -9048,7 +9254,7 @@ crazycat   &#31561;&#32423;&#65306;&#20061;&#21697;&#25226;&#24635;   1&#27004; 
     <caption>导出博文信息 Emacs --- 能够显示地图的编辑器？</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>25</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>26</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"Emacs --- &#33021;&#22815;&#26174;&#31034;&#22320;&#22270;&#30340;&#32534;&#36753;&#22120;&#65311;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20361 26124)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -9207,7 +9413,7 @@ Bad sexp at line 27 in d:/Exaos/Workspace/exaos/daily/myorg/contacts.org: (org-c
     <caption>导出博文信息 联合国大学 (UNU)</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>26</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>27</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#32852;&#21512;&#22269;&#22823;&#23398; (UNU)"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20338 44072)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -9298,7 +9504,7 @@ Bad sexp at line 27 in d:/Exaos/Workspace/exaos/daily/myorg/contacts.org: (org-c
     <caption>导出博文信息 用中子探测器识别核武器</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>27</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>28</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#29992;&#20013;&#23376;&#25506;&#27979;&#22120;&#35782;&#21035;&#26680;&#27494;&#22120;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20337 56988)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -9352,7 +9558,7 @@ Bad sexp at line 27 in d:/Exaos/Workspace/exaos/daily/myorg/contacts.org: (org-c
     <caption>导出博文信息 一些关于宇宙与粒子物理的科普网站作品</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>28</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>29</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#19968;&#20123;&#20851;&#20110;&#23431;&#23449;&#19982;&#31890;&#23376;&#29289;&#29702;&#30340;&#31185;&#26222;&#32593;&#31449;&#20316;&#21697;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20337 7248)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -9437,7 +9643,7 @@ Bad sexp at line 27 in d:/Exaos/Workspace/exaos/daily/myorg/contacts.org: (org-c
     <caption>导出博文信息 关于 dotsies 字体的想法</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>29</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>30</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#20851;&#20110; dotsies &#23383;&#20307;&#30340;&#24819;&#27861;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20335 20)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -9526,7 +9732,7 @@ Do not close up you heart.
     <caption>导出博文信息 切换到 o-blog 页面系统</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>30</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>31</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#20999;&#25442;&#21040; o-blog &#39029;&#38754;&#31995;&#32479;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20330 15820)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -9598,10 +9804,10 @@ Do not close up you heart.
     <tbody>
       <tr><td class="property"><code>id</code></td><td class="value"><pre>0</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#24515;&#34523;&#23567;&#31449;"</pre></td></tr>
-      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20786 60424)</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20789 42676)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
       <tr><td class="property"><code>month</code></td><td class="value"><pre>3</pre></td></tr>
-      <tr><td class="property"><code>day</code></td><td class="value"><pre>3</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>5</pre></td></tr>
       <tr><td class="property"><code>category</code></td><td class="value"><pre>[cl-struct-ob:category "blog" "blog"]</pre></td></tr>
       <tr><td class="property"><code>tags</code></td><td class="value"><pre>nil</pre></td></tr>
       <tr><td class="property"><code>template</code></td><td class="value"><pre>"blog_static.html"</pre></td></tr>
@@ -9727,10 +9933,10 @@ Do not close up you heart.
     <tbody>
       <tr><td class="property"><code>id</code></td><td class="value"><pre>1</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#36164;&#26009;"</pre></td></tr>
-      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20786 60424)</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20789 42676)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
       <tr><td class="property"><code>month</code></td><td class="value"><pre>3</pre></td></tr>
-      <tr><td class="property"><code>day</code></td><td class="value"><pre>3</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>5</pre></td></tr>
       <tr><td class="property"><code>category</code></td><td class="value"><pre>[cl-struct-ob:category "&#38745;&#24577;&#39029;&#38754;" "3d51008ac08e28182b471e71196cf1b2"]</pre></td></tr>
       <tr><td class="property"><code>tags</code></td><td class="value"><pre>nil</pre></td></tr>
       <tr><td class="property"><code>template</code></td><td class="value"><pre>"blog_static.html"</pre></td></tr>
@@ -9764,10 +9970,10 @@ Do not close up you heart.
     <tbody>
       <tr><td class="property"><code>id</code></td><td class="value"><pre>2</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#31169;&#20154;&#36164;&#26009;"</pre></td></tr>
-      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20786 60424)</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20789 42676)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
       <tr><td class="property"><code>month</code></td><td class="value"><pre>3</pre></td></tr>
-      <tr><td class="property"><code>day</code></td><td class="value"><pre>3</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>5</pre></td></tr>
       <tr><td class="property"><code>category</code></td><td class="value"><pre>[cl-struct-ob:category "&#38745;&#24577;&#39029;&#38754;" "3d51008ac08e28182b471e71196cf1b2"]</pre></td></tr>
       <tr><td class="property"><code>tags</code></td><td class="value"><pre>nil</pre></td></tr>
       <tr><td class="property"><code>template</code></td><td class="value"><pre>"blog_static.html"</pre></td></tr>
@@ -9804,10 +10010,10 @@ Do not close up you heart.
     <tbody>
       <tr><td class="property"><code>id</code></td><td class="value"><pre>3</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#31508;&#35760;"</pre></td></tr>
-      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20786 60424)</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20789 42676)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
       <tr><td class="property"><code>month</code></td><td class="value"><pre>3</pre></td></tr>
-      <tr><td class="property"><code>day</code></td><td class="value"><pre>3</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>5</pre></td></tr>
       <tr><td class="property"><code>category</code></td><td class="value"><pre>[cl-struct-ob:category "&#38745;&#24577;&#39029;&#38754;" "3d51008ac08e28182b471e71196cf1b2"]</pre></td></tr>
       <tr><td class="property"><code>tags</code></td><td class="value"><pre>nil</pre></td></tr>
       <tr><td class="property"><code>template</code></td><td class="value"><pre>"blog_static.html"</pre></td></tr>
@@ -9844,10 +10050,10 @@ Do not close up you heart.
     <tbody>
       <tr><td class="property"><code>id</code></td><td class="value"><pre>4</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#35843;&#35797;"</pre></td></tr>
-      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20786 60424)</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20789 42676)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
       <tr><td class="property"><code>month</code></td><td class="value"><pre>3</pre></td></tr>
-      <tr><td class="property"><code>day</code></td><td class="value"><pre>3</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>5</pre></td></tr>
       <tr><td class="property"><code>category</code></td><td class="value"><pre>[cl-struct-ob:category "&#38745;&#24577;&#39029;&#38754;" "3d51008ac08e28182b471e71196cf1b2"]</pre></td></tr>
       <tr><td class="property"><code>tags</code></td><td class="value"><pre>nil</pre></td></tr>
       <tr><td class="property"><code>template</code></td><td class="value"><pre>"debug.html"</pre></td></tr>
@@ -9872,10 +10078,10 @@ Do not close up you heart.
     <tbody>
       <tr><td class="property"><code>id</code></td><td class="value"><pre>5</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#26356;&#26032;&#35760;&#24405;"</pre></td></tr>
-      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20786 60424)</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20789 42676)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
       <tr><td class="property"><code>month</code></td><td class="value"><pre>3</pre></td></tr>
-      <tr><td class="property"><code>day</code></td><td class="value"><pre>3</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>5</pre></td></tr>
       <tr><td class="property"><code>category</code></td><td class="value"><pre>[cl-struct-ob:category "&#21338;&#23458;&#35774;&#32622;" "c4aa53335211ff034a3fdeaa245b32c2"]</pre></td></tr>
       <tr><td class="property"><code>tags</code></td><td class="value"><pre>nil</pre></td></tr>
       <tr><td class="property"><code>template</code></td><td class="value"><pre>"blog_static.html"</pre></td></tr>
@@ -9956,10 +10162,10 @@ Do not close up you heart.
     <tbody>
       <tr><td class="property"><code>id</code></td><td class="value"><pre>nil</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"Redirect from (&#20449;&#24687;&#26102;&#20195;&#30340;&#26234;&#24935;&#8212;&#8212;&#20860;&#35848;&#31185;&#26222;)"</pre></td></tr>
-      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20786 60424)</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20789 42676)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
       <tr><td class="property"><code>month</code></td><td class="value"><pre>3</pre></td></tr>
-      <tr><td class="property"><code>day</code></td><td class="value"><pre>3</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>5</pre></td></tr>
       <tr><td class="property"><code>category</code></td><td class="value"><pre>[cl-struct-ob:category "blog" "blog"]</pre></td></tr>
       <tr><td class="property"><code>tags</code></td><td class="value"><pre>nil</pre></td></tr>
       <tr><td class="property"><code>template</code></td><td class="value"><pre>"page_redirect.html"</pre></td></tr>
@@ -9998,16 +10204,16 @@ Do not close up you heart.
     <tbody>
       <tr><td class="property"><code>id</code></td><td class="value"><pre>0</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"Copyright"</pre></td></tr>
-      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20786 60424)</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20789 42676)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
       <tr><td class="property"><code>month</code></td><td class="value"><pre>3</pre></td></tr>
-      <tr><td class="property"><code>day</code></td><td class="value"><pre>3</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>5</pre></td></tr>
       <tr><td class="property"><code>category</code></td><td class="value"><pre>[cl-struct-ob:category "&#21338;&#23458;&#35774;&#32622;" "c4aa53335211ff034a3fdeaa245b32c2"]</pre></td></tr>
       <tr><td class="property"><code>tags</code></td><td class="value"><pre>nil</pre></td></tr>
       <tr><td class="property"><code>template</code></td><td class="value"><pre>"blog_post.html"</pre></td></tr>
       <tr><td class="property"><code>filepath</code></td><td class="value"><pre>"c4aa53335211ff034a3fdeaa245b32c2/2013/03"</pre></td></tr>
       <tr><td class="property"><code>filename</code></td><td class="value"><pre>"copyright"</pre></td></tr>
-      <tr><td class="property"><code>htmlfile</code></td><td class="value"><pre>"c4aa53335211ff034a3fdeaa245b32c2/2013/03/03_copyright.html"</pre></td></tr>
+      <tr><td class="property"><code>htmlfile</code></td><td class="value"><pre>"c4aa53335211ff034a3fdeaa245b32c2/2013/03/05_copyright.html"</pre></td></tr>
       <tr><td class="property"><code>path-to-root</code></td><td class="value"><pre>"../../.."</pre></td></tr>
       <tr><td class="property"><code>sitemap</code></td><td class="value"><pre>nil</pre></td></tr>
       <tr><td class="property"><code>content</code></td><td class="value"><pre>"#+OPTIONS: H:7 num:nil  toc:nil d:nil todo:nil &lt;:nil pri:nil tags:nil
@@ -10029,16 +10235,16 @@ Do not close up you heart.
     <tbody>
       <tr><td class="property"><code>id</code></td><td class="value"><pre>1</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"About"</pre></td></tr>
-      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20786 60424)</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20789 42676)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
       <tr><td class="property"><code>month</code></td><td class="value"><pre>3</pre></td></tr>
-      <tr><td class="property"><code>day</code></td><td class="value"><pre>3</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>5</pre></td></tr>
       <tr><td class="property"><code>category</code></td><td class="value"><pre>[cl-struct-ob:category "&#21338;&#23458;&#35774;&#32622;" "c4aa53335211ff034a3fdeaa245b32c2"]</pre></td></tr>
       <tr><td class="property"><code>tags</code></td><td class="value"><pre>nil</pre></td></tr>
       <tr><td class="property"><code>template</code></td><td class="value"><pre>"blog_post.html"</pre></td></tr>
       <tr><td class="property"><code>filepath</code></td><td class="value"><pre>"c4aa53335211ff034a3fdeaa245b32c2/2013/03"</pre></td></tr>
       <tr><td class="property"><code>filename</code></td><td class="value"><pre>"about"</pre></td></tr>
-      <tr><td class="property"><code>htmlfile</code></td><td class="value"><pre>"c4aa53335211ff034a3fdeaa245b32c2/2013/03/03_about.html"</pre></td></tr>
+      <tr><td class="property"><code>htmlfile</code></td><td class="value"><pre>"c4aa53335211ff034a3fdeaa245b32c2/2013/03/05_about.html"</pre></td></tr>
       <tr><td class="property"><code>path-to-root</code></td><td class="value"><pre>"../../.."</pre></td></tr>
       <tr><td class="property"><code>sitemap</code></td><td class="value"><pre>nil</pre></td></tr>
       <tr><td class="property"><code>content</code></td><td class="value"><pre>"#+OPTIONS: H:7 num:nil  toc:nil d:nil todo:nil &lt;:nil pri:nil tags:nil
@@ -10060,16 +10266,16 @@ Do not close up you heart.
     <tbody>
       <tr><td class="property"><code>id</code></td><td class="value"><pre>2</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"Navigation"</pre></td></tr>
-      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20786 60424)</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20789 42676)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
       <tr><td class="property"><code>month</code></td><td class="value"><pre>3</pre></td></tr>
-      <tr><td class="property"><code>day</code></td><td class="value"><pre>3</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>5</pre></td></tr>
       <tr><td class="property"><code>category</code></td><td class="value"><pre>[cl-struct-ob:category "&#21338;&#23458;&#35774;&#32622;" "c4aa53335211ff034a3fdeaa245b32c2"]</pre></td></tr>
       <tr><td class="property"><code>tags</code></td><td class="value"><pre>nil</pre></td></tr>
       <tr><td class="property"><code>template</code></td><td class="value"><pre>"blog_post.html"</pre></td></tr>
       <tr><td class="property"><code>filepath</code></td><td class="value"><pre>"c4aa53335211ff034a3fdeaa245b32c2/2013/03"</pre></td></tr>
       <tr><td class="property"><code>filename</code></td><td class="value"><pre>"navigation"</pre></td></tr>
-      <tr><td class="property"><code>htmlfile</code></td><td class="value"><pre>"c4aa53335211ff034a3fdeaa245b32c2/2013/03/03_navigation.html"</pre></td></tr>
+      <tr><td class="property"><code>htmlfile</code></td><td class="value"><pre>"c4aa53335211ff034a3fdeaa245b32c2/2013/03/05_navigation.html"</pre></td></tr>
       <tr><td class="property"><code>path-to-root</code></td><td class="value"><pre>"../../.."</pre></td></tr>
       <tr><td class="property"><code>sitemap</code></td><td class="value"><pre>nil</pre></td></tr>
       <tr><td class="property"><code>content</code></td><td class="value"><pre>"#+OPTIONS: H:7 num:nil  toc:nil d:nil todo:nil &lt;:nil pri:nil tags:nil
@@ -10158,16 +10364,16 @@ Do not close up you heart.
     <tbody>
       <tr><td class="property"><code>id</code></td><td class="value"><pre>3</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"Navigation Footer"</pre></td></tr>
-      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20786 60424)</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20789 42676)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
       <tr><td class="property"><code>month</code></td><td class="value"><pre>3</pre></td></tr>
-      <tr><td class="property"><code>day</code></td><td class="value"><pre>3</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>5</pre></td></tr>
       <tr><td class="property"><code>category</code></td><td class="value"><pre>[cl-struct-ob:category "&#21338;&#23458;&#35774;&#32622;" "c4aa53335211ff034a3fdeaa245b32c2"]</pre></td></tr>
       <tr><td class="property"><code>tags</code></td><td class="value"><pre>nil</pre></td></tr>
       <tr><td class="property"><code>template</code></td><td class="value"><pre>"blog_post.html"</pre></td></tr>
       <tr><td class="property"><code>filepath</code></td><td class="value"><pre>"c4aa53335211ff034a3fdeaa245b32c2/2013/03"</pre></td></tr>
       <tr><td class="property"><code>filename</code></td><td class="value"><pre>"navigation-footer"</pre></td></tr>
-      <tr><td class="property"><code>htmlfile</code></td><td class="value"><pre>"c4aa53335211ff034a3fdeaa245b32c2/2013/03/03_navigation-footer.html"</pre></td></tr>
+      <tr><td class="property"><code>htmlfile</code></td><td class="value"><pre>"c4aa53335211ff034a3fdeaa245b32c2/2013/03/05_navigation-footer.html"</pre></td></tr>
       <tr><td class="property"><code>path-to-root</code></td><td class="value"><pre>"../../.."</pre></td></tr>
       <tr><td class="property"><code>sitemap</code></td><td class="value"><pre>nil</pre></td></tr>
       <tr><td class="property"><code>content</code></td><td class="value"><pre>"#+OPTIONS: H:7 num:nil  toc:nil d:nil todo:nil &lt;:nil pri:nil tags:nil
@@ -10217,8 +10423,8 @@ Do not close up you heart.
     <tbody>
       <tr><td class="property"><code>name</code></td><td class="value"><pre>"Computer"</pre></td></tr>
       <tr><td class="property"><code>safe</code></td><td class="value"><pre>"computer"</pre></td></tr>
-      <tr><td class="property"><code>count</code></td><td class="value"><pre>5</pre></td></tr>
-      <tr><td class="property"><code>size</code></td><td class="value"><pre>160.0</pre></td></tr>
+      <tr><td class="property"><code>count</code></td><td class="value"><pre>6</pre></td></tr>
+      <tr><td class="property"><code>size</code></td><td class="value"><pre>180.0</pre></td></tr>
     </tbody>
   </table>
 </div>
@@ -10561,13 +10767,13 @@ Do not close up you heart.
 	    <nav id="archives" class="span3">
 	      <h1><a href="./archives.html">归档</a></h1>
 	      <ul>
-		<li><a href="./blog/2013/03/03_fear-and-death.html">与妻书：《关于生、死与恐惧》</a></li> <li><a href="./blog/2013/02/27_wisdom-be-with-you.html">“与智慧同在！”</a></li> <li><a href="./blog/2013/02/22_wisdom-in-information-era.html">信息时代的智慧——兼谈科普</a></li> <li><a href="./blog/2013/02/15_communicate-effectively.html">[译] 如何高效地交流？</a></li> <li><a href="./blog/2013/02/06_my-archiving.html">用户主目录的使用及我的文档管理习惯</a></li> <li><a href="./blog/2013/02/04_tagfs-summary.html">标签式文件系统，构想与实现</a></li> <li><a href="./blog/2013/02/03_tips-for-new-programming-language.html">[译] 怎样学习一门新的编程语言？</a></li> <li><a href="./blog/2013/01/28_recovery-win7-dell-n4110.html">恢复一次严重的系统故障 (Windows 7)</a></li> <li><a href="./blog/2013/01/11_work-under-win7.html">在 Windows 7 下工作</a></li> <li><a href="./blog/2012/12/23_geant4-mswin.html">Geant4 在 Windows 下的安装与使用</a></li> 
+		<li><a href="./blog/2013/03/05_fix-bad-ext4.html">修复损坏的 ext4 大分区数据</a></li> <li><a href="./blog/2013/03/03_fear-and-death.html">与妻书：《关于生、死与恐惧》</a></li> <li><a href="./blog/2013/02/27_wisdom-be-with-you.html">“与智慧同在！”</a></li> <li><a href="./blog/2013/02/22_wisdom-in-information-era.html">信息时代的智慧——兼谈科普</a></li> <li><a href="./blog/2013/02/15_communicate-effectively.html">[译] 如何高效地交流？</a></li> <li><a href="./blog/2013/02/06_my-archiving.html">用户主目录的使用及我的文档管理习惯</a></li> <li><a href="./blog/2013/02/04_tagfs-summary.html">标签式文件系统，构想与实现</a></li> <li><a href="./blog/2013/02/03_tips-for-new-programming-language.html">[译] 怎样学习一门新的编程语言？</a></li> <li><a href="./blog/2013/01/28_recovery-win7-dell-n4110.html">恢复一次严重的系统故障 (Windows 7)</a></li> <li><a href="./blog/2013/01/11_work-under-win7.html">在 Windows 7 下工作</a></li> 
 	      </ul>
 	    </nav>
 	    <nav class="tags span3">
 	      <h1><a href="./tags/index.html">标签</a></h1>
 	      <ul>
-  <li style="font-size: 160.00%;"><a href="./tags/computer.html">Computer</a></li> <li style="font-size: 80.00%;"><a href="./tags/education.html">Education</a></li> <li style="font-size: 80.00%;"><a href="./tags/emacs.html">Emacs</a></li> <li style="font-size: 80.00%;"><a href="./tags/family.html">Family</a></li> <li style="font-size: 80.00%;"><a href="./tags/fonts.html">Fonts</a></li> <li style="font-size: 80.00%;"><a href="./tags/health.html">Health</a></li> <li style="font-size: 100.00%;"><a href="./tags/infoera.html">InfoEra</a></li> <li style="font-size: 80.00%;"><a href="./tags/internet.html">Internet</a></li> <li style="font-size: 80.00%;"><a href="./tags/language.html">Language</a></li> <li style="font-size: 80.00%;"><a href="./tags/life.html">Life</a></li> <li style="font-size: 100.00%;"><a href="./tags/literateprogramming.html">LiterateProgramming</a></li> <li style="font-size: 140.00%;"><a href="./tags/mswin.html">MSWIN</a></li> <li style="font-size: 120.00%;"><a href="./tags/ocd.html">OCD</a></li> <li style="font-size: 80.00%;"><a href="./tags/os.html">OS</a></li> <li style="font-size: 120.00%;"><a href="./tags/physics.html">Physics</a></li> <li style="font-size: 100.00%;"><a href="./tags/science.html">Science</a></li> <li style="font-size: 100.00%;"><a href="./tags/simulation.html">Simulation</a></li> <li style="font-size: 220.00%;"><a href="./tags/society.html">Society</a></li> <li style="font-size: 100.00%;"><a href="./tags/translation.html">Translation</a></li> <li style="font-size: 80.00%;"><a href="./tags/cmake.html">cmake</a></li> <li style="font-size: 80.00%;"><a href="./tags/debian.html">debian</a></li> <li style="font-size: 180.00%;"><a href="./tags/devel.html">devel</a></li> <li style="font-size: 120.00%;"><a href="./tags/geant4.html">geant4</a></li> <li style="font-size: 120.00%;"><a href="./tags/orgmode.html">orgmode</a></li> 
+  <li style="font-size: 180.00%;"><a href="./tags/computer.html">Computer</a></li> <li style="font-size: 80.00%;"><a href="./tags/education.html">Education</a></li> <li style="font-size: 80.00%;"><a href="./tags/emacs.html">Emacs</a></li> <li style="font-size: 80.00%;"><a href="./tags/family.html">Family</a></li> <li style="font-size: 80.00%;"><a href="./tags/fonts.html">Fonts</a></li> <li style="font-size: 80.00%;"><a href="./tags/health.html">Health</a></li> <li style="font-size: 100.00%;"><a href="./tags/infoera.html">InfoEra</a></li> <li style="font-size: 80.00%;"><a href="./tags/internet.html">Internet</a></li> <li style="font-size: 80.00%;"><a href="./tags/language.html">Language</a></li> <li style="font-size: 80.00%;"><a href="./tags/life.html">Life</a></li> <li style="font-size: 100.00%;"><a href="./tags/literateprogramming.html">LiterateProgramming</a></li> <li style="font-size: 140.00%;"><a href="./tags/mswin.html">MSWIN</a></li> <li style="font-size: 120.00%;"><a href="./tags/ocd.html">OCD</a></li> <li style="font-size: 80.00%;"><a href="./tags/os.html">OS</a></li> <li style="font-size: 120.00%;"><a href="./tags/physics.html">Physics</a></li> <li style="font-size: 100.00%;"><a href="./tags/science.html">Science</a></li> <li style="font-size: 100.00%;"><a href="./tags/simulation.html">Simulation</a></li> <li style="font-size: 220.00%;"><a href="./tags/society.html">Society</a></li> <li style="font-size: 100.00%;"><a href="./tags/translation.html">Translation</a></li> <li style="font-size: 80.00%;"><a href="./tags/cmake.html">cmake</a></li> <li style="font-size: 80.00%;"><a href="./tags/debian.html">debian</a></li> <li style="font-size: 180.00%;"><a href="./tags/devel.html">devel</a></li> <li style="font-size: 120.00%;"><a href="./tags/geant4.html">geant4</a></li> <li style="font-size: 120.00%;"><a href="./tags/orgmode.html">orgmode</a></li> 
 </ul>
 
 	    </nav>

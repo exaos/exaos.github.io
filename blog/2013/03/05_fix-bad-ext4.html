@@ -2,7 +2,7 @@
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8"/>
-    <title>一些关于宇宙与粒子物理的科普网站作品</title>
+    <title>修复损坏的 ext4 大分区数据</title>
     <link rel="stylesheet" type="text/less" href="../../../style/less/o-blog.less"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="generator" content="o-blog version 1.2-zh-131-gdb82443"/>
@@ -87,7 +87,7 @@
       <div class="container">
 	<ul class="breadcrumb">
   <li><a href="../../../index.html">首页</a> <span class="divider">/</span></li>
-  <li><a href="../../../blog/index.html">blog</a> <span class="divider">/</span></li><li><a href="../../../blog/2012/index.html">2012</a> <span class="divider">/</span></li><li><a href="../../../blog/2012/03/index.html">03</a> <span class="divider">/</span></li><li>一些关于宇宙与粒子物理的科普网站作品</li>
+  <li><a href="../../../blog/index.html">blog</a> <span class="divider">/</span></li><li><a href="../../../blog/2013/index.html">2013</a> <span class="divider">/</span></li><li><a href="../../../blog/2013/03/index.html">03</a> <span class="divider">/</span></li><li>修复损坏的 ext4 大分区数据</li>
   </ul>
 
       </div>
@@ -99,23 +99,23 @@
     <div class="well">
       <div class="row">
 	<div class="date span1">
-	  <div class=" date-d">27</div>
-	  <div class=" date-m"><a href="../../../blog/2012/03/index.html">三月</a></div>
-	  <div class=" date-y"><a href="../../../blog/2012/index.html">2012</a>
+	  <div class=" date-d">05</div>
+	  <div class=" date-m"><a href="../../../blog/2013/03/index.html">三月</a></div>
+	  <div class=" date-y"><a href="../../../blog/2013/index.html">2013</a>
 	  </div>
 	</div>
 	<div class="span1">
 	  <div class="qr-code">
-  <img src="http://chart.apis.google.com/chart?chs=50x50&cht=qr&chld=|0&chl=http%3A%2F%2Fexaos.github.com%2F%2Fblog%2F2012%2F03%2F27_cosmos.html"
+  <img src="http://chart.apis.google.com/chart?chs=50x50&cht=qr&chld=|0&chl=http%3A%2F%2Fexaos.github.com%2F%2Fblog%2F2013%2F03%2F05_fix-bad-ext4.html"
        alt="qr-code" />
 </div>
 
 	</div>
-	<h1 class="offset2" style="font-size: 250%">一些关于宇宙与粒子物理的科普网站作品</h1>
+	<h1 class="offset2" style="font-size: 250%">修复损坏的 ext4 大分区数据</h1>
       </div>
       <nav>
 	<ul class="pager">
-	  <li class="previous"><a href="../../../blog/2012/03/25_dotsies.html"><i class="icon-chevron-left"></i>&nbsp;关于 dotsies 字体的想法</a></li><li class="next" style="text-align: right;"><a href="../../../blog/2012/03/27_one-usage-of-neutron-detector.html">用中子探测器识别核武器&nbsp;<i class="icon-chevron-right"></i></a></li>
+	  <li class="previous"><a href="../../../blog/2013/03/03_fear-and-death.html"><i class="icon-chevron-left"></i>&nbsp;与妻书：《关于生、死与恐惧》</a></li><li class="next">&nbsp;</li>
 	</ul>
       </nav>
     </div>
@@ -123,49 +123,122 @@
   </header>
   <div class="article-content">
     <p>
-原来在 <a href="http://weibo.com/1746729234/yalyzwZ4x">新浪微博</a> 上发布过这条消息。因为觉得这是些很棒的东西，值得记忆，故在这儿整
-理一下。
+新买了一块 3TB 的硬盘和一个两座的硬盘底座，很开心。由于我的主系统是 Linux, 所以就
+整块盘格式化成了一个 ext4 分区，可用空间约 2.7 TiB. 这样的分区在 Windows 系统下可
+通过工具 ext2fsd 来访问。朋友说有很多高清电影等资料可以分享，就把硬盘借给他，结果
+悲剧了：他说在拷贝文件到 2TB 左右时，硬盘挂了，识别不了了。没办法，我只好自己试着
+修复一下。如后是数据恢复过程的摘要。
 </p>
-<ol>
-<li>你是不是会好奇：我们宇宙的尺度究竟有多大呢？其实，目前人类所认识的宇宙可以说已
-   经远远超出了普通人的直观感受范围。但我们仍然可以比较形象地体验一下这个认识的尺
-   度，欣赏一下由 Cary Huang 所制作的 flash &mdash; <a href="http://htwins.net/scale2/scale2.swf"><b>宇宙的尺度 2</b></a> (The Scale of the
-   Universe 2). 目前还没有翻译成中文，欣赏时请带上词典。［注：我对 Flash 技术不感
-   兴趣，如果有人想制作类似的 HTML5/CSS 页面，请一定告之我！另外，这个站点最初是
-   从 <b>李淼在微博</b> 在新浪上分享时所得，特此感谢。］
-</li>
-<li>同样，对于我们所生存的宇宙的认识还有另一种以时间来展现的方式，这就是微软研究中
-   心、加州大学伯克利分校及莫斯科州立大学所带来的 <a href="http://www.chronozoomproject.org/"><b>时间缩放工程</b></a> (ChronoZoom)。看
-   看在时间的尺度上人类的那种寂寞。
-</li>
-<li>粒子物理对普通人而言，是非常神秘的东西。其实，对它的了解尽管需要一定的基础知
-   识，但也并非那么高不可攀，你也可以在不具备数学物理基础的情况下去欣赏这个世界的
-   美丽。这个得感谢由 <b>粒子数据组织</b> (<a href="http://pdg.lbl.gov/">Particle Data Group</a>) 制作的 <b>粒子奇境冒险</b>
-   网站。
-<ul>
-<li>英文站点： <a href="http://www.particleadventure.org/">The Particle Adventure</a>
-</li>
-<li>繁体中文： <a href="http://www.particleadventure.org/chinese/index.html">美国镜像</a>, <a href="http://www.phy.ntnu.edu.tw/demolab/html.php?html=particleadventure/index">台湾镜像</a>
-</li>
-</ul>
+<p>
+通过 <code>dmesg</code> 得到系统提示， GPT 分区表被破坏。使用 GNU Parted 工具恢复一下 GPT 分
+区表，问题解决。
+</p>
+<p>
+此时使用 <code>gdisk</code> 工具查看硬盘分区，显示分区为 <i>Microsoft basic data</i> 格式，而我原
+来的分区为 <i>ext4</i>. 用 <code>gdisk</code> 的命令 <code>t</code> 更换分区类型为 <code>0x8300</code>, 即 <i>Linux filesystem</i>. 保存退出，问题解决。
+</p>
+<p>
+此时无法加载分区，出现的错误如下：
+</p>
 
-</li>
-</ol>
+
+<pre class="example">e2fsck: 超级块无效, trying backup blocks...
+e2fsck: Bad magic number in super-block 当尝试打开 /dev/sdh1 时
+
+The 超级块 could not be read or does not describe a correct ext2
+文件系统.  If the 设备 is valid and it really contains an ext2
+文件系统 (and not swap or ufs or something else), then the 超级块
+is corrupt, and you might try running e2fsck with an alternate 超级块:
+    e2fsck -b 8193 &lt;设备&gt;
+</pre>
 
 
 <p>
-有一点想强调一下：尽管在不具备数学与物理相关基础的情况下，你仍然可以欣赏目前人类
-对宇宙的认识，这并不意味着你可以仅靠想象就可以意淫着推翻或者大刀阔斧地修改现有的
-物理学、宇宙学等。请您 <b>珍爱生命，远离民科！</b>
+此时用 <code>dumpe2fs</code> 工具查看分区信息，得到如下的错误信息：
 </p>
+
+
+<pre class="example">dumpe2fs 1.41.12 (17-May-2010)
+dumpe2fs: Bad magic number in super-block 当尝试打开 /dev/sdh1 时
+找不到有效的文件系统超级块.
+</pre>
+
+
+<p>
+使用 <code>testdisk</code> 检测硬盘，找到分区的 superblock 位置如下：
+</p><ul>
+<li>819200, 884736, 1605632, 2654208, 4096000, 7962624, 11239424, 20480000,
+    23887872, 71663616
+</li>
+</ul>
+
+
+<p>
+尝试使用备份的超级块加载硬盘分区：
+</p>
+
+
+<pre class="example">-&gt; % sudo mount -t ext4 -r -o sb=819200 /dev/sdh1 /mnt
+mount: wrong fs type, bad option, bad superblock on /dev/sdh1,
+       missing codepage or helper program, or other error
+       In some cases useful info is found in syslog - try
+       dmesg | tail  or so
+</pre>
+
+
+<p>
+不管这些，直接尝试从 <code>819200</code> 超级块的位置恢复文件系统：
+</p>
+
+
+<pre class="example">root@memes:~# fsck.ext4 -b 819200 -p -v /dev/sdh1 
+EADEPOT was not cleanly unmounted, 强制检查.
+EADEPOT: Inode 1598038, i_块s is 7830912, 应为 7822912.  已处理.
+... ...
+</pre>
+
+
+<p>
+分区数据总算是正常找回了，丢失的内容不多。
+</p>
+<p>
+小结：
+</p><ul>
+<li>在硬盘出现故障时，没想清楚前不要着急着动手修复。
+</li>
+<li>分析故障，首先排除硬件故障，其后排查是否分区表有误。本次修复数据经历中涉及到
+    的分区表使用的是 GPT 格式，因此，绝不可按处理 MBR 分区格式的方法对待。现在,
+    2TB 以上的硬盘越来越普遍，老旧的 MBR 分区格式逐渐被淘汰，你的工具应该跟上时代。
+    在 Linux 下应该学会使用 <code>gdisk</code>, <code>parted</code> 等较新的工具。 <code>fdisk</code> 等很实用，但
+    只适用于 MBR 格式的分区表。
+</li>
+<li>修复硬盘数据时，首先要将分区格式恢复到正确的配置上。比如 EXT3, NTFS, 等。
+</li>
+<li>修复数据时，不要着急着直接修复，不妨先使用参数 <code>-n</code> 之类的先看看具体情况，如
+    果没什么问题，再直接修复。与 ext2/3/4 相关的工具都在软件包 <b>e2progs</b> 中，包括
+    <code>e2fsck</code>, <code>dumpe2fs</code>, 等。
+</li>
+<li><code>testdisk</code> 工具很好用，但涉及底层，操作须谨慎。
+</li>
+</ul>
+
+
+<p>
+参考：
+</p><ul>
+<li><a href="http://www.cyberciti.biz/faq/recover-bad-superblock-from-corrupted-partition/">http://www.cyberciti.biz/faq/recover-bad-superblock-from-corrupted-partition/</a>
+</li>
+</ul>
+
+
   </div>
   
   <footer class="well article-footer">
-    发布于 <time datetime="2012-03-27T09:48:00Z"> 2012-03-27 09:48:00</time>.
+    发布于 <time datetime="2013-03-05T15:58:00Z"> 2013-03-05 15:58:00</time>.
     <nav class="tag-cloud">
       <h1><i class="icon-tags"></i> 相关标签</h1>
       <ul>
-	<li class="label label-inverse small"><a href="../../../tags/physics.html">Physics</a></li>
+	<li class="label label-inverse small"><a href="../../../tags/computer.html">Computer</a></li>
       </ul>
     </nav>
   </footer>
