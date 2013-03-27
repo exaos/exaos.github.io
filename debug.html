@@ -5,7 +5,7 @@
     <title>调试</title>
     <link rel="stylesheet" type="text/less" href="./style/less/o-blog.less"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="generator" content="o-blog version 1.2-zh-131-gdb82443"/>
+    <meta name="generator" content="o-blog version 1.2-zh-133-gcf9fd86"/>
     <script src="./style/js/less-1.3.0.min.js" type="text/javascript"></script>
     <script src="./style/js/jquery-1.7.1.min.js" type="text/javascript"></script>
     <script src="./style/bootstrap/js/bootstrap-modal.js" type="text/javascript"></script>
@@ -15,7 +15,28 @@
     <script src="./style/js/prettify.js" type="text/javascript"></script>
     <script src="./style/js/o-blog.linenumber.js" type="text/javascript"></script>
     <script src="./style/js/o-blog-fix.js" type="text/javascript"></script>
-    
+    <script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
   </head>
   <body>
 
@@ -44,13 +65,13 @@
 </li>
 <li><a href="#"><i>icon-file icon-white</i> 近期博文</a>
 <ul>
+<li><a href="./blog/2013/03/27_emacs-deft.html">Deft 使用指南</a>
+</li>
 <li><a href="./blog/2013/03/05_fix-bad-ext4.html">修复损坏的 ext4 大分区数据</a>
 </li>
 <li><a href="./blog/2013/03/03_fear-and-death.html">与妻书：《关于生、死与恐惧》</a>
 </li>
 <li><a href="./blog/2013/02/27_wisdom-be-with-you.html">“与智慧同在！”</a>
-</li>
-<li><a href="./blog/2013/02/22_wisdom-in-information-era.html">信息时代的智慧——兼谈科普</a>
 
 </li>
 </ul>
@@ -138,7 +159,7 @@
     <caption>导出博客信息</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>file</code></td><td class="value"><pre>"d:/Exaos/Workspace/exaos/mysite-src/gh-blog.org"</pre></td></tr>
+      <tr><td class="property"><code>file</code></td><td class="value"><pre>"/home/exaos/Workspace/exaos/mysite-src/gh-blog.org"</pre></td></tr>
       <tr><td class="property"><code>buffer</code></td><td class="value"><pre>#&lt;buffer gh-blog.org&gt;</pre></td></tr>
       <tr><td class="property"><code>publish-dir</code></td><td class="value"><pre>"../mysite"</pre></td></tr>
       <tr><td class="property"><code>template-dir</code></td><td class="value"><pre>"templates"</pre></td></tr>
@@ -156,12 +177,217 @@
   <h1>博文</h1>
   <div class="debug post">
   <div class="debug post">
+  <h2>Deft 使用指南</h2>
+  <table>
+    <caption>导出博文信息 Deft 使用指南</caption>
+    <thead><tr><th>属性</th><th>值</th></tr></thead>
+    <tbody>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>0</pre></td></tr>
+      <tr><td class="property"><code>title</code></td><td class="value"><pre>"Deft &#20351;&#29992;&#25351;&#21335;"</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20818 38492)</pre></td></tr>
+      <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
+      <tr><td class="property"><code>month</code></td><td class="value"><pre>3</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>27</pre></td></tr>
+      <tr><td class="property"><code>category</code></td><td class="value"><pre>[cl-struct-ob:category "blog" "blog"]</pre></td></tr>
+      <tr><td class="property"><code>tags</code></td><td class="value"><pre>([cl-struct-ob:tags "Computer" "computer" nil nil] [cl-struct-ob:tags "Emacs" "emacs" nil nil])</pre></td></tr>
+      <tr><td class="property"><code>template</code></td><td class="value"><pre>"blog_post.html"</pre></td></tr>
+      <tr><td class="property"><code>filepath</code></td><td class="value"><pre>"blog/2013/03"</pre></td></tr>
+      <tr><td class="property"><code>filename</code></td><td class="value"><pre>"emacs-deft"</pre></td></tr>
+      <tr><td class="property"><code>htmlfile</code></td><td class="value"><pre>"blog/2013/03/27_emacs-deft.html"</pre></td></tr>
+      <tr><td class="property"><code>path-to-root</code></td><td class="value"><pre>"../../.."</pre></td></tr>
+      <tr><td class="property"><code>sitemap</code></td><td class="value"><pre>nil</pre></td></tr>
+      <tr><td class="property"><code>content</code></td><td class="value"><pre>"#+OPTIONS: H:7 num:nil  toc:nil d:nil todo:nil &lt;:nil pri:nil tags:nil
+
+
+[[http://jblevins.org/projects/deft/][Deft]] &#26159;&#19968;&#20010;&#20381;&#36182;&#20110; Emacs &#30340;&#25193;&#23637;&#65292;&#29992;&#20110;&#31649;&#29702;&#32431;&#25991;&#26412;&#26684;&#24335;&#30340;&#31508;&#35760;&#65306;
+  - http://jblevins.org/projects/deft/
+
+&#23427;&#30340;&#22522;&#26412;&#21151;&#33021;&#23601;&#26159;&#27983;&#35272;&#12289;&#36807;&#28388;&#12289;&#24182;&#36827;&#34892;&#30446;&#24405;&#32534;&#36753;&#12290;&#38656;&#35201;&#20320;&#23558;&#31508;&#35760;&#37117;&#20197;&#32431;&#25991;&#26412;&#26684;&#24335;&#20445;&#23384;&#22312;&#19968;&#20010;
+&#30446;&#24405;&#19979;&#65292;&#28982;&#21518;&#22312; emacs &#19979;&#35843;&#29992; =M-x deft=, &#38190;&#20837;&#20219;&#24847;&#23383;&#31526;&#20018;&#65292;&#26174;&#31034;&#24403;&#21069;&#30446;&#24405;&#19982;&#20043;&#21305;&#37197;&#30340;&#31508;
+&#35760;&#25991;&#20214;&#12290;&#24403;&#20320;&#30340;&#32431;&#25991;&#26412;&#31508;&#35760;&#26377;&#25968;&#21313;&#20010;&#20197;&#19978;&#26102;&#65292;&#20250;&#38750;&#24120;&#26377;&#29992;&#12290;
+
+** &#22522;&#26412;&#25805;&#20316;
+
+&#20027;&#35201;&#25805;&#20316;&#65306;&#25628;&#32034;&#19982;&#36807;&#28388;&#12290;&#21015;&#20986;&#30340;&#25991;&#20214;&#21487;&#20197;&#26159;&#38480;&#21046;&#25968;&#37327;&#30340;&#65292;&#25110;&#32773;&#29992;&#23383;&#31526;&#20018;&#36807;&#28388;&#21518;&#30340;&#65292;&#21516;&#26102;&#21305;&#37197;
+&#26631;&#39064;&#19982;&#25991;&#26412;&#20027;&#20307;&#12290;&#21551;&#21160;&#19968;&#20010;&#36807;&#28388;&#65292;&#30452;&#25509;&#38190;&#20837;&#23383;&#31526;&#21363;&#21487;&#12290;&#36807;&#28388;&#26159;&#21363;&#26102;&#30340;&#65292;&#38543;&#30528;&#20320;&#38190;&#20837;&#65292;&#25991;&#20214;&#27983;
+&#35272;&#21363;&#26102;&#26356;&#26032;&#65292;&#21482;&#26174;&#31034;&#19982;&#24403;&#21069;&#23383;&#31526;&#20018;&#21305;&#37197;&#30340;&#25991;&#20214;&#12290;
+
+&#25171;&#24320;&#31532;&#19968;&#20010;&#21305;&#37197;&#30340;&#25991;&#20214;&#65292;&#30452;&#25509;&#25353; =RET=. &#33509;&#27809;&#26377;&#21305;&#37197;&#23383;&#31526;&#20018;&#65292;&#25353; =RET= &#21017;&#21019;&#24314;&#26032;&#30340;&#25991;&#20214;&#24182;&#20351;
+&#29992;&#35813;&#23383;&#31526;&#20018;&#20026;&#26631;&#39064;&#12290;&#36825;&#26679;&#20889;&#31508;&#35760;&#24456;&#24555;&#12290;&#25991;&#20214;&#21517;&#20250;&#33258;&#21160;&#21019;&#24314;&#12290;&#33509;&#20320;&#24819;&#29992;&#25351;&#23450;&#30340;&#25991;&#20214;&#21517;&#65292;&#20351;&#29992;&#24555;
+&#25463;&#38190; =C-RET=.
+
+&#21478;&#19968;&#31383;&#21475;&#25171;&#24320;&#25991;&#20214;: =C-o=, &#25171;&#24320;&#20294;&#19981;&#20999;&#25442;: =C-u, C-o=
+
+&#36807;&#28388;&#23383;&#31526;&#20018;&#32534;&#36753;&#65306;
+  - =DEL= &#21024;&#38500;; =M-DEL=, &#21024;&#38500;&#23383;
+  - =C-y= &#25289;&#22238;&#26469;&#26368;&#36817;&#21024;&#38500;&#30340;&#25991;&#26412;&#21040;&#36807;&#28388;&#23383;&#31526;&#20018;
+  - =C-c C-c= &#28165;&#38500;
+  - =C-c C-g= &#29992;&#24403;&#21069;&#36807;&#28388;&#23383;&#31526;&#20018;&#21047;&#26032;&#25991;&#20214;&#21015;&#34920;
+  - =C-c C-l= &#22312; minibuffer &#20013;&#32534;&#36753;&#36807;&#28388;&#23383;&#31526;&#20018;&#65292;&#22312; minibuffer &#20013;&#21487;&#29992; =M-p=, =M-n=
+    &#26469;&#24490;&#29615;&#35843;&#29992;&#20197;&#21069;&#30340;&#32534;&#36753;&#21382;&#21490;&#12290;
+
+** &#37197;&#32622;
+
+&#35843;&#29992;:
+#+BEGIN_SRC elisp
+(require 'deft)
+#+END_SRC
+
+&#21305;&#37197;&#25991;&#26723;&#31867;&#22411; (&#40664;&#35748;&#26159; =.txt=) &#21644;&#36335;&#24452;:
+#+BEGIN_SRC elisp
+(setq deft-extension \"txt\")
+(setq deft-directory \"~/Dropbox/notes\")
+#+END_SRC
+
+&#20351;&#29992; =markdown-mode= &#20316;&#20026;&#20027;&#27169;&#24335;:
+#+BEGIN_SRC elisp
+(setq deft-text-mode 'markdown-mode)
+#+END_SRC
+
+&#20351;&#29992; =org-mode=:
+#+BEGIN_SRC elisp
+(setq deft-extension \"org\")
+(setq deft-text-mode 'org-mode)
+#+END_SRC
+
+&#20351;&#29992;&#25991;&#20214;&#21517;&#20026;&#27983;&#35272;&#30340;&#26631;&#39064;&#65288;&#40664;&#35748;&#26159;&#25991;&#20214;&#20013;&#30340;&#31532;&#19968;&#34892;&#65289;:
+#+BEGIN_SRC elisp
+(setq deft-use-filename-as-title t)
+#+END_SRC
+
+&#23450;&#20041;&#40664;&#35748;&#24555;&#25463;&#38190;:
+#+BEGIN_SRC elisp
+(global-set-key [f8] 'deft)
+#+END_SRC
+
+"</pre></td></tr>
+      <tr><td class="property"><code>content-html</code></td><td class="value"><pre>"&lt;p&gt;
+&lt;a href=\"http://jblevins.org/projects/deft/\"&gt;Deft&lt;/a&gt; &#26159;&#19968;&#20010;&#20381;&#36182;&#20110; Emacs &#30340;&#25193;&#23637;&#65292;&#29992;&#20110;&#31649;&#29702;&#32431;&#25991;&#26412;&#26684;&#24335;&#30340;&#31508;&#35760;&#65306;
+&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=\"http://jblevins.org/projects/deft/\"&gt;http://jblevins.org/projects/deft/&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;
+&#23427;&#30340;&#22522;&#26412;&#21151;&#33021;&#23601;&#26159;&#27983;&#35272;&#12289;&#36807;&#28388;&#12289;&#24182;&#36827;&#34892;&#30446;&#24405;&#32534;&#36753;&#12290;&#38656;&#35201;&#20320;&#23558;&#31508;&#35760;&#37117;&#20197;&#32431;&#25991;&#26412;&#26684;&#24335;&#20445;&#23384;&#22312;&#19968;&#20010;
+&#30446;&#24405;&#19979;&#65292;&#28982;&#21518;&#22312; emacs &#19979;&#35843;&#29992; &lt;code&gt;M-x deft&lt;/code&gt;, &#38190;&#20837;&#20219;&#24847;&#23383;&#31526;&#20018;&#65292;&#26174;&#31034;&#24403;&#21069;&#30446;&#24405;&#19982;&#20043;&#21305;&#37197;&#30340;&#31508;
+&#35760;&#25991;&#20214;&#12290;&#24403;&#20320;&#30340;&#32431;&#25991;&#26412;&#31508;&#35760;&#26377;&#25968;&#21313;&#20010;&#20197;&#19978;&#26102;&#65292;&#20250;&#38750;&#24120;&#26377;&#29992;&#12290;
+&lt;/p&gt;
+
+&lt;div id=\"outline-container-1\" class=\"outline-3\"&gt;
+&lt;h3 id=\"sec-1\"&gt;&#22522;&#26412;&#25805;&#20316;&lt;/h3&gt;
+&lt;div class=\"outline-text-3\" id=\"text-1\"&gt;
+
+
+&lt;p&gt;
+&#20027;&#35201;&#25805;&#20316;&#65306;&#25628;&#32034;&#19982;&#36807;&#28388;&#12290;&#21015;&#20986;&#30340;&#25991;&#20214;&#21487;&#20197;&#26159;&#38480;&#21046;&#25968;&#37327;&#30340;&#65292;&#25110;&#32773;&#29992;&#23383;&#31526;&#20018;&#36807;&#28388;&#21518;&#30340;&#65292;&#21516;&#26102;&#21305;&#37197;
+&#26631;&#39064;&#19982;&#25991;&#26412;&#20027;&#20307;&#12290;&#21551;&#21160;&#19968;&#20010;&#36807;&#28388;&#65292;&#30452;&#25509;&#38190;&#20837;&#23383;&#31526;&#21363;&#21487;&#12290;&#36807;&#28388;&#26159;&#21363;&#26102;&#30340;&#65292;&#38543;&#30528;&#20320;&#38190;&#20837;&#65292;&#25991;&#20214;&#27983;
+&#35272;&#21363;&#26102;&#26356;&#26032;&#65292;&#21482;&#26174;&#31034;&#19982;&#24403;&#21069;&#23383;&#31526;&#20018;&#21305;&#37197;&#30340;&#25991;&#20214;&#12290;
+&lt;/p&gt;
+&lt;p&gt;
+&#25171;&#24320;&#31532;&#19968;&#20010;&#21305;&#37197;&#30340;&#25991;&#20214;&#65292;&#30452;&#25509;&#25353; &lt;code&gt;RET&lt;/code&gt;. &#33509;&#27809;&#26377;&#21305;&#37197;&#23383;&#31526;&#20018;&#65292;&#25353; &lt;code&gt;RET&lt;/code&gt; &#21017;&#21019;&#24314;&#26032;&#30340;&#25991;&#20214;&#24182;&#20351;
+&#29992;&#35813;&#23383;&#31526;&#20018;&#20026;&#26631;&#39064;&#12290;&#36825;&#26679;&#20889;&#31508;&#35760;&#24456;&#24555;&#12290;&#25991;&#20214;&#21517;&#20250;&#33258;&#21160;&#21019;&#24314;&#12290;&#33509;&#20320;&#24819;&#29992;&#25351;&#23450;&#30340;&#25991;&#20214;&#21517;&#65292;&#20351;&#29992;&#24555;
+&#25463;&#38190; &lt;code&gt;C-RET&lt;/code&gt;.
+&lt;/p&gt;
+&lt;p&gt;
+&#21478;&#19968;&#31383;&#21475;&#25171;&#24320;&#25991;&#20214;: &lt;code&gt;C-o&lt;/code&gt;, &#25171;&#24320;&#20294;&#19981;&#20999;&#25442;: &lt;code&gt;C-u, C-o&lt;/code&gt;
+&lt;/p&gt;
+&lt;p&gt;
+&#36807;&#28388;&#23383;&#31526;&#20018;&#32534;&#36753;&#65306;
+&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;DEL&lt;/code&gt; &#21024;&#38500;; &lt;code&gt;M-DEL&lt;/code&gt;, &#21024;&#38500;&#23383;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;C-y&lt;/code&gt; &#25289;&#22238;&#26469;&#26368;&#36817;&#21024;&#38500;&#30340;&#25991;&#26412;&#21040;&#36807;&#28388;&#23383;&#31526;&#20018;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;C-c C-c&lt;/code&gt; &#28165;&#38500;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;C-c C-g&lt;/code&gt; &#29992;&#24403;&#21069;&#36807;&#28388;&#23383;&#31526;&#20018;&#21047;&#26032;&#25991;&#20214;&#21015;&#34920;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;C-c C-l&lt;/code&gt; &#22312; minibuffer &#20013;&#32534;&#36753;&#36807;&#28388;&#23383;&#31526;&#20018;&#65292;&#22312; minibuffer &#20013;&#21487;&#29992; &lt;code&gt;M-p&lt;/code&gt;, &lt;code&gt;M-n&lt;/code&gt;
+    &#26469;&#24490;&#29615;&#35843;&#29992;&#20197;&#21069;&#30340;&#32534;&#36753;&#21382;&#21490;&#12290;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;div id=\"outline-container-2\" class=\"outline-3\"&gt;
+&lt;h3 id=\"sec-2\"&gt;&#37197;&#32622;&lt;/h3&gt;
+&lt;div class=\"outline-text-3\" id=\"text-2\"&gt;
+
+
+&lt;p&gt;
+&#35843;&#29992;:
+&lt;/p&gt;
+
+
+&lt;pre class=\"src src-elisp\"&gt;(&lt;span style=\"color: #00ffff;\"&gt;require&lt;/span&gt; '&lt;span style=\"color: #7fffd4;\"&gt;deft&lt;/span&gt;)
+&lt;/pre&gt;
+
+
+&lt;p&gt;
+&#21305;&#37197;&#25991;&#26723;&#31867;&#22411; (&#40664;&#35748;&#26159; &lt;code&gt;.txt&lt;/code&gt;) &#21644;&#36335;&#24452;:
+&lt;/p&gt;
+
+
+&lt;pre class=\"src src-elisp\"&gt;(setq deft-extension &lt;span style=\"color: #ffa07a;\"&gt;\"txt\"&lt;/span&gt;)
+(setq deft-directory &lt;span style=\"color: #ffa07a;\"&gt;\"~/Dropbox/notes\"&lt;/span&gt;)
+&lt;/pre&gt;
+
+
+&lt;p&gt;
+&#20351;&#29992; &lt;code&gt;markdown-mode&lt;/code&gt; &#20316;&#20026;&#20027;&#27169;&#24335;:
+&lt;/p&gt;
+
+
+&lt;pre class=\"src src-elisp\"&gt;(setq deft-text-mode 'markdown-mode)
+&lt;/pre&gt;
+
+
+&lt;p&gt;
+&#20351;&#29992; &lt;code&gt;org-mode&lt;/code&gt;:
+&lt;/p&gt;
+
+
+&lt;pre class=\"src src-elisp\"&gt;(setq deft-extension &lt;span style=\"color: #ffa07a;\"&gt;\"org\"&lt;/span&gt;)
+(setq deft-text-mode 'org-mode)
+&lt;/pre&gt;
+
+
+&lt;p&gt;
+&#20351;&#29992;&#25991;&#20214;&#21517;&#20026;&#27983;&#35272;&#30340;&#26631;&#39064;&#65288;&#40664;&#35748;&#26159;&#25991;&#20214;&#20013;&#30340;&#31532;&#19968;&#34892;&#65289;:
+&lt;/p&gt;
+
+
+&lt;pre class=\"src src-elisp\"&gt;(setq deft-use-filename-as-title t)
+&lt;/pre&gt;
+
+
+&lt;p&gt;
+&#23450;&#20041;&#40664;&#35748;&#24555;&#25463;&#38190;:
+&lt;/p&gt;
+
+
+&lt;pre class=\"src src-elisp\"&gt;(global-set-key [f8] 'deft)
+&lt;/pre&gt;
+
+
+&lt;/div&gt;
+&lt;/div&gt;
+"</pre></td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="debug post">
   <h2>修复损坏的 ext4 大分区数据</h2>
   <table>
     <caption>导出博文信息 修复损坏的 ext4 大分区数据</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>0</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>1</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#20462;&#22797;&#25439;&#22351;&#30340; ext4 &#22823;&#20998;&#21306;&#25968;&#25454;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20789 42376)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
@@ -367,7 +593,7 @@ EADEPOT: Inode 1598038, i_&#22359;s is 7830912, &#24212;&#20026; 7822912.  &#240
     <caption>导出博文信息 与妻书：《关于生、死与恐惧》</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>1</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>2</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#19982;&#22971;&#20070;&#65306;&#12298;&#20851;&#20110;&#29983;&#12289;&#27515;&#19982;&#24656;&#24807;&#12299;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20786 57304)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
@@ -637,7 +863,7 @@ p.s. &#22909;&#22810;&#20010;3, &#26159;&#21542;&#26263;&#21547;&#30528;&#25105;
     <caption>导出博文信息 “与智慧同在！”</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>2</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>3</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#8220;&#19982;&#26234;&#24935;&#21516;&#22312;&#65281;&#8221;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20781 45564)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
@@ -757,7 +983,7 @@ p.s. &#22909;&#22810;&#20010;3, &#26159;&#21542;&#26263;&#21547;&#30528;&#25105;
     <caption>导出博文信息 信息时代的智慧——兼谈科普</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>3</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>4</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#20449;&#24687;&#26102;&#20195;&#30340;&#26234;&#24935;&#8212;&#8212;&#20860;&#35848;&#31185;&#26222;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20775 6720)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
@@ -2261,7 +2487,7 @@ lojban [&#712;lo&#658;ban]. &#20854;&#29305;&#28857;&#26159;&#65306;&#35328;&#25
     <caption>导出博文信息 [译] 如何高效地交流？</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>4</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>5</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"[&#35793;] &#22914;&#20309;&#39640;&#25928;&#22320;&#20132;&#27969;&#65311;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20765 55000)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
@@ -2813,7 +3039,7 @@ you can overcome them/, (2010), p. 94, ISBN 978-0-670-07431-0
     <caption>导出博文信息 用户主目录的使用及我的文档管理习惯</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>5</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>6</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#29992;&#25143;&#20027;&#30446;&#24405;&#30340;&#20351;&#29992;&#21450;&#25105;&#30340;&#25991;&#26723;&#31649;&#29702;&#20064;&#24815;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20753 17452)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
@@ -3403,7 +3629,7 @@ hg:
     <caption>导出博文信息 标签式文件系统，构想与实现</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>6</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>7</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#26631;&#31614;&#24335;&#25991;&#20214;&#31995;&#32479;&#65292;&#26500;&#24819;&#19982;&#23454;&#29616;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20751 44724)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
@@ -3921,7 +4147,7 @@ Nepomuk &#30340;&#27169;&#25311;&#22120;&#65292;&#20173;&#28982;&#27809;&#26377;
     <caption>导出博文信息 [译] 怎样学习一门新的编程语言？</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>7</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>8</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"[&#35793;] &#24590;&#26679;&#23398;&#20064;&#19968;&#38376;&#26032;&#30340;&#32534;&#31243;&#35821;&#35328;&#65311;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20750 17140)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
@@ -4119,7 +4345,7 @@ language\"]], &#35273;&#24471;&#26377;&#24517;&#35201;&#21521;&#22823;&#23478;&#
     <caption>导出博文信息 恢复一次严重的系统故障 (Windows 7)</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>8</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>9</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#24674;&#22797;&#19968;&#27425;&#20005;&#37325;&#30340;&#31995;&#32479;&#25925;&#38556; (Windows 7)"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20741 38404)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
@@ -4403,7 +4629,7 @@ bootrec /ScanOS
     <caption>导出博文信息 在 Windows 7 下工作</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>9</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>10</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#22312; Windows 7 &#19979;&#24037;&#20316;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20719 64676)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
@@ -5118,7 +5344,7 @@ Win7 &#19979;&#21487;&#30001; zsh (cygwin) &#23436;&#25104;&#24456;&#22810;&#240
     <caption>导出博文信息 Geant4 在 Windows 下的安装与使用</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>10</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>11</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"Geant4 &#22312; Windows &#19979;&#30340;&#23433;&#35013;&#19982;&#20351;&#29992;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20694 39816)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -5518,7 +5744,7 @@ GiB. &#32534;&#35793;&#30340;&#20020;&#26102;&#25991;&#20214;&#21344;&#20102; 3.
     <caption>导出博文信息 在 Windows 下使用 Coin3D</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>11</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>12</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#22312; Windows &#19979;&#20351;&#29992; Coin3D"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20694 32316)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -5892,7 +6118,7 @@ DO (C:\\Apps\\Qt\\4.8.4\\bin\\moc.exe -i -o src\\Inventor\\Qt\\moc_%%H ..\\..\\s
     <caption>导出博文信息 使用 CMake 安装 Geant4 (>=9.5)</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>12</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>13</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#20351;&#29992; CMake &#23433;&#35013; Geant4 (&gt;=9.5)"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20694 27276)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -6253,7 +6479,7 @@ cmake .. &amp;amp;&amp;amp; make
     <caption>导出博文信息 Geant4 在 Debian 下的安装与使用</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>13</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>14</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"Geant4 &#22312; Debian &#19979;&#30340;&#23433;&#35013;&#19982;&#20351;&#29992;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20693 2872)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -6424,7 +6650,7 @@ export G4WORKDIR=/home/me/geant4
     <caption>导出博文信息 “中药过敏”与医生的尴尬</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>14</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>15</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#8220;&#20013;&#33647;&#36807;&#25935;&#8221;&#19982;&#21307;&#29983;&#30340;&#23604;&#23596;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20559 62256)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -6555,7 +6781,7 @@ export G4WORKDIR=/home/me/geant4
     <caption>导出博文信息 函数式包管理器 Nix 与高性能计算</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>15</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>16</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#20989;&#25968;&#24335;&#21253;&#31649;&#29702;&#22120; Nix &#19982;&#39640;&#24615;&#33021;&#35745;&#31639;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20449 31556)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -6645,7 +6871,7 @@ Nix &#26159;&#19968;&#20010;&#36328;&#24179;&#21488;&#30340;&#21253;&#31649;&#29
     <caption>导出博文信息 称呼紊乱的年代之家庭称谓</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>16</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>17</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#31216;&#21628;&#32010;&#20081;&#30340;&#24180;&#20195;&#20043;&#23478;&#24237;&#31216;&#35859;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20438 62212)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -6973,7 +7199,7 @@ http://paper.wenweipo.com/2011/10/10/OT1110100004.htm
     <caption>导出博文信息 网络上的百科全书、辞典与词典</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>17</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>18</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#32593;&#32476;&#19978;&#30340;&#30334;&#31185;&#20840;&#20070;&#12289;&#36766;&#20856;&#19982;&#35789;&#20856;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20421 33804)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -7168,7 +7394,7 @@ http://paper.wenweipo.com/2011/10/10/OT1110100004.htm
     <caption>导出博文信息 称呼紊乱的年代</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>18</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>19</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#31216;&#21628;&#32010;&#20081;&#30340;&#24180;&#20195;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20416 59864)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -7283,7 +7509,7 @@ http://paper.wenweipo.com/2011/10/10/OT1110100004.htm
     <caption>导出博文信息 “先驱者的故事”（《宽容》之序）</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>19</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>20</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#8220;&#20808;&#39537;&#32773;&#30340;&#25925;&#20107;&#8221;&#65288;&#12298;&#23485;&#23481;&#12299;&#20043;&#24207;&#65289;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20404 23516)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -7833,7 +8059,7 @@ http://paper.wenweipo.com/2011/10/10/OT1110100004.htm
     <caption>导出博文信息 NixOS -- 全局版本控制的操作系统？</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>20</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>21</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"NixOS -- &#20840;&#23616;&#29256;&#26412;&#25511;&#21046;&#30340;&#25805;&#20316;&#31995;&#32479;&#65311;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20399 54376)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -8035,7 +8261,7 @@ NixOS &#20063;&#21482;&#25552;&#20379;&#20102;&#19968;&#20010; LiveCD (0.1pre340
     <caption>导出博文信息 那些小巧的程序们</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>21</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>22</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#37027;&#20123;&#23567;&#24039;&#30340;&#31243;&#24207;&#20204;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20385 30060)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -8457,7 +8683,7 @@ Emacs, VIM &#31561;&#27969;&#34892;&#30340;&#37117;&#26159;&#24040;&#26080;&#387
     <caption>导出博文信息 文学编程与 orgmode</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>22</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>23</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#25991;&#23398;&#32534;&#31243;&#19982; orgmode"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20384 7936)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -8602,7 +8828,7 @@ org-babel &#25991;&#23398;&#32534;&#31243;&#20307;&#29616;&#22312;&#23427;&#3034
     <caption>导出博文信息 信息技术、文学编程与物理学纲要</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>23</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>24</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#20449;&#24687;&#25216;&#26415;&#12289;&#25991;&#23398;&#32534;&#31243;&#19982;&#29289;&#29702;&#23398;&#32434;&#35201;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20378 39172)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -8995,7 +9221,7 @@ Guile &#37325;&#26032;&#32534;&#20889;&#21602;&#12290; :-)
     <caption>导出博文信息 磨驴法则之头驴利益</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>24</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>25</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#30952;&#39540;&#27861;&#21017;&#20043;&#22836;&#39540;&#21033;&#30410;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20377 60488)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -9105,7 +9331,7 @@ crazycat   &#31561;&#32423;&#65306;&#20061;&#21697;&#25226;&#24635;   1&#27004; 
     <caption>导出博文信息 强迫症 (OCD) 者的计算机使用表现</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>25</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>26</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#24378;&#36843;&#30151; (OCD) &#32773;&#30340;&#35745;&#31639;&#26426;&#20351;&#29992;&#34920;&#29616;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20363 31552)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -9254,7 +9480,7 @@ crazycat   &#31561;&#32423;&#65306;&#20061;&#21697;&#25226;&#24635;   1&#27004; 
     <caption>导出博文信息 Emacs --- 能够显示地图的编辑器？</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>26</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>27</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"Emacs --- &#33021;&#22815;&#26174;&#31034;&#22320;&#22270;&#30340;&#32534;&#36753;&#22120;&#65311;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20361 26124)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -9413,7 +9639,7 @@ Bad sexp at line 27 in d:/Exaos/Workspace/exaos/daily/myorg/contacts.org: (org-c
     <caption>导出博文信息 联合国大学 (UNU)</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>27</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>28</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#32852;&#21512;&#22269;&#22823;&#23398; (UNU)"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20338 44072)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -9504,7 +9730,7 @@ Bad sexp at line 27 in d:/Exaos/Workspace/exaos/daily/myorg/contacts.org: (org-c
     <caption>导出博文信息 用中子探测器识别核武器</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>28</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>29</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#29992;&#20013;&#23376;&#25506;&#27979;&#22120;&#35782;&#21035;&#26680;&#27494;&#22120;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20337 56988)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -9558,7 +9784,7 @@ Bad sexp at line 27 in d:/Exaos/Workspace/exaos/daily/myorg/contacts.org: (org-c
     <caption>导出博文信息 一些关于宇宙与粒子物理的科普网站作品</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>29</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>30</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#19968;&#20123;&#20851;&#20110;&#23431;&#23449;&#19982;&#31890;&#23376;&#29289;&#29702;&#30340;&#31185;&#26222;&#32593;&#31449;&#20316;&#21697;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20337 7248)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -9643,7 +9869,7 @@ Bad sexp at line 27 in d:/Exaos/Workspace/exaos/daily/myorg/contacts.org: (org-c
     <caption>导出博文信息 关于 dotsies 字体的想法</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>30</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>31</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#20851;&#20110; dotsies &#23383;&#20307;&#30340;&#24819;&#27861;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20335 20)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -9732,7 +9958,7 @@ Do not close up you heart.
     <caption>导出博文信息 切换到 o-blog 页面系统</caption>
     <thead><tr><th>属性</th><th>值</th></tr></thead>
     <tbody>
-      <tr><td class="property"><code>id</code></td><td class="value"><pre>31</pre></td></tr>
+      <tr><td class="property"><code>id</code></td><td class="value"><pre>32</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#20999;&#25442;&#21040; o-blog &#39029;&#38754;&#31995;&#32479;"</pre></td></tr>
       <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20330 15820)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2012</pre></td></tr>
@@ -9804,10 +10030,10 @@ Do not close up you heart.
     <tbody>
       <tr><td class="property"><code>id</code></td><td class="value"><pre>0</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#24515;&#34523;&#23567;&#31449;"</pre></td></tr>
-      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20789 42676)</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20818 38732)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
       <tr><td class="property"><code>month</code></td><td class="value"><pre>3</pre></td></tr>
-      <tr><td class="property"><code>day</code></td><td class="value"><pre>5</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>27</pre></td></tr>
       <tr><td class="property"><code>category</code></td><td class="value"><pre>[cl-struct-ob:category "blog" "blog"]</pre></td></tr>
       <tr><td class="property"><code>tags</code></td><td class="value"><pre>nil</pre></td></tr>
       <tr><td class="property"><code>template</code></td><td class="value"><pre>"blog_static.html"</pre></td></tr>
@@ -9933,11 +10159,11 @@ Do not close up you heart.
     <tbody>
       <tr><td class="property"><code>id</code></td><td class="value"><pre>1</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#36164;&#26009;"</pre></td></tr>
-      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20789 42676)</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20818 38732)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
       <tr><td class="property"><code>month</code></td><td class="value"><pre>3</pre></td></tr>
-      <tr><td class="property"><code>day</code></td><td class="value"><pre>5</pre></td></tr>
-      <tr><td class="property"><code>category</code></td><td class="value"><pre>[cl-struct-ob:category "&#38745;&#24577;&#39029;&#38754;" "3d51008ac08e28182b471e71196cf1b2"]</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>27</pre></td></tr>
+      <tr><td class="property"><code>category</code></td><td class="value"><pre>[cl-struct-ob:category "&#38745;&#24577;&#39029;&#38754;" "6c135236848dfe14b833d2b212c25e35"]</pre></td></tr>
       <tr><td class="property"><code>tags</code></td><td class="value"><pre>nil</pre></td></tr>
       <tr><td class="property"><code>template</code></td><td class="value"><pre>"blog_static.html"</pre></td></tr>
       <tr><td class="property"><code>filepath</code></td><td class="value"><pre>"attic/"</pre></td></tr>
@@ -9970,11 +10196,11 @@ Do not close up you heart.
     <tbody>
       <tr><td class="property"><code>id</code></td><td class="value"><pre>2</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#31169;&#20154;&#36164;&#26009;"</pre></td></tr>
-      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20789 42676)</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20818 38732)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
       <tr><td class="property"><code>month</code></td><td class="value"><pre>3</pre></td></tr>
-      <tr><td class="property"><code>day</code></td><td class="value"><pre>5</pre></td></tr>
-      <tr><td class="property"><code>category</code></td><td class="value"><pre>[cl-struct-ob:category "&#38745;&#24577;&#39029;&#38754;" "3d51008ac08e28182b471e71196cf1b2"]</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>27</pre></td></tr>
+      <tr><td class="property"><code>category</code></td><td class="value"><pre>[cl-struct-ob:category "&#38745;&#24577;&#39029;&#38754;" "6c135236848dfe14b833d2b212c25e35"]</pre></td></tr>
       <tr><td class="property"><code>tags</code></td><td class="value"><pre>nil</pre></td></tr>
       <tr><td class="property"><code>template</code></td><td class="value"><pre>"blog_static.html"</pre></td></tr>
       <tr><td class="property"><code>filepath</code></td><td class="value"><pre>"attic/"</pre></td></tr>
@@ -10010,11 +10236,11 @@ Do not close up you heart.
     <tbody>
       <tr><td class="property"><code>id</code></td><td class="value"><pre>3</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#31508;&#35760;"</pre></td></tr>
-      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20789 42676)</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20818 38732)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
       <tr><td class="property"><code>month</code></td><td class="value"><pre>3</pre></td></tr>
-      <tr><td class="property"><code>day</code></td><td class="value"><pre>5</pre></td></tr>
-      <tr><td class="property"><code>category</code></td><td class="value"><pre>[cl-struct-ob:category "&#38745;&#24577;&#39029;&#38754;" "3d51008ac08e28182b471e71196cf1b2"]</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>27</pre></td></tr>
+      <tr><td class="property"><code>category</code></td><td class="value"><pre>[cl-struct-ob:category "&#38745;&#24577;&#39029;&#38754;" "6c135236848dfe14b833d2b212c25e35"]</pre></td></tr>
       <tr><td class="property"><code>tags</code></td><td class="value"><pre>nil</pre></td></tr>
       <tr><td class="property"><code>template</code></td><td class="value"><pre>"blog_static.html"</pre></td></tr>
       <tr><td class="property"><code>filepath</code></td><td class="value"><pre>"notes/"</pre></td></tr>
@@ -10050,11 +10276,11 @@ Do not close up you heart.
     <tbody>
       <tr><td class="property"><code>id</code></td><td class="value"><pre>4</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#35843;&#35797;"</pre></td></tr>
-      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20789 42676)</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20818 38732)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
       <tr><td class="property"><code>month</code></td><td class="value"><pre>3</pre></td></tr>
-      <tr><td class="property"><code>day</code></td><td class="value"><pre>5</pre></td></tr>
-      <tr><td class="property"><code>category</code></td><td class="value"><pre>[cl-struct-ob:category "&#38745;&#24577;&#39029;&#38754;" "3d51008ac08e28182b471e71196cf1b2"]</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>27</pre></td></tr>
+      <tr><td class="property"><code>category</code></td><td class="value"><pre>[cl-struct-ob:category "&#38745;&#24577;&#39029;&#38754;" "6c135236848dfe14b833d2b212c25e35"]</pre></td></tr>
       <tr><td class="property"><code>tags</code></td><td class="value"><pre>nil</pre></td></tr>
       <tr><td class="property"><code>template</code></td><td class="value"><pre>"debug.html"</pre></td></tr>
       <tr><td class="property"><code>filepath</code></td><td class="value"><pre>nil</pre></td></tr>
@@ -10078,11 +10304,11 @@ Do not close up you heart.
     <tbody>
       <tr><td class="property"><code>id</code></td><td class="value"><pre>5</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"&#26356;&#26032;&#35760;&#24405;"</pre></td></tr>
-      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20789 42676)</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20818 38732)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
       <tr><td class="property"><code>month</code></td><td class="value"><pre>3</pre></td></tr>
-      <tr><td class="property"><code>day</code></td><td class="value"><pre>5</pre></td></tr>
-      <tr><td class="property"><code>category</code></td><td class="value"><pre>[cl-struct-ob:category "&#21338;&#23458;&#35774;&#32622;" "c4aa53335211ff034a3fdeaa245b32c2"]</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>27</pre></td></tr>
+      <tr><td class="property"><code>category</code></td><td class="value"><pre>[cl-struct-ob:category "&#21338;&#23458;&#35774;&#32622;" "788f2c7b101e31eb2a10d94e633dc717"]</pre></td></tr>
       <tr><td class="property"><code>tags</code></td><td class="value"><pre>nil</pre></td></tr>
       <tr><td class="property"><code>template</code></td><td class="value"><pre>"blog_static.html"</pre></td></tr>
       <tr><td class="property"><code>filepath</code></td><td class="value"><pre>nil</pre></td></tr>
@@ -10162,10 +10388,10 @@ Do not close up you heart.
     <tbody>
       <tr><td class="property"><code>id</code></td><td class="value"><pre>nil</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"Redirect from (&#20449;&#24687;&#26102;&#20195;&#30340;&#26234;&#24935;&#8212;&#8212;&#20860;&#35848;&#31185;&#26222;)"</pre></td></tr>
-      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20789 42676)</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20818 38732)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
       <tr><td class="property"><code>month</code></td><td class="value"><pre>3</pre></td></tr>
-      <tr><td class="property"><code>day</code></td><td class="value"><pre>5</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>27</pre></td></tr>
       <tr><td class="property"><code>category</code></td><td class="value"><pre>[cl-struct-ob:category "blog" "blog"]</pre></td></tr>
       <tr><td class="property"><code>tags</code></td><td class="value"><pre>nil</pre></td></tr>
       <tr><td class="property"><code>template</code></td><td class="value"><pre>"page_redirect.html"</pre></td></tr>
@@ -10204,16 +10430,16 @@ Do not close up you heart.
     <tbody>
       <tr><td class="property"><code>id</code></td><td class="value"><pre>0</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"Copyright"</pre></td></tr>
-      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20789 42676)</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20818 38732)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
       <tr><td class="property"><code>month</code></td><td class="value"><pre>3</pre></td></tr>
-      <tr><td class="property"><code>day</code></td><td class="value"><pre>5</pre></td></tr>
-      <tr><td class="property"><code>category</code></td><td class="value"><pre>[cl-struct-ob:category "&#21338;&#23458;&#35774;&#32622;" "c4aa53335211ff034a3fdeaa245b32c2"]</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>27</pre></td></tr>
+      <tr><td class="property"><code>category</code></td><td class="value"><pre>[cl-struct-ob:category "&#21338;&#23458;&#35774;&#32622;" "788f2c7b101e31eb2a10d94e633dc717"]</pre></td></tr>
       <tr><td class="property"><code>tags</code></td><td class="value"><pre>nil</pre></td></tr>
       <tr><td class="property"><code>template</code></td><td class="value"><pre>"blog_post.html"</pre></td></tr>
-      <tr><td class="property"><code>filepath</code></td><td class="value"><pre>"c4aa53335211ff034a3fdeaa245b32c2/2013/03"</pre></td></tr>
+      <tr><td class="property"><code>filepath</code></td><td class="value"><pre>"788f2c7b101e31eb2a10d94e633dc717/2013/03"</pre></td></tr>
       <tr><td class="property"><code>filename</code></td><td class="value"><pre>"copyright"</pre></td></tr>
-      <tr><td class="property"><code>htmlfile</code></td><td class="value"><pre>"c4aa53335211ff034a3fdeaa245b32c2/2013/03/05_copyright.html"</pre></td></tr>
+      <tr><td class="property"><code>htmlfile</code></td><td class="value"><pre>"788f2c7b101e31eb2a10d94e633dc717/2013/03/27_copyright.html"</pre></td></tr>
       <tr><td class="property"><code>path-to-root</code></td><td class="value"><pre>"../../.."</pre></td></tr>
       <tr><td class="property"><code>sitemap</code></td><td class="value"><pre>nil</pre></td></tr>
       <tr><td class="property"><code>content</code></td><td class="value"><pre>"#+OPTIONS: H:7 num:nil  toc:nil d:nil todo:nil &lt;:nil pri:nil tags:nil
@@ -10235,16 +10461,16 @@ Do not close up you heart.
     <tbody>
       <tr><td class="property"><code>id</code></td><td class="value"><pre>1</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"About"</pre></td></tr>
-      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20789 42676)</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20818 38732)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
       <tr><td class="property"><code>month</code></td><td class="value"><pre>3</pre></td></tr>
-      <tr><td class="property"><code>day</code></td><td class="value"><pre>5</pre></td></tr>
-      <tr><td class="property"><code>category</code></td><td class="value"><pre>[cl-struct-ob:category "&#21338;&#23458;&#35774;&#32622;" "c4aa53335211ff034a3fdeaa245b32c2"]</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>27</pre></td></tr>
+      <tr><td class="property"><code>category</code></td><td class="value"><pre>[cl-struct-ob:category "&#21338;&#23458;&#35774;&#32622;" "788f2c7b101e31eb2a10d94e633dc717"]</pre></td></tr>
       <tr><td class="property"><code>tags</code></td><td class="value"><pre>nil</pre></td></tr>
       <tr><td class="property"><code>template</code></td><td class="value"><pre>"blog_post.html"</pre></td></tr>
-      <tr><td class="property"><code>filepath</code></td><td class="value"><pre>"c4aa53335211ff034a3fdeaa245b32c2/2013/03"</pre></td></tr>
+      <tr><td class="property"><code>filepath</code></td><td class="value"><pre>"788f2c7b101e31eb2a10d94e633dc717/2013/03"</pre></td></tr>
       <tr><td class="property"><code>filename</code></td><td class="value"><pre>"about"</pre></td></tr>
-      <tr><td class="property"><code>htmlfile</code></td><td class="value"><pre>"c4aa53335211ff034a3fdeaa245b32c2/2013/03/05_about.html"</pre></td></tr>
+      <tr><td class="property"><code>htmlfile</code></td><td class="value"><pre>"788f2c7b101e31eb2a10d94e633dc717/2013/03/27_about.html"</pre></td></tr>
       <tr><td class="property"><code>path-to-root</code></td><td class="value"><pre>"../../.."</pre></td></tr>
       <tr><td class="property"><code>sitemap</code></td><td class="value"><pre>nil</pre></td></tr>
       <tr><td class="property"><code>content</code></td><td class="value"><pre>"#+OPTIONS: H:7 num:nil  toc:nil d:nil todo:nil &lt;:nil pri:nil tags:nil
@@ -10266,16 +10492,16 @@ Do not close up you heart.
     <tbody>
       <tr><td class="property"><code>id</code></td><td class="value"><pre>2</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"Navigation"</pre></td></tr>
-      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20789 42676)</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20818 38732)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
       <tr><td class="property"><code>month</code></td><td class="value"><pre>3</pre></td></tr>
-      <tr><td class="property"><code>day</code></td><td class="value"><pre>5</pre></td></tr>
-      <tr><td class="property"><code>category</code></td><td class="value"><pre>[cl-struct-ob:category "&#21338;&#23458;&#35774;&#32622;" "c4aa53335211ff034a3fdeaa245b32c2"]</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>27</pre></td></tr>
+      <tr><td class="property"><code>category</code></td><td class="value"><pre>[cl-struct-ob:category "&#21338;&#23458;&#35774;&#32622;" "788f2c7b101e31eb2a10d94e633dc717"]</pre></td></tr>
       <tr><td class="property"><code>tags</code></td><td class="value"><pre>nil</pre></td></tr>
       <tr><td class="property"><code>template</code></td><td class="value"><pre>"blog_post.html"</pre></td></tr>
-      <tr><td class="property"><code>filepath</code></td><td class="value"><pre>"c4aa53335211ff034a3fdeaa245b32c2/2013/03"</pre></td></tr>
+      <tr><td class="property"><code>filepath</code></td><td class="value"><pre>"788f2c7b101e31eb2a10d94e633dc717/2013/03"</pre></td></tr>
       <tr><td class="property"><code>filename</code></td><td class="value"><pre>"navigation"</pre></td></tr>
-      <tr><td class="property"><code>htmlfile</code></td><td class="value"><pre>"c4aa53335211ff034a3fdeaa245b32c2/2013/03/05_navigation.html"</pre></td></tr>
+      <tr><td class="property"><code>htmlfile</code></td><td class="value"><pre>"788f2c7b101e31eb2a10d94e633dc717/2013/03/27_navigation.html"</pre></td></tr>
       <tr><td class="property"><code>path-to-root</code></td><td class="value"><pre>"../../.."</pre></td></tr>
       <tr><td class="property"><code>sitemap</code></td><td class="value"><pre>nil</pre></td></tr>
       <tr><td class="property"><code>content</code></td><td class="value"><pre>"#+OPTIONS: H:7 num:nil  toc:nil d:nil todo:nil &lt;:nil pri:nil tags:nil
@@ -10364,16 +10590,16 @@ Do not close up you heart.
     <tbody>
       <tr><td class="property"><code>id</code></td><td class="value"><pre>3</pre></td></tr>
       <tr><td class="property"><code>title</code></td><td class="value"><pre>"Navigation Footer"</pre></td></tr>
-      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20789 42676)</pre></td></tr>
+      <tr><td class="property"><code>timespamp</code></td><td class="value"><pre>(20818 38732)</pre></td></tr>
       <tr><td class="property"><code>year</code></td><td class="value"><pre>2013</pre></td></tr>
       <tr><td class="property"><code>month</code></td><td class="value"><pre>3</pre></td></tr>
-      <tr><td class="property"><code>day</code></td><td class="value"><pre>5</pre></td></tr>
-      <tr><td class="property"><code>category</code></td><td class="value"><pre>[cl-struct-ob:category "&#21338;&#23458;&#35774;&#32622;" "c4aa53335211ff034a3fdeaa245b32c2"]</pre></td></tr>
+      <tr><td class="property"><code>day</code></td><td class="value"><pre>27</pre></td></tr>
+      <tr><td class="property"><code>category</code></td><td class="value"><pre>[cl-struct-ob:category "&#21338;&#23458;&#35774;&#32622;" "788f2c7b101e31eb2a10d94e633dc717"]</pre></td></tr>
       <tr><td class="property"><code>tags</code></td><td class="value"><pre>nil</pre></td></tr>
       <tr><td class="property"><code>template</code></td><td class="value"><pre>"blog_post.html"</pre></td></tr>
-      <tr><td class="property"><code>filepath</code></td><td class="value"><pre>"c4aa53335211ff034a3fdeaa245b32c2/2013/03"</pre></td></tr>
+      <tr><td class="property"><code>filepath</code></td><td class="value"><pre>"788f2c7b101e31eb2a10d94e633dc717/2013/03"</pre></td></tr>
       <tr><td class="property"><code>filename</code></td><td class="value"><pre>"navigation-footer"</pre></td></tr>
-      <tr><td class="property"><code>htmlfile</code></td><td class="value"><pre>"c4aa53335211ff034a3fdeaa245b32c2/2013/03/05_navigation-footer.html"</pre></td></tr>
+      <tr><td class="property"><code>htmlfile</code></td><td class="value"><pre>"788f2c7b101e31eb2a10d94e633dc717/2013/03/27_navigation-footer.html"</pre></td></tr>
       <tr><td class="property"><code>path-to-root</code></td><td class="value"><pre>"../../.."</pre></td></tr>
       <tr><td class="property"><code>sitemap</code></td><td class="value"><pre>nil</pre></td></tr>
       <tr><td class="property"><code>content</code></td><td class="value"><pre>"#+OPTIONS: H:7 num:nil  toc:nil d:nil todo:nil &lt;:nil pri:nil tags:nil
@@ -10423,8 +10649,8 @@ Do not close up you heart.
     <tbody>
       <tr><td class="property"><code>name</code></td><td class="value"><pre>"Computer"</pre></td></tr>
       <tr><td class="property"><code>safe</code></td><td class="value"><pre>"computer"</pre></td></tr>
-      <tr><td class="property"><code>count</code></td><td class="value"><pre>6</pre></td></tr>
-      <tr><td class="property"><code>size</code></td><td class="value"><pre>180.0</pre></td></tr>
+      <tr><td class="property"><code>count</code></td><td class="value"><pre>7</pre></td></tr>
+      <tr><td class="property"><code>size</code></td><td class="value"><pre>200.0</pre></td></tr>
     </tbody>
   </table>
 </div>
@@ -10449,8 +10675,8 @@ Do not close up you heart.
     <tbody>
       <tr><td class="property"><code>name</code></td><td class="value"><pre>"Emacs"</pre></td></tr>
       <tr><td class="property"><code>safe</code></td><td class="value"><pre>"emacs"</pre></td></tr>
-      <tr><td class="property"><code>count</code></td><td class="value"><pre>1</pre></td></tr>
-      <tr><td class="property"><code>size</code></td><td class="value"><pre>80.0</pre></td></tr>
+      <tr><td class="property"><code>count</code></td><td class="value"><pre>2</pre></td></tr>
+      <tr><td class="property"><code>size</code></td><td class="value"><pre>100.0</pre></td></tr>
     </tbody>
   </table>
 </div>
@@ -10767,13 +10993,13 @@ Do not close up you heart.
 	    <nav id="archives" class="span3">
 	      <h1><a href="./archives.html">归档</a></h1>
 	      <ul>
-		<li><a href="./blog/2013/03/05_fix-bad-ext4.html">修复损坏的 ext4 大分区数据</a></li> <li><a href="./blog/2013/03/03_fear-and-death.html">与妻书：《关于生、死与恐惧》</a></li> <li><a href="./blog/2013/02/27_wisdom-be-with-you.html">“与智慧同在！”</a></li> <li><a href="./blog/2013/02/22_wisdom-in-information-era.html">信息时代的智慧——兼谈科普</a></li> <li><a href="./blog/2013/02/15_communicate-effectively.html">[译] 如何高效地交流？</a></li> <li><a href="./blog/2013/02/06_my-archiving.html">用户主目录的使用及我的文档管理习惯</a></li> <li><a href="./blog/2013/02/04_tagfs-summary.html">标签式文件系统，构想与实现</a></li> <li><a href="./blog/2013/02/03_tips-for-new-programming-language.html">[译] 怎样学习一门新的编程语言？</a></li> <li><a href="./blog/2013/01/28_recovery-win7-dell-n4110.html">恢复一次严重的系统故障 (Windows 7)</a></li> <li><a href="./blog/2013/01/11_work-under-win7.html">在 Windows 7 下工作</a></li> 
+		<li><a href="./blog/2013/03/27_emacs-deft.html">Deft 使用指南</a></li> <li><a href="./blog/2013/03/05_fix-bad-ext4.html">修复损坏的 ext4 大分区数据</a></li> <li><a href="./blog/2013/03/03_fear-and-death.html">与妻书：《关于生、死与恐惧》</a></li> <li><a href="./blog/2013/02/27_wisdom-be-with-you.html">“与智慧同在！”</a></li> <li><a href="./blog/2013/02/22_wisdom-in-information-era.html">信息时代的智慧——兼谈科普</a></li> <li><a href="./blog/2013/02/15_communicate-effectively.html">[译] 如何高效地交流？</a></li> <li><a href="./blog/2013/02/06_my-archiving.html">用户主目录的使用及我的文档管理习惯</a></li> <li><a href="./blog/2013/02/04_tagfs-summary.html">标签式文件系统，构想与实现</a></li> <li><a href="./blog/2013/02/03_tips-for-new-programming-language.html">[译] 怎样学习一门新的编程语言？</a></li> <li><a href="./blog/2013/01/28_recovery-win7-dell-n4110.html">恢复一次严重的系统故障 (Windows 7)</a></li> 
 	      </ul>
 	    </nav>
 	    <nav class="tags span3">
 	      <h1><a href="./tags/index.html">标签</a></h1>
 	      <ul>
-  <li style="font-size: 180.00%;"><a href="./tags/computer.html">Computer</a></li> <li style="font-size: 80.00%;"><a href="./tags/education.html">Education</a></li> <li style="font-size: 80.00%;"><a href="./tags/emacs.html">Emacs</a></li> <li style="font-size: 80.00%;"><a href="./tags/family.html">Family</a></li> <li style="font-size: 80.00%;"><a href="./tags/fonts.html">Fonts</a></li> <li style="font-size: 80.00%;"><a href="./tags/health.html">Health</a></li> <li style="font-size: 100.00%;"><a href="./tags/infoera.html">InfoEra</a></li> <li style="font-size: 80.00%;"><a href="./tags/internet.html">Internet</a></li> <li style="font-size: 80.00%;"><a href="./tags/language.html">Language</a></li> <li style="font-size: 80.00%;"><a href="./tags/life.html">Life</a></li> <li style="font-size: 100.00%;"><a href="./tags/literateprogramming.html">LiterateProgramming</a></li> <li style="font-size: 140.00%;"><a href="./tags/mswin.html">MSWIN</a></li> <li style="font-size: 120.00%;"><a href="./tags/ocd.html">OCD</a></li> <li style="font-size: 80.00%;"><a href="./tags/os.html">OS</a></li> <li style="font-size: 120.00%;"><a href="./tags/physics.html">Physics</a></li> <li style="font-size: 100.00%;"><a href="./tags/science.html">Science</a></li> <li style="font-size: 100.00%;"><a href="./tags/simulation.html">Simulation</a></li> <li style="font-size: 220.00%;"><a href="./tags/society.html">Society</a></li> <li style="font-size: 100.00%;"><a href="./tags/translation.html">Translation</a></li> <li style="font-size: 80.00%;"><a href="./tags/cmake.html">cmake</a></li> <li style="font-size: 80.00%;"><a href="./tags/debian.html">debian</a></li> <li style="font-size: 180.00%;"><a href="./tags/devel.html">devel</a></li> <li style="font-size: 120.00%;"><a href="./tags/geant4.html">geant4</a></li> <li style="font-size: 120.00%;"><a href="./tags/orgmode.html">orgmode</a></li> 
+  <li style="font-size: 200.00%;"><a href="./tags/computer.html">Computer</a></li> <li style="font-size: 80.00%;"><a href="./tags/education.html">Education</a></li> <li style="font-size: 100.00%;"><a href="./tags/emacs.html">Emacs</a></li> <li style="font-size: 80.00%;"><a href="./tags/family.html">Family</a></li> <li style="font-size: 80.00%;"><a href="./tags/fonts.html">Fonts</a></li> <li style="font-size: 80.00%;"><a href="./tags/health.html">Health</a></li> <li style="font-size: 100.00%;"><a href="./tags/infoera.html">InfoEra</a></li> <li style="font-size: 80.00%;"><a href="./tags/internet.html">Internet</a></li> <li style="font-size: 80.00%;"><a href="./tags/language.html">Language</a></li> <li style="font-size: 80.00%;"><a href="./tags/life.html">Life</a></li> <li style="font-size: 100.00%;"><a href="./tags/literateprogramming.html">LiterateProgramming</a></li> <li style="font-size: 140.00%;"><a href="./tags/mswin.html">MSWIN</a></li> <li style="font-size: 120.00%;"><a href="./tags/ocd.html">OCD</a></li> <li style="font-size: 80.00%;"><a href="./tags/os.html">OS</a></li> <li style="font-size: 120.00%;"><a href="./tags/physics.html">Physics</a></li> <li style="font-size: 100.00%;"><a href="./tags/science.html">Science</a></li> <li style="font-size: 100.00%;"><a href="./tags/simulation.html">Simulation</a></li> <li style="font-size: 220.00%;"><a href="./tags/society.html">Society</a></li> <li style="font-size: 100.00%;"><a href="./tags/translation.html">Translation</a></li> <li style="font-size: 80.00%;"><a href="./tags/cmake.html">cmake</a></li> <li style="font-size: 80.00%;"><a href="./tags/debian.html">debian</a></li> <li style="font-size: 180.00%;"><a href="./tags/devel.html">devel</a></li> <li style="font-size: 120.00%;"><a href="./tags/geant4.html">geant4</a></li> <li style="font-size: 120.00%;"><a href="./tags/orgmode.html">orgmode</a></li> 
 </ul>
 
 	    </nav>

@@ -2,7 +2,7 @@
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8"/>
-    <title>关于 dotsies 字体的想法</title>
+    <title>Deft 使用指南</title>
     <link rel="stylesheet" type="text/less" href="../../../style/less/o-blog.less"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="generator" content="o-blog version 1.2-zh-133-gcf9fd86"/>
@@ -108,7 +108,7 @@
       <div class="container">
 	<ul class="breadcrumb">
   <li><a href="../../../index.html">首页</a> <span class="divider">/</span></li>
-  <li><a href="../../../blog/index.html">blog</a> <span class="divider">/</span></li><li><a href="../../../blog/2012/index.html">2012</a> <span class="divider">/</span></li><li><a href="../../../blog/2012/03/index.html">03</a> <span class="divider">/</span></li><li>关于 dotsies 字体的想法</li>
+  <li><a href="../../../blog/index.html">blog</a> <span class="divider">/</span></li><li><a href="../../../blog/2013/index.html">2013</a> <span class="divider">/</span></li><li><a href="../../../blog/2013/03/index.html">03</a> <span class="divider">/</span></li><li>Deft 使用指南</li>
   </ul>
 
       </div>
@@ -120,23 +120,23 @@
     <div class="well">
       <div class="row">
 	<div class="date span1">
-	  <div class=" date-d">25</div>
-	  <div class=" date-m"><a href="../../../blog/2012/03/index.html"> 3月</a></div>
-	  <div class=" date-y"><a href="../../../blog/2012/index.html">2012</a>
+	  <div class=" date-d">27</div>
+	  <div class=" date-m"><a href="../../../blog/2013/03/index.html"> 3月</a></div>
+	  <div class=" date-y"><a href="../../../blog/2013/index.html">2013</a>
 	  </div>
 	</div>
 	<div class="span1">
 	  <div class="qr-code">
-  <img src="http://chart.apis.google.com/chart?chs=50x50&cht=qr&chld=|0&chl=http%3a%2f%2fexaos.github.com%2f%2fblog%2f2012%2f03%2f25_dotsies.html"
+  <img src="http://chart.apis.google.com/chart?chs=50x50&cht=qr&chld=|0&chl=http%3a%2f%2fexaos.github.com%2f%2fblog%2f2013%2f03%2f27_emacs-deft.html"
        alt="qr-code" />
 </div>
 
 	</div>
-	<h1 class="offset2" style="font-size: 250%">关于 dotsies 字体的想法</h1>
+	<h1 class="offset2" style="font-size: 250%">Deft 使用指南</h1>
       </div>
       <nav>
 	<ul class="pager">
-	  <li class="previous"><a href="../../../blog/2012/03/22_o-blog.html"><i class="icon-chevron-left"></i>&nbsp;切换到 o-blog 页面系统</a></li><li class="next" style="text-align: right;"><a href="../../../blog/2012/03/27_cosmos.html">一些关于宇宙与粒子物理的科普网站作品&nbsp;<i class="icon-chevron-right"></i></a></li>
+	  <li class="previous"><a href="../../../blog/2013/03/05_fix-bad-ext4.html"><i class="icon-chevron-left"></i>&nbsp;修复损坏的 ext4 大分区数据</a></li><li class="next">&nbsp;</li>
 	</ul>
       </nav>
     </div>
@@ -144,48 +144,130 @@
   </header>
   <div class="article-content">
     <p>
-<a href="http://dotsies.org/">Dotsies</a> 是使用点代替常规字母书写的一种拉丁字母显示体系，每个字母由五个点的显隐来
-表示。
+<a href="http://jblevins.org/projects/deft/">Deft</a> 是一个依赖于 Emacs 的扩展，用于管理纯文本格式的笔记：
 </p><ul>
-<li>想法一：制作坚排显示的字体。
-</li>
-<li>想法二：改进，添加定位标识，用于图形识别。
+<li><a href="http://jblevins.org/projects/deft/">http://jblevins.org/projects/deft/</a>
 </li>
 </ul>
 
 
+<p>
+它的基本功能就是浏览、过滤、并进行目录编辑。需要你将笔记都以纯文本格式保存在一个
+目录下，然后在 emacs 下调用 <code>M-x deft</code>, 键入任意字符串，显示当前目录与之匹配的笔
+记文件。当你的纯文本笔记有数十个以上时，会非常有用。
+</p>
 
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1">基本操作</h3>
+<div class="outline-text-3" id="text-1">
 
-<!-- link href='http://dotsies.org/dotsies.css' rel='stylesheet' type='text/css' -->
-<script type="text/javascript">
-function dotsies_hover() {
-  var l = document.createElement('link');
-  document.getElementsByTagName('head')[0].appendChild(l);
-  l.setAttribute('href', 'http://dotsies.org/dotsies.css');
-  l.setAttribute('type', 'text/css');
-  l.setAttribute('rel', 'stylesheet');
-  var s = document.createElement('style');
-  document.getElementsByTagName('head')[0].appendChild(s);
-  s.innerHTML = ('body, p, div, span, a, li, textarea, pre, input {font-family: Dotsies !important}');
-}
-</script>
-<a href="javascript:dotsies_hover()">点这儿试试</a> Dotest 的样子：<a href="javascript:dotsies_hover()">See it in action</a>.<br />
-<pre>
-TRUST love even if it brings sorrow. 
-Do not close up you heart.
-</pre>
 
 <p>
-(注：上述演示代码来自博客 <a href="http://allthingswordy.blogspot.com/2012/03/reading-dotsies.html">All Things Wordy</a>.)
+主要操作：搜索与过滤。列出的文件可以是限制数量的，或者用字符串过滤后的，同时匹配
+标题与文本主体。启动一个过滤，直接键入字符即可。过滤是即时的，随着你键入，文件浏
+览即时更新，只显示与当前字符串匹配的文件。
 </p>
+<p>
+打开第一个匹配的文件，直接按 <code>RET</code>. 若没有匹配字符串，按 <code>RET</code> 则创建新的文件并使
+用该字符串为标题。这样写笔记很快。文件名会自动创建。若你想用指定的文件名，使用快
+捷键 <code>C-RET</code>.
+</p>
+<p>
+另一窗口打开文件: <code>C-o</code>, 打开但不切换: <code>C-u, C-o</code>
+</p>
+<p>
+过滤字符串编辑：
+</p><ul>
+<li><code>DEL</code> 删除; <code>M-DEL</code>, 删除字
+</li>
+<li><code>C-y</code> 拉回来最近删除的文本到过滤字符串
+</li>
+<li><code>C-c C-c</code> 清除
+</li>
+<li><code>C-c C-g</code> 用当前过滤字符串刷新文件列表
+</li>
+<li><code>C-c C-l</code> 在 minibuffer 中编辑过滤字符串，在 minibuffer 中可用 <code>M-p</code>, <code>M-n</code>
+    来循环调用以前的编辑历史。
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2">配置</h3>
+<div class="outline-text-3" id="text-2">
+
+
+<p>
+调用:
+</p>
+
+
+<pre class="src src-elisp">(<span style="color: #00ffff;">require</span> '<span style="color: #7fffd4;">deft</span>)
+</pre>
+
+
+<p>
+匹配文档类型 (默认是 <code>.txt</code>) 和路径:
+</p>
+
+
+<pre class="src src-elisp">(setq deft-extension <span style="color: #ffa07a;">"txt"</span>)
+(setq deft-directory <span style="color: #ffa07a;">"~/Dropbox/notes"</span>)
+</pre>
+
+
+<p>
+使用 <code>markdown-mode</code> 作为主模式:
+</p>
+
+
+<pre class="src src-elisp">(setq deft-text-mode 'markdown-mode)
+</pre>
+
+
+<p>
+使用 <code>org-mode</code>:
+</p>
+
+
+<pre class="src src-elisp">(setq deft-extension <span style="color: #ffa07a;">"org"</span>)
+(setq deft-text-mode 'org-mode)
+</pre>
+
+
+<p>
+使用文件名为浏览的标题（默认是文件中的第一行）:
+</p>
+
+
+<pre class="src src-elisp">(setq deft-use-filename-as-title t)
+</pre>
+
+
+<p>
+定义默认快捷键:
+</p>
+
+
+<pre class="src src-elisp">(global-set-key [f8] 'deft)
+</pre>
+
+
+</div>
+</div>
+
   </div>
   
   <footer class="well article-footer">
-    发布于 <time datetime="2012-03-25T19:23:00Z"> 2012-03-25 19:23:00</time>.
+    发布于 <time datetime="2013-03-27T14:49:00Z"> 2013-03-27 14:49:00</time>.
     <nav class="tag-cloud">
       <h1><i class="icon-tags"></i> 相关标签</h1>
       <ul>
-	<li class="label label-inverse small"><a href="../../../tags/language.html">Language</a></li><li class="label label-inverse small"><a href="../../../tags/fonts.html">Fonts</a></li>
+	<li class="label label-inverse small"><a href="../../../tags/computer.html">Computer</a></li><li class="label label-inverse small"><a href="../../../tags/emacs.html">Emacs</a></li>
       </ul>
     </nav>
   </footer>
