@@ -5,7 +5,7 @@
     <p class="meta">
       {{ page.date | date: "%Y-%m-%d" }}
       {% if site.disqus_short_name and page.comments != false and post.comments != false and site.disqus_show_comment_count == true %}
-      | <a href="{% if index %}{{ root_url }}{{ post.url }}{% endif %}#disqus_thread">Comments></a>
+      | <a href="{% if index %}{{ root_url }}/test{{ post.url }}{% endif %}#disqus_thread">Comments></a>
       {% endif %}
     </p>
   {% endunless %}

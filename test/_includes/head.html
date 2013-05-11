@@ -10,13 +10,13 @@
 
   {% capture canonical %}{{ site.url }}{% if site.permalink contains '.html' %}{{ page.url }}{% else %}{{ page.url | remove:'index.html' }}{% endif %}{% endcapture %}
   <link rel="canonical" href="{{ canonical }}">
-  <link rel="icon" href="{{ root_url }}/favicon.ico">
-  <link rel="stylesheet" href="{{ root_url }}/css/screen.css" media="screen, projection" type="text/css">
-  <link rel="stylesheet" href="{{ root_url }}/css/pygment.css" media="screen, projection" type="text/css">
-  <link rel="stylesheet" href="{{ root_url }}/css/icons.css" media="screen, projection" type="text/css">
+  <link rel="icon" href="{{ root_url }}/test/favicon.ico">
+  <link rel="stylesheet" href="{{ root_url }}/test/css/screen.css" media="screen, projection" type="text/css">
+  <link rel="stylesheet" href="{{ root_url }}/test/css/pygment.css" media="screen, projection" type="text/css">
+  <link rel="stylesheet" href="{{ root_url }}/test/css/icons.css" media="screen, projection" type="text/css">
   <!--[if lt IE 8]>
-  <link rel="stylesheet" href="{{ root_url }}/css/icons_ie7.css" media="screen, projection" type="text/css">
+  <link rel="stylesheet" href="{{ root_url }}/test/css/icons_ie7.css" media="screen, projection" type="text/css">
   <![endif]-->
-  <script src="{{ root_url }}/js/jquery.min.js"></script>
+  <script src="{{ root_url }}/test/js/jquery.min.js"></script>
   <link ref="alternate" href="{{ site.subscribe_rss }}" title="{{ site.title }}" type="application/atom+xml">
 </head>
