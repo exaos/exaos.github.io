@@ -1,0 +1,30 @@
+# -*- mode: org; coding: utf-8; -*-
+#+SETUPFILE: ../../../../setup/ox-tmpl/l3.org
+#+HTML_LINK_UP: ../../index.html
+#+TITLE: 一些关于宇宙与粒子物理的科普网站作品
+#+AUTHOR: 心蛛
+#+DATE: [2012-03-27 二 09:48]
+#+CUSTOM_ID: cosmos
+
+原来在 [[http://weibo.com/1746729234/yalyzwZ4x][新浪微博]] 上发布过这条消息。因为觉得这是些很棒的东西，值得记忆，故在这儿整
+理一下。
+
+1. 你是不是会好奇：我们宇宙的尺度究竟有多大呢？其实，目前人类所认识的宇宙可以说
+   已经远远超出了普通人的直观感受范围。但我们仍然可以比较形象地体验一下这个认识
+   的尺度，欣赏一下由 Cary Huang 所制作的 flash --- [[http://htwins.net/scale2/scale2.swf][*宇宙的尺度 2*]] (The Scale of
+   the Universe 2). 目前还没有翻译成中文，欣赏时请带上词典。［注：我对 Flash 技
+   术不感兴趣，如果有人想制作类似的 HTML5/CSS 页面，请一定告之我！另外，这个站点
+   最初是从李淼在微博在新浪上分享时所得，在此感谢。］
+2. 同样，对于我们所生存的宇宙的认识还有另一种以时间来展现的方式，这就是微软研究
+   中心、加州大学伯克利分校及莫斯科州立大学所带来的 [[http://www.chronozoomproject.org/][*时间缩放工程*]] (ChronoZoom)。
+   看看在时间的尺度上人类的那种寂寞。
+3. 粒子物理对普通人而言，是非常神秘的东西。其实，对它的了解尽管需要一定的基础知
+   识，但也并非那么高不可攀，你也可以在不具备数学物理基础的情况下去欣赏这个世界
+   的美丽。这个得感谢由 *粒子数据组织* ([[http://pdg.lbl.gov/][Particle Data Group]]) 制作的 *粒子奇境冒
+   险*网站。
+   - 英文站点： [[http://www.particleadventure.org/][The Particle Adventure]]
+   - 繁体中文： [[http://www.particleadventure.org/chinese/index.html][美国镜像]], [[http://www.phy.ntnu.edu.tw/demolab/html.php?html=particleadventure/index][台湾镜像]]
+
+有一点想强调一下：尽管在不具备数学与物理相关基础的情况下，你仍然可以欣赏目前人类
+对宇宙的认识，这并不意味着你可以仅靠想象就可以意淫着推翻或者大刀阔斧地修改现有的
+物理学、宇宙学等。请您 *珍爱生命，远离民科！*

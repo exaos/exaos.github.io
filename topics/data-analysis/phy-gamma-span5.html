@@ -1,0 +1,1026 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>SPAN5 中的 γ 谱的解谱技术</title>
+<!-- 2013-07-19 五 22:31 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+
+
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<link rel="alternate stylesheet" type="text/css" href="../../css/worg-zenburn.css" />
+<link rel="alternate stylesheet" type="text/css" href="../../css/worg-classic.css" />
+
+<script type="text/javascript" src="org-info.js">
+/**
+ *
+ * @source: org-info.js
+ *
+ * @licstart  The following is the entire license notice for the
+ *  JavaScript code in org-info.js.
+ *
+ * Copyright (C) 2012-2013  Sebastian Rose
+ *
+ *
+ * The JavaScript code in this tag is free software: you can
+ * redistribute it and/or modify it under the terms of the GNU
+ * General Public License (GNU GPL) as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option)
+ * any later version.  The code is distributed WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+ *
+ * As additional permission under GNU GPL version 3 section 7, you
+ * may distribute non-source (e.g., minimized or compacted) forms of
+ * that code without the copy of the GNU GPL normally required by
+ * section 4, provided you include this license notice and a URL
+ * through which recipients can access the Corresponding Source.
+ *
+ * @licend  The above is the entire license notice
+ * for the JavaScript code in org-info.js.
+ *
+ */
+</script>
+
+<script type="text/javascript">
+
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+
+<!--/*--><![CDATA[/*><!--*/
+org_html_manager.set("TOC_DEPTH", "4");
+org_html_manager.set("LINK_HOME", "../../index.html");
+org_html_manager.set("LINK_UP", "");
+org_html_manager.set("LOCAL_TOC", "1");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "0");
+org_html_manager.set("TOC", "1");
+org_html_manager.set("VIEW", "info");
+org_html_manager.setup();  // activate after the parameters are set
+/*]]>*///-->
+</script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012  Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js"></script>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+    MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "center",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
+             }
+        }
+    });
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href=""> UP </a>
+ |
+ <a accesskey="H" href="../../index.html"> HOME </a>
+</div><div id="content">
+<h1 class="title">SPAN5 中的 γ 谱的解谱技术</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">活度计算</a></li>
+<li><a href="#sec-2">活度增长和衰变修正</a></li>
+<li><a href="#sec-3">本底</a></li>
+<li><a href="#sec-4">符合叠加修正</a></li>
+<li><a href="#sec-5">效率刻度曲线</a></li>
+<li><a href="#sec-6">能量刻度曲线</a></li>
+<li><a href="#sec-7">实验测量的峰形状</a></li>
+<li><a href="#sec-8">半高宽 (FWHM) 刻度曲线</a></li>
+<li><a href="#sec-9">高斯形 (Gaussian)</a></li>
+<li><a href="#sec-10">线性最小二乘法拟合</a></li>
+<li><a href="#sec-11">探测低限 (LLD activity)</a></li>
+<li><a href="#sec-12">中子活化分析计算</a></li>
+<li><a href="#sec-13">非线性最小二乘法拟合</a></li>
+<li><a href="#sec-14">寻峰方法</a></li>
+<li><a href="#sec-15">拟合优度 &chi;</a></li>
+<li><a href="#sec-16">余量</a></li>
+</ul>
+</div>
+</div>
+<p>
+SPAN 是原子能量的 WANG Liyu 针对 DOS 开发的一款 &gamma; 解谱软件。广泛应用在原子能院内部的相关工作当中。目前仍然在工作中得到较广泛的应用。此处摘录该软件手册中介绍的 &gamma; 解谱办法，仅供参考。
+</p>
+
+<p>
+这部分内容来自于 "SPAN V5.1" 软件手册的第 15 章。
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">活度计算</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+库中的数据与谱中的某个峰匹配的话，则该核素特定的活度计算如下：  
+</p>
+\begin{equation*}
+A = \frac{N_{t}}{\gamma \varepsilon T_{c}} \cdot
+    \frac{\lambda T_{t}}{1 - e^{-\lambda T_{t}}}
+\end{equation*}
+<p>
+此处：
+</p>
+<ul class="org-ul">
+<li>\(A\) &#x2013; 活度 (Bq)
+</li>
+<li>\(N_{t}\) &#x2013; 净峰面积（所考虑的光电峰计数）
+</li>
+<li>\(\lambda\) &#x2013; 衰变常数 (\(s^{-1}\))
+</li>
+<li>\(T_{c}\) &#x2013; 采集活时间 (s)
+</li>
+<li>\(T_{t}\) &#x2013; 采集实时间 (s)
+</li>
+<li>&gamma; &#x2013; 感兴趣 &gamma; 射线的 &gamma; 分支比 (每次退激中出射特定能量的
+      &gamma; 射线的数量)
+</li>
+<li>\(\varepsilon\) &#x2013; 感兴趣能区的探测效率
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">活度增长和衰变修正</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+活化的靶核放射性活度会增长，则放射性同位素的活度为：
+</p>
+\begin{equation*}
+A = N \Phi \sigma \left( 1- e^{-\lambda T_{i}} \right) e^{-\lambda T_{d}}
+\end{equation*}
+<p>
+此处：
+</p>
+<ul class="org-ul">
+<li>\(A\) &#x2013; 活度 (Bq)
+</li>
+<li>\(N\) &#x2013; 靶核数量
+</li>
+<li>\(\Phi\) &#x2013; 中子通量 (\(\mbox{s}^{-1}\cdot \mbox{cm}^{-2}\))
+</li>
+<li>\(\sigma\) &#x2013; 中子活化截面 ( cm^2 )
+</li>
+<li>\(\lambda\) &#x2013; 衰变常数 (s<sup>-1</sup>)
+</li>
+<li>\(T_{i}\) &#x2013; 活化时间 (s)
+</li>
+<li>\(T_{d}\) &#x2013; 衰变时间 (s)
+</li>
+<li>\(N = 6.023 \times 10^{23} \times m \times C \times \rho / A_t\)
+<ul class="org-ul">
+<li>\(m\) &#x2013; 样品质量 (g)
+</li>
+<li>\(C\) &#x2013; 元素浓缩度
+</li>
+<li>\(\rho\) &#x2013; 靶同伴素在元素中的自然含量丰度
+</li>
+<li>\(A_{t}\) &#x2013; 原子质量 (g)
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">本底</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+使用积分法峰处理技术，可生成一个阶段的本底曲线，其形状趋近峰下面的本底，从而可
+以从谱中被直接扣除。该技术计算可接受的净峰面积。其原理如后。
+</p>
+
+<p>
+&gamma; 谱中峰下的本底是阶梯状的，在很小区间内，其步长与峰高是成比例的，因此可
+以假设第 i 道的本底步长与该道的净计数成正比：
+</p>
+\begin{equation*}
+dH = \frac{\left(A_{i}-B_{i}\right) \cdot H_{t}}{S}
+\end{equation*}
+<p>
+此处：
+</p>
+<ul class="org-ul">
+<li>\(dH\) &#x2013; 第 i 道的本底步长
+</li>
+<li>\(A_i\) &#x2013; 第 i 道计数
+</li>
+<li>\(B_i\) &#x2013; 第 i 道本底
+</li>
+<li>\(S\) &#x2013; 净峰面积， \(S = \sum\limits^{r}_{i=l}\left(A_i-B_i\right)\)
+<ul class="org-ul">
+<li>\(l\) &#x2013; 峰的左边界
+</li>
+<li>\(r\) &#x2013; 峰的右边界
+</li>
+</ul>
+</li>
+</ul>
+
+<p>
+总的本底步长, \(H_t\), 是峰前后的本底水平的差值（参见如后方程）。
+</p>
+\begin{eqnarray*}
+H_t & = & a_1 + b_1 \cdot c - a_2 - b_2 \cdot c \\
+c & = & \frac{\sum\limits^{r}_{i=l}\left[ \left(A_i - B_i\right) \cdot i
+      \right]}{\sum\limits^r_{i=l}\left(A_i - B_i\right)} \\
+\end{eqnarray*}
+
+<p>
+这些本底可以定义为两条直线，如下：
+</p>
+\begin{eqnarray*}
+y_1 &= a_1 + b_1 x &\quad\quad \mbox{left side} \\
+y_2 &= a_2 + b_2 x &\quad\quad \mbox{right side} \\
+\end{eqnarray*}
+
+<p>
+则积分后的峰本底 \(B_i\) 定义如下：  
+</p>
+\begin{equation*}
+B_i = a_1 + b_1 \cdot i - \frac{H_t}{S} \times
+   \left\{ \left[ \sum\limits^i_{k=l}\left(A_k - B_k\right) \right] -
+     \frac{A_i - B_i}{2} \right\}
+\end{equation*}
+
+<p>
+当然， \(dH\), \(B_i\), \(c\) 和 \(H_t\) 是相互关联的，但并非绝对。\(B_i\) 的初值由前面
+的两条直线给出，最终的 \(B_i\) 由渐近法得到。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">符合叠加修正</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+如果在 &gamma; 射线谱仪的分辨时间内从放射性核依次连续发射两个或多个光子，则会发
+生符合叠加。比如， &gamma;_1 和 &gamma;_2 的能量分别为 E_1 和 E_2 , 从谱仪分辨时
+间内发射。没有符合叠加时， &gamma;_1 的全能峰脉冲发射率为：
+</p>
+\begin{equation*}
+n_{10} = A \times \rho_1 \times \varepsilon_1
+\end{equation*}
+<p>
+此处：
+</p>
+<ul class="org-ul">
+<li>\(A\) &#x2013; 源活度
+</li>
+<li>\(\rho_1\) &#x2013; &gamma;_1 的发射几率
+</li>
+<li>\(\varepsilon_1\) &#x2013; 在能量 E_1 处的全能峰效率
+</li>
+</ul>
+
+<p>
+实际上，实验观测到的全能峰脉冲的发射率为 \(n_1\),　它将比 \(n_{10}\) 要小。由于每
+条 &gamma;_1 紧跟一条符合的 &gamma;_2 , 则导致两条 &gamma; 射线都被探测到，从而叠
+加成一个脉冲，其能量与任何一条原始脉冲的值都不相同。探测 &gamma;_2 的几率与总的
+探测效率 \(\varepsilon_t\) 相等，则有：
+</p>
+\begin{equation*}
+n_1 = A \cdot \rho_1 \cdot \varepsilon_1 - A \cdot \rho_1 \cdot
+      \varepsilon_1 \cdot \varepsilon_{t2}
+    = A \cdot \rho_1 \cdot \varepsilon_1 \cdot
+      \left( 1 - \varepsilon_{t2} \right)
+\end{equation*}
+
+<p>
+则 &gamma;_1 的修正系数为：
+</p>
+\begin{equation*}
+C_1 = \frac{n_{10}}{n_1} = \frac{1}{1-\varepsilon_{t2}}
+\end{equation*}
+
+<p>
+亦可得到 &gamma;_2 的修正系数：
+</p>
+\begin{equation*}
+C_2 = \frac{1}{1 - \rho_1 \cdot \varepsilon_{t1}/\rho_2}
+\end{equation*}
+<p>
+此处：
+</p>
+<ul class="org-ul">
+<li>\(\rho_2\) &#x2013; &gamma;_2 的出射几率
+</li>
+<li>\(\varepsilon_{t1}\) &#x2013; &gamma;_1 的总效率
+</li>
+</ul>
+
+<p>
+有些核的 &gamma; 衰变链和直接关联很复杂，则可使用因子 \(w_i\) 来修正
+\(\varepsilon_{t1}\) 和 \(\varepsilon_{t2}\), 则 \(C_1\) 和 \(C_2\) 表达式为：
+</p>
+\begin{eqnarray*}
+C_1 & = & \frac{1}{1 - w_2 \cdot \varepsilon_{t2}} \\
+C_2 & = & \frac{1}{1-w_1 \cdot \rho_1 \cdot \varepsilon_{t1} / \rho_2} \\
+\end{eqnarray*}
+
+<p>
+SPAN 软件中每条衰变链中只允许标识两条 &gamma; 射线，当 \(\rho_1 \ge \rho_2\) 时使
+用上面方程组中的第一个方程，反之则使用第二个。而因子 \(w_1\) 和 \(w_2\) 由实验获得。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">效率刻度曲线</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+探测器在特定能量的探测效率可由下式表示：
+</p>
+\begin{equation*}
+\log(\eta) = \begin{cases}
+   a_1 + b_1 \log(E) + c_1 \log^2(E) & E > E_{m1} \\
+   a_2 + b_2 \log(E) + c_2 \log^2(E) &
+         E \le E_{m1} \quad\text{or}\quad E>E_{m2} \\
+   a_3 + b_3 \log(E) + c_3 \log^2(E) & E \le E_{m2}
+\end{cases}
+\end{equation*}
+<p>
+此处：
+</p>
+<ul class="org-ul">
+<li>\(\eta\) &#x2013; 探测效率
+</li>
+<li>\(E\) &#x2013; 能量
+</li>
+<li>\(E_{mi}\) &#x2013; 中点能量，并且有 \(E_{m2} < E_{m1}\), 在此点有：
+\begin{eqnarray*}
+a_i + b_i \log(E_{mi}) + c_i \log^2(E_{mi}) & = &
+a_{i+1} + b_{i+1} \log(E_{mi}) + c_{i+1} \log^2(E_{mi})   \\
+b_i + 2 c_i \log(E_{mi}) & = & b_{i+1} + 2 c_{i+1} \log(E_{mi}) \\
+\end{eqnarray*}
+</li>
+</ul>
+
+<p>
+\(a_i\), \(b_i\), \(c_i\) 为刻度因子，它们与 \(E_{mi}\) 的值由软件刻度得到。如果两条曲
+线可以拟合到满意的结果，则用不到第三条曲线，此时 \(E_{m2}=0\). SPAN 中会自动计算
+需要几条拟合曲线。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">能量刻度曲线</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+用于描述指定道能量的函数如下：
+</p>
+\begin{equation*}
+E_i = a + b \cdot C_i + c \cdot C_i^2
+\end{equation*}
+<p>
+此处：
+</p>
+<ul class="org-ul">
+<li>\(E_i\) &#x2013; 第 i 道的能量
+</li>
+<li>\(C_i\) &#x2013; 第 \(C_i\) 道
+</li>
+<li>\(a\), \(b\), \(c\) &#x2013; 刻度系数
+</li>
+</ul>
+
+<p>
+如果刻度的点数等于 2, 则因子 c 为 0; 如果则有一个点，则 a, c 均为 0.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7">实验测量的峰形状</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+使用已知的标准 &gamma; 源用 &gamma; 射线探测器记录了一系列标准的峰形状。
+</p>
+
+\begin{equation*}
+P_i = \frac{A_i - B_i}{S}
+\end{equation*}
+<p>
+此处：
+</p>
+<ul class="org-ul">
+<li>\(P_i\) &#x2013; 第 i 道的分页因子
+</li>
+<li>\(A_i\) &#x2013; 第 i 道的毛计数
+</li>
+<li>\(B_i\) &#x2013; 第 i 道的本底计数
+</li>
+<li>\(S\) &#x2013; 净峰面积
+</li>
+</ul>
+
+<p>
+在 SPAN 中可能使用 64 个点来记录峰形状，这些峰形状存储中库中，能量接近于一条
+ROI 的标准峰形状被用来进行非线性最小二乘拟合。标准峰形状还有三个参数：中心道、
+半高宽 (FWHM) 和高度。标准峰形状和多条 ROI 在比例上不同。需要进行的坐标转换也
+比较简单。使用实验峰形状可得到更好更快的拟合。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8">半高宽 (FWHM) 刻度曲线</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+用于计算半高宽 (FWHM) 的表达式如下：
+</p>
+\begin{equation*}
+\mbox{FWHM} = \left(a + b\cdot E + c \cdot E^2\right) \cdot
+           \left(1 + d \cdot T_d + e \cdot T_d^2 \right)
+\end{equation*}
+<p>
+此处：
+</p>
+<ul class="org-ul">
+<li>\(E\) &#x2013; 能量
+</li>
+<li>\(T_d\) &#x2013; 死时间
+</li>
+<li>a, b, c, d, e &#x2013; 刻度因子
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9">高斯形 (Gaussian)</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+拟合谱的最基本数据表达式。峰在第 i 道的计数 \(F_i\) 由下式给出：
+</p>
+\begin{equation*}
+F_i = \frac{S}{2.5066 \cdot \sigma} \times e^{-\frac{(i-x_0)^2}{2\sigma^2}}
+\end{equation*}
+<p>
+此处：
+</p>
+<ul class="org-ul">
+<li>\(x_0\) &#x2013; 拟合峰的中心道
+</li>
+<li>\(S\) &#x2013; 峰面积，与拟合峰的净峰面积相关
+</li>
+<li>\(\sigma\) &#x2013; 峰宽度， \(0.42466\times\mbox{FWHM}\)
+</li>
+</ul>
+
+<p>
+SPAN 软件中用户可选择高斯形或实验形来拟合感兴趣的线峰。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10">线性最小二乘法拟合</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+许多刻度曲线使用如下形式的多项式：
+</p>
+\begin{equation*}
+y = a + b \cdot x + c \cdot x^2
+\end{equation*}
+<p>
+此处：
+</p>
+<ul class="org-ul">
+<li>y &#x2013; 待计算值 (能量, FWHM 等)
+</li>
+<li>x &#x2013; 需要进行 y 值计算的地方 (道, 能量等)
+</li>
+</ul>
+
+<p>
+当得到一组数据时，其因子 a, b, c 可使用最小二乘法拟合得到：
+</p>
+
+\begin{equation*}
+\chi^2 = \sum w_i^2 \left( y_i - a - b x_i - c x_i^2 \right)^2
+\end{equation*}
+
+<p>
+此处 \(w_i\) 为权重，通常为 1.0。当 \(\frac{\partial \chi^2}{\partial b}=0\),
+\(\frac{\partial \chi^2}{\partial c}=0\), \(\frac{\partial\chi^2}{\partial
+  a}=0\), 则可得如下方程组：
+</p>
+
+\begin{eqnarray*}
+\sum w_i^2 y_i & = & \sum w_i^2 b + \sum w_i^2 x_i b + \sum w_i^2 x_i^2 b \\
+\sum w_i^2 y_i x_i   & = & \sum w_i^2 x_i b + \sum w_i^2 x_i^2 b + \sum w_i^2 x_i^3 b \\
+\sum w_i^2 y_i x_i^2 & = & \sum w_i^2 x_i^2 b + \sum w_i^2 x_i^3 b + \sum w_i^2 x_i^4 b \\
+\end{eqnarray*}
+
+<p>
+上式可表示为矩阵方程：
+</p>
+\begin{equation*}
+\sum\limits^2_{j=0} \left(E_{k,j} \cdot f_j\right) = Y_k
+\end{equation*}
+<p>
+此处：
+</p>
+\begin{eqnarray*}
+Y_k &= \sum w_i^2 y_i x_i^k &\quad\quad  k=0 \sim 2; \\
+E_{k,j} &= \sum w_i^2 x_i^{k-j} &\quad\quad j=0 \sim 2; \\
+f_j &= a,\, b \quad \mbox{or}\quad c &\quad\quad  \\
+\end{eqnarray*}
+
+<p>
+则因子 \(f_j\) 为：
+</p>
+\begin{equation*}
+f_i = \sum\limits^2_{k=0} \left( E^{-1}_{j,k} \cdot Y_k \right)
+\end{equation*}
+
+<p>
+此处 \(E^{-1}_{j,k}\) 为矩阵 \(E_{k,j}\) 的逆。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11">探测低限 (LLD activity)</h2>
+<div class="outline-text-2" id="text-11">
+<p>
+对于单峰探测需要达到的最低水平由下式给出：
+</p>
+\begin{equation*}
+L_d = \frac{4.75 + \sqrt{\sum\limits^{i_0+l}_{i=i_0-l}A_i}}{\gamma \cdot
+     \varepsilon \cdot T_c}
+\end{equation*}
+<p>
+此处：
+</p>
+<ul class="org-ul">
+<li>\(A_i\) &#x2013; 第 i 道毛计数，由于没有峰，它与本底计数 B_i 相同
+</li>
+<li>\(i_0\) &#x2013; 感兴趣峰的位置
+</li>
+<li>\(l = n/2 = 2.5 \cdot \mbox{FWMH}\) &#x2013; LLD 的积分限
+</li>
+<li>\(T_c\) &#x2013; 采集活时间 (s)
+</li>
+<li>&gamma; &#x2013; 感兴趣 &gamma; 射线的 &gamma; 分支比 (每次退激中出射特定能量的
+      &gamma; 射线的数量)
+</li>
+<li>&epsilon; &#x2013; 感兴趣能点的探测器效率
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-12" class="outline-2">
+<h2 id="sec-12">中子活化分析计算</h2>
+<div class="outline-text-2" id="text-12">
+<p>
+中子活化分析的绝对方式由下式给出：
+</p>
+\begin{equation*}
+S = 6.023 \times 10^{23} \cdot c \cdot w \cdot \rho \cdot
+    \left(\Phi\cdot\sigma_{th} + \Phi_e\cdot\sigma_{RI}\right)
+    \cdot \gamma \cdot \varepsilon \cdot T_c \cdot
+    \left(1-e^{-\lambda T_i}\right) \cdot e^{-\lambda T_d} \cdot
+    \left(1-e^{-\lambda T_t}\right) /
+    \left(\lambda \cdot A \cdot T_t \right)
+\end{equation*}
+<p>
+此处：
+</p>
+<ul class="org-ul">
+<li>S &#x2013; 净峰面积
+</li>
+<li>c &#x2013; 靶元素浓度 (g/g)
+</li>
+<li>w &#x2013; 样品质量 (g)
+</li>
+<li>&rho; &#x2013; 靶同位素自然丰度
+</li>
+<li>&Phi; &#x2013; 热中子能量 (n/s \(\cdot\) cm^2); 热中子平均速度为 2200
+m/s (0.0253 eV)
+</li>
+<li>&sigma;<sub>th</sub> &#x2013; 热中子活化截面 ( cm^2 )
+</li>
+<li>&Phi;_e &#x2013; 镉反应阈能量 (0.5 eV) 以上的中子，通常叫超热或共振中子
+</li>
+<li>&sigma;<sub>RI</sub> &#x2013; 共振积分截面，可由下式定义
+\begin{equation*}
+\sigma_{RI} = \int\limits^{\infty}_{0.5\mbox{ eV}}\,\sigma(E)\,dE/E
+\end{equation*}
+</li>
+<li>&lambda; &#x2013; 衰变常数 (s<sup>-1</sup>)
+</li>
+<li>A &#x2013; 原子质量 (g)
+</li>
+<li>T_i &#x2013; 辐照时间 (s)
+</li>
+<li>T_d &#x2013; 衰变时间 (s)
+</li>
+<li>T_c &#x2013; 采集活时间 (s)
+</li>
+<li>&gamma; &#x2013; 感兴趣 &gamma; 射线的 &gamma; 分支比 (每次退激中出射特定能量的
+      &gamma; 射线的数量)
+</li>
+</ul>
+
+<p>
+参数 S 可由谱分析中得到，参数 &Phi; , T_i 和 T_d 为样品的辐照与冷却时间，必须在
+NAA 计算中给出。采集谱数据时多道分析器会给出参数 T_c 和 T_t . 参数
+&epsilon; 可由效率刻度得到。其它的参数, &lambda;, &rho;, &sigma;, A 和 &gamma;
+为保存在数据库中的常量。因此，靶元素浓度 c 可由以前的方程得到。
+</p>
+
+<p>
+当然，参数精确时结果亦会正确。但通常获得精确的参数会很困难，比如中了活化截面和
+探测器效率等，更多的分析使用相对方法。
+</p>
+
+<p>
+中子活化分析的相对方法中使用同样的方程式来计算，但计算结果乘以一个修正常数 K 来得
+到最终结果：
+</p>
+\begin{equation*}
+C = K \cdot c
+\end{equation*}
+
+<p>
+实际修正因子随元素不同亦不同。正确的修正因子可由针对标准参考材料 (SRM) 进行实
+验得到，并保存于数据库中。当然，修正因子也可由软件中的编辑功能让用户指定。
+</p>
+
+<p>
+在 NAA 计算中不同几何位置使用相同的修正因子，因此探测器效率需要针对不同几何位
+置进行修正，至少相对值需要测量精确。同样，中子能量的相对值也需要进行精确测量。
+否则，分析结果会不精确。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-13" class="outline-2">
+<h2 id="sec-13">非线性最小二乘法拟合</h2>
+<div class="outline-text-2" id="text-13">
+<p>
+在求解多条谱线问题时需要使用非线性最小二乘法拟合，因为峰形状参数在非线性的位置
+上。形状函数可写为：
+</p>
+\begin{equation*}
+f(x) = F(h, c, \sigma, x)
+\end{equation*}
+<p>
+此处：
+</p>
+<ul class="org-ul">
+<li>x &#x2013; 道变量
+</li>
+<li>h &#x2013; 峰高度
+</li>
+<li>c &#x2013; 中心道
+</li>
+<li>&sigma; &#x2013; 峰宽
+</li>
+</ul>
+
+<p>
+h, c 和 &sigma; 是待拟合参数，为得到这些参数需要进行如下步骤：
+</p>
+
+<p>
+1). 设定参数初始值 h_0, c_0 及 &sigma;_0
+</p>
+
+<p>
+2). 计算函数初值及其导数，故函数可写为： <br  />
+</p>
+\begin{equation*}
+f_j(x) = f_{j_0}(x) + \frac{\partial f_{j_0}(x)}{\partial h_j} \Delta h_j +
+\frac{\partial f_{j_0}(x)}{\partial c_j} \Delta c_j +
+\frac{\partial f_{j_0}(x)}{\partial \sigma_j} \Delta \sigma_j
+\end{equation*}
+<p>
+则可得： <br  />
+</p>
+\begin{equation*}
+A_i = B_i + \sum\limits_j f_{j_0}(i) +
+\sum\limits_j \frac{\partial f_{j_0}(x)}{\partial h_j}\Delta h_j +
+\sum\limits_j \frac{\partial f_{j_0}(x)}{\partial c_j}\Delta c_j +
+\sum\limits_j \frac{\partial f_{j_0}(x)}{\partial\sigma_j}\Delta\sigma_j
+\end{equation*}
+<p>
+此处 \(f_{j_0}(i) = F_j(h_0, c_0, \sigma_0, i)\), 第 j 峰在第 i 道的分布函
+数初值为 h_0, c_0, &sigma;_0
+</p>
+<ul class="org-ul">
+<li>A_i &#x2013; 第 i 道计数
+</li>
+<li>B_i &#x2013; 第 i 道本底
+</li>
+</ul>
+
+<p>
+3). 使用线性最小二乘法拟合得到 &Delta; h_j, &Delta; c_j 和 &Delta;&sigma;_j
+</p>
+
+<p>
+4). 计算参数初值
+</p>
+\begin{eqnarray*}
+h^*_0 & = & h_0 + \Delta h \\
+c^*_0 & = & c_0 + \Delta c \\
+\sigma^*_0 & = & \sigma_0 + \Delta\sigma \\
+\end{eqnarray*}
+
+<p>
+5). 从步骤 2 开始重复，直到 \(\Delta h_j\), \(\Delta c_j\) 和 \(\Delta\sigma_j\) 为 0
+</p>
+
+<p>
+多条峰且 &sigma; 变化较小的情况下，则可假设感兴趣区 (ROI) 的多峰有相同的 s 值。
+如果在 ROI 有 N 条峰，则需要拟合 2N+1 个参数。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-14" class="outline-2">
+<h2 id="sec-14">寻峰方法</h2>
+<div class="outline-text-2" id="text-14">
+<p>
+寻峰程序有两条准则：所有的峰都能被找到；光子峰必须能够从本底的波动中区别开来。
+换句说，不要丢峰，也不要把非峰错误地识别成峰。为达到这两条准则，SPAN 采取两个
+步骤：
+</p>
+
+<p>
+1). 逐道计算来寻找峰，如果 i 道是峰顶端，则需要满足如下条件：
+</p>
+\begin{eqnarray*}
+A_i > \max(A_{i+1}, A_{i-1}, A_{i-2}, A_{i-3}, A_{i-4}) &\mbox{or}&
+A_i > \max(A_{i-1}, A_{i+1}, A_{i+2}, A_{i+3}, A_{i+4}) \\
+(A_{i+1},A_i,A_{i-1}) > (A_{i+4},A_{i+5},A_{i+6}) + H \cdot k &\mbox{or}&
+(A_{i+1},A_i,A_{i-1}) > (A_{i-4},A_{i-5},A_{i-6}) + H \cdot k \\
+\end{eqnarray*}
+<p>
+此处：
+</p>
+<ul class="org-ul">
+<li>max(a,b,c,..) &#x2013; 即求 a,b,c,&#x2026; 中的最大值
+</li>
+<li>A_i &#x2013; 第 i 道计数
+</li>
+<li>\(k = \sqrt{A_{i-1} + A_i + A_{i+1}}\)
+</li>
+<li>H &#x2013; 寻峰敏感因子。大多数情况下为 3.0, 值越大越敏感，反之则越不敏感。
+</li>
+</ul>
+
+<p>
+此步骤可发现所有的单峰和可分开的重峰，但对封闭的重峰中的峰位确定则需要在下一步
+骤中进行。
+</p>
+
+<p>
+2). 重叠的多峰通过检验 FWHM 从而与单峰区别开来。因为重峰比单峰的 FWHM 要大很多。
+重峰中的弱峰可通过拟合谱并计算余量来识别。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-15" class="outline-2">
+<h2 id="sec-15">拟合优度 &chi;</h2>
+<div class="outline-text-2" id="text-15">
+<p>
+衡量拟合曲线与实验数据符合程序的值为 &chi;, 对于多峰 ROI 拟合，其值为：
+</p>
+\begin{equation*}
+\chi = \frac{\sqrt{\sum\limits^r_{k=l}\left(r_k \cdot w_k\right)^2}}{n-m-1}
+\end{equation*}
+<p>
+此处：
+</p>
+<ul class="org-ul">
+<li>n=r-l+1 &#x2013; ROI 中的总道数
+</li>
+<li>r &#x2013; ROI 的右边界
+</li>
+<li>l &#x2013; ROI 的左边界
+</li>
+<li>m &#x2013; 拟合参数的个数
+</li>
+<li>r_k &#x2013; 第 k 道的余量
+</li>
+<li>w_k &#x2013; 第 k 道的权重
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-16" class="outline-2">
+<h2 id="sec-16">余量</h2>
+<div class="outline-text-2" id="text-16">
+<p>
+在 ROI 多峰拟合中某道的余量定义如下：
+</p>
+\begin{equation*}
+r_i = \frac{A_i - B_i - \sum\limits^n_{j=1} F_{ij}}{\sqrt{A_i}}
+\end{equation*}
+<p>
+此处：
+</p>
+<ul class="org-ul">
+<li>A_i &#x2013; 第 i 道的毛计数
+</li>
+<li>B_i &#x2013; 第 i 道的本底计数
+</li>
+<li>F<sub>ij</sub> &#x2013; 第 i 道对第 j 峰的拟合计数
+</li>
+<li>n &#x2013; 区域内拟合峰的数目
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<p>版权所有 ©2013: Exaos Lee | Date: 2010-12-01 | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.50.1 (<a href="http://orgmode.org">Org</a> mode 8.0.5), <a href="http://validator.w3.org/check?uri=referer">Validate</a>, <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a></p>
+<script type="text/javascript">
+  var disqus_shortname = 'exaos-github';
+  (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+# -*- mode: org; coding: utf-8 -*-
+#+SETUPFILE: ../../../setup/ox-tmpl/l2.org
+#+HTML_LINK_UP: index.html
+#+DATE: [2011-10-14 五]
+#+TITLE: 我的编程笔记
+
+* GNU 工具套件
+
+** GDB
+
+** GNU Make
+
+* 并行程序开发
+
+** Intel MPI
+
+- [[file:mynote-intelmpi.org][我的 Intel MPI 笔记]]
+
+** OpenMP
+
+- URL -- http://openmp.org/
+- 参考文档
+  - http://en.wikipedia.org/wiki/OpenMP
+  - http://gcc.gnu.org/projects/gomp/
+  - Google Books: Parallel programming in OpenMP (by Rohit Chandra)
+  - https://computing.llnl.gov/tutorials/openMP/
+- 我的 OpenMP 笔记
+
+** MPICH
+
+- URL -- http://www.mcs.anl.gov/research/projects/mpich2/
+- 参考文档
+  - [[http://wiki.mcs.anl.gov/mpich2/index.php][MPICH2 Wiki]]
+  - [[http://www.ncsa.illinois.edu/UserInfo/Resources/Hardware/CommonDoc/mpich2_gdb.html][Compiling and Running with MPICH2 and GDB]]
+  - [[http://wiki.lazarus.freepascal.org/MPICH][MPICH Lazarus' Wiki]] -- 介绍了 FreePascal 与 MPI 结合使用的例子
+- [[file:mynote-mpich.org][我的 MPICH 笔记]]
+
+** Open MPI
+
+- URL -- http://www.open-mpi.org/
+- 参考文档
+  - http://www.slac.stanford.edu/comp/unix/farm/mpi.html
+- 我的 OpenMPI 笔记
+
+* 版本控制工具
+
+* 编译系统
+
+** CMake
+
+* Intel 编程套件
+
+* 集成开发环境
+

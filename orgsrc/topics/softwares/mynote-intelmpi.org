@@ -1,0 +1,152 @@
+# -*- mode: org; coding: utf-8 -*-
+#+SETUPFILE: ../../../setup/ox-tmpl/l2.org
+#+HTML_LINK_UP: index.html
+#+DATE: [2011-10-14 五]
+#+TITLE: 我的 Intel MPI 笔记
+
+* 起步
+
+** 使用流程
+
+#+begin_dot intel_mpi_flowchart.png -Tpng
+   digraph intel_mpi_flowchart {
+      compile [ shape=round, label="(只对程序开发者) 编译\n并链接应用程序" ];
+      mpd_setup [ shape=Mrecord, label="{设置 MPD\n守护进程}"];
+      net_setup [ shape=Mrecord, label="{选择网络\n结构或设备}"];
+      run [ shape=record, label="运行你的 MPI 程序" ];
+      compile -> mpd_setup -> net_setup -> run;
+   }
+#+end_dot
+
+** 安装
+
+根据手册安装 Intel MPI 库，保正库、脚本和实用程序安装正常。
+
+** 起步
+
+1. 加载 ~mpivars.[c]sh~ 脚本 (或者以其它类似方式加载 Intel MPI 库的环境)。
+2. 创建文本文件 ~mpd.hosts~ ，其中保存有集群的节点列表，每行一个名字
+3. (只针对开发者) 确保环境变量 PATH 中包含有相应的编译器，比如 icc。
+4. (只针对开发者) 使用适当的编译驱动编译测试程序，比如 ~mpiicc~
+   : mpiicc -o test  test.c
+5. 使用 ~mpirun~ 运行测试程序
+   : mpirun -r ssh -f mpd.hosts -n <# of processes> ./test
+
+** 编译和链接
+
+(只针对开发者) 编译和链接 Intel MPI 库：
+  1. 保证在 ~PATH~ 环境变量中编译器设置正确。使用 Intel 编译器，注意
+     ~LD_LIBRARY_PATH~ 环境变量中含有编译库的路径。
+  2. 通过相应的 ~mpi~ 命令编译 MPI 程序。比如调用 ~mpicc~ 使用 GNU C 编译器：
+     : mpicc <path-to-test>/test.c
+     所以支持的编译器都有对应的以 ~mpi~ 开头的命令，比如 Intel Fortran (~ifort~)
+     对应的为 ~mpiifort~.
+
+** 设置 MPD 守护进程
+
+Intel MPI 库使用 Multi-Purpose Daemon (MPD) 任务调度机制。为运行使用 ~mpiicc~
+(或类似) 编译的程序，首先需要设置好 MPD 守护进程。
+
+与系统管理员为系统中所有用户启动一次 MPD 守护进程不同，用户需要启动和维护自己的
+一组 MPD 守护进程。这种设置增强了系统安全性，并为控制可执行程序的环境提供了更强
+的灵活性。
+
+设置守护进行的步骤如下：
+  1. 设置相应的环境变量和目录。比如，在 ~.cshrc~ 或 ~.bashrc~ 文件中：
+     + 保证 ~PATH~ 变量中包含有 ~<installdir>/bin~ 或者 Intel 64 位架构对应的
+       ~<installdir>/bin64~ 目录，其中 ~<installdir>~ 指的是 MPI 的安装路径。可
+       使用 Intel MPI 库中带有的 ~mpivars.[c]sh~ 来设置此变量。
+     + 确保 ~PATH~ 中包含有的 Python 至少为 2.2 或以上版本。
+     + (只对开发者) 如果使用 Intel 编译器，确保 ~LD_LIBRARY_PATH~ 变量包含有编译
+       器的库目录。可使用编译器中带有的 ~{icc,ifort}*vars.[c]sh~ 脚本来设置。
+     + 设置应用程序所需要的其它环境变量。
+  2. 创建 ~$HOME/.mpd.conf~ 文件，设置 MPD 密码，需要在文件中写入一行：
+     : secretword=<mpd secret word>
+     不要使用 Linux 登陆密码。 ~<mpd secret word>~ 可为任意字符串，它仅仅在不同
+     的集群用户对 MPD 守护进程进行控制时有用。
+  3. 使用 ~chmod~ 设置 ~$HOME/.mpd.conf~ 文件的权限，使得它只能被你自己读写：
+     : chmod 600 $HOME/.mpd.conf
+  4. 保证你在集群的所有节点上 ~rsh~ 命令看到同样的 ~PATH~ 和 ~.mpd.conf~ 内容。
+     比如在集群的所有节点上执行下面的命令：
+     : rsh <node> env
+     : rsh <node> cat $HOME/.mpd.conf
+     保证每个节点都能够与其它任意节点连接。可使用安装中提供的 ~sshconnectivity~
+     脚本。该脚本使用提供所有节点列表的文件作为参数，每个节点一行：
+     : sshconnectivity.exp machines.LINUX
+     或集群使用的是 ~ssh~ 而不是 ~rsh~, 可参考后面的注释 [fn:1] 作相应的命令调整。
+  5. 创建文本文件 ~mpd.hosts~, 其中列出了集群中所有的节点，每行一个主机名。比如：
+     #+BEGIN_EXAMPLE
+     $ cat > mpd.hosts
+     node1
+     node2
+     ...
+     <ctrl>D
+     #+END_EXAMPLE
+  6. 使用 ~mpdallexit~ 命令关闭上一次的 MPD 守护进程。
+     : mpdallexit
+  7. 使用 ~mpdboot~ [fn:2] 命令启动 MPD 守护进程。
+     : mpdboot -n <#nodes>
+     如果文件 ~$PWD/mpd.hosts~ 存在，则会被用作默认参数。如果没有主机名文件，启
+     用 ~mpdboot~ 只会在本地机器上运行 MPD 守护进程。
+  8. 使用 ~mpdtrace~ 命令检查 MPD 守护进程的状态：
+     : mpdtrace
+     其输出结果应该为当前进行 MPD 守护进程的节点列表。该列表应该与 ~mpd.hosts~
+     文件中节点列表符合。
+
+[fn:1] *注意*: 如果集群中使用 ~ssh~ 而不是 ~rsh~, 需要确保任一节点与其它节点连接
+时都不需要密码。这需要参照系统管理手册。
+
+[fn:2] *注意*: 如果集群中使用 ~ssh~ 而非 ~rsh~, 在启动 ~mpdboot~ 时需要加上调用
+参数 ~-r ssh~ 或 ~--rsh=ssh~.
+
+** 选择网络结构
+
+Intel MPI 库会动态选择大部分适用的网络结构以便 MPI 进程之间进行通讯。欲选择特定
+的网络结构，需要设置环境变量 ~I_MPI_DEVICE~ 为下表中的某个值：
+|--------------------+---------------------------------------------------|
+| *I_MPI_DEVICE 值*  | *支持的结构*                                      |
+|--------------------+---------------------------------------------------|
+| sock               | TCP/Ethernet/sockets                              |
+| shm                | Shared memory only (no sockets)                   |
+| ssm                | TCP + shared memory [fn:net1]                     |
+| rdma[:<provider>]  | InfiniBand, Myrinet (via specified DAPL provider) |
+| rdssm[:<provider>] | TCP + shared memory + DAPL [fn:net2]              |
+|--------------------+---------------------------------------------------|
+
+[fn:net1] for SMP clusters connected via Ethernet
+
+[fn:net2] for SMP clusters connected via RDMA-capable fabrics
+
+要保证所选择的网络结构可用。比如，使用 ~shm~ 只有当所有进程可以通过共享内存进行
+通讯时才行；使用 ~rdma~ 只有当所有进程可以通过单一的 DAPL 相互通讯时才行。
+
+** 运行 MPI 程序
+
+运行使用 Intel MPI 库连接的程序，使用 ~mpiexec~ 命令：
+  : mpiexec -n <# of processes> ./myprog
+使用 ~-n~ 参数设置进程数，这是 ~mpiexec~ 唯一需要明显指定的选项。
+
+如果使用的网络结构与默认的不同，需要使用 ~-genv~ 选项来提供一个可以赋给
+~I_MPI_DEVICE~ 变量的值。
+
+比如使用 ~shm~ 结构来运行 MPI 程序，可执行如下命令：
+  : mpiexec -genv I_MPI_DEVICE shm -n <# of processes> ./myprog
+
+比如使用 ~rdma~ 结构来运行 MPI 程序，可执行如下命令：
+  : mpiexec -genv I_MPI_DEVICE rdma -n <# of processes> ./myprog
+
+可以通过命令选择任何支持的设备。
+
+如果应用程序运行成功，可将其移动到使用不同结构的集群中，不需要重新链接程序。
+
+* 除错
+
+** 安装
+
+** MPD 设置
+
+** 编译运行
+
+* 参考
+
+- [[http://software.intel.com/en-us/articles/intel-mpi-library-support-resources/][Intel MPI Support Resources]]

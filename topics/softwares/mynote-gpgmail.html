@@ -1,0 +1,967 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>GnuPG 与邮件加密</title>
+<!-- 2013-07-19 五 22:31 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+
+
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<link rel="alternate stylesheet" type="text/css" href="../../css/worg-zenburn.css" />
+<link rel="alternate stylesheet" type="text/css" href="../../css/worg-classic.css" />
+
+<script type="text/javascript" src="org-info.js">
+/**
+ *
+ * @source: org-info.js
+ *
+ * @licstart  The following is the entire license notice for the
+ *  JavaScript code in org-info.js.
+ *
+ * Copyright (C) 2012-2013  Sebastian Rose
+ *
+ *
+ * The JavaScript code in this tag is free software: you can
+ * redistribute it and/or modify it under the terms of the GNU
+ * General Public License (GNU GPL) as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option)
+ * any later version.  The code is distributed WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+ *
+ * As additional permission under GNU GPL version 3 section 7, you
+ * may distribute non-source (e.g., minimized or compacted) forms of
+ * that code without the copy of the GNU GPL normally required by
+ * section 4, provided you include this license notice and a URL
+ * through which recipients can access the Corresponding Source.
+ *
+ * @licend  The above is the entire license notice
+ * for the JavaScript code in org-info.js.
+ *
+ */
+</script>
+
+<script type="text/javascript">
+
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+
+<!--/*--><![CDATA[/*><!--*/
+org_html_manager.set("TOC_DEPTH", "4");
+org_html_manager.set("LINK_HOME", "../../index.html");
+org_html_manager.set("LINK_UP", "index.html");
+org_html_manager.set("LOCAL_TOC", "1");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "0");
+org_html_manager.set("TOC", "1");
+org_html_manager.set("VIEW", "info");
+org_html_manager.setup();  // activate after the parameters are set
+/*]]>*///-->
+</script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012  Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href="index.html"> UP </a>
+ |
+ <a accesskey="H" href="../../index.html"> HOME </a>
+</div><div id="content">
+<h1 class="title">GnuPG 与邮件加密</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">GnuPG 简介</a>
+<ul>
+<li><a href="#sec-1-1">前提条件</a></li>
+<li><a href="#sec-1-2">两种加密方式</a>
+<ul>
+<li><a href="#sec-1-2-1">对称加密</a></li>
+<li><a href="#sec-1-2-2">非对称加密，即公钥加密</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-2">ThunderBird + Enigmail</a>
+<ul>
+<li><a href="#sec-2-1">软件的安装</a></li>
+<li><a href="#sec-2-2">创建密钥对</a></li>
+<li><a href="#sec-2-3">分发公钥</a></li>
+<li><a href="#sec-2-4">导入密钥</a></li>
+<li><a href="#sec-2-5">创建加密邮件</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">Firefox + FireGPG</a>
+<ul>
+<li><a href="#sec-3-1">软件安装</a></li>
+<li><a href="#sec-3-2">创建密钥对</a></li>
+<li><a href="#sec-3-3">密钥的备份</a></li>
+<li><a href="#sec-3-4">公钥的分发</a></li>
+<li><a href="#sec-3-5">签名并验证文本</a></li>
+<li><a href="#sec-3-6">用公钥加密</a></li>
+<li><a href="#sec-3-7">解密验证文本</a></li>
+<li><a href="#sec-3-8">其它</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">GNU Privacy Assistant (GPA)</a></li>
+<li><a href="#sec-5">参考</a></li>
+</ul>
+</div>
+</div>
+<blockquote>
+<p>
+本文主要根据 <a href="#fgpg-m">1</a> 一文翻译并根据情况有所增删，目的是让朋友们能够对公私钥加密有
+一个初步的了解，并且希望通过阅读此文能够给我发送经过 GnuPG 加密后的邮件。同时，
+如果朋友们对 <a href="index.html">软件笔记</a> 首页及 <a href="network.html">网络相关软件列表</a> 中的部分内容感到迷惑的话，希望通过
+阅读此文能够有所解惑。
+</p>
+
+<p>
+你可以到 <a href="mynote-gpgmail.pdf"><b>这儿</b></a> 下载本文的 PDF 版本。
+</p>
+</blockquote>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">GnuPG 简介</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+简而言之，加密就是 <b>隐藏信息</b> 。经过计算机科学家、数学家和政府秘密探员长时间的努
+力，这项技术目前已经非常易用并且无处不在了。加密技术的传播仍然不太普遍，但它对普
+通人而言却比以往更加重要了。
+</p>
+
+<p>
+你发送和接收的每一封电子邮件、每一条即时消息，在你的计算机上往来时并没有进行保护。
+由于互联网的去中心化特性，所有的个人通讯都要经过数十台计算机，有时会通过几个国家
+进行传播，但从发送到接收之间可能仅隔几个微秒的时间。所有这些计算机，尤其是你的电
+子邮件提供者，会根据法律要求对你的信息保留较长的一段时间。个人在线交流并非你所想
+的那样隐私。
+</p>
+
+<p>
+当面对在线交流的非隐私事实时，许多人会声称他们“没有什么需要隐藏”。根据George
+Washington 大学法律学院的 Solve 教授所言，“声称无须隐藏的是基于这样的假设，即隐
+私是为了隐藏坏的东西” ("The problem with the nothing to hide argument is with
+it's underlying assumption that privacy is about hiding bad things")。但你是否与
+私交有过极其个人问题的谈话呢？你是否会将这谈话录音并发送给地址簿中的每个人呢？如
+果没有，那么你就有一些需要隐藏的东西。并非隐藏的东西是 <b>坏的</b> ，而是它*非常隐私*
+而已。
+</p>
+
+<p>
+并且……（根据本国法律，此段内容删除）。
+</p>
+
+<p>
+就种种电子邮件隐私需求而言，有一个简单的解决方案，就是遵循 GNU 隐私指南 (<a href="http://gnupg.org/">GNU
+Privacy Guard</a>, 简写为 GPG, 或 GnuPG)。尽管 GPG 提供的加密办法非常安全，并且许多
+政府使用它来加密绝密信息，GPG 本身却并非容易使用。然而，一些软件及相关插件，却可
+以让用户很方便地使用 GPG，这也就是下面要介绍的 <code>ThunderBird + Enigmail</code> 和~Firefox
+</p>
+<ul class="org-ul">
+<li>FireGPG~ 的使用模式。
+</li>
+</ul>
+</div>
+
+<div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1">前提条件</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+GnuPG 非常安全，但再强的安全性也可能由于用户会犯的错误而被破坏，故不可以想当然地
+认为用户很清楚自己的行为。人们对邮件加密并非不常见，唯一的问题是他们的私钥被偷或
+者他们的密码太弱。并且，如果你的计算机已经被攻击者（可能是病毒或者其它类似的东西）
+破坏，那么他们偷走你的私钥和密码就太容易了，再接收你的私人通讯就更没问题了。（可
+参考 <a href="http://crashsystems.net/2008/10/safe-web-browsing/">此文</a> 学习如何安全地网上冲浪。另注：此处参考为英文。）
+</p>
+
+<p>
+本文的目标读者为普通的计算用户。如果知道了如何浏览网页、发送电子邮件，你就可以参
+照此文。你不需要成为计算机高手，但你需要乐于思考。本文没有什么特别困难的东西，但
+你需要学会一些新的概念。如果你乐于新知，就读下去吧。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2">两种加密方式</h3>
+<div class="outline-text-3" id="text-1-2">
+</div><div id="outline-container-sec-1-2-1" class="outline-4">
+<h4 id="sec-1-2-1">对称加密</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+假设你要向一群朋友发送秘密信息，但你并不信任邮差。简单的办法就是寻找一种隐藏信息
+的方法。欲达此目的，你需要三样东西：发送的消息，与朋友们共享的秘密，一种相互认可
+的处理流程，从而使得共享的秘密能够隐藏在看起来不知所云的消息中。
+</p>
+
+<p>
+这就是通常所说的对称加密，因为只有一个密钥，即只涉及一个秘密。将密钥与消息组合处
+理的过程称之为加密算法 (“算法”简单地说就是“一组指令”)，有时也称为加密书写
+(cypher). 由于这种加密很简单，用户不需要怎么考虑其中的数学细节。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-2-2" class="outline-4">
+<h4 id="sec-1-2-2">非对称加密，即公钥加密</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+对称加密的一个简单问题就是：它不易于大规模处理。技术本身没什么问题，问题是使用该
+技术的人。众所周知，两个人保守一个秘密比一个人独自保守秘密难度加倍。三个人保守一
+个秘密，保密的难度是三倍，四个人则四倍……你可想见，一个小组的人如何能够安全地保
+守秘密呢？每增加一个人，保守秘密的难度也会增加。也就是说，当许多人共享一个对称加
+密的方法时，它很容易被泄密。
+</p>
+
+<p>
+解决此问题的办法就是： <a href="http://en.wikipedia.org/wiki/Cryptography#Public-key_cryptography"><b>公钥加密法</b></a> 。这种加密方式中，密钥的功能与在对称加密中所
+起的作用不大相同。假设你有一个秘密消息需要与一群朋友共享。但此时，这个加密方法所
+要求的是你的一群朋友每人都有两把密钥 (好比两把钥匙)。你不需要理解底层的数学细节，
+但你需要理解的是与使用一把密钥不同，
+</p>
+<blockquote>
+<p>
+<b>一对秘钥中只有一把能够加密，而另一把，也只有另一把密钥才能够解密</b> 。
+</p>
+</blockquote>
+<p>
+这种情况下，每个人都自己留一把密钥，而将另一把公开，让全世界都知道它。公开的那个
+称为 <b>公钥</b>, 另一个仔细隐藏并保护起来的称之为 <b>私钥</b> 。
+</p>
+
+<p>
+它的工作过程是这样的：由于你公布了公钥，你的任何朋友都可以通过互联网找到这把公钥，
+并可以使用它把秘密消息加密后传给你。一旦使用你的公钥加密了消息，就只有你才能够对
+其解密，因为只有你拥有你自己的私钥。这就解决了需要让一群人共享一个秘密的难题。
+(此过程可参照下图。)
+</p>
+<div class="dot">
+<p>
+digraph pubkey_encryp {
+    msga [ shape=note, label="秘密消息"; ];
+    pubk [ shape=pentagon, style=filled, fontcolor=white, fillcolor=blue, label="A的公钥"; ];
+    msgs [ shape=folder, style=filled, fillcolor=yellow, label="加密后的密信"; ];
+    A    [ style=filled, fillcolor=green, label="A"; ]
+    prik [ shape=pentagon, style=filled, fillcolor=red, fontcolor=white, label="A的私钥"; ];
+    { prik-&gt;A; rank = same; }
+    msgb [ shape=note, label="解密后的秘密"; ];
+    {msga; pubk;} -&gt; B; B -&gt; msgs [ label="加密" ];
+    msgs -&gt; A; A -&gt; msgb [ label="解密" ];
+}
+</p>
+
+</div>
+
+<div class="figure">
+<p><img src="gpgmail/pubkey_encryp.png" alt="pubkey_encryp.png" />
+</p>
+</div>
+
+<p>
+它还可让你做另一件事，就是证明自己的身份。如前所述，如果用一把密钥加密了，只有用
+另一把才能解密。因为你把自己的私钥保护得很隐秘（即只有你才会有），而你用私钥加密
+的消息只有你的公钥能够解密。假设所有人都认为你把自己的私钥保护得很安全，那么任何
+人能够解密你用私钥加密的消息，而你是唯一一个能够进行这种加密的人，从而你消息发送
+者的身份就得到了唯一认定。这也称为 <b>签名</b> 。通常情况是，消息发送者者使用私钥对消
+息进行加密或“签名”，再使用接收者的公钥进行加密。接收者首先使用自己的私钥，然后
+再使用发送者的公钥解密消息，则他们不仅知道只有谁能够读消息，也知道消息只有谁才能
+够发送。 (此过程可参照下图。)
+</p>
+<div class="dot">
+<p>
+digraph pubkey_sig {
+    pubk_A [ label="A的公钥", shape=pentagon, style=filled, fontcolor=white, fillcolor=blue ];
+    prik_A [ label="A的私钥", shape=pentagon, style=filled, fillcolor=red, fontcolor=white ];
+    pubk_B [ label="B的公钥", shape=pentagon, style=filled, fontcolor=white, fillcolor=blue ];
+    prik_B [ label="B的私钥", shape=pentagon, style=filled, fillcolor=red, fontcolor=white ];
+    msg_a  [ shape=note, label="消息" ];
+    msg_s1 [ shape=note, label="加密的密文1" ];
+    msg_sm [ shape=note, label="传输的密文" ];
+    msg_s2 [ shape=note, label="解密的密文2" ];
+    msg_b  [ shape=note, label="解密的消息" ];
+    msg_a -&gt; A; { prik_A -&gt; A; rank=same; }
+    A -&gt; msg_s1 [ label="加密" ];
+    { pubk_B -&gt; msg_s1; rank=same; }
+    msg_s1 -&gt; msg_sm [ label="加密" ];
+    msg_sm -&gt; B; { prik_B -&gt; B; rank=same; }
+    B -&gt; msg_s2 [ label="解密" ];
+    { pubk_A -&gt; msg_s2; rank=same; }
+    msg_s2 -&gt; msg_b [ label="解密" ];
+}
+</p>
+
+</div>
+
+<p>
+公钥密码学是 GPG 所使用的加密方法。上述所说的 <b>密钥对</b> 实际上是同一组的两个文件，
+包含有大量的数学相关的随机数。后面的内容将介绍如何安装软件、产生密钥对、发布公钥、
+进行消息加密等。在阅读后文之前，请确保你理解了上述的公钥加密的概念。
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">ThunderBird + Enigmail</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+<b>注</b>: 这部分内容为 <a href="#fgpg-m">1</a> 中所没有。为方便，本文使用 <a href="http://portableapps.com/">PortableApps</a> 打包的软件来阐
+述。相关内容可参考 <a href="portableapps.html">Portable Apps 笔记</a> 。
+</p>
+
+<p>
+如果你不选择使用 PortableApps 提供的可移动版本的 ThunderBird，则软件的安装步骤如
+下：
+</p>
+<ol class="org-ol">
+<li>从 <a href="http://www.mozillamessaging.com/thunderbird/">http://www.mozillamessaging.com/thunderbird/</a> 下载 ThunderBird 并安装。
+</li>
+<li>从 <a href="http://www.gpg4win.org/">http://www.gpg4win.org/</a> 下载 Gpg4win 并安装。
+</li>
+<li>从 ThunderBird 的“附加工具”中直接安装 Enigmail, 或者从
+     <a href="http://enigmail.mozdev.org/">http://enigmail.mozdev.org/</a> 下载再安装
+</li>
+<li>然后直接跳到 <a href="#sec-2-2">创建密钥对</a> 一节。
+</li>
+</ol>
+
+<p>
+其它的平台，如 Mac OS X, Linux 等，安装相应的软件即可，如在 Mac OS X 上可搜索安
+装 MacGPG2 等。
+</p>
+</div>
+
+<div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1">软件的安装</h3>
+<div class="outline-text-3" id="text-2-1">
+<ol class="org-ol">
+<li>从 <a href="http://portableapps.com/apps/internet/thunderbird_portable">ThunderBird, Portable Edition</a> 下载相应版本的 ThunderBird，比如从Download
+按钮下方的 Languages 打开语言选择页面，从中选择简体中文版下载。目前最新版本为
+<a href="http://downloads.sourceforge.net/portableapps/ThunderbirdPortable_3.0.3_SimpChinese.paf.exe?download">3.0.3</a>。
+</li>
+<li>下载完毕后，双击下载的以 <code>.paf.exe</code> 结尾的文件，则启动安装界面。如下图。
+
+<div class="figure">
+<p><img src="gpgmail/tb-inst-1.png" alt="tb-inst-1.png" />
+</p>
+</div>
+</li>
+<li>点击安装界面中的“下一步”按钮，则出现提示安装的目录。你可以选择任意目录进
+行。再“下一步”后则安装结束。
+
+<div class="figure">
+<p><img src="gpgmail/tb-inst-2.png" alt="tb-inst-2.png" />
+</p>
+</div>
+</li>
+<li>从 <a href="http://downloads.sourceforge.net/portableapps/GPG_for_Thunderbird_Portable_1.4.10.paf.exe?download">这儿下载</a> GPG for ThunderBird Portable 1.4.10 版本。
+</li>
+<li>双击下载完毕的 <code>.paf.exe</code> 结尾的文件，同 Portable ThunderBird 的安装过程一样，
+所不同的是，在选择安装目录时，选择与刚才安装 *ThunderBird 相同的路径*。
+</li>
+<li>打开 ThunderBird 的安装路径，在其中有一个名为 <code>ThunderbirdPortable.exe</code> 的可
+执行文件，双击即可运行移动版本的 ThunderBird 了。该目录下还应该有如下内容：
+<ol class="org-ol">
+<li><b>App</b> &#x2013; 程序的实际目录，其中应该包含有 <code>AppInfo</code>, <code>DefaultData</code>, <code>gpg</code>,
+和 <code>Thunderbird</code> 这几个目录。
+</li>
+<li><b>Data</b> &#x2013; 用户的数据目录。
+</li>
+<li><b>Other</b> &#x2013; 其它内容，包括帮助及生成 paf 格式的源码等。
+</li>
+</ol>
+</li>
+<li>双击运行 <code>ThunderbirdPortable.exe</code>, 会出现如下的窗口。您可以开始配置自己的邮
+件帐户了。 (或者点击“取消”，以后再配置。但建议你先配置好再进行下一步。)
+
+<div class="figure">
+<p><img src="gpgmail/tb-inst-3.png" alt="tb-inst-3.png" />
+</p>
+</div>
+</li>
+<li>点击菜单“工具(T)&#x2013;&gt;附加组件(A)”，会出现如下窗口。从“获取附加组件”中搜索
+Enigmail，选择“添加至 Thunderbird(A)…”，即可安装 ThunderBird 下的Enigmail
+插件。如果无法联网，也可以在其它地方从<a href="http://enigmail.mozdev.org/">http://enigmail.mozdev.org/</a> 下载相应版
+本的 Enigmail 插件，比如 Windows (32-bit) Thunderbird 3.0 对应的 Enigmail
+1.0.1 版本，拷贝到移动介质中，比如U 盘。然后从“附加组件”对话框中选择“安装”按
+扭，从文件文件对话框中寻找你下载的 <code>.xpi</code> 文件，安装即可。安装之后重新启动
+ThunderBird 即可。
+
+<div class="figure">
+<p><img src="gpgmail/tb-inst-4.png" alt="tb-inst-4.png" />
+</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2">创建密钥对</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+安装完毕后，重新启动 ThunderBird，会出现一个 OpenPGP 设置向导。按如下步骤进行：
+</p>
+<ol class="org-ol">
+<li>选择“是的，我想用向导来帮我开始”，点击“下一步”。
+</li>
+<li>在“数字签名”中，建议你选择“签署所有的电子邮件”。
+</li>
+<li>在“加密”中，建议你选择默认值，即“给那些有公钥的邮件创建规则”。
+</li>
+<li>在“选项”中，你可以调整一些细节。但默认的值挺好。
+</li>
+<li>在创建密钥对时，如果选择“帐户／个人标识”不能正常选择你已经创建好的个人电
+子邮件帐户，你可以先选择“取消”。如果正常，输入你的密码后，则可成功创建一
+对密钥。
+</li>
+</ol>
+
+<p>
+运行向导结束后，返回到你的 ThunderBird 界面。这时，选择菜单“安全(N)&#x2013;&gt;密钥管
+理器(Y)”打开密钥管理器对话框，如下图。
+</p>
+
+<div class="figure">
+<p><img src="gpgmail/tb-gpg-1.png" alt="tb-gpg-1.png" />
+</p>
+</div>
+
+<p>
+这时，选择 "Display All Keys" 如果没有显示内容，表明向导中创建密钥对失败。没关
+系，选择密钥管理器的菜单“创建(G)&#x2013;&gt;新密钥对(K)”，可打开如下对话框。
+</p>
+
+<div class="figure">
+<p><img src="gpgmail/tb-gpg-2.png" alt="tb-gpg-2.png" />
+</p>
+</div>
+
+<p>
+填写相应的信息，比如“密码”、有效期等。其中“高级”中的“密钥长度”默认选择
+2048 位即可，密钥类型默认为 "RSA" 即可。然后点击“生成密钥”，等待一会，会提示你
+“创建关保存撤销证书”，保存即可。
+</p>
+
+<p>
+<b>注</b>: 当你的私钥丢失时，你可以使用“撤销证书”来声明你的公钥无效。
+</p>
+
+<p>
+此时，你的密钥管理器中会出现你刚才生成的密钥。右键点击此密钥，选择“导出密钥到文
+件”，然后保存你的公钥为一个文本文件，比如我的公钥文件 <a href="file:///home/exaos/Utilities/Workspace/exaos.github.com/orgsrc/ExaosLee_pub.asc">ExaosLee\_pub.asc</a> 。
+</p>
+
+
+<div class="figure">
+<p><img src="gpgmail/tb-gpg-3.png" alt="tb-gpg-3.png" />
+</p>
+</div>
+
+<p>
+到此为止，你的个人密钥对已经设置完毕。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3">分发公钥</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+Enigmail 的密钥管理器可以导出公钥、私钥等，你可以将自己的私钥导出保存在安全的地
+方。如前面第一节中所述，你的公钥需要分发给朋友们，这样大家才可以给你写加密的邮件。
+</p>
+
+<p>
+分发公钥有几种方式：
+</p>
+<ol class="org-ol">
+<li>将你的公钥导出到文件文件中，上传到互联网的某个位置。然后告诉大家地址。
+</li>
+<li>使用密钥服务器。
+</li>
+</ol>
+
+<p>
+有许多公共的公钥服务器，在安装的 Enigmail 中就默认提供了一些，比如：
+</p>
+<ul class="org-ul">
+<li>pool.sks-keyservers.net
+</li>
+<li>subkeys.pgp.net
+</li>
+<li>pgp.mit.edu
+</li>
+<li>ldap://certserver.pgp.com
+</li>
+</ul>
+
+<p>
+你可以直接通过右键点击密钥，选择“上传公钥到密钥服务器”即可。然后大家就可以在你
+上传到的密钥服务器上搜索到你的公钥。另外，你也可以使用浏览器打开
+<a href="http://keyserver.pgp.com/">http://keyserver.pgp.com/</a> 等网站，通过网页把你的公钥上传到服务器上。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-4" class="outline-3">
+<h3 id="sec-2-4">导入密钥</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+通过密钥管理器，你可以导出密钥对，也可以导入朋友们的公钥。比如，你可以从 <a href="file:///home/exaos/Utilities/Workspace/exaos.github.com/orgsrc/ExaosLee_pub.asc">这儿</a>直
+接下载，或者从 <a href="http://keyserver.pgp.com/">PGP Global Directory</a> 搜索我的电子邮件地址，然后下载搜索到的公钥并
+保存为文件 <code>ExaosLee\_pub.asc</code>. 然后打开 ThunderBird 中密钥管理器，通过菜单“文
+件(F)&#x2013;&gt;从文件导入密钥(I)”导入下载的公钥文件。
+</p>
+
+<p>
+我的公钥导入后，如下图中的粉红线部分所示，如果双击“用户属性 (JPEG 图像)”则可以
+看到公钥中所包含的我的照片。
+</p>
+
+<div class="figure">
+<p><img src="gpgmail/tb-gpg-4.png" alt="tb-gpg-4.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-5" class="outline-3">
+<h3 id="sec-2-5">创建加密邮件</h3>
+<div class="outline-text-3" id="text-2-5">
+<p>
+从 ThunderBird 的工具条中选择“新建消息”，可打开邮件编写窗口。如下图所示，在编
+写完邮件后，从工具条或菜单中选择“加密邮件 (E)”，则在发送邮件时会自动使用该邮件
+接收人所拥有的公钥对信件内容进行加密。
+</p>
+
+<div class="figure">
+<p><img src="gpgmail/tb-gpg-5.png" alt="tb-gpg-5.png" />
+</p>
+</div>
+
+<p>
+下图为所发送的加密信件未解密时的内容。从图中可见，如果未解密，根本无从知道所书写
+的内容。
+</p>
+
+<div class="figure">
+<p><img src="gpgmail/tb-gpg-6.png" alt="tb-gpg-6.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">Firefox + FireGPG</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+如果你不需要使用 PortableApps 提供的可移动版本的 FireFox, 在 Windows 下软件安装
+步骤如下：
+</p>
+<ol class="org-ol">
+<li>从 <a href="http://www.mozilla.com/firefox/">http://www.mozilla.com/firefox/</a> 下载 FireFox 并安装。
+</li>
+<li>从 <a href="http://www.gpg4win.org/">http://www.gpg4win.org/</a> 下载 Gpg4win 并安装。
+</li>
+<li>从 <a href="http://getfiregpg.org/">http://getfiregpg.org/</a> 下载 FireGPG 或者直接从 FireFox 的“附加组件”中
+安装 FireGPG。
+</li>
+<li>跳过软件安装，直接到后面的 FireGPG 使用介绍。
+</li>
+</ol>
+
+<p>
+后文参照了 <a href="#fgpg-paf">2</a> 中的部分内容。
+</p>
+
+<p>
+其它的平台，如 Mac OS X, Linux 等，安装相应的软件即可，如在 Mac OS X 上可搜索安
+装 MacGPG2 等。
+</p>
+</div>
+
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1">软件安装</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+如下的安装过程类似于 ThunderBird + Enigmail。
+</p>
+<ol class="org-ol">
+<li>从 <a href="http://portableapps.com/apps/internet/firefox_portable">http://portableapps.com/apps/internet/firefox_portable</a> 选择相应的语言，
+并下载安装包。
+</li>
+<li>打开下载的 <code>.paf.exe</code> 文件，选择安装路径，然后点“下一步”即可。在这儿假设
+你的 <code>FirefoxPortable</code> 和 <code>ThunderbirdPortable</code> 目录都在同一个目录下。
+</li>
+<li>从 <code>FirefoxPortable</code> 目录中双击 <code>FirefoxPortable.exe</code> 文件运行。从 FireFox
+的菜单“工具&#x2013;&gt;附加组件”打开“附加组件对话框，从“获取附加组件”中搜索
+FireGPG 并安装，或者直接从 <a href="http://getfiregpg.org/">http://getfiregpg.org/</a> 下载，然后从菜单“文件&#x2013;&gt;
+打开文件”选择下载的 <code>.xpi</code> 文件进行安装。 (注：GetFirGPG.org 似乎被墙！)
+</li>
+<li>FireGPG 的设置：
+<ol class="org-ol">
+<li>如下图所示，从 FireFox 的菜单“工具&#x2013;&gt;FireGPG&#x2013;&gt;选项”打开 FireGPG 的设
+置对话框。
+
+<div class="figure">
+<p><img src="gpgmail/fgpg-1.png" alt="fgpg-1.png" />
+</p>
+</div>
+</li>
+<li>如果是非移动版本的 FireFox，可使用 FireGPG 自动检测到的 GPG 路径设置。如
+果使用移动版本的 FireFox，假设 <code>FirefoxPortable</code> 目录与前一节所述的
+Portable ThunderBird 安装在同一目录下，可按下图中粉红色圈中所示的路径进
+行参数设置。 (这儿参考了 <a href="#fgpg-blog">3</a>)。
+<p>
+<img src="gpgmail/fgpg-2.png" alt="fgpg-2.png" />
+其中 <code>gpg</code> 命令行参数为：
+</p>
+<pre class="example">
+--home {$FXFolder}\..\..\..\ThunderbirdPortable\Data\gpg
+</pre>
+<p>
+而 GPG 的路径则设置为“手动指定”，指定的值为：
+</p>
+<pre class="example">
+{$FXFolder}\..\..\..\ThunderbirdPortable\App\gpg\gpg.exe
+</pre>
+</li>
+</ol>
+</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2">创建密钥对</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+从 FireFox 的菜单“工具&#x2013;&gt;FireGPG&#x2013;&gt;密钥管理器”打开密钥管理器，从如下图粉红圈所
+示的位置选择“新建密钥”。
+</p>
+
+
+<div class="figure">
+<p><img src="gpgmail/fgpg-3.png" alt="fgpg-3.png" />
+</p>
+</div>
+
+<p>
+在打开如下图所示的对话框中填写相应的信息，并点击“产生密钥”，等待密钥生成结束。
+</p>
+
+
+<div class="figure">
+<p><img src="gpgmail/fgpg-4.png" alt="fgpg-4.png" />
+</p>
+</div>
+
+<p>
+最后，经过设置，生成的密钥信息如下图所示：
+</p>
+
+
+<div class="figure">
+<p><img src="gpgmail/fgpg-5.png" alt="fgpg-5.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3">密钥的备份</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+同上一节中创建密钥对相似，先从密钥列表中选择一组密钥，然后从密钥管理器下面一排的
+按扭中选择“导出到文件”，则可对密钥进行备份。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3-4" class="outline-3">
+<h3 id="sec-3-4">公钥的分发</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+同上一节，选择密钥管理器中的“导出到服务器”，即可进行密钥分发。也可如
+ThunderBird 一节中所述，将导出的公钥文件上传到诸如 <a href="http://keyserver.pgp.com/等网">http://keyserver.pgp.com/等网</a>
+站上。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3-5" class="outline-3">
+<h3 id="sec-3-5">签名并验证文本</h3>
+<div class="outline-text-3" id="text-3-5">
+<p>
+有时，你需要发布一些文档，并且让所有人都知道此文档是由你所写。那么，你可以使用
+“签名”功能。方法如下：
+</p>
+<ol class="org-ol">
+<li>从 FireFox 菜单“工具&#x2013;&gt;FireGPG&#x2013;&gt;文本编辑器”打开文本编辑器。
+</li>
+<li>在文本编辑器中编写任意内容，然后点击下方的“签名”按钮，如下图所示，选择你
+的私钥进行签名。
+
+<div class="figure">
+<p><img src="gpgmail/fgpg-6.png" alt="fgpg-6.png" />
+</p>
+</div>
+</li>
+<li>输入你的私钥密码，以便进行签名，如下图。
+
+<div class="figure">
+<p><img src="gpgmail/fgpg-7.png" alt="fgpg-7.png" />
+</p>
+</div>
+</li>
+<li>签名后的信息如下图所示：
+
+<div class="figure">
+<p><img src="gpgmail/fgpg-8.png" alt="fgpg-8.png" />
+</p>
+</div>
+</li>
+</ol>
+
+<p>
+你可以将这签名后的内容拷贝到电子邮件中，发送给你的朋友。拥有你公钥的人则可以利用
+你的公钥将其解密，从而知道这就是你发出的内容。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3-6" class="outline-3">
+<h3 id="sec-3-6">用公钥加密</h3>
+<div class="outline-text-3" id="text-3-6">
+<p>
+用公钥加密的过程与签名的过程类似，所不同的是点击不同的按钮，选择不同的密钥而已。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3-7" class="outline-3">
+<h3 id="sec-3-7">解密验证文本</h3>
+<div class="outline-text-3" id="text-3-7">
+<p>
+FireGPG 会自动探测网页中的签名文本块。它会默认隐藏签名数据并显示难后的文本。点击
+“验证”可以检查签名能否用你收集的公钥进行验证。当然，如果你想查看全部的检验信息，
+可点击“显示原始内容”。
+</p>
+
+<p>
+<b>注</b>: 通常签名可以针对全部的内容，或者针对全部内容的哈希检验码 (如 MD5, SHA1等)
+进行，由签名者决定。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3-8" class="outline-3">
+<h3 id="sec-3-8">其它</h3>
+<div class="outline-text-3" id="text-3-8">
+<p>
+FireGPG 会在你打开 Gmail 信箱时自动对打开的信件提供相应的插入操作，如内嵌式签名、
+验证、解密、加密等。但遗憾的是在写本文时，由于 getfiregpg.org 网站一直打不开，无
+法进行截图操作。只希望 FireGPG 网站能够正常访问吧。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">GNU Privacy Assistant (GPA)</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+<a href="http://www.gnupg.org/gpa.html">The GNU Privacy Assistant</a> 是 GnuPG (GNU Privacy Guard) 的图形用户界面。它使用GTK
+(The GIMP ToolKit) 作为图形后端，有多种平台的二进制可执行程序。其截图如下所示：
+</p>
+
+<div class="figure">
+<p><img src="gpgmail/gpa-1.png" alt="gpa-1.png" />
+</p>
+</div>
+
+<ul class="org-ul">
+<li>URL &#x2013; <a href="http://wald.intevation.org/projects/gpa/">http://wald.intevation.org/projects/gpa/</a>
+</li>
+<li>版本： 2009-06-20, 0.9.0
+</li>
+</ul>
+
+<p>
+在 Debian 下可以通过 <code>apt-get install gpa</code> 直接安装该软件包。但你可能更喜欢
+Gnome 中自带的 seahorse, 或者 KDE 中的 kgpg 等。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">参考</h2>
+<div class="outline-text-2" id="text-5">
+<ol class="org-ol">
+<li><a id="fgpg-m" name="fgpg-m"></a>: <a href="http://crashsystems.net/2009/03/email-encryption-guide-2/">Simple email encryption with FireGPG</a> (注：此文链接中的下载被墙)
+</li>
+<li><a id="fgpg-paf" name="fgpg-paf"></a>: <a href="http://portableapps.com/node/17491">FireGPG plug-in setup on P.A.</a>
+</li>
+<li><a id="fgpg-blog" name="fgpg-blog"></a>: <a href="http://blog.getfiregpg.org/2009/01/07/dear-firefox-portable-users/">FireGPG Blog 2009-01-07</a>
+</li>
+<li><a id="paf-tb" name="paf-tb"></a>:   <a href="http://portableapps.com/apps/internet/thunderbird_portable">Thunderbird, Portable Edition</a>
+</li>
+<li><a id="paf-fb" name="paf-fb"></a>:   <a href="http://portableapps.com/apps/internet/firefox_portable">Firefox, Portable Edition</a>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<p>版权所有 ©2013: Exaos Lee | Date: <span class="timestamp-wrapper"><span class="timestamp">[2010-03-29]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.50.1 (<a href="http://orgmode.org">Org</a> mode 8.0.5), <a href="http://validator.w3.org/check?uri=referer">Validate</a>, <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a></p>
+<script type="text/javascript">
+  var disqus_shortname = 'exaos-github';
+  (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</p>
+</div>
+</body>
+</html>

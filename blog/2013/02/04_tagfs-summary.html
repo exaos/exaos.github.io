@@ -1,21 +1,192 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-  <head>
-    <meta charset="utf-8"/>
-    <title>标签式文件系统，构想与实现</title>
-    <link rel="stylesheet" type="text/less" href="../../../style/less/o-blog.less"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="generator" content="o-blog version 1.2-zh-133-gcf9fd86"/>
-    <script src="../../../style/js/less-1.3.0.min.js" type="text/javascript"></script>
-    <script src="../../../style/js/jquery-1.7.1.min.js" type="text/javascript"></script>
-    <script src="../../../style/bootstrap/js/bootstrap-modal.js" type="text/javascript"></script>
-    <script src="../../../style/bootstrap/js/bootstrap-transition.js" type="text/javascript"></script>
-    <script src="../../../style/bootstrap/js/bootstrap-dropdown.js" type="text/javascript"></script>
-    <script src="../../../style/bootstrap/js/bootstrap-collapse.js" type="text/javascript"></script>
-    <script src="../../../style/js/prettify.js" type="text/javascript"></script>
-    <script src="../../../style/js/o-blog.linenumber.js" type="text/javascript"></script>
-    <script src="../../../style/js/o-blog-fix.js" type="text/javascript"></script>
-    <script type="text/javascript">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>标签式文件系统，构想与实现</title>
+<!-- 2013-07-19 五 22:31 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+
+
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="../../../css/worg.css" />
+<link rel="alternate stylesheet" type="text/css" href="../../../css/worg-zenburn.css" />
+<link rel="alternate stylesheet" type="text/css" href="../../../css/worg-classic.css" />
+
+<script type="text/javascript" src="org-info.js">
+/**
+ *
+ * @source: org-info.js
+ *
+ * @licstart  The following is the entire license notice for the
+ *  JavaScript code in org-info.js.
+ *
+ * Copyright (C) 2012-2013  Sebastian Rose
+ *
+ *
+ * The JavaScript code in this tag is free software: you can
+ * redistribute it and/or modify it under the terms of the GNU
+ * General Public License (GNU GPL) as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option)
+ * any later version.  The code is distributed WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+ *
+ * As additional permission under GNU GPL version 3 section 7, you
+ * may distribute non-source (e.g., minimized or compacted) forms of
+ * that code without the copy of the GNU GPL normally required by
+ * section 4, provided you include this license notice and a URL
+ * through which recipients can access the Corresponding Source.
+ *
+ * @licend  The above is the entire license notice
+ * for the JavaScript code in org-info.js.
+ *
+ */
+</script>
+
+<script type="text/javascript">
+
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+
+<!--/*--><![CDATA[/*><!--*/
+org_html_manager.set("TOC_DEPTH", "4");
+org_html_manager.set("LINK_HOME", "../../../index.html");
+org_html_manager.set("LINK_UP", "../../index.html");
+org_html_manager.set("LOCAL_TOC", "1");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "0");
+org_html_manager.set("TOC", "1");
+org_html_manager.set("VIEW", "info");
+org_html_manager.setup();  // activate after the parameters are set
+/*]]>*///-->
+</script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012  Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
 <!--/*--><![CDATA[/*><!--*/
  function CodeHighlightOn(elem, id)
  {
@@ -37,171 +208,88 @@
  }
 /*]]>*///-->
 </script>
-  </head>
-  <body>
-
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-	<div class="container">
-	  <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-	  <a class="brand" href="../../../index.html">心蛛小站</a>
-	  <div class="nav-collapse collapse">
-	    <ul>
-<li><a href="#"><i>icon-book icon-white</i> 存档</a>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href="../../index.html"> UP </a>
+ |
+ <a accesskey="H" href="../../../index.html"> HOME </a>
+</div><div id="content">
+<h1 class="title">标签式文件系统，构想与实现</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
 <ul>
-<li><a href="../../../notes/index.html">笔记</a>
-</li>
-<li><a href="../../../attic/index.html">资料</a>
-</li>
-<li><a href="../../../attic/exaos.html">心蛛资料</a>
-
-</li>
-</ul>
-
-</li>
-<li><a href="#"><i>icon-file icon-white</i> 近期博文</a>
+<li><a href="#sec-1">文档管理的囧境</a></li>
+<li><a href="#sec-2">标签式文件系统的概念</a></li>
+<li><a href="#sec-3">标签式文件系统的现状</a>
 <ul>
-<li><a href="../../../blog/2013/03/27_emacs-deft.html">Deft 使用指南</a>
-</li>
-<li><a href="../../../blog/2013/03/05_fix-bad-ext4.html">修复损坏的 ext4 大分区数据</a>
-</li>
-<li><a href="../../../blog/2013/03/03_fear-and-death.html">与妻书：《关于生、死与恐惧》</a>
-</li>
-<li><a href="../../../blog/2013/02/27_wisdom-be-with-you.html">“与智慧同在！”</a>
-
-</li>
+<li><a href="#sec-3-1">第一类 TagFS</a></li>
+<li><a href="#sec-3-2">TagFS 模拟器，或基于 Tag 的文件管理系统</a></li>
+<li><a href="#sec-3-3">TagFS 仿真系统</a></li>
 </ul>
-
 </li>
-<li><a href="../../../tags/index.html"><i>icon-tags icon-white</i> 标签</a>
-
-</li>
-<li><a href="../../../archives.html"><i>icon-list icon-white</i> 归档博文</a>
-
-</li>
-<li><a href="#"><i>icon-link icon-white</i> 友情链接</a>
-<ul>
-<li><a href="http://blog.163.com/y.feng_cn/">freeboy 在网易的博客：NMR</a>
-</li>
-<li><a href="http://www.scipark.net/">科学公园</a>
-</li>
-<li><a href="http://scienceblogging.org/">ScienceBlogging</a>
-
-</li>
+<li><a href="#sec-4">应用前景及结语</a></li>
 </ul>
-
-</li>
-<li><a href="../../../index.xml"><i>icon-rss icon-white</i> RSS订阅</a>
-</li>
-</ul>
-
-
-	  </div>
-	</div>
-      </div>
-    </div>
-    <div class="subnav subnav-fixed visible-desktop">
-      <div class="container">
-	<ul class="breadcrumb">
-  <li><a href="../../../index.html">首页</a> <span class="divider">/</span></li>
-  <li><a href="../../../blog/index.html">blog</a> <span class="divider">/</span></li><li><a href="../../../blog/2013/index.html">2013</a> <span class="divider">/</span></li><li><a href="../../../blog/2013/02/index.html">02</a> <span class="divider">/</span></li><li>标签式文件系统，构想与实现</li>
-  </ul>
-
-      </div>
-    </div>
-    <div id="page" class="container">
-
-  <header class="article-header">
-
-    <div class="well">
-      <div class="row">
-	<div class="date span1">
-	  <div class=" date-d">04</div>
-	  <div class=" date-m"><a href="../../../blog/2013/02/index.html"> 2月</a></div>
-	  <div class=" date-y"><a href="../../../blog/2013/index.html">2013</a>
-	  </div>
-	</div>
-	<div class="span1">
-	  <div class="qr-code">
-  <img src="http://chart.apis.google.com/chart?chs=50x50&cht=qr&chld=|0&chl=http%3a%2f%2fexaos.github.com%2f%2fblog%2f2013%2f02%2f04_tagfs-summary.html"
-       alt="qr-code" />
+</div>
 </div>
 
-	</div>
-	<h1 class="offset2" style="font-size: 250%">标签式文件系统，构想与实现</h1>
-      </div>
-      <nav>
-	<ul class="pager">
-	  <li class="previous"><a href="../../../blog/2013/02/03_tips-for-new-programming-language.html"><i class="icon-chevron-left"></i>&nbsp;[译] 怎样学习一门新的编程语言？</a></li><li class="next" style="text-align: right;"><a href="../../../blog/2013/02/06_my-archiving.html">用户主目录的使用及我的文档管理习惯&nbsp;<i class="icon-chevron-right"></i></a></li>
-	</ul>
-      </nav>
-    </div>
-
-  </header>
-  <div class="article-content">
-    <div id="outline-container-1" class="outline-3">
-<h3 id="sec-1">文档管理的囧境</h3>
-<div class="outline-text-3" id="text-1">
-
-
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">文档管理的囧境</h2>
+<div class="outline-text-2" id="text-1">
 <p>
 做研究工作，需要查阅的资料通常很多：论文、电子手册、图书、设计图纸、程序源代码、
-数据、图表，等等。比如我的硬盘中有近百 GiB 的这类资料，这其中还不包括实验的原始数
-据（因为有些实验光原始数据都是数百 GiB 的量级）。当资料越来越多时，许多人会自动按
-项目或者属性来整理文件。通常我的项目资料会存放在用户主目录的 <code>Projects</code> 目录下，
-按项目名称建立子目录，在其中存放与该项目相关的文献、程序、数据、会议报告、通知、
-上报材料等等。看起来，我的资料已经很整洁了。但往往有这样的情况：有时某个 A 项目的
-参考文献需要与项目 B 共享，而某些文档又会同时被多个项目用到。当文献的重复很多时，
-按项目的方式来整理文档又不如按文献来得方便，只要标明哪些文献属于哪个项目即可。但
-打开某个项目目录时，又希望与之相关的所有内容都在其内。长期积累下来的文献、数据、
-程序等，使得资料显得很杂乱。
+数据、图表，等等。比如我的硬盘中有近百 GiB 的这类资料，这其中还不包括实验的原始
+数据（因为有些实验光原始数据都是数百 GiB 的量级）。当资料越来越多时，许多人会自
+动按项目或者属性来整理文件。通常我的项目资料会存放在用户主目录的 <code>Projects</code> 目录
+下，按项目名称建立子目录，在其中存放与该项目相关的文献、程序、数据、会议报告、通
+知、上报材料等等。看起来，我的资料已经很整洁了。但往往有这样的情况：有时某个 A
+项目的参考文献需要与项目 B 共享，而某些文档又会同时被多个项目用到。当文献的重复
+很多时，按项目的方式来整理文档又不如按文献来得方便，只要标明哪些文献属于哪个项目
+即可。但打开某个项目目录时，又希望与之相关的所有内容都在其内。长期积累下来的文献、
+数据、程序等，使得资料显得很杂乱。
 </p>
+
 <p>
 有什么比较优雅的方式来管理这些资料呢？至少满足我如下的需求：
-</p><ul>
+</p>
+<ul class="org-ul">
 <li>无重复文件，即资料的重复利用率高
 </li>
 <li>资料可按多种方式组织而无遗漏，比如按项目、按关键字、按属性（文档、数据、图片、
-    设计图等）
+设计图等）
 </li>
 <li>即时发现被遗忘的文献（比如研究 A 项目时下载的文献当时没来得及读，过很久了又重
-    新下载后才发现机器中已经有了）
+新下载后才发现机器中已经有了）
 </li>
 <li>资料的版本控制功能（比如类似 VAX VMS 系统上的版本式文件系统 <a href="http://en.wikipedia.org/wiki/Files-11">Files-11</a> 那样）
 </li>
 </ul>
-
 
 <p>
 这个问题想了很久，结合一些网站（如标签式书签管理网站 <a href="https://delicious.com/">Delicious</a>）的设计，觉得如果
 在常规存储的资料属性上增加一个额外的标签属性，即可实现我上述的需求，或许对缓解文
 档管理的囧境有助。
 </p>
+
 <p>
 其实，一些音乐或图书管理软件已经很好地实现了这样的标签管理功能，如 iTunes,
 <a href="http://amarok.kde.org/">Amarok</a>, <a href="http://projects.gnome.org/rhythmbox/">rhythmbox</a>, <a href="http://calibre-ebook.com">Calibre</a> 等。另外一些新开发的文献管理软件也可部分满足需求，如
-<a href="http://www.mendeley.com/">Mendeley Desktop</a>, <a href="http://www.zotero.org/">Zotero</a>, <a href="http://www.docear.org/">Docear</a> 等，但这些软件尚不能将数据、专门程序、额外资料等
-包含在内，它们只是针对专门的文档来进行资料管理的。我希望资料的标签式管理可以与常
-规的文件管理器结合起来，无论是 GUI 还是 CLI, 都可以很方便地处理。
+<a href="http://www.mendeley.com/">Mendeley Desktop</a>, <a href="http://www.zotero.org/">Zotero</a>, <a href="http://www.docear.org/">Docear</a> 等，但这些软件尚不能将数据、专门程序、额外资料
+等包含在内，它们只是针对专门的文档来进行资料管理的。我希望资料的标签式管理可以与
+常规的文件管理器结合起来，无论是 GUI 还是 CLI, 都可以很方便地处理。
 </p>
 </div>
-
 </div>
-
-<div id="outline-container-2" class="outline-3">
-<h3 id="sec-2">标签式文件系统的概念</h3>
-<div class="outline-text-3" id="text-2">
-
-
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">标签式文件系统的概念</h2>
+<div class="outline-text-2" id="text-2">
 <p>
 我最早是从 Ubuntu 社区头脑风暴的 <a href="http://brainstorm.ubuntu.com/idea/9560/">一个主意</a> 中了解到了“标签式文件系统” (Tag
 Filesystem, 如下简写为 TagFS) 的概念。更详细的概念来自于 Adrian Sampson 的文章
 <a href="http://www.cs.hmc.edu/~asampson/tsfs.pdf">Design for a Tag-Structured Filesystem</a>.
 </p>
+
 <p>
 “标签”，有时也叫“关键字”，可以是任意的字符串，用来组织一组对象。“加标签”
 (tagging) 通常是一种与“层次结构”(hierarchical system) 不同的组织方式。在层次结
@@ -211,107 +299,107 @@ Filesystem, 如下简写为 TagFS) 的概念。更详细的概念来自于 Adria
 的对象。在更复杂的系统中，可以将标签的集合运算结果作为查询对象的标准。（实际上，
 一些 <a href="http://www.google.com/insidesearch/tipstricks/basics.html">Google 搜索技巧</a> 也就是标签运算的技巧。）
 </p>
+
 <p>
 在 FreeShell.org 上有一篇关于 TagFS 比较直观的简介: <a href="http://nascent.freeshell.org/programming/TagFS/">TagFS</a>. 为了给出 TagFS 的直观
 概念，特举一个例子。
 </p>
+
 <p>
 在 TagFS 上存储/管理文件时，一个文件可以加上任意的标签。比如我从 <a href="http://futurist.se/gldt/">GLDT</a> 下载了一张
 Linux 操作系统随时间的演化图 <code>gldt1210.png</code>. 假如我在一个 TagFS 上存储这张图片，
 我可以加上如下的标签: <code>Linux</code>, <code>OS</code>, <code>GLDT</code>, <code>2012</code>, <code>演示</code>, <code>报告</code>, <code>pics</code>,
 <code>Hobby</code>, 等等。如果要在 LFS 项目中引用这张图片，则又可以加上标签 <code>LFS</code>.
 </p>
+
 <p>
 如果在层次结构文件系统下，我可以把图片放置在目录 <code>OS/Linux/2012/pics/</code> 下：
-</p><pre class="example">
-~$ mkdir -p OS/Linux/pics/2012/
-~$ mv gldt1210.png OS/Linux/pics/2012/
+</p>
+<pre class="example">
+$ mkdir -p OS/Linux/pics/2012/
+$ mv gldt1210.png OS/Linux/pics/2012/
 </pre>
-
 
 <p>
 假如我现在在 TagFS 下，我可以这样加标签：
-</p><pre class="example">
+</p>
+<pre class="example">
 $ tagit gldt1210.png OS Linux pics 2012 Hobby svg LFS
 </pre>
-
-<p>然后这样访问：
-</p><pre class="example">
+<p>
+然后这样访问：
+</p>
+<pre class="example">
 $ cd OS/Linux/pics/2012/
 [OS Linux pics 2012] $ ls
 gldt1210.png
 </pre>
-
-<p>其中命令 <code>cd</code> 后面的参数 <code>OS/Linux/pics/2012/</code> 可以是任意顺序，如
+<p>
+其中命令 <code>cd</code> 后面的参数 <code>OS/Linux/pics/2012/</code> 可以是任意顺序，如
 <code>2012/Linux/pics/OS/</code>, 或者是 <code>Linux/2012/pics/OS</code>, 因为标签之间是等价的，无等级
 关系。提示符 <code>$</code> 前则是当前要访问的标签。
 </p>
+
 <p>
 在检索文件时，则可以按 <code>OS/Linux/2012/png/</code> 这样的组合方式很快找到这张图片。
 </p>
+
 <p>
 这样，项目资料的组织，不过是把一组文件加上同样的标签罢了。
 </p>
 </div>
-
 </div>
-
-<div id="outline-container-3" class="outline-3">
-<h3 id="sec-3">标签式文件系统的现状</h3>
-<div class="outline-text-3" id="text-3">
-
-
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">标签式文件系统的现状</h2>
+<div class="outline-text-2" id="text-3">
 <p>
 标签式文件系统的实现目前有三种方式：
-</p><ol>
+</p>
+<ol class="org-ol">
 <li>第一类 TagFS: 与 Fat32, NTFS, Ext3, ZFS 等实用文件系统相等价的文件系统。不过，
-     通常在 TagFS 上，目录即标签。
+通常在 TagFS 上，目录即标签。
 </li>
 <li>TagFS 模拟器: 实际文件保存在现有的文件系统上，用户通过一层标签式接口来访问这
-     些文件。这个思路与 iTunes, Calibre, Mendeley Desktop 的实现类似。这种 TagFS
-     就是一个用户界面，用户通过相应的文件属性数据库 (如 Calibre 的
-     <code>metadata.db</code>) 访问这些文件。
+些文件。这个思路与 iTunes, Calibre, Mendeley Desktop 的实现类似。这种 TagFS
+就是一个用户界面，用户通过相应的文件属性数据库 (如 Calibre 的
+<code>metadata.db</code>) 访问这些文件。
 </li>
 <li>TagFS 仿真系统: 以“用户空间文件系统”为后端实现仿真，用户体验上同第一类
-     TagFS. <br/>
+TagFS. <br  />
      “用户空间文件系统” (Filesystem in Userspace, 简称 <a href="http://en.wikipedia.org/wiki/Filesystem_in_Userspace">FUSE</a>) 是操作系统中的概念，
-     指完全在用户态实现文件系统。 FUSE 在 Linux 内核中提供支持，在其它系统上也有
-     相应的实现，如 FreeBSD, Mac OS X 以及 Windows.
+指完全在用户态实现文件系统。 FUSE 在 Linux 内核中提供支持，在其它系统上也有
+相应的实现，如 FreeBSD, Mac OS X 以及 Windows.
 </li>
 </ol>
-
-
-
 </div>
 
-<div id="outline-container-3-1" class="outline-4">
-<h4 id="sec-3-1">第一类 TagFS</h4>
-<div class="outline-text-4" id="text-3-1">
-
-
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1">第一类 TagFS</h3>
+<div class="outline-text-3" id="text-3-1">
 <p>
 第一类 TagFS 在业界也称为“数据库文件系统” (Database File systems), 实际上将“标
 签”等同于“富属性元数据” (注：英文为 rich metadata, 不知道这样翻译是否可以) 即
 可。这样的文件系统有：
-</p><ol>
+</p>
+<ol class="org-ol">
 <li><a href="http://www-03.ibm.com/systems/i/software/db2/index.html">IBM DB2 for i</a>
 </li>
 <li>似乎已经死掉的微软的 WinFS (Windows Future Storage)
 </li>
 <li>Linux 下的 <a href="http://dbfs.sourceforge.net/">DBFS</a> (该项目似乎死掉了，最后可下载的文件是 2004 年的 0.302 版本，
-     而 CVS 中最后的代码提交是 3 年前)
+而 CVS 中最后的代码提交是 3 年前)
 </li>
 <li>非常大型的文件系统，如 Apache Hadoop, Google File System 等，也使用了类似的
-     概念。另外，许多网页内容管理系统 (Web-CMS) 使用关系型 DBMS 来存储和提取文件
-     (比如 XML, 图片等) 也使用了这样的概念。
+概念。另外，许多网页内容管理系统 (Web-CMS) 使用关系型 DBMS 来存储和提取文件
+(比如 XML, 图片等) 也使用了这样的概念。
 </li>
 </ol>
-
 
 <p>
 与 Database FS 类似的，还有“语义文件系统” (<a href="http://en.wikipedia.org/wiki/Semantic_file_system">Semantic File System</a>), “逻辑文件系
 统” (<a href="http://en.wikipedia.org/wiki/Logic_File_System">Logic File System</a>) 等概念，不妨把这些看作是广义的“标签式文件系统”。
 </p>
+
 <p>
 第一类 TagFS 存在的问题是与现有操作系统的集成上。可以在层次文件系统上集成标签或语
 义的功能，也可在 TagFS 上模拟一下层次结构的文件系统。不过，这个比较复杂，目前对普
@@ -320,116 +408,123 @@ Hans Reiser 因杀妻罪名成立，相关的开发停滞了。喜欢尝鲜的�
 DBFS, 或者研究一下 Hadoop 等。
 </p>
 </div>
-
 </div>
-
-<div id="outline-container-3-2" class="outline-4">
-<h4 id="sec-3-2">TagFS 模拟器，或基于 Tag 的文件管理系统</h4>
-<div class="outline-text-4" id="text-3-2">
-
-
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2">TagFS 模拟器，或基于 Tag 的文件管理系统</h3>
+<div class="outline-text-3" id="text-3-2">
 <p>
 <b>Oyepa</b>
 </p>
+
 <p>
 <a href="http://pages.stern.nyu.edu/~marriaga/software/oyepa/">Oyepa</a> 是用 Python 开发的一款基于标签的文件管理接口，其源代码目前托管在 <a href="https://bitbucket.org/majo/oyepa">BitBucket</a>
 上。它依赖于 Qt4, PyQt4, 一些额外特性需要 Linux 内核中的 inotify 和 pyinotify.
 </p>
+
 <p>
 <b>KDE 语义桌面 Nepomuk</b>
 </p>
+
 <p>
 <a href="http://www.kde.org">KDE</a> 下的 <a href="http://userbase.kde.org/Nepomuk">Nepomuk</a> 也提供手动添加标签的功能，可以进行标签式搜索等，从这个意义上来说，
 它也算是一个标签式管理器。不过，我的使用体验不算很佳，系统响应很慢，有些限入假死
 的状态。
 </p>
+
 <p>
 <b>Tag2Find</b>
 </p>
+
 <p>
 <a href="http://www.tag2find.com/">tag2find</a> 是一款 Windows 下的桌面标签系统。其开发似乎陷入停滞，最新可下载的是
 2007 年的 0.10.2.5 版本。
 </p>
+
 <p>
 <b>Mac OS X Spotlight</b>
 </p>
+
 <p>
 Apple Mac OS X 下的 Finder 也可以对文件添加标签，然后通过 Spotlight 检索文件。不
 过，它提供的标签功能很弱，与第一类 TagFS 中所提及的概念无法相比。
 </p>
+
 <p>
 <b>小结</b>
 </p>
+
 <p>
 目前 TagFS 模拟器还没有真正顺手的。上述的软件是部分功能可用，但毕竟不算是真正意义
 上的 TagFS.
 </p>
 </div>
-
 </div>
-
-<div id="outline-container-3-3" class="outline-4">
-<h4 id="sec-3-3">TagFS 仿真系统</h4>
-<div class="outline-text-4" id="text-3-3">
-
-
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3">TagFS 仿真系统</h3>
+<div class="outline-text-3" id="text-3-3">
 <p>
 <b>Tagsistant</b>
 </p>
+
 <p>
 <a href="http://www.tagsistant.net/">Tagsistant</a> 的口号是： Linux 下的语义文件系统 (semantic filesystem for Linux). 它
 通过 FUSE 实现了对 TagFS 的仿真，用它管理的用户态文件系统实现了目录即标签的功能。
 参见第一节中有关 TagFS 的概念介绍。Tagsistant 仍在持续开发中，目前版本是 0.6. 它
 托管在 <a href="http://gna.org/">GNA</a> 的 Subversion 上。
 </p>
+
 <p>
 <b>XTagFS</b>
 </p>
+
 <p>
 <a href="http://code.google.com/p/xtagfs/">XTagFS</a> 是 Mac OS X 下的一个 FUSE 文件系统，它使用 "Spotlight Comment" 标签来组织
 文件与目录。标签在 XTagFS 下是目录，而文件则是目录下的链接。它依赖于 MacFUSE, 使
 用 Python 开发。目前似乎已经停止，SVN 中最后一次代码提交是 2009 年九月。
 </p>
+
 <p>
 <b>TagFS (py)</b>
 </p>
+
 <p>
 由 <a href="https://github.com/marook">Markus Pielmeier</a> 使用 Python 开发的 <a href="https://github.com/marook/tagfs">tagfs (py)</a> 托管在 GitHub 上。这是一个目前
 相对活跃的项目。
 </p>
+
 <p>
 <b>TagFS (D)</b>
 </p>
+
 <p>
 在 Google Codes 上还有一个使用 <a href="http://dlang.org/">D 语言</a> 开发的 <a href="http://code.google.com/p/tagfs/">tagfs (D)</a> (为区别于前一个，我加上了
 括号内的名称)，其作者是前面提到的在 FreeShell.org 上的 Jesse Phillips. 这个项目目
 前处于停滞状态，最后一次代码提交是在七年前。
 </p>
+
 <p>
 <b>小结</b>
 </p>
+
 <p>
 目前可用的 TagFS 仿真只有 Tagsistant 与 TagFS (py) 还可以。
 </p>
 </div>
 </div>
-
 </div>
-
-<div id="outline-container-4" class="outline-3">
-<h3 id="sec-4">应用前景及结语</h3>
-<div class="outline-text-3" id="text-4">
-
-
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">应用前景及结语</h2>
+<div class="outline-text-2" id="text-4">
 <p>
 我希望将来打开计算机时可以这样工作：
-</p><ul>
+</p>
+<ul class="org-ul">
 <li>自动选择当前活动——事务安排、娱乐、通讯或工作
 </li>
 <li>下载或接收到的工作资料随便一扔时，系统自动提示加上相应的标签
 </li>
 <li>开始工作时，根据工作任务，加上几个关键字，相应的文档、图片或程序自动展示在面
-    前，很方便从以前中断的任务继续下去
+前，很方便从以前中断的任务继续下去
 </li>
 <li>系统内的资料按照标签体系自动整理好，未整理的文件会接收到提醒
 </li>
@@ -439,99 +534,31 @@ Apple Mac OS X 下的 Finder 也可以对文件添加标签，然后通过 Spotl
 </li>
 </ul>
 
-
 <p>
 要实现类似这样的工作愿景，底层的管理软件仍然有许多要做的事情。
 </p>
+
 <p>
 无论是 WinFS 式的标签（语义）文件系统，还是 Tagsistant 式的仿真系统，还是类似于
 Nepomuk 的模拟器，仍然没有一个完全实用的标签式的资料管理体系。我希望这样的局面在
 不久的将来能够被打破，出现许多专门用于资料管理的类似于 iTunes 那样的软件。对于用
 户而言，不管底层是语义式的文件系统，还是模拟的数据库，实用即可。
-</p></div>
+</p>
 </div>
-
-  </div>
-  
-  <footer class="well article-footer">
-    发布于 <time datetime="2013-02-04T20:51:00Z"> 2013-02-04 20:51:00</time>.
-    <nav class="tag-cloud">
-      <h1><i class="icon-tags"></i> 相关标签</h1>
-      <ul>
-	<li class="label label-inverse small"><a href="../../../tags/devel.html">devel</a></li>
-      </ul>
-    </nav>
-  </footer>
-  <div id="disqus_thread"></div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<p>版权所有 ©2013: Exaos Lee | Date: <span class="timestamp-wrapper"><span class="timestamp">[2013-02-04 周一 20:51]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.50.1 (<a href="http://orgmode.org">Org</a> mode 8.0.5), <a href="http://validator.w3.org/check?uri=referer">Validate</a>, <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a></p>
 <script type="text/javascript">
-  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-  var disqus_shortname = 'exaos-github'; // required: replace example with your forum shortname
-
-  /* * * DON'T EDIT BELOW THIS LINE * * */
-  (function() {
-  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  })();
+  var disqus_shortname = 'exaos-github';
+  (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
-
-      </div>
-      <div id="footer">
-	<div class="container">
-	  <div class="row">
-	    <section class="span3">
-	      <h1>关于</h1>
-	      <p>
-心蛛的个人站点，记录一点私人的收藏或点滴。
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </p>
-	    </section>
-	    <nav id="links" class="span3">
-	      <h1>链接</h1>
-	      <ul>
-		<ul>
-<li><a href="../../../index.html"><i>icon-home icon-white</i> 首页</a>
-
-</li>
-<li><a href="Lisp error in nil: (error ob:post-htmlfile accessing a non-ob:post)"><i>icon-file icon-white</i> 博文</a>
-
-</li>
-<li><a href="../../../tags/index.html"><i>icon-tags icon-white</i> 标签</a>
-
-</li>
-<li><a href="../../../archives.html"><i>icon-list icon-white</i> 归档</a>
-
-</li>
-<li><a href="../../../index.xml"><i>icon-rss icon-white</i> RSS订阅</a>
-</li>
-</ul>
-
-
-	      </ul>
-	    </nav>
-	    <nav id="archives" class="span3">
-	      <h1><a href="../../../archives.html">归档</a></h1>
-	      <ul>
-		<li><a href="../../../blog/2013/03/27_emacs-deft.html">Deft 使用指南</a></li> <li><a href="../../../blog/2013/03/05_fix-bad-ext4.html">修复损坏的 ext4 大分区数据</a></li> <li><a href="../../../blog/2013/03/03_fear-and-death.html">与妻书：《关于生、死与恐惧》</a></li> <li><a href="../../../blog/2013/02/27_wisdom-be-with-you.html">“与智慧同在！”</a></li> <li><a href="../../../blog/2013/02/22_wisdom-in-information-era.html">信息时代的智慧——兼谈科普</a></li> <li><a href="../../../blog/2013/02/15_communicate-effectively.html">[译] 如何高效地交流？</a></li> <li><a href="../../../blog/2013/02/06_my-archiving.html">用户主目录的使用及我的文档管理习惯</a></li> <li><a href="../../../blog/2013/02/04_tagfs-summary.html">标签式文件系统，构想与实现</a></li> <li><a href="../../../blog/2013/02/03_tips-for-new-programming-language.html">[译] 怎样学习一门新的编程语言？</a></li> <li><a href="../../../blog/2013/01/28_recovery-win7-dell-n4110.html">恢复一次严重的系统故障 (Windows 7)</a></li> 
-	      </ul>
-	    </nav>
-	    <nav class="tags span3">
-	      <h1><a href="../../../tags/index.html">标签</a></h1>
-	      <ul>
-  <li style="font-size: 200.00%;"><a href="../../../tags/computer.html">Computer</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/education.html">Education</a></li> <li style="font-size: 100.00%;"><a href="../../../tags/emacs.html">Emacs</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/family.html">Family</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/fonts.html">Fonts</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/health.html">Health</a></li> <li style="font-size: 100.00%;"><a href="../../../tags/infoera.html">InfoEra</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/internet.html">Internet</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/language.html">Language</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/life.html">Life</a></li> <li style="font-size: 100.00%;"><a href="../../../tags/literateprogramming.html">LiterateProgramming</a></li> <li style="font-size: 140.00%;"><a href="../../../tags/mswin.html">MSWIN</a></li> <li style="font-size: 120.00%;"><a href="../../../tags/ocd.html">OCD</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/os.html">OS</a></li> <li style="font-size: 120.00%;"><a href="../../../tags/physics.html">Physics</a></li> <li style="font-size: 100.00%;"><a href="../../../tags/science.html">Science</a></li> <li style="font-size: 100.00%;"><a href="../../../tags/simulation.html">Simulation</a></li> <li style="font-size: 220.00%;"><a href="../../../tags/society.html">Society</a></li> <li style="font-size: 100.00%;"><a href="../../../tags/translation.html">Translation</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/cmake.html">cmake</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/debian.html">debian</a></li> <li style="font-size: 180.00%;"><a href="../../../tags/devel.html">devel</a></li> <li style="font-size: 120.00%;"><a href="../../../tags/geant4.html">geant4</a></li> <li style="font-size: 120.00%;"><a href="../../../tags/orgmode.html">orgmode</a></li> 
-</ul>
-
-	    </nav>
-	  </div>
-	</div>
-	<div class="copyright" style="text-align: center;">
-	  <p>
-版权所有 ©2012 <a href="mailto:exaos.lee(at)gmail.com">心蛛</a>. <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a>
-</p>
-	  <p>功能取自 <a href="https://github.com/renard/o-blog">o-blog</a>.</p>
-	</div>
-      </div>
+</div>
 </body>
 </html>
-

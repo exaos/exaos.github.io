@@ -1,0 +1,68 @@
+# -*- mode: org; coding: utf-8; -*-
+#+SETUPFILE: ../../../setup/ox-tmpl/l2.org
+#+HTML_LINK_UP: index.html
+#+TITLE: 图像浏览及处理类软件
+#+DATE: [2011-10-14 五]
+
+* 矢量图形
+
+** Asymptote
+
+- URL -- http://asymptote.sourceforge.net/
+- 简介：矢量绘图语言，与 LaTeX 配合完美。
+
+** Graphviz
+
+- URL -- http://www.graphviz.org/
+- 简介：结构图或层次图类的绘图工具，其程序库被广泛应用于各种软件中。
+
+** Dia
+
+- URL -- http://projects.gnome.org/dia/
+- 简介：基于 gtk+ 开发的框图绘制程序，使用 GPL 授权。
+
+** Inkscape
+
+- URL -- http://www.inkscape.org/
+- 简介：开源的矢量图形编辑器，与 Illustrator, CoralDraw 或 Xara X 兼容，使用 W3C
+  标准矢量图形格式 (SVG)。
+
+** Visio
+
+- 一款流程图、框图绘制程序，被 Microsoft 收购后正式加入到 Office 2007 套件中。
+
+* 3D 图像
+
+** FreeWRL
+
+- URL -- http://freewrl.sourceforge.net/
+- 简介：用于显示 VRML, X3D 格式的 3D 图像，免费开源。
+
+** OpenVRML
+
+- URL -- http://www.openvrml.org/
+- 简介：跨平台的 VRML 和 X3D 图像的显示软件，使用 GPL 授权。
+
+** Xj3D
+
+- URL -- http://www.web3d.org/x3d/xj3d/
+- 简介：基于 Java 的 X3D 工具集和浏览器。
+
+** OpenInventor
+
+- URL -- http://oss.sgi.com/projects/inventor/
+- 简介：是面向对象的 3D 工具包，为交互式图像编程提供综合解决方案。它基于 OpenGL
+  技术开发，包含程序开发包与浏览器。
+
+* 照片及位图处理
+
+** GIMP
+
+- URL -- http://www.gimp.org/
+- 简介：GNU Image Manipulation Program, GNU/Linux 和 Unix 上最流行的图像编辑软件，
+  使用 GPL 授权，跨平台。
+
+* 图像浏览
+
+这类软件太多。一般我是遇到什么就用什么，没有特别介绍。
+

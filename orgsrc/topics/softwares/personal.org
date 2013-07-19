@@ -1,0 +1,93 @@
+# -*- mode: org; coding: utf-8; -*-
+#+SETUPFILE: ../../../setup/ox-tmpl/l2.org
+#+HTML_LINK_UP: index.html
+#+TITLE: 个人事务处理类软件
+#+DATE: [2011-10-14 五]
+
+* 日历及任务管理
+
+一般使用系统自带或程序中附加的日历程序，比如 Emacs 中的 calender 插件。
+
+** Osmo
+
+- URL -- http://clayo.org/osmo
+- 使用 GTK+ 界面，用 XML 作为数据存储格式。
+
+** Task Coach
+
+- URL -- http://www.taskcoach.org/
+- 简介：简洁的任务管理器。
+
+* 联系人
+
+** Apple Contacts
+
+Mac OS X 中自带的联系人管理程序。
+
+** ThunderBird Addressbook
+
+ThunderBird 中自带的地址簿管理程序。
+
+* 辅助思考或头脑风暴
+
+- 头脑风暴 (Brainstorming 或叫集思广益) 是由 Alex Faickney Osborn 于 1953 年在
+  *Applied Imagination* 一书中提出的群体创造性方法。
+- [[http://en.wikipedia.org/wiki/Brainstorming][Brainstorming at Wikipedia]]
+- [[http://zh.wikipedia.org/zh-cn/%E5%A4%B4%E8%84%91%E9%A3%8E%E6%9A%B4][维基百科－头脑风暴]]
+- Osborn, A.F. (1963) *Applied imagination: Principles and procedures of
+  creative problem solving (Third Revised Edition)*. New York, NY: Charles
+  Scribner’s Son.
+
+** Xmind
+
+- URL -- http://www.xmind.net/
+- Brainstorming and mind mapping software.
+- 基于 Eclipse 开发，支持 MS Windows, Mac OS X 和 Linux
+
+** PersonalBrain
+
+- URL -- http://www.thebrain.com/
+- Mind Mappling Software, Brainstorming, GTD and Visual KM software.
+- 跨平台，支持 MS Windows, Mac OS X 和 Linux
+
+** FreeMind
+
+- URL -- http://freemind.sourceforge.net/
+
+** vym - View Your Mind
+
+- URL -- http://www.insilmaril.de/vym/
+- 使用 Qt 库开发的辅助思考程序。
+
+** MindManager
+
+- 由 [[http://www.mindjet.com/][Mindjet]] 公司开发的思维导图工具。
+- 支持 MS Windows 及 Mac OS X
+
+* GTD (Get-Things-Done)
+
+- GTD 是一种时间管理方法，由美国咨询师 [[http://www.davidco.com/][David Allen]] 发明，同时也是他的一本书的名
+  称。这种时间管理方法的主要原则在于将头脑中的各项任务转移出来，通过辅助手段让自
+  己的头脑能够集中注意力于当前最需要完成的事情，从而提高效率。
+- http://en.wikipedia.org/wiki/GTD
+- http://zh.wikipedia.org/wiki/GTD
+- *Getting Things Done: The Art of Stress-Free Productivity*. Penguin
+  Books. ISBN 0-14-200028-0.
+
+** Emacs + org-mode
+
+- URL -- http://orgmode.org/
+- 个人喜爱的模式。
+
+** Thinking Rock
+
+- URL -- http://www.trgtd.com.au/
+- 如果你喜爱 Emacs 下的工具，当然更好。否则推荐你使用此款软件。
+
+** MyLifeOrganized
+
+- URL -- http://www.mylifeorganized.net/
+
+** Chandler
+
+- URL -- http://chandlerproject.org/

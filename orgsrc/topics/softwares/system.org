@@ -1,0 +1,173 @@
+# -*- mode: org; coding: utf-8; -*-
+#+SETUPFILE: ../../../setup/ox-tmpl/l2.org
+#+HTML_LINK_UP: index.html
+#+TITLE: 系统工具与管理类软件
+#+DATE: [2011-10-14 五]
+
+这儿列举的许多工具都是 Unix/Linux 系统中自带有的，属于 POSIX 标准的应用程序，不需
+要特别介绍。许多命令均可以在 POSIX 类系统下使用 *man* 命令查看帮助。
+
+* GNU 核心工具集
+
+- http://www.gnu.org/software/coreutils/
+- GNU 核心工具集，包括 FileUtils, ShellUtils, TextUtils 三个部分。
+- 包含命令： basename cat chgrp chmod chown chroot cksum comm cp csplit cut date
+  dd df dir dircolors dirname du echo env expand expr factor false fmt fold
+  groups head hostid id install join link ln logname ls md5sum mkdir mkfifo
+  mknod mv nice nl nohup od paste pathchk pinky pr printenv printf ptx pwd
+  readlink rm rmdir sha1sum seq shred sleep sort split stat stty sum sync tac
+  tail tee test touch tr true tsort tty uname unexpand uniq unlink users vdir wc
+  who whoami yes
+
+* 文件处理
+
+** 常用打包、压缩与切割工具
+
+*** 7zip
+
+- http://www.7-zip.org/
+- High compression ratio in new 7z format with LZMA compression
+- 使用 LZMA 压缩法的新 7z 格式有非常高的压缩比率
+- 支持的压缩格式：
+  - Packing / unpacking: 7z, ZIP, GZIP, BZIP2 and TAR
+  - Unpacking only: ARJ, CAB, CHM, CPIO, DEB, DMG, HFS, ISO, LZH, LZMA,
+    MSI, NSIS, RAR, RPM, UDF, WIM, XAR and Z.
+
+*** tar
+
+- http://en.wikipedia.org/wiki/Tar_%28file_format%29
+- tar (取自 tape archive 的缩写) 是传统的 Unix 工具，原来是处理磁带数据的。
+
+*** xz
+
+- http://tukaani.org/xz/
+- 简介：LZMA（Lempel-Ziv-Markov chain-Algorithm 的缩写）是2001 年以来得到发展的
+  一个数据压缩算法。 XZ Utils 是使用 LZMA 算法的压缩工具，它取代了原来的 LZMA
+  Utils, 目标是为 POSIX 系统提供一套标准的 LZMA 算法的压缩工具。
+
+*** bzip2 -- http://www.bzip.org/
+
+*** gzip -- http://www.gzip.org/
+
+*** zip -- http://www.info-zip.org/
+
+** 编码、格式转换等
+
+*** iconv
+
+- iconv 是 GNU C 库的标准应用程序之一，功能是在不同的编码之间进行转换。
+
+*** convmv
+
+- http://www.j3e.de/linux/convmv/
+- 在不同操作系统及文件系统之间进行交换文件时，通常会出现文件名编码混乱的情形，尤
+  其在 Windows 和 Linux 之间。通常简体中文的 Windows 系统会使用 GB2312 (或 GBK,
+  GB18030) 编码保存文件名，但这些文件名到 Linux 系统上则会显示为不可识别的编码，
+  因为大部分的 Linux 系统会默认使用 UTF-8 作为文件名的编码。而使用 convmv 则可以
+  方便地让文件名在各种编码之间进行转换。
+
+** 查询、同步等
+
+*** rsync
+
+- http://samba.anu.edu.au/rsync/
+- 远程文件拷贝、目录同步工具。
+
+*** fdupes
+
+- http://netdial.caribe.net/~adrian2/fdupes.html
+- 寻找或删除某个目录下的重复文件。有时候有些目录下会有成千上万个文件，会有许多名
+  称不同但内容相同的文件，则可用此工具查找并删除重复的文件，从而达到节约空间的目
+  的。
+
+*** find
+
+- http://www.gnu.org/software/findutils/
+- 基于目录的查询工具。
+
+* 加密及加密文件系统
+
+** GnuPG
+
+- http://www.gnupg.org/
+- 是 OpenPGP 标准 (即 RFC4880) 的 GNU 完整自由的实现工具，用于对数据和通讯的加密
+  及签名。
+
+** GNU Privacy Assistant
+
+- http://gpa.wald.intevation.org/
+- GnuPG 的图形界面，其目标是成为 GnuPG 的标准图形界面。
+
+** Seahorse
+
+- http://live.gnome.org/Seahorse
+- GNOME 应用程序，管理在 GnomeKeyring 中的密钥与密码。
+
+** TrueCrypt
+
+- http://www.truecrypt.org/
+- 自由开源的磁盘加密软件，支持 Windows 7/Vista/XP, Mac OS X, Linux
+
+** cryptkeeper
+
+- http://www.gnomefiles.org/app.php/Cryptkeeper
+- Cryptkeeper 是支持 FreeDesktop.org 标准的系统托盘控件，用于管理由 EncFS 加密的
+  目录。
+  - EncFS -- http://encfs.sourceforge.net/ or http://www.arg0.net/encfs (被墙)
+  - Fuse -- http://fuse.sourceforge.net/
+  - FreeDesktop -- http://www.freedesktop.org/
+
+* 网络管理
+
+** nmap
+
+- http://nmap.org/
+- 自由开源的网络检查或安全侦听工具。
+
+* 虚拟机、模拟器
+
+** wine
+
+- http://www.winehq.org/
+- 目的：在其它操作系统上运行 Windows 程序。
+
+** VirtualBox
+
+- URL -- http://www.virtualbox.org/
+- 简介：一款被原来的 Sun 收购的虚拟机模拟器，跨平台，支持多种扩展功能。
+
+*** 问题与解答
+
+**** 减少 VBox 虚拟硬盘尺寸的办法
+
+1. 在虚拟机时清除无用的文件，进行磁盘整理
+2. 在虚拟机中使用 SDelete.exe 程序将无用的磁盘空间清零
+   : SDelete -c C:
+   可以[[http://technet.microsoft.com/en-us/sysinternals/bb897443.aspx][到这儿下载Sdelete]]。
+3. 关闭虚拟机，使用 VBoxManager 进行磁盘压缩
+   : VBoxManager modifyvdi <File Name> compact
+   VirtualBox 3.0 以后，上述命令变更为
+   : VBoxManage modifyhd <Filename | UUID> --compact
+
+** Bochs
+
+- http://bochs.sourceforge.net/
+- 简介：使用 C++ 开发的高可移植的 IA-32 (x86) PC 模拟器，可运行许多流行的平台上。
+  它包括 Intel x86 CPU 模拟器, I/O 设备及定制的 BIOS。
+
+** Xen
+
+- http://www.xen.org/
+- http://www.xen.org/files/Marketing/WhatisXen.pdf
+- The Xen® hypervisor, the powerful open source industry standard for
+  virtualization, offers a powerful, efficient, and secure feature set for
+  virtualization of x86, x86_64, IA64, ARM, and other CPU architectures. It
+  supports a wide range of guest operating systems including Windows®, Linux®,
+  Solaris®, and various versions of the BSD operating systems.
+
+** Qemu
+
+- http://www.qemu.org/ (被墙)
+- 处理器模拟器，与 Bochs, PearPC 近似，但速度更快且跨平台性良好。在 Linux 系统上
+  使用内核加速器 kqemu 可使用 Qemu 的模拟能够接近真实电脑的速度。
+

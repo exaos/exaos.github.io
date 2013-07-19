@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>在线软件列表</title>
+<!-- 2013-07-19 五 22:31 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+
+
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<link rel="alternate stylesheet" type="text/css" href="../../css/worg-zenburn.css" />
+<link rel="alternate stylesheet" type="text/css" href="../../css/worg-classic.css" />
+
+<script type="text/javascript" src="org-info.js">
+/**
+ *
+ * @source: org-info.js
+ *
+ * @licstart  The following is the entire license notice for the
+ *  JavaScript code in org-info.js.
+ *
+ * Copyright (C) 2012-2013  Sebastian Rose
+ *
+ *
+ * The JavaScript code in this tag is free software: you can
+ * redistribute it and/or modify it under the terms of the GNU
+ * General Public License (GNU GPL) as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option)
+ * any later version.  The code is distributed WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+ *
+ * As additional permission under GNU GPL version 3 section 7, you
+ * may distribute non-source (e.g., minimized or compacted) forms of
+ * that code without the copy of the GNU GPL normally required by
+ * section 4, provided you include this license notice and a URL
+ * through which recipients can access the Corresponding Source.
+ *
+ * @licend  The above is the entire license notice
+ * for the JavaScript code in org-info.js.
+ *
+ */
+</script>
+
+<script type="text/javascript">
+
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+
+<!--/*--><![CDATA[/*><!--*/
+org_html_manager.set("TOC_DEPTH", "4");
+org_html_manager.set("LINK_HOME", "../../index.html");
+org_html_manager.set("LINK_UP", "index.html");
+org_html_manager.set("LOCAL_TOC", "1");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "0");
+org_html_manager.set("TOC", "1");
+org_html_manager.set("VIEW", "info");
+org_html_manager.setup();  // activate after the parameters are set
+/*]]>*///-->
+</script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012  Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href="index.html"> UP </a>
+ |
+ <a accesskey="H" href="../../index.html"> HOME </a>
+</div><div id="content">
+<h1 class="title">在线软件列表</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">在线操作系统 &#x2013; WebOS</a>
+<ul>
+<li><a href="#sec-1-1">Online Operating System</a></li>
+<li><a href="#sec-1-2">EyeOS</a></li>
+<li><a href="#sec-1-3">Glide OS</a></li>
+<li><a href="#sec-1-4">amoebaOS</a></li>
+<li><a href="#sec-1-5">WebX Online OS</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">在线办公类</a>
+<ul>
+<li><a href="#sec-2-1">Google Docs</a></li>
+<li><a href="#sec-2-2">ThinkFree Online</a></li>
+<li><a href="#sec-2-3">Microsoft Office Online</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">即时消息类</a>
+<ul>
+<li><a href="#sec-3-1">Meebo</a></li>
+<li><a href="#sec-3-2">IMO</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">个人事务处理类</a>
+<ul>
+<li><a href="#sec-4-1">Google Calender</a></li>
+<li><a href="#sec-4-2">Yahoo 效率手册</a></li>
+<li><a href="#sec-4-3">GTD Online</a>
+<ul>
+<li><a href="#sec-4-3-1">Remember The Milk (GTD)</a></li>
+<li><a href="#sec-4-3-2">GTDTiddlyWiki</a></li>
+<li><a href="#sec-4-3-3">SimpleGTD</a></li>
+<li><a href="#sec-4-3-4">GTDInbox for Gmail</a></li>
+<li><a href="#sec-4-3-5">Vitalist.com (GTD)</a></li>
+<li><a href="#sec-4-3-6">Online TaskList</a></li>
+<li><a href="#sec-4-3-7">TaskWriter</a></li>
+<li><a href="#sec-4-3-8">Tracks</a></li>
+<li><a href="#sec-4-3-9">Neptune</a></li>
+<li><a href="#sec-4-3-10">Tasktoy</a></li>
+<li><a href="#sec-4-3-11">Todoist</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-5">RSS Reader</a>
+<ul>
+<li><a href="#sec-5-1">Google 阅读器</a></li>
+</ul>
+</li>
+<li><a href="#sec-6">其它杂类</a>
+<ul>
+<li><a href="#sec-6-1">Sketchpad 在线绘图板</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+随着互联网的普及，越来越多的服务等不需要在本地安装软件了。这些服务主要是基于
+HTTP 协议的应用程序，简称网页程序。这些程序也可略分为如下这些种类：
+</p>
+<ul class="org-ul">
+<li>基于 HTML4 及以前版本的使用 JavaScript 的网页程序
+</li>
+<li>基于新的 HTML5+CSS3 的网页程序
+</li>
+<li>基于非网页标准需要第三方插件才能运行的网页程序，这第三方插件主要有
+<ol class="org-ol">
+<li>Java Applet
+</li>
+<li>Adobe Flash
+</li>
+<li>ActiveX, 只能运行于 Windows 平台，安全性极糟糕却又偏偏应用比较普遍
+</li>
+<li><a href="http://www.silverlight.net/">Microsoft SilverLight</a>, 当然，仅限于 Windows 平台
+</li>
+<li>其它
+</li>
+</ol>
+</li>
+</ul>
+
+<p>
+其实，简单一点地说，网页程序就是需要在流览器中才能运行的程序啦，无论是基于 <a href="http://www.w3.org/standards/webdesign/htmlcss">HTTP</a>
+还是 Google 未来的 <a href="http://dev.chromium.org/spdy">SPDY 协议</a>也罢。
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">在线操作系统 &#x2013; WebOS</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+根据 <a href="http://en.wikipedia.org/wiki/Web_operating_system">Wikipedia: Web Operating System</a> 中的介绍，在线操作系统指基于 HTTP 协议的桌
+面应用，也称为 WebOS 或 Webtop。目前流行的 WebOS 通常采用 JavaScript 和 AJAX 技
+术开发，与目前炎热的云计算相结合，WebOS 有大的潜力。
+</p>
+</div>
+
+<div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1">Online Operating System</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li><a href="http://www.oos.cc/">http://www.oos.cc/</a>
+</li>
+<li><a href="http://en.wikipedia.org/wiki/Online_OS">Wikipedia: Online OS</a>
+</li>
+<li>支持的浏览器： Mozilla Firefox 1.5 以上版本, Internet Explorer 7.0 以上版本。
+</li>
+<li>目前不支持 Safari
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2">EyeOS</h3>
+<div class="outline-text-3" id="text-1-2">
+<ul class="org-ul">
+<li><a href="http://eyeos.org/">http://eyeos.org/</a>
+</li>
+<li>简介：集成了办公套件、群件办公 (groupware) 应用程序和专门的网页应用开发技术工
+具包的 <b>云计算平台</b> 。使用 eyeOS 框架可以创建运行于网页桌面系统的应用程序。
+</li>
+<li>授权： AGPLv3
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3">Glide OS</h3>
+<div class="outline-text-3" id="text-1-3">
+<ul class="org-ul">
+<li><a href="http://www.glidedigital.com/">http://www.glidedigital.com/</a>
+</li>
+<li>简介：综合的云计算解决方案。
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1-4" class="outline-3">
+<h3 id="sec-1-4">amoebaOS</h3>
+<div class="outline-text-3" id="text-1-4">
+<ul class="org-ul">
+<li><a href="http://amoebaos.org/">http://amoebaos.org/</a>
+</li>
+<li>简介：免费的在线操作系统。以后添加试用报告。
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1-5" class="outline-3">
+<h3 id="sec-1-5">WebX Online OS</h3>
+<div class="outline-text-3" id="text-1-5">
+<ul class="org-ul">
+<li><a href="http://www.andrewmin.com/webx/">http://www.andrewmin.com/webx/</a>
+</li>
+<li>授权： GPLv3
+</li>
+<li>支持的浏览器：Firefox 3, IE 7 (部分), Konqueror (部分), Opera 9.5, Safari 3
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">在线办公类</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+通过 <a href="http://en.wikipedia.org/wiki/Online_office_suite">Wikipedia: Online Office Suite</a> 可以了解更多。
+</p>
+</div>
+
+<div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1">Google Docs</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li><a href="https://docs.google.com/">https://docs.google.com/</a> (<b>部分被墙</b>)
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2">ThinkFree Online</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li><a href="http://www.thinkfree.com/">http://www.thinkfree.com/</a> (<b>被墙</b>)
+</li>
+<li>基于 Java 开发的在线办公套件。我早于 Google Docs 体验的在线办公产品，可惜被墙
+了。
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3">Microsoft Office Online</h3>
+<div class="outline-text-3" id="text-2-3">
+<ul class="org-ul">
+<li><a href="http://office.microsoft.com">http://office.microsoft.com</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">即时消息类</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+在线即时消息 (IM) 应用已经集成到了许多网站中，比如我每次打开在线 gmail 信箱，在
+左侧就有一个在线聊天的小控件。提供类似功能的网站越来越多。有一些专门提供多协议登
+陆的 IM 网站，在这儿罗列一下。
+</p>
+</div>
+
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1">Meebo</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li><a href="http://www.meebo.com/">http://www.meebo.com/</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2">IMO</h3>
+<div class="outline-text-3" id="text-3-2">
+<ul class="org-ul">
+<li><a href="https://imo.im/">https://imo.im/</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">个人事务处理类</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1">Google Calender</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li><a href="http://www.google.com/calendar/">http://www.google.com/calendar/</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2">Yahoo 效率手册</h3>
+<div class="outline-text-3" id="text-4-2">
+<ul class="org-ul">
+<li><a href="http://calendar.mail.yahoo.com/">http://calendar.mail.yahoo.com/</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-3" class="outline-3">
+<h3 id="sec-4-3">GTD Online</h3>
+<div class="outline-text-3" id="text-4-3">
+</div><div id="outline-container-sec-4-3-1" class="outline-4">
+<h4 id="sec-4-3-1">Remember The Milk (GTD)</h4>
+<div class="outline-text-4" id="text-4-3-1">
+<ul class="org-ul">
+<li><a href="http://www.rememberthemilk.com/">http://www.rememberthemilk.com/</a>
+</li>
+<li>提供中文界面，免费注册使用。
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-3-2" class="outline-4">
+<h4 id="sec-4-3-2">GTDTiddlyWiki</h4>
+<div class="outline-text-4" id="text-4-3-2">
+<ul class="org-ul">
+<li><a href="http://nathanbowers.com/gtdtw/">http://nathanbowers.com/gtdtw/</a>
+</li>
+<li>基于 <a href="http://tiddlywiki.com/">TiddlyWiki</a> 开发的 GTD 软件。TiddlyWiki 整个软件就是一个 HTML 文件，包含
+了所有的内容、函数和样式表等，使用 JavaScript + HTML + CSS 开发。
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-3-3" class="outline-4">
+<h4 id="sec-4-3-3">SimpleGTD</h4>
+<div class="outline-text-4" id="text-4-3-3">
+<ul class="org-ul">
+<li><a href="http://www.simplegtd.com/">http://www.simplegtd.com/</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-3-4" class="outline-4">
+<h4 id="sec-4-3-4">GTDInbox for Gmail</h4>
+<div class="outline-text-4" id="text-4-3-4">
+<ul class="org-ul">
+<li><a href="http://www.gtdgmail.com/">http://www.gtdgmail.com/</a>
+</li>
+<li>FireFox 的一个插件，在 Gmail 信箱中提供 GTD 功能。
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-3-5" class="outline-4">
+<h4 id="sec-4-3-5">Vitalist.com (GTD)</h4>
+<div class="outline-text-4" id="text-4-3-5">
+<ul class="org-ul">
+<li><a href="http://www.vitalist.com/">http://www.vitalist.com/</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-3-6" class="outline-4">
+<h4 id="sec-4-3-6">Online TaskList</h4>
+<div class="outline-text-4" id="text-4-3-6">
+<ul class="org-ul">
+<li><a href="http://www.onlinetasklist.com/">http://www.onlinetasklist.com/</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-3-7" class="outline-4">
+<h4 id="sec-4-3-7">TaskWriter</h4>
+<div class="outline-text-4" id="text-4-3-7">
+<ul class="org-ul">
+<li><a href="http://www.taskwriter.com/">http://www.taskwriter.com/</a>
+</li>
+<li>免费限制 5 个列表
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-3-8" class="outline-4">
+<h4 id="sec-4-3-8">Tracks</h4>
+<div class="outline-text-4" id="text-4-3-8">
+<ul class="org-ul">
+<li><a href="http://getontracks.org/">http://getontracks.org/</a>
+</li>
+<li>使用 Ruby on Rails 开发
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-3-9" class="outline-4">
+<h4 id="sec-4-3-9">Neptune</h4>
+<div class="outline-text-4" id="text-4-3-9">
+<ul class="org-ul">
+<li><a href="http://www.neptunehq.com/">http://www.neptunehq.com/</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-3-10" class="outline-4">
+<h4 id="sec-4-3-10">Tasktoy</h4>
+<div class="outline-text-4" id="text-4-3-10">
+<ul class="org-ul">
+<li><a href="http://www.tasktoy.com/">http://www.tasktoy.com/</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-3-11" class="outline-4">
+<h4 id="sec-4-3-11">Todoist</h4>
+<div class="outline-text-4" id="text-4-3-11">
+<ul class="org-ul">
+<li><a href="http://todoist.com/">http://todoist.com/</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">RSS Reader</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1">Google 阅读器</h3>
+<div class="outline-text-3" id="text-5-1">
+<ul class="org-ul">
+<li><a href="http://www.google.com/reader/">http://www.google.com/reader/</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">其它杂类</h2>
+<div class="outline-text-2" id="text-6">
+</div><div id="outline-container-sec-6-1" class="outline-3">
+<h3 id="sec-6-1">Sketchpad 在线绘图板</h3>
+<div class="outline-text-3" id="text-6-1">
+<ul class="org-ul">
+<li><a href="http://mugtug.com/sketchpad/">http://mugtug.com/sketchpad/</a>
+</li>
+<li>提供 Windows 下画图板的全部功能，并有许多额外特性。该页面使用 HTML5 特性，使用
+IE-6 之类的老旧浏览器会无法正常使用。
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<p>版权所有 ©2013: Exaos Lee | Date: <span class="timestamp-wrapper"><span class="timestamp">[2011-10-14 五]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.50.1 (<a href="http://orgmode.org">Org</a> mode 8.0.5), <a href="http://validator.w3.org/check?uri=referer">Validate</a>, <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a></p>
+<script type="text/javascript">
+  var disqus_shortname = 'exaos-github';
+  (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</p>
+</div>
+</body>
+</html>

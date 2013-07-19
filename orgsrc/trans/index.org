@@ -1,0 +1,19 @@
+# -*- mode: org; coding: utf-8; -*-
+#+SETUPFILE: ../../setup/ox-tmpl/l1.org
+#+HTML_LINK_UP: ../index.html
+#+TITLE: 译文列表
+
+* 科学与技术
+- 2013-08: 科学家需要多少数学？（《自然》争鸣）
+- 2013-07-10: [[file:20130326/particle-physics-for-life.org][粒子物理如何改进你的生活]]
+- 2013-03-21: 缓慢的科学（《自然》报道）
+- 2004-10-20: Gerard't Hooft -- 《[[file:how-to-be-good-theorist.org][怎样成为一名优秀的理论物理学家]]》
+
+* 计算机
+- [[file:tips-for-new-programming-language.org][怎样学习一门新的编程语言？]]
+
+* 语言
+
+* 其它
+- WikiHow: [[file:communicate-effectively.org][如何高效地交流？]]
+

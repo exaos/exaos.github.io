@@ -1,0 +1,42 @@
+# -*- mode: org; coding: utf-8; -*-
+#+SETUPFILE: ../../../setup/ox-tmpl/l2.org
+#+HTML_LINK_UP: index.html
+#+TITLE: 移动的工作环境 -- PortableApps
+#+DATE: [2011-10-14 五]
+
+2010 年春节前整理了一批 Portable Apps，呵呵～～现在决定把我的 iPod mini 做为一个
+移动工作平台，可以随时在别人的或公共的机器上进行工作，而且不留下什么数据在这些机
+器上。整理这个的原因如下：
+
+  1. 单位的工作机不能上互联网，必须使用专用的方式上网，因此自己喜爱的程序和环境无
+     法在公用的机器上配置保存，因为公共的上网机会随时被重置，使用什么 Ghost 把硬
+     盘数据恢复到以前，所有的配置全白搭。
+
+  2. 偶尔需要在别人的机器上做一些简单的工作，但却需要安装一些额外的工具软件。每个
+     人使用软件的习惯都不相同，在别人机器上找到自己喜爱的软件比较麻烦。所以，整理
+     一批在移动硬盘上随时可以使用的程序就显得很必要。
+
+推荐大家在 http://portableapps.com/ 这儿找找，也搭配一个你自己的移动工作环境。由于
+大部分的机器都使用的是 Windows XP 系统，因此这个 Portable Apps 上都是针对
+Windows 平台的。不要问有没有 Linux 下移动环境的问题哦。其实，在 Linux 下，动一下
+脑筋，这个问题不难解决。呵呵～～
+
+* 个人推荐
+
+*注*: 这儿罗列的软件列表不全在 [[http://portableapps.com/][PortableApps.com]] 上。
+
+- 7-zip Portable : 移动的压缩管理器
+- ThunderBird Portable + Enigmail : 移动的电子邮件和加密环境
+- SkypePortable : 移动的 Skype 环境
+- PidginPortable : 移动的多帐号 IM 环境
+- Toucan : 移动的文件同步管理器
+- TaskCoachPortable : 移动的个人任务管理器
+- PNotesPortable : 移动的便条
+- ClamWinPortable : 移动的杀毒环境
+- FirefoxPortable: 移动的 Firefox 浏览器，如何将它与 WinGPG 配置使用 FireGPG 我
+  会另外写一篇文档来介绍。
+- PortablePython : 这是一个独立的 Python 环境，在 portableapps.com 上是找不到的，
+  它的网址为 http://www.portablepython.com/
+- CygwinPortable : 移动的 cygwin 环境。
+- Emacs: 如何把 Emacs 变成一个移动的环境，可以参考我在 [[http://www.newsmth.net/bbscon.php?bid=573&id=85316][水木上的贴子]]。
+- PortableGit: 移动的 Git 版本控制环境，可以从 Google Code 上下载。搜一下喽。

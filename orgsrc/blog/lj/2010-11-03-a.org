@@ -1,0 +1,28 @@
+# -*- mode: org; coding: utf-8; -*-
+#+SETUPFILE: ../../../setup/ox-tmpl/l2.org
+#+HTML_LINK_UP: ../index.html
+#+DATE: [2010-11-03 02:25:00]
+#+TITLE: JSON 格式的数据与注释
+#+AUTHOR: 心蛛
+
+JSON 是一种基于文本的数据交换格式。使用中发觉一个缺陷，不支持注释（这点似乎与
+Google ProtocolBuffer 相似）。检索了一下，发现还有其它一些常用的文本格式的数据：
+1. YAML -- 严格地说， JSON 是 YAML 的一个子集。
+2. Python 嵌套式数据结构
+3. Windows 下的 .ini 格式
+4. Mac OS Property lists 格式 (与 JSON 类似)
+
+目前 YAML 为 1.2 规范，其结构比 JSON 要复杂得多，可参见 http://www.yaml.org/日常
+使用中，比较简单的数据，使用 JSON 或者 .ini 格式就可以了。即便需要注释，也可以在
+读取文件后，把内容进行注释过滤，再交由 json 解析器处理即可。比如
+#+BEGIN_SRC python
+  f = lambda x: len(x)>0 and x[0]!="#"
+  ss = filter(f, [l.strip for l in open("a.json","r").readlines()])
+#+END_SRC
+
+这样处理后的 ss 是一个包含字符串的 list, 其中所有以 "#" 开头的注释就全部去除了。
+然后，再执行
+  : rdict = json.loads("\n".join(ss))
+
+这样，包含注释的 json 数据文件就可以正常解析了。当然，其中的注释符号也可以由 "#"
+换成其它，如 "//" 之类的。

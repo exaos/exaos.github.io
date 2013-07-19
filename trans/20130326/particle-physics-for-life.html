@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>粒子物理如何改进你的生活</title>
+<!-- 2013-07-19 五 22:31 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+
+
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<link rel="alternate stylesheet" type="text/css" href="../../css/worg-zenburn.css" />
+<link rel="alternate stylesheet" type="text/css" href="../../css/worg-classic.css" />
+
+<script type="text/javascript" src="org-info.js">
+/**
+ *
+ * @source: org-info.js
+ *
+ * @licstart  The following is the entire license notice for the
+ *  JavaScript code in org-info.js.
+ *
+ * Copyright (C) 2012-2013  Sebastian Rose
+ *
+ *
+ * The JavaScript code in this tag is free software: you can
+ * redistribute it and/or modify it under the terms of the GNU
+ * General Public License (GNU GPL) as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option)
+ * any later version.  The code is distributed WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+ *
+ * As additional permission under GNU GPL version 3 section 7, you
+ * may distribute non-source (e.g., minimized or compacted) forms of
+ * that code without the copy of the GNU GPL normally required by
+ * section 4, provided you include this license notice and a URL
+ * through which recipients can access the Corresponding Source.
+ *
+ * @licend  The above is the entire license notice
+ * for the JavaScript code in org-info.js.
+ *
+ */
+</script>
+
+<script type="text/javascript">
+
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+
+<!--/*--><![CDATA[/*><!--*/
+org_html_manager.set("TOC_DEPTH", "4");
+org_html_manager.set("LINK_HOME", "../../index.html");
+org_html_manager.set("LINK_UP", "../index.html");
+org_html_manager.set("LOCAL_TOC", "1");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "0");
+org_html_manager.set("TOC", "1");
+org_html_manager.set("VIEW", "info");
+org_html_manager.setup();  // activate after the parameters are set
+/*]]>*///-->
+</script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012  Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href="../index.html"> UP </a>
+ |
+ <a accesskey="H" href="../../index.html"> HOME </a>
+</div><div id="content">
+<h1 class="title">粒子物理如何改进你的生活</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">纸尿裤</a></li>
+<li><a href="#sec-2">热缩包装</a></li>
+<li><a href="#sec-3">货厢扫描</a></li>
+<li><a href="#sec-4">磁共振成像</a></li>
+<li><a href="#sec-5">人力开发</a></li>
+<li><a href="#sec-6">人工心瓣</a></li>
+<li><a href="#sec-7">研究用的高强光线</a></li>
+<li><a href="#sec-8">格点计算</a></li>
+<li><a href="#sec-9">家俱抛光</a></li>
+</ul>
+</div>
+</div>
+<blockquote>
+<p>
+译注：一般人总是以为粒子物理距离我们的生活很远。其实，它离我们真的很近，你会在日
+常生活中与它不经意地擦肩而过。
+</p>
+
+<p>
+原文: <a href="http://goo.gl/PZmhu">How particle physics improves your life</a>
+</p>
+</blockquote>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">纸尿裤</h2>
+<div class="outline-text-2" id="text-1">
+
+<div class="figure">
+<p><img src="application_diapers_0.png" alt="application_diapers_0.png" width="120px" style="float:right" />
+</p>
+</div>
+
+<p>
+利用粒子加速器，化学家第一次理解了高吸水性聚合物的详细的潮湿结构，这些高吸水性聚
+合物就应用在纸尿裤中。这使得他们能够调节和改进高吸水性聚合物的分子式，从而获得更
+完美的材料——这已被应用在每个当今的纸尿裤中。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">热缩包装</h2>
+<div class="outline-text-2" id="text-2">
+
+<div class="figure">
+<p><img src="application_shrinkwrap_0.png" alt="application_shrinkwrap_0.png" width="120px" style="float:right" />
+</p>
+</div>
+
+<p>
+如果你买了只火鸡，它能够保鲜，这个你得感谢粒子加速器。几十年来，食品产业一直使用
+粒子加速器来生产高强度的热缩薄膜，从而让火鸡——也包括水果和蔬菜、烘焙食品、棋盘和
+DVD——可以被封装起来。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">货厢扫描</h2>
+<div class="outline-text-2" id="text-3">
+
+<div class="figure">
+<p><img src="application_cargo_0.png" alt="application_cargo_0.png" width="120px" style="float:right" />
+</p>
+</div>
+
+<p>
+每年，美国有超过 20 亿吨货物要通过港口和水路。许多港口如今都采用粒子加速器产生的
+高能 X-射线来鉴别违禁品以保障港口安全。这些 X-射线可以穿透很深并能够识别货厢的更
+多细节。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">磁共振成像</h2>
+<div class="outline-text-2" id="text-4">
+
+<div class="figure">
+<p><img src="application_mri_0.png" alt="application_mri_0.png" width="120px" style="float:right" />
+</p>
+</div>
+
+<p>
+这个救命的医疗技术现在称为磁共振成像，它能够对人体的软组织进行详细成像。与 X-射
+线不同，磁共振成像能够从大脑的白质中区分出灰质，能从非癌变组织中区分出癌变组织，
+能从器官中区分出肌肉，也能够揭露血液流动与中风的征兆。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">人力开发</h2>
+<div class="outline-text-2" id="text-5">
+
+<div class="figure">
+<p><img src="application_workforce_0.png" alt="application_workforce_0.png" width="120px" style="float:right" />
+</p>
+</div>
+
+<p>
+许多经过粒子物理训练的人转行到工业、医药、计算机或其它能够发挥其特长的领域。你会
+发现一名粒子探测器专家正在勘探油井，或者一名加速器科学家正在从事癌症治疗的工作。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">人工心瓣</h2>
+<div class="outline-text-2" id="text-6">
+
+<div class="figure">
+<p><img src="application_heart_0.png" alt="application_heart_0.png" width="120px" style="float:right" />
+</p>
+</div>
+
+<p>
+通过用加速器产生的银离子轰击办法，物理学家设计了一种新材料，它增强了人工心瓣的安
+全性。加工后的材料表面能够避免人体将心瓣当作入侵物，从而避免在其周围产生一些有潜
+在危险的额外组织。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7">研究用的高强光线</h2>
+<div class="outline-text-2" id="text-7">
+
+<div class="figure">
+<p><img src="application_light_0.png" alt="application_light_0.png" width="120px" style="float:right" />
+</p>
+</div>
+
+<p>
+环状粒子加速器令高速电子弯曲，导致电子发光。这种光在多种应用中是一种强大的研究工
+具。专门的同步辐射加速器也称之为光源，可以让科学家控制光的波长与强度用于研究更好
+的电池、绿色能源、新的高性能材料、更有效的药物治疗以及对自然界进行更深入的认识。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8">格点计算</h2>
+<div class="outline-text-2" id="text-8">
+
+<div class="figure">
+<p><img src="application_grid_0.png" alt="application_grid_0.png" width="120px" style="float:right" />
+</p>
+</div>
+
+<p>
+万维网并不是粒子物理对计算领域唯一的促进。为满足 LHC 实验的计算需求，粒子物理学家
+创造了世界上最大的格点计算系统，跨越 36 年国家 100 多所研究机构，大大促进了全球网
+络和分布计算机的发展。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9">家俱抛光</h2>
+<div class="outline-text-2" id="text-9">
+
+<div class="figure">
+<p><img src="application_finish_0.png" alt="application_finish_0.png" width="120px" style="float:right" />
+</p>
+</div>
+
+<p>
+四分之一个世纪以来，世界上许多公司都在使用粒子加速器产生的电子束来制造防刮、防污
+的家俱。这些处理后的凳子、架子和桌子的表面看起来象是木头，但非常耐磨。
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<p>版权所有 ©2013: 译者：心蛛 | Date: <span class="timestamp-wrapper"><span class="timestamp">[2013-07-18 四 21:10]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.50.1 (<a href="http://orgmode.org">Org</a> mode 8.0.5), <a href="http://validator.w3.org/check?uri=referer">Validate</a>, <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a></p>
+<script type="text/javascript">
+  var disqus_shortname = 'exaos-github';
+  (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</p>
+</div>
+</body>
+</html>

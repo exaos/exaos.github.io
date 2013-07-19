@@ -1,0 +1,69 @@
+# -*- mode: org; coding: utf-8; -*-
+#+SETUPFILE: ../../../../setup/ox-tmpl/l3.org
+#+HTML_LINK_UP: ../../index.html
+#+TITLE: Deft 使用指南
+#+DATE: [2013-03-27 三 14:49]
+#+CUSTOM_ID: emacs-deft
+#   - State "DONE"       from ""           [2013-03-27 三 14:49]
+
+[[http://jblevins.org/projects/deft/][Deft]] 是一个依赖于 Emacs 的扩展，用于管理纯文本格式的笔记：
+  - http://jblevins.org/projects/deft/
+
+它的基本功能就是浏览、过滤、并进行目录编辑。需要你将笔记都以纯文本格式保存在一个
+目录下，然后在 emacs 下调用 =M-x deft=, 键入任意字符串，显示当前目录与之匹配的笔
+记文件。当你的纯文本笔记有数十个以上时，会非常有用。
+
+* 基本操作
+
+主要操作：搜索与过滤。列出的文件可以是限制数量的，或者用字符串过滤后的，同时匹配
+标题与文本主体。启动一个过滤，直接键入字符即可。过滤是即时的，随着你键入，文件浏
+览即时更新，只显示与当前字符串匹配的文件。
+
+打开第一个匹配的文件，直接按 =RET=. 若没有匹配字符串，按 =RET= 则创建新的文件并使
+用该字符串为标题。这样写笔记很快。文件名会自动创建。若你想用指定的文件名，使用快
+捷键 =C-RET=.
+
+另一窗口打开文件: =C-o=, 打开但不切换: =C-u, C-o=
+
+过滤字符串编辑：
+  - =DEL= 删除; =M-DEL=, 删除字
+  - =C-y= 拉回来最近删除的文本到过滤字符串
+  - =C-c C-c= 清除
+  - =C-c C-g= 用当前过滤字符串刷新文件列表
+  - =C-c C-l= 在 minibuffer 中编辑过滤字符串，在 minibuffer 中可用 =M-p=, =M-n=
+    来循环调用以前的编辑历史。
+
+* 配置
+
+调用:
+#+BEGIN_SRC elisp
+(require 'deft)
+#+END_SRC
+
+匹配文档类型 (默认是 =.txt=) 和路径:
+#+BEGIN_SRC elisp
+(setq deft-extension "txt")
+(setq deft-directory "~/Dropbox/notes")
+#+END_SRC
+
+使用 =markdown-mode= 作为主模式:
+#+BEGIN_SRC elisp
+(setq deft-text-mode 'markdown-mode)
+#+END_SRC
+
+使用 =org-mode=:
+#+BEGIN_SRC elisp
+(setq deft-extension "org")
+(setq deft-text-mode 'org-mode)
+#+END_SRC
+
+使用文件名为浏览的标题（默认是文件中的第一行）:
+#+BEGIN_SRC elisp
+(setq deft-use-filename-as-title t)
+#+END_SRC
+
+定义默认快捷键:
+#+BEGIN_SRC elisp
+(global-set-key [f8] 'deft)
+#+END_SRC
+

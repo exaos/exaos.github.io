@@ -1,0 +1,99 @@
+# -*- mode: org; coding: utf-8
+#+SETUPFILE: ../../../setup/ox-tmpl/l2.org
+#+HTML_LINK_UP: index.html
+#+TITLE: 数学类软件
+#+DATE: [2011-10-14 五]
+
+* BNU bc: 任意精度的计算器
+
+- PROPERTIES ::
+  - URL     ::  http://directory.fsf.org/GNU/bc.html
+  - License ::  GPL
+  - Version ::  2001-03-18, 1.06
+- 介绍 :: 'Bc' is an arbitrary precision numeric processing language. Its syntax
+          is similar to C, but differs in many substantial areas. It supports
+          interactive execution of statements. 'Bc' is a utility included in the
+          POSIX P1003.2/D11 draft standard.
+- 说明 :: This version does not use the historical method of having bc be a
+          compiler for the dc calculator (the POSIX document doesn't specify how
+          bc must be implemented). This version has a single executable that
+          both compiles the language and runs the resulting 'byte code.'  The
+          byte code is not the dc language.
+
+* Scilab
+
+- PROPERTIES ::
+  - URL     ::  http://www.scilab.org/
+  - License ::  [[http://www.cecill.info/index.en.html][CeCILL]]
+  - Version ::  2010-02-18, 5.2.1
+- 介绍 :: 由 INRIA (French National Institute for Research in Computer Science
+          and Control) 及 ENPC (École Nationale des Ponts et Chaussées, 法国国
+          立桥梁学院) 合作开发的科学计算软件。与商业软件 MATLAB 具有相同的前身，
+          来自 80 年代美国新墨西哥大学计算机科学系主任 Cleve Moler 编写的最早的
+          MATLAB。
+* Maxima
+
+- PROPERTIES ::
+  - URL      :: http://maxima.sourceforge.net/
+  - Version  :: 2009-04-26, 5.18.1
+  - Dev-Lang :: common lisp
+- 介绍 :: 20 世纪 60 年代后期在 MIT 开发的计算机代数系统 Macsyma 是计算机代数计
+          算的先驱，maxima 是其继承者。由于 macsyma 的开源特性，它是公开可得并且
+          拥有一个活跃的用户群，在当时是革命性的。后续的许多系统，比如 Maple和
+          Mathematica 都深受其影响。
+- 历史 ::
+  1. 1998, William Schelter 获得授权，允许此软件采用 GPL 授权方式进行传播
+
+* Mathematica
+
+- PROPERTIES ::
+  - URL     ::  http://www.wolfram.com/
+  - Version ::  2009-02, 7.0.1
+
+* MatLAB
+
+- PROPERTIES ::
+  - URL     ::  http://www.mathworks.com
+  - License ::  商业授权
+  - Version ::  2009-09-14, R2009b (7.9.0)
+- 介绍 :: MATLAB 是一种用于算法开发、数据可视化、数据分析以及数值计算的高级技术
+          计算语言和交互式环境。
+
+* Maple
+
+- PROPERTIES ::
+  - URL     :: http://www.maplesoft.com/
+  - Version :: 2009-07-06, 13
+
+* ipython
+
+- PROPERTIES ::
+  - URL :: http://ipython.scipy.org/moin/FrontPage
+  - Version :: 2009-08-04, 0.10
+- 介绍 :: 交互式的计算环境，提供如下两个主要部件
+  1) 增强的交互式 Python shell
+  2) 交互式的并行计算架构
+
+* scipy
+
+- PROPERTIES ::
+  - URL :: http://scipy.org/
+  - Version :: 2009-07-11, 0.7.1
+- 介绍 :: 数学、科学和工程方面的开源软件，基于 NumPy 开发，提供了用户友好的接口
+          和高效的数值计算子程序，比如数值积分和优化。
+- 相关软件 ::
+  1) NumPy   - http://numpy.scipy.org/
+  2) SciKits - http://scikits.appspot.com/
+
+* SAGE: 开源软件
+
+- PROPERTIES
+  - URL      :: http://www.sagemath.org/
+  - License  :: GPL
+  - Version  :: 4.3.3
+  - Dev-Lang :: Python
+- Introduction
+  - Sage is a free open-source mathematics software system licensed under the
+    GPL. It combines the power of many existing open-source packages into a
+    common Python-based interface.
+  - 将一些开源软件包集成进统一的 Python 接口中

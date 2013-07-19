@@ -1,0 +1,77 @@
+# -*- mode: org; coding: utf-8; -*-
+#+SETUPFILE: ../../../../setup/ox-tmpl/l3.org
+#+HTML_LINK_UP: ../../index.html
+#+TITLE: 修复损坏的 ext4 大分区数据
+#+DATE: [2013-03-05 周二 15:58]
+#+CUSTOM_ID: fix-bad-ext4
+# - State "DONE"       from ""           [2013-03-05 周二 15:58]
+
+新买了一块 3TB 的硬盘和一个两座的硬盘底座，很开心。由于我的主系统是 Linux, 所以就
+格式化成了 ext4 分区。在 Windows 系统下可以通过工具 ext2fsd 来访问。朋友说有很多
+高清电影等资料可以分享，就把硬盘借给他，结果悲剧了：他说在拷贝文件到 2TB 左右时，
+硬盘挂了，识别不了了。没办法，我只好自己试着修复一下。如后是数据恢复过程的摘要。
+
+通过 =dmesg= 得到系统提示， GPT 分区表被破坏。使用 GNU Parted 工具恢复一下 GPT 分
+区表，问题解决。
+
+此时使用 =gdisk= 工具查看硬盘分区，显示分区为 /Microsoft basic data/ 格式，而我原
+来的分区为 /ext4/. 用 =gdisk= 的命令 =t= 更换分区类型为 =0x8300=, 即 /Linux
+filesystem/. 保存退出，问题解决。
+
+此时无法加载分区，出现的错误如下：
+#+BEGIN_EXAMPLE
+e2fsck: 超级块无效, trying backup blocks...
+e2fsck: Bad magic number in super-block 当尝试打开 /dev/sdh1 时
+
+The 超级块 could not be read or does not describe a correct ext2
+文件系统.  If the 设备 is valid and it really contains an ext2
+文件系统 (and not swap or ufs or something else), then the 超级块
+is corrupt, and you might try running e2fsck with an alternate 超级块:
+    e2fsck -b 8193 <设备>
+#+END_EXAMPLE
+
+此时用 =dumpe2fs= 工具查看分区信息，得到如下的错误信息：
+#+BEGIN_EXAMPLE
+dumpe2fs 1.41.12 (17-May-2010)
+dumpe2fs: Bad magic number in super-block 当尝试打开 /dev/sdh1 时
+找不到有效的文件系统超级块.
+#+END_EXAMPLE
+
+使用 =testdisk= 检测硬盘，找到分区的 superblock 位置如下：
+  - 819200, 884736, 1605632, 2654208, 4096000, 7962624, 11239424, 20480000,
+    23887872, 71663616
+
+尝试使用备份的超级块加载硬盘分区：
+#+BEGIN_EXAMPLE
+-> % sudo mount -t ext4 -r -o sb=819200 /dev/sdh1 /mnt
+mount: wrong fs type, bad option, bad superblock on /dev/sdh1,
+       missing codepage or helper program, or other error
+       In some cases useful info is found in syslog - try
+       dmesg | tail  or so
+#+END_EXAMPLE
+
+不管这些，直接尝试从 =819200= 超级块的位置恢复文件系统：
+#+BEGIN_EXAMPLE
+root@memes:~# fsck.ext4 -b 819200 -p -v /dev/sdh1 
+EADEPOT was not cleanly unmounted, 强制检查.
+EADEPOT: Inode 1598038, i_块s is 7830912, 应为 7822912.  已处理.
+... ...
+#+END_EXAMPLE
+
+分区数据总算是正常找回了，丢失的内容不多。
+
+小结：
+  - 在硬盘出现故障时，没想清楚前不要着急着动手修复。
+  - 分析故障，首先排除硬件故障，其后排查是否分区表有误。本次修复数据经历中涉及到
+    的分区表使用的是 GPT 格式，因此，绝不可按处理 MBR 分区格式的方法对待。现在,
+    2TB 以上的硬盘越来越普遍，老旧的 MBR 分区格式逐渐被淘汰，你的工具应该跟上时代。
+    在 Linux 下应该学会使用 =gdisk=, =parted= 等较新的工具。 =fdisk= 等很实用，但
+    只适用于 MBR 格式的分区表。
+  - 修复硬盘数据时，首先要将分区格式恢复到正确的配置上。比如 EXT3, NTFS, 等。
+  - 修复数据时，不要着急着直接修复，不妨先使用参数 =-n= 之类的先看看具体情况，如
+    果没什么问题，再直接修复。与 ext2/3/4 相关的工具都在软件包 *e2progs* 中，包括
+    =e2fsck=, =dumpe2fs=, 等。
+  - =testdisk= 工具很好用，但涉及底层，操作须谨慎。
+
+参考：
+  - http://www.cyberciti.biz/faq/recover-bad-superblock-from-corrupted-partition/

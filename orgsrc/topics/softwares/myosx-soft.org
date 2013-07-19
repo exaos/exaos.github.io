@@ -1,0 +1,54 @@
+# -*- mode: org; coding: utf-8; -*-
+#+SETUPFILE: ../../../setup/ox-tmpl/l2.org
+#+HTML_LINK_UP: index.html
+#+TITLE: 我的 Mac OS X 软件列表
+#+DATE: [2011-10-14 五]
+
+* 办公类
+  + NeoOffice
+  + iWork
+  + OpenOffice.org
+  + OmniOutliner
+  + OmniGraffle
+  + MS Office 2008
+  + VUE.app
+  + IHMC CmapTools
+  + WordNetX.app
+  + Papers.app
+
+* 网络类
+  + Adium
+  + Dropbox
+  + IPMessenger.app (IPmsg)
+  + NetNewsWire
+  + Welly
+  + iVPN
+  + JollysFastVNC
+  + Fugu
+  + OmniWeb
+
+* 系统工具类
+  + QuickSilver
+  + AquaTerm
+  + BumpTop
+  + Ez 7z
+  + Macfusion + NTFS-3G
+  + OnyX
+  + Man Viewer
+  + GeekTool
+  + Growl
+  + Logitech Control Center
+  + CLIX
+
+* 杂类
+  + Carbon Emacs
+  + ClamXav.app
+  + DOSBOX
+  + SideTrack
+
+* 娱乐类
+  + Stanza 电子书阅读器
+  + Space Colony
+  + Age of Mythology
+  + Age of Empires
+

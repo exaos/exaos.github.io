@@ -1,21 +1,192 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-  <head>
-    <meta charset="utf-8"/>
-    <title>恢复一次严重的系统故障 (Windows 7)</title>
-    <link rel="stylesheet" type="text/less" href="../../../style/less/o-blog.less"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="generator" content="o-blog version 1.2-zh-133-gcf9fd86"/>
-    <script src="../../../style/js/less-1.3.0.min.js" type="text/javascript"></script>
-    <script src="../../../style/js/jquery-1.7.1.min.js" type="text/javascript"></script>
-    <script src="../../../style/bootstrap/js/bootstrap-modal.js" type="text/javascript"></script>
-    <script src="../../../style/bootstrap/js/bootstrap-transition.js" type="text/javascript"></script>
-    <script src="../../../style/bootstrap/js/bootstrap-dropdown.js" type="text/javascript"></script>
-    <script src="../../../style/bootstrap/js/bootstrap-collapse.js" type="text/javascript"></script>
-    <script src="../../../style/js/prettify.js" type="text/javascript"></script>
-    <script src="../../../style/js/o-blog.linenumber.js" type="text/javascript"></script>
-    <script src="../../../style/js/o-blog-fix.js" type="text/javascript"></script>
-    <script type="text/javascript">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>恢复一次严重的系统故障 (Windows 7)</title>
+<!-- 2013-07-19 五 22:31 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+
+
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="../../../css/worg.css" />
+<link rel="alternate stylesheet" type="text/css" href="../../../css/worg-zenburn.css" />
+<link rel="alternate stylesheet" type="text/css" href="../../../css/worg-classic.css" />
+
+<script type="text/javascript" src="org-info.js">
+/**
+ *
+ * @source: org-info.js
+ *
+ * @licstart  The following is the entire license notice for the
+ *  JavaScript code in org-info.js.
+ *
+ * Copyright (C) 2012-2013  Sebastian Rose
+ *
+ *
+ * The JavaScript code in this tag is free software: you can
+ * redistribute it and/or modify it under the terms of the GNU
+ * General Public License (GNU GPL) as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option)
+ * any later version.  The code is distributed WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+ *
+ * As additional permission under GNU GPL version 3 section 7, you
+ * may distribute non-source (e.g., minimized or compacted) forms of
+ * that code without the copy of the GNU GPL normally required by
+ * section 4, provided you include this license notice and a URL
+ * through which recipients can access the Corresponding Source.
+ *
+ * @licend  The above is the entire license notice
+ * for the JavaScript code in org-info.js.
+ *
+ */
+</script>
+
+<script type="text/javascript">
+
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+
+<!--/*--><![CDATA[/*><!--*/
+org_html_manager.set("TOC_DEPTH", "4");
+org_html_manager.set("LINK_HOME", "../../../index.html");
+org_html_manager.set("LINK_UP", "../../index.html");
+org_html_manager.set("LOCAL_TOC", "1");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "0");
+org_html_manager.set("TOC", "1");
+org_html_manager.set("VIEW", "info");
+org_html_manager.setup();  // activate after the parameters are set
+/*]]>*///-->
+</script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012  Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
 <!--/*--><![CDATA[/*><!--*/
  function CodeHighlightOn(elem, id)
  {
@@ -37,122 +208,26 @@
  }
 /*]]>*///-->
 </script>
-  </head>
-  <body>
-
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-	<div class="container">
-	  <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-	  <a class="brand" href="../../../index.html">心蛛小站</a>
-	  <div class="nav-collapse collapse">
-	    <ul>
-<li><a href="#"><i>icon-book icon-white</i> 存档</a>
-<ul>
-<li><a href="../../../notes/index.html">笔记</a>
-</li>
-<li><a href="../../../attic/index.html">资料</a>
-</li>
-<li><a href="../../../attic/exaos.html">心蛛资料</a>
-
-</li>
-</ul>
-
-</li>
-<li><a href="#"><i>icon-file icon-white</i> 近期博文</a>
-<ul>
-<li><a href="../../../blog/2013/03/27_emacs-deft.html">Deft 使用指南</a>
-</li>
-<li><a href="../../../blog/2013/03/05_fix-bad-ext4.html">修复损坏的 ext4 大分区数据</a>
-</li>
-<li><a href="../../../blog/2013/03/03_fear-and-death.html">与妻书：《关于生、死与恐惧》</a>
-</li>
-<li><a href="../../../blog/2013/02/27_wisdom-be-with-you.html">“与智慧同在！”</a>
-
-</li>
-</ul>
-
-</li>
-<li><a href="../../../tags/index.html"><i>icon-tags icon-white</i> 标签</a>
-
-</li>
-<li><a href="../../../archives.html"><i>icon-list icon-white</i> 归档博文</a>
-
-</li>
-<li><a href="#"><i>icon-link icon-white</i> 友情链接</a>
-<ul>
-<li><a href="http://blog.163.com/y.feng_cn/">freeboy 在网易的博客：NMR</a>
-</li>
-<li><a href="http://www.scipark.net/">科学公园</a>
-</li>
-<li><a href="http://scienceblogging.org/">ScienceBlogging</a>
-
-</li>
-</ul>
-
-</li>
-<li><a href="../../../index.xml"><i>icon-rss icon-white</i> RSS订阅</a>
-</li>
-</ul>
-
-
-	  </div>
-	</div>
-      </div>
-    </div>
-    <div class="subnav subnav-fixed visible-desktop">
-      <div class="container">
-	<ul class="breadcrumb">
-  <li><a href="../../../index.html">首页</a> <span class="divider">/</span></li>
-  <li><a href="../../../blog/index.html">blog</a> <span class="divider">/</span></li><li><a href="../../../blog/2013/index.html">2013</a> <span class="divider">/</span></li><li><a href="../../../blog/2013/01/index.html">01</a> <span class="divider">/</span></li><li>恢复一次严重的系统故障 (Windows 7)</li>
-  </ul>
-
-      </div>
-    </div>
-    <div id="page" class="container">
-
-  <header class="article-header">
-
-    <div class="well">
-      <div class="row">
-	<div class="date span1">
-	  <div class=" date-d">28</div>
-	  <div class=" date-m"><a href="../../../blog/2013/01/index.html"> 1月</a></div>
-	  <div class=" date-y"><a href="../../../blog/2013/index.html">2013</a>
-	  </div>
-	</div>
-	<div class="span1">
-	  <div class="qr-code">
-  <img src="http://chart.apis.google.com/chart?chs=50x50&cht=qr&chld=|0&chl=http%3a%2f%2fexaos.github.com%2f%2fblog%2f2013%2f01%2f28_recovery-win7-dell-n4110.html"
-       alt="qr-code" />
-</div>
-
-	</div>
-	<h1 class="offset2" style="font-size: 250%">恢复一次严重的系统故障 (Windows 7)</h1>
-      </div>
-      <nav>
-	<ul class="pager">
-	  <li class="previous"><a href="../../../blog/2013/01/11_work-under-win7.html"><i class="icon-chevron-left"></i>&nbsp;在 Windows 7 下工作</a></li><li class="next" style="text-align: right;"><a href="../../../blog/2013/02/03_tips-for-new-programming-language.html">[译] 怎样学习一门新的编程语言？&nbsp;<i class="icon-chevron-right"></i></a></li>
-	</ul>
-      </nav>
-    </div>
-
-  </header>
-  <div class="article-content">
-    <p>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href="../../index.html"> UP </a>
+ |
+ <a accesskey="H" href="../../../index.html"> HOME </a>
+</div><div id="content">
+<h1 class="title">恢复一次严重的系统故障 (Windows 7)</h1>
+<p>
 上周五，我在 Dell N4110 笔记本上犯了一个严重的错误。我在 <a href="http://cygwin.org">cygwin</a> 下使用 <code>rsync</code> 与
 Linux 机器同步数据时，误删除了一些本地更新的文件 (该死的 <code>--delete</code> 参数，一定要
 慎用！)。 然后我试图使用 <a href="http://www.cgsecurity.org/wiki/TestDisk">TeskDisk</a> 来恢复数据时，被告之文件分区表没有对齐，问我是
 否修复。一时大意，同意并写入磁盘，然后 TeskDisk 告诉我要重新启动系统。结果悲剧产
 生了，重新启动系统时，回到了 Dell 工具的 DOS 界面下，无法启动 Win7 系统了。
 </p>
+
 <p>
 我的 N4110 硬盘默认的是出厂的 4 个分区：
-</p><ul>
+</p>
+<ul class="org-ul">
 <li>sda1, DellUtility
 </li>
 <li>sda2, RECOVERY
@@ -163,36 +238,33 @@ Linux 机器同步数据时，误删除了一些本地更新的文件 (该死的
 </li>
 </ul>
 
-
 <p>
 当时正在做的工作被迫打断，我试图修复启动，结果在忙乱之下，连续犯了一系列错误：
-</p><ol>
+</p>
+<ol class="org-ol">
 <li>用 Win7 安装 U 盘启动，修复启动分区。重启，仍回到 DOS 下。
 </li>
 <li>用 GRML Linux U 盘启动，删除了分区 1 (DellUtility)。用 Win7 U 盘启动，修复启动分区。
-     重启，出现错误如下：
+重启，出现错误如下：
 <pre class="example">
 BOOTMGR is missing
 Press Ctrl Alt Del to restart
 </pre>
-
 </li>
 <li>用 Win7 安装 U 盘启动，无法修复分区表，出现“无法兼容”的错误。重启，错误如
-     前。
+前。
 </li>
 <li>用 GRML U 盘启动，删除了分区 2 (RECOVERY). 再用 Win7 U 盘启动，仍无法修复启
-     动分区。重启，错误如前： <code>BOOTMGR is missing</code>
+动分区。重启，错误如前： <code>BOOTMGR is missing</code>
 </li>
 <li>用 GRML 启动盘启动，用 testdisk 检查分区，使用 EFI GPT 选项，找回了删除的分
-     区。用 Win7 U 盘启动，仍因“兼容”问题，无法修复启动分区。此时用硬盘启动，出
-     现的错误为：
+区。用 Win7 U 盘启动，仍因“兼容”问题，无法修复启动分区。此时用硬盘启动，出
+现的错误为：
 <pre class="example">
 Operation System not found
 </pre>
-
 </li>
 </ol>
-
 
 <p>
 到目前为止，用 GRML Linux U 盘启动系统，检查一下，硬盘上所有数据都在，意味着系统
@@ -201,24 +273,27 @@ Operation System not found
 转换成了 GPT 格式 (好在找回了全部的数据)，从而由 <code>BOOTMGR</code> 错误转变成了
 <code>Operation System not found</code> 错误。
 </p>
+
 <p>
 冷静下来，仔细分析问题，首要任务是保证数据不丢失。那么要解决的问题就是：
-</p><ol>
+</p>
+<ol class="org-ol">
 <li>将在 Linux TeskDisk 找回的 GPT 分区数据转换成 Windows 7 启动可识别的 MBR 分区
-     格式。
+格式。
 </li>
 <li>修复 Windows 启动配置数据 (Boot Configuration Data, BCD)。
 </li>
 </ol>
 
-
 <p>
 要解决的第一个问题是针对错误 <code>Operation System not found</code> (因为原来安装的
 Windows 7 不是针对 GPT 分区，并且 N4110 不支持 EFI), 第二个则是针对 <a href="http://pcsupport.about.com/od/termsb/g/bootmgr.htm">BOOTMGR</a> 错误。
 </p>
+
 <p>
 将 GPT 转换为 Windows 7 兼容的 MBR 分区表，检索了一下，参考如下：
-</p><ol>
+</p>
+<ol class="org-ol">
 <li><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/gg463525.aspx">http://msdn.microsoft.com/en-us/library/windows/hardware/gg463525.aspx</a>
 </li>
 <li><a href="http://www.rodsbooks.com/gdisk/booting.html">http://www.rodsbooks.com/gdisk/booting.html</a>
@@ -235,39 +310,41 @@ Windows 7 不是针对 GPT 分区，并且 N4110 不支持 EFI), 第二个则是
 </li>
 </ol>
 
-
 <p>
 按照上述参考中的 (6), (7) 恢复了 MBR 分区表，重新启动后仍然回到了 DOS 界面。
 </p>
+
 <p>
 修复 BCD, 可参考：
-</p><ul>
+</p>
+<ul class="org-ul">
 <li><a href="http://support.microsoft.com/kb/927392">http://support.microsoft.com/kb/927392</a>
 </li>
 <li><a href="http://pcsupport.about.com/od/findbyerrormessage/a/bootmgr-is-missing.htm">http://pcsupport.about.com/od/findbyerrormessage/a/bootmgr-is-missing.htm</a>
 </li>
 </ul>
 
-
 <p>
 但此时修复 BCD 一直出现如下错误：
-</p><pre class="example">
+</p>
+<pre class="example">
 此版本的系统恢复选项与您试图修复的 Windows 版本不兼
 容。请尝试使用与此版本的 Windows 兼容的恢复光盘。
 </pre>
-
 
 <p>
 经检查，属于 NTFS 文件系统故障。用 Win7 U 盘启动机器，进行命令行下，用 diskpart
 检查，发现原来的 RECOVERY 和 DATA 分区的文件系统全部变成了 RAW. 我不知道如何在
 Windows 下修复这个问题，就启动到 GRML 下，使用 ntfsfix 修复了文件系统。
 </p>
+
 <p>
 然后继续使用 Win7 U 盘启动，可以修复启动了。但出现一个问题：使用硬盘启动，则进入
 DOS; 使用 Win7 U 盘启动，则正常进入系统了。仔细检查后发现，原来 DELL N4110 默认出
 厂的设置是将启动放置在隐藏的 RECOVERY 分区上，将该分区标志为“活动”即可。具体的
 操作如下：
-</p><ol>
+</p>
+<ol class="org-ol">
 <li>用 Win7 U 盘启动，进行命令行，执行 <code>diskpart</code>
 </li>
 <li>去掉 DellUtility 及 RECOVERY 分配的盘符
@@ -277,14 +354,12 @@ remove
 select volume=2
 remove
 </pre>
-
 </li>
 <li>标识 RECOVERY 为活动：
 <pre class="example">
 select volume=2
 active
 </pre>
-
 </li>
 <li>重新分配盘符 <code>C</code> 给 <code>WIN7SYS</code> 分区：
 <pre class="example">
@@ -292,7 +367,6 @@ select volume=3
 remove
 assign letter=C
 </pre>
-
 </li>
 <li>退出 <code>diskpart</code>, 使用如下命令修复 BCD:
 <pre class="example">
@@ -302,96 +376,26 @@ bootrec /FixBoot
 bootrec /RebuildBCD
 bootrec /ScanOS
 </pre>
-
 </li>
 </ol>
-
 
 <p>
 这样看来，原来第一次 TestDisk 所导致的问题只不过是把 DellUtility 变成了活动分区了。
 害得我折腾了那么久！
 </p>
-  </div>
-  
-  <footer class="well article-footer">
-    发布于 <time datetime="2013-01-28T05:03:00Z"> 2013-01-28 05:03:00</time>.
-    <nav class="tag-cloud">
-      <h1><i class="icon-tags"></i> 相关标签</h1>
-      <ul>
-	<li class="label label-inverse small"><a href="../../../tags/mswin.html">MSWIN</a></li>
-      </ul>
-    </nav>
-  </footer>
-  <div id="disqus_thread"></div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<p>版权所有 ©2013: 心蛛 | Date: <span class="timestamp-wrapper"><span class="timestamp">[2013-01-28 一 05:03]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.50.1 (<a href="http://orgmode.org">Org</a> mode 8.0.5), <a href="http://validator.w3.org/check?uri=referer">Validate</a>, <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a></p>
 <script type="text/javascript">
-  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-  var disqus_shortname = 'exaos-github'; // required: replace example with your forum shortname
-
-  /* * * DON'T EDIT BELOW THIS LINE * * */
-  (function() {
-  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  })();
+  var disqus_shortname = 'exaos-github';
+  (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
-
-      </div>
-      <div id="footer">
-	<div class="container">
-	  <div class="row">
-	    <section class="span3">
-	      <h1>关于</h1>
-	      <p>
-心蛛的个人站点，记录一点私人的收藏或点滴。
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </p>
-	    </section>
-	    <nav id="links" class="span3">
-	      <h1>链接</h1>
-	      <ul>
-		<ul>
-<li><a href="../../../index.html"><i>icon-home icon-white</i> 首页</a>
-
-</li>
-<li><a href="Lisp error in nil: (error ob:post-htmlfile accessing a non-ob:post)"><i>icon-file icon-white</i> 博文</a>
-
-</li>
-<li><a href="../../../tags/index.html"><i>icon-tags icon-white</i> 标签</a>
-
-</li>
-<li><a href="../../../archives.html"><i>icon-list icon-white</i> 归档</a>
-
-</li>
-<li><a href="../../../index.xml"><i>icon-rss icon-white</i> RSS订阅</a>
-</li>
-</ul>
-
-
-	      </ul>
-	    </nav>
-	    <nav id="archives" class="span3">
-	      <h1><a href="../../../archives.html">归档</a></h1>
-	      <ul>
-		<li><a href="../../../blog/2013/03/27_emacs-deft.html">Deft 使用指南</a></li> <li><a href="../../../blog/2013/03/05_fix-bad-ext4.html">修复损坏的 ext4 大分区数据</a></li> <li><a href="../../../blog/2013/03/03_fear-and-death.html">与妻书：《关于生、死与恐惧》</a></li> <li><a href="../../../blog/2013/02/27_wisdom-be-with-you.html">“与智慧同在！”</a></li> <li><a href="../../../blog/2013/02/22_wisdom-in-information-era.html">信息时代的智慧——兼谈科普</a></li> <li><a href="../../../blog/2013/02/15_communicate-effectively.html">[译] 如何高效地交流？</a></li> <li><a href="../../../blog/2013/02/06_my-archiving.html">用户主目录的使用及我的文档管理习惯</a></li> <li><a href="../../../blog/2013/02/04_tagfs-summary.html">标签式文件系统，构想与实现</a></li> <li><a href="../../../blog/2013/02/03_tips-for-new-programming-language.html">[译] 怎样学习一门新的编程语言？</a></li> <li><a href="../../../blog/2013/01/28_recovery-win7-dell-n4110.html">恢复一次严重的系统故障 (Windows 7)</a></li> 
-	      </ul>
-	    </nav>
-	    <nav class="tags span3">
-	      <h1><a href="../../../tags/index.html">标签</a></h1>
-	      <ul>
-  <li style="font-size: 200.00%;"><a href="../../../tags/computer.html">Computer</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/education.html">Education</a></li> <li style="font-size: 100.00%;"><a href="../../../tags/emacs.html">Emacs</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/family.html">Family</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/fonts.html">Fonts</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/health.html">Health</a></li> <li style="font-size: 100.00%;"><a href="../../../tags/infoera.html">InfoEra</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/internet.html">Internet</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/language.html">Language</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/life.html">Life</a></li> <li style="font-size: 100.00%;"><a href="../../../tags/literateprogramming.html">LiterateProgramming</a></li> <li style="font-size: 140.00%;"><a href="../../../tags/mswin.html">MSWIN</a></li> <li style="font-size: 120.00%;"><a href="../../../tags/ocd.html">OCD</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/os.html">OS</a></li> <li style="font-size: 120.00%;"><a href="../../../tags/physics.html">Physics</a></li> <li style="font-size: 100.00%;"><a href="../../../tags/science.html">Science</a></li> <li style="font-size: 100.00%;"><a href="../../../tags/simulation.html">Simulation</a></li> <li style="font-size: 220.00%;"><a href="../../../tags/society.html">Society</a></li> <li style="font-size: 100.00%;"><a href="../../../tags/translation.html">Translation</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/cmake.html">cmake</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/debian.html">debian</a></li> <li style="font-size: 180.00%;"><a href="../../../tags/devel.html">devel</a></li> <li style="font-size: 120.00%;"><a href="../../../tags/geant4.html">geant4</a></li> <li style="font-size: 120.00%;"><a href="../../../tags/orgmode.html">orgmode</a></li> 
-</ul>
-
-	    </nav>
-	  </div>
-	</div>
-	<div class="copyright" style="text-align: center;">
-	  <p>
-版权所有 ©2012 <a href="mailto:exaos.lee(at)gmail.com">心蛛</a>. <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a>
-</p>
-	  <p>功能取自 <a href="https://github.com/renard/o-blog">o-blog</a>.</p>
-	</div>
-      </div>
+</div>
 </body>
 </html>
-

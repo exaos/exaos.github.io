@@ -1,0 +1,45 @@
+# -*- mode: org; coding: utf-8 -*-
+#+SETUPFILE: ../../../setup/ox-tmpl/l2.org
+#+HTML_LINK_UP: ../index.html
+#+DATE: [2011-10-14 五]
+#+TITLE: 我的软件笔记
+
+#+BEGIN_QUOTE
+2013-07-19: 这儿大约是两年以前的内容，没时间整理更新，存放于此仅供参考。新的内容
+参见 [[file:../index.org]] 中的链接。
+#+END_QUOTE
+
+* 我的笔记
+  + [[file:my-favor-softs.org][个人喜好的软件列表]]
+  + [[file:myosx-soft.org][我的 Mac OS X 软件列表]]
+  + [[file:myapps-online.org][在线软件列表]]
+  + [[file:myprogramming.org][我的编程笔记]]
+
+* 文件及系统管理
+
+** 文件同步管理
+   + Unix/Linux 系统使用 rsync
+   + Windows 平台
+     - 使用 [[http://portableapps.com/][PortableApps]] 下的 Toucan
+
+* 加密与解密
+
+** 加密与解密基础（公私钥加密）
+   + 参考
+     1) [[http://www.gnupg.org/gph/en/manual.html][GNU Privacy Handbook]]
+     2) [[http://www.gnupg.org/documentation/howtos.en.html][GnuPG HowTo]]
+   + 基础软件 -- GnuPG
+
+** 程序应用
+   + 密钥管理程序
+     - GPA -- [[http://wald.intevation.org/projects/gpa/][GNU Privacy Assistant]]
+     - [[http://projects.gnome.org/seahorse/][SeaHorse]]
+     - [[http://www.topbits.com/gnupg-shell.html][GnuPG Shell]]
+   + [[file:mynote-gpgmail.org][邮件加密笔记]]
+     1) ThunderBird + Enigmail
+     2) Firefox + FireGPG
+   + 硬盘加密
+     1) TrueCrypt
+   + 加密目录
+     1) 使用 *EncFS* 进行目录加密
+     2) 前端程序在 Gnome 下可使用 *cryptkeeper*

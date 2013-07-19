@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>SCI、EI、ISTP、ISR简介</title>
+<!-- 2013-07-19 五 22:31 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+
+
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<link rel="alternate stylesheet" type="text/css" href="../../css/worg-zenburn.css" />
+<link rel="alternate stylesheet" type="text/css" href="../../css/worg-classic.css" />
+
+<script type="text/javascript" src="org-info.js">
+/**
+ *
+ * @source: org-info.js
+ *
+ * @licstart  The following is the entire license notice for the
+ *  JavaScript code in org-info.js.
+ *
+ * Copyright (C) 2012-2013  Sebastian Rose
+ *
+ *
+ * The JavaScript code in this tag is free software: you can
+ * redistribute it and/or modify it under the terms of the GNU
+ * General Public License (GNU GPL) as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option)
+ * any later version.  The code is distributed WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+ *
+ * As additional permission under GNU GPL version 3 section 7, you
+ * may distribute non-source (e.g., minimized or compacted) forms of
+ * that code without the copy of the GNU GPL normally required by
+ * section 4, provided you include this license notice and a URL
+ * through which recipients can access the Corresponding Source.
+ *
+ * @licend  The above is the entire license notice
+ * for the JavaScript code in org-info.js.
+ *
+ */
+</script>
+
+<script type="text/javascript">
+
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+
+<!--/*--><![CDATA[/*><!--*/
+org_html_manager.set("TOC_DEPTH", "4");
+org_html_manager.set("LINK_HOME", "../../index.html");
+org_html_manager.set("LINK_UP", "../index.html");
+org_html_manager.set("LOCAL_TOC", "1");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "0");
+org_html_manager.set("TOC", "1");
+org_html_manager.set("VIEW", "info");
+org_html_manager.setup();  // activate after the parameters are set
+/*]]>*///-->
+</script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012  Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href="../index.html"> UP </a>
+ |
+ <a accesskey="H" href="../../index.html"> HOME </a>
+</div><div id="content">
+<h1 class="title">SCI、EI、ISTP、ISR简介</h1>
+<p>
+《SCI》（科学引文索引，Science Citation Index）创刊于1963年，是美国科学情报研究
+所（ISI, <a href="http://www.isinet.com">http://www.isinet.com</a> ）出版的一部世界著名的期刊文献检索工具。 SCI收录
+全世界出版的数、理、化、农、林、医、生命科学、天文、地理、环境、材料、工程技术等
+自然科学各学科的核心期刊约3500种；扩展版收录期刊 5800余种。ISI通过它严格的选刊标
+准和评估程序挑选刊源，而且每年略有增减，从而做到其收录的文献能全面覆盖全世界最重
+要、最有影响力的研究成果。所谓最有影响力的研究成果，是指报道这些成果的文献大量地
+被其它文献引用。即通过先期的文献被当前文献的引用，来说明文献之间的相关性及先前文
+献对当前文献的影响力。这使得SCI不仅作为一部文献检索工具使用，而且成为对科研进行
+评价的一种依据。科研机构被SCI收录的论文总量，反映出整个学术团体的研究水平、尤其
+是基础研究的水平；个人的论文被SCI收录的数量及被引用次数，反映出个人的研究能力与
+学术水平。ISI每年还出版JCR（期刊引用报告， Journal Citation Reports）。JCR对包括
+SCI收录的3500种期刊在内的4700种期刊之间的引用和被引用数据进行统计、运算，并针对
+每种期刊定义了影响因子（Impact Factor）等指数加以报道。一种期刊的影响因子，指该
+刊前二年发表的文献在当年的平均被引用次数。一种刊物的影响因子越高，其刊载的文献被
+引用率越高，说明这些文献报道的研究成果影响力大，反映该刊物的学术水平高。论文作者
+可根据期刊的影响因子排名决定投稿方向。
+</p>
+
+<p>
+《EI》（工程索引，Engineering Index）创刊于1884年，是美国工程信息公司出版的著名
+工程技术类综合性检索工具。EI选用世界上工程技术类期刊2000余种。收录文献几乎涉及工
+程技术各个领域。例如：动力、电工、电子、自动控制、矿冶、金属工艺、机械制造、土建、
+水利等。它具有综合性强、资料来源广、地理覆盖面广、报道量大、报道质量高、权威性强
+等特点。
+</p>
+
+<p>
+《ISTP》（科技会议录索引，Index to Scientific &amp;Technical Proceedings）创刊于1978
+年，由美国科学情报学会编辑出版，会议录收录生命科学、物理与化学科学、农业、生物和
+环境科学、工程技术和应用科学等学科，其中工程技术与应用科学类文献约占35%。
+</p>
+
+<p>
+《ISR》（科学评论索引，Index to Scientific Reviews）创刊于1974年，由美国科学情报
+研究所编辑出版，收录世界各国2700余种科技期刊及300余种专著丛刊中有价值的评述论文。
+高质量的评述文章能够提供本学科或某个领域的研究发展概况、研究热点、主攻方向等重要
+信息，是极为珍贵的参考资料。
+</p>
+
+<p>
+美国科学情报研究所（ISI）还编辑出版以下两种重要的引文工具：
+</p>
+<ul class="org-ul">
+<li>《SSCI》（社会科学引文索引，Social Science Citation Index，
+<a href="http://sunweb.isinet.com）为美国科学情报研究所（ISI）建立的综合性社科文献数">http://sunweb.isinet.com）为美国科学情报研究所（ISI）建立的综合性社科文献数</a>
+据库，涉及经济、法律、管理、心理学、区域研究、社会学、信息科学等。收录50个语
+种的1700多种重要的国际性期刊，累计约350万条记录。
+</li>
+<li>《AHCI》（艺术人文引文索引，Arts &amp; Humanities Citation Index）为美国科学情报
+研究所（ISI）建立的综合性艺术与人文类文献数据库，包括语言、文学、哲学、亚洲
+研究、历史、艺术等内容。收录1400多种国际权威的期刊，累计200余万条记录。
+</li>
+</ul>
+
+<p>
+JCR《期刊引用报告》小资料
+</p>
+
+<p>
+JCR《期刊引用报告》由美国ISI出版，全称Journal Citation Reports。JCR对包括SCI收录
+的期刊之间引用和被引用数据进行统计、运算，并针对每种期刊定义了影响因子（Impact
+Factor）等指数加以报道。期刊的影响因子，指的是该刊前二年发表的文献在当前年的平均
+被引用次数。期刊的影响因子越高，也即其刊载的文献被引用率越高，说明这些文献报道的
+研究成果影响力大，也反映该刊物的学术水平高。因此，JCR以其大量的期刊统计数据及计
+算的影响因子等指数，而成为一种期刊评价工具。
+</p>
+
+<p>
+为方便读者查阅和使用，现将JCR中所使用的期刊评价指标的意义和具体算法做简要解释：
+</p>
+<ol class="org-ol">
+<li>总被引频次ct（Cites Total）：指该期刊自创刊以来所登载的全部论文在统计当年被引
+用的总次数。
+</li>
+<li>影响因子imp（impact factor）：影响因子这一评价期刊的重要指标是E.加菲尔德1972
+年提出的，是对一篇文献或文献集合获得客观响应，反映其重要性的宏观度量。通常，
+期刊影响因子越大，它的学术影响力和作用越大。其计算公式为：
+<pre class="example">
+影响因子 =（某年引用某刊前两年论文的总次数）/某刊前两年发表的论文总数）
+影响因子 = 该刊前两年发表论文在统计当年被引用的总次数/该刊前两年发表论文总数
+</pre>
+</li>
+<li>即年指标imm（immediacy index）：一个表征期刊即时反应速率的指标，主要描述期刊
+当年发表的论文在当年被引用的情况。其计算公式为：
+<pre class="example">
+即年指标=该期刊当年发表论文的被引用次数/该期刊当年发表论文总数
+</pre>
+</li>
+<li>被引半衰期hf（cited half-life）：该期刊在统计当年被引用的全部次数中，较新一半
+是在多长一段时间内发表的。被引半衰期是测度期刊老化速度的一种指标。半衰期通常
+不是针对个别文献或某一组文献，而是指某一学科式专业领域的文献总和而言的。
+</li>
+</ol>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<p>版权所有 ©2013: 心蛛 | Date: <span class="timestamp-wrapper"><span class="timestamp">[2005-05-02 19:09:00]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.50.1 (<a href="http://orgmode.org">Org</a> mode 8.0.5), <a href="http://validator.w3.org/check?uri=referer">Validate</a>, <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a></p>
+<script type="text/javascript">
+  var disqus_shortname = 'exaos-github';
+  (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</p>
+</div>
+</body>
+</html>

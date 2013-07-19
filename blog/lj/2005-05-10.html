@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>在命令行下用 ImageMagick 进行高级图形编辑</title>
+<!-- 2013-07-19 五 22:31 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+
+
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<link rel="alternate stylesheet" type="text/css" href="../../css/worg-zenburn.css" />
+<link rel="alternate stylesheet" type="text/css" href="../../css/worg-classic.css" />
+
+<script type="text/javascript" src="org-info.js">
+/**
+ *
+ * @source: org-info.js
+ *
+ * @licstart  The following is the entire license notice for the
+ *  JavaScript code in org-info.js.
+ *
+ * Copyright (C) 2012-2013  Sebastian Rose
+ *
+ *
+ * The JavaScript code in this tag is free software: you can
+ * redistribute it and/or modify it under the terms of the GNU
+ * General Public License (GNU GPL) as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option)
+ * any later version.  The code is distributed WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+ *
+ * As additional permission under GNU GPL version 3 section 7, you
+ * may distribute non-source (e.g., minimized or compacted) forms of
+ * that code without the copy of the GNU GPL normally required by
+ * section 4, provided you include this license notice and a URL
+ * through which recipients can access the Corresponding Source.
+ *
+ * @licend  The above is the entire license notice
+ * for the JavaScript code in org-info.js.
+ *
+ */
+</script>
+
+<script type="text/javascript">
+
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+
+<!--/*--><![CDATA[/*><!--*/
+org_html_manager.set("TOC_DEPTH", "4");
+org_html_manager.set("LINK_HOME", "../../index.html");
+org_html_manager.set("LINK_UP", "../index.html");
+org_html_manager.set("LOCAL_TOC", "1");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "0");
+org_html_manager.set("TOC", "1");
+org_html_manager.set("VIEW", "info");
+org_html_manager.setup();  // activate after the parameters are set
+/*]]>*///-->
+</script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012  Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href="../index.html"> UP </a>
+ |
+ <a accesskey="H" href="../../index.html"> HOME </a>
+</div><div id="content">
+<h1 class="title">在命令行下用 ImageMagick 进行高级图形编辑</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">叠印图象</a></li>
+<li><a href="#sec-2">创建马赛克</a></li>
+<li><a href="#sec-3">创建图标</a></li>
+<li><a href="#sec-4">制作 3D 图标</a></li>
+<li><a href="#sec-5">模糊</a></li>
+<li><a href="#sec-6">阴影</a></li>
+<li><a href="#sec-7">结论</a></li>
+</ul>
+</div>
+</div>
+<blockquote>
+<p>
+来自 <a href="http://www.linuxtoday.com/">LinuxToday</a> 的消息 (原文出自 <a href="http://software.newsforge.com/">NewsForge.com</a>):
+</p>
+<ul class="org-ul">
+<li><a href="http://software.newsforge.com/article.pl?sid=05/04/29/1358220">Advanced image editing from the command line with ImageMagick</a>.
+</li>
+</ul>
+
+<p>
+原来我使用 ImageMagick 最多的就是把 <code>.jpeg/.gif/.png</code> 之类的图片转换成 .eps. 读
+了此文之后，才知道 ImageMagick 还有这么多有趣的编辑功能。这些编辑功能对于单副图
+象可能意义不大，但如果你想对一批图标（比如网站中的大量的表情图象、软件的大量按钮
+图象或者大批的 logo 等）进行 3D 效果渲染，配合 bash 脚本和 ImageMagick，将会是一
+件很快的事情。简单翻译一下，以方便中国的 Linux 爱好者。
+</p>
+</blockquote>
+
+<p>
+<b>在命令行下用 ImageMagick 进行高级图形编辑</b>
+</p>
+
+<p>
+作者：Shashank Sharma, 译者：Exaos Lee
+</p>
+
+<p>
+<a href="http://www.imagemagick.org/">ImageMagick (IM)</a> 是命令行下的图形创建和编辑应用程序。在 <a href="http://applications.linux.com/article.pl?sid=05/03/29/1525217">以前的文章</a> 中，我们用它
+来向图象中增加文本和方框，以及进行其它的一些基本图形操作。在本文中，我们将使用
+ImageMagick 的一套命令来创建一个多图象的马赛克，绘制一些基本的形状，以及创建三维
+的图标。
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">叠印图象</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+将一副图象粘贴在另一个上面称之为叠印。利用此技术，我们将一个预制的透明曲线的角部
+叠印到图形上，可以将一个图象的方角变成圆形的边——或者其它任何的形状。为了将它们放
+置到适当的位置，我们使用 <a href="http://www.imagemagick.org/script/command-line-tools.php#composite">composite</a> 命令加上 <code>-gravity</code> 参数调整位置：
+</p>
+<pre class="example">
+$ composite -gravity SouthEast curve_se.png image.png curved-se.png
+</pre>
+
+<p>
+此命令将弯曲后的东南角叠印到原图象的东南角上。我们可将生成的结果图象作为下一个命
+令的源图象，将另一个角叠印上去，如法泡制。将图象的其它角弯曲的命令如下：
+</p>
+<pre class="example">
+$ composite -gravity NorthEast curve_ne.png curved-se.png curved-ne.png
+$ composite -gravity NorthWest curve_nw.png curved-ne.png curved-nw.png
+$ composite -gravity SouthWest curve_sw.png curved-nw.png curved-sw-final.png
+</pre>
+
+<p>
+参数 <code>-gravity</code> 用于放置图象的位置 <a href="http://www.imagemagick.org/script/command-line-options.php?#gravity">还有更多</a>。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">创建马赛克</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+我们可以将更多的图象叠印到表面的不同位置从而创建出马赛克出来。除了用 <code>-gravity</code>
+参数所提供的固定位置外，我们还可以用 <a href="http://www.imagemagick.org/script/command-line-options.php?#geometry">-geometry</a> 参数来指定图象上的位置。首先，我
+们创建一个工作用的画布，并用 xc 参数来指定它的颜色：
+</p>
+<pre class="example">
+$ convert -size 200x200 xc:wheat multiple.png
+</pre>
+
+<p>
+然后，我们放置不同的图象到画布上，使用 <code>-geometry</code> 参数指定它的水平和垂直坐标：
+</p>
+<pre class="example">
+$ composite -geometry +15+30 1.gif multiple.png multiple.png
+$ composite -geometry +19+20 2.gif multiple.png multiple.png
+$ composite -geometry +12+28 3.gif multiple.png multiple.png
+</pre>
+
+<p>
+因为 IM 在打开输出图象之前预先读入所有的输入图象，就可以反复使用同一个输入图象而
+不需要创建新的图象。图象超出画布的范围会被裁剪掉。为了解决这一问题可使用 <a href="http://www.imagemagick.org/script/command-line-options.php#mosaic">-mosaic</a>
+参数，它会自动创建一个足够大的画布以包含所有的图象。这种情况下的画布颜色由
+<a href="http://imagemagick.org/script/command-line-options.php#background">-background</a> 参数决定。
+</p>
+<pre class="example">
+$ convert -page +15+30 1.png -page +49+60 2.png \
+&gt; -page +52+58 3.png \
+&gt; -background wheat -mosaic mosaic.png
+</pre>
+
+<p>
+你可以在网上找到创建多个图象的马赛克的 <a href="http://www.cit.gu.edu.au/~anthony/graphics/imagick6/mosaics/#composite">更多技巧</a>。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">创建图标</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+IM 可让你在命令行上使用 convert 加上 <a href="http://imagemagick.org/script/command-line-options.php#draw">-draw</a> 参数绘制各种形状，比如长方形、圆形、
+椭圆、多边形。参数 <a href="http://imagemagick.org/script/command-line-options.php#fill">-fill</a> 用来指定填充形状内部的颜色，参数 <a href="http://imagemagick.org/script/command-line-options.php#stroke">-stroke</a> 用来定义边界的
+颜色。创建一个方形，你需要给出它的左上和右下的坐标：
+</p>
+<pre class="example">
+convert -size 120x60 xc:wheat -fill white \
+&gt; -stroke black -draw "rectangle 25,10 95,50" rect.gif
+</pre>
+
+<p>
+你可以使用曲形的边来创建圆角的方形。这种情况下，在左上和右下坐标你需要指定角部的
+宽度 (20) 和高度 (12).
+</p>
+<pre class="example">
+convert -size 120x60 xc:wheat -fill blue \
+&gt; -stroke black -draw "roundrectangle 25,10 95,50 20,12" rrect.gif
+</pre>
+
+<p>
+弧线需要起始和结束点及转动的角度 (65,250):
+</p>
+<pre class="example">
+convert -size 120x60 xc:blue -fill white -stroke black \
+-draw "arc 90,4 40,50 65,250" arc_partial.png
+</pre>
+
+<p>
+以给定的点 (45,18) 为中心绘制一个椭图：
+</p>
+<pre class="example">
+convert -size 120x60 xc:magenta -fill white -stroke black \
+-draw "ellipse 60,30 45,18 0,360" ellipse.png
+</pre>
+
+<p>
+一个多边形需要至少三个坐标来定义它的边界：
+</p>
+<pre class="example">
+convert -size 100x60 xc:skyblue -fill white -stroke black \
+&gt; -draw "polygon 40,30 20,70 90,40 110,70" polygon.gif
+</pre>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">制作 3D 图标</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+现在你已经有了一点建筑材料，设计一个图标就比较容易了。制作一些形状，加上一些颜色，
+写上一两个单词，然后你得到一个图标了。ImageMagick 甚至可以加上影子和光照来渲染你
+的 3D 图标。第一步，为你的图标制作一些形状。这儿我们使用方框叠加两个圆来制作一个
+胶囊状的形状：
+</p>
+<pre class="example">
+convert -size 200x120 xc:black -fill white -draw 'circle 65,60 28,60' \
+&gt; -draw 'circle 135,60 172,60' -draw "rectangle 65,23 135,97" \
+&gt; -gaussian 1x1 +matte basic.png
+</pre>
+
+<p>
+<a href="http://imagemagick.org/script/command-line-options.php#matte">+matte</a> 参数告诉 IM 忽略掉图象的粗糙度——用来决定像素的透明性的量。参数
+<code>-gaussian</code> 将于后文解释。然后我们增加一些颜色和文本，结果得到一个 2D 图标。
+</p>
+<pre class="example">
+convert basic.png -fill blue -draw 'color 0,0 reset' \
+&gt; basic.png +matte -compose CopyOpacity -composite \
+&gt; -font Helvetica -pointsize 20 -fill white \
+&gt; -gravity center -annotate 0x0 "Blue Pill" 2D.png
+</pre>
+
+<p>
+在 =-draw 'color 0,0 reset'= 中 color 是用来改变像素的颜色的。改变像素颜色的办法
+很多，比如 <a href="http://www.imagemagick.org/script/command-line-options.php#draw">point, replace, floodfill 和 reset</a> 命令。reset 命令从指定的坐标开始改
+变所有像素的颜色。参数 <a href="http://www.cit.gu.edu.au/~anthony/graphics/imagick6/compose/">-compose</a> 的 <a href="http://www.cit.gu.edu.au/~anthony/graphics/imagick6/compose/#copyopacity">CopyOpacity</a> 选项将源图象的透明层拷贝到目标图
+象上。我们用 <a href="http://www.imagemagick.org/script/command-line-options.php#annotate">-annotate</a> 参数把文本加入到图象上，并用 <code>-gravity</code> 指定它的位置。现
+在让我们增加一些 3D 效果。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">模糊</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+模糊是制作 3D 图象的不可缺少的部分。如果你使用阴影效果之前不进行模糊处理，结果图
+象将会有严重的锯齿。模糊基本图象后，你再进行光滑阴影效果后的锯齿边界。连续使用模
+糊效果可以使图象更圆润。
+</p>
+<pre class="example">
+convert basic.png -blur 0x4 -blur 0x4 -blur 0x4 -blur 0x4 \
+&gt; +matte blurred.png
+</pre>
+
+<p>
+转换参数 <a href="http://www.cit.gu.edu.au/~anthony/graphics/imagick6/manipulate/#blur_gaussian">-blur 和 -gaussian</a> 有相同的参数：[半径]x[Sigma]. Sigma 值定义像素扩散的
+程度（看来起来更圆润），半径定义像素扩散的区域大小。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">阴影</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+下一步，我们希望来一点光照效果，使得图象看起来象是在灯光下。我们对模糊后的图象进
+行两次这样的操作，顶部和底部各一次，来确定阴暗和光亮的区域。
+</p>
+<pre class="example">
+convert blurred.png -shade 90x0 -normalize light.png
+convert blurred.png -shade 90x180 -normalize dark.png
+</pre>
+
+<p>
+参数 <a href="http://imagemagick.org/script/command-line-options.php#normalize">-normalize</a> 常常和 <a href="http://www.imagemagick.org/script/command-line-options.php#shade">-shade</a> 一起用，以增强对比度。我们需要用这两个图像覆盖在我
+们的阴影效果图上。下一个命令利用了 IM 第 6 版中的新功能，在旧的版本无法工作。
+</p>
+<pre class="example">
+convert \( light.png \( +clone -fx 'rand()' -threshold -1 \) \
+&gt; +swap +matte -compose CopyOpacity -composite \) \
+&gt; \( dark.png \( +clone -threshold 100% \) \
+&gt; +swap +matte -compose CopyOpacity -composite \) \
+&gt; -compose Over -composite high_lighting.png
+</pre>
+
+<p>
+IM 允许你分别处理各个图象并将结果返回给命令。这个功能叫做图象堆栈，在你想按固定
+顺序处理处理图象时很有用。一个图象堆栈是用括号加上反斜杆标识的，因为 Unix 认为括
+号是特殊字符。参数 <a href="http://www.imagemagick.org/script/command-line-options.php#threshold">-threshold</a> 定义不透明度。参数 +swap 交换当前图象序列中的最后
+两副图象。现在我们已经有了 3D 图标所需要的所有素材。将这些加入到 2D 图标中，我们
+需要用 <code>-compose</code> 参数（在第6版及其后可用）将它们叠加起来。
+</p>
+<pre class="example">
+convert 2D.png high_lighting.png -compose ATop -composite 3D.png
+</pre>
+
+<p>
+选项 ATop 确保只有在目标图象之“上”的部分才进行叠加。现在我们进行点睛之笔，比如
+增加背景。
+</p>
+<pre class="example">
+convert 3D.png \( +clone -fx 'rand()' +matte -shade 120x45 \
+&gt; -fill gray -fill beige -tint 120 \) \
+&gt; -insert 0 -flatten bg_3D.png
+</pre>
+
+<p>
+<code>+clone</code> 是用来拷贝图象序列中的最后一副图象。如果你不用它，你最终的图象只是用
+<code>rand()</code> 创建的背景. <code>-insert</code> 获得图象序列中的最后一副图并将它放于指定的编号中。
+这样，我们获得最终的 3D 图标。哇！你的 3D 图标已经完毕了。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7">结论</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+放置多个图像和进行 3D 效果处理，比如光照，即使在图形化的图象编辑器中也不是件容易
+的事情。而熟悉 ImageMagick 这些功能，你就可以在命令行下使用这个小软件包进行这些
+复杂的处理。
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<p>版权所有 ©2013: 作者：Shashank Sharma, 译者：Exaos Lee | Date: <span class="timestamp-wrapper"><span class="timestamp">[2005-05-10 01:26:00]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.50.1 (<a href="http://orgmode.org">Org</a> mode 8.0.5), <a href="http://validator.w3.org/check?uri=referer">Validate</a>, <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a></p>
+<script type="text/javascript">
+  var disqus_shortname = 'exaos-github';
+  (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</p>
+</div>
+</body>
+</html>

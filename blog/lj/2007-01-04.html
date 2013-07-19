@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>物理的博客之道</title>
+<!-- 2013-07-19 五 22:31 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+
+
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<link rel="alternate stylesheet" type="text/css" href="../../css/worg-zenburn.css" />
+<link rel="alternate stylesheet" type="text/css" href="../../css/worg-classic.css" />
+
+<script type="text/javascript" src="org-info.js">
+/**
+ *
+ * @source: org-info.js
+ *
+ * @licstart  The following is the entire license notice for the
+ *  JavaScript code in org-info.js.
+ *
+ * Copyright (C) 2012-2013  Sebastian Rose
+ *
+ *
+ * The JavaScript code in this tag is free software: you can
+ * redistribute it and/or modify it under the terms of the GNU
+ * General Public License (GNU GPL) as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option)
+ * any later version.  The code is distributed WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+ *
+ * As additional permission under GNU GPL version 3 section 7, you
+ * may distribute non-source (e.g., minimized or compacted) forms of
+ * that code without the copy of the GNU GPL normally required by
+ * section 4, provided you include this license notice and a URL
+ * through which recipients can access the Corresponding Source.
+ *
+ * @licend  The above is the entire license notice
+ * for the JavaScript code in org-info.js.
+ *
+ */
+</script>
+
+<script type="text/javascript">
+
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+
+<!--/*--><![CDATA[/*><!--*/
+org_html_manager.set("TOC_DEPTH", "4");
+org_html_manager.set("LINK_HOME", "../../index.html");
+org_html_manager.set("LINK_UP", "../index.html");
+org_html_manager.set("LOCAL_TOC", "1");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "0");
+org_html_manager.set("TOC", "1");
+org_html_manager.set("VIEW", "info");
+org_html_manager.setup();  // activate after the parameters are set
+/*]]>*///-->
+</script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012  Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href="../index.html"> UP </a>
+ |
+ <a accesskey="H" href="../../index.html"> HOME </a>
+</div><div id="content">
+<h1 class="title">物理的博客之道</h1>
+<p>
+来自： <a href="http://physicsweb.org/articles/world/20/1/2">http://physicsweb.org/articles/world/20/1/2</a>
+</p>
+
+<p>
+物理的博客之道
+</p>
+
+<p>
+论坛：2007 年元月, Sean Carroll, 世界上最热门的物理学博客的合作者，讲述了博客如
+何将科学研究置于一种更广阔的背景之中。
+</p>
+
+<p>
+去年十月份《纽约时报》发布的一篇关于暗物理与暗能量的报道，将我介绍为“在加州理工
+学院［译注：CIT］的一位物理学家和博客者 ［注：blogger，写博客的人，此处译为博客
+者，下同］”。尽管我不认为报纸真的以这种方式参考了我，但这仍是一种非常精确的描述，
+当然， 这同“物理学家及扑克选手”或“物理学家及爵士乐迷”没什么区别。但为什么要
+把我写博客单列出来呢？
+</p>
+
+<p>
+就我而言，写博客并不是我工作的一部分。尽管这种爱好要平均花掉每天半个小时的时间，
+写博客这种公共行为可以令你的言论成为更广泛的讨论内容。一旦你开始写博客，人们开始
+读你的博客，“博客者”即成为你的身份。
+</p>
+
+<p>
+我自 2003 年起通过“荒谬的宇宙” (Preposterous Universe,
+<a href="http://preposterousuniverse.blogspot.com/">http://preposterousuniverse.blogspot.com/</a>) 开始写博客。这曾是一时冲动的决定，但
+第一天即招来大约 100 位访客，这令我既惊讶且兴奋。至 2005 年，我与其它四位理论物
+理学家合力开设了一个群博客，“宇宙的变数” (Cosmic Variance,
+<a href="http://cosmicvariance.com/">http://cosmicvariance.com/</a> )。在关注物理学的博客中，我们是互联网上最大的一个，而
+在各种类型都有的博客中，我们大概排到第 1000 位。此站点一天典型的访问量大约为
+3000，这同那些政冶和技术博客一天十万或更多的点击量相比是很小的数字，但同参加我公
+开的讲座或者阅读我在 Phys. Rev. D 上的宇宙学论文的人数相比，这是个很大的数字。
+</p>
+
+<p>
+那么，谁来读我的博客呢？许多读者本身即物理学家（每次我访问另一个大学做讲座的时候，
+总有几个人提到我的博客），更多的是那些对当前活跃的物理学家的活动感兴趣的学生。还
+有一些是记者希望从活跃的研究者那么得到对他们新闻报道的反馈。但主体好象是那些仅仅
+对宇宙学、引力理论、粒子物理和我们所涉及的领域有强烈业余兴趣的人。
+</p>
+
+<p>
+博客是一种非常灵活的媒介，可以很方便地被用于技术研究，也可同样用于讨论 Paris
+Hilton 的八卦或张贴全家休假的照片。一些科学博客者将他们的博客用作研究工具，招来
+专家进行高水平的讨论。在“宇宙的变数”［Cosmic Variancs］中，我更关注于在专家的
+世界和感兴趣的门外汉之间搭设桥梁。对于一些带有神秘感的职业的工作 ，博客提供了及
+时和直接的接触，这些是无法从常规媒体得到的。
+</p>
+
+<p>
+博客强化了而不是取代了传统媒体。比如当我们站点讨论物理学中的女性时，也被《纽约时
+报》引用了，我们被记者采访、被邀请参加会议及参加广播中的讨论，这毫无疑问是由于我
+们的自然魅力，在写博客中的表现同样不受影响。更棒的是，博客提供了一种与媒体交互的
+新鲜方式。我们曾邀请一些重大新闻报道中的专家来我们的博客发表评论，甚至邀请一些友
+情贴［guest-postings, 即受邀请来的博客文章，中文中流行的说法称 post 为“贴”，故
+在此译作“友情贴”］。我们曾经张贴一些我们从报纸和杂志上读到的文章，并且很高兴得
+到原文章的作者在评论中对他们的工作进一步的详细解释或者进行辩护。
+</p>
+
+<p>
+<b>非正式交流</b>
+</p>
+
+<p>
+除了及时之外，博客带有非正式的特点。在“宇宙的变数”中，我们自由地将科普、带个人
+秩事的新闻分析、关于艺术与政治的观点以及对鸡尾酒的赞美融合在了一起。我们并不认为
+自己是一个“物理学博客”，这会在目的上进行特别的强调。而是，我们的是一个恰好由物
+理学家写的博客。
+</p>
+
+<p>
+将非正式与专业融合在一起是写博客的关键力量之一，因为它减少了科学家同公众之间的隔阂。 
+</p>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<p>版权所有 ©2013: 译：心蛛 | Date: <span class="timestamp-wrapper"><span class="timestamp">[2007-01-04 02:04:00]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.50.1 (<a href="http://orgmode.org">Org</a> mode 8.0.5), <a href="http://validator.w3.org/check?uri=referer">Validate</a>, <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a></p>
+<script type="text/javascript">
+  var disqus_shortname = 'exaos-github';
+  (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</p>
+</div>
+</body>
+</html>

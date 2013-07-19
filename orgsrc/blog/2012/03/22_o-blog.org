@@ -1,0 +1,21 @@
+# -*- mode: org; coding: utf-8; -*-
+#+SETUPFILE: ../../../../setup/ox-tmpl/l3.org
+#+HTML_LINK_UP: ../../index.html
+#+TITLE: 切换到 o-blog 页面系统
+#+AUTHOR: 心蛛
+#+DATE: [2012-03-22 四 04:45]
+
+原来尝试用 [[https://github.com/mojombo/jekyll][jekyll]] 来创建自己的博客，但真的不习惯 ruby, 还是 org-mode 用得最顺手
+了。前天发现了这个 [[https://github.com/renard/o-blog][o-blog]], 感觉挺好，就切换过来了。
+
+- [[http://exaos.github.com/o-blog][o-blog 的中文演示]]
+- [[https://github.com/exaos/o-blog][o-blog 中文演示的源码]]
+- o-blog 原始代码：[[https://github.com/renard/o-blog][renard/o-blog]]
+
+使用 [[http://orgmode.org][orgmode]] 创建静态页面的博客感觉不错。在 [[http://orgmode.org/worg/][worg]] 上有一个专门的页面介绍这个应用：
+[[http://orgmode.org/worg/org-blog-wiki.html][Org Blogs and Wikis]].
+
+在 Wordpress, blogger, livejournal 等相继被国内封锁，导致使用不正常之后，写博客
+原来很简单的事情对我变得有点复杂。尽管我不愿意讨论政治性话题，但也实在无法忍受国
+内的博客系统的诸多问题，比如隐私性保护、关键词审查、广告、稳定性等，对于有计算机
+使用洁癖的我，一个干净的使用程序自动生成的静态页面的博客系统就成了自然的首选。

@@ -1,21 +1,192 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-  <head>
-    <meta charset="utf-8"/>
-    <title>修复损坏的 ext4 大分区数据</title>
-    <link rel="stylesheet" type="text/less" href="../../../style/less/o-blog.less"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="generator" content="o-blog version 1.2-zh-133-gcf9fd86"/>
-    <script src="../../../style/js/less-1.3.0.min.js" type="text/javascript"></script>
-    <script src="../../../style/js/jquery-1.7.1.min.js" type="text/javascript"></script>
-    <script src="../../../style/bootstrap/js/bootstrap-modal.js" type="text/javascript"></script>
-    <script src="../../../style/bootstrap/js/bootstrap-transition.js" type="text/javascript"></script>
-    <script src="../../../style/bootstrap/js/bootstrap-dropdown.js" type="text/javascript"></script>
-    <script src="../../../style/bootstrap/js/bootstrap-collapse.js" type="text/javascript"></script>
-    <script src="../../../style/js/prettify.js" type="text/javascript"></script>
-    <script src="../../../style/js/o-blog.linenumber.js" type="text/javascript"></script>
-    <script src="../../../style/js/o-blog-fix.js" type="text/javascript"></script>
-    <script type="text/javascript">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>修复损坏的 ext4 大分区数据</title>
+<!-- 2013-07-19 五 22:31 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+
+
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="../../../css/worg.css" />
+<link rel="alternate stylesheet" type="text/css" href="../../../css/worg-zenburn.css" />
+<link rel="alternate stylesheet" type="text/css" href="../../../css/worg-classic.css" />
+
+<script type="text/javascript" src="org-info.js">
+/**
+ *
+ * @source: org-info.js
+ *
+ * @licstart  The following is the entire license notice for the
+ *  JavaScript code in org-info.js.
+ *
+ * Copyright (C) 2012-2013  Sebastian Rose
+ *
+ *
+ * The JavaScript code in this tag is free software: you can
+ * redistribute it and/or modify it under the terms of the GNU
+ * General Public License (GNU GPL) as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option)
+ * any later version.  The code is distributed WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+ *
+ * As additional permission under GNU GPL version 3 section 7, you
+ * may distribute non-source (e.g., minimized or compacted) forms of
+ * that code without the copy of the GNU GPL normally required by
+ * section 4, provided you include this license notice and a URL
+ * through which recipients can access the Corresponding Source.
+ *
+ * @licend  The above is the entire license notice
+ * for the JavaScript code in org-info.js.
+ *
+ */
+</script>
+
+<script type="text/javascript">
+
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+
+<!--/*--><![CDATA[/*><!--*/
+org_html_manager.set("TOC_DEPTH", "4");
+org_html_manager.set("LINK_HOME", "../../../index.html");
+org_html_manager.set("LINK_UP", "../../index.html");
+org_html_manager.set("LOCAL_TOC", "1");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "0");
+org_html_manager.set("TOC", "1");
+org_html_manager.set("VIEW", "info");
+org_html_manager.setup();  // activate after the parameters are set
+/*]]>*///-->
+</script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012  Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
 <!--/*--><![CDATA[/*><!--*/
  function CodeHighlightOn(elem, id)
  {
@@ -37,133 +208,37 @@
  }
 /*]]>*///-->
 </script>
-  </head>
-  <body>
-
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-	<div class="container">
-	  <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-	  <a class="brand" href="../../../index.html">心蛛小站</a>
-	  <div class="nav-collapse collapse">
-	    <ul>
-<li><a href="#"><i>icon-book icon-white</i> 存档</a>
-<ul>
-<li><a href="../../../notes/index.html">笔记</a>
-</li>
-<li><a href="../../../attic/index.html">资料</a>
-</li>
-<li><a href="../../../attic/exaos.html">心蛛资料</a>
-
-</li>
-</ul>
-
-</li>
-<li><a href="#"><i>icon-file icon-white</i> 近期博文</a>
-<ul>
-<li><a href="../../../blog/2013/03/27_emacs-deft.html">Deft 使用指南</a>
-</li>
-<li><a href="../../../blog/2013/03/05_fix-bad-ext4.html">修复损坏的 ext4 大分区数据</a>
-</li>
-<li><a href="../../../blog/2013/03/03_fear-and-death.html">与妻书：《关于生、死与恐惧》</a>
-</li>
-<li><a href="../../../blog/2013/02/27_wisdom-be-with-you.html">“与智慧同在！”</a>
-
-</li>
-</ul>
-
-</li>
-<li><a href="../../../tags/index.html"><i>icon-tags icon-white</i> 标签</a>
-
-</li>
-<li><a href="../../../archives.html"><i>icon-list icon-white</i> 归档博文</a>
-
-</li>
-<li><a href="#"><i>icon-link icon-white</i> 友情链接</a>
-<ul>
-<li><a href="http://blog.163.com/y.feng_cn/">freeboy 在网易的博客：NMR</a>
-</li>
-<li><a href="http://www.scipark.net/">科学公园</a>
-</li>
-<li><a href="http://scienceblogging.org/">ScienceBlogging</a>
-
-</li>
-</ul>
-
-</li>
-<li><a href="../../../index.xml"><i>icon-rss icon-white</i> RSS订阅</a>
-</li>
-</ul>
-
-
-	  </div>
-	</div>
-      </div>
-    </div>
-    <div class="subnav subnav-fixed visible-desktop">
-      <div class="container">
-	<ul class="breadcrumb">
-  <li><a href="../../../index.html">首页</a> <span class="divider">/</span></li>
-  <li><a href="../../../blog/index.html">blog</a> <span class="divider">/</span></li><li><a href="../../../blog/2013/index.html">2013</a> <span class="divider">/</span></li><li><a href="../../../blog/2013/03/index.html">03</a> <span class="divider">/</span></li><li>修复损坏的 ext4 大分区数据</li>
-  </ul>
-
-      </div>
-    </div>
-    <div id="page" class="container">
-
-  <header class="article-header">
-
-    <div class="well">
-      <div class="row">
-	<div class="date span1">
-	  <div class=" date-d">05</div>
-	  <div class=" date-m"><a href="../../../blog/2013/03/index.html"> 3月</a></div>
-	  <div class=" date-y"><a href="../../../blog/2013/index.html">2013</a>
-	  </div>
-	</div>
-	<div class="span1">
-	  <div class="qr-code">
-  <img src="http://chart.apis.google.com/chart?chs=50x50&cht=qr&chld=|0&chl=http%3a%2f%2fexaos.github.com%2f%2fblog%2f2013%2f03%2f05_fix-bad-ext4.html"
-       alt="qr-code" />
-</div>
-
-	</div>
-	<h1 class="offset2" style="font-size: 250%">修复损坏的 ext4 大分区数据</h1>
-      </div>
-      <nav>
-	<ul class="pager">
-	  <li class="previous"><a href="../../../blog/2013/03/03_fear-and-death.html"><i class="icon-chevron-left"></i>&nbsp;与妻书：《关于生、死与恐惧》</a></li><li class="next" style="text-align: right;"><a href="../../../blog/2013/03/27_emacs-deft.html">Deft 使用指南&nbsp;<i class="icon-chevron-right"></i></a></li>
-	</ul>
-      </nav>
-    </div>
-
-  </header>
-  <div class="article-content">
-    <p>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href="../../index.html"> UP </a>
+ |
+ <a accesskey="H" href="../../../index.html"> HOME </a>
+</div><div id="content">
+<h1 class="title">修复损坏的 ext4 大分区数据</h1>
+<p>
 新买了一块 3TB 的硬盘和一个两座的硬盘底座，很开心。由于我的主系统是 Linux, 所以就
-整块盘格式化成了一个 ext4 分区，可用空间约 2.7 TiB. 这样的分区在 Windows 系统下可
-通过工具 ext2fsd 来访问。朋友说有很多高清电影等资料可以分享，就把硬盘借给他，结果
-悲剧了：他说在拷贝文件到 2TB 左右时，硬盘挂了，识别不了了。没办法，我只好自己试着
-修复一下。如后是数据恢复过程的摘要。
+格式化成了 ext4 分区。在 Windows 系统下可以通过工具 ext2fsd 来访问。朋友说有很多
+高清电影等资料可以分享，就把硬盘借给他，结果悲剧了：他说在拷贝文件到 2TB 左右时，
+硬盘挂了，识别不了了。没办法，我只好自己试着修复一下。如后是数据恢复过程的摘要。
 </p>
+
 <p>
 通过 <code>dmesg</code> 得到系统提示， GPT 分区表被破坏。使用 GNU Parted 工具恢复一下 GPT 分
 区表，问题解决。
 </p>
+
 <p>
 此时使用 <code>gdisk</code> 工具查看硬盘分区，显示分区为 <i>Microsoft basic data</i> 格式，而我原
-来的分区为 <i>ext4</i>. 用 <code>gdisk</code> 的命令 <code>t</code> 更换分区类型为 <code>0x8300</code>, 即 <i>Linux filesystem</i>. 保存退出，问题解决。
+来的分区为 <i>ext4</i>. 用 <code>gdisk</code> 的命令 <code>t</code> 更换分区类型为 <code>0x8300</code>, 即 <i>Linux
+filesystem</i>. 保存退出，问题解决。
 </p>
+
 <p>
 此时无法加载分区，出现的错误如下：
 </p>
-
-
-<pre class="example">e2fsck: 超级块无效, trying backup blocks...
+<pre class="example">
+e2fsck: 超级块无效, trying backup blocks...
 e2fsck: Bad magic number in super-block 当尝试打开 /dev/sdh1 时
 
 The 超级块 could not be read or does not describe a correct ext2
@@ -173,166 +248,91 @@ is corrupt, and you might try running e2fsck with an alternate 超级块:
     e2fsck -b 8193 &lt;设备&gt;
 </pre>
 
-
 <p>
 此时用 <code>dumpe2fs</code> 工具查看分区信息，得到如下的错误信息：
 </p>
-
-
-<pre class="example">dumpe2fs 1.41.12 (17-May-2010)
+<pre class="example">
+dumpe2fs 1.41.12 (17-May-2010)
 dumpe2fs: Bad magic number in super-block 当尝试打开 /dev/sdh1 时
 找不到有效的文件系统超级块.
 </pre>
 
-
 <p>
 使用 <code>testdisk</code> 检测硬盘，找到分区的 superblock 位置如下：
-</p><ul>
+</p>
+<ul class="org-ul">
 <li>819200, 884736, 1605632, 2654208, 4096000, 7962624, 11239424, 20480000,
-    23887872, 71663616
+23887872, 71663616
 </li>
 </ul>
-
 
 <p>
 尝试使用备份的超级块加载硬盘分区：
 </p>
-
-
-<pre class="example">-&gt; % sudo mount -t ext4 -r -o sb=819200 /dev/sdh1 /mnt
+<pre class="example">
+-&gt; % sudo mount -t ext4 -r -o sb=819200 /dev/sdh1 /mnt
 mount: wrong fs type, bad option, bad superblock on /dev/sdh1,
        missing codepage or helper program, or other error
        In some cases useful info is found in syslog - try
        dmesg | tail  or so
 </pre>
 
-
 <p>
 不管这些，直接尝试从 <code>819200</code> 超级块的位置恢复文件系统：
 </p>
-
-
-<pre class="example">root@memes:~# fsck.ext4 -b 819200 -p -v /dev/sdh1 
+<pre class="example">
+root@memes:~# fsck.ext4 -b 819200 -p -v /dev/sdh1 
 EADEPOT was not cleanly unmounted, 强制检查.
 EADEPOT: Inode 1598038, i_块s is 7830912, 应为 7822912.  已处理.
 ... ...
 </pre>
 
-
 <p>
 分区数据总算是正常找回了，丢失的内容不多。
 </p>
+
 <p>
 小结：
-</p><ul>
+</p>
+<ul class="org-ul">
 <li>在硬盘出现故障时，没想清楚前不要着急着动手修复。
 </li>
 <li>分析故障，首先排除硬件故障，其后排查是否分区表有误。本次修复数据经历中涉及到
-    的分区表使用的是 GPT 格式，因此，绝不可按处理 MBR 分区格式的方法对待。现在,
-    2TB 以上的硬盘越来越普遍，老旧的 MBR 分区格式逐渐被淘汰，你的工具应该跟上时代。
-    在 Linux 下应该学会使用 <code>gdisk</code>, <code>parted</code> 等较新的工具。 <code>fdisk</code> 等很实用，但
-    只适用于 MBR 格式的分区表。
+的分区表使用的是 GPT 格式，因此，绝不可按处理 MBR 分区格式的方法对待。现在,
+2TB 以上的硬盘越来越普遍，老旧的 MBR 分区格式逐渐被淘汰，你的工具应该跟上时代。
+在 Linux 下应该学会使用 <code>gdisk</code>, <code>parted</code> 等较新的工具。 <code>fdisk</code> 等很实用，但
+只适用于 MBR 格式的分区表。
 </li>
 <li>修复硬盘数据时，首先要将分区格式恢复到正确的配置上。比如 EXT3, NTFS, 等。
 </li>
 <li>修复数据时，不要着急着直接修复，不妨先使用参数 <code>-n</code> 之类的先看看具体情况，如
-    果没什么问题，再直接修复。与 ext2/3/4 相关的工具都在软件包 <b>e2progs</b> 中，包括
-    <code>e2fsck</code>, <code>dumpe2fs</code>, 等。
+果没什么问题，再直接修复。与 ext2/3/4 相关的工具都在软件包 <b>e2progs</b> 中，包括
+<code>e2fsck</code>, <code>dumpe2fs</code>, 等。
 </li>
 <li><code>testdisk</code> 工具很好用，但涉及底层，操作须谨慎。
 </li>
 </ul>
 
-
 <p>
 参考：
-</p><ul>
+</p>
+<ul class="org-ul">
 <li><a href="http://www.cyberciti.biz/faq/recover-bad-superblock-from-corrupted-partition/">http://www.cyberciti.biz/faq/recover-bad-superblock-from-corrupted-partition/</a>
 </li>
 </ul>
-
-
-  </div>
-  
-  <footer class="well article-footer">
-    发布于 <time datetime="2013-03-05T15:58:00Z"> 2013-03-05 15:58:00</time>.
-    <nav class="tag-cloud">
-      <h1><i class="icon-tags"></i> 相关标签</h1>
-      <ul>
-	<li class="label label-inverse small"><a href="../../../tags/computer.html">Computer</a></li>
-      </ul>
-    </nav>
-  </footer>
-  <div id="disqus_thread"></div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<p>版权所有 ©2013: Exaos Lee | Date: <span class="timestamp-wrapper"><span class="timestamp">[2013-03-05 周二 15:58]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.50.1 (<a href="http://orgmode.org">Org</a> mode 8.0.5), <a href="http://validator.w3.org/check?uri=referer">Validate</a>, <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a></p>
 <script type="text/javascript">
-  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-  var disqus_shortname = 'exaos-github'; // required: replace example with your forum shortname
-
-  /* * * DON'T EDIT BELOW THIS LINE * * */
-  (function() {
-  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  })();
+  var disqus_shortname = 'exaos-github';
+  (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
-
-      </div>
-      <div id="footer">
-	<div class="container">
-	  <div class="row">
-	    <section class="span3">
-	      <h1>关于</h1>
-	      <p>
-心蛛的个人站点，记录一点私人的收藏或点滴。
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </p>
-	    </section>
-	    <nav id="links" class="span3">
-	      <h1>链接</h1>
-	      <ul>
-		<ul>
-<li><a href="../../../index.html"><i>icon-home icon-white</i> 首页</a>
-
-</li>
-<li><a href="Lisp error in nil: (error ob:post-htmlfile accessing a non-ob:post)"><i>icon-file icon-white</i> 博文</a>
-
-</li>
-<li><a href="../../../tags/index.html"><i>icon-tags icon-white</i> 标签</a>
-
-</li>
-<li><a href="../../../archives.html"><i>icon-list icon-white</i> 归档</a>
-
-</li>
-<li><a href="../../../index.xml"><i>icon-rss icon-white</i> RSS订阅</a>
-</li>
-</ul>
-
-
-	      </ul>
-	    </nav>
-	    <nav id="archives" class="span3">
-	      <h1><a href="../../../archives.html">归档</a></h1>
-	      <ul>
-		<li><a href="../../../blog/2013/03/27_emacs-deft.html">Deft 使用指南</a></li> <li><a href="../../../blog/2013/03/05_fix-bad-ext4.html">修复损坏的 ext4 大分区数据</a></li> <li><a href="../../../blog/2013/03/03_fear-and-death.html">与妻书：《关于生、死与恐惧》</a></li> <li><a href="../../../blog/2013/02/27_wisdom-be-with-you.html">“与智慧同在！”</a></li> <li><a href="../../../blog/2013/02/22_wisdom-in-information-era.html">信息时代的智慧——兼谈科普</a></li> <li><a href="../../../blog/2013/02/15_communicate-effectively.html">[译] 如何高效地交流？</a></li> <li><a href="../../../blog/2013/02/06_my-archiving.html">用户主目录的使用及我的文档管理习惯</a></li> <li><a href="../../../blog/2013/02/04_tagfs-summary.html">标签式文件系统，构想与实现</a></li> <li><a href="../../../blog/2013/02/03_tips-for-new-programming-language.html">[译] 怎样学习一门新的编程语言？</a></li> <li><a href="../../../blog/2013/01/28_recovery-win7-dell-n4110.html">恢复一次严重的系统故障 (Windows 7)</a></li> 
-	      </ul>
-	    </nav>
-	    <nav class="tags span3">
-	      <h1><a href="../../../tags/index.html">标签</a></h1>
-	      <ul>
-  <li style="font-size: 200.00%;"><a href="../../../tags/computer.html">Computer</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/education.html">Education</a></li> <li style="font-size: 100.00%;"><a href="../../../tags/emacs.html">Emacs</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/family.html">Family</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/fonts.html">Fonts</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/health.html">Health</a></li> <li style="font-size: 100.00%;"><a href="../../../tags/infoera.html">InfoEra</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/internet.html">Internet</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/language.html">Language</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/life.html">Life</a></li> <li style="font-size: 100.00%;"><a href="../../../tags/literateprogramming.html">LiterateProgramming</a></li> <li style="font-size: 140.00%;"><a href="../../../tags/mswin.html">MSWIN</a></li> <li style="font-size: 120.00%;"><a href="../../../tags/ocd.html">OCD</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/os.html">OS</a></li> <li style="font-size: 120.00%;"><a href="../../../tags/physics.html">Physics</a></li> <li style="font-size: 100.00%;"><a href="../../../tags/science.html">Science</a></li> <li style="font-size: 100.00%;"><a href="../../../tags/simulation.html">Simulation</a></li> <li style="font-size: 220.00%;"><a href="../../../tags/society.html">Society</a></li> <li style="font-size: 100.00%;"><a href="../../../tags/translation.html">Translation</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/cmake.html">cmake</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/debian.html">debian</a></li> <li style="font-size: 180.00%;"><a href="../../../tags/devel.html">devel</a></li> <li style="font-size: 120.00%;"><a href="../../../tags/geant4.html">geant4</a></li> <li style="font-size: 120.00%;"><a href="../../../tags/orgmode.html">orgmode</a></li> 
-</ul>
-
-	    </nav>
-	  </div>
-	</div>
-	<div class="copyright" style="text-align: center;">
-	  <p>
-版权所有 ©2012 <a href="mailto:exaos.lee(at)gmail.com">心蛛</a>. <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a>
-</p>
-	  <p>功能取自 <a href="https://github.com/renard/o-blog">o-blog</a>.</p>
-	</div>
-      </div>
+</div>
 </body>
 </html>
-

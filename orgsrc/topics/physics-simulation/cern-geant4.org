@@ -1,0 +1,455 @@
+# -*- mode: org; coding: utf-8; -*-
+#+SETUPFILE: ../../../setup/ox-tmpl/l2.org
+#+HTML_LINK_UP: ../index.html
+#+TITLE: 心蛛的 GEANT4 笔记
+#+AUTHOR: 心蛛
+
+GEANT4 主页:
+  - http://www.geant4.org/ 或者
+  - http://cern.ch/geant4
+
+* GEANT4 项目开发状态
+
+- 2013-06-28: 10.0 BETA 发布
+  - 使用 10.0 之前先阅读多线程程序开发相关的说明:
+    [[https://twiki.cern.ch/twiki/bin/view/Geant4/Geant4MTForApplicationDevelopers][Geant4MTForApplicationDevelopers]]
+  - 主要变更 -- http://geant4.web.cern.ch/geant4/support/Beta4.10.0-1.txt
+    - 正式支持多线程，相关的示例程序做了大幅度修改。
+    - 支持变量/参数的影子检查。
+    - 对 CLHEP 的调用做了较大修改，隐含的头文件包含被去除，在调用
+      =SystemOfUnits= 和 =PhysicalConstants= 时要注意头文件包含。
+    - 移除对旧的编译系统的支持，全面迁移到 CMake 上。
+    - 移除一些过时的物理模型，更新了一些数据库。
+- 2013-05-24: 9.6.p02 发布
+
+* 点滴
+
+自从了解并自学了一点 [[http://cern.ch/geant4][Geant4]] 之后，有很多人曾经问过我不少问题，大部分都是与安装、
+编译有关，还有一部分是 C++ 基础知识方面的问题。鲜有人问及深入一点的内容，比如如
+何选择物理过程、物理过程的适用范围、如何选择高效的数据输出方式等。其实，那些基础
+问题在手册中仔细查找，都能够获得满意的答案。我想提醒一点：
+#+BEGIN_QUOTE
+使用 Geant4, 除非你只是运行一下别人开发好的程序，否则，你就应该掌握作为一名程序
+员所需要的基本知识。无论是使用 GNU Make 还是 CMake, 无论是在 Linux/OSX 平台还是
+Windows 平台，你都需要对编程的基本流程了解，你都需要对自己的工具熟悉。
+#+END_QUOTE
+
+* 安装
+
+** 使用编译好的版本
+
+参见 [[http://geant4.web.cern.ch/geant4/UserDocumentation/UsersGuides/InstallationGuide/html/ch03.html][Geant4 Installation Manual Chapter 3]].
+
+*** Debian
+
+参见
+  - http://wiki.debian.org/DebianScience/Geant4
+  - http://lcg-heppkg.web.cern.ch/lcg-heppkg/debian/
+
+较新版本的 Geant4 在 Debian Squeeze (6.0) 下安装步骤如下：
+  1. 添加 CERN 的软件源（提供 ROOT, GEANT4 等软件包）：
+     : deb http://lcg-heppkg.web.cern.ch/lcg-heppkg/debian stable hep
+     : deb-src http://lcg-heppkg.web.cern.ch/lcg-heppkg/debian stable hep
+  2. 更新软件源信息：
+     : apt-get update
+  3. 安装软件源签名公钥：
+     : apt-get install cern-archive-keyring
+     忽略错误提示，直接安装。
+  4. 安装 Geant4:
+     : apt-get install geant4
+
+CERN 软件源中打包的 Geant4 提供了三个脚本程序：
+  1. =g4run= -- 用于加载 Geant4 的运行环境来运行编译好的 G4 程序。
+  2. =g4env= -- 用于显示设置的 Geant4 运行环境。
+  3. =g4make= -- 用于加载安装的 Geant4 运行环境来编译源代码。
+
+因此，如果你使用 CERN 源中的 Geant4, 则运行很简单。假如你在 Geant4 的
+=examples/novice/N01= 目录下，按如下步骤编译并运行 Geant4 程序即可：
+  1. 编译：
+     : g4make
+  2. 执行
+     : g4run exampleN01
+
+*** Windows 7 + VS2010 + CMake 2.8
+
+在 Windows 7 下，我使用的是 Visual Studio 2010 Express (你可以从 Microsoft 的网
+站下载并免费使用 Express 版本) 和 CMake 2.8.10。基本步骤如下：
+  1. 安装到 Visual Studio 2010 Express C++ 及 CMake 2.8.10.
+  2. 从 [[http://geant4.web.cern.ch/geant4/support/download.shtml][Geant4 下载]] 页面上找到 Win32-VC100-7.zip 或者 Win32-VC100-7.exe, 解压或
+     执行 .exe 文件，将之放置到相应的目录下，比如 =D:\Geant4\WIN32-VC100-7\=.
+  3. 设置环境变量 *G4INSALL* 指向解压的目录。在桌面上右键点击“计算机”，从“属
+     性”中选择“高级系统设置”，然后找到用户环境变量设置的地方，添加即可。在命
+     令行下可简单如下：
+     : setx G4INSTALL D:\Geant4\WIN32-VC100-7\
+     : setx PATH %PATH%;%G4INSTALL%\bin
+     如果出现命令行参数超出 255 个字符的错误，你按图形化的方法把
+     =%G4INSTALL%\bin= 添加到 =PATH= 环境变量即可。
+  4. 打开 CMake GUI, 在 Source Code 对话框中设置好 novice/N01 的源码路径 (可使用
+     系统对话框), 比如：
+     : D:/Geant4/WIN32-VC100-7/share/Geant4-9.6.0/examples/novice/N01
+     在 Build 中填好你想编译的路径（最好与源码路径分离开来），比如：
+     : D:/Geant4/Codes/Examples-9.6/Novice/N01
+  5. 在 CMake GUI 中点击 Configure, 出现的对话框要求你选择所生成的配置文件类型，
+     对列表中选择 Visual Studio 10. 然后点击 "Configure".
+  6. 在中间的环境变量中会出现几个红色高亮"的选项，按你的系统环境修改，比如：
+     - =CMAKE_INSTALL_PREFIX= -- D:/Geant4
+     - =Geant4_DIR= -- D:/Geant4/WIN32-VC100-7/lib/Geant4-9.6.0
+  7. 再点击 "Configure", 直到红色项全变成白色，然后点击 "Generate", 在提示窗中会
+     出现如下类似消息：
+     : Confguring done
+     : Generating done
+  8. 用 Visual Studio C++ 打开你所生成的 VS10 解决方法文件，比如
+     =D:/Geant4/Codes/Examples-9.6/Novice/N01/N01.sln=
+  9. 然后在 VS10 中编译执行即可。此时生成 =INSTALL= 对象的话，会将
+     =exampleN01.exe= 安装到 =D:\Geant4\bin= 目录下。然后你从命令行中执行即可
+     （注意 =%G4INSTALL%\bin= 在你的 =PATH= 环境中）。
+
+*注意*, 由于 Geant4 网站提供的二进制包中没有包含有调试信息 (Release 版本), 因此，
+你如果用 Win32 Debug 配置去编译源码，可能会出现诸如 ".pdb" 文件找不到之类的错误，
+并且运行示例会出错。在 VS2010 中选择编译 Win32 Release 版本就可以了。
+
+** 使用 CMake 编译安装 (G4 >= 9.5, Linux/OSX)
+
+基本需要：
+  - CMake >= 2.6.4
+  - Linux GCC (g++)
+  - Mac OS X GCC(g++): Xcode 3 or 4
+  - Windows: VS 2010 Express or higher
+  - Linux/Mac: make
+
+额外的需求参见 [[DEP-3RD]] 及 [[DEP-OPTS]]。
+
+以 9.6 版本为例，安装过程如下：
+   1. 解压源码包：
+      : cd /path/to/
+      : tar -axvf geant4.9.6.tar.gz
+   2. 创建专门的编译路径：
+      : cd /path/to
+      : mkdir geant4.9.6-build
+   3. 配置并执行 CMake:
+      : cd /path/to/geant4.9.6-build
+      : cmake -DCMAKE_INSTALL_PREFIX=/path/to/g4.9.6-inst /path/to/geant4.9.6
+   4. 数据库的设置：Geant4的 CMake 默认将数据库放在安装路径的
+      =share/Geant4-9.6.0/data= 路径下。如果在执行 CMake 时加上参数
+      : cmake -DGEANT4_INSTALL_DATA=ON <other-args>
+      则会自动从网上下载依赖的数据包。也可以使用如下参数指定路径：
+      : cmake -DGEANT4_INSTALL_DATADIR=<path-to-data> <other-args>
+      这时，CMake 会自动从 =<path-to-data>= 路径下寻找你已经下载解压的数据库。
+   5. 编译：
+      : make
+      由于现在的机器大部分都拥有多个核心（至少双核以上），则可用如下参数加快编译
+      速度：
+      : make -jN
+      其中的 N 是你希望的并行编译的进程数（比如双核的可设为 2）。如果想查看编译过
+      程中的详细信息，可执行：
+      : make -jN VERBOSE=1
+   6. 安装：
+      : make install
+
+** Windows 7 下使用 CMake + VS2010 Express
+
+Geant4 9.4 及以前的安装脚本程序依赖于 GNU Make + awk + sed 等一系列 POSIX 工具，
+并且原先对 POSIX 平台的各种库依赖严重，这导致在 Windows 平台上编译安装 Geant4必
+须依赖 Cygwin 等 POSIX 环境。自从 Geant4 转向 CMake 之后，由于 CMake 能够与
+Visual Studio, XCode 等平台完美衔接，使得使用这些 IDE 编译 Geant4 不再那么麻烦。
+Geant4 9.5 之后在 Windows 平台上从源码安装的思路很简单：
+  1) 用 CMake 生成 Visual Studio 的“解决方案文件” (.sln).
+  2) 然后在 Visual Studio 中打开 .sln 文件进行编译安装即可。
+  3) 配置好环境 (PATH 等), 用 CMake 生成 Geant4 应用程序源码的 .sln 文件，再使用
+     VS 打开进行编译、调试与运行。
+
+*** 依赖的软件平台及库
+
+ 这儿仅仅是列表，详细的参见 [[DEP-3RD]].
+   - Visual Studio: OpenGL included
+   - Xerces-C++:
+   - Qt4: 4.8.4 (QtCreator 2.6.0)
+   - Open Inventor:
+     - simage-1.7.0-bin-msvc9 (?)
+     - SoWin-1.5.0 (?)
+     - Coin-3.1.3-bin-msvc9 (?) [or -msvc9-amd64, -msvc8 ?]
+     - Coin-3.1.3.zip
+
+*** 安装过程
+
+*在安装前，请先按前一节提示的软件平台及相关的库准备好。* 解压源码包
+=geant4.9.6.zip= 到指定的位置，本例中以我的为例：
+    : D:\Exaos\Utils\geant4\geant4.9.6
+将此路径作为源码路径。
+
+尽管 CMake 可以从 Windows =cmd= 程序中执行，建议使用 CMake GUI 程序。整个安装过
+程使用 CMake GUI 和 Visual Studio, 相应的截屏可参见 [[http://www2.warwick.ac.uk/fac/sci/physics/staff/research/bmorgan/geant4/installingonwindows][WARWICK]] 网站。
+  1. 打开 CMake (cmake-gui), 点击 /Browse Source .../ (浏览源码), 找到解压的路径
+     并确认。
+  2. 创建一个路径来保存 Visual Studio 工程文件及编译中间文件。该路径不要与源码路
+     径相同，也不要是其子目录。这里设置为
+     =D:\Exaos\Utils\geant4\g4.9.6-build\=. 在 CMake GUI 中点 /Browse Build.../
+     (浏览编译目录) 按钮，找到创建的路径后并确认。(注意： CMake 在Windows 下使用
+     前斜杠分隔路径。)
+  3. 点击 GUI 上的 /Configure/ (配置) 按钮。
+  4. 在弹出窗口中选择 *Visual Studio 2010*. 确认 /Use default native compilers/
+     (使用默认的本地编译器) 点选上，然后点击 /Finish/ (结束) 按钮。
+  5. CMake 开始检查特性并提供初始的配置。一切顺利，在主选项窗口会见红色高亮的条
+     目，包含有 CMAKE 与 GEANT4. 红色不是出错，而是指有未配置的变量。在学习版本
+     (Express Version) 的 Visual Studio 中你会在 GUI 底部的日志窗口中看到关于系
+     统运行库缺失的警告，这个在标准安装中可以忽略。其它的错误会在日志窗口中报告。
+  6. 默认 CMake 配置编译安装 Geant4 到 =C:/Program Files/Geant4=. 如果你不想用这
+     个目录或者无权限安装，则可以修改安装路径。点击中央选项中 /CMAKE/ 条目旁边的
+     箭头并展开所有 CMake 相关的指定配置选项，卷动到=CMAKE_INSTALL_PREFIX= 的位
+     置，点击条目并编辑或者通过弹出的文件浏览窗修改路径。此例中修改到
+     =D:/Exaos/Utils/geant4/g4.9.6-inst=. \\
+     假如需要额外的 Geant4 组件，点击中央选项窗口展开所有的 Geant4 配置选项，可
+     参考安装说明的 2.3 节进行调整。
+  7. 修改任何选项后，则需要再次点击 /Configure/ 按钮。结束之后，中间显示的选项列
+     表应该显示白色。如果仍有红色条目显示，继续执行 /Configure/ 直到所有都显示白
+     色为止。
+  8. 点击 /Generate/ 按钮生成 Visual Studio 工程文件。一切顺利，CMake 会生成最终
+     的文件并在 GUI 底部日志窗口报告 /Configuring done/, /Genearting done/. 此时
+     可关闭 CMake 图形界面。
+  9. 打开 Visual Studio, 选择 /Open Project/ (打开工程). 此例中特指 Visual
+     Studio 2010 Express, 但在其它版本中与之类似。浏览你的编译目录，打开
+     Microsoft Visual Studio Solution 文件 Geant4.sln. 注意，配置、打开及解析解
+     决方案 (solution) 中所有的文件需要花上一些时间。现在，如果你熟练的话就可以
+     直接使用 MSBuild 命令行工具编译解决方案。但这个没有文档支持。
+  10. 默认 Visual Studio 解决方案编译成 Debug 配置，因此如果你需要优化的编译，可
+      以从工具条 (Visual Studio 2010) 下拉菜单 /Solutions Configurations/ (解决
+      方案配置) 中选择 /Release/ 选项。
+  11. 在 Solution Explorer (解决方案浏览器) 中右键选择 /INSTALL/ 方案，从弹出菜
+      单中选择 /Build/, 解决方案会开始编译并安装在前面选择的
+      =CMAKE_INSTALL_PREFIX= 目录下。如果你希望编译不同的配置 (比如以前选择的是
+      /Debug/, 现在想换成 /Release/), 直接按前一步中的提示修改配置方案，然后再次
+      编译 /INSTALL/ 方案。
+  12. 如果你看到成功提示，就可以退出 Visual Studio 了。
+
+使用 OpenInventor (Coin3D + SoWin) 编译的错误：
+  1) 头文件定义错误：
+     : D:\Exaos\Utils\Coin3D\3.1.3-VC10\include\Inventor/C/basic.h(288): fatal
+     : error C1189: #error :  Define either COIN_DLL or COIN_NOT_DLL as
+     : appropriate for your linkage! See Inventor/C/basic.h for further instructions.
+     此错误可在 CMake 时修正，在高级选项中向 =CMAKE_CXX_FLAGS= 中添加新的定义：
+     : -DCOIN_DLL -DSOWIN_DLL
+  2) =G4OpenInventorWin.cc= 错误：
+     : G4OpenInventorWin.cc(54): error C2039: “dispatchWin32Event”: 
+     : 不是“G4Win32”的成员
+     将 =dispatchWin32Event= 的字母 d 改为大写，参考：
+     - http://blog.sina.com.cn/s/blog_5de5580a0100yr4z.html
+
+** 依赖的库
+# <<<DEP-3RD>>>
+
+*** GDML (All platforms)
+
+GDML 依赖的 XML 解析库：
+  - Xerces-C++: http://xerces.apache.org/xerces-c/download.cgi
+
+*** Qt4 (All platforms)
+
+- Qt4 开发库: http://qt-project.org/downloads
+- OpenGL -- http://www.opengl.org/
+- MesaGL -- http://www.mesa3d.org/
+
+*** Motif UI (Linux/OSX)
+
+- Motif -- http://www.openmotif.org/
+- OpenGL/MesaGL
+
+*** X11 OpenGL Visualization (Linux/OSX)
+
+- X11 devel
+- OpenGL/MesaGL
+- XQuartz (OSX 10.8)
+
+*** WIN32 OpenGL (Windows)
+
+- OpenGL / MesaGL
+
+*** Open Inventor Visual (All)
+
+Coin3D: https://bitbucket.org/Coin3D/coin/wiki/Home
+
+Coin 是基于 OpenGL 的 3D 图形库，它源自 Open Inventor 2.1 API (目前 Coin 仍然与
+它兼容). Open Inventor (常简写为 OIV) 是一个最初由 SGI 开发的基于场景提供图像保
+持、渲染与模型操作的 C++ 类库。在它发布不久就成为科学与工程领域的 3D 图像显示与
+可视化模拟软件事实上的标准图形库。它也是 VRML1 文档标准的基础。目前有好几本与
+Open Inventor 相关主题的书，比如 *The Inventor Mentor*, *The Inventor
+Toolmaker*.
+
+Coin 是在 SGI Open Inventor 开源之前基于 OIV 库的 API 从头开发的，它未借用任何
+SGI OIV 的代码。 Coin 在 2000 年秋达到与 OIV 2.1 完全兼容的目标，此后添加了许多
+额外的特性，如支持文件格式 VRML97 等。
+
+Coin 网站提供的软件包如下：
+  - Coin -- Coin 的基础包
+  - SoWin -- Coin 与 Windows 平台的接口。
+  - SoXt -- Coin 与 X11 平台上 (Linux, OSX XQartz 或 Cygwin-X)
+  - SoQt -- Coin 的 Qt 接口，与 SGI 及 TGS Open Inventor 兼容。兼容
+    Unix/Linux, Win32 及 Mac OS X 平台。
+  - Sc21 -- Objective-C++ 框架，是 Coin 库与 OSX UI 的接口。
+
+**** Coin3D: Windows + Visual Studio 2010
+
+在 Windows Visual Studio 2010 Express 上编译配置 Coin3D 可参考：
+  - http://te.ugm.ac.id/~wibirama/tutorial/coin3d/Tutorial_Coin3D_VS2010.pdf
+  - www.cse.ohio-state.edu/~hwshen/681/Site/lab_help_files/windows_help.pdf
+
+Windows + VS2010 Express 的安装步骤如下：
+  1) 从 Coin3D 下载 zip 包并解压。
+  2) 修改系统环境变量，添加 ~COINDIR~ 变量，指向你的 Coin3D 安装目录，比如我的系
+     统上为 ~D:\Exaos\Utils\Coin3D~.
+  3) 将源码目录 =build\msvc9\= 拷贝一份并命名为 =msvc10=, 然后用 VS2010 打开拷贝
+     目录下的 =coin3.sln= 项目解决方案文件。
+  4) 此时直接编译 3.1.3 版本会有不少错误，按后面的介绍修正之。然后继续编译。
+  5) 创建好你的 Coin3D 安装目录，在项目解决方案中生成 =coin3_install=, 则会自动
+     安装到你预设的 =COINDIR= 路径下。
+  6) 下载测试文件，测试你的安装是否可用：
+     - http://te.ugm.ac.id/~wibirama/tutorial/coin3d/test.7z
+
+在 VS2010 Express 上编译 Coin 3.1.3 主要问题有：
+  1) 错误 (error C2440) 为 =ScXMLStateMachine.cpp= 第 334 行:
+     : transitions.push_back(PImpl::StateTransition(NULL, PRIVATE(this)->initializer.get()));
+     其中的 =NULL= 应该为 =(ScXMLObject *)NULL=.
+  2) 其余是 C4819 警告：
+     : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符
+     出现这样的警告，将相应的文件打开，重新以 UTF-8 格式保存即可。另外修改 "工程
+     --> 属性 --> 配置属性 --> 常规 --> 字符集", 将之修改为 Unicode 字符集。
+
+**** SoQt: Windows VS2010 Express
+
+编译安装完 Coin 3.1.3 后，可编译 SoQt 1.5.0，步骤与编译 Coin 类似，只不过要将对
+Coin 及 Qt 的依赖关系添加到项目属性中，包括“包含目录”及“引用目录”。熟悉一下
+VS2010, 你很快就知道如何去做，不辍述。
+
+安装错误与警告等：
+  1) 一连串的引用头文件方式已过期警告，可忽略
+     : warning : Inclusion of header files from include/Qt is deprecated.
+  2) 头文件缺失错误 (error C1083)
+     : src\Inventor\Qt\editors\SoQtMaterialEditor.cpp(41): fatal error C1083:
+     : 无法打开包括文件:“Inventor/Qt/editors/SoQtMaterialEditor.h”
+     : : No such file or directory
+     此错误已经在 Mailing List 中有汇报：
+     - http://mailman.coin3d.org/pipermail/coin-discuss/2012-July/018438.html
+     在源码目录 =src/Inventor/Qt/editors/old/= 下存在此文件，但开发组声明此目录
+     下的代码已经陈旧，需要人力重新更新并实现 editor 组件。修改模版文件
+     =src\Inventor\Qt\common\editors\SoQtMaterialEditor.cpp.in= 如下行
+     : #include <Inventor/@Gui@/editors/So@Gui@MaterialEditor.h>
+     变更为
+     : #include <Inventor/@Gui@/So@Gui@MaterialEditor.h>
+  3) 其它一些直接从 msvc9 转换过来导致的 moc 生成的文件未能正常生成，从而导致文
+     件缺失的错误，这些文件有：
+     - src\Inventor\Qt\viewers\ExaminerViewer.cpp(59):
+       Inventor/Qt/viewers/moc_SoQtExaminerViewerP.icc
+     - src\Inventor\Qt\viewers\FullViewer.cpp(67):
+       Inventor/Qt/viewers/moc_SoQtFullViewerP.icc
+     - src\Inventor\Qt\viewers\PlaneViewer.cpp(50):
+       Inventor/Qt/viewers/moc_SoQtPlaneViewerP.icc
+     - src\Inventor\Qt\SoQt.cpp(263): Inventor/Qt/moc_SoQtP.icc
+     - src\Inventor\Qt\SoQtComponent.cpp(44):
+       Inventor/Qt/moc_SoQtComponentP.icc
+     - src\Inventor\Qt\SoQtGLWidget.cpp(84): Inventor/Qt/moc_SoQtGLWidgetP.icc
+     - src\Inventor\Qt\SoQtSignalThread.cpp(25):
+       Inventor/Qt/moc_SoQtSignalThread.icc
+  4) 由 Qt moc 生成相应丢失的文件：
+     : moc -i -o <output_moc_file> <header>
+  5) 如果编译 Debug 版，则可能出现的找不到 =coin3d.lib= 文件的链接错误，编译并
+     安装一个 Debug 版本的 Coin3D 即可。
+
+**** SoWin: Windows 7 + VS2010 Express
+
+与 SoQt 安装类似。安装时出现的错误与警告：
+  1) 头文件缺失错误 =Inventor/Win/editors/SoWinColorEditor.h=
+     - 修改 =Inventor/Win/common/editors/= 目录下的
+       =SoGuiMaterialEditor.cpp.in= 及 =SoGuiColorEditor.cpp.in= 文件，修改其中
+       如下行内容：
+       : #include <Inventor/@Gui@/editors/So@Gui@ColorEditor.h>
+       修改为：
+       : #include <Inventor/@Gui@/So@Gui@ColorEditor.h>
+
+安装完 SoWin 后可参考如下网址运行一个示例，看看你是否安装正确：
+  - http://blog.csdn.net/robinhao/article/details/1770204
+
+*** X11 RayTracer Visual (Linux/Mac)
+
+依赖 X11 开发包，适用于 Unix/Linux, 或者 Mac OS X 上的 XQuartz 平台，理论上也适
+用于 Windows 平台上的 Cygwin-X.
+
+** 推荐的相关软件
+# <<<DEP-OPTS>>>
+
+- DAWN: postscript 引擎
+- HepRApp Browser (使用 HepRep 图形驱动)
+- WIRED4 JAS 插件 (配合 HepRep 图形驱动)
+- VRML Browser (配置 VRML 图形驱动)
+- OpenScientist 交互分析环境
+- AIDA 接口 (配置 OpenScientist, iAIDA, JAS3 及 rAIDA)
+  - iAIDA: http://iaida.dynalias.net/Intro.html
+    - 一个 C++ 的 AIDA 接口
+  - RAIDA: http://ilcsoft.desy.de/portal/software_packages/raida/
+    - 基于 ROOT 的 AIDA 接口
+    - 目前版本： v01-06-02
+  - AIDA: http://aida.freehep.org/
+    - 最初的 Java 实现接口
+    - AIDA-JNI 使用 JNI (Java Native Interface) 技术让使用 AIDA 接口的 C++ 程
+      序与 Java 实现 (JAIDA) 相链接工作。 Geant4 中最初使用 AIDAJNI。目前
+      AIDAJNI 已经停止开发（停止在 3.2.x 版本）。
+
+* 几何设置
+
+** 如何用 GDML 几何设置敏感探测器 (Sensitive Detector)
+
++ http://goo.gl/fsqVS
+  1. 在解析完 GDML 之后手动给 SD 赋值:
+     - 先初始化 SD 类
+     - 获得待赋值的 Logical Volume 指针及 SD 的指针
+       (~G4SDManager::FindSensitiveDetector()~)
+     - 使用 ~G4LogicalVolume::SetSensitiveDetector()~
+  2. 使用 GDML 文件中的辅助信息 (参见 g4gogdml 示例):
+     - GDML 处理器创建一个 map, 保存有 volume 的指针
+     - 访问 map 中的辅助信息，比如 SD 及值
+     - 进行实际的赋值
+
+* 物理过程
+
+* 可视化
+
+* 数据库
+
+Geant4 中常用的数据库主要包括 Elastic, G4EMLOW, G4NDL, PhotonEvaporation,
+RadiativeDecay, 它们分别用于模拟不同的物理过程。
+  - Elastic -- 用于高能粒子之间的弹性散射模拟。
+  - G4EMLOW -- 低能电磁过程数据库。
+  - G4NDL -- =neutron_hp= 和 =isotope_production= 类别的过程数据库。
+  - RadiativeDecay -- 放射性衰变数据库。
+
+** G4NDL
+
+该评价数据主要用于 Geant4 中的中子强子相互作用过程和同位素产生的类别中。除了用于
+Geant4 的 =neutron_hp= 和 =isotope_production= 类别来模拟中子散射和同位素产生之
+外，该数据库不得做其它用途。如果希望将该数据库用于其它用途，请联系其 [[mailto:Hans-Peter.Wellisch@cern.ch ][作者]]。
+
+* 错误记录
+
+** 2012-12: Windows 7 + VS2010 + Coin3D
+
+错误：
+#+BEGIN_EXAMPLE
+2>------ 已启动生成: 项目: exampleN02, 配置: Debug Win32 ------
+2>exampleN02.obj : error LNK2019: 无法解析的外部符号 "public: __thiscall
+ G4OpenInventorWin::G4OpenInventorWin(void)" (??0G4OpenInventorWin@@QAE@XZ)，
+ 该符号在函数 "public: __thiscall G4OpenInventorWin32::G4OpenInventorWin32(void)"
+ (??0G4OpenInventorWin32@@QAE@XZ) 中被引用
+2>exampleN02.obj : error LNK2001: 无法解析的外部符号 "public: virtual
+ class G4VSceneHandler * __thiscall G4OpenInventor::CreateSceneHandler(class
+ G4String const &)" (?CreateSceneHandler@G4OpenInventor@@UAEPAVG4VSceneHandler@@ABVG4String@@@Z)
+2>exampleN02.obj : error LNK2001: 无法解析的外部符号 "public: virtual
+ class G4VViewer * __thiscall G4OpenInventorWin::CreateViewer(class
+ G4VSceneHandler &,class G4String const &)" (?CreateViewer@G4OpenInventorWin@@UAEPAVG4VViewer@@AAVG4VSceneHandler@@ABVG4String@@@Z)
+2>exampleN02.obj : error LNK2001: 无法解析的外部符号 "private: virtual
+ void __thiscall G4OpenInventorWin::Initialize(void)" (?Initialize@G4OpenInventorWin@@EAEXXZ)
+2>exampleN02.obj : error LNK2019: 无法解析的外部符号 "public: virtual
+ __thiscall G4OpenInventorWin::~G4OpenInventorWin(void)" (??1G4OpenInventorWin@@UAE@XZ)，
+ 该符号在函数 "public: virtual __thiscall G4OpenInventorWin32::~G4OpenInventorWin32(void)" (??1G4OpenInventorWin32@@UAE@XZ) 中被引用
+2>D:\Exaos\Utils\Geant4\Build\Debug-vc10\novice\N02\Debug\exampleN02.exe : fatal error LNK1120: 5 个无法解析的外部命令
+#+END_EXAMPLE
+
+参考：
+  - http://hypernews.slac.stanford.edu/HyperNews/geant4/get/visualization/540.html?inline=-1

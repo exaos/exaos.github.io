@@ -1,0 +1,10 @@
+# -*- mode: org; coding: utf-8; -*-
+#+SETUPFILE: ../../setup/ox-tmpl/l1.org
+#+HTML_LINK_UP: ../index.html
+#+TITLE: 旧档案
+
+收集一些以前零散存留的文档。
+
+- 泰戈尔：《园丁集》英文版 -- [[file:gardener/index.html][The Gardener]], HTML 打包下载 -- [[file:gardener.7z][gardener.7z]]
+- 三十岁自题：《[[file:dance-with-time.org][与时间共舞]]》
+- 波特：《[[file:for-young-physicist-1958.org][对青年物理学家的忠告]]》，原文载于 1958 年第 1 期《原子能科学技术》

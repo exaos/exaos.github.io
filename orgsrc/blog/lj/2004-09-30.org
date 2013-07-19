@@ -1,0 +1,14 @@
+# -*- mode: org; coding: utf-8; -*-
+#+SETUPFILE: ../../../setup/ox-tmpl/l2.org
+#+HTML_LINK_UP: ../index.html
+#+TITLE: 从 Carbon Emacs 中调用 OS X 的应用程序
+#+AUTHOR: 心蛛
+#+DATE: [2004-09-30 08:04:00]
+
+Carbon Emacs 比较经典的是可以直接执行 Apple Script 命令，比如
+  : (do-applescript "tell application "iTunes" to activate")
+就会从 Emacs 中打开 iTunes 。这就意味着，你可以只打开 Emacs ，然后在其中调用任何
+MacOS X 的应用程序。
+
+由于 AppleScript 使用 'r' 作为行结束，因此，可以这样写多行的 AppleScript：
+  : (do-applescript "tell application "iTunes"r activaterend tell")

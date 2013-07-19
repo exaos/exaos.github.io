@@ -1,0 +1,210 @@
+# -*- mode: org; coding: utf-8; -*-
+#+SETUPFILE: ../../../../setup/ox-tmpl/l3.org
+#+HTML_LINK_UP: ../../index.html
+#+TITLE: 用户主目录的使用及我的文档管理习惯
+#+AUTHOR: 心蛛
+#+DATE: [2013-02-06 三 01:41]
+
+做研究工作，需要查阅的资料通常很多：论文、手册、设计图纸、程序源代码、数据、图表，
+等等。比如我的硬盘中有近百 GiB 的这类资料，这其中还不包括实验的原始数据（有些实验
+光原始数据就在数百 GiB 的量级）。通常还会有一点电子图书、音乐、视频、照片等生活或
+学习资料。当资料很多时，如果随便散乱在你的硬盘中，在寻找时就会很麻烦，因此需要一
+点文档管理的约定。
+
+在此介绍一下个人基于层次文件系统的一些资料管理习惯。
+
+* 原则一：尽可能遵守操作系统默认的目录设置习惯
+
+不同的操作系统会默认在用户主目录下创建一些子目录（且称之为“功能目录”）。很多人
+喜欢更改这些功能目录的名称，或者删掉认为无用的。这样的习惯不好，因为应用程序会默
+认寻找这些目录。建议不要随便更名或删除，应保持其默认值。
+
+对于用户，学会使用这些功能目录，会养成了你资料分类的好习惯。
+
+对于程序员，你应该熟悉那些系统默认的功能目录，这会让你的程序不那么令人讨厌。例如
+一些国产软件，它们会强制在不该出现的地方建立一个自己的目录用于存放数据，对于这类
+玩意，我的第一反应就是离得越远越好。
+
+分别介绍三种流行的操作系统下用户的功能目录设置习惯。
+
+** Mac OS X 的用户功能目录
+
+Mac OS X 默认会创建如下功能目录:
+  - =Desktop= -- 即用户的“桌面”
+  - =Documents= -- “文档”
+  - =Library= -- 用于保存用户的各种数据及系统相关的信息，比如地址簿、邮件、收藏夹、
+    各种配置文件，等等
+  - =Movies= -- “视频”
+  - =Music= -- “音乐”
+  - =Pictures= -- “图片”，包括照片等
+  - =Public= -- 与其他用户共享的目录
+  - =Sites= -- 保存用于共享的网页等
+
+这些功能目录实际均以英文命名，但用 =Finder= 打开时，系统会根据用户的语言环境自动
+进行翻译。这些翻译保存在系统核心服务中，比如简体中文环境的系统目录别名保存在：
+  : /System/Library/CoreServices/SystemFolderLocalizations/zh_cn.lproj/SystemFolderLocalizations.strings
+（注：上述的文件以 UTF-16 编码保存，普通用户并没有修改的权限，也不建议你这么改，
+因为会很危险。）
+
+** MS Windows 的用户功能目录
+
+微软从 Windows 95 开始才引入“用户配置文件”的概念，直到 Windows 2000 才算基本完
+善其功能。
+
+#+BEGIN_QUOTE
+说点无关话题：在中国，绝大部分 Windows 用户实际上并没有“用户”概念，无论是 XP 还
+是 Windows 7, 通常都用 Administrator 帐户登陆，随心所欲地更改系统。而大部分的国产
+软件也没有将“用户／帐号”这个概念当回事，随便一点小事都申请用管理员权限处理，这
+又强化了大多数人认为“不是管理员就无法用计算机”的意识。这种恶习也导致国内大部分
+计算机的安全设置在默认情况下十分恶劣。这种恶劣的习惯也是国产流氓软件生存的土壤。
+#+END_QUOTE
+
+在 Windows 2000/XP 下，用户的主目录由环境变量 =HOMEPATH= 表示，其值通常为
+  : %SystemDrive%\Documents and Settings\%USERNAME%\
+这儿的环境变量 =SystemDrive= 默认是 =C:=. 在 Windows Vista/7/8 下面，则变为：
+  : %SystemDrive%\Users\%USERNAME%\
+可能是微软也觉得 =Documents and Settings= 这样的名称实在有些烦琐了。
+
+系统默认将用户的数据文件都放置在其主目录下，一些关键的程序数据是隐藏起来的。在
+XP 以前通常可见的只有“我的文档”，其使用也非常频繁， 几乎每个程序都要在其中建立
+一个子目录，以彰显自己的控制权。
+
+在 Vista 以后，多了几个与 Mac OS X 下类似的功能目录：
+  - Desktop
+  - Documents
+  - Contacts
+  - Downloads
+  - Favorites
+  - Links
+  - Music
+  - Pictures
+  - Videos
+其中 =Documents= 目录与 XP 下“我的文档”功能一样。其余的算是模仿 Mac OS X 的设置。
+不过，这个模仿可以有。系统也会根据用户的区域设置自动将这些目录名翻译成相应的语言，
+在简体中文下 =Documents= 还叫“我的文档”。这些功能目录下都有一个隐藏文件
+=desktop.ini=, 用于保存相关的设置。
+
+Windows Vista 还引入了“虚拟文件夹” (Windows 7 以后改名叫“库”)，可以把一组目录
+归到某个虚拟目录下。（实际上，这原本是要在 WinFS 中引入的语义目录，但 WinFS 不了
+了之了。）“虚拟文件夹”（或“库”）可以把一些逻辑上相关的资料包含在一起，习惯了
+也挺方便。可将 Vista 的“虚拟文件夹”或 Windows 7 的“库”当成另一种功能目录。
+
+在 Windows Vista/7 下，用户主目录默认设置为 =C:\Users\<用户名>=, 而通常系统盘空间
+又比较小。因此，许多人就放弃使用默认的功能目录，而在其它盘下随意保存数据。即便有
+人使用这些功能目录，也需要一个个设置属性并移植到新位置，显得很麻烦。其实，可通过
+修改注册链表把用户主目录移植到其它盘下，相应的功能目录也自动移动了，此法最为方便。
+
+*小技巧*: Windows Vista/7 下修改默认的用户主目录创建位置：
+  1) 以管理员用户登陆，打开注册链接编辑器 (=regedit.exe=)
+  2) 定位到 =ProfileList= 项:
+     : HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList
+  3) 修改 =REG_EXPAND_SZ= 类型的键 =ProfilesDirectory= (默认值为 =C:\Users=) 为
+     你想要的值，比如 =D:\Users=
+  4) 创建新的帐号，比如 =new=
+  5) 退出管理员，用新帐号重新登陆，这时，系统就会自动将帐号主目录创建在
+     =D:\Users\new= 下
+
+如果是一个已经存在的帐号 (如 =ali=)，也可以用管理员帐号先把用户数据移植到新目录下，
+然后在注册链表 =ProfileList\S-1-....= 项中寻找类型为 =REG_EXPAND_SZ= 的键
+=ProfileImagePath= (若没有，就创建一个), 修改其值指向新的位置。但这样做有潜在的风
+险：可能有大量的程序已经把原来的用户主目录写入到了注册链表中，这样，你就需要手动
+修改许多程序配置。为防止意外，不妨把原来的目录 (如 =C:\Users\ali=) 删除，然后用命
+令 =mklink.exe= 把新位置链接到旧的目录处。
+
+** Linux 下的用户目录设置
+
+在 Unix/Linux 下，比较流行的重量级桌面系统有 GNOME, KDE, XFce 等 (此处先忽略一下
+那些轻量级的 awesome, fvwm 等)。起初，不同的桌面系统对用户目录都有一套自己的习惯，
+这样会导致一种乱相，就是不同的应用程序往往会在用户目录下产生一堆各式各样的目录：
+隐藏／显示的、配置文件、数据文件、临时文件、缓冲数据，等等。这样，不仅目录显得杂
+乱，而且程序之间相互通讯有时也会很麻烦。而这样的问题其实很好解决，就是大家开发程
+序都遵守同样的目录使用约定。针对这类问题就产生了 [[http://http://www.freedesktop.org][FreeDesktop.org]] 组织。
+
+FreeDesktop.org 并非一个正式的标准化组织，尽管它比较松散，但一些工作内容却确实与
+标准化相关。其主要工作内容是定义一些 [[http://www.freedesktop.org/wiki/Desktops][X 桌面环境]] 的 [[http://www.freedesktop.org/wiki/Specifications][规范]]，包括基本目录设定、图标主
+题、缩略图、 MIME 类型、声音主题、文件管理的 D-Bus 接口、回收站配置，等等。
+FreeDesktop.org 的一些工作令各种 X 桌面之间相互协调，用户体验更佳，比如：
+  - 在 Mac OS X 的终端里，你可以用命令 =open= 让系统调用默认的程序打开一些文档，
+    在 Linux 的终端下你可以使用 =xdg-open=, 这个命令就是 FreeDesktop.org 的软件包
+    =xdg-utils= 中的工具之一。
+  - 许多 Unix 程序默认在用户主目录下创建以 =.= 开头的隐藏文件用于保存用户配置。
+    FreeDesktop.org 定义了一个 [[http://www.freedesktop.org/wiki/Specifications/basedir-spec][basedir-spec]] 规范，它规定：
+    - 程序应该将用户数据保存在 =$XDG_DATA_HOME= 定义的目录 (通常是
+      =$HOME/.local/share=)
+    - 用户的配置文件应该保存在 =$XDG_CONFIG_HOME= 定义的目录 (通常是
+      =$HOME/.config=)
+    - 程序的缓冲或临时数据应该保存在 =$XDG_CACHE_HOME= 定义的目录 (通常是
+      =$HOME/.cache=)
+
+用户功能目录的设置对应的 FreeDesktop.org 工具为 [[http://www.freedesktop.org/wiki/Software/xdg-user-dirs][xdg-user-dirs]], 它会在每个用户主目
+录下创建类似于 Mac OS X 下的用户功能目录 (如 =Desktop=, =Documents=,
+=Templates=, =Downloads= 等), 并且这些目录名称会随着系统语言环境而被自动翻译，它
+们的使用与 Mac OS X 或 Windows Vista/7 下类似。
+
+* 原则二：要养成自己的资料管理约定
+
+除了系统默认的功能目录下，我的用户主目录下通常还有这些子目录：
+  - =Documents/=  -- 文档
+    - =Draft/=  -- 草稿
+    - =References/= -- 常用参考文献、手册等
+  - =Projects/= -- 项目内容
+  - =Utilities/= -- 实用程序目录
+  - =Workspace/= -- 程序开发目录
+  - =Learn/= -- 学习资料
+
+在 =Projects/= 下，通常是每个项目一个子目录，包含与该项目相关的参考文献、程序、数
+据、会议报告，等等。一般目录名称用项目名称简写，比如 =NINT-MRPC= 表示与 NINT 单位
+合作的 =MRPC= 项目。常用的子目录有：
+  - =Attic/= -- 过期的或归档的项目资料，当一个项目完结时会移到这儿来
+  - =Meetings/= -- 定期召开的会议资料
+  - =EDU-ThesisDefence/= -- 研究生教育中论文答辩相关的资料
+  - =Incubation/= -- 待孵化的项目
+  - =Misc/= -- 未归类或临时的项目资料
+
+在实用程序目录 =Utilities= 下保存一些无须安装到系统路径下的程序，通常是一些自己编
+写的小程序，或者偶尔运行一次的程序，也包括一些测试程序和专业计算程序。这个目录采
+用 Unix 的目录惯例，包含有 =bin=, =lib=, =share= 等子目录。
+
+由于我喜欢收集程序源代码，并且偶尔写一点小程序，就全放置在 =Workspace= 下了。这个
+目录采用层次结构，大致如下：
+  - =build= -- 用于编译他人的代码
+  - =devel= -- 一些编程语言类的工具，如 Lua, Python 的小工具
+  - =doc= -- 文档，如 =progit= 的本地 git 镜像
+  - =test= -- 测试代码
+在 =Workspace= 下绝大部分目录都采用了 Git 或者 Mercurial (hg) 版本控制。由于收集
+的源代码比较多，挨个进行同步时会很麻烦，我编写了一个Python 脚本 [[https://github.com/exaos/el-scripts/blob/master/repos/repos-up.py][repos-up.py]] 来管
+理 (还有一个 Lua 版本 [[https://github.com/exaos/el-scripts/blob/master/repos/repos-up.lua][repos-up.lua]] 是我学习 Lua 时的练习题). 如 =doc/= 下有许多文
+档源码，把需要同步的源码目录填写在配置文件=repos.yaml= 中，当需要与互联网上的源同
+步时，一个命令即可：
+    : repos-up.py ~/Workspace/doc/
+其中 =repos.yaml= 按 [[http://yaml.org/][YAML]] 的格式，比如：
+#+BEGIN_EXAMPLE
+# mode: yaml; coding: utf-8
+
+doc: |
+  这是文档区，本文件的说明。
+  这儿列出的是一些文档的仓库。
+
+git:
+  - gitbook
+  - goldify
+  - progit
+  - tex/luaTeX-ja/luatexja
+  - debian-handbook
+  - cll
+
+git_svn:
+  - tex/ctex-kit
+  - tex/pithesis
+
+hg:
+  - hgbook
+  - python-peps
+#+END_EXAMPLE
+
+目录 =Learn= 下保存一些学习资料，包括语言 (如英文听力)、专业图书等，不辍述。
+
+* 小结
+
+在“标签式文件系统”（或“语义文件系统”）等相关的工具还不成熟时，在现有的层次结
+构文件系统上养成良好的目录使用习惯，会对你的工作带来许多方便。

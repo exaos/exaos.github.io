@@ -1,0 +1,83 @@
+# -*- mode: org; coding: utf-8; -*-
+#+SETUPFILE: ../../../setup/ox-tmpl/l2.org
+#+HTML_LINK_UP: ../index.html
+#+TITLE: PCIVME 在 Linux 下的驱动安装
+#+AUTHOR: 心蛛
+#+DATE: [2005-04-17 03:22:00]
+
+
+根据 ARW Elektronik, Germany 的 [[mailto:klaus.hitschler@gmx.de][Klaus Histchler]] 所提供的 pcivme 驱动程序
+(2004.08.13) 所配置。配置过程参照 ARW Elektronik, Germany 所提供的文档。
+
+=pcivme-3.1.tar.gz= 驱动程序包中包含有这样几个文件：
+  - Makefile -- 全局的 Makefile，用于编译驱动程序、库及测试程序。
+  - doc -- 目录，存放一些文档及模板。
+  - driver -- 目录，驱动源代码及安装脚本。其中 pcivme.h 是驱动程序的接口代码的头
+    文件，而 pcivme_load 则是安装脚本（bash）。
+  - lib -- 目录，存放着共享库的源代码。其中 pcivme_ni.h 是库接口代码的头文件。
+  - pvmon -- 一个小的测试程序。
+  - test -- 另一个小测试程序。
+
+* 兼容性
+
+已经测试过的平台：
+  - kernel 2.4.18 (SuSE 8.0)
+  - kernel 2.2.19 (SuSE 7.3)
+  - RedHat Linux 7.2
+  - kernel 2.6.5 (SuSE 9.1)
+
+源代码与特定的 x86 硬件特征无关，应该能够在其它平台上编译。但还没有经过测试。在
+驱动程序目录下可以指定内核路径进行基本的交叉编译，比如：
+  : make KERNEL_LOCATION=<你内核的位置>
+
+* 功能
+
+驱动程序和共享库提供访问 PCIVME 接口的函数，利用接口函数的这些特性可以捕获 VME
+的中断。一些高速访问功能，比如 =autoread= 需要硬件上支持，……
+
+* 驱动程序的安装
+
+利用 root 用户来安装驱动程序。在安装目录下有一个 bash 脚本 =pcivme_load=, 调用此
+脚本来安装 VMEMM 模块。比如你的模块设置为 #1 （见跳线 J301...J304），则可以这样
+执行
+  : # ./pcivme_load 1
+此命令安装驱动模块并创建设备节点 =/dev/vmemm_1=. 此处的 1 应该是出厂设置的模块号。
+如果你想卸载此模块，则可执行命令
+  : rmmod pcivme
+
+* 安装共享库
+
+共享库 =libpcivme.so= 提供访问 VME 总线的底层函数接口。你可以在文件
+=libpcivme.h= 中发现这些函数的原型。将文件 =libpcivme.so.x.x.x= 拷贝到你的
+=/usr/lib= 目录下，然后到 =/usr/lib= 下做两个符号链接：
+  : ln -sf libpcivme.so.x.x.x libpcivme.so.1
+  : ln -sf libpcivme.so.1 libpcivme.so
+你可以到 lib 目录下执行 =make install= 来完成上述操作。但你必须要有 root 权限。
+
+* 检查安装结果
+
+在 =test= 目录下执行命令 =simpleTest=. 可以用参数 =-?= 来查看调用的方法。可以用
+=Ctrl-C= 来终止程序。
+
+
+* 检查安装结果 2
+
+执行命令 =cat /proc/pcivme= 的结果：
+#+BEGIN_EXAMPLE
+PCIVME information. Version 3.0 of Mar 14 2005 from Klaus Hitschler.
+---------------------
+Interfaces found : 1
+Major Number : 254
+--- 1 ---------------
+LCR phys/virt/size : 0xdfafcf00/0xe01fef00/128
+Control phys/virt/size : 0xdfafe000/0xe0428000/4096
+VME phys/virt/size : 0xdfaff000/0xe0432000/4096
+Irq : 5
+VMEMM is or was : (software) connected.
+Module-Number : 1
+FPGA-Version : 1
+Systemcontroller : yes
+Word Mode : no
+IrqCount : 0
+Pending IrqStatus : none
+#+END_EXAMPLE

@@ -1,0 +1,367 @@
+# -*- mode: org; coding: utf-8; -*-
+#+SETUPFILE: ../../../setup/ox-tmpl/l2.org
+#+HTML_LINK_UP: ../index.html
+#+TITLE: 心蛛的 ROOT 笔记
+
+* 基本信息
+
+- URL -- http://root.cern.ch
+- 论坛 -- http://root.cern.ch/phpBB3/
+- GitWeb -- http://root.cern.ch/gitweb
+
+* Debian 下的 ROOT
+
+Debian 7 (Wheezy):
+  - root-system: 5.34.00-2
+  - libroot-bindings-python5.34: 5.34.00-2
+  - libroot-bindings-python-dev: 5.34.00-2
+  - http://packages.debian.org/wheezy/root-system
+
+ROOT 文档：
+  - 入门教材: [[http://root.cern.ch/download/doc/primer/ROOTPrimer.html][ROOT Primer]]
+  - 参考手册: [[http://root.cern.ch/drupal/content/users-guide][ROOT User's Guide]]
+  - 类库参考: [[http://root.cern.ch/drupal/content/reference-guide][ROOT Reference Guide]]
+
+* PyROOT
+
+** PyROOT 的基本使用
+
+*注意*: ROOT 6.0 以后将放弃使用 CINT, 而采用基于 LLVM 的 CLING, 因此，与 CINT 相
+关的内容只限于 ROOT 5 及以前的版本。
+
+*** 在 Python 中调用 ROOT 类
+
+在调用之前，需要加载 ~ROOT~ 包中的模块。示例：
+#+begin_src python
+  from ROOT import TCanvas # available at startup
+  c=TCanvas()
+  
+  from ROOT import TLorentzVector  # triggers auto-load of libPhysics
+  l = TLorentzVector()
+#+end_src
+
+或者 (不推荐) 这样用:
+#+begin_src python
+  from ROOT import *
+  c = TCanvas()
+  l = TLorentzVector()
+#+end_src
+
+最佳用法:
+#+begin_src python
+  import ROOT
+  
+  c = ROOT.TCanvas()
+  l = ROOT.TLorentzVector()
+#+end_src
+
+*** 使用 STL 类
+
+不推荐在 Python 中使用 STL 类，因为 Python 中有相似的类存在，且功能之间有差异，
+易出错，在使用中需特别小心。
+
+使用模板类的方法很简单，将通用模板当成 meta class, 使用使用相应的参数实现这个
+meta class 即可，然后将实现的 (instantiated) 类当成普通的新类使用。示例:
+#+begin_example
+  >>> from ROOT import std
+  >>> v = std.vector(int)()
+  >>> for i in range(0,10):
+  ...    v.push_back(i)
+  ...
+  >>> for i in v:
+  ...     print i,
+  1 2 3 4 5 6 7 8 9
+  >>>
+  >>> list(v)
+  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  >>>
+#+end_example
+
+STL 的模板参数使用复杂类，比如 TCanvas 等，会出错。最好使用简单的数据类型，比如
+int, double 等。
+
+*** 访问 ROOT 全局变量
+
+大部分全局变量可以直接从 ROOT.py 中导入，但一些通用模块 (通常如 ~gMinuit~ 等) 在
+程序开始时变未加载，只在相应的模块后续载入时才会存在 (也就是说，通过自动加载机制)。
+例如:
+#+begin_example
+  >>> from ROOT import *
+  >>> gROOT                              # directly available
+  <ROOT.TROOT object at 0x399c30>
+  >>> gMinuit                            # library not yet loaded: not available
+  Traceback (most recent call last):
+    File "<stdin>", line 1, in ?
+  NameError: name 'gMinuit' is not defined
+  >>> TMinuit                            # use of TMinuit class forces auto-loading
+  <class '__main__.TMinuit'>
+  >>> gMinuit                            # now gMinuit is available
+  <__main__.TMinuit object at 0x1458c70>
+  >>> not not gMinuit                    # but it is the null pointer, until set
+  False
+  >>> g = TMinuit()
+  >>> not not gMinuit
+  True     
+#+end_example
+
+可交互式地创建全局变量，也可以通过执行 CINT 宏，或者调用
+~gROOT.ProcessLine()~. 全局变量的使用与类相似：直接通过 ~from ROOT import *~加载，
+或者从 ROOT 名称空间 (namespace) 中通过 ~import ROOT~ 获得。
+
+5.08 版本以后, ROOT 全局变量的表现与 python 全局变量相同，这有时会有点反直观。由
+于它们是引用 (references), 它们只可以直接通过包含它们的模块进行改变。如下示例进
+行了展示:
+#+begin_example
+  >>> from ROOT import *
+  >>> print gDebug
+  0
+  >>> gROOT.ProcessLine( 'gDebug = 7;' )
+  >>> print gDebug
+  0                                 # local gDebug is unchanged
+  >>> gDebug = 5                    # changes _local_ reference only
+  >>> print gDebug
+  5                                 # locally correct, but ...
+  >>> gROOT.ProcessLine( 'cout << gDebug << endl;' )
+  7                                 # ... ROOT global unchanged
+  >>> import ROOT
+  >>> print ROOT.gDebug
+  7                                 # still the old value (not '5')
+  >>> ROOT.gDebug = 3               # changes ROOT module reference
+  >>> gROOT.ProcessLine( 'cout << gDebug << endl;' )
+  3                                 # ROOT global properly changed
+  >>>
+#+end_example
+
+上例同样说明 ~import ROOT~ 比 ~from ROOT import *~ 要更好些。
+
+*** 从 C++ (CINT) 中访问 Python
+
+访问 Python 可通过 *TPython* 类，或者当 Python 对象或类在作用域内时直接使用。
+*TPython* 类大致如下：
+#+begin_src c++
+  class TPython {
+  public:
+    // load a Python script as if it were a macro
+    static void LoadMacro(const char* name);
+    // execute a Python statement (e.g. "import ROOT")
+    static void Exec(const char* cmd);
+    // evaluate a Python expression (e.g. "1+1")
+    static const TPyReturn& Eval(const char* expr);
+    // bind a ROOT object with, at the Python side, the name "label"
+    static bool Bind(TObject* obj,const char* label);
+    // enter an interactive Python session (exit with ^D)
+    static void Prompt();
+  };
+  
+#+end_src
+
+*TPython* 的成员函数的详细解释:
+  - ~LoadMacro(const char* name)~ -- 参数为 Python 文件名，载入后其中的新类自动
+    可被 CINT 访问。由于 non-selective, 小心使用！
+  - ~ExecScript(const char* name, int argc=0, const char** argv=0)~ -- 参数为
+    Python 文件名，在私用的名字空间内调用以避免边界效应 (side-effects)。另外，可
+    以通过添加命令行形式的参数，与在脚本中使用 ~sys.argv~ 参数相似。
+  - ~Exec(const char* cmd)~ -- 参数为可执行的 Python 代码。没有返回值，但如果有
+    问题（比如语法错误）会输出错误信息。
+  - ~Eval(const char* expr)~ -- 参数为可执行的 Python 代码字符串 (表达式). 如果
+    是内嵌类型 (int, long, float, double, const char*), 可访问的 Python 类型或者
+    ROOT 类型，则返回表达式执行的结果。如果返回的是 ROOT 类型，需要对 ~void*~ 进
+    行显式的强制转换 (explicit cast), 再赋值给本地指针 (可能存在类型不匹配), 而
+    内嵌类型是自动转换 (如果可能) 成本地变量所需要的类型。
+  - ~Bind(TObject* obj, const char* label)~ -- 将 CINT 中的 ROOT 对象转换成
+    Python 解析器可接收的，在 Python 中变量名为 ~label~ 。
+  - ~Prompt()~ -- 切换到 Python 提示符。
+
+ROOT v4.00/06 版本及以后, ~TPython~ 类在使用时自动加载，此前版本则需要在使用前先
+通过 ~gSystem->Load()~ 加载 ~libPyROOT.so~ 模块。
+
+使用一例: Python 模块如下
+#+begin_src python
+  print 'creating class MyPyClass ... '
+  class MyPyClass:
+     def __init__(self):
+         print 'in MyPyClass.__init__'
+         self._browser = None
+     def gime(self,what):
+         return what
+#+end_src
+
+在 CINT session 中这样调用:
+#+begin_example
+  root[] TPython::LoadMacro("MyPyClass.py");
+  creating class MyPyClass ...
+  root[] MyPyClass m;
+  in MyPyClass.__init__
+  root[] char* s = m.gime("aap");
+  root[] s
+  (char* 0x41ee7754)"aap"
+#+end_example
+注意, ~LoadMacro()~ 调用使用类自动可用。否则需要先调用 ~gROOT->GetClass()~ 。
+
+*** 回调 (callbacks)
+
+从 CINT 中对 Python 进行回调，简单的方法是执行字符串。参见
+~tutorials/pyroot/demo.py~ 示例。
+
+*** CINT commands
+
+在交互模式下, 使用 Python exception hook 来模拟一些 CINT 命令。这些命令有
+  : .q, .!, .x, .L, .cd, .ls, .pwd, .?, .help
+注意, ~.x~ 命令对应的是 Python 的 ~execfile()~, 因此只接收 Python 文件，而不是
+CINT 宏。
+
+** 内存管理
+
+在 Python 解析器中对用户内存通过引用计数和垃圾回收 (对新类型对象，包括~PyROOT~
+对象) 进行管理。在 C++ 中，内存管理是手动进行的，或者通过应用程序特定的、定制的
+机制 (如 ROOT 中所使用的) 进行。尽管 ~PyROOT~ 理解 ROOT 的内存管理机制，仍然会有
+一些边界条件需要手动进行处理。 并且 ~PyROOT~ 对内存管理所采用的试探法
+(heuristics) 并非绝对可靠。对方法的一些详细了解因此变得重要。
+
+*** 自动内存管理
+
+有两种全局策略可用：试探式 (heuristics) 和严格式 (strict)。
+
+默认使用的是试探式，它采用如下两种规则：
+    1. 在 Python 解析器中创建的 ROOT 对象由 Python 拥有，当最后一次的 Python 引
+       用消除后会被删除。然而，如果，该对象由非常量地址作为参数传递给 C++ 函数
+       (除非该函数象成员函数中 ~self~ 那样使用它), 则放弃其所有权。
+    2. 来自 ROOT 调用的 ROOT 对象并非 Python 拥有，但在它传递给 Python 解析器之
+       前，如果该类型是 *TObject* 类的派生类，它的 ~must cleanup~ 位必须置位。当
+       对象离开 C++ 作用范围时, Python 对象必须改变类型，通常是 None。
+
+严格式策略与试探式不同，当对象作为参数传递给函数时, Python 从不放弃对象的所有权。
+这样则需要由开发者来阻止双边删除 (double deletes) 的发生。
+
+可通过如下命令
+  : ROOT.SetMemoryPolicy( ROOT.kMemoryStrict )
+选择严格式策略，或通过如下选择试探式
+  : ROOT.SetMemoryPolicy( ROOT.kMemoryHeuristics )
+
+对于图象对象需要特别注意: 当在当前 pad 上绘图时，对图象的引用保留着，但 ~PyROOT~
+却不会立即知道，这需要开发者保留着对象甚至某个 Python 引用激活。参见
+~$ROOTSYS/tutorials/pyroot/zdemo.py~ 中的示例。
+
+另外，也可以直接告诉 Python 放弃对某个独立实现的拥有权:
+  : o = ROOT.TObject()
+  : ROOT.SetOwnership( o, False ) # True to own, False to release
+
+*** 手动内存管理
+
+如果需要，可通过相关联的 *TClass* 显示式摧毁一个你拥有的 ROOT 对象:
+  : myobject.IsA().Destructor(myobject)
+该命令向系统发送一个删除通知 (因此你不用再关心此时 Python 的引用计数之类的，对象
+会被删除，即使它的引用计数可能不会零), 并且释放相应内存。
+
+** 性能
+
+** 使用 Python 函数
+
+*** 使用 Python 函数绘图
+
+#+begin_src python
+  from ROOT import TF1, TCanvas
+  
+  class Linear:
+     def __call__( self, x, par ):
+        return par[0] + x[0]*par[1]
+  
+  # create a linear function with offset 5, and pitch 2
+  f = TF1('pyf2',Linear(),-1.,1.,2)
+  f.SetParameters(5.,2.)
+  
+  # plot the function
+  c = TCanvas()
+  f.Draw()
+#+end_src
+
+*** 拟合谱
+
+#+begin_src python
+  from ROOT import TF1, TH1F, TCanvas
+  
+  class Linear:
+     def __call__( self, x, par ):
+        return par[0] + x[0]*par[1]
+  
+  # create a linear function for fitting
+  f = TF1('pyf3',Linear(),-1.,1.,2)
+  
+  # create and fill a histogram
+  h = TH1F('h','test',100,-1.,1.)
+  f2 = TF1('cf2','6.+x*4.5',-1.,1.)
+  h.FillRandom('cf2',10000)
+  
+  # fit the histo with the python 'linear' function
+  h.Fit(f)
+  
+  # print results
+  par = f.GetParameters()
+  print 'fit results: const =',par[0],',pitch =',par[1]
+#+end_src
+
+** 使用 Tree
+
+*** 访问现有的 Tree
+
+#+begin_src python
+  from ROOT import TFile
+  from ROOT import gDirectory
+  
+  # open the file
+  myfile = TFile('tree1.root')
+  
+  # retrieve the ntuple of interest
+  mychain = gDirectory.Get('t1')
+  entries = mychain.GetEntriesFast()
+  
+  for jentry in xrange(entries):
+      # get the next tree in the chain and verify
+      ientry = mychain.LoadTree(jentry)
+      if ientry < 0:
+          break
+  
+      # copy next entry into memory and verify
+      nb = mychain.GetEntry(jentry)
+      if nb<=0:
+          continue
+      # use the values directly from the tree
+      nEvent = int(mychain.ev)
+      if nEvent<0:
+          continue
+  
+      print mychain.pz, '=', mychain.px*mychain.px, '+', mychain.py*mychain.py
+#+end_src
+
+*** 写入 Tree
+
+写入 TTree 在 Python 中有点复杂，不仅因为你需要 C++ 类以保证数据成员可以映射过去，
+除非你只使用内嵌类型。
+
+#+begin_src python
+  from ROOT import TFile, TTree
+  from array import array
+  
+  h = TH1F('h1','test',100,-10.,10.)
+  f = TFile('test.root','recreate')
+  t = TTree('t1','tree with histos')
+  maxn = 10
+  n = array('i',[0])
+  d = array('f',maxn*[0.])
+  t.Branch('mynum',n,'mynum/I')
+  t.Branch('myval',d,'myval[mynum]/F')
+  
+  for i in range(25):
+      n[0] = min(i,maxn)
+      for j in range(n[0]):
+          d[j] = i*0.1+j
+      t.Fill()
+  
+  f.Write()
+  f.Close()
+#+end_src
+
+** 使用自己的类
+
+* 我的 FAQ
+

@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>用 Bochs 来代替 Virtual PC</title>
+<!-- 2013-07-19 五 22:31 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+
+
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<link rel="alternate stylesheet" type="text/css" href="../../css/worg-zenburn.css" />
+<link rel="alternate stylesheet" type="text/css" href="../../css/worg-classic.css" />
+
+<script type="text/javascript" src="org-info.js">
+/**
+ *
+ * @source: org-info.js
+ *
+ * @licstart  The following is the entire license notice for the
+ *  JavaScript code in org-info.js.
+ *
+ * Copyright (C) 2012-2013  Sebastian Rose
+ *
+ *
+ * The JavaScript code in this tag is free software: you can
+ * redistribute it and/or modify it under the terms of the GNU
+ * General Public License (GNU GPL) as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option)
+ * any later version.  The code is distributed WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+ *
+ * As additional permission under GNU GPL version 3 section 7, you
+ * may distribute non-source (e.g., minimized or compacted) forms of
+ * that code without the copy of the GNU GPL normally required by
+ * section 4, provided you include this license notice and a URL
+ * through which recipients can access the Corresponding Source.
+ *
+ * @licend  The above is the entire license notice
+ * for the JavaScript code in org-info.js.
+ *
+ */
+</script>
+
+<script type="text/javascript">
+
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+
+<!--/*--><![CDATA[/*><!--*/
+org_html_manager.set("TOC_DEPTH", "4");
+org_html_manager.set("LINK_HOME", "../../index.html");
+org_html_manager.set("LINK_UP", "../index.html");
+org_html_manager.set("LOCAL_TOC", "1");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "0");
+org_html_manager.set("TOC", "1");
+org_html_manager.set("VIEW", "info");
+org_html_manager.setup();  // activate after the parameters are set
+/*]]>*///-->
+</script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012  Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href="../index.html"> UP </a>
+ |
+ <a accesskey="H" href="../../index.html"> HOME </a>
+</div><div id="content">
+<h1 class="title">用 Bochs 来代替 Virtual PC</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">下载并安装 bochs</a></li>
+<li><a href="#sec-2">用 dlxlinux 测试 bochs 系统</a></li>
+<li><a href="#sec-3">使用 FreeDOS</a></li>
+<li><a href="#sec-4">个人的一些使用习惯</a></li>
+<li><a href="#sec-5">关于配置文件的简介</a></li>
+</ul>
+</div>
+</div>
+<p>
+Virtual PC 是一个很棒的软件，但其价格也不便宜。对于计算机玩家来说，频繁地买软件
+有点开支太大了吧？为什么不试试开源的软件呢？ Bochs 就是这样一个可以替代大部分
+Virtual PC 功能的软件。
+</p>
+<blockquote>
+<p>
+简介： Bochs 是用 C++ 开发的可移植的 IA-32 (x86) PC 模拟器，几乎可以运行在所有流
+行的平台上。它包括对 Intel x86 CPU 、通用 I/O 设备和可定制的 BIOS 的模拟。目前，
+Bochs 可以模拟 386, 486, Pentium Pro 或者 AMD64 CPU ，包括可选的 MMX, SSE, SSE2
+和 3DNow 指令。Bochs 的模拟环境中可以运行大部分的操作系统，包括 Linux, Windows
+95, DOS, Windows NT 4, FreeBSD, MINIX 等。 Bochs 由 Kevin Lawton 创建，此项目当
+前仍由他维护。
+</p>
+
+<p>
+参见： <a href="http://bochs.sf.net">http://bochs.sf.net</a>
+</p>
+</blockquote>
+
+<p>
+以上是我根据 bochs 的首页介绍翻译并整理的简介。Bochs 的运行很简单，只要你准备好
+这几个文件就可以开始使用 bochs 了：模拟环境的配置文件（通常命名为 bochsrc），ROM
+BIOS 文件（发行版本中自带），VGA BIOS（同 ROM BIOS），磁盘映像文件。你可以访问主
+系统的设备，比如软盘、COM 口、LPT 口等。你还可以模拟网卡、声卡等。
+</p>
+
+<p>
+其实，使用 bochs ，你可以更清楚地了解 PC 的运行原理，由于 bochs 使用一个配置文件
+来模拟一个环境，这个配置文件中有很多的参数可以调整，用起来会很方便。下面，简单介
+绍一下如何在 Bochs 中运行 FreeDOS （一个基于 GPL 发行的与 MS-DOS 100% 兼容的系统，
+参见： <a href="http://freedos.org/">http://freedos.org/</a> 。之所以还提 DOS，是因为还有许多在 DOS 开发的优秀程序，
+比如有朋友使用的解谱程序还是基于 DOS 的，目前还没有其它可代替的版本，而一台 P4
+的机器用来运行 DOS 实在有点那个什么&#x2026;&#x2026;）。
+</p>
+
+<p>
+本文是在 MacOS 10.3 上测试的，其它平台，比如 Linux 类似（Linux/Unix 可能会更简单
+一点）。在使用 Bochs 之前，希望你能够了解一些基本内容，比如如何在 MacOS X 上使用
+终端，最好还有一些基本的 shell 常识，比如 bash 的变量如何定义之类的基础常识。
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">下载并安装 bochs</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+到 <a href="http://bochs.sf.net">http://bochs.sf.net</a> 去下载最新版的 bochs （当时的稳定版为 2.1.1）。国内的朋友
+可能无法访问 sourceforge.net 的子域名，可以直接到这个地址去下载：
+</p>
+<ul class="org-ul">
+<li><a href="http://sourceforge.net/project/showfiles.php?group_id=12580&release_id=215733">http://sourceforge.net/project/showfiles.php?group_id=12580&release_id=215733</a>
+</li>
+</ul>
+
+<p>
+根据你的系统平台，下载相应的版本。比如你使用的是 MacOS 10.2 或者 MacOS 10.3 并安
+装了 Fink 系统，应该下载 Bochs-2.1.1-macos10.2.dmg ，如果你的 10.2 或 10.3 没有
+安装 Fink ，应该下载 Bochs-2.1.1-macos10.2noFink.dmg 。我使用的是
+bochs-2.1.1-macos10.2.dmg 。
+</p>
+
+<p>
+下载后，挂载那个磁盘映像文件，将其中的文件拷贝出来，应该有这些内容：
+</p>
+<pre class="example">
+BIOS-bochs-2-processors  VGABIOS-elpin-2.40         bochsrc-sample.txt
+BIOS-bochs-4-processors  VGABIOS-elpin-LICENSE.txt  bxcommit
+BIOS-bochs-8-processors  VGABIOS-lgpl-README.txt    bximage
+BIOS-bochs-latest        VGABIOS-lgpl-latest        dlxlinux
+CHANGES.txt              VGABIOS-lgpl-latest-debug  keymaps
+COPYING.txt bochs.app    README.txt bochs.scpt
+</pre>
+
+<p>
+那些 BIOS-bochs-* 是 BIOS 的模拟文件，同样 VGABIOS-* 是显卡的模拟文件。
+bochs.scpt 是一个 AppleScript 示例程序，你可以根据它修改自己的启动脚本。 目录
+keymaps 是键盘的字符映射，其中你可以找到许多常用键盘字符映射。 bochs.app 是 OS X
+的可执行的束，在 Finder 中它显示为一个应用程序图标。另外的两个文件是可执行的
+Mach-O 程序：bximage 用于创建新的磁盘映像， bxcomment 用于设置磁盘映像文件的复用
+标识（redolog），目前只能对 Flat 映像进行设置恢复（undoable redolog）标识。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">用 dlxlinux 测试 bochs 系统</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+你到目录 dxlinux 下点击那个 bochs.scpt 脚本，你会发现打开了一个终端，提示你这些
+操作：
+</p>
+<pre class="example">
+... ... ... ...
+
+You can also start bochs with the -q option to skip these menus.
+
+1. Restore factory default configuration
+2. Read options from...
+3. Edit options
+4. Save options to...
+5. Begin simulation
+6. Quit now
+
+Please choose one: [5]
+</pre>
+
+<p>
+这是读取配置文件 bochsrc.txt 之后 bochs 的提示。但你选择 5 开始模拟时， bochs 却
+退出了。这是因为 bochsrc.txt 的配置文件有问题。打开 bochsrc.txt 文件，你会发现有
+这样的一行：
+</p>
+<pre class="example">
+# filename of ROM images
+romimage: file=$BXSHARE/BIOS-bochs-latest, address=0xf0000
+vgaromimage: $BXSHARE/VGABIOS-elpin-2.40
+</pre>
+
+<p>
+（对不起，好象是三行哦），其中有这样的字串 $BXSHARE ，这是一个 shell 变量，它指
+向 Bochs 所在的路径，而你并没有设置它，因此虽然配置文件没有错，但 bochs 找不到
+ROM image 所在的文件 $BXSHARE/BIOS-bochs-latest，它就退出了。
+</p>
+
+<p>
+你可以用 ScriptEditor 打开 dxlinux 下的 bochs.scpt 文件，在 on run 这一行之前加
+上一句：
+</p>
+<pre class="example">
+do shell script "export BXSHARE=~/Bochs-2.1.1"
+</pre>
+<p>
+最简单的办法，直接修改 bochsrc.txt 文件，把其中的 $BXSHARE 换成 BIOS-* 所在的路
+径就中了。修改后，再运行那个脚本，你会看到同样的提示，按 5 开始模拟，然后就会出
+来 Bochs 的界面，然后就是 DLX Linux 的加载过程了，勿庸多言。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">使用 FreeDOS</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+在 <a href="http://bochs.sourceforge.net/diskimages.html">http://bochs.sourceforge.net/diskimages.html</a> 或者
+<a href="http://bochs.sourceforge.net/cgi-bin/topper.pl?name=Disk+Images&url=http://sourceforge.net/project/showfiles.phpqmrkgroup_ideq12580amppackage_ideq27799">http://bochs.sourceforge.net/cgi-bin/topper.pl?name=Disk+Images&url=http://sourceforge.net/project/showfiles.phpqmrkgroup_ideq12580amppackage_ideq27799</a>
+你都可以找到 FreeDOS 的下载，下吧。我用的是 FreeDOS 100MB 的那个映像。
+</p>
+
+<p>
+下完了，仔细读读解压后目录中的 README 文件吧。不过，那个 bochsrc.txt 文件同样需
+要做一些修改，最大的修改还是 $BXSHARE 。然后，与测试 DLX LInux 时一样操作就可以
+了。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">个人的一些使用习惯</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+每个人的习惯不同吧。我喜欢在终端下打命令行启动 bochs ，后面是我的一些设置。
+</p>
+
+<p>
+我建立了一个目录 ~/Opt/Bochs （我称之为 $BXHOME），将 bochs.app, bximage,
+bxcommit 等文件保存在 $BXHOME/R2.1.1 目录下，然后在 $BXHOME 下对每个系统建立一个
+工作目录，比如有 FreeDOS, GNUHurd, MINIX-2.0.4 等，在每个 Guest 系统的目录下，保
+存着这个系统的磁盘映像，配置文件等。在 $BXHOME 下有一个文件 bochs-env.sh 是这样
+写的：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #969896; font-style: italic;">#</span><span style="color: #969896; font-style: italic;">!/bin/</span><span style="color: #c397d8;">sh</span>
+
+<span style="color: #70c0b1;">export</span> <span style="color: #e78c45;">BXHOME</span>=~/Opt/Bochs
+<span style="color: #70c0b1;">export</span> <span style="color: #e78c45;">BXAPP</span>=${<span style="color: #e78c45;">BXHOME</span>}/R2.1.1/bochs.app/Contents/MacOS/bochs
+<span style="color: #70c0b1;">export</span> <span style="color: #e78c45;">BXBIOS</span>=${<span style="color: #e78c45;">BXHOME</span>}/bios
+<span style="color: #70c0b1;">export</span> <span style="color: #e78c45;">BXKEYMAPS</span>=${<span style="color: #e78c45;">BXHOME</span>}/keymaps
+<span style="color: #70c0b1;">export</span> <span style="color: #e78c45;">BXLOGS</span>=${<span style="color: #e78c45;">BXHOME</span>}/logs
+<span style="color: #70c0b1;">alias</span> <span style="color: #e78c45;">bochs</span>=<span style="color: #b9ca4a;">"$BXAPP"</span>
+<span style="color: #70c0b1;">alias</span> bochs-open=<span style="color: #b9ca4a;">"$BXAPP -f"</span>
+</pre>
+</div>
+<p>
+当然，在我的 .bashrc 中少不了这样的一行：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #c397d8;">if</span> [ -f ~/Opt/Bochs/bochs-env.sh ]; <span style="color: #c397d8;">then</span>
+    . ~/Opt/Bochs/bochs-env.sh
+<span style="color: #c397d8;">fi</span>
+</pre>
+</div>
+
+<p>
+然后，每次打开一个终端，我只要进入 $BXHOME 目录下的任一个 Guest 系统目录，执行
+<code>bochs -f bochsrc.txt</code> 就可以开始模拟了。每次 bochs 更新时，我只需要把对应的
+Rx.x.x 目录修改就可以了。当然，也可以写一个 Apple Script 的脚本，配上 Acqua 界面，
+那就更好了。等我把 Apple Script 学会之后再说吧。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">关于配置文件的简介</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+其实，使用 bochs 关键的是那个配置文件。仔细阅读一下 Bochs 目录下的那个
+<code>bochsrc-sample.txt</code> 文件，你会有很大收获。详情请参见 Bochs 的用户手册。
+</p>
+
+<p>
+有时间，再慢慢讨论如何让 host OS 与 guest OS 之间联网、guest OS 如何使用硬件设备，
+比如 CDROM 等。 但首先一条，大家要试用起来，才能开始讨论啊。希望有人能有同好。
+Bochs 开发人员希望大家提供安装好系统的磁盘映像。但要注意一点，不要把安装盗版
+Windows 的映像文件提供给人家，那是有版权的东西，你不要让微软找到借口来打压他们。
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<p>版权所有 ©2013: 心蛛 | Date: <span class="timestamp-wrapper"><span class="timestamp">[2004-10-11 00:06:00]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.50.1 (<a href="http://orgmode.org">Org</a> mode 8.0.5), <a href="http://validator.w3.org/check?uri=referer">Validate</a>, <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a></p>
+<script type="text/javascript">
+  var disqus_shortname = 'exaos-github';
+  (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</p>
+</div>
+</body>
+</html>

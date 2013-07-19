@@ -1,21 +1,192 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-  <head>
-    <meta charset="utf-8"/>
-    <title>信息技术、文学编程与物理学纲要</title>
-    <link rel="stylesheet" type="text/less" href="../../../style/less/o-blog.less"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="generator" content="o-blog version 1.2-zh-133-gcf9fd86"/>
-    <script src="../../../style/js/less-1.3.0.min.js" type="text/javascript"></script>
-    <script src="../../../style/js/jquery-1.7.1.min.js" type="text/javascript"></script>
-    <script src="../../../style/bootstrap/js/bootstrap-modal.js" type="text/javascript"></script>
-    <script src="../../../style/bootstrap/js/bootstrap-transition.js" type="text/javascript"></script>
-    <script src="../../../style/bootstrap/js/bootstrap-dropdown.js" type="text/javascript"></script>
-    <script src="../../../style/bootstrap/js/bootstrap-collapse.js" type="text/javascript"></script>
-    <script src="../../../style/js/prettify.js" type="text/javascript"></script>
-    <script src="../../../style/js/o-blog.linenumber.js" type="text/javascript"></script>
-    <script src="../../../style/js/o-blog-fix.js" type="text/javascript"></script>
-    <script type="text/javascript">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>信息技术、文学编程与物理学纲要</title>
+<!-- 2013-07-19 五 22:31 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+
+
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="../../../css/worg.css" />
+<link rel="alternate stylesheet" type="text/css" href="../../../css/worg-zenburn.css" />
+<link rel="alternate stylesheet" type="text/css" href="../../../css/worg-classic.css" />
+
+<script type="text/javascript" src="org-info.js">
+/**
+ *
+ * @source: org-info.js
+ *
+ * @licstart  The following is the entire license notice for the
+ *  JavaScript code in org-info.js.
+ *
+ * Copyright (C) 2012-2013  Sebastian Rose
+ *
+ *
+ * The JavaScript code in this tag is free software: you can
+ * redistribute it and/or modify it under the terms of the GNU
+ * General Public License (GNU GPL) as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option)
+ * any later version.  The code is distributed WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+ *
+ * As additional permission under GNU GPL version 3 section 7, you
+ * may distribute non-source (e.g., minimized or compacted) forms of
+ * that code without the copy of the GNU GPL normally required by
+ * section 4, provided you include this license notice and a URL
+ * through which recipients can access the Corresponding Source.
+ *
+ * @licend  The above is the entire license notice
+ * for the JavaScript code in org-info.js.
+ *
+ */
+</script>
+
+<script type="text/javascript">
+
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+
+<!--/*--><![CDATA[/*><!--*/
+org_html_manager.set("TOC_DEPTH", "4");
+org_html_manager.set("LINK_HOME", "../../../index.html");
+org_html_manager.set("LINK_UP", "../../index.html");
+org_html_manager.set("LOCAL_TOC", "1");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "0");
+org_html_manager.set("TOC", "1");
+org_html_manager.set("VIEW", "info");
+org_html_manager.setup();  // activate after the parameters are set
+/*]]>*///-->
+</script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012  Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
 <!--/*--><![CDATA[/*><!--*/
  function CodeHighlightOn(elem, id)
  {
@@ -37,119 +208,32 @@
  }
 /*]]>*///-->
 </script>
-  </head>
-  <body>
-
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-	<div class="container">
-	  <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-	  <a class="brand" href="../../../index.html">心蛛小站</a>
-	  <div class="nav-collapse collapse">
-	    <ul>
-<li><a href="#"><i>icon-book icon-white</i> 存档</a>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href="../../index.html"> UP </a>
+ |
+ <a accesskey="H" href="../../../index.html"> HOME </a>
+</div><div id="content">
+<h1 class="title">信息技术、文学编程与物理学纲要</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
 <ul>
-<li><a href="../../../notes/index.html">笔记</a>
-</li>
-<li><a href="../../../attic/index.html">资料</a>
-</li>
-<li><a href="../../../attic/exaos.html">心蛛资料</a>
-
-</li>
+<li><a href="#sec-1">信息技术、文学编程的相关概念</a></li>
+<li><a href="#sec-2">HyperPhysics 及其中文翻译</a></li>
+<li><a href="#sec-3">文学编程与物理学纲要</a></li>
 </ul>
-
-</li>
-<li><a href="#"><i>icon-file icon-white</i> 近期博文</a>
-<ul>
-<li><a href="../../../blog/2013/03/27_emacs-deft.html">Deft 使用指南</a>
-</li>
-<li><a href="../../../blog/2013/03/05_fix-bad-ext4.html">修复损坏的 ext4 大分区数据</a>
-</li>
-<li><a href="../../../blog/2013/03/03_fear-and-death.html">与妻书：《关于生、死与恐惧》</a>
-</li>
-<li><a href="../../../blog/2013/02/27_wisdom-be-with-you.html">“与智慧同在！”</a>
-
-</li>
-</ul>
-
-</li>
-<li><a href="../../../tags/index.html"><i>icon-tags icon-white</i> 标签</a>
-
-</li>
-<li><a href="../../../archives.html"><i>icon-list icon-white</i> 归档博文</a>
-
-</li>
-<li><a href="#"><i>icon-link icon-white</i> 友情链接</a>
-<ul>
-<li><a href="http://blog.163.com/y.feng_cn/">freeboy 在网易的博客：NMR</a>
-</li>
-<li><a href="http://www.scipark.net/">科学公园</a>
-</li>
-<li><a href="http://scienceblogging.org/">ScienceBlogging</a>
-
-</li>
-</ul>
-
-</li>
-<li><a href="../../../index.xml"><i>icon-rss icon-white</i> RSS订阅</a>
-</li>
-</ul>
-
-
-	  </div>
-	</div>
-      </div>
-    </div>
-    <div class="subnav subnav-fixed visible-desktop">
-      <div class="container">
-	<ul class="breadcrumb">
-  <li><a href="../../../index.html">首页</a> <span class="divider">/</span></li>
-  <li><a href="../../../blog/index.html">blog</a> <span class="divider">/</span></li><li><a href="../../../blog/2012/index.html">2012</a> <span class="divider">/</span></li><li><a href="../../../blog/2012/04/index.html">04</a> <span class="divider">/</span></li><li>信息技术、文学编程与物理学纲要</li>
-  </ul>
-
-      </div>
-    </div>
-    <div id="page" class="container">
-
-  <header class="article-header">
-
-    <div class="well">
-      <div class="row">
-	<div class="date span1">
-	  <div class=" date-d">27</div>
-	  <div class=" date-m"><a href="../../../blog/2012/04/index.html"> 4月</a></div>
-	  <div class=" date-y"><a href="../../../blog/2012/index.html">2012</a>
-	  </div>
-	</div>
-	<div class="span1">
-	  <div class="qr-code">
-  <img src="http://chart.apis.google.com/chart?chs=50x50&cht=qr&chld=|0&chl=http%3a%2f%2fexaos.github.com%2f%2fblog%2f2012%2f04%2f27_it_lp_physics.html"
-       alt="qr-code" />
 </div>
-
-	</div>
-	<h1 class="offset2" style="font-size: 250%">信息技术、文学编程与物理学纲要</h1>
-      </div>
-      <nav>
-	<ul class="pager">
-	  <li class="previous"><a href="../../../blog/2012/04/27_mill-donkeys.html"><i class="icon-chevron-left"></i>&nbsp;磨驴法则之头驴利益</a></li><li class="next" style="text-align: right;"><a href="../../../blog/2012/05/02_lp-orgmode.html">文学编程与 orgmode&nbsp;<i class="icon-chevron-right"></i></a></li>
-	</ul>
-      </nav>
-    </div>
-
-  </header>
-  <div class="article-content">
-    <p>
+</div>
+<p>
 在谈到本篇博文的主旨之前，我不得不多说一点，以便让读者先熟悉一些概念，然后方便切
 入主题。
 </p>
-<p>
-<b>信息技术、文学编程的相关概念</b>
-</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">信息技术、文学编程的相关概念</h2>
+<div class="outline-text-2" id="text-1">
 <p>
 你能够准确运用的词汇量就是你的思想能够抵达的边界。如果说生活的自由度部分地由财富、
 地位等界定，则你思想的自由度可部分地由你的词汇量来界定。拓宽词汇量就是在拓展你思
@@ -159,6 +243,7 @@
 爱因斯坦的相对论）是在拓展这个地图的边界。我们不妨从这个角度去视察一下日常的学习
 与学术行为，考虑一下如何借助信息技术，以符合人类认知的规律来辅助我们的学习与研究。
 </p>
+
 <p>
 通常谈到 <a href="http://en.wikipedia.org/wiki/Information_technology">信息技术</a> (一般也简称 IT), 指的就是现代计算机所引发的一系列革命性的技术。
 在我看来，它的概念还要广得多，至少还要包括一些文献相关的内容，比如古代的 <a href="http://zh.wikipedia.org/wiki/校讎">校雠</a> 、
@@ -168,34 +253,29 @@
 报、灯光等)，以及现代计算机中的各类编码、加密、存储、检索、传输协议等等。如后也将
 主要指这些现代的信息处理技术。
 </p>
+
 <p>
 这个世界上最神秘的事情之一就是：人类居然可以认识世界以及人类自身。人类大脑的认知
 模式与信息技术紧密相连，这就是人工智能等领域所涉及的研究内容。人类将认知转变成概
 念，这就是一个个的单词或者术语，再将这些概念进行合理的组织与运用，转化成实物或现
 实中的处理流程，这个认知转化的过程也是信息处理的过程。如果从程序设计的角度去思考
-这类过程，应该会从程序设计的技术中受益良多，这也是在《如何设计程序》 (<a href="http://www.htdp.org/">How to Design Program</a>, 一般简称为 HtDP[htdp:1] ) 一书 <a href="http://www.htdp.org/2003-09-26/Book/curriculum-Z-H-2.html">前言</a> 中所谈及的广义上的程序。我赞
+这类过程，应该会从程序设计的技术中受益良多，这也是在《如何设计程序》 (<a href="http://www.htdp.org/">How to
+Design Program</a>, 一般简称为 HtDP<sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup> ) 一书 <a href="http://www.htdp.org/2003-09-26/Book/curriculum-Z-H-2.html">前言</a> 中所谈及的广义上的程序。我赞
 成 HtDP 中所提倡的观点： <b>Programming has become a required skill.</b>
 </p>
+
 <p>
-[htdp:1] <a href="http://www.htdp.org/">http://www.htdp.org/</a>
+<a href="http://en.wikipedia.org/wiki/Literate_programming">文学编程</a> 的概念最初由 <b>高德纳</b> (<a href="http://www-cs-faculty.stanford.edu/~knuth/">Donald E. knuth</a>) 提出<sup><a id="fnr.2" name="fnr.2" class="footref" href="#fn.2">2</a></sup> 并应用于
+TeX<sup><a id="fnr.3" name="fnr.3" class="footref" href="#fn.3">3</a></sup> 排版系统中。简单看去，文学编程不过是将代码与文档汇总在一个文件中，
+从其中可以“绕出” (tangle) 代码，也可以“织出” (weave) 格式化的文档。但这并非
+文学编程的全部。按我的理解，文学编程不仅是程序设计模式，更是一种思考模式，其中的
+“宏” (macro) 就是我们思考过程中的概念，可以是己有的，也可以是即时创造的；文学
+编程就是用这些概念去编织一个网的过程，一个用我们的认知去构造或还原世界的过程。按
+高德纳的说法，这是一种对待程序设计的不同态度，传统的态度是组织指令告诉计算机要干
+什么，而文学编程则面向的是人类，是要告诉他人我们希望计算机来干什么，而那些要告诉
+计算机做什么的指令可变成程序中内嵌的宏。
 </p>
-<p>
-<a href="http://en.wikipedia.org/wiki/Literate_programming">文学编程</a> 的概念最初由 <b>高德纳</b> (<a href="http://www-cs-faculty.stanford.edu/~knuth/">Donald E. knuth</a>) 提出[dk:1] 并应用于 TeX[dk:2] 排
-版系统中。简单看去，文学编程不过是将代码与文档汇总在一个文件中，从其中可以“绕出”
-(tangle) 代码，也可以“织出” (weave) 格式化的文档。但这并非文学编程的全部。按我
-的理解，文学编程不仅是程序设计模式，更是一种思考模式，其中的 “宏” (macro) 就是
-我们思考过程中的概念，可以是己有的，也可以是即时创造的；文学编程就是用这些概念去
-编织一个网的过程，一个用我们的认知去构造或还原世界的过程。按高德纳的说法，这是一
-种对待程序设计的不同态度，传统的态度是组织指令告诉计算机要干什么，而文学编程则面
-向的是人类，是要告诉他人我们希望计算机来干什么，而那些要告诉计算机做什么的指令可
-变成程序中内嵌的宏。
-</p>
-<p>
-[dk:1] Donald Knuth. "Literate Programming (1984)" in Literate Programming. CSLI, 1992
-</p>
-<p>
-[dk:2] <a href="http://en.wikipedia.org/wiki/TeX">http://en.wikipedia.org/wiki/TeX</a>
-</p>
+
 <p>
 随着计算机信息处理能力的增强，又出现了许多新的信息组织概念：心智图 (<a href="http://en.wikipedia.org/wiki/Mind_map">mind map</a>)、纲
 要 (<a href="http://en.wikipedia.org/wiki/Outliner">outliner</a>)、概念图 (<a href="http://en.wikipedia.org/wiki/Concept_map">concept map</a>) 等。这些概念极大地方便了人们的思考，比如，我
@@ -210,6 +290,7 @@
 Conzilla 一起 google 一下，还会找到我曾经参与的相关讨论。:-)
 </p>
 
+
 <p>
 那么，如果将文学编程、纲要 (outline) 处理的技术应用于物理学的概念整理中，去构造并
 完善一个由物理学概念组成的物理学纲要 (physics outline)，构造一个信息化的物理学科
@@ -217,44 +298,34 @@ Conzilla 一起 google 一下，还会找到我曾经参与的相关讨论。:-)
 这个纲要的整理过程本身也是对物理学科再次认识与学习的过程。这就是本篇博文所欲探讨
 的主旨。
 </p>
+</div>
+</div>
 
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">HyperPhysics 及其中文翻译</h2>
+<div class="outline-text-2" id="text-2">
 <p>
-<b>HyperPhysics 及其中文翻译</b>
-</p>
-<p>
-其实，许多人一直在利用信息技术来服务于物理学，这其中最著名的必然属于 <a href="http://www.w3.org/People/Berners-Lee/">Tim Berners Lee</a>, 他发明了网页技术，就是现代人几乎天天都要使用的 World Wide Web! 而 Tim 最初的
-目的只是让在 CERN 工作的物理学家相互之间方便交流。美国乔治亚州立大学 (Georgia
+其实，许多人一直在利用信息技术来服务于物理学，这其中最著名的必然属于 <a href="http://www.w3.org/People/Berners-Lee/">Tim Berners
+Lee</a>, 他发明了网页技术，就是现代人几乎天天都要使用的 World Wide Web! 而 Tim 最初
+的目的只是让在 CERN 工作的物理学家相互之间方便交流。美国乔治亚州立大学 (Georgia
 State University) 物理系的 Carl R. (Rod) Nave 博士历尽十多年编撰了在线的物理学知
-识网站 &mdash; HyperPhysics[hp:1] , 该网站几乎覆盖了物理学所有领域，是大中学教师、学
-生很好的参考资源，在世界各地每年有着数百万的用户，每年的点击数超过数千万。 2004年
-的时候，当时在加拿大 <a href="http://www.sfu.ca/">SFU</a> 的好友提议将 HyperPhysics 翻译成中文，并建立了海波物理中
-文翻译项目 [hp:2] . 遗憾的是，应者廖廖无法应对海量的翻译工作量，项目目前仍处于搁
-置状态。
+识网站 &#x2014; HyperPhysics<sup><a id="fnr.4" name="fnr.4" class="footref" href="#fn.4">4</a></sup> , 该网站几乎覆盖了物理学所有领域，是大中学教师、
+学生很好的参考资源，在世界各地每年有着数百万的用户，每年的点击数超过数千万。
+2004年的时候，当时在加拿大 <a href="http://www.sfu.ca/">SFU</a> 的好友提议将 HyperPhysics 翻译成中文，并建立了海
+波物理中文翻译项目<sup><a id="fnr.5" name="fnr.5" class="footref" href="#fn.5">5</a></sup> . 遗憾的是，应者廖廖无法应对海量的翻译工作量，项目目
+前仍处于搁置状态。
 </p>
-<p>
-[hp:1] HyperPhysics: <a href="http://hyperphysics.phy-astr.gsu.edu/hbase/hframe.html">http://hyperphysics.phy-astr.gsu.edu/hbase/hframe.html</a>
-</p>
-<p>
-[hp:2] 海波物理中文翻译项目: <a href="http://hep.phys.sfu.ca/d0/zyliu.page/hp_cn/index_trans.html">http://hep.phys.sfu.ca/d0/zyliu.page/hp_cn/index_trans.html</a>
-</p>
-<p>
-在反思海波物理中文翻译项目的过程中，个人认为，除了参与者的热情外，所使用的信息处
-理技术也是导致项目处于搁置状态的原因之一。 HyperPhysics[hp:1] 采用的是静态网页，
-这本身很方便传播，比如用 Web Server, DVD 等，只要有浏览器就可以方便地查看。但静态
-网页并不利于翻译，每个页面中的链接、静态图片、表格等，如果逐一使用 HTML 语法处理
-过来，无疑让工作量大大增加。 HyperPhysics 中最具特色的就是物理学概念链接图，你可
-以从一个图一路链接下去，进行一次物理学概念的回顾。但这些图恰恰是整个翻译项目中非
-常难处理的部分。我最初的猜想是可以使用 GraphViz 自动生成，但这些图之间的相互链接
-又是件非常麻烦的事情。
-</p>
+</div>
+</div>
 
-<p>
-<b>文学编程与物理学纲要</b>
-</p>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">文学编程与物理学纲要</h2>
+<div class="outline-text-2" id="text-3">
 <p>
 在逐渐接触到文学编程、概念图、心智图以及纲要等概念之后，在尝试了一系列的相关软件
 之后，我觉得不妨将文学编程引入到类似于 HyperPhysics 的项目中：
-</p><ul>
+</p>
+<ul class="org-ul">
 <li>原始的文档是文学编程的程序源码。
 </li>
 <li>网页是由这些源码“织出” (weave) 的结果。
@@ -262,14 +333,14 @@ State University) 物理系的 Carl R. (Rod) Nave 博士历尽十多年编撰了
 <li>网页中相关的计算程序（比如质能方程）是由源码“绕出” (tangle) 的结果。
 </li>
 <li>源码可以充分利用现代的版本控制技术 (如 <a href="http://git-scm.com/">git</a>) 进行管理，而分布式版本控制技术也
-    极大地方便了参加者通过网络的协作。
+极大地方便了参加者通过网络的协作。
 </li>
 </ul>
 
-
 <p>
 目前，我能够找到的具备文学编程功能的工具有：
-</p><ul>
+</p>
+<ul class="org-ul">
 <li><a href="http://orgmode.org">Emacs org-mode</a> (我的日常工具)
 </li>
 <li><a href="http://webpages.charter.net/edreamleo/front.html">Leo</a>
@@ -280,73 +351,70 @@ State University) 物理系的 Carl R. (Rod) Nave 博士历尽十多年编撰了
 </li>
 </ul>
 
-
 <p>
 利用文学编程工具来组织的物理学纲要，其结果可能与 HyperPhysics 很相似，也可能有很
 大不同。构造一个类似于 HyperPhysics 的在线物理学知识纲要 (outliner) 站点，可以方
 便学生与学者研习物理学，这是件百利无害之事。但利用哪一种工具来处理这样的项目，要
 达什么样的效果，这也是我想通过本篇博文与大家认真探讨的问题。
 </p>
+
 <p>
 关于这个问题的讨论，有一些内容请直接不要提出：
-</p><ul>
+</p>
+<ul class="org-ul">
 <li>基于微软的技术，如 .NET, Miscrosoft Office 等。从长远来看，这些属于私有的技术
-    都将是昙花一现的东西，并不适用于保存可以流传下去的文档。它们可用于赚钱，但不
-    适用于公益性的项目。
+都将是昙花一现的东西，并不适用于保存可以流传下去的文档。它们可用于赚钱，但不
+适用于公益性的项目。
 </li>
 <li>未列入正规教科书及学术期刊中的内容中，比如许多民科所推介的永动机之类的东西。
 </li>
 </ul>
 
-
 <p>
 对于引入文学编程工具来整理物理学纲要所能达到的效果，有一些初步的设想如下：
-</p><ul>
+</p>
+<ul class="org-ul">
 <li>概念图及其中的链接是自动生成，但结果是静态的页面。
 </li>
 <li>支持 LaTeX 数学公式，导出网页可使用 <a href="http://www.mathjax.org/">MathJax</a> 来显示公式。
 </li>
-<li>支持导出 SVG[w3:1] 矢量图和动画，物理学的运动模型可直接由 SVG 动画来演示。
+<li>支持导出 SVG<sup><a id="fnr.6" name="fnr.6" class="footref" href="#fn.6">6</a></sup> 矢量图和动画，物理学的运动模型可直接由 SVG 动画来演示。
 </li>
 <li>简单的计算，如动力学、质能方程、相对论质量等可由内嵌的代码直接对输入值求结果。
 </li>
 <li>能输出达到出版级的文档，如高质量的 PDF。
 </li>
 <li>源码是采用万国码 (Unicode) 编码实现 (如 UTF-8) 的结构化纯文本，可方便在不同语
-    言之间进行转译，如中文、印地语、阿拉伯文 (从右往左的书写 :-) )。
+言之间进行转译，如中文、印地语、阿拉伯文 (从右往左的书写 :-) )。
 </li>
 <li>版本控制功能可用于追溯某个具体概念的演化过程。
 </li>
 <li>可按时间 (chronal) 及类别 (catagory) 等不同视图来查看物理学科。当然这种查看方
-    式是由程序自动生成的，源码开发者只需要在相应的代码中提供年代信息即可。比如，
-    在核物理纲要源码中只要填写上“1895: 伦琴发现 X 射线”，在时间线上则会自动在这
-    个位置出现相关信息。
+式是由程序自动生成的，源码开发者只需要在相应的代码中提供年代信息即可。比如，
+在核物理纲要源码中只要填写上“1895: 伦琴发现 X 射线”，在时间线上则会自动在这
+个位置出现相关信息。
 </li>
 <li>自动生成 LaTeX 文档中类似的术语表 (glossary).
 </li>
 </ul>
 
-
-<p>
-[w3:1] SVG, 可缩放矢量图形，支持 JavaScript 动画，参见
-       <a href="http://www.w3.org/Graphics/SVG/">http://www.w3.org/Graphics/SVG/</a> 及
-       <a href="http://en.wikipedia.org/wiki/Scalable_Vector_Graphics">http://en.wikipedia.org/wiki/Scalable_Vector_Graphics</a>
-</p>
 <p>
 目前，我所使用的 org-mode 可以达到其中的部分效果，比如导出 LaTeX 公式、内嵌
-JavaScript 程序、采用万国码。但某些功能还需要进一步的程序开发，比如以时间线和类别
-等不同方式来查看源码、自动生成术语表等。而 SVG 是可以内嵌 JS 代码的纯文本，只需要
-对程序开发过程进行规范化即可。整体上来看，如果使用 org-mode, 在此基础上开发一些
-elisp 程序是可以完成目标的，唯一的缺点是对 Emacs 平台的依赖性太强，会让 Windows
-或 VIM 用户有些不爽。另外，我也只是个 elisp 初学者，并且还在期待将 Emacs 用
-Guile 重新编写呢。 :-)
+JavaScript 程序、采用万国码。但某些功能还需要进一步的程序开发，比如以时间线和类
+别等不同方式来查看源码、自动生成术语表等。而 SVG 是可以内嵌 JS 代码的纯文本，只
+需要对程序开发过程进行规范化即可。整体上来看，如果使用 org-mode, 在此基础上开发
+一些 elisp 程序是可以完成目标的，唯一的缺点是对 Emacs 平台的依赖性太强，会让
+Windows 或 VIM 用户有些不爽。另外，我也只是个 elisp 初学者，并且还在期待将 Emacs
+用Guile 重新编写呢。 :-)
 </p>
+
 <p>
 如果使用 Leo 平台，我刚接触这个平台不久，还不太熟悉。因为 Leo 可以内嵌 Python 代
-码，可随时随地进行编程并执行结果，似乎也可以实现目标。目前有些遗憾的是 Leo 对万国
-码的支持不太好，我在 4.9 下尝试将 QuickStart.leo 翻译成中文，结果 node 为 UTF-8
-编码时会导出出错。
+码，可随时随地进行编程并执行结果，似乎也可以实现目标。目前有些遗憾的是 Leo 对万
+国码的支持不太好，我在 4.9 下尝试将 QuickStart.leo 翻译成中文，结果 node 为
+UTF-8 编码时会导出出错。
 </p>
+
 <p>
 如何将文学编程、纲要 (outliner) 等技术应用在物理学的资料整理中，这是我的一些初步
 设想。长期以来未能为海波物理中文翻译项目有所贡献而心有所愧，贡献这一点思路给大家
@@ -354,87 +422,64 @@ Guile 重新编写呢。 :-)
 物理中文翻译这样的项目，属于一种长期持续的公益项目，不仅需要热情，还需要优秀的组
 织与设计，更需要大家的无偿贡献：时间与智力。
 </p>
-  </div>
-  
-  <footer class="well article-footer">
-    发布于 <time datetime="2012-04-27T21:03:00Z"> 2012-04-27 21:03:00</time>.
-    <nav class="tag-cloud">
-      <h1><i class="icon-tags"></i> 相关标签</h1>
-      <ul>
-	<li class="label label-inverse small"><a href="../../../tags/physics.html">Physics</a></li><li class="label label-inverse small"><a href="../../../tags/literateprogramming.html">LiterateProgramming</a></li>
-      </ul>
-    </nav>
-  </footer>
-  <div id="disqus_thread"></div>
-<script type="text/javascript">
-  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-  var disqus_shortname = 'exaos-github'; // required: replace example with your forum shortname
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
 
-  /* * * DON'T EDIT BELOW THIS LINE * * */
-  (function() {
-  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  })();
+<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p class="footpara">
+<a href="http://www.htdp.org/">http://www.htdp.org/</a>
+</p></div>
+
+<div class="footdef"><sup><a id="fn.2" name="fn.2" class="footnum" href="#fnr.2">2</a></sup> <p class="footpara">
+Donald Knuth. "Literate Programming (1984)" in Literate Programming. CSLI, 1992
+</p></div>
+
+<div class="footdef"><sup><a id="fn.3" name="fn.3" class="footnum" href="#fnr.3">3</a></sup> <p class="footpara">
+<a href="http://en.wikipedia.org/wiki/TeX">http://en.wikipedia.org/wiki/TeX</a>
+</p></div>
+
+<div class="footdef"><sup><a id="fn.4" name="fn.4" class="footnum" href="#fnr.4">4</a></sup> <p class="footpara">
+HyperPhysics: <a href="http://hyperphysics.phy-astr.gsu.edu/hbase/hframe.html">http://hyperphysics.phy-astr.gsu.edu/hbase/hframe.html</a>
+</p></div>
+
+<div class="footdef"><sup><a id="fn.5" name="fn.5" class="footnum" href="#fnr.5">5</a></sup> <p class="footpara">
+海波物理中文翻译项目: <a href="http://hep.phys.sfu.ca/d0/zyliu.page/hp_cn/index_trans.html">http://hep.phys.sfu.ca/d0/zyliu.page/hp_cn/index_trans.html</a>
+</p>
+
+<p class="footpara">
+在反思海波物理中文翻译项目的过程中，个人认为，除了参与者的热情外，所使用的信息处
+理技术也是导致项目处于搁置状态的原因之一。 HyperPhysics<sup><a id="fnr.4.100" name="fnr.4.100" class="footref" href="#fn.4">4</a></sup> 采用的是静态网
+页，这本身很方便传播，比如用 Web Server, DVD 等，只要有浏览器就可以方便地查看。
+但静态网页并不利于翻译，每个页面中的链接、静态图片、表格等，如果逐一使用 HTML 语
+法处理过来，无疑让工作量大大增加。 HyperPhysics 中最具特色的就是物理学概念链接图，
+你可以从一个图一路链接下去，进行一次物理学概念的回顾。但这些图恰恰是整个翻译项目
+中非常难处理的部分。我最初的猜想是可以使用 GraphViz 自动生成，但这些图之间的相互
+链接又是件非常麻烦的事情。
+</p></div>
+
+<div class="footdef"><sup><a id="fn.6" name="fn.6" class="footnum" href="#fnr.6">6</a></sup> <p class="footpara">
+SVG, 可缩放矢量图形，支持 JavaScript 动画，参见
+    <a href="http://www.w3.org/Graphics/SVG/">http://www.w3.org/Graphics/SVG/</a> 及
+    <a href="http://en.wikipedia.org/wiki/Scalable_Vector_Graphics">http://en.wikipedia.org/wiki/Scalable_Vector_Graphics</a>
+</p></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<p>版权所有 ©2013: Exaos Lee | Date: <span class="timestamp-wrapper"><span class="timestamp">[2012-04-27 五 21:03]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.50.1 (<a href="http://orgmode.org">Org</a> mode 8.0.5), <a href="http://validator.w3.org/check?uri=referer">Validate</a>, <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a></p>
+<script type="text/javascript">
+  var disqus_shortname = 'exaos-github';
+  (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
-
-      </div>
-      <div id="footer">
-	<div class="container">
-	  <div class="row">
-	    <section class="span3">
-	      <h1>关于</h1>
-	      <p>
-心蛛的个人站点，记录一点私人的收藏或点滴。
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </p>
-	    </section>
-	    <nav id="links" class="span3">
-	      <h1>链接</h1>
-	      <ul>
-		<ul>
-<li><a href="../../../index.html"><i>icon-home icon-white</i> 首页</a>
-
-</li>
-<li><a href="Lisp error in nil: (error ob:post-htmlfile accessing a non-ob:post)"><i>icon-file icon-white</i> 博文</a>
-
-</li>
-<li><a href="../../../tags/index.html"><i>icon-tags icon-white</i> 标签</a>
-
-</li>
-<li><a href="../../../archives.html"><i>icon-list icon-white</i> 归档</a>
-
-</li>
-<li><a href="../../../index.xml"><i>icon-rss icon-white</i> RSS订阅</a>
-</li>
-</ul>
-
-
-	      </ul>
-	    </nav>
-	    <nav id="archives" class="span3">
-	      <h1><a href="../../../archives.html">归档</a></h1>
-	      <ul>
-		<li><a href="../../../blog/2013/03/27_emacs-deft.html">Deft 使用指南</a></li> <li><a href="../../../blog/2013/03/05_fix-bad-ext4.html">修复损坏的 ext4 大分区数据</a></li> <li><a href="../../../blog/2013/03/03_fear-and-death.html">与妻书：《关于生、死与恐惧》</a></li> <li><a href="../../../blog/2013/02/27_wisdom-be-with-you.html">“与智慧同在！”</a></li> <li><a href="../../../blog/2013/02/22_wisdom-in-information-era.html">信息时代的智慧——兼谈科普</a></li> <li><a href="../../../blog/2013/02/15_communicate-effectively.html">[译] 如何高效地交流？</a></li> <li><a href="../../../blog/2013/02/06_my-archiving.html">用户主目录的使用及我的文档管理习惯</a></li> <li><a href="../../../blog/2013/02/04_tagfs-summary.html">标签式文件系统，构想与实现</a></li> <li><a href="../../../blog/2013/02/03_tips-for-new-programming-language.html">[译] 怎样学习一门新的编程语言？</a></li> <li><a href="../../../blog/2013/01/28_recovery-win7-dell-n4110.html">恢复一次严重的系统故障 (Windows 7)</a></li> 
-	      </ul>
-	    </nav>
-	    <nav class="tags span3">
-	      <h1><a href="../../../tags/index.html">标签</a></h1>
-	      <ul>
-  <li style="font-size: 200.00%;"><a href="../../../tags/computer.html">Computer</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/education.html">Education</a></li> <li style="font-size: 100.00%;"><a href="../../../tags/emacs.html">Emacs</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/family.html">Family</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/fonts.html">Fonts</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/health.html">Health</a></li> <li style="font-size: 100.00%;"><a href="../../../tags/infoera.html">InfoEra</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/internet.html">Internet</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/language.html">Language</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/life.html">Life</a></li> <li style="font-size: 100.00%;"><a href="../../../tags/literateprogramming.html">LiterateProgramming</a></li> <li style="font-size: 140.00%;"><a href="../../../tags/mswin.html">MSWIN</a></li> <li style="font-size: 120.00%;"><a href="../../../tags/ocd.html">OCD</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/os.html">OS</a></li> <li style="font-size: 120.00%;"><a href="../../../tags/physics.html">Physics</a></li> <li style="font-size: 100.00%;"><a href="../../../tags/science.html">Science</a></li> <li style="font-size: 100.00%;"><a href="../../../tags/simulation.html">Simulation</a></li> <li style="font-size: 220.00%;"><a href="../../../tags/society.html">Society</a></li> <li style="font-size: 100.00%;"><a href="../../../tags/translation.html">Translation</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/cmake.html">cmake</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/debian.html">debian</a></li> <li style="font-size: 180.00%;"><a href="../../../tags/devel.html">devel</a></li> <li style="font-size: 120.00%;"><a href="../../../tags/geant4.html">geant4</a></li> <li style="font-size: 120.00%;"><a href="../../../tags/orgmode.html">orgmode</a></li> 
-</ul>
-
-	    </nav>
-	  </div>
-	</div>
-	<div class="copyright" style="text-align: center;">
-	  <p>
-版权所有 ©2012 <a href="mailto:exaos.lee(at)gmail.com">心蛛</a>. <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a>
-</p>
-	  <p>功能取自 <a href="https://github.com/renard/o-blog">o-blog</a>.</p>
-	</div>
-      </div>
+</div>
 </body>
 </html>
-

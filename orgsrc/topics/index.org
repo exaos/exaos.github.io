@@ -1,0 +1,39 @@
+# -*- mode: org; coding: utf-8; -*-
+#+SETUPFILE: ../../setup/ox-tmpl/l1.org
+#+HTML_LINK_UP: ../index.html
+#+TITLE: 讨论主题列表
+
+* 科学与宗教
+- 无神的快乐
+- 《宽容》前言：《[[file:sci-vs-religions/pioneer_tolerance-prelude.org][先驱者]]》
+* 核物理与粒子物理
+** 数据分析
+- [[file:data-analysis/cern-root.org][ROOT (CERN) 笔记]]
+- [[file:data-analysis/phy-gamma-span5.org][SPAN5 中的 γ 谱的解谱技术]]
+** 核数据
+- 核数据那些事儿
+** 探测器技术
+** 数据获取
+- 串口编程笔记 
+** 模拟计算
+- [[file:physics-simulation/cern-geant4.org][GEANT4 笔记]]
+* 计算机技术
+- 我的 IT 世界
+- Emacs
+  - Emacs 笔记
+  - Emacs Org-mode 笔记
+- 程序开发笔记
+  - 版本控制系统笔记
+  - 编译系统笔记
+  - 线程笔记
+  - wxWidgets 编程笔记
+  - Python 笔记
+  - Lua 笔记
+  - MS Windows 笔记
+- 操作系统
+  - Linux 笔记
+- 旧的笔记： [[file:softwares/index.org][我的软件笔记]] 及 [[file:softwares/my-favor-softs.org][我喜爱的软件列表]]
+* 语言
+- 语言的成熟度
+- [[file:linguistics/old-notes.org][旧的笔记]]
+* 其它
