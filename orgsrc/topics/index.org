@@ -32,7 +32,7 @@
   - MS Windows 笔记
 - 操作系统
   - Linux 笔记
-- 旧的笔记： [[file:softwares/index.org][我的软件笔记]] 及 [[file:softwares/my-favor-softs.org][我喜爱的软件列表]]
+- 旧的笔记： [[file:../attic/softwares/index.org][我的软件笔记]] 及 [[file:../attic/softwares/my-favor-softs.org][我喜爱的软件列表]]
 * 语言
 - 语言的成熟度
 - [[file:linguistics/old-notes.org][旧的笔记]]

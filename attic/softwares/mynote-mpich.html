@@ -3,8 +3,8 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>出版办公类软件</title>
-<!-- 2013-07-19 五 22:31 -->
+<title>我的 MPICH 笔记</title>
+<!-- 2013-07-21 日 23:16 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 
@@ -215,246 +215,164 @@ for the JavaScript code in this tag.
  |
  <a accesskey="H" href="../../index.html"> HOME </a>
 </div><div id="content">
-<h1 class="title">出版办公类软件</h1>
+<h1 class="title">我的 MPICH 笔记</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">TeX 相关软件</a>
+<li><a href="#sec-1">MPICH2 的初步使用</a>
 <ul>
-<li><a href="#sec-1-1">TeXLive</a></li>
-<li><a href="#sec-1-2">LyX</a></li>
-<li><a href="#sec-1-3">TeXmacs</a></li>
-<li><a href="#sec-1-4">JabRef</a></li>
+<li><a href="#sec-1-1">安装</a></li>
+<li><a href="#sec-1-2">本地测试</a></li>
+<li><a href="#sec-1-3">集群测试</a></li>
 </ul>
 </li>
-<li><a href="#sec-2">所见即所得类办公软件</a>
-<ul>
-<li><a href="#sec-2-1">MS Office</a></li>
-<li><a href="#sec-2-2">OpenOffice.org</a></li>
-<li><a href="#sec-2-3">KOffice</a></li>
-<li><a href="#sec-2-4">iWorks</a></li>
-</ul>
-</li>
-<li><a href="#sec-3">办公杂类</a>
-<ul>
-<li><a href="#sec-3-1">Xmind</a></li>
-<li><a href="#sec-3-2">Task Coach</a></li>
-<li><a href="#sec-3-3">GoldenDict</a></li>
-<li><a href="#sec-3-4">Gnote</a></li>
-<li><a href="#sec-3-5">Personal Brain</a></li>
-</ul>
-</li>
+<li><a href="#sec-2">MPICH2 的性能测试</a></li>
 </ul>
 </div>
 </div>
 
 <div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1">TeX 相关软件</h2>
+<h2 id="sec-1">MPICH2 的初步使用</h2>
 <div class="outline-text-2" id="text-1">
 </div><div id="outline-container-sec-1-1" class="outline-3">
-<h3 id="sec-1-1">TeXLive</h3>
+<h3 id="sec-1-1">安装</h3>
 <div class="outline-text-3" id="text-1-1">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://tug.org/texlive/">http://tug.org/texlive/</a>
-</li>
-<li>简介：一套综合的 TeX 出版系统，提供 Unix, GNU/Linux, Windows 多种平台上的可
-执行代码，包含了所有主要的自由的 TeX 相关程序、宏包、字体，并提供世界上多种
-语言的支持。
-</li>
-<li>备注
-<ul class="org-ul">
-<li>针对 Mac OS X 平台，参见 MacTeX &#x2013; <a href="http://www.tug.org/mactex/">http://www.tug.org/mactex/</a>
-</li>
-<li>针对 Windows 平台，有一个国内整合的 CTeX 套件
-<ul class="org-ul">
-<li><a href="http://www.ctex.org/CTeX">http://www.ctex.org/CTeX</a>
-</li>
-</ul>
-</li>
-<li>针对 Windows 平台的专有套件 &#x2013; <a href="http://www.miktex.org/">http://www.miktex.org/</a>
-</li>
-</ul>
-</li>
-</ul>
+<p>
+参考安装文档，并配置好运行环境。在 Rocks 系统上，可使用 mpi-selector 选择系统安
+装好的 MPICH 环境。
+</p>
 </div>
 </div>
 <div id="outline-container-sec-1-2" class="outline-3">
-<h3 id="sec-1-2">LyX</h3>
+<h3 id="sec-1-2">本地测试</h3>
 <div class="outline-text-3" id="text-1-2">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://www.lyx.org/">http://www.lyx.org/</a>
+<ol class="org-ol">
+<li>启动 <b>mpd</b> 任务管理器
+<pre class="example">
+$ mpd &amp;
+</pre>
 </li>
-<li>简介：底层基于 TeX/LaTeX 的 WYSIWYM 文档处理器，开源免费。
+<li>使用 <b>mpdtrace</b> 查看机器状态，其结果如下所示：
+<pre class="example">
+$ mpdtrace
+ node0
+</pre>
 </li>
-</ul>
+<li>编写测试程序，比如 <code>mpihello.c</code>, 内容可以如下：
+<div class="org-src-container">
+
+<pre class="src src-c"><span style="color: #6495ed; font-style: italic;">#include</span> <span style="color: #ffc1c1;">&lt;stdio.h&gt;</span>
+<span style="color: #6495ed; font-style: italic;">#include</span> <span style="color: #ffc1c1;">&lt;stdlib.h&gt;</span>
+<span style="color: #6495ed; font-style: italic;">#include</span> <span style="color: #ffc1c1;">&lt;mpi.h&gt;</span>
+
+<span style="color: #63b8ff;">int</span> <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">main</span>(<span style="color: #63b8ff;">int</span> <span style="color: #7fffd4;">argc</span>, <span style="color: #63b8ff;">char</span> *<span style="color: #7fffd4;">argv</span>[])
+{
+  <span style="color: #63b8ff;">int</span>  <span style="color: #7fffd4;">numprocs</span>, <span style="color: #7fffd4;">rank</span>, <span style="color: #7fffd4;">namelen</span>;
+  <span style="color: #63b8ff;">char</span> <span style="color: #7fffd4;">processor_name</span>[MPI_MAX_PROCESSOR_NAME];
+
+  MPI_Init(&amp;argc, &amp;argv);
+  MPI_Comm_size(MPI_COMM_WORLD, &amp;numprocs);
+  MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);
+  MPI_Get_processor_name(processor_name, &amp;namelen);
+
+  printf(<span style="color: #ffc1c1;">"Process %d on %s out of %d\n"</span>, rank, processor_name, numprocs);
+
+  MPI_Finalize();
+
+  <span style="color: #00ffff;">return</span> EXIT_SUCCESS;
+}
+</pre>
+</div>
+<p>
+然后使用 <code>mpicc</code> 进行编译：
+</p>
+<pre class="example">
+$ mpicc -o mpihello mpihello.c
+</pre>
+</li>
+<li>使用命令 <code>mpirun</code> 运行编译后的程序
+<pre class="example">
+$ mpirun -np 4 ./mpihello
+Process 1 on node0.hpc.cndc out of 4
+Process 2 on node0.hpc.cndc out of 4
+Process 0 on node0.hpc.cndc out of 4
+Process 3 on node0.hpc.cndc out of 4
+</pre>
+<p>
+其中参数 <code>-np</code> 表示需要使用的 CPU 数目。
+</p>
+</li>
+</ol>
 </div>
 </div>
 <div id="outline-container-sec-1-3" class="outline-3">
-<h3 id="sec-1-3">TeXmacs</h3>
+<h3 id="sec-1-3">集群测试</h3>
 <div class="outline-text-3" id="text-1-3">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://www.texmacs.org/">http://www.texmacs.org/</a>
-</li>
-<li>简介：自由的 WYSIWYW (What You See Is What You Want) 编辑平台，特别针对科学
-家设计。提供丰富的与其它程序关联的前端接口。
-</li>
-<li>备注
-<ul class="org-ul">
-<li>版本 1.0.6 或 1.0.7 中文界面不正常 (TeXmacs] Font fireflysung 11pt at 300
-dpi could not be loaded) 的解决办法
 <ol class="org-ol">
-<li>下载 opendesktop-fonts
-(<a href="ftp://ftp.opendesktop.org.tw/odp/ODOFonts/OpenFonts/">ftp://ftp.opendesktop.org.tw/odp/ODOFonts/OpenFonts/</a>)
+<li>与本地测试同样的步骤，第一步需要启动 mpd 任务守护进程。所不同的是并不是直接
+调用 mpd 进程，而是通过 mpdboot 来启动。
+<ol class="org-ol">
+<li>首先，需要准备一份参与计算的机器列表文件，比如 <code>mpd.hosts</code>, 其内容大致如下：
+<pre class="example">
+compute-0-0
+compute-0-1
+compute-0-4
+compute-0-2
+compute-0-3
+compute-0-5
+</pre>
+<p>
+当然，需要在你的 <code>/etc/hosts</code> 文件中首先定义好所有的主机名。
+</p>
 </li>
-<li>将 odokai.ttf (以前名称为 fireflysung.ttf) 放置到
-$HOME/.TeXmacs/fonts/truetype/ 下
-</li>
-<li>将 odokai.ttf 改名为 fireflysung.ttf
-</li>
-<li>重新启动 TeXmacs
+<li>然后执行 <code>mpdboot</code> 命令
+<pre class="example">
+$ mpdboot -n 6 -f mpd.hosts
+</pre>
 </li>
 </ol>
 </li>
-</ul>
+<li>然后执行 <code>mpdtrace</code> 查看参与计算的节点是否打开
+<pre class="example">
+$ mpdtrace
+node0
+compute-0-0
+compute-0-2
+compute-0-1
+compute-0-4
+compute-0-3
+</pre>
 </li>
-</ul>
-</div>
-</div>
-<div id="outline-container-sec-1-4" class="outline-3">
-<h3 id="sec-1-4">JabRef</h3>
-<div class="outline-text-3" id="text-1-4">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://jabref.sourceforge.net/">http://jabref.sourceforge.net/</a>
+<li>编译测试程序，比如 <code>mpich2</code> 中自带的示例 <code>cpi.c</code>:
+<pre class="example">
+$ mpicc -o cpi cpi.c
+</pre>
 </li>
-<li>简介：使用 Java 开发的 BiBTeX 前端程序，用于管理参考文献。
+<li>使用 <code>mpirun</code> 执行编译后的程序
+<pre class="example">
+$ mpirun -np 6 ./cpi
+Process 0 on node0.hpc.cndc
+Process 2 on compute-0-2.local
+Process 1 on compute-0-0.local
+Process 3 on compute-0-1.local
+Process 4 on compute-0-4.local
+Process 5 on compute-0-3.local
+pi is approximately 3.1416009869231249, Error is 0.0000083333333318
+wall clock time = 0.005853
+</pre>
 </li>
-</ul>
+</ol>
 </div>
 </div>
 </div>
 <div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2">所见即所得类办公软件</h2>
-<div class="outline-text-2" id="text-2">
-</div><div id="outline-container-sec-2-1" class="outline-3">
-<h3 id="sec-2-1">MS Office</h3>
-<div class="outline-text-3" id="text-2-1">
-<ul class="org-ul">
-<li>由 Microsoft 开发的办公套件，不用多说。
-</li>
-<li>我使用过的版本
-<ol class="org-ol">
-<li>Windows 平台 &#x2013; Office 95/97/2000/XP/2003/2007, 
-</li>
-<li>Mac OS X 平台 &#x2013; Office 2004/2008
-</li>
-</ol>
-</li>
-<li>使用很少，仅在需要与领导或者某些除 Office 之外就无法办公的人员交流时才用。
-</li>
-</ul>
-</div>
-</div>
-<div id="outline-container-sec-2-2" class="outline-3">
-<h3 id="sec-2-2">OpenOffice.org</h3>
-<div class="outline-text-3" id="text-2-2">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://www.openoffice.org/">http://www.openoffice.org/</a>
-</li>
-<li>简介：其前身是 StarOffice，被 Sun 公司收购以后，改名为 OpenOffice，并使用开
-源授权 LGPL 发布，目前是 Unix/Linux 界最流行的公办套件之一。OpenOffice.org
-也是 OpenDocument 标准的制订者之一。
-</li>
-</ul>
-</div>
-</div>
-<div id="outline-container-sec-2-3" class="outline-3">
-<h3 id="sec-2-3">KOffice</h3>
-<div class="outline-text-3" id="text-2-3">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://www.koffice.org/">http://www.koffice.org/</a>
-</li>
-<li>简介： KDE 下的集成办公套件。
-</li>
-</ul>
-</div>
-</div>
-<div id="outline-container-sec-2-4" class="outline-3">
-<h3 id="sec-2-4">iWorks</h3>
-<div class="outline-text-3" id="text-2-4">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://www.apple.com/iwork/">http://www.apple.com/iwork/</a>
-</li>
-<li>简介：由 Apple 开发的办公套件，运行于 Mac OS X 平台上，包含字处理 Pages、数据
-表处理 Numbers 和幻灯演示 Keynote。支持 Microsoft Office 文件格式。
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3">办公杂类</h2>
-<div class="outline-text-2" id="text-3">
-</div><div id="outline-container-sec-3-1" class="outline-3">
-<h3 id="sec-3-1">Xmind</h3>
-<div class="outline-text-3" id="text-3-1">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://www.xmind.net/">http://www.xmind.net/</a>
-</li>
-<li>简介：头脑风暴和头脑映射类软件。
-</li>
-</ul>
-</div>
-</div>
-<div id="outline-container-sec-3-2" class="outline-3">
-<h3 id="sec-3-2">Task Coach</h3>
-<div class="outline-text-3" id="text-3-2">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://www.taskcoach.org/">http://www.taskcoach.org/</a>
-</li>
-<li>简介：简洁的任务管理器。
-</li>
-</ul>
-</div>
-</div>
-<div id="outline-container-sec-3-3" class="outline-3">
-<h3 id="sec-3-3">GoldenDict</h3>
-<div class="outline-text-3" id="text-3-3">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://goldendict.berlios.de/">http://goldendict.berlios.de/</a>
-</li>
-<li>简介：字典软件，支持 StarDict 打包的字典文件。
-</li>
-</ul>
-</div>
-</div>
-<div id="outline-container-sec-3-4" class="outline-3">
-<h3 id="sec-3-4">Gnote</h3>
-<div class="outline-text-3" id="text-3-4">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://live.gnome.org/Gnote">http://live.gnome.org/Gnote</a>
-</li>
-<li>简介：Gnome 下的即时贴软件。
-</li>
-</ul>
-</div>
-</div>
-<div id="outline-container-sec-3-5" class="outline-3">
-<h3 id="sec-3-5">Personal Brain</h3>
-<div class="outline-text-3" id="text-3-5">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://www.thebrain.com/">http://www.thebrain.com/</a>
-</li>
-<li>头脑风暴软件。
-</li>
-</ul>
-</div>
-</div>
+<h2 id="sec-2">MPICH2 的性能测试</h2>
 </div>
 </div>
 <div id="postamble" class="status">
 <div id="disqus_thread"></div>
-<p>版权所有 ©2013: Exaos Lee | Date: <span class="timestamp-wrapper"><span class="timestamp">[2011-10-14 五]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.50.1 (<a href="http://orgmode.org">Org</a> mode 8.0.5), <a href="http://validator.w3.org/check?uri=referer">Validate</a>, <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a></p>
+<p>版权所有 ©2013: Exaos Lee | Date: <span class="timestamp-wrapper"><span class="timestamp">[2011-10-14 五]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.0.6), <a href="http://validator.w3.org/check?uri=referer">Validate</a>, <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a></p>
 <script type="text/javascript">
   var disqus_shortname = 'exaos-github';
   (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
