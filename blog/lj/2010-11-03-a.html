@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>JSON 格式的数据与注释</title>
-<!-- 2013-07-23 二 15:22 -->
+<!-- 2013-07-24 三 16:01 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 
@@ -217,24 +217,24 @@ for the JavaScript code in this tag.
 </div><div id="content">
 <h1 class="title">JSON 格式的数据与注释</h1>
 <p>
-JSON 是一种基于文本的数据交换格式。使用中发觉一个缺陷，不支持注释（这点似乎与
-Google ProtocolBuffer 相似）。检索了一下，发现还有其它一些常用的文本格式的数据：
+<a href="http://json.org/">JSON</a> 是一种基于文本的数据交换格式。使用中发觉一个缺陷，不支持注释（这点似乎与
+<a href="https://code.google.com/p/protobuf/">Google ProtocolBuffers</a> 相似）。检索了一下，发现还有其它一些常用的文本格式的数据：
 </p>
 <ol class="org-ol">
-<li>YAML &#x2013; 严格地说， JSON 是 YAML 的一个子集。
+<li><a href="http://yaml.org/">YAML</a> &#x2013; 严格地说， JSON 是 YAML 的一个子集。
 </li>
 <li>Python 嵌套式数据结构
 </li>
-<li>Windows 下的 .ini 格式
+<li>Windows 下的 .ini 格式，即常用的 config 格式。
 </li>
 <li>Mac OS Property lists 格式 (与 JSON 类似)
 </li>
 </ol>
 
 <p>
-目前 YAML 为 1.2 规范，其结构比 JSON 要复杂得多，可参见 <a href="http://www.yaml.org/日常">http://www.yaml.org/日常</a>
-使用中，比较简单的数据，使用 JSON 或者 .ini 格式就可以了。即便需要注释，也可以在
-读取文件后，把内容进行注释过滤，再交由 json 解析器处理即可。比如
+目前 <a href="http://www.yaml.org/">YAML</a> 为 1.2 规范，其结构比 JSON 要复杂得多。日常使用中，比较简单的数据，使
+用 JSON 或者 <code>.ini</code> 格式就可以了。即便需要注释，也可以在读取文件后，把内容进行注
+释过滤，再交由 json 解析器处理即可。比如
 </p>
 <div class="org-src-container">
 
@@ -244,8 +244,8 @@ ss = <span style="color: #e78c45;">filter</span>(f, [l.strip <span style="color:
 </div>
 
 <p>
-这样处理后的 ss 是一个包含字符串的 list, 其中所有以 "#" 开头的注释就全部去除了。
-然后，再执行
+这样处理后的 <code>ss</code> 是一个包含字符串的 <b>list</b>, 其中所有以 "#" 开头的注释就全部去除
+了。然后，再执行
 </p>
 <pre class="example">
 rdict = json.loads("\n".join(ss))
