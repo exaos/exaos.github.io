@@ -9,7 +9,7 @@
 - 2013-03-27: [[file:2013/03/27_emacs-deft.org][Deft 使用指南]]
 - 2013-03-05: [[file:2013/03/05_fix-bad-ext4.org][修复损坏的 ext4 大分区数据]]
 - 2013-03-03: [[file:2013/03/03_fear-and-death.org][与妻书：《关于生、死与恐惧》]]
-- 2012-02-27: [[file:2013/02/27_wisdom-be-with-you.org][“与智慧同在！”]]
+- 2013-02-27: [[file:2013/02/27_wisdom-be-with-you.org][“与智慧同在！”]]
 - 2013-02-22: [[file:2013/02/22_wisdom-in-information-era.org][信息时代的智慧——兼谈科普]]
 - 2013-02-06: [[file:2013/02/06_my-archiving.org][用户主目录的使用及我的文档管理习惯]]
 - 2013-02-04: [[file:2013/02/04_tagfs-summary.org][标签式文件系统，构想与实现]]

@@ -23,6 +23,8 @@
   - Emacs 笔记
   - Emacs Org-mode 笔记
 - 程序开发笔记
+  - C++ 程序开发
+    - [[file:c++11/threading.org][C++11 下的线程开发]]
   - 版本控制系统笔记
   - 编译系统笔记
   - 线程笔记

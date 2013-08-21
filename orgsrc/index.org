@@ -26,6 +26,13 @@ file:images/elqr-256px.png
 本站主要页面均用 Emacs [[http://orgmode.org/][Org-mode]] 自动生成。如若你对其源码感兴趣，请参见目录
 [[file:orgsrc][orgsrc]].
 
+我的 GitHub 项目，请参见 https://github.com/exaos , 相对重要的项目有：
+  - [[https://github.com/cjpl/midas][MIDAS]] -- 数据获取软件 [[http://midas.psi.ch/][MIDAS (PSI)]] 的 镜像。
+  - [[https://github.com/cjpl/caen-suite][CAEN-Suite]] -- 由 CAEN 发布的一些在 Linux 下使用 CAEN 硬件的数据采集代码，主
+    要用于 DT5751 等采波器的控制。
+  - [[https://github.com/smth-emacs/worg-zh][Worg-zh]] -- [[http://orgmode.org/worg/][Worg]] 的镜像及部分中文翻译。
+  - [[https://github.com/exaos/el-scripts][el-scripts]] -- 个人编写的一些零散的代码，另外有一部分代码放在 [[https://gist.github.com/exaos][Exaos' gist]] 上。
+
 #+HTML: <hr />
 - 数字指纹
   : 404E 530C E165 882A 6890  DC5D E10F B984 57D7 5560
