@@ -1,0 +1,191 @@
+# -*- mode: org; coding: utf-8; -*-
+#+SETUPFILE: ../../../setup/ox-tmpl/l2.org
+#+HTML_LINK_UP: ../index.html
+#+TITLE: C++11 中的改变
+
+自从 1998 年 C++ 标准通过后，历经 13 年，新的标准 C++11 才完善。 C++ 发明人
+Bjarne Stroustrup 说“C++11 感觉象一门新语言”。实际上，变化的确很大。不过，最初
+实现垃圾回收的 (GC) 的愿望仍然没有在新标准中体现。
+
+核心语言特性变化分述如后，更多的参见 [[http://www.chenlq.net/cpp11-faq-chs][C++11 FAQ中文版]]。
+
+* Lambda 表达式
+
+基本形式：
+  : [capture] (parameters) -> return-type {body}
+
+假如想计算字符串的大写字母个数，可用如下代码：
+#+BEGIN_SRC c++
+  int main()
+  {
+    char s[]="Hello World!";
+    int Uppercase = 0; //modified by the lambda
+    for_each(s, s+sizeof(s), [&Uppercase] (char c) {
+        if (isupper(c))
+          Uppercase++;
+      });
+    cout<< Uppercase<<" uppercase letters in: "<< s<<endl;
+  }
+#+END_SRC
+
+* 自动类型推导和 =decltype=
+
+以 C++11 中可以不用指定对象类型即可声明一个对象，例如：
+#+BEGIN_SRC c++
+  auto x = 0;   // X 为 int 型，因为 0 属于 int 类型
+  auto c = 'a'; // char
+  auto d = 0.5; // double
+  auto national_debt = 14400000000000LL; // long long
+#+END_SRC
+
+当对象类型很冗长，或者是自动生成的 (如在模版中) 对象，比如：
+#+BEGIN_SRC c++
+  void func(const vector<int> &vi) {
+    vector<int>::const_iterator ci=vi.begin();
+  }
+#+END_SRC
+可以将 iterator 声明改为：
+  : auto ci = vi.begin();
+
+C++11 中提供了一种方法来返回对象或表达式的类型，即新的运算符 =decltype=:
+#+BEGIN_SRC c++
+  const vector<int> vi;
+  typedef decltype (vi.begin()) CIT;
+  CIT another_const_iterator;
+#+END_SRC
+
+* 统一的初始化语法
+
+C++ 至少有四种初始化表达方式，有些是相互重叠的。
+
+参数化初始化象这样：
+#+BEGIN_SRC c++
+  std::string s("hello");
+  int m=int(); //default initialization
+#+END_SRC
+也可以使用 ~=~ 达到同样的目的：
+#+BEGIN_SRC c++
+  std::string s="hello";
+  int x=5;
+#+END_SRC
+对于 POD aggregates, 可使用花括号：
+#+BEGIN_SRC c++
+int arr[4]={0,1,2,3};
+struct tm today={0};
+#+END_SRC
+最终，结构体使用成员初始化方法:
+#+BEGIN_SRC c++
+  struct S {
+    int x;
+    S(): x(0) {}
+  };
+#+END_SRC
+
+方法丰富也容易混淆，这不仅仅是对初学者。在 C++11 中，使用统一的花括号标识：
+#+BEGIN_SRC c++
+  class C {
+    int a;
+    int b;
+  public:
+    C(int i, int j);
+  };
+  
+  C c {0,0}; //C++11 only. Equivalent to: C c(0,0);
+  
+  int* a = new int[3] { 1, 2, 0 }; // C++11 only
+  
+  class X {
+    int a[4];
+  public:
+    X() : a{1,2,3,4} {} //C++11, member array initializer
+  };
+#+END_SRC
+
+对于容器类，可以对 =push_back()= 调用说再见了。在 C++11 中可以这样初始化容器类:
+#+BEGIN_SRC c++
+  // C++11 container initializer
+  vector<string> vs = { "first", "second", "third" };
+  map singers = {{ "Lady Gaga", "+1 (212) 555-7890" },
+                 { "Beyonce Knowles", "+1 (212) 555-0987" }};
+#+END_SRC
+
+同时, C++11 还支持在类中初始化数据成员：
+#+BEGIN_SRC c++
+  class C {
+    int a=7; // C++11 only
+  public:
+    C();
+  };
+#+END_SRC
+
+* =delete= 和 =default= 函数
+
+可以这种形式来声明函数：
+#+BEGIN_SRC c++
+  struct A {
+    A() = default; // C++11
+    virtual ~A()=default; // C++11
+  };
+#+END_SRC
+这样的函数称为 *默认函数*, 其中 ~= default~ 部分告诉编译器要生成默认实现的函数。
+
+与默认函数相反的是 *禁用函数*:
+  : int func() = delete;
+
+禁用函数可用于阻止对象拷贝等。比如：
+#+BEGIN_SRC c++
+  struct NoCopy {
+    NoCopy & operator =( const NoCopy & ) = delete;
+    NoCopy ( const NoCopy & ) = delete;
+  };
+  NoCopy a;
+  NoCopy b(a); //compilation error, copy ctor is deleted
+#+END_SRC
+
+*  空指针 =nullptr=
+
+空指针常量 =nullptr= 替换了问题多多的 =NULL= 宏。空指针 =nullptr= 是强类型的：
+#+BEGIN_SRC c++
+  void f(int); // #1
+  void f(char *);// #2
+  // C++03
+  f(0); // which f is called?
+  // C++11
+  f(nullptr) // unambiguous, calls #2
+#+END_SRC
+
+=nullptr= 适用于所有的指针类别，包括函数指针和数据指针：
+#+BEGIN_SRC c++
+  const char *pc = str.c_str(); // data pointers
+  if (pc!=nullptr)
+    cout << pc << endl;
+  int (A::*pmf)() = nullptr; // pointer to member function
+  void (*pmf)() = nullptr; // pointer to function
+#+END_SRC
+
+* 构造函数委派
+
+C++11 中的构造函数可以调用同一个类的另一个构造函数：
+#+BEGIN_SRC c++
+  class M { // C++11 delegating constructors
+    int x, y;
+    char *p;
+  public:
+    M(int v) : x(v), y(0), p(new char [MAX]) {} //#1 target
+    M(): M(0) {cout<<"delegating ctor"<<endl;} //#2 delegating
+  };
+#+END_SRC
+
+* 右值引用
+
+* 标准类库
+
+** 线程库
+
+** 新的智能指针类
+
+** 新的算法
+
+* COMMENT 参考
+
+http://blog.smartbear.com/c-plus-plus/the-biggest-changes-in-c11-and-why-you-should-care/

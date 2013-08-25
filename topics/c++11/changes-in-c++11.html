@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>C++11 中的改变</title>
+<!-- 2013-08-25 日 09:47 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+
+
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<link rel="alternate stylesheet" type="text/css" href="../../css/worg-zenburn.css" />
+<link rel="alternate stylesheet" type="text/css" href="../../css/worg-classic.css" />
+
+<script type="text/javascript" src="org-info.js">
+/**
+ *
+ * @source: org-info.js
+ *
+ * @licstart  The following is the entire license notice for the
+ *  JavaScript code in org-info.js.
+ *
+ * Copyright (C) 2012-2013  Sebastian Rose
+ *
+ *
+ * The JavaScript code in this tag is free software: you can
+ * redistribute it and/or modify it under the terms of the GNU
+ * General Public License (GNU GPL) as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option)
+ * any later version.  The code is distributed WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+ *
+ * As additional permission under GNU GPL version 3 section 7, you
+ * may distribute non-source (e.g., minimized or compacted) forms of
+ * that code without the copy of the GNU GPL normally required by
+ * section 4, provided you include this license notice and a URL
+ * through which recipients can access the Corresponding Source.
+ *
+ * @licend  The above is the entire license notice
+ * for the JavaScript code in org-info.js.
+ *
+ */
+</script>
+
+<script type="text/javascript">
+
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+
+<!--/*--><![CDATA[/*><!--*/
+org_html_manager.set("TOC_DEPTH", "4");
+org_html_manager.set("LINK_HOME", "../../index.html");
+org_html_manager.set("LINK_UP", "../index.html");
+org_html_manager.set("LOCAL_TOC", "1");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "0");
+org_html_manager.set("TOC", "1");
+org_html_manager.set("VIEW", "info");
+org_html_manager.setup();  // activate after the parameters are set
+/*]]>*///-->
+</script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012  Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href="../index.html"> UP </a>
+ |
+ <a accesskey="H" href="../../index.html"> HOME </a>
+</div><div id="content">
+<h1 class="title">C++11 中的改变</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Lambda 表达式</a></li>
+<li><a href="#sec-2">自动类型推导和 <code>decltype</code></a></li>
+<li><a href="#sec-3">统一的初始化语法</a></li>
+<li><a href="#sec-4"><code>delete</code> 和 <code>default</code> 函数</a></li>
+<li><a href="#sec-5">空指针 <code>nullptr</code></a></li>
+<li><a href="#sec-6">构造函数委派</a></li>
+<li><a href="#sec-7">右值引用</a></li>
+<li><a href="#sec-8">标准类库</a>
+<ul>
+<li><a href="#sec-8-1">线程库</a></li>
+<li><a href="#sec-8-2">新的智能指针类</a></li>
+<li><a href="#sec-8-3">新的算法</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+自从 1998 年 C++ 标准通过后，历经 13 年，新的标准 C++11 才完善。 C++ 发明人
+Bjarne Stroustrup 说“C++11 感觉象一门新语言”。实际上，变化的确很大。不过，最初
+实现垃圾回收的 (GC) 的愿望仍然没有在新标准中体现。
+</p>
+
+<p>
+核心语言特性变化分述如后，更多的参见 <a href="http://www.chenlq.net/cpp11-faq-chs">C++11 FAQ中文版</a>。
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Lambda 表达式</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+基本形式：
+</p>
+<pre class="example">
+[capture] (parameters) -&gt; return-type {body}
+</pre>
+
+<p>
+假如想计算字符串的大写字母个数，可用如下代码：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c++"><span style="color: #e7c547;">int</span> <span style="color: #7aa6da;">main</span>()
+{
+  <span style="color: #e7c547;">char</span> <span style="color: #e78c45;">s</span>[]=<span style="color: #b9ca4a;">"Hello World!"</span>;
+  <span style="color: #e7c547;">int</span> <span style="color: #e78c45;">Uppercase</span> = 0; <span style="color: #969896; font-style: italic;">//</span><span style="color: #969896; font-style: italic;">modified by the lambda</span>
+  for_each(s, s+<span style="color: #c397d8;">sizeof</span>(s), [&amp;Uppercase] (<span style="color: #e7c547;">char</span> <span style="color: #e78c45;">c</span>) {
+      <span style="color: #c397d8;">if</span> (isupper(c))
+        Uppercase++;
+    });
+  cout&lt;&lt; Uppercase&lt;&lt;<span style="color: #b9ca4a;">" uppercase letters in: "</span>&lt;&lt; s&lt;&lt;endl;
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">自动类型推导和 <code>decltype</code></h2>
+<div class="outline-text-2" id="text-2">
+<p>
+以 C++11 中可以不用指定对象类型即可声明一个对象，例如：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c++"><span style="color: #c397d8;">auto</span> <span style="color: #e7c547;">x</span> = 0;   <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">X &#20026; int &#22411;&#65292;&#22240;&#20026; 0 &#23646;&#20110; int &#31867;&#22411;</span>
+<span style="color: #c397d8;">auto</span> <span style="color: #e7c547;">c</span> = <span style="color: #b9ca4a;">'a'</span>; <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">char</span>
+<span style="color: #c397d8;">auto</span> <span style="color: #e7c547;">d</span> = 0.5; <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">double</span>
+<span style="color: #c397d8;">auto</span> <span style="color: #e7c547;">national_debt</span> = 14400000000000LL; <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">long long</span>
+</pre>
+</div>
+
+<p>
+当对象类型很冗长，或者是自动生成的 (如在模版中) 对象，比如：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c++"><span style="color: #e7c547;">void</span> <span style="color: #7aa6da;">func</span>(<span style="color: #c397d8;">const</span> <span style="color: #e7c547;">vector</span>&lt;<span style="color: #e7c547;">int</span>&gt; &amp;<span style="color: #e78c45;">vi</span>) {
+  <span style="color: #70c0b1;">vector</span>&lt;<span style="color: #e7c547;">int</span>&gt;::<span style="color: #e7c547;">const_iterator</span> <span style="color: #e78c45;">ci</span>=vi.begin();
+}
+</pre>
+</div>
+<p>
+可以将 iterator 声明改为：
+</p>
+<pre class="example">
+auto ci = vi.begin();
+</pre>
+
+<p>
+C++11 中提供了一种方法来返回对象或表达式的类型，即新的运算符 <code>decltype</code>:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c++"><span style="color: #c397d8;">const</span> <span style="color: #e7c547;">vector</span>&lt;<span style="color: #e7c547;">int</span>&gt; <span style="color: #e78c45;">vi</span>;
+<span style="color: #c397d8;">typedef</span> <span style="color: #e7c547;">decltype</span> (vi.begin()) CIT;
+<span style="color: #e7c547;">CIT</span> <span style="color: #e78c45;">another_const_iterator</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">统一的初始化语法</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+C++ 至少有四种初始化表达方式，有些是相互重叠的。
+</p>
+
+<p>
+参数化初始化象这样：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c++"><span style="color: #70c0b1;">std</span>::<span style="color: #e7c547;">string</span> <span style="color: #7aa6da;">s</span>(<span style="color: #b9ca4a;">"hello"</span>);
+<span style="color: #e7c547;">int</span> <span style="color: #e78c45;">m</span>=<span style="color: #e7c547;">int</span>(); <span style="color: #969896; font-style: italic;">//</span><span style="color: #969896; font-style: italic;">default initialization</span>
+</pre>
+</div>
+<p>
+也可以使用 <code>=</code> 达到同样的目的：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c++"><span style="color: #70c0b1;">std</span>::<span style="color: #e7c547;">string</span> <span style="color: #e78c45;">s</span>=<span style="color: #b9ca4a;">"hello"</span>;
+<span style="color: #e7c547;">int</span> <span style="color: #e78c45;">x</span>=5;
+</pre>
+</div>
+<p>
+对于 POD aggregates, 可使用花括号：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c++"><span style="color: #e7c547;">int</span> <span style="color: #e78c45;">arr</span>[4]={0,1,2,3};
+<span style="color: #c397d8;">struct</span> <span style="color: #e7c547;">tm</span> <span style="color: #e78c45;">today</span>={0};
+</pre>
+</div>
+<p>
+最终，结构体使用成员初始化方法:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c++"><span style="color: #c397d8;">struct</span> <span style="color: #e7c547;">S</span> {
+  <span style="color: #e7c547;">int</span> <span style="color: #e78c45;">x</span>;
+  <span style="color: #7aa6da;">S</span>(): x(0) {}
+};
+</pre>
+</div>
+
+<p>
+方法丰富也容易混淆，这不仅仅是对初学者。在 C++11 中，使用统一的花括号标识：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c++"><span style="color: #c397d8;">class</span> <span style="color: #e7c547;">C</span> {
+  <span style="color: #e7c547;">int</span> <span style="color: #e78c45;">a</span>;
+  <span style="color: #e7c547;">int</span> <span style="color: #e78c45;">b</span>;
+<span style="color: #c397d8;">public</span>:
+  <span style="color: #7aa6da;">C</span>(<span style="color: #e7c547;">int</span> <span style="color: #e78c45;">i</span>, <span style="color: #e7c547;">int</span> <span style="color: #e78c45;">j</span>);
+};
+
+<span style="color: #e7c547;">C</span> <span style="color: #e78c45;">c</span> {0,0}; <span style="color: #969896; font-style: italic;">//</span><span style="color: #969896; font-style: italic;">C++11 only. Equivalent to: C c(0,0);</span>
+
+<span style="color: #e7c547;">int</span>* <span style="color: #e78c45;">a</span> = <span style="color: #c397d8;">new</span> <span style="color: #e7c547;">int</span>[3] { 1, 2, 0 }; <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">C++11 only</span>
+
+<span style="color: #c397d8;">class</span> <span style="color: #e7c547;">X</span> {
+  <span style="color: #e7c547;">int</span> <span style="color: #e78c45;">a</span>[4];
+<span style="color: #c397d8;">public</span>:
+  <span style="color: #7aa6da;">X</span>() : a{1,2,3,4} {} <span style="color: #969896; font-style: italic;">//</span><span style="color: #969896; font-style: italic;">C++11, member array initializer</span>
+};
+</pre>
+</div>
+
+<p>
+对于容器类，可以对 <code>push_back()</code> 调用说再见了。在 C++11 中可以这样初始化容器类:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c++"><span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">C++11 container initializer</span>
+<span style="color: #e7c547;">vector</span>&lt;<span style="color: #e7c547;">string</span>&gt; <span style="color: #e78c45;">vs</span> = { <span style="color: #b9ca4a;">"first"</span>, <span style="color: #b9ca4a;">"second"</span>, <span style="color: #b9ca4a;">"third"</span> };
+<span style="color: #e7c547;">map</span> <span style="color: #e78c45;">singers</span> = {{ <span style="color: #b9ca4a;">"Lady Gaga"</span>, <span style="color: #b9ca4a;">"+1 (212) 555-7890"</span> },
+               { <span style="color: #b9ca4a;">"Beyonce Knowles"</span>, <span style="color: #b9ca4a;">"+1 (212) 555-0987"</span> }};
+</pre>
+</div>
+
+<p>
+同时, C++11 还支持在类中初始化数据成员：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c++"><span style="color: #c397d8;">class</span> <span style="color: #e7c547;">C</span> {
+  <span style="color: #e7c547;">int</span> <span style="color: #e78c45;">a</span>=7; <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">C++11 only</span>
+<span style="color: #c397d8;">public</span>:
+  <span style="color: #7aa6da;">C</span>();
+};
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><code>delete</code> 和 <code>default</code> 函数</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+可以这种形式来声明函数：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c++"><span style="color: #c397d8;">struct</span> <span style="color: #e7c547;">A</span> {
+  <span style="color: #7aa6da;">A</span>() = <span style="color: #c397d8;">default</span>; <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">C++11</span>
+  <span style="color: #c397d8;">virtual</span> ~<span style="color: #7aa6da;">A</span>()=<span style="color: #c397d8;">default</span>; <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">C++11</span>
+};
+</pre>
+</div>
+<p>
+这样的函数称为 <b>默认函数</b>, 其中 <code>= default</code> 部分告诉编译器要生成默认实现的函数。
+</p>
+
+<p>
+与默认函数相反的是 <b>禁用函数</b>:
+</p>
+<pre class="example">
+int func() = delete;
+</pre>
+
+<p>
+禁用函数可用于阻止对象拷贝等。比如：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c++"><span style="color: #c397d8;">struct</span> <span style="color: #e7c547;">NoCopy</span> {
+  <span style="color: #e7c547;">NoCopy</span> &amp; <span style="color: #c397d8;">operator</span> <span style="color: #7aa6da;">=</span>( <span style="color: #c397d8;">const</span> <span style="color: #e7c547;">NoCopy</span> &amp; ) = <span style="color: #c397d8;">delete</span>;
+  <span style="color: #7aa6da;">NoCopy</span> ( <span style="color: #c397d8;">const</span> <span style="color: #e7c547;">NoCopy</span> &amp; ) = <span style="color: #c397d8;">delete</span>;
+};
+<span style="color: #e7c547;">NoCopy</span> <span style="color: #e78c45;">a</span>;
+<span style="color: #e7c547;">NoCopy</span> <span style="color: #7aa6da;">b</span>(a); <span style="color: #969896; font-style: italic;">//</span><span style="color: #969896; font-style: italic;">compilation error, copy ctor is deleted</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">空指针 <code>nullptr</code></h2>
+<div class="outline-text-2" id="text-5">
+<p>
+空指针常量 <code>nullptr</code> 替换了问题多多的 <code>NULL</code> 宏。空指针 <code>nullptr</code> 是强类型的：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c++"><span style="color: #e7c547;">void</span> <span style="color: #7aa6da;">f</span>(<span style="color: #e7c547;">int</span>); <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">#1</span>
+<span style="color: #e7c547;">void</span> <span style="color: #7aa6da;">f</span>(<span style="color: #e7c547;">char</span> *);<span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">#2</span>
+<span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">C++03</span>
+f(0); <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">which f is called?</span>
+<span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">C++11</span>
+f(nullptr) <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">unambiguous, calls #2</span>
+</pre>
+</div>
+
+<p>
+<code>nullptr</code> 适用于所有的指针类别，包括函数指针和数据指针：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c++"><span style="color: #c397d8;">const</span> <span style="color: #e7c547;">char</span> *<span style="color: #e78c45;">pc</span> = str.c_str(); <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">data pointers</span>
+<span style="color: #c397d8;">if</span> (pc!=nullptr)
+  cout &lt;&lt; pc &lt;&lt; endl;
+<span style="color: #e7c547;">int</span> (<span style="color: #70c0b1;">A</span>::*<span style="color: #7aa6da;">pmf</span>)() = nullptr; <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">pointer to member function</span>
+<span style="color: #e7c547;">void</span> (*<span style="color: #7aa6da;">pmf</span>)() = nullptr; <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">pointer to function</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">构造函数委派</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+C++11 中的构造函数可以调用同一个类的另一个构造函数：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c++"><span style="color: #c397d8;">class</span> <span style="color: #e7c547;">M</span> { <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">C++11 delegating constructors</span>
+  <span style="color: #e7c547;">int</span> <span style="color: #e78c45;">x</span>, <span style="color: #e78c45;">y</span>;
+  <span style="color: #e7c547;">char</span> *<span style="color: #e78c45;">p</span>;
+<span style="color: #c397d8;">public</span>:
+  <span style="color: #7aa6da;">M</span>(<span style="color: #e7c547;">int</span> <span style="color: #e78c45;">v</span>) : x(v), y(0), p(<span style="color: #c397d8;">new</span> <span style="color: #e7c547;">char</span> [MAX]) {} <span style="color: #969896; font-style: italic;">//</span><span style="color: #969896; font-style: italic;">#1 target</span>
+  <span style="color: #7aa6da;">M</span>(): M(0) {cout&lt;&lt;<span style="color: #b9ca4a;">"delegating ctor"</span>&lt;&lt;endl;} <span style="color: #969896; font-style: italic;">//</span><span style="color: #969896; font-style: italic;">#2 delegating</span>
+};
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7">右值引用</h2>
+</div>
+
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8">标准类库</h2>
+<div class="outline-text-2" id="text-8">
+</div><div id="outline-container-sec-8-1" class="outline-3">
+<h3 id="sec-8-1">线程库</h3>
+</div>
+
+<div id="outline-container-sec-8-2" class="outline-3">
+<h3 id="sec-8-2">新的智能指针类</h3>
+</div>
+
+<div id="outline-container-sec-8-3" class="outline-3">
+<h3 id="sec-8-3">新的算法</h3>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<p>版权所有 ©2013: Exaos Lee | Date:  | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.50.1 (<a href="http://orgmode.org">Org</a> mode 8.0.7), <a href="http://validator.w3.org/check?uri=referer">Validate</a>, <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a></p>
+<script type="text/javascript">
+  var disqus_shortname = 'exaos-github';
+  (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</p>
+</div>
+</body>
+</html>

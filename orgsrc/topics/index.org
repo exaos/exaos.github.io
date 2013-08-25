@@ -39,3 +39,5 @@
 - 语言的成熟度
 - [[file:linguistics/old-notes.org][旧的笔记]]
 * 其它
+- 自闭症
+  - [[file:autism/change-for-autism.org][有一种爱叫“为你而改变”]]
