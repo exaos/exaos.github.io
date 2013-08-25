@@ -1,7 +1,7 @@
 # -*- mode: org; coding: utf-8; -*-
 #+SETUPFILE: ../../../setup/ox-tmpl/l2.org
 #+HTML_LINK_UP: ../index.html
-#+TITLE: C++11 中的改变
+#+TITLE: C++11 中的新特性
 
 自从 1998 年 C++ 标准通过后，历经 13 年，新的标准 C++11 才完善。 C++ 发明人
 Bjarne Stroustrup 说“C++11 感觉象一门新语言”。实际上，变化的确很大。不过，最初
