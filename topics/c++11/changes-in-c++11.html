@@ -3,8 +3,8 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>C++11 中的改变</title>
-<!-- 2013-08-25 日 09:47 -->
+<title>C++11 中的新特性</title>
+<!-- 2013-08-25 日 11:24 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 
@@ -215,7 +215,7 @@ for the JavaScript code in this tag.
  |
  <a accesskey="H" href="../../index.html"> HOME </a>
 </div><div id="content">
-<h1 class="title">C++11 中的改变</h1>
+<h1 class="title">C++11 中的新特性</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
@@ -227,7 +227,7 @@ for the JavaScript code in this tag.
 <li><a href="#sec-5">空指针 <code>nullptr</code></a></li>
 <li><a href="#sec-6">构造函数委派</a></li>
 <li><a href="#sec-7">右值引用</a></li>
-<li><a href="#sec-8">标准类库</a>
+<li><a href="#sec-8">STL 标准类库</a>
 <ul>
 <li><a href="#sec-8-1">线程库</a></li>
 <li><a href="#sec-8-2">新的智能指针类</a></li>
@@ -328,7 +328,7 @@ C++ 至少有四种初始化表达方式，有些是相互重叠的。
 </p>
 
 <p>
-参数化初始化象这样：
+参数的初始化象这样：
 </p>
 <div class="org-src-container">
 
@@ -336,6 +336,7 @@ C++ 至少有四种初始化表达方式，有些是相互重叠的。
 <span style="color: #e7c547;">int</span> <span style="color: #e78c45;">m</span>=<span style="color: #e7c547;">int</span>(); <span style="color: #969896; font-style: italic;">//</span><span style="color: #969896; font-style: italic;">default initialization</span>
 </pre>
 </div>
+
 <p>
 也可以使用 <code>=</code> 达到同样的目的：
 </p>
@@ -345,6 +346,7 @@ C++ 至少有四种初始化表达方式，有些是相互重叠的。
 <span style="color: #e7c547;">int</span> <span style="color: #e78c45;">x</span>=5;
 </pre>
 </div>
+
 <p>
 对于 POD aggregates, 可使用花括号：
 </p>
@@ -354,6 +356,7 @@ C++ 至少有四种初始化表达方式，有些是相互重叠的。
 <span style="color: #c397d8;">struct</span> <span style="color: #e7c547;">tm</span> <span style="color: #e78c45;">today</span>={0};
 </pre>
 </div>
+
 <p>
 最终，结构体使用成员初始化方法:
 </p>
@@ -403,7 +406,7 @@ C++ 至少有四种初始化表达方式，有些是相互重叠的。
 </div>
 
 <p>
-同时, C++11 还支持在类中初始化数据成员：
+同时, C++11 还支持在类定义中初始化数据成员：
 </p>
 <div class="org-src-container">
 
@@ -508,21 +511,131 @@ C++11 中的构造函数可以调用同一个类的另一个构造函数：
 </div>
 <div id="outline-container-sec-7" class="outline-2">
 <h2 id="sec-7">右值引用</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+旧版本中赋值语句的右边永不会改变，这样做数值交换时往往效率很低，比如：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c++"><span style="color: #e7c547;">void</span> <span style="color: #7aa6da;">naiveswap</span>(<span style="color: #e7c547;">string</span> &amp;<span style="color: #e78c45;">amp</span>;a, <span style="color: #e7c547;">string</span> &amp;<span style="color: #e78c45;">amp</span>;b) {
+  <span style="color: #e7c547;">string</span> <span style="color: #e78c45;">temp</span> = a;
+  a=b;
+  b=temp;
+}
+</pre>
+</div>
+<p>
+在交换数据时如果只是拷贝指针，而不需要再进行内存分配，这会很高效。比如：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c++"><span style="color: #e7c547;">void</span> <span style="color: #7aa6da;">moveswapstr</span>(<span style="color: #e7c547;">string</span>&amp; <span style="color: #e78c45;">empty</span>, <span style="color: #e7c547;">string</span> &amp; <span style="color: #e78c45;">filled</span>) {
+  <span style="color: #969896; font-style: italic;">//</span><span style="color: #969896; font-style: italic;">pseudo code, but you get the idea</span>
+  <span style="color: #e7c547;">size_t</span> <span style="color: #e78c45;">sz</span>  =  empty.size();
+  <span style="color: #c397d8;">const</span> <span style="color: #e7c547;">char</span> *<span style="color: #e78c45;">p</span> = empty.data();
+  <span style="color: #969896; font-style: italic;">//</span><span style="color: #969896; font-style: italic;">move filled's resources to empty</span>
+  empty.setsize(filled.size());
+  empty.setdata(filled.data());
+  <span style="color: #969896; font-style: italic;">//</span><span style="color: #969896; font-style: italic;">filled becomes empty</span>
+  filled.setsize(sz);
+  filled.setdata(p);
+}
+</pre>
 </div>
 
+<p>
+C++11 中引入“右值引用” (R-value reference), 标识为：
+</p>
+<pre class="example">
+typename &amp;&amp;
+</pre>
+<p>
+它实现了 move semantics 操作，与上述的拷贝指针操作类似，不再需要重新分配内存。
+C++11 STL 中广泛使用了右值引用，很多算法和容器的性能都被优化。
+</p>
+</div>
+</div>
 <div id="outline-container-sec-8" class="outline-2">
-<h2 id="sec-8">标准类库</h2>
+<h2 id="sec-8">STL 标准类库</h2>
 <div class="outline-text-2" id="text-8">
 </div><div id="outline-container-sec-8-1" class="outline-3">
 <h3 id="sec-8-1">线程库</h3>
-</div>
+<div class="outline-text-3" id="text-8-1">
+<p>
+线程类涉及两个部分内容：
+</p>
+<ol class="org-ol">
+<li>多个线程在一个进程中共存的模型；
+</li>
+<li>对线程之间的交互提供支持。
+</li>
+</ol>
 
+<p>
+参考: <a href="http://www.devx.com/SpecialReports/Article/38883">Simpler Multithreading in C++0x</a>
+</p>
+</div>
+</div>
 <div id="outline-container-sec-8-2" class="outline-3">
 <h3 id="sec-8-2">新的智能指针类</h3>
+<div class="outline-text-3" id="text-8-2">
+<p>
+在 C++11 中，以前的 <code>auto_ptr</code> 用法被废弃，新引入了两个指针类：
+</p>
+<ul class="org-ul">
+<li><code>shared_ptr</code> &#x2013; 单纯的引用计数指针。
+</li>
+<li><code>unique_ptr</code> &#x2013; 取代 <code>auto_ptr</code>.
+</li>
+</ul>
 </div>
-
+</div>
 <div id="outline-container-sec-8-3" class="outline-3">
 <h3 id="sec-8-3">新的算法</h3>
+<div class="outline-text-3" id="text-8-3">
+<p>
+定义了一些新的算法： <code>all_of()</code>, <code>any_of()</code>, <code>none_of()</code>. 例如，将判断函数
+<code>ispositive()</code> 应用到列表的范围 <code>[first,first+n]</code> 中：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c++"><span style="color: #c397d8;">#include</span> <span style="color: #b9ca4a;">&lt;algorithm&gt;</span>  <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">C++11 code</span>
+<span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">&#20840;&#37096;&#20803;&#32032;&#37117;&#26159;&#27491;&#30340;&#65311;</span>
+all_of(first, first+n, ispositive()); <span style="color: #969896; font-style: italic;">//</span><span style="color: #969896; font-style: italic;">false</span>
+<span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">&#33267;&#23569;&#26377;&#19968;&#20010;&#20026;&#27491;&#30340;&#65311;</span>
+any_of(first, first+n, ispositive());<span style="color: #969896; font-style: italic;">//</span><span style="color: #969896; font-style: italic;">true</span>
+<span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">&#19968;&#20010;&#27491;&#30340;&#37117;&#27809;&#26377;&#21527;&#65311;</span>
+none_of(first, first+n, ispositive()); <span style="color: #969896; font-style: italic;">//</span><span style="color: #969896; font-style: italic;">false</span>
+</pre>
+</div>
+
+<p>
+新的 <code>copy_n</code> 算法。比如用 <code>copy_n()</code> 来拷贝数组中的 5 个元素到另一个中：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c++"><span style="color: #c397d8;">#include</span>
+<span style="color: #e7c547;">int</span> <span style="color: #e78c45;">source</span>[5]={0,12,34,50,80};
+<span style="color: #e7c547;">int</span> <span style="color: #e78c45;">target</span>[5];
+<span style="color: #969896; font-style: italic;">//</span><span style="color: #969896; font-style: italic;">copy 5 elements from source to target</span>
+copy_n(source,5,target);
+</pre>
+</div>
+
+<p>
+新算法 <code>iota()</code> 可用于创建值递增的序列：给 <code>*first</code> 赋个初值，后序的每个元素逐个
+加一。比如：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c++"><span style="color: #e7c547;">include</span> &lt;numeric&gt;
+<span style="color: #e7c547;">int</span>  a[5] = {0};
+<span style="color: #e7c547;">char</span> <span style="color: #e78c45;">c</span>[3] = {0};
+iota(a, a+5, 10);  <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">&#23558; a &#21464;&#20026; {10,11,12,13,14}</span>
+iota(c, c+3, <span style="color: #b9ca4a;">'a'</span>); <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">&#23558; c &#21464;&#20026; {'a','b','c'}</span>
+</pre>
+</div>
+</div>
 </div>
 </div>
 </div>

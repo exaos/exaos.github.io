@@ -78,7 +78,7 @@ autismus, 用来定义社交障碍的症状。英语中的新词 *autism* 自 19
 英国将 2002 年声明为“自闭症告之年”。联合国大会于 2007 年通过决议，将每年的 4
 月 2 日定为“世界自闭症日”。
 
-#+HTML: <img alt="帝国大厦点亮蓝光行动照片" width="50%" style="align:center" src="http://www.lightitupblue.org/karmaimages/images/lightitup/empireStateBuilding.jpg">
+#+HTML: <img alt="帝国大厦点亮蓝光行动照片" width="50%" style="float:middle" src="http://www.lightitupblue.org/karmaimages/images/lightitup/empireStateBuilding.jpg">
 
 2013 年 4 月 2 日晚，纽约曼哈顿的帝国大厦，顶楼的灯光突然全部转换成亮蓝色，这是在
 为庆祝第六个“世界自闭症日”所发起的一项“点亮蓝灯” ([[http://www.lightitupblue.org/][Light It Up Blue]]) 行动，它

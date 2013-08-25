@@ -58,21 +58,24 @@ C++11 中提供了一种方法来返回对象或表达式的类型，即新的�
 
 C++ 至少有四种初始化表达方式，有些是相互重叠的。
 
-参数化初始化象这样：
+参数的初始化象这样：
 #+BEGIN_SRC c++
   std::string s("hello");
   int m=int(); //default initialization
 #+END_SRC
+
 也可以使用 ~=~ 达到同样的目的：
 #+BEGIN_SRC c++
   std::string s="hello";
   int x=5;
 #+END_SRC
+
 对于 POD aggregates, 可使用花括号：
 #+BEGIN_SRC c++
 int arr[4]={0,1,2,3};
 struct tm today={0};
 #+END_SRC
+
 最终，结构体使用成员初始化方法:
 #+BEGIN_SRC c++
   struct S {
@@ -109,7 +112,7 @@ struct tm today={0};
                  { "Beyonce Knowles", "+1 (212) 555-0987" }};
 #+END_SRC
 
-同时, C++11 还支持在类中初始化数据成员：
+同时, C++11 还支持在类定义中初始化数据成员：
 #+BEGIN_SRC c++
   class C {
     int a=7; // C++11 only
@@ -178,13 +181,82 @@ C++11 中的构造函数可以调用同一个类的另一个构造函数：
 
 * 右值引用
 
-* 标准类库
+旧版本中赋值语句的右边永不会改变，这样做数值交换时往往效率很低，比如：
+#+BEGIN_SRC c++
+  void naiveswap(string &amp;a, string &amp;b) {
+    string temp = a;
+    a=b;
+    b=temp;
+  }
+#+END_SRC
+在交换数据时如果只是拷贝指针，而不需要再进行内存分配，这会很高效。比如：
+#+BEGIN_SRC c++
+  void moveswapstr(string& empty, string & filled) {
+    //pseudo code, but you get the idea
+    size_t sz  =  empty.size();
+    const char *p = empty.data();
+    //move filled's resources to empty
+    empty.setsize(filled.size());
+    empty.setdata(filled.data());
+    //filled becomes empty
+    filled.setsize(sz);
+    filled.setdata(p);
+  }
+#+END_SRC
+
+C++11 中引入“右值引用” (R-value reference), 标识为：
+  : typename &&
+它实现了 move semantics 操作，与上述的拷贝指针操作类似，不再需要重新分配内存。
+C++11 STL 中广泛使用了右值引用，很多算法和容器的性能都被优化。
+
+* STL 标准类库
 
 ** 线程库
 
+线程类涉及两个部分内容：
+  1) 多个线程在一个进程中共存的模型；
+  2) 对线程之间的交互提供支持。
+
+参考: [[http://www.devx.com/SpecialReports/Article/38883][Simpler Multithreading in C++0x]]
+
 ** 新的智能指针类
 
+在 C++11 中，以前的 =auto_ptr= 用法被废弃，新引入了两个指针类：
+  - =shared_ptr= -- 单纯的引用计数指针。
+  - =unique_ptr= -- 取代 =auto_ptr=.
+
 ** 新的算法
+
+定义了一些新的算法： =all_of()=, =any_of()=, =none_of()=. 例如，将判断函数
+=ispositive()= 应用到列表的范围 =[first,first+n]= 中：
+#+BEGIN_SRC c++
+  #include <algorithm>  // C++11 code
+  // 全部元素都是正的？
+  all_of(first, first+n, ispositive()); //false
+  // 至少有一个为正的？
+  any_of(first, first+n, ispositive());//true
+  // 一个正的都没有吗？
+  none_of(first, first+n, ispositive()); //false
+#+END_SRC
+
+新的 =copy_n= 算法。比如用 =copy_n()= 来拷贝数组中的 5 个元素到另一个中：
+#+BEGIN_SRC c++
+  #include
+  int source[5]={0,12,34,50,80};
+  int target[5];
+  //copy 5 elements from source to target
+  copy_n(source,5,target);
+#+END_SRC
+
+新算法 =iota()= 可用于创建值递增的序列：给 =*first= 赋个初值，后序的每个元素逐个
+加一。比如：
+#+BEGIN_SRC c++
+  include <numeric>
+  int  a[5] = {0};
+  char c[3] = {0};
+  iota(a, a+5, 10);  // 将 a 变为 {10,11,12,13,14}
+  iota(c, c+3, 'a'); // 将 c 变为 {'a','b','c'}
+#+END_SRC
 
 * COMMENT 参考
 
