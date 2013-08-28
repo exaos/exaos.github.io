@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>探矿的“火眼金睛”</title>
+<!-- 2013-08-28 三 10:03 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+
+
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<link rel="alternate stylesheet" type="text/css" href="../../css/worg-zenburn.css" />
+<link rel="alternate stylesheet" type="text/css" href="../../css/worg-classic.css" />
+
+<script type="text/javascript" src="org-info.js">
+/**
+ *
+ * @source: org-info.js
+ *
+ * @licstart  The following is the entire license notice for the
+ *  JavaScript code in org-info.js.
+ *
+ * Copyright (C) 2012-2013  Sebastian Rose
+ *
+ *
+ * The JavaScript code in this tag is free software: you can
+ * redistribute it and/or modify it under the terms of the GNU
+ * General Public License (GNU GPL) as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option)
+ * any later version.  The code is distributed WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+ *
+ * As additional permission under GNU GPL version 3 section 7, you
+ * may distribute non-source (e.g., minimized or compacted) forms of
+ * that code without the copy of the GNU GPL normally required by
+ * section 4, provided you include this license notice and a URL
+ * through which recipients can access the Corresponding Source.
+ *
+ * @licend  The above is the entire license notice
+ * for the JavaScript code in org-info.js.
+ *
+ */
+</script>
+
+<script type="text/javascript">
+
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+
+<!--/*--><![CDATA[/*><!--*/
+org_html_manager.set("TOC_DEPTH", "4");
+org_html_manager.set("LINK_HOME", "../../index.html");
+org_html_manager.set("LINK_UP", "../index.html");
+org_html_manager.set("LOCAL_TOC", "1");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "0");
+org_html_manager.set("TOC", "1");
+org_html_manager.set("VIEW", "info");
+org_html_manager.setup();  // activate after the parameters are set
+/*]]>*///-->
+</script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012  Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href="../index.html"> UP </a>
+ |
+ <a accesskey="H" href="../../index.html"> HOME </a>
+</div><div id="content">
+<h1 class="title">探矿的“火眼金睛”</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">什么是缪子？</a></li>
+<li><a href="#sec-2">什么是地质断层成像？</a></li>
+<li><a href="#sec-3">缪子探测与缪子成像</a></li>
+<li><a href="#sec-4">缪子地质断层成像在探矿中的应用</a></li>
+</ul>
+</div>
+</div>
+<p>
+《西游记》第七回，孙悟空的一双眼被太上老君的炼丹炉熏红了，弄做个老害病眼，故唤作
+“火眼金睛”。但这双眼睛可不简单，不仅能看出妖精原形，还能够隔板看物，在第 46 回
+悟空就凭这个本事狠狠地戏弄了一把车迟国国师。如今，随着科学与技术的发展，这样隔物
+看物的“火眼金睛”在现实中已经很普遍的，比如在地铁与机场里，随处都可见到的 X-光
+安检系统。今天要说的是一种用于勘探矿区的“火眼金睛”——基于缪子的地质断层成像。
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">什么是缪子？</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+我们目光所及的物质都可以一层层地拆分下去：宏观结构、微观结构、分子结构，直到原子
+结构。原子是由原子核与核外电子构成的，而原子核又是由质子与中子构成，质子与中子统
+称为核子。核子本身也是有结构的，它们由更基本的粒子构成。
+</p>
+
+<p>
+标准模型是现代粒子物理学的核心，它可以用来解释我们这个宇宙是由哪些最基本的粒子构
+成的。标准模型告诉我们，这个宇宙的可见物质由两大类基本粒子构成——费米子与玻色子，
+费米子是组成物质的基本粒子，而玻色子则负责在在物质之间传递各种相互作用的力。光子
+是最常见的玻色子，它传递电磁相互作用；在夸克之间传递强相互作用的是胶子；在夸克、
+轻子之前传递弱相互作用的是 W 与 Z 玻色子；而在所有物质之间传递引力相互作用的是希
+格斯子，也称引力子。标准模型预言的所有基本粒子目前都已经找到了。费米子主要包括夸
+克与轻子，而我们的核子是由六种夸克中的上夸克与下夸克组合而成，围绕原子核旋转的电
+子则属于轻子。轻子家族中，电子属于第一代，第二代轻子叫缪子 (muon, 即 μ-子), 第
+三代叫陶子 (tauon, 即 τ-子), 电子、缪子和陶子还分别拥有各自对应的中微子。目前还
+没有发现任何轻子具有内部结构，轻子与物质之间主要是电磁与弱相互作用。
+</p>
+
+<p>
+缪子的基本性质与电子相似，但它的质量约为电子的 200 倍，故可以将它想象成一个加重
+的电子。缪子在 1936 年被发现，起初它被称为缪介子。后来的研究发现，它没有强相互作
+用，其基本性质属于轻子，而介子是由夸克构成的并具有强相互作用，故称其为缪介子是错
+误的<sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup>。所以，它现在只有唯一的名称，就是缪子。因缪子与电子性质类似，故可用缪
+子取代电子，形成一种类似原子的结构，这种结构称为缪原子。这种奇异的原子结构已经超
+出了我们目前的化学元素周期表。比起位于化学元素周期表中的电子原子，缪原子具有更小
+的库仑位垒，故可能有一些特殊用途，比如用来产生室温下的冷聚变。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">什么是地质断层成像？</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+在物理学上，任何射线或能量波经物体表面反射或者穿透物体之后被探测到，均可成像。最
+常见的就是可见光成像，其它广泛用于成像的还有红外线、电子、超声波、X-光等。随着核
+物理与粒子物理学发展，人们对基本粒子的认识越来越透彻，探测技术越来越先进，利用常
+见粒子的成像技术也随之成熟，比如中子照相、伽玛照相已经有广泛应用。
+</p>
+
+<p>
+随着计算机技术的发展，计算机辅助断层成像 (CAT: Computer Aided Tomography) 与扫描
+技术变得非常成熟, X-光机与 CT 已经变成了医院里的标准配置。计算机辅助断层成像一般
+需要使用 X-光、超声波、地震波或者电磁波作为相应的能量波，能量波在物质中会被反射、
+衰减或吸收，在适当的位置对通过物质的能量波进行探测，根据能量波的变化再通过软件可
+以计算出被探测物体的形状或成分等。
+</p>
+
+<p>
+“ <b>地质断层成像</b> ”的英文为 geotomography<sup><a id="fnr.2" name="fnr.2" class="footref" href="#fn.2">2</a></sup>, 由词根 geo- (代表地理的、地
+层的) 和 tomography (断层成像) 构成。将计算机辅助断层成像的技术应用在地质上，通
+过分散在地表或地面以下不同位置的发射装置来发射能量波，再于恰当的位置对能量波进行
+探测，通过软件技术对地层的结构进行成像，这就是现代地质断层成像的主要原理。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">缪子探测与缪子成像</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+缪子穿透物质过程中会因为电离与放射性过程而损失能量，其中放射性过程包括轫致辐射、
+直接产生正负电子对和光核相互作用。电离是缪子穿透物质的主要能量损失方式。对缪子的
+探测相对比较容易，而且由于它没有强相互作用，探测精度很高，本底也很小。
+</p>
+
+<p>
+缪子的探测分为两个过程：首先是粒子鉴别，即把缪子与其它粒子区别开来；然后是缪子的
+具体参数，比如能量与位置等。由于宇宙射线缪子通常能量很高，很少有粒子象缪子那样能
+够穿过大体积的吸收体而只损失很少的能量，可依据这个特点很容易识别缪子。常见的缪子
+探测器有闪烁体、气体电离室等。通常闪烁体探测器只作为缪子计数器，即记录有多少个缪
+子通过。对缪子详细参数的探测常使用气体电离室探测器，比如漂移管、阴极条状腔室
+(CSC: cathode strip chambers) 等，它们可用于测量缪子位置与能量。
+</p>
+
+<p>
+宇宙射线产生的缪子与阳光一样，是天然的射线源。随着缪子探测技术的成熟，利用这个天
+然射线源进行成像也是很自然的选择。缪子成像技术虽然说不上很新，但应用并不广泛，其
+中比较有特色的有：
+</p>
+<ul class="org-ul">
+<li>1955 年, E.P. George 等人利用缪子成像测量了隧道上的覆盖物，这是缪子成像应用
+的最早案例。
+</li>
+<li>1970 年, L.W. Alvarez 等人利用缪子测量了位于埃及开罗西南处约 20 公里的吉萨第
+二大金字塔卡夫拉，确认了其中并不象其它的金字塔那样存在额外的墓室<sup><a id="fnr.5" name="fnr.5" class="footref" href="#fn.5">5</a></sup>。
+</li>
+<li>2010 年，日本东京地震研究所发表了利用缪子成像对浅间活火山进行轴向成像的结果，
+其精度为 100 米，可以看到火山内部的详细结构<sup><a id="fnr.6" name="fnr.6" class="footref" href="#fn.6">6</a></sup>。
+</li>
+<li>在德克萨斯大学奥斯汀分校还有一个玛雅缪子研究组<sup><a id="fnr.7" name="fnr.7" class="footref" href="#fn.7">7</a></sup>, 他们利用缪子成像来
+研究玛雅金字塔遗迹，获得其覆盖层的三维图像。
+</li>
+<li>由于缪子与高原子序数的核相互作用明显，它很容易用于识别较重的燃料核素，因此，
+将缪子成像技术用在核反应堆上，对运行中的反应堆的内部结构尤其是其中的燃料棒进
+行监视，也就顺理成章了。日本<sup><a id="fnr.8" name="fnr.8" class="footref" href="#fn.8">8</a></sup> 与美国<sup><a id="fnr.9" name="fnr.9" class="footref" href="#fn.9">9</a></sup> 今年分别发表了这方面研
+究的论文。
+</li>
+</ul>
+
+<p>
+对金字塔、火山进行的成像即属于地质断层成像。由于缪子能够穿透很深的地层，利用缪子
+进行地质断层成像，即便是很深的地层对于缪子成像探测器来讲，也像半透明的玻璃一样，
+可以“看”得很清楚。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">缪子地质断层成像在探矿中的应用</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+由于矿石的密度通常比普通的岩石要大，那么，能否利用缪子地质断层成像获得一个矿区详
+细的矿石储量与分布呢？答案是肯定的。但能够对多大范围的矿区进行成像，采用哪种探测
+器成本更低廉，哪种分析方法更高效，这些非常具体的技术细节决定了这种技术的实用性。
+</p>
+
+<p>
+科学研究一般是利用已知去认识未知。对于缪子地质断层成像应用于矿区勘探，我们已经知
+道的是缪子性质、探测方法、可参考的一般成像方法，所未知的是需要哪种探测器、哪种分
+析算法，以及采用某种方案最终能够达到什么效果。要知道未知的参数，就需要实施实验来
+测量，甚至需要反复的实验来进一步核实并提高精度。
+</p>
+
+<p>
+由于核物理与粒子物理的实验设备通常很昂贵，过程很复杂，但物理学在定量方面是其它学
+科难以比拟的，也这使得物理研究可以在实施实验之前进行非常充分的计算。在计算机没有
+充分发展以前，通常会利用已知的数据与规律做一些初步计算，比如利用缪子在物质穿越过
+程中的能量损失公式来计算所需要的探测器厚度与可能响应等。计算机技术的进步，不仅让
+计算速度更快，也改善了物理学研究的实验过程。以赌城蒙特卡罗所命名的数学方法发展于
+二十世纪四十年代，它的突出特点是可以将一些过于复杂的计算简化成符合一定规则的随机
+过程，从而让一些看似无法解决的计算变得可能，在计算机性能极大提高的情况下，又使得
+许多计算可以很高效。现代的核物理与粒子物理研究，在实验之前通常会利用蒙特卡罗方法
+对方案进行非常仔细的模拟计算，利用计算机排除一大类不合理的或无效的方案，挑选出合
+理的、效率最高的方案。在实施具体的缪子断层成像实验之前，我们可以把整个实验方案设
+计编制成计算机程序，利用专门的蒙特卡罗方法仿照真实的情况对整个实验进行模拟，从而
+在进行实际的测量之前对其结果有一个准确的估计。
+</p>
+
+<p>
+对缪子断层成像探矿的模拟，可预先假设一个地层状态与矿区的分布，将整个假设的情形在
+程序中进行描述；然后把地面缪子束流的分布情况作为参数输入到程序中，利用蒙特卡罗方
+法模拟这些缪子在地层中的输运过程；再把探测器也放置到模拟程序中，计算在探测器能够
+探测到的缪子。这样模拟得到的是对观测数据的预测情形。在实际成像中，我们需要的是通
+过观测的数据反推出实际的三给岩层与矿区结构，利用观测数据的进行反向推导的过程在实
+验数据分析中也称为反演过程。实验方案与反演算法构成了缪子断层成像探矿的核心。
+</p>
+
+<p>
+加拿大 AAPS 与 TRIUMF 实验室首次将缪子断层成像应用在矿区勘探上<sup><a id="fnr.10" name="fnr.10" class="footref" href="#fn.10">10</a></sup>, 他们可
+以对数公里范围内几百米深的矿区进行成像，其精度达到 1 平方米。
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p class="footpara">
+目前，许多中文科普文章或百科类网站上仍然将缪子称为缪介子，比如百度百科中
+关于 <a href="http://baike.baidu.com/view/948638.htm">π 介子</a> 的介绍，这是错误的。
+</p>
+
+<p class="footpara">
+缪子因为质量大，它受磁场的加速与偏转均比电子要慢，也不太容易发出轫致辐射，这使得
+它在物质中要比电子穿透得更深。通常的放射性衰变、核裂变，甚至是核聚变都无法产生缪
+子。地球上的缪子主要来自宇宙射线。所谓的宇宙射线，指的是太空中的高能粒子流，它的
+主要成分是由恒星抛射出来的质子。这些高能质子与外层大气分子发生碰撞，生成了派介子
+(pion, 或 pi-meson, π-介子), 然后派介子再衰变成缪子和中微子，产生的缪子几乎以光
+速冲向地面，可以穿透很深的地层。四川锦屏山地下实验室是目前世界上最深的地下实验室，
+其岩层厚度约 2700 米，在这么深的地下仍然可以探测到来自宇宙射线的缪子。
+</p>
+
+<p class="footpara">
+缪子很不稳定，其静止寿命为 2.2 微秒，这个寿命对大多数高能粒子而言已经是“长寿”
+了。但是，以光速飞行 2.2 微秒只能运动大约 660 米，而缪子通常在地面以上 15 千米的
+高空产生，为什么还能在地下 2 千米处测量到宇宙射线产生的缪子呢？这是因为相对论的
+钟慢效应, 2.2 微秒是在缪子自身静止参照系中的时间，当它以接近光速运动时，在地面看
+来，它的寿命很长，长到足够穿透数千米深的地层。缪子通常会通过弱相互作用衰变为一个
+电子、一个反电子中微子和一个缪子中微子。
+</p></div>
+
+<div class="footdef"><sup><a id="fn.2" name="fn.2" class="footnum" href="#fnr.2">2</a></sup> <p class="footpara">
+这是一个新的领域, geotomography 目前还没有恰当的中文译名，本文翻译为
+“地质断层成像”尚属首次。
+</p>
+
+
+<div id="fig:tuebingen" class="figure">
+<p><img src="http://www.geophysics.uni-tuebingen.de/fileadmin/research/shallow/outcrop.gif" alt="outcrop.gif" />
+</p>
+<p><span class="figure-number">Figure 1:</span> 德国图宾根大学所做的 GPR 地质断层成像示意图</p>
+</div>
+
+<p class="footpara">
+地质断层成像最常用的手段是地面穿透雷达，即 GPR<sup><a id="fnr.3" name="fnr.3" class="footref" href="#fn.3">3</a></sup> 技术。它通过雷达天线向地
+面发射高频电磁波 (通常在 40 到 1500 兆赫), 再于另一个位置利用雷达接收器接收反射
+的电磁波。缓慢在地表移动发射天线，可以得到连续的地表层成像。 GPR 的探测深度与地
+层的情况有关，在干燥的砂砾型地表上，探测深度可接近 8 米，但很少能够超过 10 米。
+德国图宾根大学曾利用地面穿透雷达技术尝试进行地质断层成像<sup><a id="fnr.4" name="fnr.4" class="footref" href="#fn.4">4</a></sup>，该技术可以对
+河谷内的沉积结构与水文特征进行高精度成像，是水文地质研究的利器。
+</p></div>
+
+<div class="footdef"><sup><a id="fn.3" name="fn.3" class="footnum" href="#fnr.3">3</a></sup> <p class="footpara">
+Ground-Penetrating Radar, 参见美国环境保护署 (EPA) 对
+<a href="http://www.epa.gov/esd/cmb/GeophysicsWebsite/pages/reference/methods/Surface_Geophysical_Methods/Electromagnetic_Methods/Ground-Penetrating_Radar.htm">Ground-Penetrating Radar</a> 概念的介绍，它属于“无损探测”(NDT: Nondestructive
+Testing) 技术的一种。
+</p></div>
+
+<div class="footdef"><sup><a id="fn.4" name="fn.4" class="footnum" href="#fnr.4">4</a></sup> <p class="footpara">
+<a href="http://www.geophysics.uni-tuebingen.de/index.php?id=52">http://www.geophysics.uni-tuebingen.de/index.php?id=52</a>
+</p>
+
+<p class="footpara">
+缪子能够穿透千米深的地层，这个距离把地面穿透雷达能够达到的深度甩得很远。如果把缪
+子作为穿透射线，则可以研究更深范围的地层，听上去主意不错哦？
+</p></div>
+
+<div class="footdef"><sup><a id="fn.5" name="fn.5" class="footnum" href="#fnr.5">5</a></sup> <p class="footpara">
+L. Alvarez <i>et al.</i> 1970, <b>Science</b>, 167, 832-839,
+<a href="10.1126/science.167.3919.832.5-59">10.1126/science.167.3919.832.5-59</a>
+</p></div>
+
+<div class="footdef"><sup><a id="fn.6" name="fn.6" class="footnum" href="#fnr.6">6</a></sup> <p class="footpara">
+<b>Three-dimensional computational axial tomography scan of a volcano with
+cosmic ray muon radiography</b>, Hiroyuki K. M. Tanaka, Dec. 2010,
+<a href="10.1029/2010JB007677">10.1029/2010JB007677</a>
+</p></div>
+
+<div class="footdef"><sup><a id="fn.7" name="fn.7" class="footnum" href="#fnr.7">7</a></sup> <p class="footpara">
+<a href="http://www.hep.utexas.edu/mayamuon/">http://www.hep.utexas.edu/mayamuon/</a>
+</p></div>
+
+<div class="footdef"><sup><a id="fn.8" name="fn.8" class="footnum" href="#fnr.8">8</a></sup> <p class="footpara">
+Prog. Theor. Exp. Phys. (2013) 073C01, <a href="10.1093/ptep/ptt046">10.1093/ptep/ptt046</a>
+</p></div>
+
+<div class="footdef"><sup><a id="fn.9" name="fn.9" class="footnum" href="#fnr.9">9</a></sup> <p class="footpara">
+J. Appl. Phys. 113, 184909 (2013); <a href="10.1063/1.4804660">10.1063/1.4804660</a>
+</p></div>
+
+<div class="footdef"><sup><a id="fn.10" name="fn.10" class="footnum" href="#fnr.10">10</a></sup> <p class="footpara">
+参见 <a href="http://www.aapsinc.com/technologies/geotomography/">http://www.aapsinc.com/technologies/geotomography/</a> 及
+<a href="http://www.physics.sfu.ca/events/eventitem?id=742">http://www.physics.sfu.ca/events/eventitem?id=742</a>
+</p>
+
+<br>
+
+<p class="footpara">
+悟空的“火眼金睛”神妙无比，但科学拥有比神话更神奇的眼睛，在这双眼睛下，隔物看物
+实在是太小儿科了。物理学上的粒子探测器就是这种神奇的“眼睛”之一，它上天入地，几
+乎能够探知到我们周围所有的空间。
+</p></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<p>版权所有 ©2013: Exaos Lee | Date:  | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.50.1 (<a href="http://orgmode.org">Org</a> mode 8.0.7), <a href="http://validator.w3.org/check?uri=referer">Validate</a>, <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a></p>
+<script type="text/javascript">
+  var disqus_shortname = 'exaos-github';
+  (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</p>
+</div>
+</body>
+</html>
