@@ -35,9 +35,6 @@
 出了我们目前的化学元素周期表。比起位于化学元素周期表中的电子原子，缪原子具有更小
 的库仑位垒，故可能有一些特殊用途，比如用来产生室温下的冷聚变。
 
-[fn:1] 目前，许多中文科普文章或百科类网站上仍然将缪子称为缪介子，比如百度百科中
-关于 [[http://baike.baidu.com/view/948638.htm][π 介子]] 的介绍，这是错误的。
-
 缪子因为质量大，它受磁场的加速与偏转均比电子要慢，也不太容易发出轫致辐射，这使得
 它在物质中要比电子穿透得更深。通常的放射性衰变、核裂变，甚至是核聚变都无法产生缪
 子。地球上的缪子主要来自宇宙射线。所谓的宇宙射线，指的是太空中的高能粒子流，它的
@@ -71,9 +68,6 @@
 过分散在地表或地面以下不同位置的发射装置来发射能量波，再于恰当的位置对能量波进行
 探测，通过软件技术对地层的结构进行成像，这就是现代地质断层成像的主要原理。
 
-[fn:name] 这是一个新的领域, geotomography 目前还没有恰当的中文译名，本文翻译为
-“地质断层成像”尚属首次。
-
 #+CAPTION: 德国图宾根大学所做的 GPR 地质断层成像示意图
 #+LABEL: fig:tuebingen
 http://www.geophysics.uni-tuebingen.de/fileadmin/research/shallow/outcrop.gif
@@ -84,12 +78,6 @@ http://www.geophysics.uni-tuebingen.de/fileadmin/research/shallow/outcrop.gif
 层的情况有关，在干燥的砂砾型地表上，探测深度可接近 8 米，但很少能够超过 10 米。
 德国图宾根大学曾利用地面穿透雷达技术尝试进行地质断层成像[fn:ut-de]，该技术可以对
 河谷内的沉积结构与水文特征进行高精度成像，是水文地质研究的利器。
-
-[fn:gpr] Ground-Penetrating Radar, 参见美国环境保护署 (EPA) 对
-[[http://www.epa.gov/esd/cmb/GeophysicsWebsite/pages/reference/methods/Surface_Geophysical_Methods/Electromagnetic_Methods/Ground-Penetrating_Radar.htm][Ground-Penetrating Radar]] 概念的介绍，它属于“无损探测”(NDT: Nondestructive
-Testing) 技术的一种。
-
-[fn:ut-de] http://www.geophysics.uni-tuebingen.de/index.php?id=52
 
 缪子能够穿透千米深的地层，这个距离把地面穿透雷达能够达到的深度甩得很远。如果把缪
 子作为穿透射线，则可以研究更深范围的地层，听上去主意不错哦？
@@ -131,18 +119,6 @@ Testing) 技术的一种。
 进行地质断层成像，即便是很深的地层对于缪子成像探测器来讲，也像半透明的玻璃一样，
 可以“看”得很清楚。
 
-[fn:1mt] L. Alvarez /et al./ 1970, *Science*, 167, 832-839,
-doi:10.1126/science.167.3919.832.5-59
-
-[fn:jp] *Three-dimensional computational axial tomography scan of a volcano with
-cosmic ray muon radiography*, Hiroyuki K. M. Tanaka, Dec. 2010,
-doi:10.1029/2010JB007677
-
-[fn:maya] http://www.hep.utexas.edu/mayamuon/
-
-[fn:r-jp] Prog. Theor. Exp. Phys. (2013) 073C01, doi:10.1093/ptep/ptt046
-
-[fn:r-us] J. Appl. Phys. 113, 184909 (2013); doi:10.1063/1.4804660
 
 * 缪子地质断层成像在探矿中的应用
 
@@ -180,14 +156,40 @@ doi:10.1029/2010JB007677
 加拿大 AAPS 与 TRIUMF 实验室首次将缪子断层成像应用在矿区勘探上[fn:aaps], 他们可
 以对数公里范围内几百米深的矿区进行成像，其精度达到 1 平方米。
 
-[fn:aaps] 参见 http://www.aapsinc.com/technologies/geotomography/ 及
-http://www.physics.sfu.ca/events/eventitem?id=742
-
-#+HTML: <br>
+#+HTML: <hr>
 
 悟空的“火眼金睛”神妙无比，但科学拥有比神话更神奇的眼睛，在这双眼睛下，隔物看物
 实在是太小儿科了。物理学上的粒子探测器就是这种神奇的“眼睛”之一，它上天入地，几
 乎能够探知到我们周围所有的空间。
+
+
+[fn:1] 目前，许多中文科普文章或百科类网站上仍然将缪子称为缪介子，比如百度百科中
+关于 [[http://baike.baidu.com/view/948638.htm][π 介子]] 的介绍，这是错误的。
+
+[fn:name] 这是一个新的领域, geotomography 目前还没有恰当的中文译名，本文翻译为
+“地质断层成像”尚属首次。
+
+[fn:gpr] Ground-Penetrating Radar, 参见美国环境保护署 (EPA) 对
+[[http://www.epa.gov/esd/cmb/GeophysicsWebsite/pages/reference/methods/Surface_Geophysical_Methods/Electromagnetic_Methods/Ground-Penetrating_Radar.htm][Ground-Penetrating Radar]] 概念的介绍，它属于“无损探测”(NDT: Nondestructive
+Testing) 技术的一种。
+
+[fn:ut-de] http://www.geophysics.uni-tuebingen.de/index.php?id=52
+
+[fn:1mt] L. Alvarez /et al./ 1970, *Science*, 167, 832-839,
+doi:10.1126/science.167.3919.832.5-59
+
+[fn:jp] *Three-dimensional computational axial tomography scan of a volcano with
+cosmic ray muon radiography*, Hiroyuki K. M. Tanaka, Dec. 2010,
+doi:10.1029/2010JB007677
+
+[fn:maya] http://www.hep.utexas.edu/mayamuon/
+
+[fn:r-jp] Prog. Theor. Exp. Phys. (2013) 073C01, doi:10.1093/ptep/ptt046
+
+[fn:r-us] J. Appl. Phys. 113, 184909 (2013); doi:10.1063/1.4804660
+
+[fn:aaps] 参见 http://www.aapsinc.com/technologies/geotomography/ 及
+http://www.physics.sfu.ca/events/eventitem?id=742
 
 * COMMENT 参考
 
