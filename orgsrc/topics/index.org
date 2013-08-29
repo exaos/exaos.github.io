@@ -12,8 +12,8 @@
 - [[file:data-analysis/phy-gamma-span5.org][SPAN5 中的 γ 谱的解谱技术]]
 ** 核数据
 - 核数据那些事儿
-** 探测器技术
-   - [[file:physics-eyes/muon_geotomography.org][探矿的“火眼金睛”]]
+** 探测器技术与应用
+   - [[file:physics-eyes/muon_geotomography.org][缪子断层成像]]
 ** 数据获取
 - 串口编程笔记 
 ** 模拟计算
