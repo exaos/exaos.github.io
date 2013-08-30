@@ -13,7 +13,7 @@
 ** 核数据
 - 核数据那些事儿
 ** 探测器技术与应用
-   - [[file:physics-eyes/muon_geotomography.org][缪子断层成像]]
+   - [[file:physics-eyes/muon_geotomography.org][看穿大地的“眼睛”]]
 ** 数据获取
 - 串口编程笔记 
 ** 模拟计算
