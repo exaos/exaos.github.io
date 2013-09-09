@@ -3,10 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>心蛛小站</title>
-<!-- 2013-09-09 一 16:27 -->
+<title>Emacs 中的时间计算</title>
+<!-- 2013-09-09 一 16:28 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
+
 
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -86,9 +87,9 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" type="text/css" href="css/worg.css" />
-<link rel="alternate stylesheet" type="text/css" href="css/worg-zenburn.css" />
-<link rel="alternate stylesheet" type="text/css" href="css/worg-classic.css" />
+<link rel="stylesheet" type="text/css" href="../../../css/worg.css" />
+<link rel="alternate stylesheet" type="text/css" href="../../../css/worg-zenburn.css" />
+<link rel="alternate stylesheet" type="text/css" href="../../../css/worg-classic.css" />
 
 <script type="text/javascript" src="org-info.js">
 /**
@@ -150,13 +151,13 @@ for the JavaScript code in this tag.
 
 <!--/*--><![CDATA[/*><!--*/
 org_html_manager.set("TOC_DEPTH", "4");
-org_html_manager.set("LINK_HOME", "");
-org_html_manager.set("LINK_UP", "");
+org_html_manager.set("LINK_HOME", "../../../index.html");
+org_html_manager.set("LINK_UP", "../../index.html");
 org_html_manager.set("LOCAL_TOC", "1");
 org_html_manager.set("VIEW_BUTTONS", "0");
 org_html_manager.set("MOUSE_HINT", "underline");
 org_html_manager.set("FIXED_TOC", "0");
-org_html_manager.set("TOC", "0");
+org_html_manager.set("TOC", "1");
 org_html_manager.set("VIEW", "info");
 org_html_manager.setup();  // activate after the parameters are set
 /*]]>*///-->
@@ -209,90 +210,147 @@ for the JavaScript code in this tag.
 </script>
 </head>
 <body>
-<div id="content">
-<h1 class="title">心蛛小站</h1>
-<div class="intro" style="font-size:120%;">
-<ul class="org-ul">
-<li><a href="blog/index.html">博客</a> &#x2013; 随手写的一点东西，未经分类。
-</li>
-<li><a href="topics/index.html">话题列表</a> &#x2013; 收集一些我感兴趣的话题。
-</li>
-<li><a href="trans/index.html">翻译练习</a> &#x2013; 为练习语言，或者看到一些好玩的东西，做一下简单的转译。
-</li>
-<li><a href="attic/index.html">旧档案</a> &#x2013; 收集或过去自已写的一些东西，未经归类。
-</li>
-<li><a href="https://github.com/exaos">GitHub 项目</a> 中相对重要的收藏有：
-<ul class="org-ul">
-<li><a href="https://github.com/cjpl/midas">MIDAS</a> &#x2013; 数据获取软件 <a href="http://midas.psi.ch/">MIDAS (PSI)</a> 的 镜像。
-</li>
-<li><a href="https://github.com/cjpl/caen-suite">CAEN-Suite</a> &#x2013; 在 Linux 下使用 CAEN 硬件的数据采集代码。
-</li>
-<li><a href="https://github.com/exaos/el-scripts">el-scripts</a> &#x2013; 个人编写的一些零散的代码，
-</li>
-<li>另有部分代码放在 <a href="https://gist.github.com/exaos">我的 gist</a> 上。
-</li>
-</ul>
-</li>
-<li><a href="changelog.html">本站变更记录</a>
-</li>
-</ul>
-</div>
-<hr />
-
+<div id="org-div-home-and-up">
+ <a accesskey="h" href="../../index.html"> UP </a>
+ |
+ <a accesskey="H" href="../../../index.html"> HOME </a>
+</div><div id="content">
+<h1 class="title">Emacs 中的时间计算</h1>
 <p>
-近期文章列表：
+我每天都要面对 Emacs 好多个小时，也逐渐熟悉了它的许多特性，其中之一就是时间的计
+算。我们可以在 Python 中很方便地使用 <code>time</code> 模块进行日期计算，新的 C++11 中引入
+的 <code>std::chrono</code> 让时间计算也很简洁，当然，这些对于成熟的 Emacs Lisp 来说，更不
+是问题。
 </p>
-<ul class="org-ul">
-<li>2013-09-09: <a href="blog/2013/09/09_date-caclc-in-emacs.html">Emacs 中的时间计算</a>
-</li>
-<li>2013-09-06: 译 &#x2013; <a href="trans/theories-play-early-childhood-edu.html">早期儿童教育中一些关于游戏的理论</a>
-</li>
-<li>2013-09-04: <a href="topics/autism/stemcells4autism.html">干细胞治疗儿童自闭症——骗局还是希望？</a>
-</li>
-<li>2013-08-29: <a href="topics/physics-eyes/muon_geotomography.html">看穿大地的“眼睛”</a>
-</li>
-<li>2013-08-25: <a href="topics/autism/change-for-autism.html">有一种爱叫“为你而改变”</a>
-</li>
-<li>2013-07-12: 译 &#x2013; <a href="trans/20130321-nature/slow-science.html">缓慢的科学</a> (2013-03-21, 《自然》报道)
-</li>
-<li>2013-07-10: 译 &#x2013; <a href="trans/20130326/particle-physics-for-life.html">粒子物理如何改进你的生活</a>
-</li>
-<li>2013-07-10: <a href="blog/2013/07/10_be-a-happy-atheist.html">做快乐的无神论者</a>
-</li>
-<li>2013-02-27: <a href="blog/2013/02/27_wisdom-be-with-you.html">“与智慧同在！”</a>
-</li>
-<li>2013-02-22: <a href="blog/2013/02/22_wisdom-in-information-era.html">信息时代的智慧</a>
-</li>
-</ul>
 
 <p>
-我的数字指纹
+时间包含两部分内容，一个是时间长度——时、分、秒，一个是时间点——某年某月某日。如果
+要编写一段小程序，在每天可以自动显示儿子成长的时间，就需要把他出生的时间点作为参
+数，自动提取当前时间进行计算即可。如何实现呢？
+</p>
+
+<p>
+Emacs Lisp 中的时间结构如下:
 </p>
 <pre class="example">
-404E 530C E165 882A 6890  DC5D E10F B984 57D7 5560
+`(SEC-HIGH SEC-LOW MICROSEC PICOSEC)
 </pre>
+<p>
+后面的两个值可依次省略。浮点时间以秒为单位，计算公式如下：
+</p>
+<ul class="org-ul">
+<li>t = <code>SEC-HIGH</code> * 2**16 + <code>SEC-LOW</code> + <code>MICROSEC</code> * 1e-6 + <code>PICOSEC</code> * 1e-9
+</li>
+</ul>
 
 <p>
-个人图标： <a href="images/exaos-logo.svg"><img src="images/exaos-logo-80px.png" alt="exaos-logo-80px.png" /></a>, 意为 Exaos Lee 的首字母合写。
+Emacs Lisp 中有关时间操作的基本函数有：
+</p>
+<ul class="org-ul">
+<li><code>current-time-string &amp;optional time-value</code>
+</li>
+<li><code>current-time</code>
+</li>
+<li><code>float-time &amp;optional time-value</code>
+</li>
+<li><code>current-time-zone &amp;optional time-value</code>
+</li>
+</ul>
+
+<p>
+Emacs 中进行时间计算的基本函数:
+</p>
+<ul class="org-ul">
+<li><code>decode-time &amp;optional time</code> &#x2013; 时间编码，将 time 值转换成历法信息。
+</li>
+<li><code>encode-time seconds minutes hour day month year &amp;optional zone</code> &#x2013; 时间解码，
+与 <code>decode-time</code> 功能相反。
+</li>
+<li><code>date-to-time string</code>
+</li>
+<li><code>format-time-string format-string &amp;optional time universal</code>, libc
+</li>
+<li><code>seconds-to-time seconds</code>
+</li>
+<li><code>format-seconds format-string seconds</code>
+</li>
+</ul>
+
+<p>
+对于日历计算，在 Emacs 内部转换始终使用格里高利历，历法日期包含九项内容：
+</p>
+<pre class="example">
+(SECONDS MINUTES HOUR DAY MONTH YEAR DOW DST ZONE)
+</pre>
+<p>
+其中:
+</p>
+<ul class="org-ul">
+<li><code>SECONDS</code>, <code>MINUTES</code>, <code>HOUR</code>, <code>DAY</code>, <code>MONTH</code>, <code>YEAR</code> 意思不用多说了。
+</li>
+<li><code>DOW</code>, 指的是 the day of week, 即每周的第几天，其中 0 表示周日。
+</li>
+<li><code>DST</code>, 即 daylight saving time, 夏令时修正
+</li>
+<li><code>ZONE</code>, 指的是时区，即与格林威治时间相关的秒数。
+</li>
+</ul>
+<p>
+上述内容除了 <code>DAY</code> 与 <code>MONTH</code> 外，均从 0 开始计数。特别注意的是: 0 年表示 1
+B.C., 因此 -37 则表示公元前 38 年。
 </p>
 
-
-<div class="figure">
-<p><img src="images/elqr-256px.png" alt="elqr-256px.png" style="float:right" width="128" />
+<p>
+除了公历外, Emacs 还支持犹太历、伊斯兰历、玛雅历等，当然包括中国的农历。
 </p>
+
+<p>
+那么，计算成长时间的方法就很简单了，相应的 elisp 程序如下：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-elisp">(setq lubo-birth-time (encode-time 0 50 8 12 12 2011)) <span style="color: #969896; font-style: italic;">;; </span><span style="color: #969896; font-style: italic;">&#20986;&#29983;&#26085;&#26399;</span>
+(setq the-date-time (current-time)) <span style="color: #969896; font-style: italic;">;; </span><span style="color: #969896; font-style: italic;">&#24403;&#21069;&#26102;&#38388;</span>
+(setq life-time (time-subtract the-date-time lubo-birth-time)) <span style="color: #969896; font-style: italic;">;; </span><span style="color: #969896; font-style: italic;">&#26102;&#38388;&#24046;</span>
+(format-seconds <span style="color: #b9ca4a;">"%Y, %D, %H, %M%z"</span> (float-time life-time))
+</pre>
 </div>
 
 <p>
-我的哲学: <b>KISS</b> = Keep It Simple and Stupid. 
+其实，一天严格来说并不是 86400 秒，一年也不是严格的 365 天，因此，在计算日期差时，
+可以更精确一些。可以定义了一个函数，用于交互式显示成长日期：
 </p>
+<div class="org-src-container">
+
+<pre class="src src-elisp"><span style="color: #969896; font-style: italic;">;; </span><span style="color: #969896; font-style: italic;">&#26174;&#31034;&#20799;&#23376;&#30340;&#25104;&#38271;&#26102;&#38388;</span>
+(<span style="color: #c397d8;">defun</span> <span style="color: #7aa6da;">lubo-live-time</span> ()
+  <span style="color: #969896;">"Display the live time of my son."</span>
+  (interactive)
+  (<span style="color: #c397d8;">let*</span>
+      ((birth-time (encode-time 0 50 8 12 12 2011))
+       (live-time  (time-subtract (current-time) birth-time))
+       (lt-secs    (float-time live-time)))
+    (message
+     (format <span style="color: #b9ca4a;">"Lubo: %d days; %.2f months; %.2f weeks; -- %s"</span>
+             (floor (/ lt-secs 86400))
+             (/ lt-secs 2628000) <span style="color: #969896; font-style: italic;">;; </span><span style="color: #969896; font-style: italic;">1 y = 12 m, 1 m ~= 30.4166667 d</span>
+             (/ lt-secs 604800)
+             (format-seconds <span style="color: #b9ca4a;">"%Y, %D, %H, %M%z"</span> lt-secs)
+             ))))
+</pre>
+</div>
 
 <p>
-喜欢简单的生活，喜欢简单的快乐，喜欢所有新鲜的东西。
+把上述代码添加到 <code>.emacs</code> 中，这样，随时想到儿子，我按一下 <code>M-x lubo-live-time</code>
+命令，就可以很开心地看到一串字符了：
 </p>
+<pre class="example">
+Lubo: 637 days; 20.95 months; 91.04 weeks; -- 1 year, 272 days, 7 hours, 33 minutes
+</pre>
 </div>
 <div id="postamble" class="status">
 <div id="disqus_thread"></div>
-<p>版权所有 ©2013: 心蛛 | Date:  | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.50.1 (<a href="http://orgmode.org">Org</a> mode 8.0.7), <a href="http://validator.w3.org/check?uri=referer">Validate</a>, <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a></p>
+<p>版权所有 ©2013: 心蛛 | Date: <span class="timestamp-wrapper"><span class="timestamp">[2013-09-09 一]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.50.1 (<a href="http://orgmode.org">Org</a> mode 8.0.7), <a href="http://validator.w3.org/check?uri=referer">Validate</a>, <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a></p>
 <script type="text/javascript">
   var disqus_shortname = 'exaos-github';
   (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
