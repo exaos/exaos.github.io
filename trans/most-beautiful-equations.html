@@ -1,0 +1,731 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>世界上那些最美的方程</title>
+<!-- 2013-09-11 三 11:57 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+
+
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/worg.css" />
+<link rel="alternate stylesheet" type="text/css" href="../css/worg-zenburn.css" />
+<link rel="alternate stylesheet" type="text/css" href="../css/worg-classic.css" />
+
+<script type="text/javascript" src="org-info.js">
+/**
+ *
+ * @source: org-info.js
+ *
+ * @licstart  The following is the entire license notice for the
+ *  JavaScript code in org-info.js.
+ *
+ * Copyright (C) 2012-2013  Sebastian Rose
+ *
+ *
+ * The JavaScript code in this tag is free software: you can
+ * redistribute it and/or modify it under the terms of the GNU
+ * General Public License (GNU GPL) as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option)
+ * any later version.  The code is distributed WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+ *
+ * As additional permission under GNU GPL version 3 section 7, you
+ * may distribute non-source (e.g., minimized or compacted) forms of
+ * that code without the copy of the GNU GPL normally required by
+ * section 4, provided you include this license notice and a URL
+ * through which recipients can access the Corresponding Source.
+ *
+ * @licend  The above is the entire license notice
+ * for the JavaScript code in org-info.js.
+ *
+ */
+</script>
+
+<script type="text/javascript">
+
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+
+<!--/*--><![CDATA[/*><!--*/
+org_html_manager.set("TOC_DEPTH", "4");
+org_html_manager.set("LINK_HOME", "../index.html");
+org_html_manager.set("LINK_UP", "index.html");
+org_html_manager.set("LOCAL_TOC", "1");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "0");
+org_html_manager.set("TOC", "1");
+org_html_manager.set("VIEW", "info");
+org_html_manager.setup();  // activate after the parameters are set
+/*]]>*///-->
+</script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012  Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js"></script>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+    MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "center",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
+             }
+        }
+    });
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href="index.html"> UP </a>
+ |
+ <a accesskey="H" href="../index.html"> HOME </a>
+</div><div id="content">
+<h1 class="title">世界上那些最美的方程</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">简介</a></li>
+<li><a href="#sec-2">广义相对论</a></li>
+<li><a href="#sec-3">标准模型</a></li>
+<li><a href="#sec-4">微积分</a></li>
+<li><a href="#sec-5">毕达哥拉斯定理</a></li>
+<li><a href="#sec-6">欧拉公式</a></li>
+<li><a href="#sec-7">狭义相对论</a></li>
+<li><a href="#sec-8">1 = 0.999999999…</a></li>
+<li><a href="#sec-9">欧拉－拉格朗日方程及诺特定理</a></li>
+<li><a href="#sec-10">Callan-Symanzik 方程</a></li>
+<li><a href="#sec-11">极小曲面方程</a></li>
+<li><a href="#sec-12">欧拉线</a></li>
+</ul>
+</div>
+</div>
+<blockquote>
+<p>
+【文章来源】：
+</p>
+<ul class="org-ul">
+<li><b>The World's Most Beautiful Equations</b>
+</li>
+<li>Clara Moskowitz, LiveScience senior writer
+</li>
+<li>January 28, 2013 05:24pm ET
+</li>
+<li><a href="http://www.livescience.com/26660-most-beautiful-mathematical-equations.html">http://www.livescience.com/26660-most-beautiful-mathematical-equations.html</a>
+</li>
+</ul>
+
+<p>
+【译者按】：对于什么是最美的数学方程，在 <a href="http://www.quora.com/Mathematics/What-is-the-most-beautiful-equation">Quora</a> 上，目前榜首为复分析领域的欧拉方
+程（后文提到的欧拉方程是在几何学与代数拓扑学领域的形式），有 3300 多个投票：
+</p>
+\begin{equation*}
+   \mathbf{e}^{i\pi} + 1 = 0
+\end{equation*}
+<p>
+其次是麦克斯韦方程：
+</p>
+\begin{align*}
+  \nabla \cdot  \mathbf{E} &= \frac{\rho}{\epsilon_0} \\
+  \nabla \cdot  \mathbf{B} &= 0 \\
+  \nabla \times \mathbf{E} &= - \frac{\partial \mathbf{B}}{\partial t} \\
+  \nabla \times \mathbf{B} &= \mu_0 \left( \mathbf{J} +
+     \epsilon_0 \frac{\partial \mathbf{E}}{\partial t} \right)
+\end{align*}
+</blockquote>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">简介</h2>
+<div class="outline-text-2" id="text-1">
+
+<div class="figure">
+<p><img src="eqn/shutterstock_112794550.jpg" alt="shutterstock_112794550.jpg" width="300" />
+</p>
+</div>
+
+<p>
+数学方程不仅实用——很多还非常优美。许多科学家承认，他们经常喜欢特定的公式，不仅仅
+是因为它们的功能强大，还因为它们的形式优雅、简洁及其中所蕴涵的诗一般的真理。
+</p>
+
+<p>
+当某些特别著名的方程，比如爱因斯坦的质能方程 \(E = m c^2\), 在公众面前享誉极盛时，
+许多公众不那么熟悉的方程在科学家那儿却拥者甚众。 LiveScience 咨询了许多物理学家、
+天文学家和数学家，将他们喜爱的数学公式罗列如后：
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">广义相对论</h2>
+<div class="outline-text-2" id="text-2">
+
+<div class="figure">
+<p><img src="eqn/gen-relativity.jpg" alt="gen-relativity.jpg" width="300" />
+</p>
+</div>
+
+\begin{equation}
+  \label{eq:grel}
+  G_{\mu\nu} = 8 \pi G \left( T_{\mu\nu} + \rho_{\Lambda}g_{\mu\nu} \right)
+\end{equation}
+
+<p>
+上述公式是 <a href="http://www.space.com/15524-albert-einstein.html">爱因斯坦</a> 于 1915 年所发现的划时代的 <a href="http://www.space.com/17661-theory-general-relativity.html">广义相对论</a> 方程中的一部分。该理论
+让科学家对引力的认识发生了革命性的变化，引力在这儿是空间与时间结构的一种弯曲。
+</p>
+
+<p>
+“让我惊奇的时，这样的一个方程就揭示了全部的时空真相。”太空望远镜科学研究所的天
+体物理学家 Mario Livio 如是说，他声明此方程为自己的最爱。“爱因斯坦所有的真正的
+天才之处都蕴含在这个方程中。”〖英文扩展阅读：<a href="http://www.livescience.com/23946-hold-einstein-quiz-test-your-knowledge-of-the-famous-genius.html">爱因斯坦测验：考考你的天才知识</a>〗
+</p>
+
+<p>
+“方程的右侧描述了我们宇宙的能量构成 (包括促使我们宇宙加速膨涨的 <i>暗能量</i>)，”
+Livio 解释道，“左侧是时空的几何结构。此方程揭示了这样的事实，在爱因斯坦广义相对
+论中，质量和能量决定了几何，以及伴随的时空弯曲，它显示为我们所说的引力。”〖英文
+扩展阅读：<a href="http://www.livescience.com/14012-6-weird-facts-gravity.html">引力的六个不可思议的现实</a>〗
+</p>
+
+<p>
+“这是个非常优雅的方程。”纽约大学物理学家 Kyle Cranmer 解释说，此方程还揭示了时
+空、物质和能量之间的关系。“此方程告诉了你它们之间是如何关联的——比如，太阳的存在
+如何导致了时空弯曲，从而令地球沿着其轨道运转，等等。它还告诉你宇宙自从 <a href="http://www.space.com/52-the-expanding-universe-from-the-big-bang-to-today.html">大爆炸</a> 之
+后是如何演化的，它还预言了黑洞的存在。”
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">标准模型</h2>
+<div class="outline-text-2" id="text-3">
+
+<div class="figure">
+<p><img src="eqn/standard-model-equations.jpg" alt="standard-model-equations.jpg" width="300" />
+</p>
+</div>
+
+\begin{align}
+\label{eq:sm}
+\mathcal{L}_{\text{SM}} &=&
+\underbrace{ \frac{1}{4} W_{\mu\nu} \cdot W^{\mu\nu} -
+\frac{1}{4} B_{\mu\nu} B^{\mu\nu} - \frac{1}{4} G^{a}_{\mu\nu} G^{\mu\nu}_{a}
+}_{\text{规范玻色子的动能和自相互作用}} \\
+&+& \underbrace{ L\gamma^{\mu} \left( i\partial_{\mu} - \frac{1}{2}g\tau\cdot W_{\mu}
+  - \frac{1}{2} g' Y B_{\mu} \right) L + R\gamma^{\mu} \left( i\partial_{\mu}
+  - \frac{1}{2} g' Y B_{\mu} \right) R
+}_{\text{费米子动能和弱相互作用}} \\
+&+& \underbrace{ \frac{1}{2} \left| \left( i\partial_{\mu} -
+  \frac{1}{2} g \tau \cdot W_{\mu} - \frac{1}{2} g' Y B_{\mu} \right) \phi \right|^2
+  - V(\phi)}_{\text{\(W^{\pm}\), \(Z\), \(\gamma\), 希格斯子质量和耦合过程}} \\
+&+& \underbrace{ g'' \left( \overline{q} \gamma^{\mu} T_a q \right) G^{a}_{\mu}
+   }_{\text{夸克和胶子之间的相互作用}}
+   + \underbrace{ \left(G_1 \overline{L} \phi R + G_2 \overline{L} \phi_c R + h.c. \right)
+}_{\text{费米子获得质量及与希格斯子的耦合}}
+\end{align}
+
+<p>
+另一个物理学理论中的君王，<a href="http://www.livescience.com/21024-particle-decays-standard-model-babar.html">标准模型</a>，它描述了构成我们目前宇宙的所有可见的基本粒子。
+</p>
+
+<p>
+这个理论可浓缩为一个主方程，即标准模型的拉格朗日量（该名字来自于以十八世纪法国数
+学家和天文学家约瑟夫·路易斯·拉格朗日），加利福尼亚 SLAC 国家加速器实验室的 <a href="http://www.slac.stanford.edu/~lance/">Lance
+Dixon</a> 在他的著名公式中采用了这个量。
+</p>
+
+<p>
+“它成功地描述了岂今在实验室中能够观测到的所有的基本粒子和力——除了引力”, Dixon
+向 LiveScience 解释道。“这当然包括了最新发现的希格斯（疑似）玻色子，即公式中的
+\(\phi\). 它与量子力学和狭义相对论完全自治。”
+</p>
+
+<p>
+标准模型理论还没有与广义相对论统一起来，所以它还不能够描述引力。〖英文扩展阅读：
+<a href="http://www.livescience.com/13613-strange-quarks-muons-nature-tiniest-particles-dissected.html">图释标准模型</a>〗
+</p>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">微积分</h2>
+<div class="outline-text-2" id="text-4">
+
+<div class="figure">
+<p><img src="eqn/calculus-equation.jpg" alt="calculus-equation.jpg" width="300" />
+</p>
+</div>
+
+\begin{equation}
+   \label{eq:calculus}
+   \int^a_b f'(x) \, dx = f(b) - f(a)
+\end{equation}
+
+<p>
+前两个方程描述了我们宇宙的特定方面，另一个最爱的方程则可用于几乎所有场合。微积分
+基础理论是微积分学数学方法的基石，它将两个主要思想连接了起来，即积分与求导的概念。
+</p>
+
+<p>
+“简单来讲，它表明，平滑连续的量的净改变，比如经过一段时间区间后的旅行距离（也就
+是说，时间区间端点的量的差值），等于该量的变化率的积分，亦即，速度的积分，”
+FordHam 大学数学系主任 Melkana Brakalova-Trevithick 如是说，她将此方程选为最爱。
+“微积分的基础理论 (FTC) 允许我们基于整个区间的速率变化来测定一个区间的净变化。”
+</p>
+
+<p>
+微积分的萌芽从古代就开始了，但其完善集中在十七世纪并归功于 <a href="http://www.livescience.com/20296-isaac-newton.html">艾萨克·牛顿</a>，他使用微
+积分解释了行星环绕太阳的运动。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">毕达哥拉斯定理</h2>
+<div class="outline-text-2" id="text-5">
+
+<div class="figure">
+<p><img src="eqn/shutterstock_121457527.jpg" alt="shutterstock_121457527.jpg" width="300" />
+</p>
+</div>
+
+\begin{equation}
+   \label{eq:pyth}
+   a^2 + b^2 = c^2
+\end{equation}
+
+<p>
+一个经久不衰的方程，就是著名的毕达哥拉斯定理，每个几何初学者都要学习它。
+</p>
+
+<p>
+这个方程说明，对任意直角三角形，它的弦的平方（面对直角的最长的边）等于其余两边长
+的平方和。
+</p>
+
+<p>
+“第一个令我惊奇的数学事实就是毕达哥拉斯定理。”康奈尔大学的数学家 Daina Taimina
+如是说，“当我还是孩子时，它就令我惊奇不已，它不仅在几何中有用，在数论中也一
+样！”〖英文扩展阅读：<a href="http://www.livescience.com/26584-5-mind-boggling-math-facts.html">五个令人惊奇的数学事实</a>〗
+</p>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">欧拉公式</h2>
+<div class="outline-text-2" id="text-6">
+
+<div class="figure">
+<p><img src="eqn/euler-equation.jpg" alt="euler-equation.jpg" width="300" />
+</p>
+</div>
+
+\begin{equation}
+  \label{eq:euler}
+  V - E + F = 2
+\end{equation}
+
+<p>
+这个简单的公式蕴含着球体的纯粹本质：
+</p>
+
+<p>
+“它表明，如果把一个球切割成面、棱和顶点，令 \(F\) 表示面数, \(E\) 表示棱数, \(V\) 表
+示顶点数，你始终能得到 \(V - E + F = 2\),”马萨诸塞州 Williams 学院的一名数学家
+Colin Adams 解释说。
+</p>
+
+<p>
+“因此，比如以四面体为例，它有 4 个三角形，6 根棱和 4 个顶点，”Adams 继续解释，
+“如果你使劲吹一个表面柔软的四面体，它会胀成一个球，故这样看来，一个球可以切割成
+四个面、六根棱和四个顶点。我们就有了 \(V - E + F = 2\). 对于金字塔方锥也一样，它有
+五个面——四个三角形和一个正方形，八根棱和五个顶点。”对于任意其它的面、棱和顶点组
+合也一样。
+</p>
+
+<p>
+“非常酷的事实！顶点、棱和面的组合提示了球体的一些非常基本的东西。”Adams 如是说。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7">狭义相对论</h2>
+<div class="outline-text-2" id="text-7">
+
+<div class="figure">
+<p><img src="eqn/special-relativity.jpg" alt="special-relativity.jpg" width="300" />
+</p>
+</div>
+
+\begin{equation*}
+   t' = t \frac{1}{\sqrt{1 - \frac{v^2}{c^2}}}
+\end{equation*}
+
+<p>
+爱因斯坦又一次进入列表，这次是他的 <a href="http://www.livescience.com/23789-einstein-relativity-faster-than-light-travel.html">狭义相对论</a> 方程，它表明时间和空间不是绝对的概
+念，而是受观察者速度影响的相对概念。上面的方程表明，一个人在任意方向运动得越快，
+时间会愈加膨涨，或变得更慢。
+</p>
+
+<p>
+“关键是它非常简洁。”欧洲核子中心位于日内瓦实验室的一名粒子物理学家 Bill Murray
+说，“任何一名 A-级学生都会做，没有复杂的求导和线性代数。但它包含的是一种全新的
+观察世界的方式，一种对待现实和我们与它之间关系的全新态度。突然间，那个刚性的不变
+的宇宙被扫除干净了，取而代之的是一个人性的世界，它同你的观察相关。你从在宇宙之外
+的审视者变成了其中的一部分。但这个概念和数学可以被任何想学的人掌握。”
+</p>
+
+<p>
+Murray 说，比起爱因斯坦后续理论中的复杂方程，他更偏爱狭义相对论方程。“我绝不会
+欣赏广义相对论中的数学。”他补充道。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8">1 = 0.999999999…</h2>
+<div class="outline-text-2" id="text-8">
+
+<div class="figure">
+<p><img src="eqn/one-equals.jpg" alt="one-equals.jpg" width="300" />
+</p>
+</div>
+
+\begin{equation*}
+   1 = 0.9999999999999\dots
+\end{equation*}
+
+<p>
+很简单的方程，它的意思是说, 0.999 紧跟着无限个小数位的 9, 其结果与 1 等价。这是
+康奈尔大学数学家 Steven Strogatz 的最爱。
+</p>
+
+<p>
+“我爱的是它的简单——任何人都能够理解其意思——是的，多么刺激啊！”Strogatz 说。
+“许多人不相信这是真的。它也是优美的平衡。左侧代表数学的开始，而右侧则代表神秘的
+无限。”
+</p>
+</div>
+</div>
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9">欧拉－拉格朗日方程及诺特定理</h2>
+<div class="outline-text-2" id="text-9">
+
+<div class="figure">
+<p><img src="eqn/lagrangian.jpg" alt="lagrangian.jpg" width="300" />
+</p>
+</div>
+
+\begin{equation*}
+  \frac{d}{dt}\left( \frac{\partial L}{\partial \dot{q}} \right)
+   = \frac{\partial L}{\partial q}
+\end{equation*}
+
+<p>
+“这非常抽象，但令人惊奇的强大。”NYU 的 Cranmer 说，“很酷的是，用这种方式来思
+考物理导致了物理学的许多主要革命，比如量子力学、相对论，等等。”
+</p>
+
+<p>
+这儿, \(L\) 表示拉格朗日量，它代表一个物理系统的能量量度，比如弹簧、杠杆或基本粒子。
+“求解这个方程会让你明白系统会如何随时间演化。” Cranmer 解释说。
+</p>
+
+<p>
+拉格朗日方程的一个副产品就是诺特定理，以二十世纪德国数学家 Emmy Noether 命名。
+“该定理对于物理学和对称论来说非常基础。”Cranmer 补充说，“简单地讲，该理论说，
+如果你的系统有一个 <a href="http://www.space.com/18449-lhc-particle-decay-supersymmetry-physics.html">对称性</a>，则必伴随一个守恒量。比如，今天的物理基本定律与明天是
+一样（时间对称性），这个思想则意味着能量是守恒的。物理定律在这儿的与在外太空是相
+同的，则意味着动量守恒。对称性在基础物理中是起推进作用的概念，这主要得益于〖诺特
+的〗贡献。”
+</p>
+</div>
+</div>
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10">Callan-Symanzik 方程<sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup></h2>
+<div class="outline-text-2" id="text-10">
+
+<div class="figure">
+<p><img src="eqn/Callan-Symanzik.jpg" alt="Callan-Symanzik.jpg" width="300" />
+</p>
+</div>
+
+\begin{equation*}
+ \left[ M \frac{\partial}{\partial M} + \beta(g) \frac{\partial}{\partial g} +
+   n \gamma \right] G^n \left( x_1, x_2, \dots, x_n; M, g \right) = 0
+\end{equation*}
+
+<p>
+“从 1970 年起, Callan-Symanzik 方程就是个非常重要的第一原则性的方程，尤其是用于
+描述朴素的观察者在 <a href="http://www.livescience.com/20753-quantum-physics-biology-life.html">量子世界</a> 中会如何失败。”Rutgers 大学的理论物理学家 Matt
+Strassler 说。
+</p>
+
+<p>
+此方程有很多应用，其中包括物理学家用它来预测质子和中子的质量与尺寸，质子和中子是
+构成原子核的基本粒子。
+</p>
+
+<p>
+基础物理告诉我们，两个物体之间的引力和电磁力与它们之间的距离成平方反比关系。简单
+来讲，这也适用于强核子力，该力把质子和中子捆绑起来构成了原子核，也是它将夸克捆绑
+起来构成了质子和中子。但是，微小的量子涨落会影响力与距离的依赖关系，这对强核力带
+来的影响是巨大的。
+</p>
+
+<p>
+“这阻碍了此力在长距离处的衰减，结果导致对夸克的囚禁，迫使它们形成了质子和中子，
+从而构造了我们的世界。”Strassler 解释说。“Callan-Symanzik 方程的作用与这个巨大
+的难以计算的效应相关联，它〖当距离〗在大概质子尺寸上时很重要，〖当距离〗比质子尺
+寸小很多时它更敏感但更容易计算其效应。”
+</p>
+</div>
+</div>
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11">极小曲面方程</h2>
+<div class="outline-text-2" id="text-11">
+
+<div class="figure">
+<p><img src="http://i.livescience.com/images/i/000/036/119/original/minimal-surface.jpg" alt="minimal-surface.jpg" width="300" />
+</p>
+</div>
+
+<p>
+$$ \mathcal{A}(u) = \int_{\Omega} \left( 1 + \left| \nabla_u \right|^2
+   \right)^{1/2} dx_1 \dots dx_n $$
+</p>
+
+<p>
+“极小曲面方程以某种方式形成了 <a href="http://www.livescience.com/6562-bubble-bursted-science-bursting-bubbles.html">美丽的肥皂薄膜</a>，这个你可以用肥皂水滴到金属框中来
+制造。”Williams 学院的数学家 Frank Morgan 说，“此方程是非线性的，涉及到导数的
+幂和乘积，其中暗含的数学表现在肥皂薄膜的奇怪行为上。可以拿它与更多的大家熟悉的线
+性偏微分方程相比较，比如热传导方程，波动方程，以及量子力学中的薛定谔方程。”
+</p>
+</div>
+</div>
+<div id="outline-container-sec-12" class="outline-2">
+<h2 id="sec-12">欧拉线</h2>
+<div class="outline-text-2" id="text-12">
+
+<div class="figure">
+<p><img src="http://i.livescience.com/images/i/000/036/123/original/euler-line.jpg" alt="euler-line.jpg" width="300" />
+</p>
+</div>
+
+<p>
+纽约数学博物馆的奠基人 Glen Whiteney 选择了另一个几何定理，它与欧拉线有关，它以
+十八世纪瑞士数学家和物理学莱昂哈德·欧拉来命名。
+</p>
+
+<p>
+“选择任一个三角形，”Whitney 解释说，“画一个包含此三角形的最小的圆，并找到其圆
+心。找到三角形的重心——如果把三角形从纸上切下来，针顶着重心可令它保持平衡。画出三
+角形的三条垂线（每个角垂直于对边的线），找到它们交汇的点。该定理是说，你刚才找到
+的同一个三角形的这三个点始终位于一条直线上，这条线就叫三角形的欧拉线。”
+</p>
+
+<p>
+Whitney 说，这条定理蕴含了数学的美与强大，数学经常会用简洁、熟悉的形状提示出令人
+惊讶的模式。
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p class="footpara">
+Callan-Symanzik Equation, 中文有的译作“卡兰-吸齐克方程”，但并不统一，故
+仍使用其英文名称。
+</p></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<p>版权所有 ©2013: Clara Moskowitz, 译：心蛛 | Date: <span class="timestamp-wrapper"><span class="timestamp">[2013-09-10]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.50.1 (<a href="http://orgmode.org">Org</a> mode 8.0.7), <a href="http://validator.w3.org/check?uri=referer">Validate</a>, <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a></p>
+<script type="text/javascript">
+  var disqus_shortname = 'exaos-github';
+  (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</p>
+</div>
+</body>
+</html>
