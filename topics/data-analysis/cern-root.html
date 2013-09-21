@@ -4,11 +4,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>心蛛的 ROOT 笔记</title>
-<!-- 2013-07-23 二 15:22 -->
+<!-- 2013-09-21 六 18:22 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
-
-
+<meta  name="author" content="Exaos Lee" />
+<meta  name="description" content="Level-2 for exporting to HTML"
+ />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center; }
@@ -87,9 +88,9 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
-<link rel="alternate stylesheet" type="text/css" href="../../css/worg-zenburn.css" />
-<link rel="alternate stylesheet" type="text/css" href="../../css/worg-classic.css" />
+<link rel="stylesheet" type="text/css" href="../../assets/css/worg.css" />
+<link rel="alternate stylesheet" type="text/css" href="../../assets/css/worg-zenburn.css" />
+<link rel="alternate stylesheet" type="text/css" href="../../assets/css/worg-classic.css" />
 
 <script type="text/javascript" src="org-info.js">
 /**
@@ -324,11 +325,11 @@ ROOT 文档：
 </p>
 <div class="org-src-container">
 
-<pre class="src src-python"><span style="color: #c397d8;">from</span> ROOT <span style="color: #c397d8;">import</span> TCanvas <span style="color: #969896; font-style: italic;"># </span><span style="color: #969896; font-style: italic;">available at startup</span>
-c=TCanvas()
+<pre class="src src-python"><span style="color: #00ffff;">from</span> ROOT <span style="color: #00ffff;">import</span> TCanvas <span style="color: #fa8072; font-style: italic;"># </span><span style="color: #ff7f24; font-style: italic;">available at startup</span>
+<span style="color: #7fffd4;">c</span>=TCanvas()
 
-<span style="color: #c397d8;">from</span> ROOT <span style="color: #c397d8;">import</span> TLorentzVector  <span style="color: #969896; font-style: italic;"># </span><span style="color: #969896; font-style: italic;">triggers auto-load of libPhysics</span>
-l = TLorentzVector()
+<span style="color: #00ffff;">from</span> ROOT <span style="color: #00ffff;">import</span> TLorentzVector  <span style="color: #fa8072; font-style: italic;"># </span><span style="color: #ff7f24; font-style: italic;">triggers auto-load of libPhysics</span>
+<span style="color: #7fffd4;">l</span> = TLorentzVector()
 </pre>
 </div>
 
@@ -337,9 +338,9 @@ l = TLorentzVector()
 </p>
 <div class="org-src-container">
 
-<pre class="src src-python"><span style="color: #c397d8;">from</span> ROOT <span style="color: #c397d8;">import</span> *
-c = TCanvas()
-l = TLorentzVector()
+<pre class="src src-python"><span style="color: #00ffff;">from</span> ROOT <span style="color: #00ffff;">import</span> *
+<span style="color: #7fffd4;">c</span> = TCanvas()
+<span style="color: #7fffd4;">l</span> = TLorentzVector()
 </pre>
 </div>
 
@@ -348,10 +349,10 @@ l = TLorentzVector()
 </p>
 <div class="org-src-container">
 
-<pre class="src src-python"><span style="color: #c397d8;">import</span> ROOT
+<pre class="src src-python"><span style="color: #00ffff;">import</span> ROOT
 
-c = ROOT.TCanvas()
-l = ROOT.TLorentzVector()
+<span style="color: #7fffd4;">c</span> = ROOT.TCanvas()
+<span style="color: #7fffd4;">l</span> = ROOT.TLorentzVector()
 </pre>
 </div>
 </div>
@@ -462,18 +463,18 @@ True
 </p>
 <div class="org-src-container">
 
-<pre class="src src-c++"><span style="color: #c397d8;">class</span> <span style="color: #e7c547;">TPython</span> {
-<span style="color: #c397d8;">public</span>:
-  <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">load a Python script as if it were a macro</span>
-  <span style="color: #c397d8;">static</span> <span style="color: #e7c547;">void</span> <span style="color: #7aa6da;">LoadMacro</span>(<span style="color: #c397d8;">const</span> <span style="color: #e7c547;">char</span>* <span style="color: #e78c45;">name</span>);
-  <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">execute a Python statement (e.g. "import ROOT")</span>
-  <span style="color: #c397d8;">static</span> <span style="color: #e7c547;">void</span> <span style="color: #7aa6da;">Exec</span>(<span style="color: #c397d8;">const</span> <span style="color: #e7c547;">char</span>* <span style="color: #e78c45;">cmd</span>);
-  <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">evaluate a Python expression (e.g. "1+1")</span>
-  <span style="color: #c397d8;">static</span> <span style="color: #c397d8;">const</span> <span style="color: #e7c547;">TPyReturn</span>&amp; <span style="color: #7aa6da;">Eval</span>(<span style="color: #c397d8;">const</span> <span style="color: #e7c547;">char</span>* <span style="color: #e78c45;">expr</span>);
-  <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">bind a ROOT object with, at the Python side, the name "label"</span>
-  <span style="color: #c397d8;">static</span> <span style="color: #e7c547;">bool</span> <span style="color: #7aa6da;">Bind</span>(<span style="color: #e7c547;">TObject</span>* <span style="color: #e78c45;">obj</span>,<span style="color: #c397d8;">const</span> <span style="color: #e7c547;">char</span>* <span style="color: #e78c45;">label</span>);
-  <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">enter an interactive Python session (exit with ^D)</span>
-  <span style="color: #c397d8;">static</span> <span style="color: #e7c547;">void</span> <span style="color: #7aa6da;">Prompt</span>();
+<pre class="src src-c++"><span style="color: #00ffff;">class</span> <span style="color: #63b8ff;">TPython</span> {
+<span style="color: #00ffff;">public</span>:
+  <span style="color: #fa8072; font-style: italic;">// </span><span style="color: #ff7f24; font-style: italic;">load a Python script as if it were a macro</span>
+  <span style="color: #00ffff;">static</span> <span style="color: #63b8ff;">void</span> <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">LoadMacro</span>(<span style="color: #00ffff;">const</span> <span style="color: #63b8ff;">char</span>* <span style="color: #7fffd4;">name</span>);
+  <span style="color: #fa8072; font-style: italic;">// </span><span style="color: #ff7f24; font-style: italic;">execute a Python statement (e.g. "import ROOT")</span>
+  <span style="color: #00ffff;">static</span> <span style="color: #63b8ff;">void</span> <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">Exec</span>(<span style="color: #00ffff;">const</span> <span style="color: #63b8ff;">char</span>* <span style="color: #7fffd4;">cmd</span>);
+  <span style="color: #fa8072; font-style: italic;">// </span><span style="color: #ff7f24; font-style: italic;">evaluate a Python expression (e.g. "1+1")</span>
+  <span style="color: #00ffff;">static</span> <span style="color: #00ffff;">const</span> <span style="color: #63b8ff;">TPyReturn</span>&amp; <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">Eval</span>(<span style="color: #00ffff;">const</span> <span style="color: #63b8ff;">char</span>* <span style="color: #7fffd4;">expr</span>);
+  <span style="color: #fa8072; font-style: italic;">// </span><span style="color: #ff7f24; font-style: italic;">bind a ROOT object with, at the Python side, the name "label"</span>
+  <span style="color: #00ffff;">static</span> <span style="color: #63b8ff;">bool</span> <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">Bind</span>(<span style="color: #63b8ff;">TObject</span>* <span style="color: #7fffd4;">obj</span>,<span style="color: #00ffff;">const</span> <span style="color: #63b8ff;">char</span>* <span style="color: #7fffd4;">label</span>);
+  <span style="color: #fa8072; font-style: italic;">// </span><span style="color: #ff7f24; font-style: italic;">enter an interactive Python session (exit with ^D)</span>
+  <span style="color: #00ffff;">static</span> <span style="color: #63b8ff;">void</span> <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">Prompt</span>();
 };
 </pre>
 </div>
@@ -515,13 +516,13 @@ ROOT v4.00/06 版本及以后, <code>TPython</code> 类在使用时自动加载�
 </p>
 <div class="org-src-container">
 
-<pre class="src src-python"><span style="color: #e78c45;">print</span> <span style="color: #b9ca4a;">'creating class MyPyClass ... '</span>
-<span style="color: #c397d8;">class</span> <span style="color: #e7c547;">MyPyClass</span>:
-   <span style="color: #c397d8;">def</span> <span style="color: #7aa6da;">__init__</span>(<span style="color: #c397d8;">self</span>):
-       <span style="color: #e78c45;">print</span> <span style="color: #b9ca4a;">'in MyPyClass.__init__'</span>
-       <span style="color: #c397d8;">self</span>._browser = <span style="color: #c397d8;">None</span>
-   <span style="color: #c397d8;">def</span> <span style="color: #7aa6da;">gime</span>(<span style="color: #c397d8;">self</span>,what):
-       <span style="color: #c397d8;">return</span> what
+<pre class="src src-python"><span style="color: #00ffff;">print</span> <span style="color: #ffc1c1;">'creating class MyPyClass ... '</span>
+<span style="color: #00ffff;">class</span> <span style="color: #63b8ff;">MyPyClass</span>:
+   <span style="color: #00ffff;">def</span> <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">__init__</span>(<span style="color: #00ffff;">self</span>):
+       <span style="color: #00ffff;">print</span> <span style="color: #ffc1c1;">'in MyPyClass.__init__'</span>
+       <span style="color: #00ffff;">self</span>._browser = <span style="color: #8470ff; font-weight: bold;">None</span>
+   <span style="color: #00ffff;">def</span> <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">gime</span>(<span style="color: #00ffff;">self</span>,what):
+       <span style="color: #00ffff;">return</span> what
 </pre>
 </div>
 
@@ -661,18 +662,18 @@ myobject.IsA().Destructor(myobject)
 <div class="outline-text-4" id="text-3-4-1">
 <div class="org-src-container">
 
-<pre class="src src-python"><span style="color: #c397d8;">from</span> ROOT <span style="color: #c397d8;">import</span> TF1, TCanvas
+<pre class="src src-python"><span style="color: #00ffff;">from</span> ROOT <span style="color: #00ffff;">import</span> TF1, TCanvas
 
-<span style="color: #c397d8;">class</span> <span style="color: #e7c547;">Linear</span>:
-   <span style="color: #c397d8;">def</span> <span style="color: #7aa6da;">__call__</span>( <span style="color: #c397d8;">self</span>, x, par ):
-      <span style="color: #c397d8;">return</span> par[0] + x[0]*par[1]
+<span style="color: #00ffff;">class</span> <span style="color: #63b8ff;">Linear</span>:
+   <span style="color: #00ffff;">def</span> <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">__call__</span>( <span style="color: #00ffff;">self</span>, x, par ):
+      <span style="color: #00ffff;">return</span> par[0] + x[0]*par[1]
 
-<span style="color: #969896; font-style: italic;"># </span><span style="color: #969896; font-style: italic;">create a linear function with offset 5, and pitch 2</span>
-f = TF1(<span style="color: #b9ca4a;">'pyf2'</span>,Linear(),-1.,1.,2)
+<span style="color: #fa8072; font-style: italic;"># </span><span style="color: #ff7f24; font-style: italic;">create a linear function with offset 5, and pitch 2</span>
+<span style="color: #7fffd4;">f</span> = TF1(<span style="color: #ffc1c1;">'pyf2'</span>,Linear(),-1.,1.,2)
 f.SetParameters(5.,2.)
 
-<span style="color: #969896; font-style: italic;"># </span><span style="color: #969896; font-style: italic;">plot the function</span>
-c = TCanvas()
+<span style="color: #fa8072; font-style: italic;"># </span><span style="color: #ff7f24; font-style: italic;">plot the function</span>
+<span style="color: #7fffd4;">c</span> = TCanvas()
 f.Draw()
 </pre>
 </div>
@@ -683,26 +684,26 @@ f.Draw()
 <div class="outline-text-4" id="text-3-4-2">
 <div class="org-src-container">
 
-<pre class="src src-python"><span style="color: #c397d8;">from</span> ROOT <span style="color: #c397d8;">import</span> TF1, TH1F, TCanvas
+<pre class="src src-python"><span style="color: #00ffff;">from</span> ROOT <span style="color: #00ffff;">import</span> TF1, TH1F, TCanvas
 
-<span style="color: #c397d8;">class</span> <span style="color: #e7c547;">Linear</span>:
-   <span style="color: #c397d8;">def</span> <span style="color: #7aa6da;">__call__</span>( <span style="color: #c397d8;">self</span>, x, par ):
-      <span style="color: #c397d8;">return</span> par[0] + x[0]*par[1]
+<span style="color: #00ffff;">class</span> <span style="color: #63b8ff;">Linear</span>:
+   <span style="color: #00ffff;">def</span> <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">__call__</span>( <span style="color: #00ffff;">self</span>, x, par ):
+      <span style="color: #00ffff;">return</span> par[0] + x[0]*par[1]
 
-<span style="color: #969896; font-style: italic;"># </span><span style="color: #969896; font-style: italic;">create a linear function for fitting</span>
-f = TF1(<span style="color: #b9ca4a;">'pyf3'</span>,Linear(),-1.,1.,2)
+<span style="color: #fa8072; font-style: italic;"># </span><span style="color: #ff7f24; font-style: italic;">create a linear function for fitting</span>
+<span style="color: #7fffd4;">f</span> = TF1(<span style="color: #ffc1c1;">'pyf3'</span>,Linear(),-1.,1.,2)
 
-<span style="color: #969896; font-style: italic;"># </span><span style="color: #969896; font-style: italic;">create and fill a histogram</span>
-h = TH1F(<span style="color: #b9ca4a;">'h'</span>,<span style="color: #b9ca4a;">'test'</span>,100,-1.,1.)
-f2 = TF1(<span style="color: #b9ca4a;">'cf2'</span>,<span style="color: #b9ca4a;">'6.+x*4.5'</span>,-1.,1.)
-h.FillRandom(<span style="color: #b9ca4a;">'cf2'</span>,10000)
+<span style="color: #fa8072; font-style: italic;"># </span><span style="color: #ff7f24; font-style: italic;">create and fill a histogram</span>
+<span style="color: #7fffd4;">h</span> = TH1F(<span style="color: #ffc1c1;">'h'</span>,<span style="color: #ffc1c1;">'test'</span>,100,-1.,1.)
+<span style="color: #7fffd4;">f2</span> = TF1(<span style="color: #ffc1c1;">'cf2'</span>,<span style="color: #ffc1c1;">'6.+x*4.5'</span>,-1.,1.)
+h.FillRandom(<span style="color: #ffc1c1;">'cf2'</span>,10000)
 
-<span style="color: #969896; font-style: italic;"># </span><span style="color: #969896; font-style: italic;">fit the histo with the python 'linear' function</span>
+<span style="color: #fa8072; font-style: italic;"># </span><span style="color: #ff7f24; font-style: italic;">fit the histo with the python 'linear' function</span>
 h.Fit(f)
 
-<span style="color: #969896; font-style: italic;"># </span><span style="color: #969896; font-style: italic;">print results</span>
-par = f.GetParameters()
-<span style="color: #e78c45;">print</span> <span style="color: #b9ca4a;">'fit results: const ='</span>,par[0],<span style="color: #b9ca4a;">',pitch ='</span>,par[1]
+<span style="color: #fa8072; font-style: italic;"># </span><span style="color: #ff7f24; font-style: italic;">print results</span>
+<span style="color: #7fffd4;">par</span> = f.GetParameters()
+<span style="color: #00ffff;">print</span> <span style="color: #ffc1c1;">'fit results: const ='</span>,par[0],<span style="color: #ffc1c1;">',pitch ='</span>,par[1]
 </pre>
 </div>
 </div>
@@ -716,32 +717,32 @@ par = f.GetParameters()
 <div class="outline-text-4" id="text-3-5-1">
 <div class="org-src-container">
 
-<pre class="src src-python"><span style="color: #c397d8;">from</span> ROOT <span style="color: #c397d8;">import</span> TFile
-<span style="color: #c397d8;">from</span> ROOT <span style="color: #c397d8;">import</span> gDirectory
+<pre class="src src-python"><span style="color: #00ffff;">from</span> ROOT <span style="color: #00ffff;">import</span> TFile
+<span style="color: #00ffff;">from</span> ROOT <span style="color: #00ffff;">import</span> gDirectory
 
-<span style="color: #969896; font-style: italic;"># </span><span style="color: #969896; font-style: italic;">open the file</span>
-myfile = TFile(<span style="color: #b9ca4a;">'tree1.root'</span>)
+<span style="color: #fa8072; font-style: italic;"># </span><span style="color: #ff7f24; font-style: italic;">open the file</span>
+<span style="color: #7fffd4;">myfile</span> = TFile(<span style="color: #ffc1c1;">'tree1.root'</span>)
 
-<span style="color: #969896; font-style: italic;"># </span><span style="color: #969896; font-style: italic;">retrieve the ntuple of interest</span>
-mychain = gDirectory.Get(<span style="color: #b9ca4a;">'t1'</span>)
-entries = mychain.GetEntriesFast()
+<span style="color: #fa8072; font-style: italic;"># </span><span style="color: #ff7f24; font-style: italic;">retrieve the ntuple of interest</span>
+<span style="color: #7fffd4;">mychain</span> = gDirectory.Get(<span style="color: #ffc1c1;">'t1'</span>)
+<span style="color: #7fffd4;">entries</span> = mychain.GetEntriesFast()
 
-<span style="color: #c397d8;">for</span> jentry <span style="color: #c397d8;">in</span> <span style="color: #e78c45;">xrange</span>(entries):
-    <span style="color: #969896; font-style: italic;"># </span><span style="color: #969896; font-style: italic;">get the next tree in the chain and verify</span>
-    ientry = mychain.LoadTree(jentry)
-    <span style="color: #c397d8;">if</span> ientry &lt; 0:
-        <span style="color: #c397d8;">break</span>
+<span style="color: #00ffff;">for</span> jentry <span style="color: #00ffff;">in</span> <span style="color: #b0c4de;">xrange</span>(entries):
+    <span style="color: #fa8072; font-style: italic;"># </span><span style="color: #ff7f24; font-style: italic;">get the next tree in the chain and verify</span>
+    <span style="color: #7fffd4;">ientry</span> = mychain.LoadTree(jentry)
+    <span style="color: #00ffff;">if</span> ientry &lt; 0:
+        <span style="color: #00ffff;">break</span>
 
-    <span style="color: #969896; font-style: italic;"># </span><span style="color: #969896; font-style: italic;">copy next entry into memory and verify</span>
-    nb = mychain.GetEntry(jentry)
-    <span style="color: #c397d8;">if</span> nb&lt;=0:
-        <span style="color: #c397d8;">continue</span>
-    <span style="color: #969896; font-style: italic;"># </span><span style="color: #969896; font-style: italic;">use the values directly from the tree</span>
-    nEvent = <span style="color: #e78c45;">int</span>(mychain.ev)
-    <span style="color: #c397d8;">if</span> nEvent&lt;0:
-        <span style="color: #c397d8;">continue</span>
+    <span style="color: #fa8072; font-style: italic;"># </span><span style="color: #ff7f24; font-style: italic;">copy next entry into memory and verify</span>
+    <span style="color: #7fffd4;">nb</span> = mychain.GetEntry(jentry)
+    <span style="color: #00ffff;">if</span> nb&lt;=0:
+        <span style="color: #00ffff;">continue</span>
+    <span style="color: #fa8072; font-style: italic;"># </span><span style="color: #ff7f24; font-style: italic;">use the values directly from the tree</span>
+    <span style="color: #7fffd4;">nEvent</span> = <span style="color: #b0c4de;">int</span>(mychain.ev)
+    <span style="color: #00ffff;">if</span> nEvent&lt;0:
+        <span style="color: #00ffff;">continue</span>
 
-    <span style="color: #e78c45;">print</span> mychain.pz, <span style="color: #b9ca4a;">'='</span>, mychain.px*mychain.px, <span style="color: #b9ca4a;">'+'</span>, mychain.py*mychain.py
+    <span style="color: #00ffff;">print</span> mychain.pz, <span style="color: #ffc1c1;">'='</span>, mychain.px*mychain.px, <span style="color: #ffc1c1;">'+'</span>, mychain.py*mychain.py
 </pre>
 </div>
 </div>
@@ -756,22 +757,22 @@ entries = mychain.GetEntriesFast()
 
 <div class="org-src-container">
 
-<pre class="src src-python"><span style="color: #c397d8;">from</span> ROOT <span style="color: #c397d8;">import</span> TFile, TTree
-<span style="color: #c397d8;">from</span> array <span style="color: #c397d8;">import</span> array
+<pre class="src src-python"><span style="color: #00ffff;">from</span> ROOT <span style="color: #00ffff;">import</span> TFile, TTree
+<span style="color: #00ffff;">from</span> array <span style="color: #00ffff;">import</span> array
 
-h = TH1F(<span style="color: #b9ca4a;">'h1'</span>,<span style="color: #b9ca4a;">'test'</span>,100,-10.,10.)
-f = TFile(<span style="color: #b9ca4a;">'test.root'</span>,<span style="color: #b9ca4a;">'recreate'</span>)
-t = TTree(<span style="color: #b9ca4a;">'t1'</span>,<span style="color: #b9ca4a;">'tree with histos'</span>)
-maxn = 10
-n = array(<span style="color: #b9ca4a;">'i'</span>,[0])
-d = array(<span style="color: #b9ca4a;">'f'</span>,maxn*[0.])
-t.Branch(<span style="color: #b9ca4a;">'mynum'</span>,n,<span style="color: #b9ca4a;">'mynum/I'</span>)
-t.Branch(<span style="color: #b9ca4a;">'myval'</span>,d,<span style="color: #b9ca4a;">'myval[mynum]/F'</span>)
+<span style="color: #7fffd4;">h</span> = TH1F(<span style="color: #ffc1c1;">'h1'</span>,<span style="color: #ffc1c1;">'test'</span>,100,-10.,10.)
+<span style="color: #7fffd4;">f</span> = TFile(<span style="color: #ffc1c1;">'test.root'</span>,<span style="color: #ffc1c1;">'recreate'</span>)
+<span style="color: #7fffd4;">t</span> = TTree(<span style="color: #ffc1c1;">'t1'</span>,<span style="color: #ffc1c1;">'tree with histos'</span>)
+<span style="color: #7fffd4;">maxn</span> = 10
+<span style="color: #7fffd4;">n</span> = array(<span style="color: #ffc1c1;">'i'</span>,[0])
+<span style="color: #7fffd4;">d</span> = array(<span style="color: #ffc1c1;">'f'</span>,maxn*[0.])
+t.Branch(<span style="color: #ffc1c1;">'mynum'</span>,n,<span style="color: #ffc1c1;">'mynum/I'</span>)
+t.Branch(<span style="color: #ffc1c1;">'myval'</span>,d,<span style="color: #ffc1c1;">'myval[mynum]/F'</span>)
 
-<span style="color: #c397d8;">for</span> i <span style="color: #c397d8;">in</span> <span style="color: #e78c45;">range</span>(25):
-    n[0] = <span style="color: #e78c45;">min</span>(i,maxn)
-    <span style="color: #c397d8;">for</span> j <span style="color: #c397d8;">in</span> <span style="color: #e78c45;">range</span>(n[0]):
-        d[j] = i*0.1+j
+<span style="color: #00ffff;">for</span> i <span style="color: #00ffff;">in</span> <span style="color: #b0c4de;">range</span>(25):
+    <span style="color: #7fffd4;">n</span>[0] = <span style="color: #b0c4de;">min</span>(i,maxn)
+    <span style="color: #00ffff;">for</span> j <span style="color: #00ffff;">in</span> <span style="color: #b0c4de;">range</span>(n[0]):
+        <span style="color: #7fffd4;">d</span>[j] = i*0.1+j
     t.Fill()
 
 f.Write()
@@ -791,7 +792,7 @@ f.Close()
 </div>
 <div id="postamble" class="status">
 <div id="disqus_thread"></div>
-<p>版权所有 ©2013: Exaos Lee | Date:  | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.50.1 (<a href="http://orgmode.org">Org</a> mode 8.0.6), <a href="http://validator.w3.org/check?uri=referer">Validate</a>, <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a></p>
+<p>版权所有 ©2013: Exaos Lee | Date:  | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2), <a href="http://validator.w3.org/check?uri=referer">Validate</a>, <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a></p>
 <script type="text/javascript">
   var disqus_shortname = 'exaos-github';
   (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
