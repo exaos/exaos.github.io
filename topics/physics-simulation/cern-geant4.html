@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>心蛛的 GEANT4 笔记</title>
-<!-- 2013-09-21 六 18:22 -->
+<!-- 2013-10-09 三 14:40 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="心蛛" />
@@ -365,15 +365,11 @@ GEANT4 主页:
 <h2 id="sec-2">点滴</h2>
 <div class="outline-text-2" id="text-2">
 <p>
-自从了解并自学了一点 <a href="http://cern.ch/geant4">Geant4</a> 之后，有很多人曾经问过我不少问题，大部分都是与安装、
-编译有关，还有一部分是 C++ 基础知识方面的问题。鲜有人问及深入一点的内容，比如如
-何选择物理过程、物理过程的适用范围、如何选择高效的数据输出方式等。其实，那些基础
-问题在手册中仔细查找，都能够获得满意的答案。我想提醒一点：
+自从了解并自学了一点 <a href="http://cern.ch/geant4">Geant4</a> 之后，有很多人曾经问过我不少问题，大部分都是与安装、编译有关，还有一部分是 C++ 基础知识方面的问题。鲜有人问及深入一点的内容，比如如何选择物理过程、物理过程的适用范围、如何选择高效的数据输出方式等。其实，那些基础问题在手册中仔细查找，都能够获得满意的答案。我想提醒一点：
 </p>
 <blockquote>
 <p>
-使用 Geant4, 除非你只是运行一下别人开发好的程序，否则，你就应该掌握作为一名程序
-员所需要的基本知识。无论是使用 GNU Make 还是 CMake, 无论是在 Linux/OSX 平台还是
+使用 Geant4, 除非你只是运行一下别人开发好的程序，否则，你就应该掌握作为一名程序员所需要的基本知识。无论是使用 GNU Make 还是 CMake, 无论是在 Linux/OSX 平台还是
 Windows 平台，你都需要对编程的基本流程了解，你都需要对自己的工具熟悉。
 </p>
 </blockquote>
@@ -467,18 +463,14 @@ g4run exampleN01
 <h4 id="sec-3-1-2">Windows 7 + VS2010 + CMake 2.8</h4>
 <div class="outline-text-4" id="text-3-1-2">
 <p>
-在 Windows 7 下，我使用的是 Visual Studio 2010 Express (你可以从 Microsoft 的网
-站下载并免费使用 Express 版本) 和 CMake 2.8.10。基本步骤如下：
+在 Windows 7 下，我使用的是 Visual Studio 2010 Express (你可以从 Microsoft 的网站下载并免费使用 Express 版本) 和 CMake 2.8.10。基本步骤如下：
 </p>
 <ol class="org-ol">
 <li>安装到 Visual Studio 2010 Express C++ 及 CMake 2.8.10.
 </li>
-<li>从 <a href="http://geant4.web.cern.ch/geant4/support/download.shtml">Geant4 下载</a> 页面上找到 Win32-VC100-7.zip 或者 Win32-VC100-7.exe, 解压或
-执行 .exe 文件，将之放置到相应的目录下，比如 <code>D:\Geant4\WIN32-VC100-7\</code>.
+<li>从 <a href="http://geant4.web.cern.ch/geant4/support/download.shtml">Geant4 下载</a> 页面上找到 Win32-VC100-7.zip 或者 Win32-VC100-7.exe, 解压或执行 .exe 文件，将之放置到相应的目录下，比如 <code>D:\Geant4\WIN32-VC100-7\</code>.
 </li>
-<li>设置环境变量 <b>G4INSALL</b> 指向解压的目录。在桌面上右键点击“计算机”，从“属
-性”中选择“高级系统设置”，然后找到用户环境变量设置的地方，添加即可。在命
-令行下可简单如下：
+<li>设置环境变量 <b>G4INSALL</b> 指向解压的目录。在桌面上右键点击“计算机”，从“属性”中选择“高级系统设置”，然后找到用户环境变量设置的地方，添加即可。在命令行下可简单如下：
 <pre class="example">
 setx G4INSTALL D:\Geant4\WIN32-VC100-7\
 setx PATH %PATH%;%G4INSTALL%\bin
@@ -488,8 +480,7 @@ setx PATH %PATH%;%G4INSTALL%\bin
 <code>%G4INSTALL%\bin</code> 添加到 <code>PATH</code> 环境变量即可。
 </p>
 </li>
-<li>打开 CMake GUI, 在 Source Code 对话框中设置好 novice/N01 的源码路径 (可使用
-系统对话框), 比如：
+<li>打开 CMake GUI, 在 Source Code 对话框中设置好 novice/N01 的源码路径 (可使用系统对话框), 比如：
 <pre class="example">
 D:/Geant4/WIN32-VC100-7/share/Geant4-9.6.0/examples/novice/N01
 </pre>
@@ -500,8 +491,7 @@ D:/Geant4/WIN32-VC100-7/share/Geant4-9.6.0/examples/novice/N01
 D:/Geant4/Codes/Examples-9.6/Novice/N01
 </pre>
 </li>
-<li>在 CMake GUI 中点击 Configure, 出现的对话框要求你选择所生成的配置文件类型，
-对列表中选择 Visual Studio 10. 然后点击 "Configure".
+<li>在 CMake GUI 中点击 Configure, 出现的对话框要求你选择所生成的配置文件类型，对列表中选择 Visual Studio 10. 然后点击 "Configure".
 </li>
 <li>在中间的环境变量中会出现几个红色高亮"的选项，按你的系统环境修改，比如：
 <ul class="org-ul">
@@ -511,8 +501,7 @@ D:/Geant4/Codes/Examples-9.6/Novice/N01
 </li>
 </ul>
 </li>
-<li>再点击 "Configure", 直到红色项全变成白色，然后点击 "Generate", 在提示窗中会
-出现如下类似消息：
+<li>再点击 "Configure", 直到红色项全变成白色，然后点击 "Generate", 在提示窗中会出现如下类似消息：
 <pre class="example">
 Confguring done
 Generating done
@@ -522,15 +511,12 @@ Generating done
      <code>D:/Geant4/Codes/Examples-9.6/Novice/N01/N01.sln</code>
 </li>
 <li>然后在 VS10 中编译执行即可。此时生成 <code>INSTALL</code> 对象的话，会将
-<code>exampleN01.exe</code> 安装到 <code>D:\Geant4\bin</code> 目录下。然后你从命令行中执行即可
-（注意 <code>%G4INSTALL%\bin</code> 在你的 <code>PATH</code> 环境中）。
+<code>exampleN01.exe</code> 安装到 <code>D:\Geant4\bin</code> 目录下。然后你从命令行中执行即可（注意 <code>%G4INSTALL%\bin</code> 在你的 <code>PATH</code> 环境中）。
 </li>
 </ol>
 
 <p>
-<b>注意</b>, 由于 Geant4 网站提供的二进制包中没有包含有调试信息 (Release 版本), 因此，
-你如果用 Win32 Debug 配置去编译源码，可能会出现诸如 ".pdb" 文件找不到之类的错误，
-并且运行示例会出错。在 VS2010 中选择编译 Win32 Release 版本就可以了。
+<b>注意</b>, 由于 Geant4 网站提供的二进制包中没有包含有调试信息 (Release 版本), 因此，你如果用 Win32 Debug 配置去编译源码，可能会出现诸如 ".pdb" 文件找不到之类的错误，并且运行示例会出错。在 VS2010 中选择编译 Win32 Release 版本就可以了。
 </p>
 </div>
 </div>
@@ -600,15 +586,13 @@ cmake -DGEANT4_INSTALL_DATADIR=&lt;path-to-data&gt; &lt;other-args&gt;
 make
 </pre>
 <p>
-由于现在的机器大部分都拥有多个核心（至少双核以上），则可用如下参数加快编译
-速度：
+由于现在的机器大部分都拥有多个核心（至少双核以上），则可用如下参数加快编译速度：
 </p>
 <pre class="example">
 make -jN
 </pre>
 <p>
-其中的 N 是你希望的并行编译的进程数（比如双核的可设为 2）。如果想查看编译过
-程中的详细信息，可执行：
+其中的 N 是你希望的并行编译的进程数（比如双核的可设为 2）。如果想查看编译过程中的详细信息，可执行：
 </p>
 <pre class="example">
 make -jN VERBOSE=1
@@ -626,9 +610,7 @@ make install
 <h3 id="sec-3-3">Windows 7 下使用 CMake + VS2010 Express</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
-Geant4 9.4 及以前的安装脚本程序依赖于 GNU Make + awk + sed 等一系列 POSIX 工具，
-并且原先对 POSIX 平台的各种库依赖严重，这导致在 Windows 平台上编译安装 Geant4必
-须依赖 Cygwin 等 POSIX 环境。自从 Geant4 转向 CMake 之后，由于 CMake 能够与
+Geant4 9.4 及以前的安装脚本程序依赖于 GNU Make + awk + sed 等一系列 POSIX 工具，并且原先对 POSIX 平台的各种库依赖严重，这导致在 Windows 平台上编译安装 Geant4必须依赖 Cygwin 等 POSIX 环境。自从 Geant4 转向 CMake 之后，由于 CMake 能够与
 Visual Studio, XCode 等平台完美衔接，使得使用这些 IDE 编译 Geant4 不再那么麻烦。
 Geant4 9.5 之后在 Windows 平台上从源码安装的思路很简单：
 </p>
@@ -686,60 +668,40 @@ D:\Exaos\Utils\geant4\geant4.9.6
 </p>
 
 <p>
-尽管 CMake 可以从 Windows <code>cmd</code> 程序中执行，建议使用 CMake GUI 程序。整个安装过
-程使用 CMake GUI 和 Visual Studio, 相应的截屏可参见 <a href="http://www2.warwick.ac.uk/fac/sci/physics/staff/research/bmorgan/geant4/installingonwindows">WARWICK</a> 网站。
+尽管 CMake 可以从 Windows <code>cmd</code> 程序中执行，建议使用 CMake GUI 程序。整个安装过程使用 CMake GUI 和 Visual Studio, 相应的截屏可参见 <a href="http://www2.warwick.ac.uk/fac/sci/physics/staff/research/bmorgan/geant4/installingonwindows">WARWICK</a> 网站。
 </p>
 <ol class="org-ol">
-<li>打开 CMake (cmake-gui), 点击 <i>Browse Source &#x2026;</i> (浏览源码), 找到解压的路径
-并确认。
+<li>打开 CMake (cmake-gui), 点击 <i>Browse Source &#x2026;</i> (浏览源码), 找到解压的路径并确认。
 </li>
-<li>创建一个路径来保存 Visual Studio 工程文件及编译中间文件。该路径不要与源码路
-径相同，也不要是其子目录。这里设置为
+<li>创建一个路径来保存 Visual Studio 工程文件及编译中间文件。该路径不要与源码路径相同，也不要是其子目录。这里设置为
 <code>D:\Exaos\Utils\geant4\g4.9.6-build\</code>. 在 CMake GUI 中点 <i>Browse Build&#x2026;</i>
-(浏览编译目录) 按钮，找到创建的路径后并确认。(注意： CMake 在Windows 下使用
-前斜杠分隔路径。)
+(浏览编译目录) 按钮，找到创建的路径后并确认。(注意： CMake 在Windows 下使用前斜杠分隔路径。)
 </li>
 <li>点击 GUI 上的 <i>Configure</i> (配置) 按钮。
 </li>
 <li>在弹出窗口中选择 <b>Visual Studio 2010</b>. 确认 <i>Use default native compilers</i>
 (使用默认的本地编译器) 点选上，然后点击 <i>Finish</i> (结束) 按钮。
 </li>
-<li>CMake 开始检查特性并提供初始的配置。一切顺利，在主选项窗口会见红色高亮的条
-目，包含有 CMAKE 与 GEANT4. 红色不是出错，而是指有未配置的变量。在学习版本
-(Express Version) 的 Visual Studio 中你会在 GUI 底部的日志窗口中看到关于系
-统运行库缺失的警告，这个在标准安装中可以忽略。其它的错误会在日志窗口中报告。
+<li>CMake 开始检查特性并提供初始的配置。一切顺利，在主选项窗口会见红色高亮的条目，包含有 CMAKE 与 GEANT4. 红色不是出错，而是指有未配置的变量。在学习版本
+(Express Version) 的 Visual Studio 中你会在 GUI 底部的日志窗口中看到关于系统运行库缺失的警告，这个在标准安装中可以忽略。其它的错误会在日志窗口中报告。
 </li>
-<li>默认 CMake 配置编译安装 Geant4 到 <code>C:/Program Files/Geant4</code>. 如果你不想用这
-个目录或者无权限安装，则可以修改安装路径。点击中央选项中 <i>CMAKE</i> 条目旁边的
-箭头并展开所有 CMake 相关的指定配置选项，卷动到=CMAKE_INSTALL_PREFIX= 的位
-置，点击条目并编辑或者通过弹出的文件浏览窗修改路径。此例中修改到
+<li>默认 CMake 配置编译安装 Geant4 到 <code>C:/Program Files/Geant4</code>. 如果你不想用这个目录或者无权限安装，则可以修改安装路径。点击中央选项中 <i>CMAKE</i> 条目旁边的箭头并展开所有 CMake 相关的指定配置选项，卷动到=CMAKE_INSTALL_PREFIX= 的位置，点击条目并编辑或者通过弹出的文件浏览窗修改路径。此例中修改到
 <code>D:/Exaos/Utils/geant4/g4.9.6-inst</code>. <br  />
-     假如需要额外的 Geant4 组件，点击中央选项窗口展开所有的 Geant4 配置选项，可
-参考安装说明的 2.3 节进行调整。
+     假如需要额外的 Geant4 组件，点击中央选项窗口展开所有的 Geant4 配置选项，可参考安装说明的 2.3 节进行调整。
 </li>
-<li>修改任何选项后，则需要再次点击 <i>Configure</i> 按钮。结束之后，中间显示的选项列
-表应该显示白色。如果仍有红色条目显示，继续执行 <i>Configure</i> 直到所有都显示白
-色为止。
+<li>修改任何选项后，则需要再次点击 <i>Configure</i> 按钮。结束之后，中间显示的选项列表应该显示白色。如果仍有红色条目显示，继续执行 <i>Configure</i> 直到所有都显示白色为止。
 </li>
-<li>点击 <i>Generate</i> 按钮生成 Visual Studio 工程文件。一切顺利，CMake 会生成最终
-的文件并在 GUI 底部日志窗口报告 <i>Configuring done</i>, <i>Genearting done</i>. 此时
-可关闭 CMake 图形界面。
+<li>点击 <i>Generate</i> 按钮生成 Visual Studio 工程文件。一切顺利，CMake 会生成最终的文件并在 GUI 底部日志窗口报告 <i>Configuring done</i>, <i>Genearting done</i>. 此时可关闭 CMake 图形界面。
 </li>
 <li>打开 Visual Studio, 选择 <i>Open Project</i> (打开工程). 此例中特指 Visual
 Studio 2010 Express, 但在其它版本中与之类似。浏览你的编译目录，打开
-Microsoft Visual Studio Solution 文件 Geant4.sln. 注意，配置、打开及解析解
-决方案 (solution) 中所有的文件需要花上一些时间。现在，如果你熟练的话就可以
-直接使用 MSBuild 命令行工具编译解决方案。但这个没有文档支持。
+Microsoft Visual Studio Solution 文件 Geant4.sln. 注意，配置、打开及解析解决方案 (solution) 中所有的文件需要花上一些时间。现在，如果你熟练的话就可以直接使用 MSBuild 命令行工具编译解决方案。但这个没有文档支持。
 </li>
-<li>默认 Visual Studio 解决方案编译成 Debug 配置，因此如果你需要优化的编译，可
-以从工具条 (Visual Studio 2010) 下拉菜单 <i>Solutions Configurations</i> (解决
-方案配置) 中选择 <i>Release</i> 选项。
+<li>默认 Visual Studio 解决方案编译成 Debug 配置，因此如果你需要优化的编译，可以从工具条 (Visual Studio 2010) 下拉菜单 <i>Solutions Configurations</i> (解决方案配置) 中选择 <i>Release</i> 选项。
 </li>
-<li>在 Solution Explorer (解决方案浏览器) 中右键选择 <i>INSTALL</i> 方案，从弹出菜
-单中选择 <i>Build</i>, 解决方案会开始编译并安装在前面选择的
+<li>在 Solution Explorer (解决方案浏览器) 中右键选择 <i>INSTALL</i> 方案，从弹出菜单中选择 <i>Build</i>, 解决方案会开始编译并安装在前面选择的
 <code>CMAKE_INSTALL_PREFIX</code> 目录下。如果你希望编译不同的配置 (比如以前选择的是
-<i>Debug</i>, 现在想换成 <i>Release</i>), 直接按前一步中的提示修改配置方案，然后再次
-编译 <i>INSTALL</i> 方案。
+<i>Debug</i>, 现在想换成 <i>Release</i>), 直接按前一步中的提示修改配置方案，然后再次编译 <i>INSTALL</i> 方案。
 </li>
 <li>如果你看到成功提示，就可以退出 Visual Studio 了。
 </li>
@@ -850,18 +812,14 @@ Coin3D: <a href="https://bitbucket.org/Coin3D/coin/wiki/Home">https://bitbucket.
 </p>
 
 <p>
-Coin 是基于 OpenGL 的 3D 图形库，它源自 Open Inventor 2.1 API (目前 Coin 仍然与
-它兼容). Open Inventor (常简写为 OIV) 是一个最初由 SGI 开发的基于场景提供图像保
-持、渲染与模型操作的 C++ 类库。在它发布不久就成为科学与工程领域的 3D 图像显示与
-可视化模拟软件事实上的标准图形库。它也是 VRML1 文档标准的基础。目前有好几本与
+Coin 是基于 OpenGL 的 3D 图形库，它源自 Open Inventor 2.1 API (目前 Coin 仍然与它兼容). Open Inventor (常简写为 OIV) 是一个最初由 SGI 开发的基于场景提供图像保持、渲染与模型操作的 C++ 类库。在它发布不久就成为科学与工程领域的 3D 图像显示与可视化模拟软件事实上的标准图形库。它也是 VRML1 文档标准的基础。目前有好几本与
 Open Inventor 相关主题的书，比如 <b>The Inventor Mentor</b>, <b>The Inventor
 Toolmaker</b>.
 </p>
 
 <p>
 Coin 是在 SGI Open Inventor 开源之前基于 OIV 库的 API 从头开发的，它未借用任何
-SGI OIV 的代码。 Coin 在 2000 年秋达到与 OIV 2.1 完全兼容的目标，此后添加了许多
-额外的特性，如支持文件格式 VRML97 等。
+SGI OIV 的代码。 Coin 在 2000 年秋达到与 OIV 2.1 完全兼容的目标，此后添加了许多额外的特性，如支持文件格式 VRML97 等。
 </p>
 
 <p>
@@ -901,16 +859,13 @@ Windows + VS2010 Express 的安装步骤如下：
 <ol class="org-ol">
 <li>从 Coin3D 下载 zip 包并解压。
 </li>
-<li>修改系统环境变量，添加 <code>COINDIR</code> 变量，指向你的 Coin3D 安装目录，比如我的系
-统上为 <code>D:\Exaos\Utils\Coin3D</code>.
+<li>修改系统环境变量，添加 <code>COINDIR</code> 变量，指向你的 Coin3D 安装目录，比如我的系统上为 <code>D:\Exaos\Utils\Coin3D</code>.
 </li>
-<li>将源码目录 <code>build\msvc9\</code> 拷贝一份并命名为 <code>msvc10</code>, 然后用 VS2010 打开拷贝
-目录下的 <code>coin3.sln</code> 项目解决方案文件。
+<li>将源码目录 <code>build\msvc9\</code> 拷贝一份并命名为 <code>msvc10</code>, 然后用 VS2010 打开拷贝目录下的 <code>coin3.sln</code> 项目解决方案文件。
 </li>
 <li>此时直接编译 3.1.3 版本会有不少错误，按后面的介绍修正之。然后继续编译。
 </li>
-<li>创建好你的 Coin3D 安装目录，在项目解决方案中生成 <code>coin3_install</code>, 则会自动
-安装到你预设的 <code>COINDIR</code> 路径下。
+<li>创建好你的 Coin3D 安装目录，在项目解决方案中生成 <code>coin3_install</code>, 则会自动安装到你预设的 <code>COINDIR</code> 路径下。
 </li>
 <li>下载测试文件，测试你的安装是否可用：
 <ul class="org-ul">
@@ -976,8 +931,7 @@ src\Inventor\Qt\editors\SoQtMaterialEditor.cpp(41): fatal error C1083:
 </li>
 </ul>
 <p>
-在源码目录 <code>src/Inventor/Qt/editors/old/</code> 下存在此文件，但开发组声明此目录
-下的代码已经陈旧，需要人力重新更新并实现 editor 组件。修改模版文件
+在源码目录 <code>src/Inventor/Qt/editors/old/</code> 下存在此文件，但开发组声明此目录下的代码已经陈旧，需要人力重新更新并实现 editor 组件。修改模版文件
 <code>src\Inventor\Qt\common\editors\SoQtMaterialEditor.cpp.in</code> 如下行
 </p>
 <pre class="example">
@@ -990,8 +944,7 @@ src\Inventor\Qt\editors\SoQtMaterialEditor.cpp(41): fatal error C1083:
 #include &lt;Inventor/@Gui@/So@Gui@MaterialEditor.h&gt;
 </pre>
 </li>
-<li>其它一些直接从 msvc9 转换过来导致的 moc 生成的文件未能正常生成，从而导致文
-件缺失的错误，这些文件有：
+<li>其它一些直接从 msvc9 转换过来导致的 moc 生成的文件未能正常生成，从而导致文件缺失的错误，这些文件有：
 <ul class="org-ul">
 <li>src\Inventor\Qt\viewers\ExaminerViewer.cpp(59):
 Inventor/Qt/viewers/moc_SoQtExaminerViewerP.icc
@@ -1019,8 +972,7 @@ Inventor/Qt/moc_SoQtSignalThread.icc
 moc -i -o &lt;output_moc_file&gt; &lt;header&gt;
 </pre>
 </li>
-<li>如果编译 Debug 版，则可能出现的找不到 <code>coin3d.lib</code> 文件的链接错误，编译并
-安装一个 Debug 版本的 Coin3D 即可。
+<li>如果编译 Debug 版，则可能出现的找不到 <code>coin3d.lib</code> 文件的链接错误，编译并安装一个 Debug 版本的 Coin3D 即可。
 </li>
 </ol>
 </div>
@@ -1035,8 +987,7 @@ moc -i -o &lt;output_moc_file&gt; &lt;header&gt;
 <li>头文件缺失错误 <code>Inventor/Win/editors/SoWinColorEditor.h</code>
 <ul class="org-ul">
 <li>修改 <code>Inventor/Win/common/editors/</code> 目录下的
-<code>SoGuiMaterialEditor.cpp.in</code> 及 <code>SoGuiColorEditor.cpp.in</code> 文件，修改其中
-如下行内容：
+<code>SoGuiMaterialEditor.cpp.in</code> 及 <code>SoGuiColorEditor.cpp.in</code> 文件，修改其中如下行内容：
 <pre class="example">
 #include &lt;Inventor/@Gui@/editors/So@Gui@ColorEditor.h&gt;
 </pre>
@@ -1065,8 +1016,7 @@ moc -i -o &lt;output_moc_file&gt; &lt;header&gt;
 <h4 id="sec-3-4-7">X11 RayTracer Visual (Linux/Mac)</h4>
 <div class="outline-text-4" id="text-3-4-7">
 <p>
-依赖 X11 开发包，适用于 Unix/Linux, 或者 Mac OS X 上的 XQuartz 平台，理论上也适
-用于 Windows 平台上的 Cygwin-X.
+依赖 X11 开发包，适用于 Unix/Linux, 或者 Mac OS X 上的 XQuartz 平台，理论上也适用于 Windows 平台上的 Cygwin-X.
 </p>
 </div>
 </div>
@@ -1105,8 +1055,7 @@ moc -i -o &lt;output_moc_file&gt; &lt;header&gt;
 <ul class="org-ul">
 <li>最初的 Java 实现接口
 </li>
-<li>AIDA-JNI 使用 JNI (Java Native Interface) 技术让使用 AIDA 接口的 C++ 程
-序与 Java 实现 (JAIDA) 相链接工作。 Geant4 中最初使用 AIDAJNI。目前
+<li>AIDA-JNI 使用 JNI (Java Native Interface) 技术让使用 AIDA 接口的 C++ 程序与 Java 实现 (JAIDA) 相链接工作。 Geant4 中最初使用 AIDAJNI。目前
 AIDAJNI 已经停止开发（停止在 3.2.x 版本）。
 </li>
 </ul>
@@ -1185,8 +1134,7 @@ RadiativeDecay, 它们分别用于模拟不同的物理过程。
 <div class="outline-text-3" id="text-7-1">
 <p>
 该评价数据主要用于 Geant4 中的中子强子相互作用过程和同位素产生的类别中。除了用于
-Geant4 的 <code>neutron_hp</code> 和 <code>isotope_production</code> 类别来模拟中子散射和同位素产生之
-外，该数据库不得做其它用途。如果希望将该数据库用于其它用途，请联系其 <a href="mailto:Hans-Peter.Wellisch@cern.ch ">作者</a>。
+Geant4 的 <code>neutron_hp</code> 和 <code>isotope_production</code> 类别来模拟中子散射和同位素产生之外，该数据库不得做其它用途。如果希望将该数据库用于其它用途，请联系其 <a href="mailto:Hans-Peter.Wellisch@cern.ch ">作者</a>。
 </p>
 </div>
 </div>
@@ -1233,7 +1181,7 @@ Geant4 的 <code>neutron_hp</code> 和 <code>isotope_production</code> 类别来
 </div>
 <div id="postamble" class="status">
 <div id="disqus_thread"></div>
-<p>版权所有 ©2013: 心蛛 | Date:  | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2), <a href="http://validator.w3.org/check?uri=referer">Validate</a>, <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a></p>
+<p>版权所有 ©2013: 心蛛 | Date:  | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.50.1 (<a href="http://orgmode.org">Org</a> mode 8.2), <a href="http://validator.w3.org/check?uri=referer">Validate</a>, <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a></p>
 <script type="text/javascript">
   var disqus_shortname = 'exaos-github';
   (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

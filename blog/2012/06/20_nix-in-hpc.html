@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>函数式包管理器 Nix 与高性能计算</title>
-<!-- 2013-09-21 六 18:22 -->
+<!-- 2013-10-09 三 14:41 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="心蛛" />
@@ -244,19 +244,13 @@ for the JavaScript code in this tag.
 <p>
 Nix, 简单地来讲，就是一个软件包管理器，类似于我们熟悉的 Debian apt 的 dpkg 或者
 RedHat yum 所用的 rpm. 其特色之处在于它抛弃了传统的 Unix 目录结构 (参见 <a href="http://www.linuxfoundation.org/collaborate/workgroups/lsb/fhs">FHS</a> 或
-<a href="http://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard">Wikipedia</a>)，不再将软件安装在诸如 <code>/usr</code>, <code>/bin</code>, <code>/sbin</code> 之类的目录里，而是集中安
-装在 <code>/nix/store</code> 这样的目录下，然后在与 FHS 兼容的目录中做简单的符号链接。每一个
-软件包安装在自己的目录中，其安装的目录名称类似于这样：
+<a href="http://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard">Wikipedia</a>)，不再将软件安装在诸如 <code>/usr</code>, <code>/bin</code>, <code>/sbin</code> 之类的目录里，而是集中安装在 <code>/nix/store</code> 这样的目录下，然后在与 FHS 兼容的目录中做简单的符号链接。每一个软件包安装在自己的目录中，其安装的目录名称类似于这样：
 </p>
 <pre class="example">
 g8xxs1sqvrxwjk55g04y1zba4g4ca2n4-nix-1.0
 </pre>
 <p>
-其中的 <code>g8xxs1sq…</code> 是软件包的特殊标识，这是软件包在编译配置时根据依赖关系计算出
-来的加密的哈希值，也是软件包的唯一标识。所有在 <code>/nix/store</code> 目录下的目录或文件构
-成了相互之间的错综复杂的依赖关系，而这些关系都集中体现在目录或文件名称前面的标识
-中。 Nix 对软件包的编译以及环境的配置基于一套函数式的编程语言，因此也称之为函数式
-包管理器。
+其中的 <code>g8xxs1sq…</code> 是软件包的特殊标识，这是软件包在编译配置时根据依赖关系计算出来的加密的哈希值，也是软件包的唯一标识。所有在 <code>/nix/store</code> 目录下的目录或文件构成了相互之间的错综复杂的依赖关系，而这些关系都集中体现在目录或文件名称前面的标识中。 Nix 对软件包的编译以及环境的配置基于一套函数式的编程语言，因此也称之为函数式包管理器。
 </p>
 
 <p>
@@ -265,18 +259,11 @@ Nix 是一个跨平台的包管理软件，不仅支持 GNU/Linux 系统，还�
 </p>
 
 <p>
-高性能计算，用户的软件环境通常限定在指定的几种编译器、或依赖的库上。有一些软件或
-代码，由于历史的原因只能使用指定的数学库之类，尽管有源代码，这些库在现代的机器上
-可能已经找不到能运行的依赖环境，为它重新配置一套环境也很麻烦甚至是不现实。如何能
-够让软件代码的依赖关系自成体系，并且相互之间不影响使用呢？或许 Nix 是一个不错的选
-择。
+高性能计算，用户的软件环境通常限定在指定的几种编译器、或依赖的库上。有一些软件或代码，由于历史的原因只能使用指定的数学库之类，尽管有源代码，这些库在现代的机器上可能已经找不到能运行的依赖环境，为它重新配置一套环境也很麻烦甚至是不现实。如何能够让软件代码的依赖关系自成体系，并且相互之间不影响使用呢？或许 Nix 是一个不错的选择。
 </p>
 
 <p>
-目前，Nix 的开发组使用集群系统进行软件的自动编译测试。我还没有见到有高性能集群中
-使用 Nix 的报道。或许有的人已经有尝试还未公布结果。身边有一个基于 Rocks 的集群，
-但由于计算任务繁重，不可能进行这样的实验。期待有人能够汇报一下 Nix 在高性能计算上
-的表现。
+目前，Nix 的开发组使用集群系统进行软件的自动编译测试。我还没有见到有高性能集群中使用 Nix 的报道。或许有的人已经有尝试还未公布结果。身边有一个基于 Rocks 的集群，但由于计算任务繁重，不可能进行这样的实验。期待有人能够汇报一下 Nix 在高性能计算上的表现。
 </p>
 
 <div id="outline-container-nixos" class="outline-2">
@@ -286,31 +273,20 @@ Nix 是一个跨平台的包管理软件，不仅支持 GNU/Linux 系统，还�
 <li>State "DONE"       from ""           <span class="timestamp-wrapper"><span class="timestamp">[2012-05-13 日 23:34]</span></span>
 </li>
 </ul>
-
 <p>
-你是否在安装软件的过程中饱受过版本变更之苦呢？比如 A 软件需要依赖 glibc 2.5 版本
-以下，而 B 软件却又需要 glibc 2.7 以上？而我们知道，同一个系统中基本上只会有一个
-版本的 glibc, 这样，你无法让 A 与 B 在系统中共存，不得不遗憾地舍弃其一，或者采用
-使用虚拟机之类的臃肿的解决方案。在 Windows 下的程序员经常会遇到的 "DLL Hell" 问题
-也与上述情形类似。在遇到这类问题时，你有否想过这样的一个操作系统，不管你的软件是
-什么版本，都可以配置一套与之相适应的运行环境出来，并且不需要额外的虚拟机之类的开
-销？尚在开发中的 <a href="http://NixOS.org/nixos/">NixOS</a> 或许会是你未来的选择。
+你是否在安装软件的过程中饱受过版本变更之苦呢？比如 A 软件需要依赖 glibc 2.5 版本以下，而 B 软件却又需要 glibc 2.7 以上？而我们知道，同一个系统中基本上只会有一个版本的 glibc, 这样，你无法让 A 与 B 在系统中共存，不得不遗憾地舍弃其一，或者采用使用虚拟机之类的臃肿的解决方案。在 Windows 下的程序员经常会遇到的 "DLL Hell" 问题也与上述情形类似。在遇到这类问题时，你有否想过这样的一个操作系统，不管你的软件是什么版本，都可以配置一套与之相适应的运行环境出来，并且不需要额外的虚拟机之类的开销？尚在开发中的 <a href="http://NixOS.org/nixos/">NixOS</a> 或许会是你未来的选择。
 </p>
 
 <p>
-首先介绍一下 <a href="http://NixOS.org/nix/">Nix</a> &#x2013; 一个函数式包管理器 (<b>a purely functional package manager</b>)。
-如果你从未听过“函数式” (functional) 的概念，不妨先参照一下 <i>函数式编程语言</i> (或
-<i>Functional Programming</i>)。所谓的函数式包管理，就是说将软件包当成纯粹函数式编程语言
-（比如 Haskell）中的变量──它们由函数生成并且没有任何副作用 (side-effects)，并且
-软件包一旦生成将不再改变。Nix 将软件包保存在 <i>Nix</i> 存储池中，通常在目录 <code>/nix/</code>
+首先介绍一下 <a href="http://NixOS.org/nix/">Nix</a> &#x2013; 一个函数式包管理器 (<b>a purely functional package manager</b>)。如果你从未听过“函数式” (functional) 的概念，不妨先参照一下 <i>函数式编程语言</i> (或
+<i>Functional Programming</i>)。所谓的函数式包管理，就是说将软件包当成纯粹函数式编程语言（比如 Haskell）中的变量──它们由函数生成并且没有任何副作用 (side-effects)，并且软件包一旦生成将不再改变。Nix 将软件包保存在 <i>Nix</i> 存储池中，通常在目录 <code>/nix/</code>
 下，每个软件包都有唯一的子目录，比如：
 </p>
 <pre class="example">
 /nix/store/r8vvq9kq18pz08v249h8my6r9vs7s0n3-firefox-2.0.0.1/
 </pre>
 <p>
-这儿的 <code>r8vvq9kq…</code> 是软件包的唯一标识，它包含了软件包的所有依赖关系（这是软件包
-编译时的依赖关系的加密哈希值）。这个特性使得此包管理系统具备许多特有的功能。
+这儿的 <code>r8vvq9kq…</code> 是软件包的唯一标识，它包含了软件包的所有依赖关系（这是软件包编译时的依赖关系的加密哈希值）。这个特性使得此包管理系统具备许多特有的功能。
 </p>
 
 <p>
@@ -318,13 +294,11 @@ Nix 是一个跨平台的包管理软件，不仅支持 GNU/Linux 系统，还�
 </p>
 
 <p>
-你可以同时安装一个软件包的多个版本或者不同的编译条件生成的版本。这样，在本文开头
-所提到的 "DLL Hell" 的情形自然避免了。
+你可以同时安装一个软件包的多个版本或者不同的编译条件生成的版本。这样，在本文开头所提到的 "DLL Hell" 的情形自然避免了。
 </p>
 
 <p>
-另一个重要的效果就是升级或卸载某个应用软件时不会令其它应用软件崩溃，因为这些操作
-从不“毁坏性”地升级或者删除被其它软件包所使用的文件。
+另一个重要的效果就是升级或卸载某个应用软件时不会令其它应用软件崩溃，因为这些操作从不“毁坏性”地升级或者删除被其它软件包所使用的文件。
 </p>
 
 <p>
@@ -332,24 +306,15 @@ Nix 是一个跨平台的包管理软件，不仅支持 GNU/Linux 系统，还�
 </p>
 
 <p>
-Nix 会帮助你确保包的依赖关系是完全的。通常情况下，你在其它包管理系统 (如 RPM) 下
-创建一个包时，你必须为每个包指定好其依赖关系，但这并不能保证这些指定是完全的。比
-如你忘记了添加某项依赖关系，在你的机器上编译是完好的，因为你的机器上安装了这个忘
-记了添加的依赖软件包，但编译好的包在其他用户机器上则可能无法运行。我就曾经就遇到
-过这样的情形，在安装某个家伙提供的 Debian 包时出错，结果就是他忘记了添加包依赖关
-系导致的。
+Nix 会帮助你确保包的依赖关系是完全的。通常情况下，你在其它包管理系统 (如 RPM) 下创建一个包时，你必须为每个包指定好其依赖关系，但这并不能保证这些指定是完全的。比如你忘记了添加某项依赖关系，在你的机器上编译是完好的，因为你的机器上安装了这个忘记了添加的依赖软件包，但编译好的包在其他用户机器上则可能无法运行。我就曾经就遇到过这样的情形，在安装某个家伙提供的 Debian 包时出错，结果就是他忘记了添加包依赖关系导致的。
 </p>
 
 <p>
-因为 Nix 并不将包安装在 <b>全局</b> 的位置（比如 <code>/usr/bin</code> ），而是在包指定的目录下，
-这样不完全的依赖关系会大大减少。这是因为诸如编译器类的工具并不是从每个包目录 (比
-如 <code>/nix/store/5lbfaxb722zp…-openssl-0.9.8d/include</code> ) 下去寻找文件，如果某个包
-在你的系统上编译成功，是因为你显式指定好了依赖关系。
+因为 Nix 并不将包安装在 <b>全局</b> 的位置（比如 <code>/usr/bin</code> ），而是在包指定的目录下，这样不完全的依赖关系会大大减少。这是因为诸如编译器类的工具并不是从每个包目录 (比如 <code>/nix/store/5lbfaxb722zp…-openssl-0.9.8d/include</code> ) 下去寻找文件，如果某个包在你的系统上编译成功，是因为你显式指定好了依赖关系。
 </p>
 
 <p>
-运行时 (runtime) 的依赖关系是通过扫描 Nix 存储池路径 (比如 <code>r8vvq9kq…</code> ) 来寻找
-二进制文件。这听起来有点冒险，但确实工作良好。
+运行时 (runtime) 的依赖关系是通过扫描 Nix 存储池路径 (比如 <code>r8vvq9kq…</code> ) 来寻找二进制文件。这听起来有点冒险，但确实工作良好。
 </p>
 
 <p>
@@ -357,10 +322,7 @@ Nix 会帮助你确保包的依赖关系是完全的。通常情况下，你在�
 </p>
 
 <p>
-非特权用户也可以安装软件。每个用户拥有不同的 <i>配置文件</i> , 一组在 Nix 存储池中的软
-件包会在用户的路径下出现。如果某用户安装的包其他用户以前已经安装好了，则不会再次
-编译或下载。同时，某个用户在某个可能被其它用户使用的软件包中注入特洛依木马也是不
-可能的。 (注：这个我有点不太理解，不过有篇论文讲了这个： <a href="http://nixos.org/docs/papers.html#securesharing">ASE 2005 paper</a>)
+非特权用户也可以安装软件。每个用户拥有不同的 <i>配置文件</i> , 一组在 Nix 存储池中的软件包会在用户的路径下出现。如果某用户安装的包其他用户以前已经安装好了，则不会再次编译或下载。同时，某个用户在某个可能被其它用户使用的软件包中注入特洛依木马也是不可能的。 (注：这个我有点不太理解，不过有篇论文讲了这个： <a href="http://nixos.org/docs/papers.html#securesharing">ASE 2005 paper</a>)
 </p>
 
 <p>
@@ -384,29 +346,23 @@ Nix 会帮助你确保包的依赖关系是完全的。通常情况下，你在�
 <p>
 Nix 是一个包管理器，可运行在大部分 Unix 系统上，包括 Linux, FreeBSD 和 Mac OS
 X. 当然也支持在 Windows 上的 Cygwin. 而 NixOS 则是一个基于 Nix 包管理器的 Linux
-发行版本。它不仅使用 Nix 作为包管理器，还将其用于系统管理中（比如生成 <code>/etc</code> 目录
-下的配置文件等）。也就是说，可以非常方便地将整个系统回滚到以前的配置状态中。当然，
-用户也可以用非超级用户权限来安装软件，等等。
+发行版本。它不仅使用 Nix 作为包管理器，还将其用于系统管理中（比如生成 <code>/etc</code> 目录下的配置文件等）。也就是说，可以非常方便地将整个系统回滚到以前的配置状态中。当然，用户也可以用非超级用户权限来安装软件，等等。
 </p>
 
 <p>
-因为 <a href="http://NixOS.org/nixos/">NixOS</a> 是这样一个可以回滚到某个配置状态的系统，所以可以称其为全局版本控制的操
-作系统，这也是本文标题所强调的内容。
+因为 <a href="http://NixOS.org/nixos/">NixOS</a> 是这样一个可以回滚到某个配置状态的系统，所以可以称其为全局版本控制的操作系统，这也是本文标题所强调的内容。
 </p>
 
 <p>
 Nix 及 NixOS 还是一个研究中的项目。 Nix 刚刚于 2012-05-11 发布了 1.0 版本，而
-NixOS 也只提供了一个 LiveCD (0.1pre34067-34077) 和简单的安装 CD 映像，其软件池中
-提供的软件包尚不及 Debian 的十分之一。但这是个新鲜的内容，其中许多特性相信在未来
-会得到更多的发展。只是不知道成熟后的 <a href="http://www.gnu.org/software/hurd/">GNU Hurd</a> 系统会不会采用这套 Nix 模式来面世。
-让我们拭目以待。
+NixOS 也只提供了一个 LiveCD (0.1pre34067-34077) 和简单的安装 CD 映像，其软件池中提供的软件包尚不及 Debian 的十分之一。但这是个新鲜的内容，其中许多特性相信在未来会得到更多的发展。只是不知道成熟后的 <a href="http://www.gnu.org/software/hurd/">GNU Hurd</a> 系统会不会采用这套 Nix 模式来面世。让我们拭目以待。
 </p>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <div id="disqus_thread"></div>
-<p>版权所有 ©2013: 心蛛 | Date: <span class="timestamp-wrapper"><span class="timestamp">[2012-06-20 三 15:27]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2), <a href="http://validator.w3.org/check?uri=referer">Validate</a>, <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a></p>
+<p>版权所有 ©2013: 心蛛 | Date: <span class="timestamp-wrapper"><span class="timestamp">[2012-06-20 三 15:27]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.50.1 (<a href="http://orgmode.org">Org</a> mode 8.2), <a href="http://validator.w3.org/check?uri=referer">Validate</a>, <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a></p>
 <script type="text/javascript">
   var disqus_shortname = 'exaos-github';
   (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>C++11 下的线程编程</title>
-<!-- 2013-09-21 六 18:22 -->
+<!-- 2013-10-09 三 14:40 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Exaos Lee" />
@@ -227,13 +227,11 @@ for the JavaScript code in this tag.
 </div>
 </div>
 <p>
-C++11 中正式引入了标准类 <code>std::thread</code>, 也就是说，你编写使用线程的程序时不再需要
-使用 C 下面的 <b>pthread</b> 等 API, 可以直接用 C++11 标准的库来实现线程了。
+C++11 中正式引入了标准类 <code>std::thread</code>, 也就是说，你编写使用线程的程序时不再需要使用 C 下面的 <b>pthread</b> 等 API, 可以直接用 C++11 标准的库来实现线程了。
 </p>
 
 <p>
-本笔记的主要运行平台为 Debian Linux 7.1 (wheezy), gcc 4.7.2. 使用 GCC 编译笔记中
-的代码，需要注意：
+本笔记的主要运行平台为 Debian Linux 7.1 (wheezy), gcc 4.7.2. 使用 GCC 编译笔记中的代码，需要注意：
 </p>
 <ul class="org-ul">
 <li>如果 GCC 版本低于 4.7, 需要添加编译参数 <code>-std=gnu++0x -pthread</code>
@@ -254,17 +252,17 @@ GCC 各版本对 C++11 特性的支持情况参见: <a href="http://gcc.gnu.org/
 </p>
 <div class="org-src-container">
 
-<pre class="src src-c++"><span style="color: #6495ed; font-style: italic;">#include</span> <span style="color: #ffc1c1;">&lt;thread&gt;</span>
-<span style="color: #6495ed; font-style: italic;">#include</span> <span style="color: #ffc1c1;">&lt;iostream&gt;</span>
+<pre class="src src-c++"><span style="color: #c397d8;">#include</span> <span style="color: #b9ca4a;">&lt;thread&gt;</span>
+<span style="color: #c397d8;">#include</span> <span style="color: #b9ca4a;">&lt;iostream&gt;</span>
 
-<span style="color: #63b8ff;">void</span> <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">my_thread_func</span>()
+<span style="color: #e7c547;">void</span> <span style="color: #7aa6da;">my_thread_func</span>()
 {
-  <span style="color: #8470ff; font-weight: bold;">std</span>::cout&lt;&lt;<span style="color: #ffc1c1;">"hello"</span>&lt;&lt;<span style="color: #8470ff; font-weight: bold;">std</span>::endl;
+  <span style="color: #70c0b1;">std</span>::cout&lt;&lt;<span style="color: #b9ca4a;">"hello"</span>&lt;&lt;<span style="color: #70c0b1;">std</span>::endl;
 }
 
-<span style="color: #63b8ff;">int</span> <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">main</span>()
+<span style="color: #e7c547;">int</span> <span style="color: #7aa6da;">main</span>()
 {
-  <span style="color: #8470ff; font-weight: bold;">std</span>::<span style="color: #63b8ff;">thread</span> <span style="color: #7fffd4;">t</span>(my_thread_func);
+  <span style="color: #70c0b1;">std</span>::<span style="color: #e7c547;">thread</span> <span style="color: #e78c45;">t</span>(my_thread_func);
 }
 </pre>
 </div>
@@ -277,8 +275,7 @@ g++ -std=c++11 -pthread a.cpp
 </pre>
 
 <p>
-但执行后无任何输出。如果想获得线程的执行结果，需要将其连接 (joining) 起来，因此，
-上述代码需要在 <code>std::thread t(my_thread_func);</code> 声明之后添加一句：
+但执行后无任何输出。如果想获得线程的执行结果，需要将其连接 (joining) 起来，因此，上述代码需要在 <code>std::thread t(my_thread_func);</code> 声明之后添加一句：
 </p>
 <pre class="example">
 t.join();
@@ -293,50 +290,46 @@ t.join();
 <h2 id="sec-2">异步执行 (async) 一个线程</h2>
 <div class="outline-text-2" id="text-2">
 <p>
-假如想让一个函数每隔 1 秒钟将全局计数器增加一个计数，又不想让这个函数影响到主线
-程的执行。那么可以用 <code>std::async</code> 来实现。例如：
+假如想让一个函数每隔 1 秒钟将全局计数器增加一个计数，又不想让这个函数影响到主线程的执行。那么可以用 <code>std::async</code> 来实现。例如：
 </p>
 <div class="org-src-container">
 
-<pre class="src src-c++"><span style="color: #6495ed; font-style: italic;">#include</span> <span style="color: #ffc1c1;">&lt;future&gt;</span>
-<span style="color: #6495ed; font-style: italic;">#include</span> <span style="color: #ffc1c1;">&lt;chrono&gt;</span>
-<span style="color: #6495ed; font-style: italic;">#include</span> <span style="color: #ffc1c1;">&lt;iostream&gt;</span>
+<pre class="src src-c++"><span style="color: #c397d8;">#include</span> <span style="color: #b9ca4a;">&lt;future&gt;</span>
+<span style="color: #c397d8;">#include</span> <span style="color: #b9ca4a;">&lt;chrono&gt;</span>
+<span style="color: #c397d8;">#include</span> <span style="color: #b9ca4a;">&lt;iostream&gt;</span>
 
-<span style="color: #00ffff;">static</span> <span style="color: #63b8ff;">int</span> <span style="color: #7fffd4;">fCount</span>;
+<span style="color: #c397d8;">static</span> <span style="color: #e7c547;">int</span> <span style="color: #e78c45;">fCount</span>;
 
-<span style="color: #63b8ff;">void</span> <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">called_from_async</span>() {
+<span style="color: #e7c547;">void</span> <span style="color: #7aa6da;">called_from_async</span>() {
   fCount++;
-  <span style="color: #8470ff; font-weight: bold;">std</span>::cout &lt;&lt; <span style="color: #ffc1c1;">"Async call: "</span> &lt;&lt; fCount &lt;&lt; <span style="color: #ffc1c1;">", "</span> &lt;&lt; asString(tp) &lt;&lt; <span style="color: #8470ff; font-weight: bold;">std</span>::endl;
-  <span style="color: #8470ff; font-weight: bold;">std</span>::<span style="color: #8470ff; font-weight: bold;">this_thread</span>::sleep_for(<span style="color: #8470ff; font-weight: bold;">std</span>::<span style="color: #8470ff; font-weight: bold;">chrono</span>::seconds(1));
+  <span style="color: #70c0b1;">std</span>::cout &lt;&lt; <span style="color: #b9ca4a;">"Async call: "</span> &lt;&lt; fCount &lt;&lt; <span style="color: #b9ca4a;">", "</span> &lt;&lt; asString(tp) &lt;&lt; <span style="color: #70c0b1;">std</span>::endl;
+  <span style="color: #70c0b1;">std</span>::<span style="color: #70c0b1;">this_thread</span>::sleep_for(<span style="color: #70c0b1;">std</span>::<span style="color: #70c0b1;">chrono</span>::seconds(1));
   called_from_async();
 }
 
-<span style="color: #63b8ff;">int</span> <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">main</span>() {
+<span style="color: #e7c547;">int</span> <span style="color: #7aa6da;">main</span>() {
   fCount = 0;
 
-  <span style="color: #fa8072; font-style: italic;">// </span><span style="color: #ff7f24; font-style: italic;">called_from_async launched in a separate thread if possible</span>
-  <span style="color: #8470ff; font-weight: bold;">std</span>::<span style="color: #63b8ff;">future</span>&lt;<span style="color: #63b8ff;">void</span>&gt; <span style="color: #7fffd4;">result</span>(<span style="color: #8470ff; font-weight: bold;">std</span>::<span style="color: #63b8ff;">async</span>(<span style="color: #7fffd4;">called_from_async</span>));
+  <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">called_from_async launched in a separate thread if possible</span>
+  <span style="color: #70c0b1;">std</span>::<span style="color: #e7c547;">future</span>&lt;<span style="color: #e7c547;">void</span>&gt; <span style="color: #e78c45;">result</span>(<span style="color: #70c0b1;">std</span>::<span style="color: #e7c547;">async</span>(<span style="color: #e78c45;">called_from_async</span>));
 
-  <span style="color: #00ffff;">for</span>(<span style="color: #63b8ff;">int</span> <span style="color: #7fffd4;">i</span>=0; i&lt;20; i++) {
-    <span style="color: #8470ff; font-weight: bold;">std</span>::cout &lt;&lt; <span style="color: #ffc1c1;">"Message from main: "</span> &lt;&lt; i &lt;&lt; <span style="color: #8470ff; font-weight: bold;">std</span>::endl;
-    <span style="color: #8470ff; font-weight: bold;">std</span>::<span style="color: #8470ff; font-weight: bold;">this_thread</span>::sleep_for(<span style="color: #8470ff; font-weight: bold;">std</span>::<span style="color: #8470ff; font-weight: bold;">chrono</span>::seconds(1));
+  <span style="color: #c397d8;">for</span>(<span style="color: #e7c547;">int</span> <span style="color: #e78c45;">i</span>=0; i&lt;20; i++) {
+    <span style="color: #70c0b1;">std</span>::cout &lt;&lt; <span style="color: #b9ca4a;">"Message from main: "</span> &lt;&lt; i &lt;&lt; <span style="color: #70c0b1;">std</span>::endl;
+    <span style="color: #70c0b1;">std</span>::<span style="color: #70c0b1;">this_thread</span>::sleep_for(<span style="color: #70c0b1;">std</span>::<span style="color: #70c0b1;">chrono</span>::seconds(1));
   }
 
-  <span style="color: #fa8072; font-style: italic;">// </span><span style="color: #ff7f24; font-style: italic;">Ensure that called_from_async is launched synchronously</span>
-  <span style="color: #fa8072; font-style: italic;">// </span><span style="color: #ff7f24; font-style: italic;">if it wasn't already launched</span>
+  <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">Ensure that called_from_async is launched synchronously</span>
+  <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">if it wasn't already launched</span>
   result.get();
 
-  <span style="color: #00ffff;">return</span> 0;
+  <span style="color: #c397d8;">return</span> 0;
 }
 </pre>
 </div>
 
 <p>
-但上述程序中 <code>called_from_async</code> 并不会马上执行，而是等待中间的循环结束后，才开
-始。这是为什么呢？因为 <code>std:async</code> 的启动策略 (launch policy) 默认设置为
-<code>std::launch::any</code>, 意思是说，只有在你明确表示要等待其结果时才开始执行。如果要让
-函数立刻执行，则需要修改启动策略为 <code>std::launch::async</code>. 同样，如果你确实希望函
-数只须在 <code>get()</code> 被调用时才执行，则明确指定其启动策略为 <code>std::launch::sync</code>.
+但上述程序中 <code>called_from_async</code> 并不会马上执行，而是等待中间的循环结束后，才开始。这是为什么呢？因为 <code>std:async</code> 的启动策略 (launch policy) 默认设置为
+<code>std::launch::any</code>, 意思是说，只有在你明确表示要等待其结果时才开始执行。如果要让函数立刻执行，则需要修改启动策略为 <code>std::launch::async</code>. 同样，如果你确实希望函数只须在 <code>get()</code> 被调用时才执行，则明确指定其启动策略为 <code>std::launch::sync</code>.
 </p>
 
 <p>
@@ -344,51 +337,51 @@ t.join();
 </p>
 <div class="org-src-container">
 
-<pre class="src src-c++"><span style="color: #6495ed; font-style: italic;">#include</span> <span style="color: #ffc1c1;">&lt;future&gt;</span>
-<span style="color: #6495ed; font-style: italic;">#include</span> <span style="color: #ffc1c1;">&lt;thread&gt;</span>
-<span style="color: #6495ed; font-style: italic;">#include</span> <span style="color: #ffc1c1;">&lt;chrono&gt;</span>
-<span style="color: #6495ed; font-style: italic;">#include</span> <span style="color: #ffc1c1;">&lt;iostream&gt;</span>
+<pre class="src src-c++"><span style="color: #c397d8;">#include</span> <span style="color: #b9ca4a;">&lt;future&gt;</span>
+<span style="color: #c397d8;">#include</span> <span style="color: #b9ca4a;">&lt;thread&gt;</span>
+<span style="color: #c397d8;">#include</span> <span style="color: #b9ca4a;">&lt;chrono&gt;</span>
+<span style="color: #c397d8;">#include</span> <span style="color: #b9ca4a;">&lt;iostream&gt;</span>
 
-<span style="color: #00ffff;">static</span> <span style="color: #63b8ff;">bool</span> <span style="color: #7fffd4;">fQuit</span>;
-<span style="color: #00ffff;">static</span> <span style="color: #63b8ff;">int</span>  <span style="color: #7fffd4;">fCount</span>;
+<span style="color: #c397d8;">static</span> <span style="color: #e7c547;">bool</span> <span style="color: #e78c45;">fQuit</span>;
+<span style="color: #c397d8;">static</span> <span style="color: #e7c547;">int</span>  <span style="color: #e78c45;">fCount</span>;
 
-<span style="color: #8470ff; font-weight: bold;">std</span>::<span style="color: #63b8ff;">string</span> <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">asString</span> (<span style="color: #00ffff;">const</span> <span style="color: #8470ff; font-weight: bold;">std</span>::<span style="color: #8470ff; font-weight: bold;">chrono</span>::<span style="color: #8470ff; font-weight: bold;">system_clock</span>::<span style="color: #63b8ff;">time_point</span>&amp; <span style="color: #7fffd4;">tp</span>)
+<span style="color: #70c0b1;">std</span>::<span style="color: #e7c547;">string</span> <span style="color: #7aa6da;">asString</span> (<span style="color: #c397d8;">const</span> <span style="color: #70c0b1;">std</span>::<span style="color: #70c0b1;">chrono</span>::<span style="color: #70c0b1;">system_clock</span>::<span style="color: #e7c547;">time_point</span>&amp; <span style="color: #e78c45;">tp</span>)
 {
-  <span style="color: #fa8072; font-style: italic;">// </span><span style="color: #ff7f24; font-style: italic;">convert to system time:</span>
-  <span style="color: #8470ff; font-weight: bold;">std</span>::<span style="color: #63b8ff;">time_t</span> <span style="color: #7fffd4;">t</span> = <span style="color: #8470ff; font-weight: bold;">std</span>::<span style="color: #8470ff; font-weight: bold;">chrono</span>::<span style="color: #8470ff; font-weight: bold;">system_clock</span>::to_time_t(tp);
-  <span style="color: #8470ff; font-weight: bold;">std</span>::<span style="color: #63b8ff;">string</span> <span style="color: #7fffd4;">ts</span> = <span style="color: #8470ff; font-weight: bold;">std</span>::ctime(&amp;t);<span style="color: #fa8072; font-style: italic;">// </span><span style="color: #ff7f24; font-style: italic;">convert to calendar time</span>
-  ts.resize(ts.size()-1);         <span style="color: #fa8072; font-style: italic;">// </span><span style="color: #ff7f24; font-style: italic;">skip trailing newline</span>
-  <span style="color: #00ffff;">return</span> ts;
+  <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">convert to system time:</span>
+  <span style="color: #70c0b1;">std</span>::<span style="color: #e7c547;">time_t</span> <span style="color: #e78c45;">t</span> = <span style="color: #70c0b1;">std</span>::<span style="color: #70c0b1;">chrono</span>::<span style="color: #70c0b1;">system_clock</span>::to_time_t(tp);
+  <span style="color: #70c0b1;">std</span>::<span style="color: #e7c547;">string</span> <span style="color: #e78c45;">ts</span> = <span style="color: #70c0b1;">std</span>::ctime(&amp;t);<span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">convert to calendar time</span>
+  ts.resize(ts.size()-1);         <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">skip trailing newline</span>
+  <span style="color: #c397d8;">return</span> ts;
 }
 
-<span style="color: #63b8ff;">void</span> <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">called_from_async</span>() {
+<span style="color: #e7c547;">void</span> <span style="color: #7aa6da;">called_from_async</span>() {
   fCount++;
-  <span style="color: #00ffff;">auto</span> <span style="color: #63b8ff;">tp</span> = <span style="color: #8470ff; font-weight: bold;">std</span>::<span style="color: #8470ff; font-weight: bold;">chrono</span>::<span style="color: #8470ff; font-weight: bold;">system_clock</span>::now();
-  <span style="color: #8470ff; font-weight: bold;">std</span>::cout &lt;&lt; <span style="color: #ffc1c1;">"Async call: "</span> &lt;&lt; fCount &lt;&lt; <span style="color: #ffc1c1;">", "</span> &lt;&lt; asString(tp) &lt;&lt; <span style="color: #8470ff; font-weight: bold;">std</span>::endl;
-  <span style="color: #8470ff; font-weight: bold;">std</span>::<span style="color: #8470ff; font-weight: bold;">this_thread</span>::sleep_for(<span style="color: #8470ff; font-weight: bold;">std</span>::<span style="color: #8470ff; font-weight: bold;">chrono</span>::seconds(1));
+  <span style="color: #c397d8;">auto</span> <span style="color: #e7c547;">tp</span> = <span style="color: #70c0b1;">std</span>::<span style="color: #70c0b1;">chrono</span>::<span style="color: #70c0b1;">system_clock</span>::now();
+  <span style="color: #70c0b1;">std</span>::cout &lt;&lt; <span style="color: #b9ca4a;">"Async call: "</span> &lt;&lt; fCount &lt;&lt; <span style="color: #b9ca4a;">", "</span> &lt;&lt; asString(tp) &lt;&lt; <span style="color: #70c0b1;">std</span>::endl;
+  <span style="color: #70c0b1;">std</span>::<span style="color: #70c0b1;">this_thread</span>::sleep_for(<span style="color: #70c0b1;">std</span>::<span style="color: #70c0b1;">chrono</span>::seconds(1));
 
-  <span style="color: #00ffff;">if</span>(<span style="color: #00ffff;">not</span> fQuit) called_from_async();
+  <span style="color: #c397d8;">if</span>(<span style="color: #c397d8;">not</span> fQuit) called_from_async();
 }
 
-<span style="color: #63b8ff;">int</span> <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">main</span>() {
+<span style="color: #e7c547;">int</span> <span style="color: #7aa6da;">main</span>() {
   fCount = 0;
-  fQuit  = <span style="color: #8470ff; font-weight: bold;">false</span>;
+  fQuit  = <span style="color: #70c0b1;">false</span>;
 
-  <span style="color: #fa8072; font-style: italic;">// </span><span style="color: #ff7f24; font-style: italic;">called_from_async launched in a separate thread if possible</span>
-  <span style="color: #8470ff; font-weight: bold;">std</span>::<span style="color: #63b8ff;">future</span>&lt;<span style="color: #63b8ff;">void</span>&gt; <span style="color: #7fffd4;">result</span>(<span style="color: #8470ff; font-weight: bold;">std</span>::async(<span style="color: #8470ff; font-weight: bold;">std</span>::<span style="color: #8470ff; font-weight: bold;">launch</span>::async,called_from_async));
+  <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">called_from_async launched in a separate thread if possible</span>
+  <span style="color: #70c0b1;">std</span>::<span style="color: #e7c547;">future</span>&lt;<span style="color: #e7c547;">void</span>&gt; <span style="color: #e78c45;">result</span>(<span style="color: #70c0b1;">std</span>::async(<span style="color: #70c0b1;">std</span>::<span style="color: #70c0b1;">launch</span>::async,called_from_async));
 
-  <span style="color: #00ffff;">for</span>(<span style="color: #63b8ff;">int</span> <span style="color: #7fffd4;">i</span>=0; i&lt;20; i++) {
-    <span style="color: #8470ff; font-weight: bold;">std</span>::cout &lt;&lt; <span style="color: #ffc1c1;">"Message from main: "</span> &lt;&lt; i &lt;&lt; <span style="color: #8470ff; font-weight: bold;">std</span>::endl;
-    <span style="color: #8470ff; font-weight: bold;">std</span>::<span style="color: #8470ff; font-weight: bold;">this_thread</span>::sleep_for(<span style="color: #8470ff; font-weight: bold;">std</span>::<span style="color: #8470ff; font-weight: bold;">chrono</span>::seconds(1));
+  <span style="color: #c397d8;">for</span>(<span style="color: #e7c547;">int</span> <span style="color: #e78c45;">i</span>=0; i&lt;20; i++) {
+    <span style="color: #70c0b1;">std</span>::cout &lt;&lt; <span style="color: #b9ca4a;">"Message from main: "</span> &lt;&lt; i &lt;&lt; <span style="color: #70c0b1;">std</span>::endl;
+    <span style="color: #70c0b1;">std</span>::<span style="color: #70c0b1;">this_thread</span>::sleep_for(<span style="color: #70c0b1;">std</span>::<span style="color: #70c0b1;">chrono</span>::seconds(1));
   }
 
-  <span style="color: #fa8072; font-style: italic;">// </span><span style="color: #ff7f24; font-style: italic;">Ensure that called_from_async is launched synchronously</span>
-  <span style="color: #fa8072; font-style: italic;">// </span><span style="color: #ff7f24; font-style: italic;">if it wasn't already launched</span>
+  <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">Ensure that called_from_async is launched synchronously</span>
+  <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">if it wasn't already launched</span>
 
-  fQuit = <span style="color: #8470ff; font-weight: bold;">true</span>;
+  fQuit = <span style="color: #70c0b1;">true</span>;
   result.get();
 
-  <span style="color: #00ffff;">return</span> 0;
+  <span style="color: #c397d8;">return</span> 0;
 }
 </pre>
 </div>
@@ -417,7 +410,7 @@ Message from main: 4
 </div>
 <div id="postamble" class="status">
 <div id="disqus_thread"></div>
-<p>版权所有 ©2013: Exaos Lee | Date:  | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2), <a href="http://validator.w3.org/check?uri=referer">Validate</a>, <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a></p>
+<p>版权所有 ©2013: Exaos Lee | Date:  | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.50.1 (<a href="http://orgmode.org">Org</a> mode 8.2), <a href="http://validator.w3.org/check?uri=referer">Validate</a>, <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a></p>
 <script type="text/javascript">
   var disqus_shortname = 'exaos-github';
   (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

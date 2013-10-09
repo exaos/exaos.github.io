@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>GnuPG 与邮件加密</title>
-<!-- 2013-09-21 六 18:22 -->
+<!-- 2013-10-09 三 14:41 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Exaos Lee" />
@@ -260,10 +260,7 @@ for the JavaScript code in this tag.
 </div>
 <blockquote>
 <p>
-本文主要根据 <a href="#fgpg-m">1</a> 一文翻译并根据情况有所增删，目的是让朋友们能够对公私钥加密有
-一个初步的了解，并且希望通过阅读此文能够给我发送经过 GnuPG 加密后的邮件。同时，
-如果朋友们对 <a href="index.html">软件笔记</a> 首页及 <a href="network.html">网络相关软件列表</a> 中的部分内容感到迷惑的话，希望通过
-阅读此文能够有所解惑。
+本文主要根据 <a href="#fgpg-m">1</a> 一文翻译并根据情况有所增删，目的是让朋友们能够对公私钥加密有一个初步的了解，并且希望通过阅读此文能够给我发送经过 GnuPG 加密后的邮件。同时，如果朋友们对 <a href="index.html">软件笔记</a> 首页及 <a href="network.html">网络相关软件列表</a> 中的部分内容感到迷惑的话，希望通过阅读此文能够有所解惑。
 </p>
 
 <p>
@@ -275,26 +272,17 @@ for the JavaScript code in this tag.
 <h2 id="sec-1">GnuPG 简介</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-简而言之，加密就是 <b>隐藏信息</b> 。经过计算机科学家、数学家和政府秘密探员长时间的努
-力，这项技术目前已经非常易用并且无处不在了。加密技术的传播仍然不太普遍，但它对普
-通人而言却比以往更加重要了。
+简而言之，加密就是 <b>隐藏信息</b> 。经过计算机科学家、数学家和政府秘密探员长时间的努力，这项技术目前已经非常易用并且无处不在了。加密技术的传播仍然不太普遍，但它对普通人而言却比以往更加重要了。
 </p>
 
 <p>
-你发送和接收的每一封电子邮件、每一条即时消息，在你的计算机上往来时并没有进行保护。
-由于互联网的去中心化特性，所有的个人通讯都要经过数十台计算机，有时会通过几个国家
-进行传播，但从发送到接收之间可能仅隔几个微秒的时间。所有这些计算机，尤其是你的电
-子邮件提供者，会根据法律要求对你的信息保留较长的一段时间。个人在线交流并非你所想
-的那样隐私。
+你发送和接收的每一封电子邮件、每一条即时消息，在你的计算机上往来时并没有进行保护。由于互联网的去中心化特性，所有的个人通讯都要经过数十台计算机，有时会通过几个国家进行传播，但从发送到接收之间可能仅隔几个微秒的时间。所有这些计算机，尤其是你的电子邮件提供者，会根据法律要求对你的信息保留较长的一段时间。个人在线交流并非你所想的那样隐私。
 </p>
 
 <p>
 当面对在线交流的非隐私事实时，许多人会声称他们“没有什么需要隐藏”。根据George
-Washington 大学法律学院的 Solve 教授所言，“声称无须隐藏的是基于这样的假设，即隐
-私是为了隐藏坏的东西” ("The problem with the nothing to hide argument is with
-it's underlying assumption that privacy is about hiding bad things")。但你是否与
-私交有过极其个人问题的谈话呢？你是否会将这谈话录音并发送给地址簿中的每个人呢？如
-果没有，那么你就有一些需要隐藏的东西。并非隐藏的东西是 <b>坏的</b> ，而是它*非常隐私*
+Washington 大学法律学院的 Solve 教授所言，“声称无须隐藏的是基于这样的假设，即隐私是为了隐藏坏的东西” ("The problem with the nothing to hide argument is with
+it's underlying assumption that privacy is about hiding bad things")。但你是否与私交有过极其个人问题的谈话呢？你是否会将这谈话录音并发送给地址簿中的每个人呢？如果没有，那么你就有一些需要隐藏的东西。并非隐藏的东西是 <b>坏的</b> ，而是它*非常隐私*
 而已。
 </p>
 
@@ -304,9 +292,7 @@ it's underlying assumption that privacy is about hiding bad things")。但你是
 
 <p>
 就种种电子邮件隐私需求而言，有一个简单的解决方案，就是遵循 GNU 隐私指南 (<a href="http://gnupg.org/">GNU
-Privacy Guard</a>, 简写为 GPG, 或 GnuPG)。尽管 GPG 提供的加密办法非常安全，并且许多
-政府使用它来加密绝密信息，GPG 本身却并非容易使用。然而，一些软件及相关插件，却可
-以让用户很方便地使用 GPG，这也就是下面要介绍的 <code>ThunderBird + Enigmail</code> 和~Firefox
+Privacy Guard</a>, 简写为 GPG, 或 GnuPG)。尽管 GPG 提供的加密办法非常安全，并且许多政府使用它来加密绝密信息，GPG 本身却并非容易使用。然而，一些软件及相关插件，却可以让用户很方便地使用 GPG，这也就是下面要介绍的 <code>ThunderBird + Enigmail</code> 和~Firefox
 </p>
 <ul class="org-ul">
 <li>FireGPG~ 的使用模式。
@@ -318,17 +304,11 @@ Privacy Guard</a>, 简写为 GPG, 或 GnuPG)。尽管 GPG 提供的加密办法�
 <h3 id="sec-1-1">前提条件</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
-GnuPG 非常安全，但再强的安全性也可能由于用户会犯的错误而被破坏，故不可以想当然地
-认为用户很清楚自己的行为。人们对邮件加密并非不常见，唯一的问题是他们的私钥被偷或
-者他们的密码太弱。并且，如果你的计算机已经被攻击者（可能是病毒或者其它类似的东西）
-破坏，那么他们偷走你的私钥和密码就太容易了，再接收你的私人通讯就更没问题了。（可
-参考 <a href="http://crashsystems.net/2008/10/safe-web-browsing/">此文</a> 学习如何安全地网上冲浪。另注：此处参考为英文。）
+GnuPG 非常安全，但再强的安全性也可能由于用户会犯的错误而被破坏，故不可以想当然地认为用户很清楚自己的行为。人们对邮件加密并非不常见，唯一的问题是他们的私钥被偷或者他们的密码太弱。并且，如果你的计算机已经被攻击者（可能是病毒或者其它类似的东西）破坏，那么他们偷走你的私钥和密码就太容易了，再接收你的私人通讯就更没问题了。（可参考 <a href="http://crashsystems.net/2008/10/safe-web-browsing/">此文</a> 学习如何安全地网上冲浪。另注：此处参考为英文。）
 </p>
 
 <p>
-本文的目标读者为普通的计算用户。如果知道了如何浏览网页、发送电子邮件，你就可以参
-照此文。你不需要成为计算机高手，但你需要乐于思考。本文没有什么特别困难的东西，但
-你需要学会一些新的概念。如果你乐于新知，就读下去吧。
+本文的目标读者为普通的计算用户。如果知道了如何浏览网页、发送电子邮件，你就可以参照此文。你不需要成为计算机高手，但你需要乐于思考。本文没有什么特别困难的东西，但你需要学会一些新的概念。如果你乐于新知，就读下去吧。
 </p>
 </div>
 </div>
@@ -339,14 +319,11 @@ GnuPG 非常安全，但再强的安全性也可能由于用户会犯的错误�
 <h4 id="sec-1-2-1">对称加密</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
-假设你要向一群朋友发送秘密信息，但你并不信任邮差。简单的办法就是寻找一种隐藏信息
-的方法。欲达此目的，你需要三样东西：发送的消息，与朋友们共享的秘密，一种相互认可
-的处理流程，从而使得共享的秘密能够隐藏在看起来不知所云的消息中。
+假设你要向一群朋友发送秘密信息，但你并不信任邮差。简单的办法就是寻找一种隐藏信息的方法。欲达此目的，你需要三样东西：发送的消息，与朋友们共享的秘密，一种相互认可的处理流程，从而使得共享的秘密能够隐藏在看起来不知所云的消息中。
 </p>
 
 <p>
-这就是通常所说的对称加密，因为只有一个密钥，即只涉及一个秘密。将密钥与消息组合处
-理的过程称之为加密算法 (“算法”简单地说就是“一组指令”)，有时也称为加密书写
+这就是通常所说的对称加密，因为只有一个密钥，即只涉及一个秘密。将密钥与消息组合处理的过程称之为加密算法 (“算法”简单地说就是“一组指令”)，有时也称为加密书写
 (cypher). 由于这种加密很简单，用户不需要怎么考虑其中的数学细节。
 </p>
 </div>
@@ -355,18 +332,11 @@ GnuPG 非常安全，但再强的安全性也可能由于用户会犯的错误�
 <h4 id="sec-1-2-2">非对称加密，即公钥加密</h4>
 <div class="outline-text-4" id="text-1-2-2">
 <p>
-对称加密的一个简单问题就是：它不易于大规模处理。技术本身没什么问题，问题是使用该
-技术的人。众所周知，两个人保守一个秘密比一个人独自保守秘密难度加倍。三个人保守一
-个秘密，保密的难度是三倍，四个人则四倍……你可想见，一个小组的人如何能够安全地保
-守秘密呢？每增加一个人，保守秘密的难度也会增加。也就是说，当许多人共享一个对称加
-密的方法时，它很容易被泄密。
+对称加密的一个简单问题就是：它不易于大规模处理。技术本身没什么问题，问题是使用该技术的人。众所周知，两个人保守一个秘密比一个人独自保守秘密难度加倍。三个人保守一个秘密，保密的难度是三倍，四个人则四倍……你可想见，一个小组的人如何能够安全地保守秘密呢？每增加一个人，保守秘密的难度也会增加。也就是说，当许多人共享一个对称加密的方法时，它很容易被泄密。
 </p>
 
 <p>
-解决此问题的办法就是： <a href="http://en.wikipedia.org/wiki/Cryptography#Public-key_cryptography"><b>公钥加密法</b></a> 。这种加密方式中，密钥的功能与在对称加密中所
-起的作用不大相同。假设你有一个秘密消息需要与一群朋友共享。但此时，这个加密方法所
-要求的是你的一群朋友每人都有两把密钥 (好比两把钥匙)。你不需要理解底层的数学细节，
-但你需要理解的是与使用一把密钥不同，
+解决此问题的办法就是： <a href="http://en.wikipedia.org/wiki/Cryptography#Public-key_cryptography"><b>公钥加密法</b></a> 。这种加密方式中，密钥的功能与在对称加密中所起的作用不大相同。假设你有一个秘密消息需要与一群朋友共享。但此时，这个加密方法所要求的是你的一群朋友每人都有两把密钥 (好比两把钥匙)。你不需要理解底层的数学细节，但你需要理解的是与使用一把密钥不同，
 </p>
 <blockquote>
 <p>
@@ -374,14 +344,11 @@ GnuPG 非常安全，但再强的安全性也可能由于用户会犯的错误�
 </p>
 </blockquote>
 <p>
-这种情况下，每个人都自己留一把密钥，而将另一把公开，让全世界都知道它。公开的那个
-称为 <b>公钥</b>, 另一个仔细隐藏并保护起来的称之为 <b>私钥</b> 。
+这种情况下，每个人都自己留一把密钥，而将另一把公开，让全世界都知道它。公开的那个称为 <b>公钥</b>, 另一个仔细隐藏并保护起来的称之为 <b>私钥</b> 。
 </p>
 
 <p>
-它的工作过程是这样的：由于你公布了公钥，你的任何朋友都可以通过互联网找到这把公钥，
-并可以使用它把秘密消息加密后传给你。一旦使用你的公钥加密了消息，就只有你才能够对
-其解密，因为只有你拥有你自己的私钥。这就解决了需要让一群人共享一个秘密的难题。
+它的工作过程是这样的：由于你公布了公钥，你的任何朋友都可以通过互联网找到这把公钥，并可以使用它把秘密消息加密后传给你。一旦使用你的公钥加密了消息，就只有你才能够对其解密，因为只有你拥有你自己的私钥。这就解决了需要让一群人共享一个秘密的难题。
 (此过程可参照下图。)
 </p>
 <div class="dot">
@@ -407,14 +374,7 @@ digraph pubkey_encryp {
 </div>
 
 <p>
-它还可让你做另一件事，就是证明自己的身份。如前所述，如果用一把密钥加密了，只有用
-另一把才能解密。因为你把自己的私钥保护得很隐秘（即只有你才会有），而你用私钥加密
-的消息只有你的公钥能够解密。假设所有人都认为你把自己的私钥保护得很安全，那么任何
-人能够解密你用私钥加密的消息，而你是唯一一个能够进行这种加密的人，从而你消息发送
-者的身份就得到了唯一认定。这也称为 <b>签名</b> 。通常情况是，消息发送者者使用私钥对消
-息进行加密或“签名”，再使用接收者的公钥进行加密。接收者首先使用自己的私钥，然后
-再使用发送者的公钥解密消息，则他们不仅知道只有谁能够读消息，也知道消息只有谁才能
-够发送。 (此过程可参照下图。)
+它还可让你做另一件事，就是证明自己的身份。如前所述，如果用一把密钥加密了，只有用另一把才能解密。因为你把自己的私钥保护得很隐秘（即只有你才会有），而你用私钥加密的消息只有你的公钥能够解密。假设所有人都认为你把自己的私钥保护得很安全，那么任何人能够解密你用私钥加密的消息，而你是唯一一个能够进行这种加密的人，从而你消息发送者的身份就得到了唯一认定。这也称为 <b>签名</b> 。通常情况是，消息发送者者使用私钥对消息进行加密或“签名”，再使用接收者的公钥进行加密。接收者首先使用自己的私钥，然后再使用发送者的公钥解密消息，则他们不仅知道只有谁能够读消息，也知道消息只有谁才能够发送。 (此过程可参照下图。)
 </p>
 <div class="dot">
 <p>
@@ -442,9 +402,7 @@ digraph pubkey_sig {
 </div>
 
 <p>
-公钥密码学是 GPG 所使用的加密方法。上述所说的 <b>密钥对</b> 实际上是同一组的两个文件，
-包含有大量的数学相关的随机数。后面的内容将介绍如何安装软件、产生密钥对、发布公钥、
-进行消息加密等。在阅读后文之前，请确保你理解了上述的公钥加密的概念。
+公钥密码学是 GPG 所使用的加密方法。上述所说的 <b>密钥对</b> 实际上是同一组的两个文件，包含有大量的数学相关的随机数。后面的内容将介绍如何安装软件、产生密钥对、发布公钥、进行消息加密等。在阅读后文之前，请确保你理解了上述的公钥加密的概念。
 </p>
 </div>
 </div>
@@ -455,13 +413,11 @@ digraph pubkey_sig {
 <h2 id="sec-2">ThunderBird + Enigmail</h2>
 <div class="outline-text-2" id="text-2">
 <p>
-<b>注</b>: 这部分内容为 <a href="#fgpg-m">1</a> 中所没有。为方便，本文使用 <a href="http://portableapps.com/">PortableApps</a> 打包的软件来阐
-述。相关内容可参考 <a href="portableapps.html">Portable Apps 笔记</a> 。
+<b>注</b>: 这部分内容为 <a href="#fgpg-m">1</a> 中所没有。为方便，本文使用 <a href="http://portableapps.com/">PortableApps</a> 打包的软件来阐述。相关内容可参考 <a href="portableapps.html">Portable Apps 笔记</a> 。
 </p>
 
 <p>
-如果你不选择使用 PortableApps 提供的可移动版本的 ThunderBird，则软件的安装步骤如
-下：
+如果你不选择使用 PortableApps 提供的可移动版本的 ThunderBird，则软件的安装步骤如下：
 </p>
 <ol class="org-ol">
 <li>从 <a href="http://www.mozillamessaging.com/thunderbird/">http://www.mozillamessaging.com/thunderbird/</a> 下载 ThunderBird 并安装。
@@ -476,8 +432,7 @@ digraph pubkey_sig {
 </ol>
 
 <p>
-其它的平台，如 Mac OS X, Linux 等，安装相应的软件即可，如在 Mac OS X 上可搜索安
-装 MacGPG2 等。
+其它的平台，如 Mac OS X, Linux 等，安装相应的软件即可，如在 Mac OS X 上可搜索安装 MacGPG2 等。
 </p>
 </div>
 
@@ -496,8 +451,7 @@ digraph pubkey_sig {
 </p>
 </div>
 </li>
-<li>点击安装界面中的“下一步”按钮，则出现提示安装的目录。你可以选择任意目录进
-行。再“下一步”后则安装结束。
+<li>点击安装界面中的“下一步”按钮，则出现提示安装的目录。你可以选择任意目录进行。再“下一步”后则安装结束。
 
 <div class="figure">
 <p><img src="gpgmail/tb-inst-2.png" alt="tb-inst-2.png" />
@@ -506,11 +460,9 @@ digraph pubkey_sig {
 </li>
 <li>从 <a href="http://downloads.sourceforge.net/portableapps/GPG_for_Thunderbird_Portable_1.4.10.paf.exe?download">这儿下载</a> GPG for ThunderBird Portable 1.4.10 版本。
 </li>
-<li>双击下载完毕的 <code>.paf.exe</code> 结尾的文件，同 Portable ThunderBird 的安装过程一样，
-所不同的是，在选择安装目录时，选择与刚才安装 *ThunderBird 相同的路径*。
+<li>双击下载完毕的 <code>.paf.exe</code> 结尾的文件，同 Portable ThunderBird 的安装过程一样，所不同的是，在选择安装目录时，选择与刚才安装 *ThunderBird 相同的路径*。
 </li>
-<li>打开 ThunderBird 的安装路径，在其中有一个名为 <code>ThunderbirdPortable.exe</code> 的可
-执行文件，双击即可运行移动版本的 ThunderBird 了。该目录下还应该有如下内容：
+<li>打开 ThunderBird 的安装路径，在其中有一个名为 <code>ThunderbirdPortable.exe</code> 的可执行文件，双击即可运行移动版本的 ThunderBird 了。该目录下还应该有如下内容：
 <ol class="org-ol">
 <li><b>App</b> &#x2013; 程序的实际目录，其中应该包含有 <code>AppInfo</code>, <code>DefaultData</code>, <code>gpg</code>,
 和 <code>Thunderbird</code> 这几个目录。
@@ -521,8 +473,7 @@ digraph pubkey_sig {
 </li>
 </ol>
 </li>
-<li>双击运行 <code>ThunderbirdPortable.exe</code>, 会出现如下的窗口。您可以开始配置自己的邮
-件帐户了。 (或者点击“取消”，以后再配置。但建议你先配置好再进行下一步。)
+<li>双击运行 <code>ThunderbirdPortable.exe</code>, 会出现如下的窗口。您可以开始配置自己的邮件帐户了。 (或者点击“取消”，以后再配置。但建议你先配置好再进行下一步。)
 
 <div class="figure">
 <p><img src="gpgmail/tb-inst-3.png" alt="tb-inst-3.png" />
@@ -531,10 +482,8 @@ digraph pubkey_sig {
 </li>
 <li>点击菜单“工具(T)&#x2013;&gt;附加组件(A)”，会出现如下窗口。从“获取附加组件”中搜索
 Enigmail，选择“添加至 Thunderbird(A)…”，即可安装 ThunderBird 下的Enigmail
-插件。如果无法联网，也可以在其它地方从<a href="http://enigmail.mozdev.org/">http://enigmail.mozdev.org/</a> 下载相应版
-本的 Enigmail 插件，比如 Windows (32-bit) Thunderbird 3.0 对应的 Enigmail
-1.0.1 版本，拷贝到移动介质中，比如U 盘。然后从“附加组件”对话框中选择“安装”按
-扭，从文件文件对话框中寻找你下载的 <code>.xpi</code> 文件，安装即可。安装之后重新启动
+插件。如果无法联网，也可以在其它地方从<a href="http://enigmail.mozdev.org/">http://enigmail.mozdev.org/</a> 下载相应版本的 Enigmail 插件，比如 Windows (32-bit) Thunderbird 3.0 对应的 Enigmail
+1.0.1 版本，拷贝到移动介质中，比如U 盘。然后从“附加组件”对话框中选择“安装”按扭，从文件文件对话框中寻找你下载的 <code>.xpi</code> 文件，安装即可。安装之后重新启动
 ThunderBird 即可。
 
 <div class="figure">
@@ -560,15 +509,12 @@ ThunderBird 即可。
 </li>
 <li>在“选项”中，你可以调整一些细节。但默认的值挺好。
 </li>
-<li>在创建密钥对时，如果选择“帐户／个人标识”不能正常选择你已经创建好的个人电
-子邮件帐户，你可以先选择“取消”。如果正常，输入你的密码后，则可成功创建一
-对密钥。
+<li>在创建密钥对时，如果选择“帐户／个人标识”不能正常选择你已经创建好的个人电子邮件帐户，你可以先选择“取消”。如果正常，输入你的密码后，则可成功创建一对密钥。
 </li>
 </ol>
 
 <p>
-运行向导结束后，返回到你的 ThunderBird 界面。这时，选择菜单“安全(N)&#x2013;&gt;密钥管
-理器(Y)”打开密钥管理器对话框，如下图。
+运行向导结束后，返回到你的 ThunderBird 界面。这时，选择菜单“安全(N)&#x2013;&gt;密钥管理器(Y)”打开密钥管理器对话框，如下图。
 </p>
 
 <div class="figure">
@@ -577,8 +523,7 @@ ThunderBird 即可。
 </div>
 
 <p>
-这时，选择 "Display All Keys" 如果没有显示内容，表明向导中创建密钥对失败。没关
-系，选择密钥管理器的菜单“创建(G)&#x2013;&gt;新密钥对(K)”，可打开如下对话框。
+这时，选择 "Display All Keys" 如果没有显示内容，表明向导中创建密钥对失败。没关系，选择密钥管理器的菜单“创建(G)&#x2013;&gt;新密钥对(K)”，可打开如下对话框。
 </p>
 
 <div class="figure">
@@ -588,8 +533,7 @@ ThunderBird 即可。
 
 <p>
 填写相应的信息，比如“密码”、有效期等。其中“高级”中的“密钥长度”默认选择
-2048 位即可，密钥类型默认为 "RSA" 即可。然后点击“生成密钥”，等待一会，会提示你
-“创建关保存撤销证书”，保存即可。
+2048 位即可，密钥类型默认为 "RSA" 即可。然后点击“生成密钥”，等待一会，会提示你“创建关保存撤销证书”，保存即可。
 </p>
 
 <p>
@@ -597,8 +541,7 @@ ThunderBird 即可。
 </p>
 
 <p>
-此时，你的密钥管理器中会出现你刚才生成的密钥。右键点击此密钥，选择“导出密钥到文
-件”，然后保存你的公钥为一个文本文件，比如我的公钥文件 <a href="file:///home/exaos/Utilities/Workspace/exaos.github.com/orgsrc/ExaosLee_pub.asc">ExaosLee\_pub.asc</a> 。
+此时，你的密钥管理器中会出现你刚才生成的密钥。右键点击此密钥，选择“导出密钥到文件”，然后保存你的公钥为一个文本文件，比如我的公钥文件 <a href="file:///home/exaos/Utilities/Workspace/exaos.github.com/orgsrc/ExaosLee_pub.asc">ExaosLee\_pub.asc</a> 。
 </p>
 
 
@@ -616,8 +559,7 @@ ThunderBird 即可。
 <h3 id="sec-2-3">分发公钥</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
-Enigmail 的密钥管理器可以导出公钥、私钥等，你可以将自己的私钥导出保存在安全的地
-方。如前面第一节中所述，你的公钥需要分发给朋友们，这样大家才可以给你写加密的邮件。
+Enigmail 的密钥管理器可以导出公钥、私钥等，你可以将自己的私钥导出保存在安全的地方。如前面第一节中所述，你的公钥需要分发给朋友们，这样大家才可以给你写加密的邮件。
 </p>
 
 <p>
@@ -645,8 +587,7 @@ Enigmail 的密钥管理器可以导出公钥、私钥等，你可以将自己�
 </ul>
 
 <p>
-你可以直接通过右键点击密钥，选择“上传公钥到密钥服务器”即可。然后大家就可以在你
-上传到的密钥服务器上搜索到你的公钥。另外，你也可以使用浏览器打开
+你可以直接通过右键点击密钥，选择“上传公钥到密钥服务器”即可。然后大家就可以在你上传到的密钥服务器上搜索到你的公钥。另外，你也可以使用浏览器打开
 <a href="http://keyserver.pgp.com/">http://keyserver.pgp.com/</a> 等网站，通过网页把你的公钥上传到服务器上。
 </p>
 </div>
@@ -655,15 +596,11 @@ Enigmail 的密钥管理器可以导出公钥、私钥等，你可以将自己�
 <h3 id="sec-2-4">导入密钥</h3>
 <div class="outline-text-3" id="text-2-4">
 <p>
-通过密钥管理器，你可以导出密钥对，也可以导入朋友们的公钥。比如，你可以从 <a href="file:///home/exaos/Utilities/Workspace/exaos.github.com/orgsrc/ExaosLee_pub.asc">这儿</a>直
-接下载，或者从 <a href="http://keyserver.pgp.com/">PGP Global Directory</a> 搜索我的电子邮件地址，然后下载搜索到的公钥并
-保存为文件 <code>ExaosLee\_pub.asc</code>. 然后打开 ThunderBird 中密钥管理器，通过菜单“文
-件(F)&#x2013;&gt;从文件导入密钥(I)”导入下载的公钥文件。
+通过密钥管理器，你可以导出密钥对，也可以导入朋友们的公钥。比如，你可以从 <a href="file:///home/exaos/Utilities/Workspace/exaos.github.com/orgsrc/ExaosLee_pub.asc">这儿</a>直接下载，或者从 <a href="http://keyserver.pgp.com/">PGP Global Directory</a> 搜索我的电子邮件地址，然后下载搜索到的公钥并保存为文件 <code>ExaosLee\_pub.asc</code>. 然后打开 ThunderBird 中密钥管理器，通过菜单“文件(F)&#x2013;&gt;从文件导入密钥(I)”导入下载的公钥文件。
 </p>
 
 <p>
-我的公钥导入后，如下图中的粉红线部分所示，如果双击“用户属性 (JPEG 图像)”则可以
-看到公钥中所包含的我的照片。
+我的公钥导入后，如下图中的粉红线部分所示，如果双击“用户属性 (JPEG 图像)”则可以看到公钥中所包含的我的照片。
 </p>
 
 <div class="figure">
@@ -676,9 +613,7 @@ Enigmail 的密钥管理器可以导出公钥、私钥等，你可以将自己�
 <h3 id="sec-2-5">创建加密邮件</h3>
 <div class="outline-text-3" id="text-2-5">
 <p>
-从 ThunderBird 的工具条中选择“新建消息”，可打开邮件编写窗口。如下图所示，在编
-写完邮件后，从工具条或菜单中选择“加密邮件 (E)”，则在发送邮件时会自动使用该邮件
-接收人所拥有的公钥对信件内容进行加密。
+从 ThunderBird 的工具条中选择“新建消息”，可打开邮件编写窗口。如下图所示，在编写完邮件后，从工具条或菜单中选择“加密邮件 (E)”，则在发送邮件时会自动使用该邮件接收人所拥有的公钥对信件内容进行加密。
 </p>
 
 <div class="figure">
@@ -687,8 +622,7 @@ Enigmail 的密钥管理器可以导出公钥、私钥等，你可以将自己�
 </div>
 
 <p>
-下图为所发送的加密信件未解密时的内容。从图中可见，如果未解密，根本无从知道所书写
-的内容。
+下图为所发送的加密信件未解密时的内容。从图中可见，如果未解密，根本无从知道所书写的内容。
 </p>
 
 <div class="figure">
@@ -702,16 +636,14 @@ Enigmail 的密钥管理器可以导出公钥、私钥等，你可以将自己�
 <h2 id="sec-3">Firefox + FireGPG</h2>
 <div class="outline-text-2" id="text-3">
 <p>
-如果你不需要使用 PortableApps 提供的可移动版本的 FireFox, 在 Windows 下软件安装
-步骤如下：
+如果你不需要使用 PortableApps 提供的可移动版本的 FireFox, 在 Windows 下软件安装步骤如下：
 </p>
 <ol class="org-ol">
 <li>从 <a href="http://www.mozilla.com/firefox/">http://www.mozilla.com/firefox/</a> 下载 FireFox 并安装。
 </li>
 <li>从 <a href="http://www.gpg4win.org/">http://www.gpg4win.org/</a> 下载 Gpg4win 并安装。
 </li>
-<li>从 <a href="http://getfiregpg.org/">http://getfiregpg.org/</a> 下载 FireGPG 或者直接从 FireFox 的“附加组件”中
-安装 FireGPG。
+<li>从 <a href="http://getfiregpg.org/">http://getfiregpg.org/</a> 下载 FireGPG 或者直接从 FireFox 的“附加组件”中安装 FireGPG。
 </li>
 <li>跳过软件安装，直接到后面的 FireGPG 使用介绍。
 </li>
@@ -722,8 +654,7 @@ Enigmail 的密钥管理器可以导出公钥、私钥等，你可以将自己�
 </p>
 
 <p>
-其它的平台，如 Mac OS X, Linux 等，安装相应的软件即可，如在 Mac OS X 上可搜索安
-装 MacGPG2 等。
+其它的平台，如 Mac OS X, Linux 等，安装相应的软件即可，如在 Mac OS X 上可搜索安装 MacGPG2 等。
 </p>
 </div>
 
@@ -734,11 +665,9 @@ Enigmail 的密钥管理器可以导出公钥、私钥等，你可以将自己�
 如下的安装过程类似于 ThunderBird + Enigmail。
 </p>
 <ol class="org-ol">
-<li>从 <a href="http://portableapps.com/apps/internet/firefox_portable">http://portableapps.com/apps/internet/firefox_portable</a> 选择相应的语言，
-并下载安装包。
+<li>从 <a href="http://portableapps.com/apps/internet/firefox_portable">http://portableapps.com/apps/internet/firefox_portable</a> 选择相应的语言，并下载安装包。
 </li>
-<li>打开下载的 <code>.paf.exe</code> 文件，选择安装路径，然后点“下一步”即可。在这儿假设
-你的 <code>FirefoxPortable</code> 和 <code>ThunderbirdPortable</code> 目录都在同一个目录下。
+<li>打开下载的 <code>.paf.exe</code> 文件，选择安装路径，然后点“下一步”即可。在这儿假设你的 <code>FirefoxPortable</code> 和 <code>ThunderbirdPortable</code> 目录都在同一个目录下。
 </li>
 <li>从 <code>FirefoxPortable</code> 目录中双击 <code>FirefoxPortable.exe</code> 文件运行。从 FireFox
 的菜单“工具&#x2013;&gt;附加组件”打开“附加组件对话框，从“获取附加组件”中搜索
@@ -747,18 +676,15 @@ FireGPG 并安装，或者直接从 <a href="http://getfiregpg.org/">http://getf
 </li>
 <li>FireGPG 的设置：
 <ol class="org-ol">
-<li>如下图所示，从 FireFox 的菜单“工具&#x2013;&gt;FireGPG&#x2013;&gt;选项”打开 FireGPG 的设
-置对话框。
+<li>如下图所示，从 FireFox 的菜单“工具&#x2013;&gt;FireGPG&#x2013;&gt;选项”打开 FireGPG 的设置对话框。
 
 <div class="figure">
 <p><img src="gpgmail/fgpg-1.png" alt="fgpg-1.png" />
 </p>
 </div>
 </li>
-<li>如果是非移动版本的 FireFox，可使用 FireGPG 自动检测到的 GPG 路径设置。如
-果使用移动版本的 FireFox，假设 <code>FirefoxPortable</code> 目录与前一节所述的
-Portable ThunderBird 安装在同一目录下，可按下图中粉红色圈中所示的路径进
-行参数设置。 (这儿参考了 <a href="#fgpg-blog">3</a>)。
+<li>如果是非移动版本的 FireFox，可使用 FireGPG 自动检测到的 GPG 路径设置。如果使用移动版本的 FireFox，假设 <code>FirefoxPortable</code> 目录与前一节所述的
+Portable ThunderBird 安装在同一目录下，可按下图中粉红色圈中所示的路径进行参数设置。 (这儿参考了 <a href="#fgpg-blog">3</a>)。
 <p>
 <img src="gpgmail/fgpg-2.png" alt="fgpg-2.png" />
 其中 <code>gpg</code> 命令行参数为：
@@ -782,8 +708,7 @@ Portable ThunderBird 安装在同一目录下，可按下图中粉红色圈中�
 <h3 id="sec-3-2">创建密钥对</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
-从 FireFox 的菜单“工具&#x2013;&gt;FireGPG&#x2013;&gt;密钥管理器”打开密钥管理器，从如下图粉红圈所
-示的位置选择“新建密钥”。
+从 FireFox 的菜单“工具&#x2013;&gt;FireGPG&#x2013;&gt;密钥管理器”打开密钥管理器，从如下图粉红圈所示的位置选择“新建密钥”。
 </p>
 
 
@@ -818,8 +743,7 @@ Portable ThunderBird 安装在同一目录下，可按下图中粉红色圈中�
 <h3 id="sec-3-3">密钥的备份</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
-同上一节中创建密钥对相似，先从密钥列表中选择一组密钥，然后从密钥管理器下面一排的
-按扭中选择“导出到文件”，则可对密钥进行备份。
+同上一节中创建密钥对相似，先从密钥列表中选择一组密钥，然后从密钥管理器下面一排的按扭中选择“导出到文件”，则可对密钥进行备份。
 </p>
 </div>
 </div>
@@ -837,14 +761,12 @@ ThunderBird 一节中所述，将导出的公钥文件上传到诸如 <a href="h
 <h3 id="sec-3-5">签名并验证文本</h3>
 <div class="outline-text-3" id="text-3-5">
 <p>
-有时，你需要发布一些文档，并且让所有人都知道此文档是由你所写。那么，你可以使用
-“签名”功能。方法如下：
+有时，你需要发布一些文档，并且让所有人都知道此文档是由你所写。那么，你可以使用“签名”功能。方法如下：
 </p>
 <ol class="org-ol">
 <li>从 FireFox 菜单“工具&#x2013;&gt;FireGPG&#x2013;&gt;文本编辑器”打开文本编辑器。
 </li>
-<li>在文本编辑器中编写任意内容，然后点击下方的“签名”按钮，如下图所示，选择你
-的私钥进行签名。
+<li>在文本编辑器中编写任意内容，然后点击下方的“签名”按钮，如下图所示，选择你的私钥进行签名。
 
 <div class="figure">
 <p><img src="gpgmail/fgpg-6.png" alt="fgpg-6.png" />
@@ -868,8 +790,7 @@ ThunderBird 一节中所述，将导出的公钥文件上传到诸如 <a href="h
 </ol>
 
 <p>
-你可以将这签名后的内容拷贝到电子邮件中，发送给你的朋友。拥有你公钥的人则可以利用
-你的公钥将其解密，从而知道这就是你发出的内容。
+你可以将这签名后的内容拷贝到电子邮件中，发送给你的朋友。拥有你公钥的人则可以利用你的公钥将其解密，从而知道这就是你发出的内容。
 </p>
 </div>
 </div>
@@ -885,9 +806,7 @@ ThunderBird 一节中所述，将导出的公钥文件上传到诸如 <a href="h
 <h3 id="sec-3-7">解密验证文本</h3>
 <div class="outline-text-3" id="text-3-7">
 <p>
-FireGPG 会自动探测网页中的签名文本块。它会默认隐藏签名数据并显示难后的文本。点击
-“验证”可以检查签名能否用你收集的公钥进行验证。当然，如果你想查看全部的检验信息，
-可点击“显示原始内容”。
+FireGPG 会自动探测网页中的签名文本块。它会默认隐藏签名数据并显示难后的文本。点击“验证”可以检查签名能否用你收集的公钥进行验证。当然，如果你想查看全部的检验信息，可点击“显示原始内容”。
 </p>
 
 <p>
@@ -900,9 +819,7 @@ FireGPG 会自动探测网页中的签名文本块。它会默认隐藏签名数
 <h3 id="sec-3-8">其它</h3>
 <div class="outline-text-3" id="text-3-8">
 <p>
-FireGPG 会在你打开 Gmail 信箱时自动对打开的信件提供相应的插入操作，如内嵌式签名、
-验证、解密、加密等。但遗憾的是在写本文时，由于 getfiregpg.org 网站一直打不开，无
-法进行截图操作。只希望 FireGPG 网站能够正常访问吧。
+FireGPG 会在你打开 Gmail 信箱时自动对打开的信件提供相应的插入操作，如内嵌式签名、验证、解密、加密等。但遗憾的是在写本文时，由于 getfiregpg.org 网站一直打不开，无法进行截图操作。只希望 FireGPG 网站能够正常访问吧。
 </p>
 </div>
 </div>
@@ -953,7 +870,7 @@ Gnome 中自带的 seahorse, 或者 KDE 中的 kgpg 等。
 </div>
 <div id="postamble" class="status">
 <div id="disqus_thread"></div>
-<p>版权所有 ©2013: Exaos Lee | Date: <span class="timestamp-wrapper"><span class="timestamp">[2010-03-29]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2), <a href="http://validator.w3.org/check?uri=referer">Validate</a>, <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a></p>
+<p>版权所有 ©2013: Exaos Lee | Date: <span class="timestamp-wrapper"><span class="timestamp">[2010-03-29]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.50.1 (<a href="http://orgmode.org">Org</a> mode 8.2), <a href="http://validator.w3.org/check?uri=referer">Validate</a>, <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a></p>
 <script type="text/javascript">
   var disqus_shortname = 'exaos-github';
   (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

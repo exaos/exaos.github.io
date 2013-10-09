@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>C++11 中的新特性</title>
-<!-- 2013-09-21 六 18:22 -->
+<!-- 2013-10-09 三 14:40 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Exaos Lee" />
@@ -240,8 +240,7 @@ for the JavaScript code in this tag.
 </div>
 <p>
 自从 1998 年 C++ 标准通过后，历经 13 年，新的标准 C++11 才完善。 C++ 发明人
-Bjarne Stroustrup 说“C++11 感觉象一门新语言”。实际上，变化的确很大。不过，最初
-实现垃圾回收的 (GC) 的愿望仍然没有在新标准中体现。
+Bjarne Stroustrup 说“C++11 感觉象一门新语言”。实际上，变化的确很大。不过，最初实现垃圾回收的 (GC) 的愿望仍然没有在新标准中体现。
 </p>
 
 <p>
@@ -263,15 +262,15 @@ Bjarne Stroustrup 说“C++11 感觉象一门新语言”。实际上，变化�
 </p>
 <div class="org-src-container">
 
-<pre class="src src-c++"><span style="color: #63b8ff;">int</span> <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">main</span>()
+<pre class="src src-c++"><span style="color: #e7c547;">int</span> <span style="color: #7aa6da;">main</span>()
 {
-  <span style="color: #63b8ff;">char</span> <span style="color: #7fffd4;">s</span>[]=<span style="color: #ffc1c1;">"Hello World!"</span>;
-  <span style="color: #63b8ff;">int</span> <span style="color: #7fffd4;">Uppercase</span> = 0; <span style="color: #fa8072; font-style: italic;">//</span><span style="color: #ff7f24; font-style: italic;">modified by the lambda</span>
-  for_each(s, s+<span style="color: #00ffff;">sizeof</span>(s), [&amp;Uppercase] (<span style="color: #63b8ff;">char</span> <span style="color: #7fffd4;">c</span>) {
-      <span style="color: #00ffff;">if</span> (isupper(c))
+  <span style="color: #e7c547;">char</span> <span style="color: #e78c45;">s</span>[]=<span style="color: #b9ca4a;">"Hello World!"</span>;
+  <span style="color: #e7c547;">int</span> <span style="color: #e78c45;">Uppercase</span> = 0; <span style="color: #969896; font-style: italic;">//</span><span style="color: #969896; font-style: italic;">modified by the lambda</span>
+  for_each(s, s+<span style="color: #c397d8;">sizeof</span>(s), [&amp;Uppercase] (<span style="color: #e7c547;">char</span> <span style="color: #e78c45;">c</span>) {
+      <span style="color: #c397d8;">if</span> (isupper(c))
         Uppercase++;
     });
-  cout&lt;&lt; Uppercase&lt;&lt;<span style="color: #ffc1c1;">" uppercase letters in: "</span>&lt;&lt; s&lt;&lt;endl;
+  cout&lt;&lt; Uppercase&lt;&lt;<span style="color: #b9ca4a;">" uppercase letters in: "</span>&lt;&lt; s&lt;&lt;endl;
 }
 </pre>
 </div>
@@ -285,10 +284,10 @@ Bjarne Stroustrup 说“C++11 感觉象一门新语言”。实际上，变化�
 </p>
 <div class="org-src-container">
 
-<pre class="src src-c++"><span style="color: #00ffff;">auto</span> <span style="color: #63b8ff;">x</span> = 0;   <span style="color: #fa8072; font-style: italic;">// </span><span style="color: #ff7f24; font-style: italic;">X &#20026; int &#22411;&#65292;&#22240;&#20026; 0 &#23646;&#20110; int &#31867;&#22411;</span>
-<span style="color: #00ffff;">auto</span> <span style="color: #63b8ff;">c</span> = <span style="color: #ffc1c1;">'a'</span>; <span style="color: #fa8072; font-style: italic;">// </span><span style="color: #ff7f24; font-style: italic;">char</span>
-<span style="color: #00ffff;">auto</span> <span style="color: #63b8ff;">d</span> = 0.5; <span style="color: #fa8072; font-style: italic;">// </span><span style="color: #ff7f24; font-style: italic;">double</span>
-<span style="color: #00ffff;">auto</span> <span style="color: #63b8ff;">national_debt</span> = 14400000000000LL; <span style="color: #fa8072; font-style: italic;">// </span><span style="color: #ff7f24; font-style: italic;">long long</span>
+<pre class="src src-c++"><span style="color: #c397d8;">auto</span> <span style="color: #e7c547;">x</span> = 0;   <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">X &#20026; int &#22411;&#65292;&#22240;&#20026; 0 &#23646;&#20110; int &#31867;&#22411;</span>
+<span style="color: #c397d8;">auto</span> <span style="color: #e7c547;">c</span> = <span style="color: #b9ca4a;">'a'</span>; <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">char</span>
+<span style="color: #c397d8;">auto</span> <span style="color: #e7c547;">d</span> = 0.5; <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">double</span>
+<span style="color: #c397d8;">auto</span> <span style="color: #e7c547;">national_debt</span> = 14400000000000LL; <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">long long</span>
 </pre>
 </div>
 
@@ -297,8 +296,8 @@ Bjarne Stroustrup 说“C++11 感觉象一门新语言”。实际上，变化�
 </p>
 <div class="org-src-container">
 
-<pre class="src src-c++"><span style="color: #63b8ff;">void</span> <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">func</span>(<span style="color: #00ffff;">const</span> <span style="color: #63b8ff;">vector</span>&lt;<span style="color: #63b8ff;">int</span>&gt; &amp;<span style="color: #7fffd4;">vi</span>) {
-  <span style="color: #8470ff; font-weight: bold;">vector</span>&lt;<span style="color: #63b8ff;">int</span>&gt;::<span style="color: #63b8ff;">const_iterator</span> <span style="color: #7fffd4;">ci</span>=vi.begin();
+<pre class="src src-c++"><span style="color: #e7c547;">void</span> <span style="color: #7aa6da;">func</span>(<span style="color: #c397d8;">const</span> <span style="color: #e7c547;">vector</span>&lt;<span style="color: #e7c547;">int</span>&gt; &amp;<span style="color: #e78c45;">vi</span>) {
+  <span style="color: #70c0b1;">vector</span>&lt;<span style="color: #e7c547;">int</span>&gt;::<span style="color: #e7c547;">const_iterator</span> <span style="color: #e78c45;">ci</span>=vi.begin();
 }
 </pre>
 </div>
@@ -314,9 +313,9 @@ C++11 中提供了一种方法来返回对象或表达式的类型，即新的�
 </p>
 <div class="org-src-container">
 
-<pre class="src src-c++"><span style="color: #00ffff;">const</span> <span style="color: #63b8ff;">vector</span>&lt;<span style="color: #63b8ff;">int</span>&gt; <span style="color: #7fffd4;">vi</span>;
-<span style="color: #00ffff;">typedef</span> <span style="color: #63b8ff;">decltype</span> (vi.begin()) CIT;
-<span style="color: #63b8ff;">CIT</span> <span style="color: #7fffd4;">another_const_iterator</span>;
+<pre class="src src-c++"><span style="color: #c397d8;">const</span> <span style="color: #e7c547;">vector</span>&lt;<span style="color: #e7c547;">int</span>&gt; <span style="color: #e78c45;">vi</span>;
+<span style="color: #c397d8;">typedef</span> <span style="color: #e7c547;">decltype</span> (vi.begin()) CIT;
+<span style="color: #e7c547;">CIT</span> <span style="color: #e78c45;">another_const_iterator</span>;
 </pre>
 </div>
 </div>
@@ -333,8 +332,8 @@ C++ 至少有四种初始化表达方式，有些是相互重叠的。
 </p>
 <div class="org-src-container">
 
-<pre class="src src-c++"><span style="color: #8470ff; font-weight: bold;">std</span>::<span style="color: #63b8ff;">string</span> <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">s</span>(<span style="color: #ffc1c1;">"hello"</span>);
-<span style="color: #63b8ff;">int</span> <span style="color: #7fffd4;">m</span>=<span style="color: #63b8ff;">int</span>(); <span style="color: #fa8072; font-style: italic;">//</span><span style="color: #ff7f24; font-style: italic;">default initialization</span>
+<pre class="src src-c++"><span style="color: #70c0b1;">std</span>::<span style="color: #e7c547;">string</span> <span style="color: #7aa6da;">s</span>(<span style="color: #b9ca4a;">"hello"</span>);
+<span style="color: #e7c547;">int</span> <span style="color: #e78c45;">m</span>=<span style="color: #e7c547;">int</span>(); <span style="color: #969896; font-style: italic;">//</span><span style="color: #969896; font-style: italic;">default initialization</span>
 </pre>
 </div>
 
@@ -343,8 +342,8 @@ C++ 至少有四种初始化表达方式，有些是相互重叠的。
 </p>
 <div class="org-src-container">
 
-<pre class="src src-c++"><span style="color: #8470ff; font-weight: bold;">std</span>::<span style="color: #63b8ff;">string</span> <span style="color: #7fffd4;">s</span>=<span style="color: #ffc1c1;">"hello"</span>;
-<span style="color: #63b8ff;">int</span> <span style="color: #7fffd4;">x</span>=5;
+<pre class="src src-c++"><span style="color: #70c0b1;">std</span>::<span style="color: #e7c547;">string</span> <span style="color: #e78c45;">s</span>=<span style="color: #b9ca4a;">"hello"</span>;
+<span style="color: #e7c547;">int</span> <span style="color: #e78c45;">x</span>=5;
 </pre>
 </div>
 
@@ -353,8 +352,8 @@ C++ 至少有四种初始化表达方式，有些是相互重叠的。
 </p>
 <div class="org-src-container">
 
-<pre class="src src-c++"><span style="color: #63b8ff;">int</span> <span style="color: #7fffd4;">arr</span>[4]={0,1,2,3};
-<span style="color: #00ffff;">struct</span> <span style="color: #63b8ff;">tm</span> <span style="color: #7fffd4;">today</span>={0};
+<pre class="src src-c++"><span style="color: #e7c547;">int</span> <span style="color: #e78c45;">arr</span>[4]={0,1,2,3};
+<span style="color: #c397d8;">struct</span> <span style="color: #e7c547;">tm</span> <span style="color: #e78c45;">today</span>={0};
 </pre>
 </div>
 
@@ -363,9 +362,9 @@ C++ 至少有四种初始化表达方式，有些是相互重叠的。
 </p>
 <div class="org-src-container">
 
-<pre class="src src-c++"><span style="color: #00ffff;">struct</span> <span style="color: #63b8ff;">S</span> {
-  <span style="color: #63b8ff;">int</span> <span style="color: #7fffd4;">x</span>;
-  <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">S</span>(): x(0) {}
+<pre class="src src-c++"><span style="color: #c397d8;">struct</span> <span style="color: #e7c547;">S</span> {
+  <span style="color: #e7c547;">int</span> <span style="color: #e78c45;">x</span>;
+  <span style="color: #7aa6da;">S</span>(): x(0) {}
 };
 </pre>
 </div>
@@ -375,21 +374,21 @@ C++ 至少有四种初始化表达方式，有些是相互重叠的。
 </p>
 <div class="org-src-container">
 
-<pre class="src src-c++"><span style="color: #00ffff;">class</span> <span style="color: #63b8ff;">C</span> {
-  <span style="color: #63b8ff;">int</span> <span style="color: #7fffd4;">a</span>;
-  <span style="color: #63b8ff;">int</span> <span style="color: #7fffd4;">b</span>;
-<span style="color: #00ffff;">public</span>:
-  <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">C</span>(<span style="color: #63b8ff;">int</span> <span style="color: #7fffd4;">i</span>, <span style="color: #63b8ff;">int</span> <span style="color: #7fffd4;">j</span>);
+<pre class="src src-c++"><span style="color: #c397d8;">class</span> <span style="color: #e7c547;">C</span> {
+  <span style="color: #e7c547;">int</span> <span style="color: #e78c45;">a</span>;
+  <span style="color: #e7c547;">int</span> <span style="color: #e78c45;">b</span>;
+<span style="color: #c397d8;">public</span>:
+  <span style="color: #7aa6da;">C</span>(<span style="color: #e7c547;">int</span> <span style="color: #e78c45;">i</span>, <span style="color: #e7c547;">int</span> <span style="color: #e78c45;">j</span>);
 };
 
-<span style="color: #63b8ff;">C</span> <span style="color: #7fffd4;">c</span> {0,0}; <span style="color: #fa8072; font-style: italic;">//</span><span style="color: #ff7f24; font-style: italic;">C++11 only. Equivalent to: C c(0,0);</span>
+<span style="color: #e7c547;">C</span> <span style="color: #e78c45;">c</span> {0,0}; <span style="color: #969896; font-style: italic;">//</span><span style="color: #969896; font-style: italic;">C++11 only. Equivalent to: C c(0,0);</span>
 
-<span style="color: #63b8ff;">int</span>* <span style="color: #7fffd4;">a</span> = <span style="color: #00ffff;">new</span> <span style="color: #63b8ff;">int</span>[3] { 1, 2, 0 }; <span style="color: #fa8072; font-style: italic;">// </span><span style="color: #ff7f24; font-style: italic;">C++11 only</span>
+<span style="color: #e7c547;">int</span>* <span style="color: #e78c45;">a</span> = <span style="color: #c397d8;">new</span> <span style="color: #e7c547;">int</span>[3] { 1, 2, 0 }; <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">C++11 only</span>
 
-<span style="color: #00ffff;">class</span> <span style="color: #63b8ff;">X</span> {
-  <span style="color: #63b8ff;">int</span> <span style="color: #7fffd4;">a</span>[4];
-<span style="color: #00ffff;">public</span>:
-  <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">X</span>() : a{1,2,3,4} {} <span style="color: #fa8072; font-style: italic;">//</span><span style="color: #ff7f24; font-style: italic;">C++11, member array initializer</span>
+<span style="color: #c397d8;">class</span> <span style="color: #e7c547;">X</span> {
+  <span style="color: #e7c547;">int</span> <span style="color: #e78c45;">a</span>[4];
+<span style="color: #c397d8;">public</span>:
+  <span style="color: #7aa6da;">X</span>() : a{1,2,3,4} {} <span style="color: #969896; font-style: italic;">//</span><span style="color: #969896; font-style: italic;">C++11, member array initializer</span>
 };
 </pre>
 </div>
@@ -399,10 +398,10 @@ C++ 至少有四种初始化表达方式，有些是相互重叠的。
 </p>
 <div class="org-src-container">
 
-<pre class="src src-c++"><span style="color: #fa8072; font-style: italic;">// </span><span style="color: #ff7f24; font-style: italic;">C++11 container initializer</span>
-<span style="color: #63b8ff;">vector</span>&lt;<span style="color: #63b8ff;">string</span>&gt; <span style="color: #7fffd4;">vs</span> = { <span style="color: #ffc1c1;">"first"</span>, <span style="color: #ffc1c1;">"second"</span>, <span style="color: #ffc1c1;">"third"</span> };
-<span style="color: #63b8ff;">map</span> <span style="color: #7fffd4;">singers</span> = {{ <span style="color: #ffc1c1;">"Lady Gaga"</span>, <span style="color: #ffc1c1;">"+1 (212) 555-7890"</span> },
-               { <span style="color: #ffc1c1;">"Beyonce Knowles"</span>, <span style="color: #ffc1c1;">"+1 (212) 555-0987"</span> }};
+<pre class="src src-c++"><span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">C++11 container initializer</span>
+<span style="color: #e7c547;">vector</span>&lt;<span style="color: #e7c547;">string</span>&gt; <span style="color: #e78c45;">vs</span> = { <span style="color: #b9ca4a;">"first"</span>, <span style="color: #b9ca4a;">"second"</span>, <span style="color: #b9ca4a;">"third"</span> };
+<span style="color: #e7c547;">map</span> <span style="color: #e78c45;">singers</span> = {{ <span style="color: #b9ca4a;">"Lady Gaga"</span>, <span style="color: #b9ca4a;">"+1 (212) 555-7890"</span> },
+               { <span style="color: #b9ca4a;">"Beyonce Knowles"</span>, <span style="color: #b9ca4a;">"+1 (212) 555-0987"</span> }};
 </pre>
 </div>
 
@@ -411,10 +410,10 @@ C++ 至少有四种初始化表达方式，有些是相互重叠的。
 </p>
 <div class="org-src-container">
 
-<pre class="src src-c++"><span style="color: #00ffff;">class</span> <span style="color: #63b8ff;">C</span> {
-  <span style="color: #63b8ff;">int</span> <span style="color: #7fffd4;">a</span>=7; <span style="color: #fa8072; font-style: italic;">// </span><span style="color: #ff7f24; font-style: italic;">C++11 only</span>
-<span style="color: #00ffff;">public</span>:
-  <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">C</span>();
+<pre class="src src-c++"><span style="color: #c397d8;">class</span> <span style="color: #e7c547;">C</span> {
+  <span style="color: #e7c547;">int</span> <span style="color: #e78c45;">a</span>=7; <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">C++11 only</span>
+<span style="color: #c397d8;">public</span>:
+  <span style="color: #7aa6da;">C</span>();
 };
 </pre>
 </div>
@@ -428,9 +427,9 @@ C++ 至少有四种初始化表达方式，有些是相互重叠的。
 </p>
 <div class="org-src-container">
 
-<pre class="src src-c++"><span style="color: #00ffff;">struct</span> <span style="color: #63b8ff;">A</span> {
-  <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">A</span>() = <span style="color: #00ffff;">default</span>; <span style="color: #fa8072; font-style: italic;">// </span><span style="color: #ff7f24; font-style: italic;">C++11</span>
-  <span style="color: #00ffff;">virtual</span> ~<span style="color: #00fa9a; font-size: 110%; font-weight: bold;">A</span>()=<span style="color: #00ffff;">default</span>; <span style="color: #fa8072; font-style: italic;">// </span><span style="color: #ff7f24; font-style: italic;">C++11</span>
+<pre class="src src-c++"><span style="color: #c397d8;">struct</span> <span style="color: #e7c547;">A</span> {
+  <span style="color: #7aa6da;">A</span>() = <span style="color: #c397d8;">default</span>; <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">C++11</span>
+  <span style="color: #c397d8;">virtual</span> ~<span style="color: #7aa6da;">A</span>()=<span style="color: #c397d8;">default</span>; <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">C++11</span>
 };
 </pre>
 </div>
@@ -450,12 +449,12 @@ int func() = delete;
 </p>
 <div class="org-src-container">
 
-<pre class="src src-c++"><span style="color: #00ffff;">struct</span> <span style="color: #63b8ff;">NoCopy</span> {
-  <span style="color: #63b8ff;">NoCopy</span> &amp; <span style="color: #00ffff;">operator</span> <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">=</span>( <span style="color: #00ffff;">const</span> <span style="color: #63b8ff;">NoCopy</span> &amp; ) = <span style="color: #00ffff;">delete</span>;
-  <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">NoCopy</span> ( <span style="color: #00ffff;">const</span> <span style="color: #63b8ff;">NoCopy</span> &amp; ) = <span style="color: #00ffff;">delete</span>;
+<pre class="src src-c++"><span style="color: #c397d8;">struct</span> <span style="color: #e7c547;">NoCopy</span> {
+  <span style="color: #e7c547;">NoCopy</span> &amp; <span style="color: #c397d8;">operator</span> <span style="color: #7aa6da;">=</span>( <span style="color: #c397d8;">const</span> <span style="color: #e7c547;">NoCopy</span> &amp; ) = <span style="color: #c397d8;">delete</span>;
+  <span style="color: #7aa6da;">NoCopy</span> ( <span style="color: #c397d8;">const</span> <span style="color: #e7c547;">NoCopy</span> &amp; ) = <span style="color: #c397d8;">delete</span>;
 };
-<span style="color: #63b8ff;">NoCopy</span> <span style="color: #7fffd4;">a</span>;
-<span style="color: #63b8ff;">NoCopy</span> <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">b</span>(a); <span style="color: #fa8072; font-style: italic;">//</span><span style="color: #ff7f24; font-style: italic;">compilation error, copy ctor is deleted</span>
+<span style="color: #e7c547;">NoCopy</span> <span style="color: #e78c45;">a</span>;
+<span style="color: #e7c547;">NoCopy</span> <span style="color: #7aa6da;">b</span>(a); <span style="color: #969896; font-style: italic;">//</span><span style="color: #969896; font-style: italic;">compilation error, copy ctor is deleted</span>
 </pre>
 </div>
 </div>
@@ -468,12 +467,12 @@ int func() = delete;
 </p>
 <div class="org-src-container">
 
-<pre class="src src-c++"><span style="color: #63b8ff;">void</span> <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">f</span>(<span style="color: #63b8ff;">int</span>); <span style="color: #fa8072; font-style: italic;">// </span><span style="color: #ff7f24; font-style: italic;">#1</span>
-<span style="color: #63b8ff;">void</span> <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">f</span>(<span style="color: #63b8ff;">char</span> *);<span style="color: #fa8072; font-style: italic;">// </span><span style="color: #ff7f24; font-style: italic;">#2</span>
-<span style="color: #fa8072; font-style: italic;">// </span><span style="color: #ff7f24; font-style: italic;">C++03</span>
-f(0); <span style="color: #fa8072; font-style: italic;">// </span><span style="color: #ff7f24; font-style: italic;">which f is called?</span>
-<span style="color: #fa8072; font-style: italic;">// </span><span style="color: #ff7f24; font-style: italic;">C++11</span>
-f(nullptr) <span style="color: #fa8072; font-style: italic;">// </span><span style="color: #ff7f24; font-style: italic;">unambiguous, calls #2</span>
+<pre class="src src-c++"><span style="color: #e7c547;">void</span> <span style="color: #7aa6da;">f</span>(<span style="color: #e7c547;">int</span>); <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">#1</span>
+<span style="color: #e7c547;">void</span> <span style="color: #7aa6da;">f</span>(<span style="color: #e7c547;">char</span> *);<span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">#2</span>
+<span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">C++03</span>
+f(0); <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">which f is called?</span>
+<span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">C++11</span>
+f(nullptr) <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">unambiguous, calls #2</span>
 </pre>
 </div>
 
@@ -482,11 +481,11 @@ f(nullptr) <span style="color: #fa8072; font-style: italic;">// </span><span sty
 </p>
 <div class="org-src-container">
 
-<pre class="src src-c++"><span style="color: #00ffff;">const</span> <span style="color: #63b8ff;">char</span> *<span style="color: #7fffd4;">pc</span> = str.c_str(); <span style="color: #fa8072; font-style: italic;">// </span><span style="color: #ff7f24; font-style: italic;">data pointers</span>
-<span style="color: #00ffff;">if</span> (pc!=nullptr)
+<pre class="src src-c++"><span style="color: #c397d8;">const</span> <span style="color: #e7c547;">char</span> *<span style="color: #e78c45;">pc</span> = str.c_str(); <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">data pointers</span>
+<span style="color: #c397d8;">if</span> (pc!=nullptr)
   cout &lt;&lt; pc &lt;&lt; endl;
-<span style="color: #63b8ff;">int</span> (<span style="color: #8470ff; font-weight: bold;">A</span>::*<span style="color: #00fa9a; font-size: 110%; font-weight: bold;">pmf</span>)() = nullptr; <span style="color: #fa8072; font-style: italic;">// </span><span style="color: #ff7f24; font-style: italic;">pointer to member function</span>
-<span style="color: #63b8ff;">void</span> (*<span style="color: #00fa9a; font-size: 110%; font-weight: bold;">pmf</span>)() = nullptr; <span style="color: #fa8072; font-style: italic;">// </span><span style="color: #ff7f24; font-style: italic;">pointer to function</span>
+<span style="color: #e7c547;">int</span> (<span style="color: #70c0b1;">A</span>::*<span style="color: #7aa6da;">pmf</span>)() = nullptr; <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">pointer to member function</span>
+<span style="color: #e7c547;">void</span> (*<span style="color: #7aa6da;">pmf</span>)() = nullptr; <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">pointer to function</span>
 </pre>
 </div>
 </div>
@@ -499,12 +498,12 @@ C++11 中的构造函数可以调用同一个类的另一个构造函数：
 </p>
 <div class="org-src-container">
 
-<pre class="src src-c++"><span style="color: #00ffff;">class</span> <span style="color: #63b8ff;">M</span> { <span style="color: #fa8072; font-style: italic;">// </span><span style="color: #ff7f24; font-style: italic;">C++11 delegating constructors</span>
-  <span style="color: #63b8ff;">int</span> <span style="color: #7fffd4;">x</span>, <span style="color: #7fffd4;">y</span>;
-  <span style="color: #63b8ff;">char</span> *<span style="color: #7fffd4;">p</span>;
-<span style="color: #00ffff;">public</span>:
-  <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">M</span>(<span style="color: #63b8ff;">int</span> <span style="color: #7fffd4;">v</span>) : x(v), y(0), p(<span style="color: #00ffff;">new</span> <span style="color: #63b8ff;">char</span> [MAX]) {} <span style="color: #fa8072; font-style: italic;">//</span><span style="color: #ff7f24; font-style: italic;">#1 target</span>
-  <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">M</span>(): M(0) {cout&lt;&lt;<span style="color: #ffc1c1;">"delegating ctor"</span>&lt;&lt;endl;} <span style="color: #fa8072; font-style: italic;">//</span><span style="color: #ff7f24; font-style: italic;">#2 delegating</span>
+<pre class="src src-c++"><span style="color: #c397d8;">class</span> <span style="color: #e7c547;">M</span> { <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">C++11 delegating constructors</span>
+  <span style="color: #e7c547;">int</span> <span style="color: #e78c45;">x</span>, <span style="color: #e78c45;">y</span>;
+  <span style="color: #e7c547;">char</span> *<span style="color: #e78c45;">p</span>;
+<span style="color: #c397d8;">public</span>:
+  <span style="color: #7aa6da;">M</span>(<span style="color: #e7c547;">int</span> <span style="color: #e78c45;">v</span>) : x(v), y(0), p(<span style="color: #c397d8;">new</span> <span style="color: #e7c547;">char</span> [MAX]) {} <span style="color: #969896; font-style: italic;">//</span><span style="color: #969896; font-style: italic;">#1 target</span>
+  <span style="color: #7aa6da;">M</span>(): M(0) {cout&lt;&lt;<span style="color: #b9ca4a;">"delegating ctor"</span>&lt;&lt;endl;} <span style="color: #969896; font-style: italic;">//</span><span style="color: #969896; font-style: italic;">#2 delegating</span>
 };
 </pre>
 </div>
@@ -518,8 +517,8 @@ C++11 中的构造函数可以调用同一个类的另一个构造函数：
 </p>
 <div class="org-src-container">
 
-<pre class="src src-c++"><span style="color: #63b8ff;">void</span> <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">naiveswap</span>(<span style="color: #63b8ff;">string</span> &amp;<span style="color: #7fffd4;">amp</span>;a, <span style="color: #63b8ff;">string</span> &amp;<span style="color: #7fffd4;">amp</span>;b) {
-  <span style="color: #63b8ff;">string</span> <span style="color: #7fffd4;">temp</span> = a;
+<pre class="src src-c++"><span style="color: #e7c547;">void</span> <span style="color: #7aa6da;">naiveswap</span>(<span style="color: #e7c547;">string</span> &amp;<span style="color: #e78c45;">amp</span>;a, <span style="color: #e7c547;">string</span> &amp;<span style="color: #e78c45;">amp</span>;b) {
+  <span style="color: #e7c547;">string</span> <span style="color: #e78c45;">temp</span> = a;
   a=b;
   b=temp;
 }
@@ -530,14 +529,14 @@ C++11 中的构造函数可以调用同一个类的另一个构造函数：
 </p>
 <div class="org-src-container">
 
-<pre class="src src-c++"><span style="color: #63b8ff;">void</span> <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">moveswapstr</span>(<span style="color: #63b8ff;">string</span>&amp; <span style="color: #7fffd4;">empty</span>, <span style="color: #63b8ff;">string</span> &amp; <span style="color: #7fffd4;">filled</span>) {
-  <span style="color: #fa8072; font-style: italic;">//</span><span style="color: #ff7f24; font-style: italic;">pseudo code, but you get the idea</span>
-  <span style="color: #63b8ff;">size_t</span> <span style="color: #7fffd4;">sz</span>  =  empty.size();
-  <span style="color: #00ffff;">const</span> <span style="color: #63b8ff;">char</span> *<span style="color: #7fffd4;">p</span> = empty.data();
-  <span style="color: #fa8072; font-style: italic;">//</span><span style="color: #ff7f24; font-style: italic;">move filled's resources to empty</span>
+<pre class="src src-c++"><span style="color: #e7c547;">void</span> <span style="color: #7aa6da;">moveswapstr</span>(<span style="color: #e7c547;">string</span>&amp; <span style="color: #e78c45;">empty</span>, <span style="color: #e7c547;">string</span> &amp; <span style="color: #e78c45;">filled</span>) {
+  <span style="color: #969896; font-style: italic;">//</span><span style="color: #969896; font-style: italic;">pseudo code, but you get the idea</span>
+  <span style="color: #e7c547;">size_t</span> <span style="color: #e78c45;">sz</span>  =  empty.size();
+  <span style="color: #c397d8;">const</span> <span style="color: #e7c547;">char</span> *<span style="color: #e78c45;">p</span> = empty.data();
+  <span style="color: #969896; font-style: italic;">//</span><span style="color: #969896; font-style: italic;">move filled's resources to empty</span>
   empty.setsize(filled.size());
   empty.setdata(filled.data());
-  <span style="color: #fa8072; font-style: italic;">//</span><span style="color: #ff7f24; font-style: italic;">filled becomes empty</span>
+  <span style="color: #969896; font-style: italic;">//</span><span style="color: #969896; font-style: italic;">filled becomes empty</span>
   filled.setsize(sz);
   filled.setdata(p);
 }
@@ -600,13 +599,13 @@ C++11 STL 中广泛使用了右值引用，很多算法和容器的性能都被�
 </p>
 <div class="org-src-container">
 
-<pre class="src src-c++"><span style="color: #6495ed; font-style: italic;">#include</span> <span style="color: #ffc1c1;">&lt;algorithm&gt;</span>  <span style="color: #fa8072; font-style: italic;">// </span><span style="color: #ff7f24; font-style: italic;">C++11 code</span>
-<span style="color: #fa8072; font-style: italic;">// </span><span style="color: #ff7f24; font-style: italic;">&#20840;&#37096;&#20803;&#32032;&#37117;&#26159;&#27491;&#30340;&#65311;</span>
-all_of(first, first+n, ispositive()); <span style="color: #fa8072; font-style: italic;">//</span><span style="color: #ff7f24; font-style: italic;">false</span>
-<span style="color: #fa8072; font-style: italic;">// </span><span style="color: #ff7f24; font-style: italic;">&#33267;&#23569;&#26377;&#19968;&#20010;&#20026;&#27491;&#30340;&#65311;</span>
-any_of(first, first+n, ispositive());<span style="color: #fa8072; font-style: italic;">//</span><span style="color: #ff7f24; font-style: italic;">true</span>
-<span style="color: #fa8072; font-style: italic;">// </span><span style="color: #ff7f24; font-style: italic;">&#19968;&#20010;&#27491;&#30340;&#37117;&#27809;&#26377;&#21527;&#65311;</span>
-none_of(first, first+n, ispositive()); <span style="color: #fa8072; font-style: italic;">//</span><span style="color: #ff7f24; font-style: italic;">false</span>
+<pre class="src src-c++"><span style="color: #c397d8;">#include</span> <span style="color: #b9ca4a;">&lt;algorithm&gt;</span>  <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">C++11 code</span>
+<span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">&#20840;&#37096;&#20803;&#32032;&#37117;&#26159;&#27491;&#30340;&#65311;</span>
+all_of(first, first+n, ispositive()); <span style="color: #969896; font-style: italic;">//</span><span style="color: #969896; font-style: italic;">false</span>
+<span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">&#33267;&#23569;&#26377;&#19968;&#20010;&#20026;&#27491;&#30340;&#65311;</span>
+any_of(first, first+n, ispositive());<span style="color: #969896; font-style: italic;">//</span><span style="color: #969896; font-style: italic;">true</span>
+<span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">&#19968;&#20010;&#27491;&#30340;&#37117;&#27809;&#26377;&#21527;&#65311;</span>
+none_of(first, first+n, ispositive()); <span style="color: #969896; font-style: italic;">//</span><span style="color: #969896; font-style: italic;">false</span>
 </pre>
 </div>
 
@@ -615,25 +614,24 @@ none_of(first, first+n, ispositive()); <span style="color: #fa8072; font-style: 
 </p>
 <div class="org-src-container">
 
-<pre class="src src-c++"><span style="color: #6495ed; font-style: italic;">#include</span>
-<span style="color: #63b8ff;">int</span> <span style="color: #7fffd4;">source</span>[5]={0,12,34,50,80};
-<span style="color: #63b8ff;">int</span> <span style="color: #7fffd4;">target</span>[5];
-<span style="color: #fa8072; font-style: italic;">//</span><span style="color: #ff7f24; font-style: italic;">copy 5 elements from source to target</span>
+<pre class="src src-c++"><span style="color: #c397d8;">#include</span>
+<span style="color: #e7c547;">int</span> <span style="color: #e78c45;">source</span>[5]={0,12,34,50,80};
+<span style="color: #e7c547;">int</span> <span style="color: #e78c45;">target</span>[5];
+<span style="color: #969896; font-style: italic;">//</span><span style="color: #969896; font-style: italic;">copy 5 elements from source to target</span>
 copy_n(source,5,target);
 </pre>
 </div>
 
 <p>
-新算法 <code>iota()</code> 可用于创建值递增的序列：给 <code>*first</code> 赋个初值，后序的每个元素逐个
-加一。比如：
+新算法 <code>iota()</code> 可用于创建值递增的序列：给 <code>*first</code> 赋个初值，后序的每个元素逐个加一。比如：
 </p>
 <div class="org-src-container">
 
-<pre class="src src-c++"><span style="color: #63b8ff;">include</span> &lt;numeric&gt;
-<span style="color: #63b8ff;">int</span>  a[5] = {0};
-<span style="color: #63b8ff;">char</span> <span style="color: #7fffd4;">c</span>[3] = {0};
-iota(a, a+5, 10);  <span style="color: #fa8072; font-style: italic;">// </span><span style="color: #ff7f24; font-style: italic;">&#23558; a &#21464;&#20026; {10,11,12,13,14}</span>
-iota(c, c+3, <span style="color: #ffc1c1;">'a'</span>); <span style="color: #fa8072; font-style: italic;">// </span><span style="color: #ff7f24; font-style: italic;">&#23558; c &#21464;&#20026; {'a','b','c'}</span>
+<pre class="src src-c++"><span style="color: #e7c547;">include</span> &lt;numeric&gt;
+<span style="color: #e7c547;">int</span>  a[5] = {0};
+<span style="color: #e7c547;">char</span> <span style="color: #e78c45;">c</span>[3] = {0};
+iota(a, a+5, 10);  <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">&#23558; a &#21464;&#20026; {10,11,12,13,14}</span>
+iota(c, c+3, <span style="color: #b9ca4a;">'a'</span>); <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">&#23558; c &#21464;&#20026; {'a','b','c'}</span>
 </pre>
 </div>
 </div>
@@ -642,7 +640,7 @@ iota(c, c+3, <span style="color: #ffc1c1;">'a'</span>); <span style="color: #fa8
 </div>
 <div id="postamble" class="status">
 <div id="disqus_thread"></div>
-<p>版权所有 ©2013: Exaos Lee | Date:  | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2), <a href="http://validator.w3.org/check?uri=referer">Validate</a>, <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a></p>
+<p>版权所有 ©2013: Exaos Lee | Date:  | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.50.1 (<a href="http://orgmode.org">Org</a> mode 8.2), <a href="http://validator.w3.org/check?uri=referer">Validate</a>, <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a></p>
 <script type="text/javascript">
   var disqus_shortname = 'exaos-github';
   (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

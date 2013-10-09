@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Emacs 中的时间计算</title>
-<!-- 2013-09-21 六 18:22 -->
+<!-- 2013-10-09 三 14:41 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="心蛛" />
@@ -218,16 +218,11 @@ for the JavaScript code in this tag.
 </div><div id="content">
 <h1 class="title">Emacs 中的时间计算</h1>
 <p>
-我每天都要面对 Emacs 好多个小时，也逐渐熟悉了它的许多特性，其中之一就是时间的计
-算。我们可以在 Python 中很方便地使用 <code>time</code> 模块进行日期计算，新的 C++11 中引入
-的 <code>std::chrono</code> 让时间计算也很简洁，当然，这些对于成熟的 Emacs Lisp 来说，更不
-是问题。
+我每天都要面对 Emacs 好多个小时，也逐渐熟悉了它的许多特性，其中之一就是时间的计算。我们可以在 Python 中很方便地使用 <code>time</code> 模块进行日期计算，新的 C++11 中引入的 <code>std::chrono</code> 让时间计算也很简洁，当然，这些对于成熟的 Emacs Lisp 来说，更不是问题。
 </p>
 
 <p>
-时间包含两部分内容，一个是时间长度——时、分、秒，一个是时间点——某年某月某日。如果
-要编写一段小程序，在每天可以自动显示儿子成长的时间，就需要把他出生的时间点作为参
-数，自动提取当前时间进行计算即可。如何实现呢？
+时间包含两部分内容，一个是时间长度——时、分、秒，一个是时间点——某年某月某日。如果要编写一段小程序，在每天可以自动显示儿子成长的时间，就需要把他出生的时间点作为参数，自动提取当前时间进行计算即可。如何实现呢？
 </p>
 
 <p>
@@ -264,8 +259,7 @@ Emacs 中进行时间计算的基本函数:
 <ul class="org-ul">
 <li><code>decode-time &amp;optional time</code> &#x2013; 时间编码，将 time 值转换成历法信息。
 </li>
-<li><code>encode-time seconds minutes hour day month year &amp;optional zone</code> &#x2013; 时间解码，
-与 <code>decode-time</code> 功能相反。
+<li><code>encode-time seconds minutes hour day month year &amp;optional zone</code> &#x2013; 时间解码，与 <code>decode-time</code> 功能相反。
 </li>
 <li><code>date-to-time string</code>
 </li>
@@ -310,33 +304,32 @@ B.C., 因此 -37 则表示公元前 38 年。
 </p>
 <div class="org-src-container">
 
-<pre class="src src-elisp">(setq lubo-birth-time (encode-time 0 50 8 12 12 2011)) <span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">&#20986;&#29983;&#26085;&#26399;</span>
-(setq the-date-time (current-time)) <span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">&#24403;&#21069;&#26102;&#38388;</span>
-(setq life-time (time-subtract the-date-time lubo-birth-time)) <span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">&#26102;&#38388;&#24046;</span>
-(format-seconds <span style="color: #ffc1c1;">"%Y, %D, %H, %M%z"</span> (float-time life-time))
+<pre class="src src-elisp">(setq lubo-birth-time (encode-time 0 50 8 12 12 2011)) <span style="color: #969896; font-style: italic;">;; </span><span style="color: #969896; font-style: italic;">&#20986;&#29983;&#26085;&#26399;</span>
+(setq the-date-time (current-time)) <span style="color: #969896; font-style: italic;">;; </span><span style="color: #969896; font-style: italic;">&#24403;&#21069;&#26102;&#38388;</span>
+(setq life-time (time-subtract the-date-time lubo-birth-time)) <span style="color: #969896; font-style: italic;">;; </span><span style="color: #969896; font-style: italic;">&#26102;&#38388;&#24046;</span>
+(format-seconds <span style="color: #b9ca4a;">"%Y, %D, %H, %M%z"</span> (float-time life-time))
 </pre>
 </div>
 
 <p>
-其实，一天严格来说并不是 86400 秒，一年也不是严格的 365 天，因此，在计算日期差时，
-可以更精确一些。可以定义了一个函数，用于交互式显示成长日期：
+其实，一天严格来说并不是 86400 秒，一年也不是严格的 365 天，因此，在计算日期差时，可以更精确一些。可以定义了一个函数，用于交互式显示成长日期：
 </p>
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">&#26174;&#31034;&#20799;&#23376;&#30340;&#25104;&#38271;&#26102;&#38388;</span>
-(<span style="color: #00ffff;">defun</span> <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">lubo-live-time</span> ()
-  <span style="color: #f08080; font-style: italic;">"Display the live time of my son."</span>
+<pre class="src src-elisp"><span style="color: #969896; font-style: italic;">;; </span><span style="color: #969896; font-style: italic;">&#26174;&#31034;&#20799;&#23376;&#30340;&#25104;&#38271;&#26102;&#38388;</span>
+(<span style="color: #c397d8;">defun</span> <span style="color: #7aa6da;">lubo-live-time</span> ()
+  <span style="color: #969896;">"Display the live time of my son."</span>
   (interactive)
-  (<span style="color: #00ffff;">let*</span>
+  (<span style="color: #c397d8;">let*</span>
       ((birth-time (encode-time 0 50 8 12 12 2011))
        (live-time  (time-subtract (current-time) birth-time))
        (lt-secs    (float-time live-time)))
     (message
-     (format <span style="color: #ffc1c1;">"Lubo: %d days; %.2f months; %.2f weeks; -- %s"</span>
+     (format <span style="color: #b9ca4a;">"Lubo: %d days; %.2f months; %.2f weeks; -- %s"</span>
              (floor (/ lt-secs 86400))
-             (/ lt-secs 2628000) <span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">1 y = 12 m, 1 m ~= 30.4166667 d</span>
+             (/ lt-secs 2628000) <span style="color: #969896; font-style: italic;">;; </span><span style="color: #969896; font-style: italic;">1 y = 12 m, 1 m ~= 30.4166667 d</span>
              (/ lt-secs 604800)
-             (format-seconds <span style="color: #ffc1c1;">"%Y, %D, %H, %M%z"</span> lt-secs)
+             (format-seconds <span style="color: #b9ca4a;">"%Y, %D, %H, %M%z"</span> lt-secs)
              ))))
 </pre>
 </div>
@@ -351,7 +344,7 @@ Lubo: 637 days; 20.95 months; 91.04 weeks; -- 1 year, 272 days, 7 hours, 33 minu
 </div>
 <div id="postamble" class="status">
 <div id="disqus_thread"></div>
-<p>版权所有 ©2013: 心蛛 | Date: <span class="timestamp-wrapper"><span class="timestamp">[2013-09-09 一]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2), <a href="http://validator.w3.org/check?uri=referer">Validate</a>, <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a></p>
+<p>版权所有 ©2013: 心蛛 | Date: <span class="timestamp-wrapper"><span class="timestamp">[2013-09-09 一]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.50.1 (<a href="http://orgmode.org">Org</a> mode 8.2), <a href="http://validator.w3.org/check?uri=referer">Validate</a>, <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a></p>
 <script type="text/javascript">
   var disqus_shortname = 'exaos-github';
   (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

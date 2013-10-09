@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>SPAN5 中的 γ 谱的解谱技术</title>
-<!-- 2013-09-21 六 18:22 -->
+<!-- 2013-10-09 三 14:40 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Exaos Lee" />
@@ -368,13 +368,11 @@ A = N \Phi \sigma \left( 1- e^{-\lambda T_{i}} \right) e^{-\lambda T_{d}}
 <h2 id="sec-3">本底</h2>
 <div class="outline-text-2" id="text-3">
 <p>
-使用积分法峰处理技术，可生成一个阶段的本底曲线，其形状趋近峰下面的本底，从而可
-以从谱中被直接扣除。该技术计算可接受的净峰面积。其原理如后。
+使用积分法峰处理技术，可生成一个阶段的本底曲线，其形状趋近峰下面的本底，从而可以从谱中被直接扣除。该技术计算可接受的净峰面积。其原理如后。
 </p>
 
 <p>
-&gamma; 谱中峰下的本底是阶梯状的，在很小区间内，其步长与峰高是成比例的，因此可
-以假设第 i 道的本底步长与该道的净计数成正比：
+&gamma; 谱中峰下的本底是阶梯状的，在很小区间内，其步长与峰高是成比例的，因此可以假设第 i 道的本底步长与该道的净计数成正比：
 </p>
 \begin{equation*}
 dH = \frac{\left(A_{i}-B_{i}\right) \cdot H_{t}}{S}
@@ -426,8 +424,7 @@ B_i = a_1 + b_1 \cdot i - \frac{H_t}{S} \times
 \end{equation*}
 
 <p>
-当然， \(dH\), \(B_i\), \(c\) 和 \(H_t\) 是相互关联的，但并非绝对。\(B_i\) 的初值由前面
-的两条直线给出，最终的 \(B_i\) 由渐近法得到。
+当然， \(dH\), \(B_i\), \(c\) 和 \(H_t\) 是相互关联的，但并非绝对。\(B_i\) 的初值由前面的两条直线给出，最终的 \(B_i\) 由渐近法得到。
 </p>
 </div>
 </div>
@@ -435,9 +432,7 @@ B_i = a_1 + b_1 \cdot i - \frac{H_t}{S} \times
 <h2 id="sec-4">符合叠加修正</h2>
 <div class="outline-text-2" id="text-4">
 <p>
-如果在 &gamma; 射线谱仪的分辨时间内从放射性核依次连续发射两个或多个光子，则会发
-生符合叠加。比如， &gamma;_1 和 &gamma;_2 的能量分别为 E_1 和 E_2 , 从谱仪分辨时
-间内发射。没有符合叠加时， &gamma;_1 的全能峰脉冲发射率为：
+如果在 &gamma; 射线谱仪的分辨时间内从放射性核依次连续发射两个或多个光子，则会发生符合叠加。比如， &gamma;_1 和 &gamma;_2 的能量分别为 E_1 和 E_2 , 从谱仪分辨时间内发射。没有符合叠加时， &gamma;_1 的全能峰脉冲发射率为：
 </p>
 \begin{equation*}
 n_{10} = A \times \rho_1 \times \varepsilon_1
@@ -455,10 +450,7 @@ n_{10} = A \times \rho_1 \times \varepsilon_1
 </ul>
 
 <p>
-实际上，实验观测到的全能峰脉冲的发射率为 \(n_1\),　它将比 \(n_{10}\) 要小。由于每
-条 &gamma;_1 紧跟一条符合的 &gamma;_2 , 则导致两条 &gamma; 射线都被探测到，从而叠
-加成一个脉冲，其能量与任何一条原始脉冲的值都不相同。探测 &gamma;_2 的几率与总的
-探测效率 \(\varepsilon_t\) 相等，则有：
+实际上，实验观测到的全能峰脉冲的发射率为 \(n_1\),　它将比 \(n_{10}\) 要小。由于每条 &gamma;_1 紧跟一条符合的 &gamma;_2 , 则导致两条 &gamma; 射线都被探测到，从而叠加成一个脉冲，其能量与任何一条原始脉冲的值都不相同。探测 &gamma;_2 的几率与总的探测效率 \(\varepsilon_t\) 相等，则有：
 </p>
 \begin{equation*}
 n_1 = A \cdot \rho_1 \cdot \varepsilon_1 - A \cdot \rho_1 \cdot
@@ -500,8 +492,7 @@ C_2 & = & \frac{1}{1-w_1 \cdot \rho_1 \cdot \varepsilon_{t1} / \rho_2} \\
 \end{eqnarray*}
 
 <p>
-SPAN 软件中每条衰变链中只允许标识两条 &gamma; 射线，当 \(\rho_1 \ge \rho_2\) 时使
-用上面方程组中的第一个方程，反之则使用第二个。而因子 \(w_1\) 和 \(w_2\) 由实验获得。
+SPAN 软件中每条衰变链中只允许标识两条 &gamma; 射线，当 \(\rho_1 \ge \rho_2\) 时使用上面方程组中的第一个方程，反之则使用第二个。而因子 \(w_1\) 和 \(w_2\) 由实验获得。
 </p>
 </div>
 </div>
@@ -537,9 +528,7 @@ b_i + 2 c_i \log(E_{mi}) & = & b_{i+1} + 2 c_{i+1} \log(E_{mi}) \\
 </ul>
 
 <p>
-\(a_i\), \(b_i\), \(c_i\) 为刻度因子，它们与 \(E_{mi}\) 的值由软件刻度得到。如果两条曲
-线可以拟合到满意的结果，则用不到第三条曲线，此时 \(E_{m2}=0\). SPAN 中会自动计算
-需要几条拟合曲线。
+\(a_i\), \(b_i\), \(c_i\) 为刻度因子，它们与 \(E_{mi}\) 的值由软件刻度得到。如果两条曲线可以拟合到满意的结果，则用不到第三条曲线，此时 \(E_{m2}=0\). SPAN 中会自动计算需要几条拟合曲线。
 </p>
 </div>
 </div>
@@ -595,9 +584,7 @@ P_i = \frac{A_i - B_i}{S}
 
 <p>
 在 SPAN 中可能使用 64 个点来记录峰形状，这些峰形状存储中库中，能量接近于一条
-ROI 的标准峰形状被用来进行非线性最小二乘拟合。标准峰形状还有三个参数：中心道、
-半高宽 (FWHM) 和高度。标准峰形状和多条 ROI 在比例上不同。需要进行的坐标转换也
-比较简单。使用实验峰形状可得到更好更快的拟合。
+ROI 的标准峰形状被用来进行非线性最小二乘拟合。标准峰形状还有三个参数：中心道、半高宽 (FWHM) 和高度。标准峰形状和多条 ROI 在比例上不同。需要进行的坐标转换也比较简单。使用实验峰形状可得到更好更快的拟合。
 </p>
 </div>
 </div>
@@ -807,27 +794,22 @@ NAA 计算中给出。采集谱数据时多道分析器会给出参数 T_c 和 T
 </p>
 
 <p>
-当然，参数精确时结果亦会正确。但通常获得精确的参数会很困难，比如中了活化截面和
-探测器效率等，更多的分析使用相对方法。
+当然，参数精确时结果亦会正确。但通常获得精确的参数会很困难，比如中了活化截面和探测器效率等，更多的分析使用相对方法。
 </p>
 
 <p>
-中子活化分析的相对方法中使用同样的方程式来计算，但计算结果乘以一个修正常数 K 来得
-到最终结果：
+中子活化分析的相对方法中使用同样的方程式来计算，但计算结果乘以一个修正常数 K 来得到最终结果：
 </p>
 \begin{equation*}
 C = K \cdot c
 \end{equation*}
 
 <p>
-实际修正因子随元素不同亦不同。正确的修正因子可由针对标准参考材料 (SRM) 进行实
-验得到，并保存于数据库中。当然，修正因子也可由软件中的编辑功能让用户指定。
+实际修正因子随元素不同亦不同。正确的修正因子可由针对标准参考材料 (SRM) 进行实验得到，并保存于数据库中。当然，修正因子也可由软件中的编辑功能让用户指定。
 </p>
 
 <p>
-在 NAA 计算中不同几何位置使用相同的修正因子，因此探测器效率需要针对不同几何位
-置进行修正，至少相对值需要测量精确。同样，中子能量的相对值也需要进行精确测量。
-否则，分析结果会不精确。
+在 NAA 计算中不同几何位置使用相同的修正因子，因此探测器效率需要针对不同几何位置进行修正，至少相对值需要测量精确。同样，中子能量的相对值也需要进行精确测量。否则，分析结果会不精确。
 </p>
 </div>
 </div>
@@ -835,8 +817,7 @@ C = K \cdot c
 <h2 id="sec-13">非线性最小二乘法拟合</h2>
 <div class="outline-text-2" id="text-13">
 <p>
-在求解多条谱线问题时需要使用非线性最小二乘法拟合，因为峰形状参数在非线性的位置
-上。形状函数可写为：
+在求解多条谱线问题时需要使用非线性最小二乘法拟合，因为峰形状参数在非线性的位置上。形状函数可写为：
 </p>
 \begin{equation*}
 f(x) = F(h, c, \sigma, x)
@@ -881,8 +862,7 @@ A_i = B_i + \sum\limits_j f_{j_0}(i) +
 \sum\limits_j \frac{\partial f_{j_0}(x)}{\partial\sigma_j}\Delta\sigma_j
 \end{equation*}
 <p>
-此处 \(f_{j_0}(i) = F_j(h_0, c_0, \sigma_0, i)\), 第 j 峰在第 i 道的分布函
-数初值为 h_0, c_0, &sigma;_0
+此处 \(f_{j_0}(i) = F_j(h_0, c_0, \sigma_0, i)\), 第 j 峰在第 i 道的分布函数初值为 h_0, c_0, &sigma;_0
 </p>
 <ul class="org-ul">
 <li>A_i &#x2013; 第 i 道计数
@@ -909,8 +889,7 @@ c^*_0 & = & c_0 + \Delta c \\
 </p>
 
 <p>
-多条峰且 &sigma; 变化较小的情况下，则可假设感兴趣区 (ROI) 的多峰有相同的 s 值。
-如果在 ROI 有 N 条峰，则需要拟合 2N+1 个参数。
+多条峰且 &sigma; 变化较小的情况下，则可假设感兴趣区 (ROI) 的多峰有相同的 s 值。如果在 ROI 有 N 条峰，则需要拟合 2N+1 个参数。
 </p>
 </div>
 </div>
@@ -918,9 +897,7 @@ c^*_0 & = & c_0 + \Delta c \\
 <h2 id="sec-14">寻峰方法</h2>
 <div class="outline-text-2" id="text-14">
 <p>
-寻峰程序有两条准则：所有的峰都能被找到；光子峰必须能够从本底的波动中区别开来。
-换句说，不要丢峰，也不要把非峰错误地识别成峰。为达到这两条准则，SPAN 采取两个
-步骤：
+寻峰程序有两条准则：所有的峰都能被找到；光子峰必须能够从本底的波动中区别开来。换句说，不要丢峰，也不要把非峰错误地识别成峰。为达到这两条准则，SPAN 采取两个步骤：
 </p>
 
 <p>
@@ -947,13 +924,11 @@ A_i > \max(A_{i-1}, A_{i+1}, A_{i+2}, A_{i+3}, A_{i+4}) \\
 </ul>
 
 <p>
-此步骤可发现所有的单峰和可分开的重峰，但对封闭的重峰中的峰位确定则需要在下一步
-骤中进行。
+此步骤可发现所有的单峰和可分开的重峰，但对封闭的重峰中的峰位确定则需要在下一步骤中进行。
 </p>
 
 <p>
-2). 重叠的多峰通过检验 FWHM 从而与单峰区别开来。因为重峰比单峰的 FWHM 要大很多。
-重峰中的弱峰可通过拟合谱并计算余量来识别。
+2). 重叠的多峰通过检验 FWHM 从而与单峰区别开来。因为重峰比单峰的 FWHM 要大很多。重峰中的弱峰可通过拟合谱并计算余量来识别。
 </p>
 </div>
 </div>
@@ -1012,7 +987,7 @@ r_i = \frac{A_i - B_i - \sum\limits^n_{j=1} F_{ij}}{\sqrt{A_i}}
 </div>
 <div id="postamble" class="status">
 <div id="disqus_thread"></div>
-<p>版权所有 ©2013: Exaos Lee | Date: 2010-12-01 | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2), <a href="http://validator.w3.org/check?uri=referer">Validate</a>, <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a></p>
+<p>版权所有 ©2013: Exaos Lee | Date: 2010-12-01 | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.50.1 (<a href="http://orgmode.org">Org</a> mode 8.2), <a href="http://validator.w3.org/check?uri=referer">Validate</a>, <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a></p>
 <script type="text/javascript">
   var disqus_shortname = 'exaos-github';
   (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
