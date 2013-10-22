@@ -94,18 +94,18 @@
     }
 
     /*
-      h2:before {
-      content: "* "
-      }
+    h2:before {
+        content: "* "
+    }
 
-h3:before {
-content: "** "
-}
+    h3:before {
+        content: "** "
+    }
 
-h4:before {
-content: "*** "
-}
-*/
+    h4:before {
+        content: "*** "
+    }
+    */
 
     h2 {
 	font-family: "&#x5FAE;&#x8F6F;&#x96C5;&#x9ED1;",sans-serif;
@@ -203,6 +203,9 @@ content: "*** "
 	-moz-opacity: 1;
 	filter: alpha(opacity=100);
     }
+
+    .figure { padding: 1em; }
+    .figure p { text-align:center; }
 
     /* pre {border: 1px solid #555; */
     /*      background: #EEE; */
