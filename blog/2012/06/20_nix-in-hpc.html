@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
 <head>
 <title>函数式包管理器 Nix 与高性能计算</title>
-<!-- 2013-10-30 三 01:52 -->
+<!-- 2013-10-31 四 02:15 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="心蛛" />
@@ -140,7 +140,7 @@ for the JavaScript code in this tag.
 </div><div id="content">
 <h1 class="title">函数式包管理器 Nix 与高性能计算</h1>
 <div id="table-of-contents">
-<h2>Table of Contents</h2>
+<h2>&#30446;&#24405;</h2>
 <div id="text-table-of-contents">
 <ul>
 <li><a href="#nixos">NixOS &#x2013; 全局版本控制的操作系统？</a></li>
@@ -195,7 +195,6 @@ Nix 是一个跨平台的包管理软件，不仅支持 GNU/Linux 系统，还�
 <li>State "DONE"       from ""           <span class="timestamp-wrapper"><span class="timestamp">[2012-05-13 日 23:34]</span></span>
 </li>
 </ul>
-
 <p>
 你是否在安装软件的过程中饱受过版本变更之苦呢？比如 A 软件需要依赖 glibc 2.5 版本以下，而 B 软件却又需要 glibc 2.7 以上？而我们知道，同一个系统中基本上只会有一个版本的 glibc, 这样，你无法让 A 与 B 在系统中共存，不得不遗憾地舍弃其一，或者采用使用虚拟机之类的臃肿的解决方案。在 Windows 下的程序员经常会遇到的 "DLL Hell" 问题也与上述情形类似。在遇到这类问题时，你有否想过这样的一个操作系统，不管你的软件是什么版本，都可以配置一套与之相适应的运行环境出来，并且不需要额外的虚拟机之类的开销？尚在开发中的 <a href="http://NixOS.org/nixos/">NixOS</a> 或许会是你未来的选择。
 </p>
