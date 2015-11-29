@@ -3,9 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
 <head>
-<title>Emacs 中的时间计算</title>
-<!-- 2013-10-31 四 02:15 -->
+<!-- 2015-11-29 日 16:10 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>Emacs 中的时间计算</title>
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="心蛛" />
 <meta  name="description" content="Level-3 for exporting to HTML"
@@ -22,7 +23,7 @@
  * @licstart  The following is the entire license notice for the
  *  JavaScript code in http://orgmode.org/org-info.js.
  *
- * Copyright (C) 2012-2013  Sebastian Rose
+ * Copyright (C) 2012-2013 Free Software Foundation, Inc.
  *
  *
  * The JavaScript code in this tag is free software: you can
@@ -90,7 +91,7 @@ org_html_manager.setup();  // activate after the parameters are set
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012  Free Software Foundation, Inc.
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -157,40 +158,29 @@ Emacs Lisp 中的时间结构如下:
 后面的两个值可依次省略。浮点时间以秒为单位，计算公式如下：
 </p>
 <ul class="org-ul">
-<li>t = <code>SEC-HIGH</code> * 2**16 + <code>SEC-LOW</code> + <code>MICROSEC</code> * 1e-6 + <code>PICOSEC</code> * 1e-9
-</li>
+<li>t = <code>SEC-HIGH</code> * 2**16 + <code>SEC-LOW</code> + <code>MICROSEC</code> * 1e-6 + <code>PICOSEC</code> * 1e-9</li>
 </ul>
 
 <p>
 Emacs Lisp 中有关时间操作的基本函数有：
 </p>
 <ul class="org-ul">
-<li><code>current-time-string &amp;optional time-value</code>
-</li>
-<li><code>current-time</code>
-</li>
-<li><code>float-time &amp;optional time-value</code>
-</li>
-<li><code>current-time-zone &amp;optional time-value</code>
-</li>
+<li><code>current-time-string &amp;optional time-value</code></li>
+<li><code>current-time</code></li>
+<li><code>float-time &amp;optional time-value</code></li>
+<li><code>current-time-zone &amp;optional time-value</code></li>
 </ul>
 
 <p>
 Emacs 中进行时间计算的基本函数:
 </p>
 <ul class="org-ul">
-<li><code>decode-time &amp;optional time</code> &#x2013; 时间编码，将 time 值转换成历法信息。
-</li>
-<li><code>encode-time seconds minutes hour day month year &amp;optional zone</code> &#x2013; 时间解码，与 <code>decode-time</code> 功能相反。
-</li>
-<li><code>date-to-time string</code>
-</li>
-<li><code>format-time-string format-string &amp;optional time universal</code>, libc
-</li>
-<li><code>seconds-to-time seconds</code>
-</li>
-<li><code>format-seconds format-string seconds</code>
-</li>
+<li><code>decode-time &amp;optional time</code> &#x2013; 时间编码，将 time 值转换成历法信息。</li>
+<li><code>encode-time seconds minutes hour day month year &amp;optional zone</code> &#x2013; 时间解码，与 <code>decode-time</code> 功能相反。</li>
+<li><code>date-to-time string</code></li>
+<li><code>format-time-string format-string &amp;optional time universal</code>, libc</li>
+<li><code>seconds-to-time seconds</code></li>
+<li><code>format-seconds format-string seconds</code></li>
 </ul>
 
 <p>
@@ -203,14 +193,10 @@ Emacs 中进行时间计算的基本函数:
 其中:
 </p>
 <ul class="org-ul">
-<li><code>SECONDS</code>, <code>MINUTES</code>, <code>HOUR</code>, <code>DAY</code>, <code>MONTH</code>, <code>YEAR</code> 意思不用多说了。
-</li>
-<li><code>DOW</code>, 指的是 the day of week, 即每周的第几天，其中 0 表示周日。
-</li>
-<li><code>DST</code>, 即 daylight saving time, 夏令时修正
-</li>
-<li><code>ZONE</code>, 指的是时区，即与格林威治时间相关的秒数。
-</li>
+<li><code>SECONDS</code>, <code>MINUTES</code>, <code>HOUR</code>, <code>DAY</code>, <code>MONTH</code>, <code>YEAR</code> 意思不用多说了。</li>
+<li><code>DOW</code>, 指的是 the day of week, 即每周的第几天，其中 0 表示周日。</li>
+<li><code>DST</code>, 即 daylight saving time, 夏令时修正</li>
+<li><code>ZONE</code>, 指的是时区，即与格林威治时间相关的秒数。</li>
 </ul>
 <p>
 上述内容除了 <code>DAY</code> 与 <code>MONTH</code> 外，均从 0 开始计数。特别注意的是: 0 年表示 1
@@ -226,10 +212,10 @@ B.C., 因此 -37 则表示公元前 38 年。
 </p>
 <div class="org-src-container">
 
-<pre class="src src-elisp">(setq lubo-birth-time (encode-time 0 50 8 12 12 2011)) <span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">&#20986;&#29983;&#26085;&#26399;</span>
-(setq the-date-time (current-time)) <span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">&#24403;&#21069;&#26102;&#38388;</span>
-(setq life-time (time-subtract the-date-time lubo-birth-time)) <span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">&#26102;&#38388;&#24046;</span>
-(format-seconds <span style="color: #ffc1c1;">"%Y, %D, %H, %M%z"</span> (float-time life-time))
+<pre class="src src-elisp">(setq lubo-birth-time (encode-time 0 50 8 12 12 2011)) <span style="color: #93a1a1;">;; </span><span style="color: #93a1a1;">&#20986;&#29983;&#26085;&#26399;</span>
+(setq the-date-time (current-time)) <span style="color: #93a1a1;">;; </span><span style="color: #93a1a1;">&#24403;&#21069;&#26102;&#38388;</span>
+(setq life-time (time-subtract the-date-time lubo-birth-time)) <span style="color: #93a1a1;">;; </span><span style="color: #93a1a1;">&#26102;&#38388;&#24046;</span>
+(format-seconds <span style="color: #2aa198;">"%Y, %D, %H, %M%z"</span> (float-time life-time))
 </pre>
 </div>
 
@@ -238,20 +224,20 @@ B.C., 因此 -37 则表示公元前 38 年。
 </p>
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">&#26174;&#31034;&#20799;&#23376;&#30340;&#25104;&#38271;&#26102;&#38388;</span>
-(<span style="color: #00ffff;">defun</span> <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">lubo-live-time</span> ()
-  <span style="color: #f08080; font-style: italic;">"Display the live time of my son."</span>
+<pre class="src src-elisp"><span style="color: #93a1a1;">;; </span><span style="color: #93a1a1;">&#26174;&#31034;&#20799;&#23376;&#30340;&#25104;&#38271;&#26102;&#38388;</span>
+(<span style="color: #859900; font-weight: bold;">defun</span> <span style="color: #268bd2;">lubo-live-time</span> ()
+  <span style="color: #2aa198;">"Display the live time of my son."</span>
   (interactive)
-  (<span style="color: #00ffff;">let*</span>
+  (<span style="color: #859900; font-weight: bold;">let*</span>
       ((birth-time (encode-time 0 50 8 12 12 2011))
        (live-time  (time-subtract (current-time) birth-time))
        (lt-secs    (float-time live-time)))
     (message
-     (format <span style="color: #ffc1c1;">"Lubo: %d days; %.2f months; %.2f weeks; -- %s"</span>
+     (format <span style="color: #2aa198;">"Lubo: %d days; %.2f months; %.2f weeks; -- %s"</span>
              (floor (/ lt-secs 86400))
-             (/ lt-secs 2628000) <span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">1 y = 12 m, 1 m ~= 30.4166667 d</span>
+             (/ lt-secs 2628000) <span style="color: #93a1a1;">;; </span><span style="color: #93a1a1;">1 y = 12 m, 1 m ~= 30.4166667 d</span>
              (/ lt-secs 604800)
-             (format-seconds <span style="color: #ffc1c1;">"%Y, %D, %H, %M%z"</span> lt-secs)
+             (format-seconds <span style="color: #2aa198;">"%Y, %D, %H, %M%z"</span> lt-secs)
              ))))
 </pre>
 </div>
@@ -268,8 +254,8 @@ Lubo: 637 days; 20.95 months; 91.04 weeks; -- 1 year, 272 days, 7 hours, 33 minu
 
 <script type="text/javascript" src="http://exaos.github.io/assets/js/pagetail.js"></script>
 <div id="disqus_thread"></div>
-<p>版权所有 ©2013: 心蛛 | Date: <span class="timestamp-wrapper"><span class="timestamp">[2013-09-09 一]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.1), <a href="http://validator.w3.org/check?uri=referer">Validate</a>,
-<a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a>
+<p>版权所有 ©2015: 心蛛 | Date: <span class="timestamp-wrapper"><span class="timestamp">[2013-09-09 一]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.3.2), <a href="http://validator.w3.org/check?uri=referer">Validate</a>,
+<a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="88x31.png"/></a>
 <p><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></p>
 </div>
 </body>

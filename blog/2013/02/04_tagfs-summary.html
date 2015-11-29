@@ -3,9 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
 <head>
-<title>标签式文件系统，构想与实现</title>
-<!-- 2013-10-31 四 02:15 -->
+<!-- 2015-11-29 日 16:10 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>标签式文件系统，构想与实现</title>
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Exaos Lee" />
 <meta  name="description" content="Level-3 for exporting to HTML"
@@ -22,7 +23,7 @@
  * @licstart  The following is the entire license notice for the
  *  JavaScript code in http://orgmode.org/org-info.js.
  *
- * Copyright (C) 2012-2013  Sebastian Rose
+ * Copyright (C) 2012-2013 Free Software Foundation, Inc.
  *
  *
  * The JavaScript code in this tag is free software: you can
@@ -90,7 +91,7 @@ org_html_manager.setup();  // activate after the parameters are set
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012  Free Software Foundation, Inc.
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -143,23 +144,23 @@ for the JavaScript code in this tag.
 <h2>&#30446;&#24405;</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">文档管理的囧境</a></li>
-<li><a href="#sec-2">标签式文件系统的概念</a></li>
-<li><a href="#sec-3">标签式文件系统的现状</a>
+<li><a href="#orgheadline1">文档管理的囧境</a></li>
+<li><a href="#orgheadline2">标签式文件系统的概念</a></li>
+<li><a href="#orgheadline3">标签式文件系统的现状</a>
 <ul>
-<li><a href="#sec-3-1">第一类 TagFS</a></li>
-<li><a href="#sec-3-2">TagFS 模拟器，或基于 Tag 的文件管理系统</a></li>
-<li><a href="#sec-3-3">TagFS 仿真系统</a></li>
+<li><a href="#orgheadline4">第一类 TagFS</a></li>
+<li><a href="#orgheadline5">TagFS 模拟器，或基于 Tag 的文件管理系统</a></li>
+<li><a href="#orgheadline6">TagFS 仿真系统</a></li>
 </ul>
 </li>
-<li><a href="#sec-4">应用前景及结语</a></li>
+<li><a href="#orgheadline7">应用前景及结语</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1">文档管理的囧境</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">文档管理的囧境</h2>
+<div class="outline-text-2" id="text-orgheadline1">
 <p>
 做研究工作，需要查阅的资料通常很多：论文、电子手册、图书、设计图纸、程序源代码、数据、图表，等等。比如我的硬盘中有近百 GiB 的这类资料，这其中还不包括实验的原始数据（因为有些实验光原始数据都是数百 GiB 的量级）。当资料越来越多时，许多人会自动按项目或者属性来整理文件。通常我的项目资料会存放在用户主目录的 <code>Projects</code> 目录下，按项目名称建立子目录，在其中存放与该项目相关的文献、程序、数据、会议报告、通知、上报材料等等。看起来，我的资料已经很整洁了。但往往有这样的情况：有时某个 A
 项目的参考文献需要与项目 B 共享，而某些文档又会同时被多个项目用到。当文献的重复很多时，按项目的方式来整理文档又不如按文献来得方便，只要标明哪些文献属于哪个项目即可。但打开某个项目目录时，又希望与之相关的所有内容都在其内。长期积累下来的文献、数据、程序等，使得资料显得很杂乱。
@@ -169,14 +170,10 @@ for the JavaScript code in this tag.
 有什么比较优雅的方式来管理这些资料呢？至少满足我如下的需求：
 </p>
 <ul class="org-ul">
-<li>无重复文件，即资料的重复利用率高
-</li>
-<li>资料可按多种方式组织而无遗漏，比如按项目、按关键字、按属性（文档、数据、图片、设计图等）
-</li>
-<li>即时发现被遗忘的文献（比如研究 A 项目时下载的文献当时没来得及读，过很久了又重新下载后才发现机器中已经有了）
-</li>
-<li>资料的版本控制功能（比如类似 VAX VMS 系统上的版本式文件系统 <a href="http://en.wikipedia.org/wiki/Files-11">Files-11</a> 那样）
-</li>
+<li>无重复文件，即资料的重复利用率高</li>
+<li>资料可按多种方式组织而无遗漏，比如按项目、按关键字、按属性（文档、数据、图片、设计图等）</li>
+<li>即时发现被遗忘的文献（比如研究 A 项目时下载的文献当时没来得及读，过很久了又重新下载后才发现机器中已经有了）</li>
+<li>资料的版本控制功能（比如类似 VAX VMS 系统上的版本式文件系统 <a href="http://en.wikipedia.org/wiki/Files-11">Files-11</a> 那样）</li>
 </ul>
 
 <p>
@@ -185,14 +182,15 @@ for the JavaScript code in this tag.
 
 <p>
 其实，一些音乐或图书管理软件已经很好地实现了这样的标签管理功能，如 iTunes,
-<a href="http://amarok.kde.org/">Amarok</a>, <a href="http://projects.gnome.org/rhythmbox/">rhythmbox</a>, <a href="http://calibre-ebook.com">Calibre</a> 等。另外一些新开发的文献管理软件也可部分满足需求，如
+<a href="http://amarok.kde.org/">Amarok</a>, <a href="http://projects.gnome.org/rhythmbox/">rhythmbox</a>, <a href="http://calibre-ebook.com/">Calibre</a> 等。另外一些新开发的文献管理软件也可部分满足需求，如
 <a href="http://www.mendeley.com/">Mendeley Desktop</a>, <a href="http://www.zotero.org/">Zotero</a>, <a href="http://www.docear.org/">Docear</a> 等，但这些软件尚不能将数据、专门程序、额外资料等包含在内，它们只是针对专门的文档来进行资料管理的。我希望资料的标签式管理可以与常规的文件管理器结合起来，无论是 GUI 还是 CLI, 都可以很方便地处理。
 </p>
 </div>
 </div>
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2">标签式文件系统的概念</h2>
-<div class="outline-text-2" id="text-2">
+
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2">标签式文件系统的概念</h2>
+<div class="outline-text-2" id="text-orgheadline2">
 <p>
 我最早是从 Ubuntu 社区头脑风暴的 <a href="http://brainstorm.ubuntu.com/idea/9560/">一个主意</a> 中了解到了“标签式文件系统” (Tag
 Filesystem, 如下简写为 TagFS) 的概念。更详细的概念来自于 Adrian Sampson 的文章
@@ -250,42 +248,36 @@ gldt1210.png
 </p>
 </div>
 </div>
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3">标签式文件系统的现状</h2>
-<div class="outline-text-2" id="text-3">
+
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="orgheadline3">标签式文件系统的现状</h2>
+<div class="outline-text-2" id="text-orgheadline3">
 <p>
 标签式文件系统的实现目前有三种方式：
 </p>
 <ol class="org-ol">
-<li>第一类 TagFS: 与 Fat32, NTFS, Ext3, ZFS 等实用文件系统相等价的文件系统。不过，通常在 TagFS 上，目录即标签。
-</li>
+<li>第一类 TagFS: 与 Fat32, NTFS, Ext3, ZFS 等实用文件系统相等价的文件系统。不过，通常在 TagFS 上，目录即标签。</li>
 <li>TagFS 模拟器: 实际文件保存在现有的文件系统上，用户通过一层标签式接口来访问这些文件。这个思路与 iTunes, Calibre, Mendeley Desktop 的实现类似。这种 TagFS
 就是一个用户界面，用户通过相应的文件属性数据库 (如 Calibre 的
-<code>metadata.db</code>) 访问这些文件。
-</li>
+<code>metadata.db</code>) 访问这些文件。</li>
 <li>TagFS 仿真系统: 以“用户空间文件系统”为后端实现仿真，用户体验上同第一类
 TagFS. <br  />
-     “用户空间文件系统” (Filesystem in Userspace, 简称 <a href="http://en.wikipedia.org/wiki/Filesystem_in_Userspace">FUSE</a>) 是操作系统中的概念，指完全在用户态实现文件系统。 FUSE 在 Linux 内核中提供支持，在其它系统上也有相应的实现，如 FreeBSD, Mac OS X 以及 Windows.
-</li>
+“用户空间文件系统” (Filesystem in Userspace, 简称 <a href="http://en.wikipedia.org/wiki/Filesystem_in_Userspace">FUSE</a>) 是操作系统中的概念，指完全在用户态实现文件系统。 FUSE 在 Linux 内核中提供支持，在其它系统上也有相应的实现，如 FreeBSD, Mac OS X 以及 Windows.</li>
 </ol>
 </div>
 
-<div id="outline-container-sec-3-1" class="outline-3">
-<h3 id="sec-3-1">第一类 TagFS</h3>
-<div class="outline-text-3" id="text-3-1">
+<div id="outline-container-orgheadline4" class="outline-3">
+<h3 id="orgheadline4">第一类 TagFS</h3>
+<div class="outline-text-3" id="text-orgheadline4">
 <p>
 第一类 TagFS 在业界也称为“数据库文件系统” (Database File systems), 实际上将“标签”等同于“富属性元数据” (注：英文为 rich metadata, 不知道这样翻译是否可以) 即可。这样的文件系统有：
 </p>
 <ol class="org-ol">
-<li><a href="http://www-03.ibm.com/systems/i/software/db2/index.html">IBM DB2 for i</a>
-</li>
-<li>似乎已经死掉的微软的 WinFS (Windows Future Storage)
-</li>
-<li>Linux 下的 <a href="http://dbfs.sourceforge.net/">DBFS</a> (该项目似乎死掉了，最后可下载的文件是 2004 年的 0.302 版本，而 CVS 中最后的代码提交是 3 年前)
-</li>
+<li><a href="http://www-03.ibm.com/systems/i/software/db2/index.html">IBM DB2 for i</a></li>
+<li>似乎已经死掉的微软的 WinFS (Windows Future Storage)</li>
+<li>Linux 下的 <a href="http://dbfs.sourceforge.net/">DBFS</a> (该项目似乎死掉了，最后可下载的文件是 2004 年的 0.302 版本，而 CVS 中最后的代码提交是 3 年前)</li>
 <li>非常大型的文件系统，如 Apache Hadoop, Google File System 等，也使用了类似的概念。另外，许多网页内容管理系统 (Web-CMS) 使用关系型 DBMS 来存储和提取文件
-(比如 XML, 图片等) 也使用了这样的概念。
-</li>
+(比如 XML, 图片等) 也使用了这样的概念。</li>
 </ol>
 
 <p>
@@ -299,9 +291,10 @@ DBFS, 或者研究一下 Hadoop 等。
 </p>
 </div>
 </div>
-<div id="outline-container-sec-3-2" class="outline-3">
-<h3 id="sec-3-2">TagFS 模拟器，或基于 Tag 的文件管理系统</h3>
-<div class="outline-text-3" id="text-3-2">
+
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="orgheadline5">TagFS 模拟器，或基于 Tag 的文件管理系统</h3>
+<div class="outline-text-3" id="text-orgheadline5">
 <p>
 <b>Oyepa</b>
 </p>
@@ -316,7 +309,7 @@ DBFS, 或者研究一下 Hadoop 等。
 </p>
 
 <p>
-<a href="http://www.kde.org">KDE</a> 下的 <a href="http://userbase.kde.org/Nepomuk">Nepomuk</a> 也提供手动添加标签的功能，可以进行标签式搜索等，从这个意义上来说，它也算是一个标签式管理器。不过，我的使用体验不算很佳，系统响应很慢，有些限入假死的状态。
+<a href="http://www.kde.org/">KDE</a> 下的 <a href="http://userbase.kde.org/Nepomuk">Nepomuk</a> 也提供手动添加标签的功能，可以进行标签式搜索等，从这个意义上来说，它也算是一个标签式管理器。不过，我的使用体验不算很佳，系统响应很慢，有些限入假死的状态。
 </p>
 
 <p>
@@ -345,9 +338,10 @@ Apple Mac OS X 下的 Finder 也可以对文件添加标签，然后通过 Spotl
 </p>
 </div>
 </div>
-<div id="outline-container-sec-3-3" class="outline-3">
-<h3 id="sec-3-3">TagFS 仿真系统</h3>
-<div class="outline-text-3" id="text-3-3">
+
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6">TagFS 仿真系统</h3>
+<div class="outline-text-3" id="text-orgheadline6">
 <p>
 <b>Tagsistant</b>
 </p>
@@ -390,25 +384,20 @@ Apple Mac OS X 下的 Finder 也可以对文件添加标签，然后通过 Spotl
 </div>
 </div>
 </div>
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4">应用前景及结语</h2>
-<div class="outline-text-2" id="text-4">
+
+<div id="outline-container-orgheadline7" class="outline-2">
+<h2 id="orgheadline7">应用前景及结语</h2>
+<div class="outline-text-2" id="text-orgheadline7">
 <p>
 我希望将来打开计算机时可以这样工作：
 </p>
 <ul class="org-ul">
-<li>自动选择当前活动——事务安排、娱乐、通讯或工作
-</li>
-<li>下载或接收到的工作资料随便一扔时，系统自动提示加上相应的标签
-</li>
-<li>开始工作时，根据工作任务，加上几个关键字，相应的文档、图片或程序自动展示在面前，很方便从以前中断的任务继续下去
-</li>
-<li>系统内的资料按照标签体系自动整理好，未整理的文件会接收到提醒
-</li>
-<li>任何处理的文件会自动保存多个版本 (类似于 VAX VMS Files-11)
-</li>
-<li>等等
-</li>
+<li>自动选择当前活动——事务安排、娱乐、通讯或工作</li>
+<li>下载或接收到的工作资料随便一扔时，系统自动提示加上相应的标签</li>
+<li>开始工作时，根据工作任务，加上几个关键字，相应的文档、图片或程序自动展示在面前，很方便从以前中断的任务继续下去</li>
+<li>系统内的资料按照标签体系自动整理好，未整理的文件会接收到提醒</li>
+<li>任何处理的文件会自动保存多个版本 (类似于 VAX VMS Files-11)</li>
+<li>等等</li>
 </ul>
 
 <p>
@@ -426,8 +415,8 @@ Nepomuk 的模拟器，仍然没有一个完全实用的标签式的资料管理
 
 <script type="text/javascript" src="http://exaos.github.io/assets/js/pagetail.js"></script>
 <div id="disqus_thread"></div>
-<p>版权所有 ©2013: Exaos Lee | Date: <span class="timestamp-wrapper"><span class="timestamp">[2013-02-04 周一 20:51]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.1), <a href="http://validator.w3.org/check?uri=referer">Validate</a>,
-<a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a>
+<p>版权所有 ©2015: Exaos Lee | Date: <span class="timestamp-wrapper"><span class="timestamp">[2013-02-04 一 20:51]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.3.2), <a href="http://validator.w3.org/check?uri=referer">Validate</a>,
+<a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="88x31.png"/></a>
 <p><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></p>
 </div>
 </body>

@@ -3,9 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
 <head>
-<title>MacOS X 上的开源软件</title>
-<!-- 2013-10-31 四 02:15 -->
+<!-- 2015-11-29 日 16:10 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>MacOS X 上的开源软件</title>
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="心蛛" />
 <meta  name="description" content="Level-2 for exporting to HTML"
@@ -22,7 +23,7 @@
  * @licstart  The following is the entire license notice for the
  *  JavaScript code in http://orgmode.org/org-info.js.
  *
- * Copyright (C) 2012-2013  Sebastian Rose
+ * Copyright (C) 2012-2013 Free Software Foundation, Inc.
  *
  *
  * The JavaScript code in this tag is free software: you can
@@ -90,7 +91,7 @@ org_html_manager.setup();  // activate after the parameters are set
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012  Free Software Foundation, Inc.
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -143,42 +144,42 @@ for the JavaScript code in this tag.
 <h2>&#30446;&#24405;</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">办公类</a>
+<li><a href="#orgheadline1">办公类</a>
 <ul>
-<li><a href="#sec-1-1">字处理程序</a>
+<li><a href="#orgheadline4">字处理程序</a>
 <ul>
-<li><a href="#sec-1-1-1">TeX/MetaPost 系统</a></li>
-<li><a href="#sec-1-1-2">所见即所得（WYSIWYG）</a></li>
+<li><a href="#orgheadline2">TeX/MetaPost 系统</a></li>
+<li><a href="#orgheadline3">所见即所得（WYSIWYG）</a></li>
 </ul>
 </li>
-<li><a href="#sec-1-2">幻灯片</a>
+<li><a href="#orgheadline7">幻灯片</a>
 <ul>
-<li><a href="#sec-1-2-1">TeX + ConTeXt / pp4slide 等</a></li>
-<li><a href="#sec-1-2-2">NeoOffice 套件之一：impress</a></li>
+<li><a href="#orgheadline5">TeX + ConTeXt / pp4slide 等</a></li>
+<li><a href="#orgheadline6">NeoOffice 套件之一：impress</a></li>
 </ul>
 </li>
-<li><a href="#sec-1-3">统计表格</a></li>
-<li><a href="#sec-1-4">示意图、统计图等</a></li>
+<li><a href="#orgheadline8">统计表格</a></li>
+<li><a href="#orgheadline9">示意图、统计图等</a></li>
 </ul>
 </li>
-<li><a href="#sec-2">媒体设计类</a>
+<li><a href="#orgheadline10">媒体设计类</a>
 <ul>
-<li><a href="#sec-2-1">类似于 Photoshop 的图片处理软件 -&#x2014; gimp</a></li>
-<li><a href="#sec-2-2">类似于 Maya 的三维场景设计软件 -&#x2014; blender3D</a></li>
+<li><a href="#orgheadline11">类似于 Photoshop 的图片处理软件 -&#x2014; gimp</a></li>
+<li><a href="#orgheadline12">类似于 Maya 的三维场景设计软件 -&#x2014; blender3D</a></li>
 </ul>
 </li>
-<li><a href="#sec-3">网页编辑与网站设计</a></li>
-<li><a href="#sec-4">数学、工程设计类工具</a>
+<li><a href="#orgheadline13">网页编辑与网站设计</a></li>
+<li><a href="#orgheadline18">数学、工程设计类工具</a>
 <ul>
-<li><a href="#sec-4-1">矩阵计算</a></li>
-<li><a href="#sec-4-2">符号推演</a></li>
-<li><a href="#sec-4-3">统计</a></li>
-<li><a href="#sec-4-4">机械设计</a></li>
+<li><a href="#orgheadline14">矩阵计算</a></li>
+<li><a href="#orgheadline15">符号推演</a></li>
+<li><a href="#orgheadline16">统计</a></li>
+<li><a href="#orgheadline17">机械设计</a></li>
 </ul>
 </li>
-<li><a href="#sec-5">个人助理</a>
+<li><a href="#orgheadline20">个人助理</a>
 <ul>
-<li><a href="#sec-5-1">财务管理</a></li>
+<li><a href="#orgheadline19">财务管理</a></li>
 </ul>
 </li>
 </ul>
@@ -207,51 +208,45 @@ Darwin 开源系统而开发的另一套 BSD Unix，其授权方式为 BSD Licen
 </p>
 <ol class="org-ol">
 <li>GNU MacOS X Public Archive &#x2014; <a href="http://www.osxgnu.org/">http://www.osxgnu.org/</a> <br  />
-   由于大部分的 OS X 用户习惯于用 GUI 工具来安装软件，该网站提供了 OS X 的包创建与安装工具，用于移植那些自由或开源软件到 OS X 系统中来。我没有使用过这个网站提供的工具，因为我比较熟悉 Linux 下的操作，对于类似 rpm/dpkg 的包管理也算比较熟练。简单浏览了这个网站提供的一些工具，大多数比较老了。好象它的负责人又生病住院了，很是不幸。如果你比较喜欢图形，对于命令行式的操作不太熟悉，可以去这个网站试试。
-</li>
+由于大部分的 OS X 用户习惯于用 GUI 工具来安装软件，该网站提供了 OS X 的包创建与安装工具，用于移植那些自由或开源软件到 OS X 系统中来。我没有使用过这个网站提供的工具，因为我比较熟悉 Linux 下的操作，对于类似 rpm/dpkg 的包管理也算比较熟练。简单浏览了这个网站提供的一些工具，大多数比较老了。好象它的负责人又生病住院了，很是不幸。如果你比较喜欢图形，对于命令行式的操作不太熟悉，可以去这个网站试试。</li>
 <li>Fink Homepage &#x2014; <a href="http://fink.sourceforge.net/">http://fink.sourceforge.net/</a> <br  />
-   Fink 工程的目的是把所有 Unix 下的开源软件都移植到 Darwin 和 MacOS X 上来。它修改源代码，使它们可以在 MacOS X 上进行编译，并提供关联下载。所谓的关联下载，也就是说，如果你需要编译安装 gnome-games，而 gnome-games 这个软件包同时又需要
+Fink 工程的目的是把所有 Unix 下的开源软件都移植到 Darwin 和 MacOS X 上来。它修改源代码，使它们可以在 MacOS X 上进行编译，并提供关联下载。所谓的关联下载，也就是说，如果你需要编译安装 gnome-games，而 gnome-games 这个软件包同时又需要
 libgnome2 等软件包，fink 系统会自动帮助你编译安装所依赖的一切库、其它软件等。
 Fink 使用 Debian 的工具，比如 dpkg 和 apt-get 来管理编译好的二进制包。你可以选择使用已编译好的二进制包或者从源代码重新编译。Fink 的默认安装路径为 /sw
 （这是一个类似 /usr 结构的目录）。 <br  />
-   我使用的就是 Fink，感觉挺好。我不太常从源代码编译，主要是太耗时间。使用别人编译好的包很方便的。虽然有人说 Fink 的稳定版中的包有点旧，但绝大部分的软件只不过差一个 minor 发行号，比如最新的是 21.3.50，它提供的是 21.3.48，我想这足够你使用的。对于想尝鲜的人，何不自己动手从 CVS 中编译呢？对于关联下载再多说两句。对于从 Windows 平台或者旧的 MacOS Classic 平台过来的人，他们安装软件基本上都是点点鼠标，很少去关心软件是否还依赖其它的东西等问题。对于从 Linux/Unix 下过来的人，常常比较了解，当你使用一个软件的时候，通常它会依赖许多其它的库。这并不是说 Windows 或者 MacOS Classic 上的软件不依赖其它的东西，而是因为在
+我使用的就是 Fink，感觉挺好。我不太常从源代码编译，主要是太耗时间。使用别人编译好的包很方便的。虽然有人说 Fink 的稳定版中的包有点旧，但绝大部分的软件只不过差一个 minor 发行号，比如最新的是 21.3.50，它提供的是 21.3.48，我想这足够你使用的。对于想尝鲜的人，何不自己动手从 CVS 中编译呢？对于关联下载再多说两句。对于从 Windows 平台或者旧的 MacOS Classic 平台过来的人，他们安装软件基本上都是点点鼠标，很少去关心软件是否还依赖其它的东西等问题。对于从 Linux/Unix 下过来的人，常常比较了解，当你使用一个软件的时候，通常它会依赖许多其它的库。这并不是说 Windows 或者 MacOS Classic 上的软件不依赖其它的东西，而是因为在
 Windows 平台或者 MacOS Classic 平台，你所安装的软件需要的库基本都是由系统提供了，即使系统没有提供的，在你的安装包里也会自带一份。Linux/Unix 的设计哲学可以在 Eric Steven Raymond 的著作 The Art of Unix Programming 中找到：Basics of
 the Unix Philosophy。根据 Unix 的设计哲学，每个程序只专注于一件事情，程序之间提供相互可使用的接口。只专注于一件事情的程序会变得很小巧很精致，把这些小巧精致的程序组合起来就可以做许多事情。同样，每个 Unix 下的库也只提供它所要提供的功能，善于利用这些库，你就可以开发出很小巧但功能很强大的程序出来。所以，
-Linux/Unix 下的库就显得很多，当你安装一个程序的时候，你就会需要同时安装许多它所依赖的东西。当然，许多经常被使用的库早就会集成在系统之中，因此你所要安装的依赖库也不会很多。关联下载，更是解决了你去寻找软件包之间相互依赖关系的麻烦。
-</li>
+Linux/Unix 下的库就显得很多，当你安装一个程序的时候，你就会需要同时安装许多它所依赖的东西。当然，许多经常被使用的库早就会集成在系统之中，因此你所要安装的依赖库也不会很多。关联下载，更是解决了你去寻找软件包之间相互依赖关系的麻烦。</li>
 <li>DarwinPorts Homepage &#x2014; <a href="http://darwinports.opendarwin.org/">http://darwinports.opendarwin.org/</a> <br  />
-   DarwinPorts 提供从源码编译软件的 ports ，即移植软件时所要做的一些必要的修改，比如修改针对指定平台的编译选项、修改编译时的参数定义等。熟悉 BSD 系统管理的人肯定都熟悉 ports 的使用。我只简单尝试过 FreeBSD ，不太了解 ports ，因此不便多言。这儿提供的 ports 都是要求你从源码编译起，因此比较耗时间，这也是我最初安装完 DarwinPorts 之后又转向 Fink 的原因。如果你总是喜欢一切从头开始，建议你使用它，因为源码总会是最新的。 <br  />
-   DarwinPorts 的默认安装路径为 /opt/local （类似于其它的 Unix 系统上的 /opt 目录）。
-</li>
-<li>i-Installer &#x2014; <a href="http://www.rna.nl/ii.html">http://www.rna.nl/ii.html</a> <br  />
-   使用 BSD 授权的 i-Installer 是一个软件安装与设置的应用程序，它可以安装与管理
+DarwinPorts 提供从源码编译软件的 ports ，即移植软件时所要做的一些必要的修改，比如修改针对指定平台的编译选项、修改编译时的参数定义等。熟悉 BSD 系统管理的人肯定都熟悉 ports 的使用。我只简单尝试过 FreeBSD ，不太了解 ports ，因此不便多言。这儿提供的 ports 都是要求你从源码编译起，因此比较耗时间，这也是我最初安装完 DarwinPorts 之后又转向 Fink 的原因。如果你总是喜欢一切从头开始，建议你使用它，因为源码总会是最新的。 <br  />
+DarwinPorts 的默认安装路径为 /opt/local （类似于其它的 Unix 系统上的 /opt 目录）。</li>
+<li><p>
+i-Installer &#x2014; <a href="http://www.rna.nl/ii.html">http://www.rna.nl/ii.html</a> <br  />
+使用 BSD 授权的 i-Installer 是一个软件安装与设置的应用程序，它可以安装与管理
 i-Packages，即以 .ii2 结尾的那些软件包。有许多网站提供在线的 i-Packages 包信息，只要你连网，就可以非常方便地升级与安装所需要的 i-Packages: 与 TeX 相关的包、Ghostscript 、各种图形格式及转换程序、字体转换等。i-Installer 默认的安装路径为 /usr/local （Unix 的经典路径）。 <br  />
-   在设置 TeX 系统时，我曾经想用这个 i-Installer，但由于我更习惯于 Fink 的方式，
+在设置 TeX 系统时，我曾经想用这个 i-Installer，但由于我更习惯于 Fink 的方式，
 i-Installer 对于我来说没有太大的必要，因此没有使用。有许多在线的 i-Packages
 资源，比如：
+</p>
 <ol class="org-ol">
-<li><a href="http://tug.org/i-packages/iid/gwrelative.iid">http://tug.org/i-packages/iid/gwrelative.iid</a> (i-Installer 的默认地址)
-</li>
-<li><a href="http://www.ntg.nl/macosx-tex/i-packages/iid/gwrelative.iid">http://www.ntg.nl/macosx-tex/i-packages/iid/gwrelative.iid</a>
-</li>
-<li><a href="http://www.math.utah.edu/ftp/pub/i-packages/iid/gwrelative.iid">http://www.math.utah.edu/ftp/pub/i-packages/iid/gwrelative.iid</a>
-</li>
-<li><a href="http://bloch.ling.yale.edu/i-packages/iid/gwrelative.iid">http://bloch.ling.yale.edu/i-packages/iid/gwrelative.iid</a>
-</li>
+<li><a href="http://tug.org/i-packages/iid/gwrelative.iid">http://tug.org/i-packages/iid/gwrelative.iid</a> (i-Installer 的默认地址)</li>
+<li><a href="http://www.ntg.nl/macosx-tex/i-packages/iid/gwrelative.iid">http://www.ntg.nl/macosx-tex/i-packages/iid/gwrelative.iid</a></li>
+<li><a href="http://www.math.utah.edu/ftp/pub/i-packages/iid/gwrelative.iid">http://www.math.utah.edu/ftp/pub/i-packages/iid/gwrelative.iid</a></li>
+<li><a href="http://bloch.ling.yale.edu/i-packages/iid/gwrelative.iid">http://bloch.ling.yale.edu/i-packages/iid/gwrelative.iid</a></li>
 </ol>
 <p>
 在这些资源中，你可以找到非常多的开源软件。
-</p>
-</li>
+</p></li>
 </ol>
 
 <p>
 以上谈到许多为什么要用开源软件、如何在 MacOS X 上找到开源软件等。现在来谈谈我们常用的商业软件有哪些可用的开源替代，按应用分几个方面进行。
 </p>
 
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1">办公类</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">办公类</h2>
+<div class="outline-text-2" id="text-orgheadline1">
 <p>
 这类软件恐怕是大家使用最多的：写文章、简单的统计、做幻灯、做报表、画流程图、画示意图等等。在 MacOS 平台，大家最常提到的仍然是微软的 Office v.X for Mac 或者
 Office 2004 等。相关的商业软件也非常多：AppleWorks、MS Office、OmniOutliner、
@@ -260,12 +255,12 @@ OmniGraffle Pro、Keynote、Adobe Acrobat、专门为剧作开发的 Final Draft
 </p>
 </div>
 
-<div id="outline-container-sec-1-1" class="outline-3">
-<h3 id="sec-1-1">字处理程序</h3>
-<div class="outline-text-3" id="text-1-1">
-</div><div id="outline-container-sec-1-1-1" class="outline-4">
-<h4 id="sec-1-1-1">TeX/MetaPost 系统</h4>
-<div class="outline-text-4" id="text-1-1-1">
+<div id="outline-container-orgheadline4" class="outline-3">
+<h3 id="orgheadline4">字处理程序</h3>
+<div class="outline-text-3" id="text-orgheadline4">
+</div><div id="outline-container-orgheadline2" class="outline-4">
+<h4 id="orgheadline2">TeX/MetaPost 系统</h4>
+<div class="outline-text-4" id="text-orgheadline2">
 <p>
 作为科研人员，写论文是最基本的日常工作，而许多国际著名的杂志是只接收 TeX/LaTeX
 投稿的，倒是国内有些杂志非要接受 Word 文档。Word 并不是一种在科技界通用的文档格式，PDF/PS 远比它要流行得多，我们为什么非要用它呢？对于写论文，在 MacOS X 上使用
@@ -273,9 +268,10 @@ TeX 可以很好地生成 PDF 这种通用的格式（关于如何在 MacOS X �
 </p>
 </div>
 </div>
-<div id="outline-container-sec-1-1-2" class="outline-4">
-<h4 id="sec-1-1-2">所见即所得（WYSIWYG）</h4>
-<div class="outline-text-4" id="text-1-1-2">
+
+<div id="outline-container-orgheadline3" class="outline-4">
+<h4 id="orgheadline3">所见即所得（WYSIWYG）</h4>
+<div class="outline-text-4" id="text-orgheadline3">
 <p>
 对于习惯于 Word 操作模式的人，可以使用 OpenOffice.org. 有一个 <a href="http://www.neooffice.org/">NeoOffice</a> , 是基于
 OpenOffice.org 开发的软件包，不需要使用 X11 for Mac 系统，目前也进展得很好。可以见这个屏幕截图:
@@ -290,122 +286,122 @@ OpenOffice.org 开发的软件包，不需要使用 X11 for Mac 系统，目前�
 </div>
 </div>
 </div>
-<div id="outline-container-sec-1-2" class="outline-3">
-<h3 id="sec-1-2">幻灯片</h3>
-<div class="outline-text-3" id="text-1-2">
-</div><div id="outline-container-sec-1-2-1" class="outline-4">
-<h4 id="sec-1-2-1">TeX + ConTeXt / pp4slide 等</h4>
-<div class="outline-text-4" id="text-1-2-1">
+
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7">幻灯片</h3>
+<div class="outline-text-3" id="text-orgheadline7">
+</div><div id="outline-container-orgheadline5" class="outline-4">
+<h4 id="orgheadline5">TeX + ConTeXt / pp4slide 等</h4>
+<div class="outline-text-4" id="text-orgheadline5">
 <p>
 使用 TeX 系统可以生成 PDF 格式的演示文档，加上 pp4slide 等程序，可以生成具有动态效果的 PDF 幻灯。 PDF 文档中可以内嵌入 JavaScript 程序、QuickTime 媒体等，其表现力非常之强，你需要的实在只是你的想象力罢了。
 </p>
 </div>
 </div>
-<div id="outline-container-sec-1-2-2" class="outline-4">
-<h4 id="sec-1-2-2">NeoOffice 套件之一：impress</h4>
+
+<div id="outline-container-orgheadline6" class="outline-4">
+<h4 id="orgheadline6">NeoOffice 套件之一：impress</h4>
 </div>
 </div>
-<div id="outline-container-sec-1-3" class="outline-3">
-<h3 id="sec-1-3">统计表格</h3>
-<div class="outline-text-3" id="text-1-3">
+
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8">统计表格</h3>
+<div class="outline-text-3" id="text-orgheadline8">
 <p>
 NeoOffice 套件之一：math
 </p>
 </div>
 </div>
-<div id="outline-container-sec-1-4" class="outline-3">
-<h3 id="sec-1-4">示意图、统计图等</h3>
-<div class="outline-text-3" id="text-1-4">
+
+<div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="orgheadline9">示意图、统计图等</h3>
+<div class="outline-text-3" id="text-orgheadline9">
 <p>
 NeoOffice 套件之一： Draw
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2">媒体设计类</h2>
-<div class="outline-text-2" id="text-2">
+
+<div id="outline-container-orgheadline10" class="outline-2">
+<h2 id="orgheadline10">媒体设计类</h2>
+<div class="outline-text-2" id="text-orgheadline10">
 <p>
 对于多媒体设计，如果你是专业人员，没有什么话说，那点买软件的投入也是必需的。对于非专业人士，有这些开源软件可供选择：
 </p>
 </div>
 
-<div id="outline-container-sec-2-1" class="outline-3">
-<h3 id="sec-2-1">类似于 Photoshop 的图片处理软件 -&#x2014; gimp</h3>
-<div class="outline-text-3" id="text-2-1">
+<div id="outline-container-orgheadline11" class="outline-3">
+<h3 id="orgheadline11">类似于 Photoshop 的图片处理软件 -&#x2014; gimp</h3>
+<div class="outline-text-3" id="text-orgheadline11">
 <p>
 <a href="http://gimp.org/macintosh/">GIMP</a> 是 Linux/Unix 下一个非常经典的程序，有很多的插件可用，处理日常的图片戳绰绰有余。
 </p>
 </div>
 </div>
-<div id="outline-container-sec-2-2" class="outline-3">
-<h3 id="sec-2-2">类似于 Maya 的三维场景设计软件 -&#x2014; blender3D</h3>
-<div class="outline-text-3" id="text-2-2">
+
+<div id="outline-container-orgheadline12" class="outline-3">
+<h3 id="orgheadline12">类似于 Maya 的三维场景设计软件 -&#x2014; blender3D</h3>
+<div class="outline-text-3" id="text-orgheadline12">
 <p>
 Blender: <a href="http://blender.org/">http://blender.org/</a>
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3">网页编辑与网站设计</h2>
-<div class="outline-text-2" id="text-3">
+
+<div id="outline-container-orgheadline13" class="outline-2">
+<h2 id="orgheadline13">网页编辑与网站设计</h2>
+<div class="outline-text-2" id="text-orgheadline13">
 <p>
 在 Fink 中有许多，比如 <a href="http://fink.sourceforge.net/pdb/package.php/quanta">quanta</a>, <a href="http://fink.sourceforge.net/pdb/package.php/amaya">amaya</a> 等。另外，可以编辑 HTML 文件的程序真是太多，比如 Mozilla 中就自带有 HTML 编辑器。实在不需要多举例。至于网站设计，普通用户可能用得不多，个人主页的服务提供商一般也同时会提供现成的模板和在线编辑功能。如果你是从头开始设计网站，你的计算机水平已经不需要我来多嘴了。
 </p>
 </div>
 </div>
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4">数学、工程设计类工具</h2>
-<div class="outline-text-2" id="text-4">
-</div><div id="outline-container-sec-4-1" class="outline-3">
-<h3 id="sec-4-1">矩阵计算</h3>
-<div class="outline-text-3" id="text-4-1">
+
+<div id="outline-container-orgheadline18" class="outline-2">
+<h2 id="orgheadline18">数学、工程设计类工具</h2>
+<div class="outline-text-2" id="text-orgheadline18">
+</div><div id="outline-container-orgheadline14" class="outline-3">
+<h3 id="orgheadline14">矩阵计算</h3>
+<div class="outline-text-3" id="text-orgheadline14">
 <ul class="org-ul">
 <li>scilab:
 <ul class="org-ul">
-<li><a href="http://fink.sourceforge.net/pdb/package.php/scilab">http://fink.sourceforge.net/pdb/package.php/scilab</a>
-</li>
-<li><a href="http://www-rocq.inria.fr/scilab/">http://www-rocq.inria.fr/scilab/</a>
-</li>
-</ul>
-</li>
+<li><a href="http://fink.sourceforge.net/pdb/package.php/scilab">http://fink.sourceforge.net/pdb/package.php/scilab</a></li>
+<li><a href="http://www-rocq.inria.fr/scilab/">http://www-rocq.inria.fr/scilab/</a></li>
+</ul></li>
 <li>octave:
 <ul class="org-ul">
-<li><a href="http://fink.sourceforge.net/pdb/package.php/octave">http://fink.sourceforge.net/pdb/package.php/octave</a>
-</li>
-<li><a href="http://www.octave.org/">http://www.octave.org/</a>
-</li>
-</ul>
-</li>
+<li><a href="http://fink.sourceforge.net/pdb/package.php/octave">http://fink.sourceforge.net/pdb/package.php/octave</a></li>
+<li><a href="http://www.octave.org/">http://www.octave.org/</a></li>
+</ul></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-4-2" class="outline-3">
-<h3 id="sec-4-2">符号推演</h3>
-<div class="outline-text-3" id="text-4-2">
+
+<div id="outline-container-orgheadline15" class="outline-3">
+<h3 id="orgheadline15">符号推演</h3>
+<div class="outline-text-3" id="text-orgheadline15">
 <p>
 maxima:
 </p>
 <ul class="org-ul">
-<li><a href="http://fink.sourceforge.net/pdb/package.php/maxima">http://fink.sourceforge.net/pdb/package.php/maxima</a>
-</li>
-<li><a href="http://maxima.sourceforge.net/">http://maxima.sourceforge.net/</a>
-</li>
+<li><a href="http://fink.sourceforge.net/pdb/package.php/maxima">http://fink.sourceforge.net/pdb/package.php/maxima</a></li>
+<li><a href="http://maxima.sourceforge.net/">http://maxima.sourceforge.net/</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-4-3" class="outline-3">
-<h3 id="sec-4-3">统计</h3>
-<div class="outline-text-3" id="text-4-3">
+
+<div id="outline-container-orgheadline16" class="outline-3">
+<h3 id="orgheadline16">统计</h3>
+<div class="outline-text-3" id="text-orgheadline16">
 <p>
 R: Fink 的版本在这里 &#x2013;
 </p>
 <ul class="org-ul">
-<li><a href="http://fink.sourceforge.net/pdb/package.php/r">http://fink.sourceforge.net/pdb/package.php/r</a>
-</li>
-<li><a href="http://www.r-project.org/">http://www.r-project.org/</a>
-</li>
+<li><a href="http://fink.sourceforge.net/pdb/package.php/r">http://fink.sourceforge.net/pdb/package.php/r</a></li>
+<li><a href="http://www.r-project.org/">http://www.r-project.org/</a></li>
 </ul>
 
 <p>
@@ -413,29 +409,29 @@ R: Fink 的版本在这里 &#x2013;
 </p>
 </div>
 </div>
-<div id="outline-container-sec-4-4" class="outline-3">
-<h3 id="sec-4-4">机械设计</h3>
-<div class="outline-text-3" id="text-4-4">
+
+<div id="outline-container-orgheadline17" class="outline-3">
+<h3 id="orgheadline17">机械设计</h3>
+<div class="outline-text-3" id="text-orgheadline17">
 <p>
 Qcad: <a href="http://www.ribbonsoft.com/qcad.html">http://www.ribbonsoft.com/qcad.html</a>
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-sec-5" class="outline-2">
-<h2 id="sec-5">个人助理</h2>
-<div class="outline-text-2" id="text-5">
-</div><div id="outline-container-sec-5-1" class="outline-3">
-<h3 id="sec-5-1">财务管理</h3>
-<div class="outline-text-3" id="text-5-1">
+
+<div id="outline-container-orgheadline20" class="outline-2">
+<h2 id="orgheadline20">个人助理</h2>
+<div class="outline-text-2" id="text-orgheadline20">
+</div><div id="outline-container-orgheadline19" class="outline-3">
+<h3 id="orgheadline19">财务管理</h3>
+<div class="outline-text-3" id="text-orgheadline19">
 <p>
 GnuCash: 我很喜欢的一个 GNU 的软件，Fink 版本在这里
 </p>
 <ul class="org-ul">
-<li><a href="http://fink.sourceforge.net/pdb/package.php/gnucash">http://fink.sourceforge.net/pdb/package.php/gnucash</a>
-</li>
-<li><a href="http://www.gnucash.org/">http://www.gnucash.org/</a>
-</li>
+<li><a href="http://fink.sourceforge.net/pdb/package.php/gnucash">http://fink.sourceforge.net/pdb/package.php/gnucash</a></li>
+<li><a href="http://www.gnucash.org/">http://www.gnucash.org/</a></li>
 </ul>
 <p>
 可惜没有 OS X 的本地化版本，即 Acqua 界面的。
@@ -452,8 +448,8 @@ GnuCash: 我很喜欢的一个 GNU 的软件，Fink 版本在这里
 
 <script type="text/javascript" src="http://exaos.github.io/assets/js/pagetail.js"></script>
 <div id="disqus_thread"></div>
-<p>版权所有 ©2013: 心蛛 | Date: <span class="timestamp-wrapper"><span class="timestamp">[2004-10-03 日 02:45]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.1), <a href="http://validator.w3.org/check?uri=referer">Validate</a>,
-<a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a>
+<p>版权所有 ©2015: 心蛛 | Date: <span class="timestamp-wrapper"><span class="timestamp">[2004-10-03 日 02:45]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.3.2), <a href="http://validator.w3.org/check?uri=referer">Validate</a>,
+<a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="88x31.png"/></a>
 <p><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></p>
 </div>
 </body>

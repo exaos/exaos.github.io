@@ -3,9 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
 <head>
-<title>PCIVME 在 Linux 下的驱动安装</title>
-<!-- 2013-10-31 四 02:15 -->
+<!-- 2015-11-29 日 16:10 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>PCIVME 在 Linux 下的驱动安装</title>
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="心蛛" />
 <meta  name="description" content="Level-2 for exporting to HTML"
@@ -22,7 +23,7 @@
  * @licstart  The following is the entire license notice for the
  *  JavaScript code in http://orgmode.org/org-info.js.
  *
- * Copyright (C) 2012-2013  Sebastian Rose
+ * Copyright (C) 2012-2013 Free Software Foundation, Inc.
  *
  *
  * The JavaScript code in this tag is free software: you can
@@ -90,7 +91,7 @@ org_html_manager.setup();  // activate after the parameters are set
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012  Free Software Foundation, Inc.
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -143,12 +144,12 @@ for the JavaScript code in this tag.
 <h2>&#30446;&#24405;</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">兼容性</a></li>
-<li><a href="#sec-2">功能</a></li>
-<li><a href="#sec-3">驱动程序的安装</a></li>
-<li><a href="#sec-4">安装共享库</a></li>
-<li><a href="#sec-5">检查安装结果</a></li>
-<li><a href="#sec-6">检查安装结果 2</a></li>
+<li><a href="#orgheadline1">兼容性</a></li>
+<li><a href="#orgheadline2">功能</a></li>
+<li><a href="#orgheadline3">驱动程序的安装</a></li>
+<li><a href="#orgheadline4">安装共享库</a></li>
+<li><a href="#orgheadline5">检查安装结果</a></li>
+<li><a href="#orgheadline6">检查安装结果 2</a></li>
 </ul>
 </div>
 </div>
@@ -161,35 +162,25 @@ for the JavaScript code in this tag.
 <code>pcivme-3.1.tar.gz</code> 驱动程序包中包含有这样几个文件：
 </p>
 <ul class="org-ul">
-<li>Makefile &#x2013; 全局的 Makefile，用于编译驱动程序、库及测试程序。
-</li>
-<li>doc &#x2013; 目录，存放一些文档及模板。
-</li>
-<li>driver &#x2013; 目录，驱动源代码及安装脚本。其中 pcivme.h 是驱动程序的接口代码的头文件，而 pcivme_load 则是安装脚本（bash）。
-</li>
-<li>lib &#x2013; 目录，存放着共享库的源代码。其中 pcivme_ni.h 是库接口代码的头文件。
-</li>
-<li>pvmon &#x2013; 一个小的测试程序。
-</li>
-<li>test &#x2013; 另一个小测试程序。
-</li>
+<li>Makefile &#x2013; 全局的 Makefile，用于编译驱动程序、库及测试程序。</li>
+<li>doc &#x2013; 目录，存放一些文档及模板。</li>
+<li>driver &#x2013; 目录，驱动源代码及安装脚本。其中 pcivme.h 是驱动程序的接口代码的头文件，而 pcivme_load 则是安装脚本（bash）。</li>
+<li>lib &#x2013; 目录，存放着共享库的源代码。其中 pcivme_ni.h 是库接口代码的头文件。</li>
+<li>pvmon &#x2013; 一个小的测试程序。</li>
+<li>test &#x2013; 另一个小测试程序。</li>
 </ul>
 
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1">兼容性</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">兼容性</h2>
+<div class="outline-text-2" id="text-orgheadline1">
 <p>
 已经测试过的平台：
 </p>
 <ul class="org-ul">
-<li>kernel 2.4.18 (SuSE 8.0)
-</li>
-<li>kernel 2.2.19 (SuSE 7.3)
-</li>
-<li>RedHat Linux 7.2
-</li>
-<li>kernel 2.6.5 (SuSE 9.1)
-</li>
+<li>kernel 2.4.18 (SuSE 8.0)</li>
+<li>kernel 2.2.19 (SuSE 7.3)</li>
+<li>RedHat Linux 7.2</li>
+<li>kernel 2.6.5 (SuSE 9.1)</li>
 </ul>
 
 <p>
@@ -200,18 +191,20 @@ make KERNEL_LOCATION=&lt;你内核的位置&gt;
 </pre>
 </div>
 </div>
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2">功能</h2>
-<div class="outline-text-2" id="text-2">
+
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2">功能</h2>
+<div class="outline-text-2" id="text-orgheadline2">
 <p>
 驱动程序和共享库提供访问 PCIVME 接口的函数，利用接口函数的这些特性可以捕获 VME
 的中断。一些高速访问功能，比如 <code>autoread</code> 需要硬件上支持，……
 </p>
 </div>
 </div>
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3">驱动程序的安装</h2>
-<div class="outline-text-2" id="text-3">
+
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="orgheadline3">驱动程序的安装</h2>
+<div class="outline-text-2" id="text-orgheadline3">
 <p>
 利用 root 用户来安装驱动程序。在安装目录下有一个 bash 脚本 <code>pcivme_load</code>, 调用此脚本来安装 VMEMM 模块。比如你的模块设置为 #1 （见跳线 J301&#x2026;J304），则可以这样执行
 </p>
@@ -226,9 +219,10 @@ rmmod pcivme
 </pre>
 </div>
 </div>
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4">安装共享库</h2>
-<div class="outline-text-2" id="text-4">
+
+<div id="outline-container-orgheadline4" class="outline-2">
+<h2 id="orgheadline4">安装共享库</h2>
+<div class="outline-text-2" id="text-orgheadline4">
 <p>
 共享库 <code>libpcivme.so</code> 提供访问 VME 总线的底层函数接口。你可以在文件
 <code>libpcivme.h</code> 中发现这些函数的原型。将文件 <code>libpcivme.so.x.x.x</code> 拷贝到你的
@@ -243,9 +237,10 @@ ln -sf libpcivme.so.1 libpcivme.so
 </p>
 </div>
 </div>
-<div id="outline-container-sec-5" class="outline-2">
-<h2 id="sec-5">检查安装结果</h2>
-<div class="outline-text-2" id="text-5">
+
+<div id="outline-container-orgheadline5" class="outline-2">
+<h2 id="orgheadline5">检查安装结果</h2>
+<div class="outline-text-2" id="text-orgheadline5">
 <p>
 在 <code>test</code> 目录下执行命令 <code>simpleTest</code>. 可以用参数 <code>-?</code> 来查看调用的方法。可以用
 <code>Ctrl-C</code> 来终止程序。
@@ -253,9 +248,10 @@ ln -sf libpcivme.so.1 libpcivme.so
 </div>
 </div>
 
-<div id="outline-container-sec-6" class="outline-2">
-<h2 id="sec-6">检查安装结果 2</h2>
-<div class="outline-text-2" id="text-6">
+
+<div id="outline-container-orgheadline6" class="outline-2">
+<h2 id="orgheadline6">检查安装结果 2</h2>
+<div class="outline-text-2" id="text-orgheadline6">
 <p>
 执行命令 <code>cat /proc/pcivme</code> 的结果：
 </p>
@@ -284,8 +280,8 @@ Pending IrqStatus : none
 
 <script type="text/javascript" src="http://exaos.github.io/assets/js/pagetail.js"></script>
 <div id="disqus_thread"></div>
-<p>版权所有 ©2013: 心蛛 | Date: <span class="timestamp-wrapper"><span class="timestamp">[2005-04-17 03:22:00]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.1), <a href="http://validator.w3.org/check?uri=referer">Validate</a>,
-<a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a>
+<p>版权所有 ©2015: 心蛛 | Date: <span class="timestamp-wrapper"><span class="timestamp">[2005-04-17 日 03:22]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.3.2), <a href="http://validator.w3.org/check?uri=referer">Validate</a>,
+<a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="88x31.png"/></a>
 <p><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></p>
 </div>
 </body>

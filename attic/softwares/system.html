@@ -3,9 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
 <head>
-<title>系统工具与管理类软件</title>
-<!-- 2013-10-31 四 02:15 -->
+<!-- 2015-11-29 日 16:10 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>系统工具与管理类软件</title>
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Exaos Lee" />
 <meta  name="description" content="Level-2 for exporting to HTML"
@@ -22,7 +23,7 @@
  * @licstart  The following is the entire license notice for the
  *  JavaScript code in http://orgmode.org/org-info.js.
  *
- * Copyright (C) 2012-2013  Sebastian Rose
+ * Copyright (C) 2012-2013 Free Software Foundation, Inc.
  *
  *
  * The JavaScript code in this tag is free software: you can
@@ -90,7 +91,7 @@ org_html_manager.setup();  // activate after the parameters are set
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012  Free Software Foundation, Inc.
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -143,63 +144,63 @@ for the JavaScript code in this tag.
 <h2>&#30446;&#24405;</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">GNU 核心工具集</a></li>
-<li><a href="#sec-2">文件处理</a>
+<li><a href="#orgheadline1">GNU 核心工具集</a></li>
+<li><a href="#orgheadline16">文件处理</a>
 <ul>
-<li><a href="#sec-2-1">常用打包、压缩与切割工具</a>
+<li><a href="#orgheadline8">常用打包、压缩与切割工具</a>
 <ul>
-<li><a href="#sec-2-1-1">7zip</a></li>
-<li><a href="#sec-2-1-2">tar</a></li>
-<li><a href="#sec-2-1-3">xz</a></li>
-<li><a href="#sec-2-1-4">bzip2 &#x2013; </a></li>
-<li><a href="#sec-2-1-5">gzip &#x2013; </a></li>
-<li><a href="#sec-2-1-6">zip &#x2013; </a></li>
+<li><a href="#orgheadline2">7zip</a></li>
+<li><a href="#orgheadline3">tar</a></li>
+<li><a href="#orgheadline4">xz</a></li>
+<li><a href="#orgheadline5">bzip2 &#x2013; </a></li>
+<li><a href="#orgheadline6">gzip &#x2013; </a></li>
+<li><a href="#orgheadline7">zip &#x2013; </a></li>
 </ul>
 </li>
-<li><a href="#sec-2-2">编码、格式转换等</a>
+<li><a href="#orgheadline11">编码、格式转换等</a>
 <ul>
-<li><a href="#sec-2-2-1">iconv</a></li>
-<li><a href="#sec-2-2-2">convmv</a></li>
+<li><a href="#orgheadline9">iconv</a></li>
+<li><a href="#orgheadline10">convmv</a></li>
 </ul>
 </li>
-<li><a href="#sec-2-3">查询、同步等</a>
+<li><a href="#orgheadline15">查询、同步等</a>
 <ul>
-<li><a href="#sec-2-3-1">rsync</a></li>
-<li><a href="#sec-2-3-2">fdupes</a></li>
-<li><a href="#sec-2-3-3">find</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#sec-3">加密及加密文件系统</a>
-<ul>
-<li><a href="#sec-3-1">GnuPG</a></li>
-<li><a href="#sec-3-2">GNU Privacy Assistant</a></li>
-<li><a href="#sec-3-3">Seahorse</a></li>
-<li><a href="#sec-3-4">TrueCrypt</a></li>
-<li><a href="#sec-3-5">cryptkeeper</a></li>
-</ul>
-</li>
-<li><a href="#sec-4">网络管理</a>
-<ul>
-<li><a href="#sec-4-1">nmap</a></li>
-</ul>
-</li>
-<li><a href="#sec-5">虚拟机、模拟器</a>
-<ul>
-<li><a href="#sec-5-1">wine</a></li>
-<li><a href="#sec-5-2">VirtualBox</a>
-<ul>
-<li><a href="#sec-5-2-1">问题与解答</a>
-<ul>
-<li><a href="#sec-5-2-1-1">减少 VBox 虚拟硬盘尺寸的办法</a></li>
+<li><a href="#orgheadline12">rsync</a></li>
+<li><a href="#orgheadline13">fdupes</a></li>
+<li><a href="#orgheadline14">find</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#sec-5-3">Bochs</a></li>
-<li><a href="#sec-5-4">Xen</a></li>
-<li><a href="#sec-5-5">Qemu</a></li>
+<li><a href="#orgheadline22">加密及加密文件系统</a>
+<ul>
+<li><a href="#orgheadline17">GnuPG</a></li>
+<li><a href="#orgheadline18">GNU Privacy Assistant</a></li>
+<li><a href="#orgheadline19">Seahorse</a></li>
+<li><a href="#orgheadline20">TrueCrypt</a></li>
+<li><a href="#orgheadline21">cryptkeeper</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline24">网络管理</a>
+<ul>
+<li><a href="#orgheadline23">nmap</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline32">虚拟机、模拟器</a>
+<ul>
+<li><a href="#orgheadline25">wine</a></li>
+<li><a href="#orgheadline26">VirtualBox</a>
+<ul>
+<li><a href="#orgheadline28">问题与解答</a>
+<ul>
+<li><a href="#orgheadline27">减少 VBox 虚拟硬盘尺寸的办法</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline29">Bochs</a></li>
+<li><a href="#orgheadline30">Xen</a></li>
+<li><a href="#orgheadline31">Qemu</a></li>
 </ul>
 </li>
 </ul>
@@ -209,276 +210,254 @@ for the JavaScript code in this tag.
 这儿列举的许多工具都是 Unix/Linux 系统中自带有的，属于 POSIX 标准的应用程序，不需要特别介绍。许多命令均可以在 POSIX 类系统下使用 <b>man</b> 命令查看帮助。
 </p>
 
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1">GNU 核心工具集</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">GNU 核心工具集</h2>
+<div class="outline-text-2" id="text-orgheadline1">
 <ul class="org-ul">
-<li><a href="http://www.gnu.org/software/coreutils/">http://www.gnu.org/software/coreutils/</a>
-</li>
-<li>GNU 核心工具集，包括 FileUtils, ShellUtils, TextUtils 三个部分。
-</li>
+<li><a href="http://www.gnu.org/software/coreutils/">http://www.gnu.org/software/coreutils/</a></li>
+<li>GNU 核心工具集，包括 FileUtils, ShellUtils, TextUtils 三个部分。</li>
 <li>包含命令： basename cat chgrp chmod chown chroot cksum comm cp csplit cut date
 dd df dir dircolors dirname du echo env expand expr factor false fmt fold
 groups head hostid id install join link ln logname ls md5sum mkdir mkfifo
 mknod mv nice nl nohup od paste pathchk pinky pr printenv printf ptx pwd
 readlink rm rmdir sha1sum seq shred sleep sort split stat stty sum sync tac
 tail tee test touch tr true tsort tty uname unexpand uniq unlink users vdir wc
-who whoami yes
-</li>
+who whoami yes</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2">文件处理</h2>
-<div class="outline-text-2" id="text-2">
-</div><div id="outline-container-sec-2-1" class="outline-3">
-<h3 id="sec-2-1">常用打包、压缩与切割工具</h3>
-<div class="outline-text-3" id="text-2-1">
-</div><div id="outline-container-sec-2-1-1" class="outline-4">
-<h4 id="sec-2-1-1">7zip</h4>
-<div class="outline-text-4" id="text-2-1-1">
+
+<div id="outline-container-orgheadline16" class="outline-2">
+<h2 id="orgheadline16">文件处理</h2>
+<div class="outline-text-2" id="text-orgheadline16">
+</div><div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8">常用打包、压缩与切割工具</h3>
+<div class="outline-text-3" id="text-orgheadline8">
+</div><div id="outline-container-orgheadline2" class="outline-4">
+<h4 id="orgheadline2">7zip</h4>
+<div class="outline-text-4" id="text-orgheadline2">
 <ul class="org-ul">
-<li><a href="http://www.7-zip.org/">http://www.7-zip.org/</a>
-</li>
-<li>High compression ratio in new 7z format with LZMA compression
-</li>
-<li>使用 LZMA 压缩法的新 7z 格式有非常高的压缩比率
-</li>
+<li><a href="http://www.7-zip.org/">http://www.7-zip.org/</a></li>
+<li>High compression ratio in new 7z format with LZMA compression</li>
+<li>使用 LZMA 压缩法的新 7z 格式有非常高的压缩比率</li>
 <li>支持的压缩格式：
 <ul class="org-ul">
-<li>Packing / unpacking: 7z, ZIP, GZIP, BZIP2 and TAR
-</li>
+<li>Packing / unpacking: 7z, ZIP, GZIP, BZIP2 and TAR</li>
 <li>Unpacking only: ARJ, CAB, CHM, CPIO, DEB, DMG, HFS, ISO, LZH, LZMA,
-MSI, NSIS, RAR, RPM, UDF, WIM, XAR and Z.
-</li>
-</ul>
-</li>
+MSI, NSIS, RAR, RPM, UDF, WIM, XAR and Z.</li>
+</ul></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-2-1-2" class="outline-4">
-<h4 id="sec-2-1-2">tar</h4>
-<div class="outline-text-4" id="text-2-1-2">
+
+<div id="outline-container-orgheadline3" class="outline-4">
+<h4 id="orgheadline3">tar</h4>
+<div class="outline-text-4" id="text-orgheadline3">
 <ul class="org-ul">
-<li><a href="http://en.wikipedia.org/wiki/Tar_(file_format)">http://en.wikipedia.org/wiki/Tar_(file_format)</a>
-</li>
-<li>tar (取自 tape archive 的缩写) 是传统的 Unix 工具，原来是处理磁带数据的。
-</li>
+<li><a href="http://en.wikipedia.org/wiki/Tar_(file_format)">http://en.wikipedia.org/wiki/Tar_(file_format)</a></li>
+<li>tar (取自 tape archive 的缩写) 是传统的 Unix 工具，原来是处理磁带数据的。</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-2-1-3" class="outline-4">
-<h4 id="sec-2-1-3">xz</h4>
-<div class="outline-text-4" id="text-2-1-3">
+
+<div id="outline-container-orgheadline4" class="outline-4">
+<h4 id="orgheadline4">xz</h4>
+<div class="outline-text-4" id="text-orgheadline4">
 <ul class="org-ul">
-<li><a href="http://tukaani.org/xz/">http://tukaani.org/xz/</a>
-</li>
+<li><a href="http://tukaani.org/xz/">http://tukaani.org/xz/</a></li>
 <li>简介：LZMA（Lempel-Ziv-Markov chain-Algorithm 的缩写）是2001 年以来得到发展的一个数据压缩算法。 XZ Utils 是使用 LZMA 算法的压缩工具，它取代了原来的 LZMA
-Utils, 目标是为 POSIX 系统提供一套标准的 LZMA 算法的压缩工具。
-</li>
+Utils, 目标是为 POSIX 系统提供一套标准的 LZMA 算法的压缩工具。</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-2-1-4" class="outline-4">
-<h4 id="sec-2-1-4">bzip2 &#x2013; <a href="http://www.bzip.org/">http://www.bzip.org/</a></h4>
+
+<div id="outline-container-orgheadline5" class="outline-4">
+<h4 id="orgheadline5">bzip2 &#x2013; <a href="http://www.bzip.org/">http://www.bzip.org/</a></h4>
 </div>
 
-<div id="outline-container-sec-2-1-5" class="outline-4">
-<h4 id="sec-2-1-5">gzip &#x2013; <a href="http://www.gzip.org/">http://www.gzip.org/</a></h4>
+<div id="outline-container-orgheadline6" class="outline-4">
+<h4 id="orgheadline6">gzip &#x2013; <a href="http://www.gzip.org/">http://www.gzip.org/</a></h4>
 </div>
 
-<div id="outline-container-sec-2-1-6" class="outline-4">
-<h4 id="sec-2-1-6">zip &#x2013; <a href="http://www.info-zip.org/">http://www.info-zip.org/</a></h4>
+<div id="outline-container-orgheadline7" class="outline-4">
+<h4 id="orgheadline7">zip &#x2013; <a href="http://www.info-zip.org/">http://www.info-zip.org/</a></h4>
 </div>
 </div>
-<div id="outline-container-sec-2-2" class="outline-3">
-<h3 id="sec-2-2">编码、格式转换等</h3>
-<div class="outline-text-3" id="text-2-2">
-</div><div id="outline-container-sec-2-2-1" class="outline-4">
-<h4 id="sec-2-2-1">iconv</h4>
-<div class="outline-text-4" id="text-2-2-1">
+
+<div id="outline-container-orgheadline11" class="outline-3">
+<h3 id="orgheadline11">编码、格式转换等</h3>
+<div class="outline-text-3" id="text-orgheadline11">
+</div><div id="outline-container-orgheadline9" class="outline-4">
+<h4 id="orgheadline9">iconv</h4>
+<div class="outline-text-4" id="text-orgheadline9">
 <ul class="org-ul">
-<li>iconv 是 GNU C 库的标准应用程序之一，功能是在不同的编码之间进行转换。
-</li>
+<li>iconv 是 GNU C 库的标准应用程序之一，功能是在不同的编码之间进行转换。</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-2-2-2" class="outline-4">
-<h4 id="sec-2-2-2">convmv</h4>
-<div class="outline-text-4" id="text-2-2-2">
+
+<div id="outline-container-orgheadline10" class="outline-4">
+<h4 id="orgheadline10">convmv</h4>
+<div class="outline-text-4" id="text-orgheadline10">
 <ul class="org-ul">
-<li><a href="http://www.j3e.de/linux/convmv/">http://www.j3e.de/linux/convmv/</a>
-</li>
+<li><a href="http://www.j3e.de/linux/convmv/">http://www.j3e.de/linux/convmv/</a></li>
 <li>在不同操作系统及文件系统之间进行交换文件时，通常会出现文件名编码混乱的情形，尤其在 Windows 和 Linux 之间。通常简体中文的 Windows 系统会使用 GB2312 (或 GBK,
-GB18030) 编码保存文件名，但这些文件名到 Linux 系统上则会显示为不可识别的编码，因为大部分的 Linux 系统会默认使用 UTF-8 作为文件名的编码。而使用 convmv 则可以方便地让文件名在各种编码之间进行转换。
-</li>
+GB18030) 编码保存文件名，但这些文件名到 Linux 系统上则会显示为不可识别的编码，因为大部分的 Linux 系统会默认使用 UTF-8 作为文件名的编码。而使用 convmv 则可以方便地让文件名在各种编码之间进行转换。</li>
 </ul>
 </div>
 </div>
 </div>
-<div id="outline-container-sec-2-3" class="outline-3">
-<h3 id="sec-2-3">查询、同步等</h3>
-<div class="outline-text-3" id="text-2-3">
-</div><div id="outline-container-sec-2-3-1" class="outline-4">
-<h4 id="sec-2-3-1">rsync</h4>
-<div class="outline-text-4" id="text-2-3-1">
+
+<div id="outline-container-orgheadline15" class="outline-3">
+<h3 id="orgheadline15">查询、同步等</h3>
+<div class="outline-text-3" id="text-orgheadline15">
+</div><div id="outline-container-orgheadline12" class="outline-4">
+<h4 id="orgheadline12">rsync</h4>
+<div class="outline-text-4" id="text-orgheadline12">
 <ul class="org-ul">
-<li><a href="http://samba.anu.edu.au/rsync/">http://samba.anu.edu.au/rsync/</a>
-</li>
-<li>远程文件拷贝、目录同步工具。
-</li>
+<li><a href="http://samba.anu.edu.au/rsync/">http://samba.anu.edu.au/rsync/</a></li>
+<li>远程文件拷贝、目录同步工具。</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-2-3-2" class="outline-4">
-<h4 id="sec-2-3-2">fdupes</h4>
-<div class="outline-text-4" id="text-2-3-2">
+
+<div id="outline-container-orgheadline13" class="outline-4">
+<h4 id="orgheadline13">fdupes</h4>
+<div class="outline-text-4" id="text-orgheadline13">
 <ul class="org-ul">
-<li><a href="http://netdial.caribe.net/~adrian2/fdupes.html">http://netdial.caribe.net/~adrian2/fdupes.html</a>
-</li>
-<li>寻找或删除某个目录下的重复文件。有时候有些目录下会有成千上万个文件，会有许多名称不同但内容相同的文件，则可用此工具查找并删除重复的文件，从而达到节约空间的目的。
-</li>
+<li><a href="http://netdial.caribe.net/~adrian2/fdupes.html">http://netdial.caribe.net/~adrian2/fdupes.html</a></li>
+<li>寻找或删除某个目录下的重复文件。有时候有些目录下会有成千上万个文件，会有许多名称不同但内容相同的文件，则可用此工具查找并删除重复的文件，从而达到节约空间的目的。</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-2-3-3" class="outline-4">
-<h4 id="sec-2-3-3">find</h4>
-<div class="outline-text-4" id="text-2-3-3">
+
+<div id="outline-container-orgheadline14" class="outline-4">
+<h4 id="orgheadline14">find</h4>
+<div class="outline-text-4" id="text-orgheadline14">
 <ul class="org-ul">
-<li><a href="http://www.gnu.org/software/findutils/">http://www.gnu.org/software/findutils/</a>
-</li>
-<li>基于目录的查询工具。
-</li>
+<li><a href="http://www.gnu.org/software/findutils/">http://www.gnu.org/software/findutils/</a></li>
+<li>基于目录的查询工具。</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3">加密及加密文件系统</h2>
-<div class="outline-text-2" id="text-3">
-</div><div id="outline-container-sec-3-1" class="outline-3">
-<h3 id="sec-3-1">GnuPG</h3>
-<div class="outline-text-3" id="text-3-1">
+
+<div id="outline-container-orgheadline22" class="outline-2">
+<h2 id="orgheadline22">加密及加密文件系统</h2>
+<div class="outline-text-2" id="text-orgheadline22">
+</div><div id="outline-container-orgheadline17" class="outline-3">
+<h3 id="orgheadline17">GnuPG</h3>
+<div class="outline-text-3" id="text-orgheadline17">
 <ul class="org-ul">
-<li><a href="http://www.gnupg.org/">http://www.gnupg.org/</a>
-</li>
-<li>是 OpenPGP 标准 (即 RFC4880) 的 GNU 完整自由的实现工具，用于对数据和通讯的加密及签名。
-</li>
+<li><a href="http://www.gnupg.org/">http://www.gnupg.org/</a></li>
+<li>是 OpenPGP 标准 (即 RFC4880) 的 GNU 完整自由的实现工具，用于对数据和通讯的加密及签名。</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-3-2" class="outline-3">
-<h3 id="sec-3-2">GNU Privacy Assistant</h3>
-<div class="outline-text-3" id="text-3-2">
+
+<div id="outline-container-orgheadline18" class="outline-3">
+<h3 id="orgheadline18">GNU Privacy Assistant</h3>
+<div class="outline-text-3" id="text-orgheadline18">
 <ul class="org-ul">
-<li><a href="http://gpa.wald.intevation.org/">http://gpa.wald.intevation.org/</a>
-</li>
-<li>GnuPG 的图形界面，其目标是成为 GnuPG 的标准图形界面。
-</li>
+<li><a href="http://gpa.wald.intevation.org/">http://gpa.wald.intevation.org/</a></li>
+<li>GnuPG 的图形界面，其目标是成为 GnuPG 的标准图形界面。</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-3-3" class="outline-3">
-<h3 id="sec-3-3">Seahorse</h3>
-<div class="outline-text-3" id="text-3-3">
+
+<div id="outline-container-orgheadline19" class="outline-3">
+<h3 id="orgheadline19">Seahorse</h3>
+<div class="outline-text-3" id="text-orgheadline19">
 <ul class="org-ul">
-<li><a href="http://live.gnome.org/Seahorse">http://live.gnome.org/Seahorse</a>
-</li>
-<li>GNOME 应用程序，管理在 GnomeKeyring 中的密钥与密码。
-</li>
+<li><a href="http://live.gnome.org/Seahorse">http://live.gnome.org/Seahorse</a></li>
+<li>GNOME 应用程序，管理在 GnomeKeyring 中的密钥与密码。</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-3-4" class="outline-3">
-<h3 id="sec-3-4">TrueCrypt</h3>
-<div class="outline-text-3" id="text-3-4">
+
+<div id="outline-container-orgheadline20" class="outline-3">
+<h3 id="orgheadline20">TrueCrypt</h3>
+<div class="outline-text-3" id="text-orgheadline20">
 <ul class="org-ul">
-<li><a href="http://www.truecrypt.org/">http://www.truecrypt.org/</a>
-</li>
-<li>自由开源的磁盘加密软件，支持 Windows 7/Vista/XP, Mac OS X, Linux
-</li>
+<li><a href="http://www.truecrypt.org/">http://www.truecrypt.org/</a></li>
+<li>自由开源的磁盘加密软件，支持 Windows 7/Vista/XP, Mac OS X, Linux</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-3-5" class="outline-3">
-<h3 id="sec-3-5">cryptkeeper</h3>
-<div class="outline-text-3" id="text-3-5">
+
+<div id="outline-container-orgheadline21" class="outline-3">
+<h3 id="orgheadline21">cryptkeeper</h3>
+<div class="outline-text-3" id="text-orgheadline21">
 <ul class="org-ul">
-<li><a href="http://www.gnomefiles.org/app.php/Cryptkeeper">http://www.gnomefiles.org/app.php/Cryptkeeper</a>
-</li>
+<li><a href="http://www.gnomefiles.org/app.php/Cryptkeeper">http://www.gnomefiles.org/app.php/Cryptkeeper</a></li>
 <li>Cryptkeeper 是支持 FreeDesktop.org 标准的系统托盘控件，用于管理由 EncFS 加密的目录。
 <ul class="org-ul">
-<li>EncFS &#x2013; <a href="http://encfs.sourceforge.net/">http://encfs.sourceforge.net/</a> or <a href="http://www.arg0.net/encfs">http://www.arg0.net/encfs</a> (被墙)
-</li>
-<li>Fuse &#x2013; <a href="http://fuse.sourceforge.net/">http://fuse.sourceforge.net/</a>
-</li>
-<li>FreeDesktop &#x2013; <a href="http://www.freedesktop.org/">http://www.freedesktop.org/</a>
-</li>
-</ul>
-</li>
+<li>EncFS &#x2013; <a href="http://encfs.sourceforge.net/">http://encfs.sourceforge.net/</a> or <a href="http://www.arg0.net/encfs">http://www.arg0.net/encfs</a> (被墙)</li>
+<li>Fuse &#x2013; <a href="http://fuse.sourceforge.net/">http://fuse.sourceforge.net/</a></li>
+<li>FreeDesktop &#x2013; <a href="http://www.freedesktop.org/">http://www.freedesktop.org/</a></li>
+</ul></li>
 </ul>
 </div>
 </div>
 </div>
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4">网络管理</h2>
-<div class="outline-text-2" id="text-4">
-</div><div id="outline-container-sec-4-1" class="outline-3">
-<h3 id="sec-4-1">nmap</h3>
-<div class="outline-text-3" id="text-4-1">
+
+<div id="outline-container-orgheadline24" class="outline-2">
+<h2 id="orgheadline24">网络管理</h2>
+<div class="outline-text-2" id="text-orgheadline24">
+</div><div id="outline-container-orgheadline23" class="outline-3">
+<h3 id="orgheadline23">nmap</h3>
+<div class="outline-text-3" id="text-orgheadline23">
 <ul class="org-ul">
-<li><a href="http://nmap.org/">http://nmap.org/</a>
-</li>
-<li>自由开源的网络检查或安全侦听工具。
-</li>
+<li><a href="http://nmap.org/">http://nmap.org/</a></li>
+<li>自由开源的网络检查或安全侦听工具。</li>
 </ul>
 </div>
 </div>
 </div>
-<div id="outline-container-sec-5" class="outline-2">
-<h2 id="sec-5">虚拟机、模拟器</h2>
-<div class="outline-text-2" id="text-5">
-</div><div id="outline-container-sec-5-1" class="outline-3">
-<h3 id="sec-5-1">wine</h3>
-<div class="outline-text-3" id="text-5-1">
+
+<div id="outline-container-orgheadline32" class="outline-2">
+<h2 id="orgheadline32">虚拟机、模拟器</h2>
+<div class="outline-text-2" id="text-orgheadline32">
+</div><div id="outline-container-orgheadline25" class="outline-3">
+<h3 id="orgheadline25">wine</h3>
+<div class="outline-text-3" id="text-orgheadline25">
 <ul class="org-ul">
-<li><a href="http://www.winehq.org/">http://www.winehq.org/</a>
-</li>
-<li>目的：在其它操作系统上运行 Windows 程序。
-</li>
+<li><a href="http://www.winehq.org/">http://www.winehq.org/</a></li>
+<li>目的：在其它操作系统上运行 Windows 程序。</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-5-2" class="outline-3">
-<h3 id="sec-5-2">VirtualBox</h3>
-<div class="outline-text-3" id="text-5-2">
+
+<div id="outline-container-orgheadline26" class="outline-3">
+<h3 id="orgheadline26">VirtualBox</h3>
+<div class="outline-text-3" id="text-orgheadline26">
 <ul class="org-ul">
-<li>URL &#x2013; <a href="http://www.virtualbox.org/">http://www.virtualbox.org/</a>
-</li>
-<li>简介：一款被原来的 Sun 收购的虚拟机模拟器，跨平台，支持多种扩展功能。
-</li>
+<li>URL &#x2013; <a href="http://www.virtualbox.org/">http://www.virtualbox.org/</a></li>
+<li>简介：一款被原来的 Sun 收购的虚拟机模拟器，跨平台，支持多种扩展功能。</li>
 </ul>
 </div>
 
-<div id="outline-container-sec-5-2-1" class="outline-4">
-<h4 id="sec-5-2-1">问题与解答</h4>
-<div class="outline-text-4" id="text-5-2-1">
-</div><div id="outline-container-sec-5-2-1-1" class="outline-5">
-<h5 id="sec-5-2-1-1">减少 VBox 虚拟硬盘尺寸的办法</h5>
-<div class="outline-text-5" id="text-5-2-1-1">
+<div id="outline-container-orgheadline28" class="outline-4">
+<h4 id="orgheadline28">问题与解答</h4>
+<div class="outline-text-4" id="text-orgheadline28">
+</div><div id="outline-container-orgheadline27" class="outline-5">
+<h5 id="orgheadline27">减少 VBox 虚拟硬盘尺寸的办法</h5>
+<div class="outline-text-5" id="text-orgheadline27">
 <ol class="org-ol">
-<li>在虚拟机时清除无用的文件，进行磁盘整理
-</li>
-<li>在虚拟机中使用 SDelete.exe 程序将无用的磁盘空间清零
+<li>在虚拟机时清除无用的文件，进行磁盘整理</li>
+<li><p>
+在虚拟机中使用 SDelete.exe 程序将无用的磁盘空间清零
+</p>
 <pre class="example">
 SDelete -c C:
 </pre>
 <p>
 可以<a href="http://technet.microsoft.com/en-us/sysinternals/bb897443.aspx">到这儿下载Sdelete</a>。
+</p></li>
+<li><p>
+关闭虚拟机，使用 VBoxManager 进行磁盘压缩
 </p>
-</li>
-<li>关闭虚拟机，使用 VBoxManager 进行磁盘压缩
 <pre class="example">
 VBoxManager modifyvdi &lt;File Name&gt; compact
 </pre>
@@ -487,49 +466,44 @@ VirtualBox 3.0 以后，上述命令变更为
 </p>
 <pre class="example">
 VBoxManage modifyhd &lt;Filename | UUID&gt; --compact
-</pre>
-</li>
+</pre></li>
 </ol>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-sec-5-3" class="outline-3">
-<h3 id="sec-5-3">Bochs</h3>
-<div class="outline-text-3" id="text-5-3">
+
+<div id="outline-container-orgheadline29" class="outline-3">
+<h3 id="orgheadline29">Bochs</h3>
+<div class="outline-text-3" id="text-orgheadline29">
 <ul class="org-ul">
-<li><a href="http://bochs.sourceforge.net/">http://bochs.sourceforge.net/</a>
-</li>
-<li>简介：使用 C++ 开发的高可移植的 IA-32 (x86) PC 模拟器，可运行许多流行的平台上。它包括 Intel x86 CPU 模拟器, I/O 设备及定制的 BIOS。
-</li>
+<li><a href="http://bochs.sourceforge.net/">http://bochs.sourceforge.net/</a></li>
+<li>简介：使用 C++ 开发的高可移植的 IA-32 (x86) PC 模拟器，可运行许多流行的平台上。它包括 Intel x86 CPU 模拟器, I/O 设备及定制的 BIOS。</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-5-4" class="outline-3">
-<h3 id="sec-5-4">Xen</h3>
-<div class="outline-text-3" id="text-5-4">
+
+<div id="outline-container-orgheadline30" class="outline-3">
+<h3 id="orgheadline30">Xen</h3>
+<div class="outline-text-3" id="text-orgheadline30">
 <ul class="org-ul">
-<li><a href="http://www.xen.org/">http://www.xen.org/</a>
-</li>
-<li><a href="http://www.xen.org/files/Marketing/WhatisXen.pdf">http://www.xen.org/files/Marketing/WhatisXen.pdf</a>
-</li>
+<li><a href="http://www.xen.org/">http://www.xen.org/</a></li>
+<li><a href="http://www.xen.org/files/Marketing/WhatisXen.pdf">http://www.xen.org/files/Marketing/WhatisXen.pdf</a></li>
 <li>The Xen® hypervisor, the powerful open source industry standard for
 virtualization, offers a powerful, efficient, and secure feature set for
 virtualization of x86, x86_64, IA64, ARM, and other CPU architectures. It
 supports a wide range of guest operating systems including Windows®, Linux®,
-Solaris®, and various versions of the BSD operating systems.
-</li>
+Solaris®, and various versions of the BSD operating systems.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-5-5" class="outline-3">
-<h3 id="sec-5-5">Qemu</h3>
-<div class="outline-text-3" id="text-5-5">
+
+<div id="outline-container-orgheadline31" class="outline-3">
+<h3 id="orgheadline31">Qemu</h3>
+<div class="outline-text-3" id="text-orgheadline31">
 <ul class="org-ul">
-<li><a href="http://www.qemu.org/">http://www.qemu.org/</a> (被墙)
-</li>
-<li>处理器模拟器，与 Bochs, PearPC 近似，但速度更快且跨平台性良好。在 Linux 系统上使用内核加速器 kqemu 可使用 Qemu 的模拟能够接近真实电脑的速度。
-</li>
+<li><a href="http://www.qemu.org/">http://www.qemu.org/</a> (被墙)</li>
+<li>处理器模拟器，与 Bochs, PearPC 近似，但速度更快且跨平台性良好。在 Linux 系统上使用内核加速器 kqemu 可使用 Qemu 的模拟能够接近真实电脑的速度。</li>
 </ul>
 </div>
 </div>
@@ -539,8 +513,8 @@ Solaris®, and various versions of the BSD operating systems.
 
 <script type="text/javascript" src="http://exaos.github.io/assets/js/pagetail.js"></script>
 <div id="disqus_thread"></div>
-<p>版权所有 ©2013: Exaos Lee | Date: <span class="timestamp-wrapper"><span class="timestamp">[2011-10-14 五]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.1), <a href="http://validator.w3.org/check?uri=referer">Validate</a>,
-<a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a>
+<p>版权所有 ©2015: Exaos Lee | Date: <span class="timestamp-wrapper"><span class="timestamp">[2011-10-14 五]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.3.2), <a href="http://validator.w3.org/check?uri=referer">Validate</a>,
+<a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="88x31.png"/></a>
 <p><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></p>
 </div>
 </body>

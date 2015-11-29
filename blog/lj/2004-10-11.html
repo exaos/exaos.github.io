@@ -3,9 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
 <head>
-<title>用 Bochs 来代替 Virtual PC</title>
-<!-- 2013-10-31 四 02:15 -->
+<!-- 2015-11-29 日 16:10 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>用 Bochs 来代替 Virtual PC</title>
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="心蛛" />
 <meta  name="description" content="Level-2 for exporting to HTML"
@@ -22,7 +23,7 @@
  * @licstart  The following is the entire license notice for the
  *  JavaScript code in http://orgmode.org/org-info.js.
  *
- * Copyright (C) 2012-2013  Sebastian Rose
+ * Copyright (C) 2012-2013 Free Software Foundation, Inc.
  *
  *
  * The JavaScript code in this tag is free software: you can
@@ -90,7 +91,7 @@ org_html_manager.setup();  // activate after the parameters are set
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012  Free Software Foundation, Inc.
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -143,11 +144,11 @@ for the JavaScript code in this tag.
 <h2>&#30446;&#24405;</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">下载并安装 bochs</a></li>
-<li><a href="#sec-2">用 dlxlinux 测试 bochs 系统</a></li>
-<li><a href="#sec-3">使用 FreeDOS</a></li>
-<li><a href="#sec-4">个人的一些使用习惯</a></li>
-<li><a href="#sec-5">关于配置文件的简介</a></li>
+<li><a href="#orgheadline1">下载并安装 bochs</a></li>
+<li><a href="#orgheadline2">用 dlxlinux 测试 bochs 系统</a></li>
+<li><a href="#orgheadline3">使用 FreeDOS</a></li>
+<li><a href="#orgheadline4">个人的一些使用习惯</a></li>
+<li><a href="#orgheadline5">关于配置文件的简介</a></li>
 </ul>
 </div>
 </div>
@@ -164,7 +165,7 @@ Bochs 可以模拟 386, 486, Pentium Pro 或者 AMD64 CPU ，包括可选的 MMX
 </p>
 
 <p>
-参见： <a href="http://bochs.sf.net">http://bochs.sf.net</a>
+参见： <a href="http://bochs.sf.net/">http://bochs.sf.net/</a>
 </p>
 </blockquote>
 
@@ -182,15 +183,14 @@ BIOS 文件（发行版本中自带），VGA BIOS（同 ROM BIOS），磁盘映�
 本文是在 MacOS 10.3 上测试的，其它平台，比如 Linux 类似（Linux/Unix 可能会更简单一点）。在使用 Bochs 之前，希望你能够了解一些基本内容，比如如何在 MacOS X 上使用终端，最好还有一些基本的 shell 常识，比如 bash 的变量如何定义之类的基础常识。
 </p>
 
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1">下载并安装 bochs</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">下载并安装 bochs</h2>
+<div class="outline-text-2" id="text-orgheadline1">
 <p>
-到 <a href="http://bochs.sf.net">http://bochs.sf.net</a> 去下载最新版的 bochs （当时的稳定版为 2.1.1）。国内的朋友可能无法访问 sourceforge.net 的子域名，可以直接到这个地址去下载：
+到 <a href="http://bochs.sf.net/">http://bochs.sf.net/</a> 去下载最新版的 bochs （当时的稳定版为 2.1.1）。国内的朋友可能无法访问 sourceforge.net 的子域名，可以直接到这个地址去下载：
 </p>
 <ul class="org-ul">
-<li><a href="http://sourceforge.net/project/showfiles.php?group_id=12580&release_id=215733">http://sourceforge.net/project/showfiles.php?group_id=12580&release_id=215733</a>
-</li>
+<li><a href="http://sourceforge.net/project/showfiles.php?group_id=12580&amp;release_id=215733">http://sourceforge.net/project/showfiles.php?group_id=12580&release_id=215733</a></li>
 </ul>
 
 <p>
@@ -219,9 +219,10 @@ Mach-O 程序：bximage 用于创建新的磁盘映像， bxcomment 用于设置
 </p>
 </div>
 </div>
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2">用 dlxlinux 测试 bochs 系统</h2>
-<div class="outline-text-2" id="text-2">
+
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2">用 dlxlinux 测试 bochs 系统</h2>
+<div class="outline-text-2" id="text-orgheadline2">
 <p>
 你到目录 dxlinux 下点击那个 bochs.scpt 脚本，你会发现打开了一个终端，提示你这些操作：
 </p>
@@ -265,12 +266,13 @@ do shell script "export BXSHARE=~/Bochs-2.1.1"
 </p>
 </div>
 </div>
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3">使用 FreeDOS</h2>
-<div class="outline-text-2" id="text-3">
+
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="orgheadline3">使用 FreeDOS</h2>
+<div class="outline-text-2" id="text-orgheadline3">
 <p>
 在 <a href="http://bochs.sourceforge.net/diskimages.html">http://bochs.sourceforge.net/diskimages.html</a> 或者
-<a href="http://bochs.sourceforge.net/cgi-bin/topper.pl?name=Disk+Images&url=http://sourceforge.net/project/showfiles.phpqmrkgroup_ideq12580amppackage_ideq27799">http://bochs.sourceforge.net/cgi-bin/topper.pl?name=Disk+Images&url=http://sourceforge.net/project/showfiles.phpqmrkgroup_ideq12580amppackage_ideq27799</a>
+<a href="http://bochs.sourceforge.net/cgi-bin/topper.pl?name=Disk+Images&amp;url=http://sourceforge.net/project/showfiles.phpqmrkgroup_ideq12580amppackage_ideq27799">http://bochs.sourceforge.net/cgi-bin/topper.pl?name=Disk+Images&url=http://sourceforge.net/project/showfiles.phpqmrkgroup_ideq12580amppackage_ideq27799</a>
 你都可以找到 FreeDOS 的下载，下吧。我用的是 FreeDOS 100MB 的那个映像。
 </p>
 
@@ -279,9 +281,10 @@ do shell script "export BXSHARE=~/Bochs-2.1.1"
 </p>
 </div>
 </div>
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4">个人的一些使用习惯</h2>
-<div class="outline-text-2" id="text-4">
+
+<div id="outline-container-orgheadline4" class="outline-2">
+<h2 id="orgheadline4">个人的一些使用习惯</h2>
+<div class="outline-text-2" id="text-orgheadline4">
 <p>
 每个人的习惯不同吧。我喜欢在终端下打命令行启动 bochs ，后面是我的一些设置。
 </p>
@@ -292,15 +295,15 @@ bxcommit 等文件保存在 $BXHOME/R2.1.1 目录下，然后在 $BXHOME 下对�
 </p>
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #fa8072; font-style: italic;">#</span><span style="color: #ff7f24; font-style: italic;">!/bin/</span><span style="color: #00ffff;">sh</span>
+<pre class="src src-sh"><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">!/bin/</span><span style="color: #859900; font-weight: bold;">sh</span>
 
-<span style="color: #b0c4de;">export</span> <span style="color: #7fffd4;">BXHOME</span>=~/Opt/Bochs
-<span style="color: #b0c4de;">export</span> <span style="color: #7fffd4;">BXAPP</span>=${<span style="color: #7fffd4;">BXHOME</span>}/R2.1.1/bochs.app/Contents/MacOS/bochs
-<span style="color: #b0c4de;">export</span> <span style="color: #7fffd4;">BXBIOS</span>=${<span style="color: #7fffd4;">BXHOME</span>}/bios
-<span style="color: #b0c4de;">export</span> <span style="color: #7fffd4;">BXKEYMAPS</span>=${<span style="color: #7fffd4;">BXHOME</span>}/keymaps
-<span style="color: #b0c4de;">export</span> <span style="color: #7fffd4;">BXLOGS</span>=${<span style="color: #7fffd4;">BXHOME</span>}/logs
-<span style="color: #b0c4de;">alias</span> <span style="color: #7fffd4;">bochs</span>=<span style="color: #ffc1c1;">"$BXAPP"</span>
-<span style="color: #b0c4de;">alias</span> bochs-open=<span style="color: #ffc1c1;">"$BXAPP -f"</span>
+<span style="color: #657b83; font-weight: bold;">export</span> <span style="color: #268bd2;">BXHOME</span>=~/Opt/Bochs
+<span style="color: #657b83; font-weight: bold;">export</span> <span style="color: #268bd2;">BXAPP</span>=${<span style="color: #268bd2;">BXHOME</span>}/R2.1.1/bochs.app/Contents/MacOS/bochs
+<span style="color: #657b83; font-weight: bold;">export</span> <span style="color: #268bd2;">BXBIOS</span>=${<span style="color: #268bd2;">BXHOME</span>}/bios
+<span style="color: #657b83; font-weight: bold;">export</span> <span style="color: #268bd2;">BXKEYMAPS</span>=${<span style="color: #268bd2;">BXHOME</span>}/keymaps
+<span style="color: #657b83; font-weight: bold;">export</span> <span style="color: #268bd2;">BXLOGS</span>=${<span style="color: #268bd2;">BXHOME</span>}/logs
+<span style="color: #657b83; font-weight: bold;">alias</span> <span style="color: #268bd2;">bochs</span>=<span style="color: #2aa198;">"$BXAPP"</span>
+<span style="color: #657b83; font-weight: bold;">alias</span> bochs-open=<span style="color: #2aa198;">"$BXAPP -f"</span>
 </pre>
 </div>
 <p>
@@ -308,9 +311,9 @@ bxcommit 等文件保存在 $BXHOME/R2.1.1 目录下，然后在 $BXHOME 下对�
 </p>
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #00ffff;">if</span> [ -f ~/Opt/Bochs/bochs-env.sh ]; <span style="color: #00ffff;">then</span>
+<pre class="src src-sh"><span style="color: #859900; font-weight: bold;">if</span> [ -f ~/Opt/Bochs/bochs-env.sh ]; <span style="color: #859900; font-weight: bold;">then</span>
     . ~/Opt/Bochs/bochs-env.sh
-<span style="color: #00ffff;">fi</span>
+<span style="color: #859900; font-weight: bold;">fi</span>
 </pre>
 </div>
 
@@ -322,9 +325,10 @@ Rx.x.x 目录修改就可以了。当然，也可以写一个 Apple Script 的�
 </div>
 </div>
 
-<div id="outline-container-sec-5" class="outline-2">
-<h2 id="sec-5">关于配置文件的简介</h2>
-<div class="outline-text-2" id="text-5">
+
+<div id="outline-container-orgheadline5" class="outline-2">
+<h2 id="orgheadline5">关于配置文件的简介</h2>
+<div class="outline-text-2" id="text-orgheadline5">
 <p>
 其实，使用 bochs 关键的是那个配置文件。仔细阅读一下 Bochs 目录下的那个
 <code>bochsrc-sample.txt</code> 文件，你会有很大收获。详情请参见 Bochs 的用户手册。
@@ -342,8 +346,8 @@ Windows 的映像文件提供给人家，那是有版权的东西，你不要让
 
 <script type="text/javascript" src="http://exaos.github.io/assets/js/pagetail.js"></script>
 <div id="disqus_thread"></div>
-<p>版权所有 ©2013: 心蛛 | Date: <span class="timestamp-wrapper"><span class="timestamp">[2004-10-11 00:06:00]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.1), <a href="http://validator.w3.org/check?uri=referer">Validate</a>,
-<a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a>
+<p>版权所有 ©2015: 心蛛 | Date: <span class="timestamp-wrapper"><span class="timestamp">[2004-10-11 一 00:06]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.3.2), <a href="http://validator.w3.org/check?uri=referer">Validate</a>,
+<a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="88x31.png"/></a>
 <p><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></p>
 </div>
 </body>

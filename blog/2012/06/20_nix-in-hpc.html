@@ -3,9 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
 <head>
-<title>函数式包管理器 Nix 与高性能计算</title>
-<!-- 2013-10-31 四 02:15 -->
+<!-- 2015-11-29 日 16:10 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>函数式包管理器 Nix 与高性能计算</title>
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="心蛛" />
 <meta  name="description" content="Level-3 for exporting to HTML"
@@ -22,7 +23,7 @@
  * @licstart  The following is the entire license notice for the
  *  JavaScript code in http://orgmode.org/org-info.js.
  *
- * Copyright (C) 2012-2013  Sebastian Rose
+ * Copyright (C) 2012-2013 Free Software Foundation, Inc.
  *
  *
  * The JavaScript code in this tag is free software: you can
@@ -90,7 +91,7 @@ org_html_manager.setup();  // activate after the parameters are set
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012  Free Software Foundation, Inc.
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -152,15 +153,13 @@ for the JavaScript code in this tag.
 本文合并了两篇博文：
 </p>
 <ul class="org-ul">
-<li>2012-05-13: 《NixOS &#x2013; 全局版本控制的操作系统？》
-</li>
-<li>2012-06-20: 《函数式包管理器 Nix 与高性能计算》
-</li>
+<li>2012-05-13: 《NixOS &#x2013; 全局版本控制的操作系统？》</li>
+<li>2012-06-20: 《函数式包管理器 Nix 与高性能计算》</li>
 </ul>
 </blockquote>
 
 <p>
-关于 NixOS, 参见<i>后面一节</i>。
+关于 NixOS, 参见<a href="#nixos">后面一节</a>。
 </p>
 
 <p>
@@ -188,21 +187,24 @@ Nix 是一个跨平台的包管理软件，不仅支持 GNU/Linux 系统，还�
 目前，Nix 的开发组使用集群系统进行软件的自动编译测试。我还没有见到有高性能集群中使用 Nix 的报道。或许有的人已经有尝试还未公布结果。身边有一个基于 Rocks 的集群，但由于计算任务繁重，不可能进行这样的实验。期待有人能够汇报一下 Nix 在高性能计算上的表现。
 </p>
 
-<div id="outline-container-nixos" class="outline-2">
-<h2 id="nixos"><a id="sec-1" name="sec-1"></a>NixOS &#x2013; 全局版本控制的操作系统？</h2>
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="nixos"><a id="orgheadline1"></a>NixOS &#x2013; 全局版本控制的操作系统？</h2>
 <div class="outline-text-2" id="text-nixos">
-<ul class="org-ul">
-<li>State "DONE"       from ""           <span class="timestamp-wrapper"><span class="timestamp">[2012-05-13 日 23:34]</span></span>
-</li>
-</ul>
 <p>
-你是否在安装软件的过程中饱受过版本变更之苦呢？比如 A 软件需要依赖 glibc 2.5 版本以下，而 B 软件却又需要 glibc 2.7 以上？而我们知道，同一个系统中基本上只会有一个版本的 glibc, 这样，你无法让 A 与 B 在系统中共存，不得不遗憾地舍弃其一，或者采用使用虚拟机之类的臃肿的解决方案。在 Windows 下的程序员经常会遇到的 "DLL Hell" 问题也与上述情形类似。在遇到这类问题时，你有否想过这样的一个操作系统，不管你的软件是什么版本，都可以配置一套与之相适应的运行环境出来，并且不需要额外的虚拟机之类的开销？尚在开发中的 <a href="http://NixOS.org/nixos/">NixOS</a> 或许会是你未来的选择。
+CLOSED: <span class="timestamp-wrapper"><span class="timestamp">[2012-05-13 日 23:34]</span></span>
+</p>
+<ul class="org-ul">
+<li>State "DONE"       from ""           <span class="timestamp-wrapper"><span class="timestamp">[2012-05-13 日 23:34]</span></span></li>
+</ul>
+
+<p>
+你是否在安装软件的过程中饱受过版本变更之苦呢？比如 A 软件需要依赖 glibc 2.5 版本以下，而 B 软件却又需要 glibc 2.7 以上？而我们知道，同一个系统中基本上只会有一个版本的 glibc, 这样，你无法让 A 与 B 在系统中共存，不得不遗憾地舍弃其一，或者采用使用虚拟机之类的臃肿的解决方案。在 Windows 下的程序员经常会遇到的 "DLL Hell" 问题也与上述情形类似。在遇到这类问题时，你有否想过这样的一个操作系统，不管你的软件是什么版本，都可以配置一套与之相适应的运行环境出来，并且不需要额外的虚拟机之类的开销？尚在开发中的 <a href="http://nixos.org/nixos/">NixOS</a> 或许会是你未来的选择。
 </p>
 
 <p>
-首先介绍一下 <a href="http://NixOS.org/nix/">Nix</a> &#x2013; 一个函数式包管理器 (<b>a purely functional package manager</b>)。如果你从未听过“函数式” (functional) 的概念，不妨先参照一下 <i>函数式编程语言</i> (或
-<i>Functional Programming</i>)。所谓的函数式包管理，就是说将软件包当成纯粹函数式编程语言（比如 Haskell）中的变量──它们由函数生成并且没有任何副作用 (side-effects)，并且软件包一旦生成将不再改变。Nix 将软件包保存在 <i>Nix</i> 存储池中，通常在目录 <code>/nix/</code>
-下，每个软件包都有唯一的子目录，比如：
+首先介绍一下 <a href="http://nixos.org/nix/">Nix</a> &#x2013; 一个函数式包管理器 (<b>a purely functional package manager</b>)。如果你从未听过“函数式” (functional) 的概念，不妨先参照一下 <a href="http://zh.wikipedia.org/%E5%87%BD%E6%95%B8%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80">函数式编程语言</a> (或
+<a href="http://en.wikipedia.org/Functional_Programming">Functional Programming</a>)。所谓的函数式包管理，就是说将软件包当成纯粹函数式编程语言（比如 Haskell）中的变量──它们由函数生成并且没有任何副作用 (side-effects)，并且软件包一旦生成将不再改变。Nix 将软件包保存在 <i>Nix</i> 存储池中，通常在目录
+=/nix/=下，每个软件包都有唯一的子目录，比如：
 </p>
 <pre class="example">
 /nix/store/r8vvq9kq18pz08v249h8my6r9vs7s0n3-firefox-2.0.0.1/
@@ -251,16 +253,11 @@ Nix 会帮助你确保包的依赖关系是完全的。通常情况下，你在�
 其它还有的 Nix 特性有：
 </p>
 <ul class="org-ul">
-<li><b>原子升级与回滚</b> (atomic upgrades and rollbacks)
-</li>
-<li><b>垃圾回收</b> (garbage collection)
-</li>
-<li><b>函数式包管理语言</b> (functional package language)
-</li>
-<li><b>透明的源码/二进制布署</b> (transparent source/binary deployment)
-</li>
-<li><b>二进制补丁</b> (binary patching)
-</li>
+<li><b>原子升级与回滚</b> (atomic upgrades and rollbacks)</li>
+<li><b>垃圾回收</b> (garbage collection)</li>
+<li><b>函数式包管理语言</b> (functional package language)</li>
+<li><b>透明的源码/二进制布署</b> (transparent source/binary deployment)</li>
+<li><b>二进制补丁</b> (binary patching)</li>
 </ul>
 
 <br><br>
@@ -272,7 +269,7 @@ X. 当然也支持在 Windows 上的 Cygwin. 而 NixOS 则是一个基于 Nix �
 </p>
 
 <p>
-因为 <a href="http://NixOS.org/nixos/">NixOS</a> 是这样一个可以回滚到某个配置状态的系统，所以可以称其为全局版本控制的操作系统，这也是本文标题所强调的内容。
+因为 <a href="http://nixos.org/nixos/">NixOS</a> 是这样一个可以回滚到某个配置状态的系统，所以可以称其为全局版本控制的操作系统，这也是本文标题所强调的内容。
 </p>
 
 <p>
@@ -286,8 +283,8 @@ NixOS 也只提供了一个 LiveCD (0.1pre34067-34077) 和简单的安装 CD 映
 
 <script type="text/javascript" src="http://exaos.github.io/assets/js/pagetail.js"></script>
 <div id="disqus_thread"></div>
-<p>版权所有 ©2013: 心蛛 | Date: <span class="timestamp-wrapper"><span class="timestamp">[2012-06-20 三 15:27]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.1), <a href="http://validator.w3.org/check?uri=referer">Validate</a>,
-<a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a>
+<p>版权所有 ©2015: 心蛛 | Date: <span class="timestamp-wrapper"><span class="timestamp">[2012-06-20 三 15:27]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.3.2), <a href="http://validator.w3.org/check?uri=referer">Validate</a>,
+<a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="88x31.png"/></a>
 <p><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></p>
 </div>
 </body>

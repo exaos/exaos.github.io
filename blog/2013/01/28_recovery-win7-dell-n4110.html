@@ -3,9 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
 <head>
-<title>恢复一次严重的系统故障 (Windows 7)</title>
-<!-- 2013-10-31 四 02:15 -->
+<!-- 2015-11-29 日 16:10 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>恢复一次严重的系统故障 (Windows 7)</title>
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="心蛛" />
 <meta  name="description" content="Level-3 for exporting to HTML"
@@ -22,7 +23,7 @@
  * @licstart  The following is the entire license notice for the
  *  JavaScript code in http://orgmode.org/org-info.js.
  *
- * Copyright (C) 2012-2013  Sebastian Rose
+ * Copyright (C) 2012-2013 Free Software Foundation, Inc.
  *
  *
  * The JavaScript code in this tag is free software: you can
@@ -90,7 +91,7 @@ org_html_manager.setup();  // activate after the parameters are set
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012  Free Software Foundation, Inc.
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -140,7 +141,7 @@ for the JavaScript code in this tag.
 </div><div id="content">
 <h1 class="title">恢复一次严重的系统故障 (Windows 7)</h1>
 <p>
-上周五，我在 Dell N4110 笔记本上犯了一个严重的错误。我在 <a href="http://cygwin.org">cygwin</a> 下使用 <code>rsync</code> 与
+上周五，我在 Dell N4110 笔记本上犯了一个严重的错误。我在 <a href="http://cygwin.org/">cygwin</a> 下使用 <code>rsync</code> 与
 Linux 机器同步数据时，误删除了一些本地更新的文件 (该死的 <code>--delete</code> 参数，一定要慎用！)。 然后我试图使用 <a href="http://www.cgsecurity.org/wiki/TestDisk">TeskDisk</a> 来恢复数据时，被告之文件分区表没有对齐，问我是否修复。一时大意，同意并写入磁盘，然后 TeskDisk 告诉我要重新启动系统。结果悲剧产生了，重新启动系统时，回到了 Dell 工具的 DOS 界面下，无法启动 Win7 系统了。
 </p>
 
@@ -148,37 +149,32 @@ Linux 机器同步数据时，误删除了一些本地更新的文件 (该死的
 我的 N4110 硬盘默认的是出厂的 4 个分区：
 </p>
 <ul class="org-ul">
-<li>sda1, DellUtility
-</li>
-<li>sda2, RECOVERY
-</li>
-<li>sda3, WIN7SYS
-</li>
-<li>sda4, DATA
-</li>
+<li>sda1, DellUtility</li>
+<li>sda2, RECOVERY</li>
+<li>sda3, WIN7SYS</li>
+<li>sda4, DATA</li>
 </ul>
 
 <p>
 当时正在做的工作被迫打断，我试图修复启动，结果在忙乱之下，连续犯了一系列错误：
 </p>
 <ol class="org-ol">
-<li>用 Win7 安装 U 盘启动，修复启动分区。重启，仍回到 DOS 下。
-</li>
-<li>用 GRML Linux U 盘启动，删除了分区 1 (DellUtility)。用 Win7 U 盘启动，修复启动分区。重启，出现错误如下：
+<li>用 Win7 安装 U 盘启动，修复启动分区。重启，仍回到 DOS 下。</li>
+<li><p>
+用 GRML Linux U 盘启动，删除了分区 1 (DellUtility)。用 Win7 U 盘启动，修复启动分区。重启，出现错误如下：
+</p>
 <pre class="example">
 BOOTMGR is missing
 Press Ctrl Alt Del to restart
-</pre>
-</li>
-<li>用 Win7 安装 U 盘启动，无法修复分区表，出现“无法兼容”的错误。重启，错误如前。
-</li>
-<li>用 GRML U 盘启动，删除了分区 2 (RECOVERY). 再用 Win7 U 盘启动，仍无法修复启动分区。重启，错误如前： <code>BOOTMGR is missing</code>
-</li>
-<li>用 GRML 启动盘启动，用 testdisk 检查分区，使用 EFI GPT 选项，找回了删除的分区。用 Win7 U 盘启动，仍因“兼容”问题，无法修复启动分区。此时用硬盘启动，出现的错误为：
+</pre></li>
+<li>用 Win7 安装 U 盘启动，无法修复分区表，出现“无法兼容”的错误。重启，错误如前。</li>
+<li>用 GRML U 盘启动，删除了分区 2 (RECOVERY). 再用 Win7 U 盘启动，仍无法修复启动分区。重启，错误如前： <code>BOOTMGR is missing</code></li>
+<li><p>
+用 GRML 启动盘启动，用 testdisk 检查分区，使用 EFI GPT 选项，找回了删除的分区。用 Win7 U 盘启动，仍因“兼容”问题，无法修复启动分区。此时用硬盘启动，出现的错误为：
+</p>
 <pre class="example">
 Operation System not found
-</pre>
-</li>
+</pre></li>
 </ol>
 
 <p>
@@ -190,10 +186,8 @@ Operation System not found
 冷静下来，仔细分析问题，首要任务是保证数据不丢失。那么要解决的问题就是：
 </p>
 <ol class="org-ol">
-<li>将在 Linux TeskDisk 找回的 GPT 分区数据转换成 Windows 7 启动可识别的 MBR 分区格式。
-</li>
-<li>修复 Windows 启动配置数据 (Boot Configuration Data, BCD)。
-</li>
+<li>将在 Linux TeskDisk 找回的 GPT 分区数据转换成 Windows 7 启动可识别的 MBR 分区格式。</li>
+<li>修复 Windows 启动配置数据 (Boot Configuration Data, BCD)。</li>
 </ol>
 
 <p>
@@ -205,20 +199,13 @@ Windows 7 不是针对 GPT 分区，并且 N4110 不支持 EFI), 第二个则是
 将 GPT 转换为 Windows 7 兼容的 MBR 分区表，检索了一下，参考如下：
 </p>
 <ol class="org-ol">
-<li><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/gg463525.aspx">http://msdn.microsoft.com/en-us/library/windows/hardware/gg463525.aspx</a>
-</li>
-<li><a href="http://www.rodsbooks.com/gdisk/booting.html">http://www.rodsbooks.com/gdisk/booting.html</a>
-</li>
-<li><a href="http://www.wilderssecurity.com/showthread.php?t=332544">http://www.wilderssecurity.com/showthread.php?t=332544</a>
-</li>
-<li><a href="http://www.sevenforums.com/tutorials/26203-convert-gpt-disk-mbr-disk.html">http://www.sevenforums.com/tutorials/26203-convert-gpt-disk-mbr-disk.html</a>
-</li>
-<li><a href="http://ljmichael.hubpages.com/hub/Convert-MBR-to-GPT-or-convert-GPT-to-MBR">http://ljmichael.hubpages.com/hub/Convert-MBR-to-GPT-or-convert-GPT-to-MBR</a>
-</li>
-<li><a href="http://www.firewing1.com/node/610">http://www.firewing1.com/node/610</a>
-</li>
-<li><a href="http://www.rodsbooks.com/gdisk/mbr2gpt.html">http://www.rodsbooks.com/gdisk/mbr2gpt.html</a>
-</li>
+<li><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/gg463525.aspx">http://msdn.microsoft.com/en-us/library/windows/hardware/gg463525.aspx</a></li>
+<li><a href="http://www.rodsbooks.com/gdisk/booting.html">http://www.rodsbooks.com/gdisk/booting.html</a></li>
+<li><a href="http://www.wilderssecurity.com/showthread.php?t=332544">http://www.wilderssecurity.com/showthread.php?t=332544</a></li>
+<li><a href="http://www.sevenforums.com/tutorials/26203-convert-gpt-disk-mbr-disk.html">http://www.sevenforums.com/tutorials/26203-convert-gpt-disk-mbr-disk.html</a></li>
+<li><a href="http://ljmichael.hubpages.com/hub/Convert-MBR-to-GPT-or-convert-GPT-to-MBR">http://ljmichael.hubpages.com/hub/Convert-MBR-to-GPT-or-convert-GPT-to-MBR</a></li>
+<li><a href="http://www.firewing1.com/node/610">http://www.firewing1.com/node/610</a></li>
+<li><a href="http://www.rodsbooks.com/gdisk/mbr2gpt.html">http://www.rodsbooks.com/gdisk/mbr2gpt.html</a></li>
 </ol>
 
 <p>
@@ -229,10 +216,8 @@ Windows 7 不是针对 GPT 分区，并且 N4110 不支持 EFI), 第二个则是
 修复 BCD, 可参考：
 </p>
 <ul class="org-ul">
-<li><a href="http://support.microsoft.com/kb/927392">http://support.microsoft.com/kb/927392</a>
-</li>
-<li><a href="http://pcsupport.about.com/od/findbyerrormessage/a/bootmgr-is-missing.htm">http://pcsupport.about.com/od/findbyerrormessage/a/bootmgr-is-missing.htm</a>
-</li>
+<li><a href="http://support.microsoft.com/kb/927392">http://support.microsoft.com/kb/927392</a></li>
+<li><a href="http://pcsupport.about.com/od/findbyerrormessage/a/bootmgr-is-missing.htm">http://pcsupport.about.com/od/findbyerrormessage/a/bootmgr-is-missing.htm</a></li>
 </ul>
 
 <p>
@@ -254,38 +239,41 @@ Windows 下修复这个问题，就启动到 GRML 下，使用 ntfsfix 修复了
 DOS; 使用 Win7 U 盘启动，则正常进入系统了。仔细检查后发现，原来 DELL N4110 默认出厂的设置是将启动放置在隐藏的 RECOVERY 分区上，将该分区标志为“活动”即可。具体的操作如下：
 </p>
 <ol class="org-ol">
-<li>用 Win7 U 盘启动，进行命令行，执行 <code>diskpart</code>
-</li>
-<li>去掉 DellUtility 及 RECOVERY 分配的盘符
+<li>用 Win7 U 盘启动，进行命令行，执行 <code>diskpart</code></li>
+<li><p>
+去掉 DellUtility 及 RECOVERY 分配的盘符
+</p>
 <pre class="example">
 select volume=1
 remove
 select volume=2
 remove
-</pre>
-</li>
-<li>标识 RECOVERY 为活动：
+</pre></li>
+<li><p>
+标识 RECOVERY 为活动：
+</p>
 <pre class="example">
 select volume=2
 active
-</pre>
-</li>
-<li>重新分配盘符 <code>C</code> 给 <code>WIN7SYS</code> 分区：
+</pre></li>
+<li><p>
+重新分配盘符 <code>C</code> 给 <code>WIN7SYS</code> 分区：
+</p>
 <pre class="example">
 select volume=3
 remove
 assign letter=C
-</pre>
-</li>
-<li>退出 <code>diskpart</code>, 使用如下命令修复 BCD:
+</pre></li>
+<li><p>
+退出 <code>diskpart</code>, 使用如下命令修复 BCD:
+</p>
 <pre class="example">
 bcdboot C:\Windows
 bootrec /FixMBR
 bootrec /FixBoot
 bootrec /RebuildBCD
 bootrec /ScanOS
-</pre>
-</li>
+</pre></li>
 </ol>
 
 <p>
@@ -296,8 +284,8 @@ bootrec /ScanOS
 
 <script type="text/javascript" src="http://exaos.github.io/assets/js/pagetail.js"></script>
 <div id="disqus_thread"></div>
-<p>版权所有 ©2013: 心蛛 | Date: <span class="timestamp-wrapper"><span class="timestamp">[2013-01-28 一 05:03]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.1), <a href="http://validator.w3.org/check?uri=referer">Validate</a>,
-<a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" alt="88x31.png"/></a>
+<p>版权所有 ©2015: 心蛛 | Date: <span class="timestamp-wrapper"><span class="timestamp">[2013-01-28 一 05:03]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.3.2), <a href="http://validator.w3.org/check?uri=referer">Validate</a>,
+<a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="88x31.png"/></a>
 <p><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></p>
 </div>
 </body>
