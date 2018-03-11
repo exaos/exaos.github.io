@@ -1,1145 +1,1106 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
-<head>
-<!-- 2015-12-03 四 15:23 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>心蛛的 GEANT4 笔记</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="心蛛" />
-<meta  name="description" content="Level-2 for exporting to HTML"
- />
-<link rel="stylesheet" title="Standard" href="../../assets/css/worg.css" type="text/css" />
-<link rel="alternate stylesheet" title="Zenburn" href="../../assets/css/worg-zenburn.css" type="text/css" />
-<link rel="alternate stylesheet" title="Classic" href="../../assets/css/worg-classic.css" type="text/css" />
-
-<script type="text/javascript" src="http://orgmode.org/org-info.js">
-/**
- *
- * @source: http://orgmode.org/org-info.js
- *
- * @licstart  The following is the entire license notice for the
- *  JavaScript code in http://orgmode.org/org-info.js.
- *
- * Copyright (C) 2012-2013 Free Software Foundation, Inc.
- *
- *
- * The JavaScript code in this tag is free software: you can
- * redistribute it and/or modify it under the terms of the GNU
- * General Public License (GNU GPL) as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option)
- * any later version.  The code is distributed WITHOUT ANY WARRANTY;
- * without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
- *
- * As additional permission under GNU GPL version 3 section 7, you
- * may distribute non-source (e.g., minimized or compacted) forms of
- * that code without the copy of the GNU GPL normally required by
- * section 4, provided you include this license notice and a URL
- * through which recipients can access the Corresponding Source.
- *
- * @licend  The above is the entire license notice
- * for the JavaScript code in http://orgmode.org/org-info.js.
- *
- */
-</script>
-
-<script type="text/javascript">
-
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-
-<!--/*--><![CDATA[/*><!--*/
-org_html_manager.set("TOC_DEPTH", "4");
-org_html_manager.set("LINK_HOME", "../../index.html");
-org_html_manager.set("LINK_UP", "../index.html");
-org_html_manager.set("LOCAL_TOC", "1");
-org_html_manager.set("VIEW_BUTTONS", "0");
-org_html_manager.set("MOUSE_HINT", "underline");
-org_html_manager.set("FIXED_TOC", "0");
-org_html_manager.set("TOC", "0");
-org_html_manager.set("VIEW", "content");
-org_html_manager.setup();  // activate after the parameters are set
-/*]]>*///-->
-</script>
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
-
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
-</script>
-<script type="text/javascript"
-        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
-</head>
-<body>
-<div id="org-div-home-and-up">
- <a accesskey="h" href="../index.html"> UP </a>
- |
- <a accesskey="H" href="../../index.html"> HOME </a>
-</div><div id="content">
-<h1 class="title">心蛛的 GEANT4 笔记</h1>
-<div id="table-of-contents">
-<h2>&#30446;&#24405;</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#orgheadline1">GEANT4 项目开发状态</a></li>
-<li><a href="#orgheadline2">点滴</a></li>
-<li><a href="#orgheadline3">起步</a>
-<ul>
-<li><a href="#orgheadline4">编译与安装 (Linux/Unix)</a></li>
-<li><a href="#orgheadline5">设置运行环境 (Linux/Unix)</a></li>
-<li><a href="#orgheadline6">编译及运行 (Linux/Unix)</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline26">详细的安装说明</a>
-<ul>
-<li><a href="#orgheadline7">使用编译好的版本</a>
-<ul>
-<li><a href="#orgheadline8">Debian Linux 6/7 (Squeeze/Wheezy), Geant4 9.3</a></li>
-<li><a href="#orgheadline9">Windows 7 + VS2010 + CMake 2.8, Geant4 9.6</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline10">使用 CMake 编译安装 (G4 &gt;= 9.5, Linux/OSX)</a></li>
-<li><a href="#orgheadline11">Windows 7 下使用 CMake + VS2010 Express, Geant4 9.6</a>
-<ul>
-<li><a href="#orgheadline12">依赖的软件平台及库</a></li>
-<li><a href="#orgheadline13">安装过程</a></li>
-</ul>
-</li>
-<li><a href="#DEP-3RD">依赖的库</a>
-<ul>
-<li><a href="#orgheadline14">GDML (All platforms)</a></li>
-<li><a href="#orgheadline15">Qt4 (All platforms)</a></li>
-<li><a href="#orgheadline16">Motif UI (Linux/OSX)</a></li>
-<li><a href="#orgheadline17">X11 OpenGL Visualization (Linux/OSX)</a></li>
-<li><a href="#orgheadline18">WIN32 OpenGL (Windows)</a></li>
-<li><a href="#orgheadline19">Open Inventor Visual (All)</a>
-<ul>
-<li><a href="#orgheadline20">Coin3D: Windows + Visual Studio 2010</a></li>
-<li><a href="#orgheadline21">SoQt: Windows VS2010 Express</a></li>
-<li><a href="#orgheadline22">SoWin: Windows 7 + VS2010 Express</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline23">X11 RayTracer Visual (Linux/Mac)</a></li>
-</ul>
-</li>
-<li><a href="#DEP-OPTS">推荐的相关软件</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline28">几何设置</a>
-<ul>
-<li><a href="#orgheadline27">如何用 GDML 几何设置敏感探测器 (Sensitive Detector)</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline29">物理过程</a></li>
-<li><a href="#orgheadline30">可视化</a></li>
-<li><a href="#orgheadline31">数据库</a>
-<ul>
-<li><a href="#orgheadline32">G4NDL</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline34">错误记录</a>
-<ul>
-<li><a href="#orgheadline33">2012-12: Windows 7 + VS2010 + Coin3D</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-<p>
-GEANT4 主页:
-</p>
-<ul class="org-ul">
-<li><a href="http://www.geant4.org/">http://www.geant4.org/</a> 或者</li>
-<li><a href="http://cern.ch/geant4">http://cern.ch/geant4</a></li>
-</ul>
-
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1">GEANT4 项目开发状态</h2>
-<div class="outline-text-2" id="text-orgheadline1">
-<ul class="org-ul">
-<li>2015-04-01: 10.01.p01 发布
-<ul class="org-ul">
-<li>全面支持 CMake 编译系统，废除对 GNUMake 的支持，添加了 <code>-DG4USE_STD11</code> 的编译选项，支持 C++11 的新特性。</li>
-<li>大量的 PhysicsList 等变更，详情参见 &#x2013; <a href="http://geant4.web.cern.ch/geant4/support/ReleaseNotes4.10.1.html">ReleaseNotes4.10.1</a></li>
-</ul></li>
-<li>2015-03-06: 9.6.p04 发布 &#x2013; 对 9.6 版本的一些 BUG 修正。</li>
-<li>2013-06-28: 10.0 BETA 发布
-<ul class="org-ul">
-<li>使用 10.0 之前先阅读多线程程序开发相关的说明:
-<a href="https://twiki.cern.ch/twiki/bin/view/Geant4/Geant4MTForApplicationDevelopers">Geant4MTForApplicationDevelopers</a></li>
-<li>主要变更 &#x2013; <a href="http://geant4.web.cern.ch/geant4/support/Beta4.10.0-1.txt">http://geant4.web.cern.ch/geant4/support/Beta4.10.0-1.txt</a>
-<ul class="org-ul">
-<li>正式支持多线程，相关的示例程序做了大幅度修改。</li>
-<li>支持变量/参数的影子检查。</li>
-<li>对 CLHEP 的调用做了较大修改，隐含的头文件包含被去除，在调用
-<code>SystemOfUnits</code> 和 <code>PhysicalConstants</code> 时要注意头文件包含。</li>
-<li>移除对旧的编译系统的支持，全面迁移到 CMake 上。</li>
-<li>移除一些过时的物理模型，更新了一些数据库。</li>
-</ul></li>
-</ul></li>
-<li>2013-05-24: 9.6.p02 发布</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2">点滴</h2>
-<div class="outline-text-2" id="text-orgheadline2">
-<p>
-自从了解并自学了一点 <a href="http://cern.ch/geant4">Geant4</a> 之后，有很多人曾经问过我不少问题，大部分都是与安装、编译有关，还有一部分是 C++ 基础知识方面的问题。鲜有人问及深入一点的内容，比如：如何选择物理过程、物理过程的适用范围、如何选择高效的数据输出方式等。其实，那些基础问题在手册中仔细查找，都能够获得满意的答案。我想提醒一点：
-</p>
-<blockquote>
-<p>
-使用 Geant4, 除非你只是运行一下别人开发好的程序，否则，你就应该掌握作为一名程序员所需要的基本知识。无论是使用 GNU Make 还是 CMake, 无论是在 Linux/OSX 平台还是
-Windows 平台，你都需要对编程的基本流程了解，你都需要对自己的工具链熟悉。这儿的工具链包括你的操作系统常用工具、编译工具、编辑器、外围的库、调试工具等。
-</p>
-</blockquote>
-
-<p>
-Gean4 的用户分成三类：
-</p>
-<ul class="org-ul">
-<li>应用程序使用者，直接拿他人开发好的程序来运行，按他人设计的方式输入或调整参数即可。这类用户，请直接联系给你提供程序的人。</li>
-<li>应用程序开发者，在 Geant4 开发包的基础上自行设计应用程序的人。这类用户需要掌握基础的 C++ 编程技术、应用程序的编译技术等等。当然，在这些技术的基础上，你需要理解 Geant4 的基本框架，能够熟练调用相应的类库。这类用户，请详细阅读 Geant4 的开发者手册。
-<ul class="org-ul">
-<li><a href="http://cern.ch/geant4/UserDocumentation/UsersGuides/ForApplicationDeveloper/html/index.html">Application Developer's Guide</a></li>
-</ul></li>
-<li>框架拓展开发者，即在 Geant4 开发包的基础上添加原框架中未包含的功能。这类用户需要有较深厚的 C++ 及程序编译技术的使用经验，在此基础上能够熟练掌握 UML 及Geant4
-的框架结构。这类用户，请详细阅读 Geant4 的框架开发手册。
-<ul class="org-ul">
-<li><a href="http://cern.ch/geant4/UserDocumentation/UsersGuides/ForToolkitDeveloper/html/index.html">Toolkit Developer's Guide</a></li>
-</ul></li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-orgheadline3" class="outline-2">
-<h2 id="orgheadline3">起步</h2>
-<div class="outline-text-2" id="text-orgheadline3">
-<p>
-Geant4 从 9.6 版本开始使用新的编译系统 CMake 来生成编译所需要的项目文件，比如
-Linux/Unix 下的 <code>Makefile</code> 或 <code>Visual Studio</code> 的“解决方案文件” (<code>.sln</code>) 等。
-Geant4 是一个程序开发框架，是给物理学领域的程序开发者使用的。它提供的预编译版本只支持少数几个平台: Scientific Linux CERN (SLC), Mac OS X, MS Windows. 对于其它的平台，比如集群系统 Rocks 以及版本繁多的各种 Linux 发行版本，均需要用户进行手动编译与安装。因此，Geant4 起步至少需要这样的几个步骤：
-</p>
-<ol class="org-ol">
-<li>编译与安装</li>
-<li>配置运行环境</li>
-<li>编译及运行用户代码</li>
-</ol>
-
-<p>
-作为起步，只对这三步做最简短的说明。详细的参见后面章节。
-</p>
-</div>
-
-<div id="outline-container-orgheadline4" class="outline-3">
-<h3 id="orgheadline4">编译与安装 (Linux/Unix)</h3>
-<div class="outline-text-3" id="text-orgheadline4">
-<p>
-如果是 SLC、OS X 或 MS-Win 用户，可直接下载预编译的二进制库进行安装。
-</p>
-
-<p>
-用 CMake 从源码编译分成如下几步：
-</p>
-<ol class="org-ol">
-<li>解压源码。</li>
-<li><p>
-新创建一个编译目录，在此目录下调用 <code>cmake</code> (或 <code>cmake-gui</code>) 生成编译的项目文件。注意根据你的系统环境设置好 CMake 常用的参数。比如：
-</p>
-<pre class="example">
-cmake -DCMAKE_INSTALL_PREFIX=/opt/Geant4/10.01.p01-g++ \
-  -DGEANT4_USE_GDML=ON -DGEANT4_INSTALL_DATADIR=/opt/Geant4/Data \
-  -DGEANT4_USE_QT=ON -DGEANT4_USE_XM=ON -DGEANT4_USE_OPENGL_X11=ON \
-  -DGEANT4_USE_RAYTRACER_X11=ON ../../Sources/geant4.10.01.p01
-</pre></li>
-<li>在编译目录下执行 <code>make &amp;&amp; make install</code></li>
-</ol>
-
-<p>
-Linux 下常见的 CMake 参数：
-</p>
-<dl class="org-dl">
-<dt><code>CMAKE_INSTALL_PREFIX</code></dt><dd>安装到的目录</dd>
-<dt><code>GEANT4_INSTALL_DATADIR</code></dt><dd>数据安装的位置</dd>
-<dt><code>GEANT4_USE_QT</code></dt><dd>是否使用 Qt 库</dd>
-<dt><code>GEANT4_USE_OPENGL_X11</code></dt><dd>是否使用 OpenGL X11 库</dd>
-<dt><code>GEANT4_USE_XM</code></dt><dd>是否使用 Motif 库</dd>
-<dt><code>GEANT4_USE_RAYTRACER_X11</code></dt><dd>是否使用径迹追踪</dd>
-</dl>
-</div>
-</div>
-
-<div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="orgheadline5">设置运行环境 (Linux/Unix)</h3>
-<div class="outline-text-3" id="text-orgheadline5">
-<p>
-从 9.6 版本开始，编译安装后会在 <code>&lt;prefix&gt;/bin/</code> 目录下生成这样的几个脚本程序：
-</p>
-<ul class="org-ul">
-<li><code>geant4-config</code> &#x2013; 生成一些用于应用程序编译的参数，与常见的 <code>*-config</code> 程序类似，比如: <code>geant4-config --cflags</code></li>
-<li><code>geant4.sh</code> &#x2013; 用于在与 sh 兼容的 shell 下执行 <code>source</code> 命令，提供 Geant4 的运行环境。注意，对 <code>ksh</code>, <code>zsh</code>, 需要进入到这个目录下执行。</li>
-<li><code>geant4.csh</code> &#x2013; 用于与 csh 兼容的 shell 下执行 <code>source</code> 命令。</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="orgheadline6">编译及运行 (Linux/Unix)</h3>
-<div class="outline-text-3" id="text-orgheadline6">
-<p>
-比如运行示例程序 N01, 可按如下方式：
-</p>
-<ul class="org-ul">
-<li>创建编译或运行目录</li>
-<li><p>
-在该目录下执行 cmake
-</p>
-<pre class="example">
-cmake -DGeant4_DIR=&lt;path-to-geant4-installed&gt; &lt;path-to&gt;/N01
-</pre></li>
-<li>执行 <code>make</code></li>
-<li><p>
-运行当前目录下生成的 <code>exampleN01</code>
-</p>
-<pre class="example">
-./exampleN01
-</pre></li>
-</ul>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgheadline26" class="outline-2">
-<h2 id="orgheadline26">详细的安装说明</h2>
-<div class="outline-text-2" id="text-orgheadline26">
-</div><div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="orgheadline7">使用编译好的版本</h3>
-<div class="outline-text-3" id="text-orgheadline7">
-<p>
-参见 <a href="http://geant4.web.cern.ch/geant4/UserDocumentation/UsersGuides/InstallationGuide/html/ch03.html">Geant4 Installation Manual Chapter 3</a>.
-</p>
-</div>
-
-<div id="outline-container-orgheadline8" class="outline-4">
-<h4 id="orgheadline8">Debian Linux 6/7 (Squeeze/Wheezy), Geant4 9.3</h4>
-<div class="outline-text-4" id="text-orgheadline8">
-<p>
-参见
-</p>
-<ul class="org-ul">
-<li><a href="http://wiki.debian.org/DebianScience/Geant4">http://wiki.debian.org/DebianScience/Geant4</a></li>
-<li><a href="http://lcg-heppkg.web.cern.ch/lcg-heppkg/debian/">http://lcg-heppkg.web.cern.ch/lcg-heppkg/debian/</a></li>
-</ul>
-
-<p>
-较新版本的 Geant4 在 Debian Squeeze (6.0) 下安装步骤如下：
-</p>
-<ol class="org-ol">
-<li><p>
-添加 CERN 的软件源（提供 ROOT, GEANT4 等软件包）：
-</p>
-<pre class="example">
-deb http://lcg-heppkg.web.cern.ch/lcg-heppkg/debian stable hep
-deb-src http://lcg-heppkg.web.cern.ch/lcg-heppkg/debian stable hep
-</pre></li>
-<li><p>
-更新软件源信息：
-</p>
-<pre class="example">
-apt-get update
-</pre></li>
-<li><p>
-安装软件源签名公钥：
-</p>
-<pre class="example">
-apt-get install cern-archive-keyring
-</pre>
-<p>
-忽略错误提示，直接安装。
-</p></li>
-<li><p>
-安装 Geant4:
-</p>
-<pre class="example">
-apt-get install geant4
-</pre></li>
-</ol>
-
-<p>
-CERN 软件源中打包的 Geant4 提供了三个脚本程序：
-</p>
-<ol class="org-ol">
-<li><code>g4run</code> &#x2013; 用于加载 Geant4 的运行环境来运行编译好的 G4 程序。</li>
-<li><code>g4env</code> &#x2013; 用于显示设置的 Geant4 运行环境。</li>
-<li><code>g4make</code> &#x2013; 用于加载安装的 Geant4 运行环境来编译源代码。</li>
-</ol>
-
-<p>
-因此，如果你使用 CERN 源中的 Geant4, 则运行很简单。假如你在 Geant4 的
-<code>examples/novice/N01</code> 目录下，按如下步骤编译并运行 Geant4 程序即可：
-</p>
-<ol class="org-ol">
-<li><p>
-编译：
-</p>
-<pre class="example">
-g4make
-</pre></li>
-<li><p>
-执行
-</p>
-<pre class="example">
-g4run exampleN01
-</pre></li>
-</ol>
-</div>
-</div>
-
-<div id="outline-container-orgheadline9" class="outline-4">
-<h4 id="orgheadline9">Windows 7 + VS2010 + CMake 2.8, Geant4 9.6</h4>
-<div class="outline-text-4" id="text-orgheadline9">
-<p>
-在 Windows 7 下，我使用的是 Visual Studio 2010 Express (你可以从 Microsoft 的网站下载并免费使用 Express 版本) 和 CMake 2.8.10。基本步骤如下：
-</p>
-<ol class="org-ol">
-<li>安装到 Visual Studio 2010 Express C++ 及 CMake 2.8.10.</li>
-<li>从 <a href="http://geant4.web.cern.ch/geant4/support/download.shtml">Geant4 下载</a> 页面上找到 Win32-VC100-7.zip 或者 Win32-VC100-7.exe, 解压或执行 .exe 文件，将之放置到相应的目录下，比如 <code>D:\Geant4\WIN32-VC100-7\</code>.</li>
-<li><p>
-设置环境变量 <b>G4INSALL</b> 指向解压的目录。在桌面上右键点击“计算机”，从“属性”中选择“高级系统设置”，然后找到用户环境变量设置的地方，添加即可。在命令行下可简单如下：
-</p>
-<pre class="example">
-setx G4INSTALL D:\Geant4\WIN32-VC100-7\
-setx PATH %PATH%;%G4INSTALL%\bin
-</pre>
-<p>
-如果出现命令行参数超出 255 个字符的错误，你按图形化的方法把
-<code>%G4INSTALL%\bin</code> 添加到 <code>PATH</code> 环境变量即可。
-</p></li>
-<li><p>
-打开 CMake GUI, 在 Source Code 对话框中设置好 novice/N01 的源码路径 (可使用系统对话框), 比如：
-</p>
-<pre class="example">
-D:/Geant4/WIN32-VC100-7/share/Geant4-9.6.0/examples/novice/N01
-</pre>
-<p>
-在 Build 中填好你想编译的路径（最好与源码路径分离开来），比如：
-</p>
-<pre class="example">
-D:/Geant4/Codes/Examples-9.6/Novice/N01
-</pre></li>
-<li>在 CMake GUI 中点击 Configure, 出现的对话框要求你选择所生成的配置文件类型，对列表中选择 Visual Studio 10. 然后点击 "Configure".</li>
-<li>在中间的环境变量中会出现几个红色高亮"的选项，按你的系统环境修改，比如：
-<ul class="org-ul">
-<li><code>CMAKE_INSTALL_PREFIX</code> &#x2013; D:/Geant4</li>
-<li><code>Geant4_DIR</code> &#x2013; D:/Geant4/WIN32-VC100-7/lib/Geant4-9.6.0</li>
-</ul></li>
-<li><p>
-再点击 "Configure", 直到红色项全变成白色，然后点击 "Generate", 在提示窗中会出现如下类似消息：
-</p>
-<pre class="example">
-Confguring done
-Generating done
-</pre></li>
-<li>用 Visual Studio C++ 打开你所生成的 VS10 解决方法文件，比如
-<code>D:/Geant4/Codes/Examples-9.6/Novice/N01/N01.sln</code></li>
-<li>然后在 VS10 中编译执行即可。此时生成 <code>INSTALL</code> 对象的话，会将
-<code>exampleN01.exe</code> 安装到 <code>D:\Geant4\bin</code> 目录下。然后你从命令行中执行即可（注意 <code>%G4INSTALL%\bin</code> 在你的 <code>PATH</code> 环境中）。</li>
-</ol>
-
-<p>
-<b>注意</b>, 由于 Geant4 网站提供的二进制包中没有包含有调试信息 (Release 版本), 因此，你如果用 Win32 Debug 配置去编译源码，可能会出现诸如 ".pdb" 文件找不到之类的错误，并且运行示例会出错。在 VS2010 中选择编译 Win32 Release 版本就可以了。
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgheadline10" class="outline-3">
-<h3 id="orgheadline10">使用 CMake 编译安装 (G4 &gt;= 9.5, Linux/OSX)</h3>
-<div class="outline-text-3" id="text-orgheadline10">
-<p>
-基本需要：
-</p>
-<ul class="org-ul">
-<li>CMake &gt;= 2.6.4</li>
-<li>Linux GCC (g++)</li>
-<li>Mac OS X GCC(g++): Xcode 3 or 4</li>
-<li>Windows: VS 2010 Express or higher</li>
-<li>Linux/Mac: make</li>
-</ul>
-
-<p>
-额外的需求参见 <a href="#DEP-3RD">依赖的库</a> 及 <a href="#DEP-OPTS">推荐的相关软件</a>。
-</p>
-
-<p>
-以 9.6 版本为例，安装过程如下：
-</p>
-<ol class="org-ol">
-<li><p>
-解压源码包：
-</p>
-<pre class="example">
-cd /path/to/
-tar -axvf geant4.9.6.tar.gz
-</pre></li>
-<li><p>
-创建专门的编译路径：
-</p>
-<pre class="example">
-cd /path/to
-mkdir geant4.9.6-build
-</pre></li>
-<li><p>
-配置并执行 CMake:
-</p>
-<pre class="example">
-cd /path/to/geant4.9.6-build
-cmake -DCMAKE_INSTALL_PREFIX=/path/to/g4.9.6-inst /path/to/geant4.9.6
-</pre></li>
-<li><p>
-数据库的设置：Geant4的 CMake 默认将数据库放在安装路径的
-<code>share/Geant4-9.6.0/data</code> 路径下。如果在执行 CMake 时加上参数
-</p>
-<pre class="example">
-cmake -DGEANT4_INSTALL_DATA=ON &lt;other-args&gt;
-</pre>
-<p>
-则会自动从网上下载依赖的数据包。也可以使用如下参数指定路径：
-</p>
-<pre class="example">
-cmake -DGEANT4_INSTALL_DATADIR=&lt;path-to-data&gt; &lt;other-args&gt;
-</pre>
-<p>
-这时，CMake 会自动从 <code>&lt;path-to-data&gt;</code> 路径下寻找你已经下载解压的数据库。
-</p></li>
-<li><p>
-编译：
-</p>
-<pre class="example">
-make
-</pre>
-<p>
-由于现在的机器大部分都拥有多个核心（至少双核以上），则可用如下参数加快编译速度：
-</p>
-<pre class="example">
-make -jN
-</pre>
-<p>
-其中的 N 是你希望的并行编译的进程数（比如双核的可设为 2）。如果想查看编译过程中的详细信息，可执行：
-</p>
-<pre class="example">
-make -jN VERBOSE=1
-</pre></li>
-<li><p>
-安装：
-</p>
-<pre class="example">
-make install
-</pre></li>
-</ol>
-</div>
-</div>
-
-<div id="outline-container-orgheadline11" class="outline-3">
-<h3 id="orgheadline11">Windows 7 下使用 CMake + VS2010 Express, Geant4 9.6</h3>
-<div class="outline-text-3" id="text-orgheadline11">
-<p>
-Geant4 9.4 及以前的安装脚本程序依赖于 GNU Make + awk + sed 等一系列 POSIX 工具，并且原先对 POSIX 平台的各种库依赖严重，这导致在 Windows 平台上编译安装 Geant4必须依赖 Cygwin 等 POSIX 环境。自从 Geant4 转向 CMake 之后，由于 CMake 能够与
-Visual Studio, XCode 等平台完美衔接，使得使用这些 IDE 编译 Geant4 不再那么麻烦。
-Geant4 9.5 之后在 Windows 平台上从源码安装的思路很简单：
-</p>
-<ol class="org-ol">
-<li>用 CMake 生成 Visual Studio 的“解决方案文件” (.sln).</li>
-<li>然后在 Visual Studio 中打开 .sln 文件进行编译安装即可。</li>
-<li>配置好环境 (PATH 等), 用 CMake 生成 Geant4 应用程序源码的 .sln 文件，再使用
-VS 打开进行编译、调试与运行。</li>
-</ol>
-</div>
-
-<div id="outline-container-orgheadline12" class="outline-4">
-<h4 id="orgheadline12">依赖的软件平台及库</h4>
-<div class="outline-text-4" id="text-orgheadline12">
-<p>
-这儿仅仅是列表，详细的参见 <a href="#DEP-3RD">依赖的库</a>.
-</p>
-<ul class="org-ul">
-<li>Visual Studio: OpenGL included</li>
-<li>Xerces-C++:</li>
-<li>Qt4: 4.8.4 (QtCreator 2.6.0)</li>
-<li>Open Inventor:
-<ul class="org-ul">
-<li>simage-1.7.0-bin-msvc9 (?)</li>
-<li>SoWin-1.5.0 (?)</li>
-<li>Coin-3.1.3-bin-msvc9 (?) [or -msvc9-amd64, -msvc8 ?]</li>
-<li>Coin-3.1.3.zip</li>
-</ul></li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-orgheadline13" class="outline-4">
-<h4 id="orgheadline13">安装过程</h4>
-<div class="outline-text-4" id="text-orgheadline13">
-<p>
-<b>在安装前，请先按前一节提示的软件平台及相关的库准备好。</b> 解压源码包
-<code>geant4.9.6.zip</code> 到指定的位置，本例中以我的为例：
-</p>
-<pre class="example">
-D:\Exaos\Utils\geant4\geant4.9.6
-</pre>
-<p>
-将此路径作为源码路径。
-</p>
-
-<p>
-尽管 CMake 可以从 Windows <code>cmd</code> 程序中执行，建议使用 CMake GUI 程序。整个安装过程使用 CMake GUI 和 Visual Studio, 相应的截屏可参见 <a href="http://www2.warwick.ac.uk/fac/sci/physics/staff/research/bmorgan/geant4/installingonwindows">WARWICK</a> 网站。
-</p>
-<ol class="org-ol">
-<li>打开 CMake (cmake-gui), 点击 <i>Browse Source &#x2026;</i> (浏览源码), 找到解压的路径并确认。</li>
-<li>创建一个路径来保存 Visual Studio 工程文件及编译中间文件。该路径不要与源码路径相同，也不要是其子目录。这里设置为
-<code>D:\Exaos\Utils\geant4\g4.9.6-build\</code>. 在 CMake GUI 中点 <i>Browse Build&#x2026;</i>
-(浏览编译目录) 按钮，找到创建的路径后并确认。(注意： CMake 在Windows 下使用前斜杠分隔路径。)</li>
-<li>点击 GUI 上的 <i>Configure</i> (配置) 按钮。</li>
-<li>在弹出窗口中选择 <b>Visual Studio 2010</b>. 确认 <i>Use default native compilers</i>
-     (使用默认的本地编译器) 点选上，然后点击 <i>Finish</i> (结束) 按钮。</li>
-<li>CMake 开始检查特性并提供初始的配置。一切顺利，在主选项窗口会见红色高亮的条目，包含有 CMAKE 与 GEANT4. 红色不是出错，而是指有未配置的变量。在学习版本
-(Express Version) 的 Visual Studio 中你会在 GUI 底部的日志窗口中看到关于系统运行库缺失的警告，这个在标准安装中可以忽略。其它的错误会在日志窗口中报告。</li>
-<li>默认 CMake 配置编译安装 Geant4 到 <code>C:/Program Files/Geant4</code>. 如果你不想用这个目录或者无权限安装，则可以修改安装路径。点击中央选项中 <i>CMAKE</i> 条目旁边的箭头并展开所有 CMake 相关的指定配置选项，卷动到=CMAKE_INSTALL_PREFIX= 的位置，点击条目并编辑或者通过弹出的文件浏览窗修改路径。此例中修改到
-<code>D:/Exaos/Utils/geant4/g4.9.6-inst</code>. <br  />
-假如需要额外的 Geant4 组件，点击中央选项窗口展开所有的 Geant4 配置选项，可参考安装说明的 2.3 节进行调整。</li>
-<li>修改任何选项后，则需要再次点击 <i>Configure</i> 按钮。结束之后，中间显示的选项列表应该显示白色。如果仍有红色条目显示，继续执行 <i>Configure</i> 直到所有都显示白色为止。</li>
-<li>点击 <i>Generate</i> 按钮生成 Visual Studio 工程文件。一切顺利，CMake 会生成最终的文件并在 GUI 底部日志窗口报告 <i>Configuring done</i>, <i>Genearting done</i>. 此时可关闭 CMake 图形界面。</li>
-<li>打开 Visual Studio, 选择 <i>Open Project</i> (打开工程). 此例中特指 Visual
-Studio 2010 Express, 但在其它版本中与之类似。浏览你的编译目录，打开
-Microsoft Visual Studio Solution 文件 Geant4.sln. 注意，配置、打开及解析解决方案 (solution) 中所有的文件需要花上一些时间。现在，如果你熟练的话就可以直接使用 MSBuild 命令行工具编译解决方案。但这个没有文档支持。</li>
-<li>默认 Visual Studio 解决方案编译成 Debug 配置，因此如果你需要优化的编译，可以从工具条 (Visual Studio 2010) 下拉菜单 <i>Solutions Configurations</i> (解决方案配置) 中选择 <i>Release</i> 选项。</li>
-<li>在 Solution Explorer (解决方案浏览器) 中右键选择 <i>INSTALL</i> 方案，从弹出菜单中选择 <i>Build</i>, 解决方案会开始编译并安装在前面选择的
-<code>CMAKE_INSTALL_PREFIX</code> 目录下。如果你希望编译不同的配置 (比如以前选择的是
-<i>Debug</i>, 现在想换成 <i>Release</i>), 直接按前一步中的提示修改配置方案，然后再次编译 <i>INSTALL</i> 方案。</li>
-<li>如果你看到成功提示，就可以退出 Visual Studio 了。</li>
-</ol>
-
-<p>
-使用 OpenInventor (Coin3D + SoWin) 编译的错误：
-</p>
-<ol class="org-ol">
-<li><p>
-头文件定义错误：
-</p>
-<pre class="example">
-D:\Exaos\Utils\Coin3D\3.1.3-VC10\include\Inventor/C/basic.h(288): fatal
-error C1189: #error :  Define either COIN_DLL or COIN_NOT_DLL as
-appropriate for your linkage! See Inventor/C/basic.h for further instructions.
-</pre>
-<p>
-此错误可在 CMake 时修正，在高级选项中向 <code>CMAKE_CXX_FLAGS</code> 中添加新的定义：
-</p>
-<pre class="example">
--DCOIN_DLL -DSOWIN_DLL
-</pre></li>
-<li><p>
-<code>G4OpenInventorWin.cc</code> 错误：
-</p>
-<pre class="example">
-G4OpenInventorWin.cc(54): error C2039: “dispatchWin32Event”: 
-不是“G4Win32”的成员
-</pre>
-<p>
-将 <code>dispatchWin32Event</code> 的字母 d 改为大写，参考：
-</p>
-<ul class="org-ul">
-<li><a href="http://blog.sina.com.cn/s/blog_5de5580a0100yr4z.html">http://blog.sina.com.cn/s/blog_5de5580a0100yr4z.html</a></li>
-</ul></li>
-</ol>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgheadline24" class="outline-3">
-<h3 id="DEP-3RD"><a id="orgheadline24"></a>依赖的库</h3>
-<div class="outline-text-3" id="text-DEP-3RD">
-</div>
-
-<div id="outline-container-orgheadline14" class="outline-4">
-<h4 id="orgheadline14">GDML (All platforms)</h4>
-<div class="outline-text-4" id="text-orgheadline14">
-<p>
-GDML 依赖的 XML 解析库：
-</p>
-<ul class="org-ul">
-<li>Xerces-C++: <a href="http://xerces.apache.org/xerces-c/download.cgi">http://xerces.apache.org/xerces-c/download.cgi</a></li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-orgheadline15" class="outline-4">
-<h4 id="orgheadline15">Qt4 (All platforms)</h4>
-<div class="outline-text-4" id="text-orgheadline15">
-<ul class="org-ul">
-<li>Qt4 开发库: <a href="http://qt-project.org/downloads">http://qt-project.org/downloads</a></li>
-<li>OpenGL &#x2013; <a href="http://www.opengl.org/">http://www.opengl.org/</a></li>
-<li>MesaGL &#x2013; <a href="http://www.mesa3d.org/">http://www.mesa3d.org/</a></li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-orgheadline16" class="outline-4">
-<h4 id="orgheadline16">Motif UI (Linux/OSX)</h4>
-<div class="outline-text-4" id="text-orgheadline16">
-<ul class="org-ul">
-<li>Motif &#x2013; <a href="http://www.openmotif.org/">http://www.openmotif.org/</a></li>
-<li>OpenGL/MesaGL</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-orgheadline17" class="outline-4">
-<h4 id="orgheadline17">X11 OpenGL Visualization (Linux/OSX)</h4>
-<div class="outline-text-4" id="text-orgheadline17">
-<ul class="org-ul">
-<li>X11 devel</li>
-<li>OpenGL/MesaGL</li>
-<li>XQuartz (OSX 10.8)</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-orgheadline18" class="outline-4">
-<h4 id="orgheadline18">WIN32 OpenGL (Windows)</h4>
-<div class="outline-text-4" id="text-orgheadline18">
-<ul class="org-ul">
-<li>OpenGL / MesaGL</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-orgheadline19" class="outline-4">
-<h4 id="orgheadline19">Open Inventor Visual (All)</h4>
-<div class="outline-text-4" id="text-orgheadline19">
-<p>
-Coin3D: <a href="https://bitbucket.org/Coin3D/coin/wiki/Home">https://bitbucket.org/Coin3D/coin/wiki/Home</a>
-</p>
-
-<p>
-Coin 是基于 OpenGL 的 3D 图形库，它源自 Open Inventor 2.1 API (目前 Coin 仍然与它兼容). Open Inventor (常简写为 OIV) 是一个最初由 SGI 开发的基于场景提供图像保持、渲染与模型操作的 C++ 类库。在它发布不久就成为科学与工程领域的 3D 图像显示与可视化模拟软件事实上的标准图形库。它也是 VRML1 文档标准的基础。目前有好几本与
-Open Inventor 相关主题的书，比如 <b>The Inventor Mentor</b>, <b>The Inventor
-Toolmaker</b>.
-</p>
-
-<p>
-Coin 是在 SGI Open Inventor 开源之前基于 OIV 库的 API 从头开发的，它未借用任何
-SGI OIV 的代码。 Coin 在 2000 年秋达到与 OIV 2.1 完全兼容的目标，此后添加了许多额外的特性，如支持文件格式 VRML97 等。
-</p>
-
-<p>
-Coin 网站提供的软件包如下：
-</p>
-<ul class="org-ul">
-<li>Coin &#x2013; Coin 的基础包</li>
-<li>SoWin &#x2013; Coin 与 Windows 平台的接口。</li>
-<li>SoXt &#x2013; Coin 与 X11 平台上 (Linux, OSX XQartz 或 Cygwin-X)</li>
-<li>SoQt &#x2013; Coin 的 Qt 接口，与 SGI 及 TGS Open Inventor 兼容。兼容
-Unix/Linux, Win32 及 Mac OS X 平台。</li>
-<li>Sc21 &#x2013; Objective-C++ 框架，是 Coin 库与 OSX UI 的接口。</li>
-</ul>
-</div>
-
-<div id="outline-container-orgheadline20" class="outline-5">
-<h5 id="orgheadline20">Coin3D: Windows + Visual Studio 2010</h5>
-<div class="outline-text-5" id="text-orgheadline20">
-<p>
-在 Windows Visual Studio 2010 Express 上编译配置 Coin3D 可参考：
-</p>
-<ul class="org-ul">
-<li><a href="http://te.ugm.ac.id/~wibirama/tutorial/coin3d/Tutorial_Coin3D_VS2010.pdf">http://te.ugm.ac.id/~wibirama/tutorial/coin3d/Tutorial_Coin3D_VS2010.pdf</a></li>
-<li>www.cse.ohio-state.edu/~hwshen/681/Site/lab_help_files/windows_help.pdf</li>
-</ul>
-
-<p>
-Windows + VS2010 Express 的安装步骤如下：
-</p>
-<ol class="org-ol">
-<li>从 Coin3D 下载 zip 包并解压。</li>
-<li>修改系统环境变量，添加 <code>COINDIR</code> 变量，指向你的 Coin3D 安装目录，比如我的系统上为 <code>D:\Exaos\Utils\Coin3D</code>.</li>
-<li>将源码目录 <code>build\msvc9\</code> 拷贝一份并命名为 <code>msvc10</code>, 然后用 VS2010 打开拷贝目录下的 <code>coin3.sln</code> 项目解决方案文件。</li>
-<li>此时直接编译 3.1.3 版本会有不少错误，按后面的介绍修正之。然后继续编译。</li>
-<li>创建好你的 Coin3D 安装目录，在项目解决方案中生成 <code>coin3_install</code>, 则会自动安装到你预设的 <code>COINDIR</code> 路径下。</li>
-<li>下载测试文件，测试你的安装是否可用：
-<ul class="org-ul">
-<li><a href="http://te.ugm.ac.id/~wibirama/tutorial/coin3d/test.7z">http://te.ugm.ac.id/~wibirama/tutorial/coin3d/test.7z</a></li>
-</ul></li>
-</ol>
-
-<p>
-在 VS2010 Express 上编译 Coin 3.1.3 主要问题有：
-</p>
-<ol class="org-ol">
-<li><p>
-错误 (error C2440) 为 <code>ScXMLStateMachine.cpp</code> 第 334 行:
-</p>
-<pre class="example">
-transitions.push_back(PImpl::StateTransition(NULL, PRIVATE(this)-&gt;initializer.get()));
-</pre>
-<p>
-其中的 <code>NULL</code> 应该为 <code>(ScXMLObject *)NULL</code>.
-</p></li>
-<li><p>
-其余是 C4819 警告：
-</p>
-<pre class="example">
-warning C4819: 该文件包含不能在当前代码页(936)中表示的字符
-</pre>
-<p>
-出现这样的警告，将相应的文件打开，重新以 UTF-8 格式保存即可。另外修改 "工程
-&#x2013;&gt; 属性 &#x2013;&gt; 配置属性 &#x2013;&gt; 常规 &#x2013;&gt; 字符集", 将之修改为 Unicode 字符集。
-</p></li>
-</ol>
-</div>
-</div>
-
-<div id="outline-container-orgheadline21" class="outline-5">
-<h5 id="orgheadline21">SoQt: Windows VS2010 Express</h5>
-<div class="outline-text-5" id="text-orgheadline21">
-<p>
-编译安装完 Coin 3.1.3 后，可编译 SoQt 1.5.0，步骤与编译 Coin 类似，只不过要将对
-Coin 及 Qt 的依赖关系添加到项目属性中，包括“包含目录”及“引用目录”。熟悉一下
-VS2010, 你很快就知道如何去做，不辍述。
-</p>
-
-<p>
-安装错误与警告等：
-</p>
-<ol class="org-ol">
-<li><p>
-一连串的引用头文件方式已过期警告，可忽略
-</p>
-<pre class="example">
-warning : Inclusion of header files from include/Qt is deprecated.
-</pre></li>
-<li><p>
-头文件缺失错误 (error C1083)
-</p>
-<pre class="example">
-src\Inventor\Qt\editors\SoQtMaterialEditor.cpp(41): fatal error C1083:
-无法打开包括文件:“Inventor/Qt/editors/SoQtMaterialEditor.h”
-: No such file or directory
-</pre>
-<p>
-此错误已经在 Mailing List 中有汇报：
-</p>
-<ul class="org-ul">
-<li><a href="http://mailman.coin3d.org/pipermail/coin-discuss/2012-July/018438.html">http://mailman.coin3d.org/pipermail/coin-discuss/2012-July/018438.html</a></li>
-</ul>
-<p>
-在源码目录 <code>src/Inventor/Qt/editors/old/</code> 下存在此文件，但开发组声明此目录下的代码已经陈旧，需要人力重新更新并实现 editor 组件。修改模版文件
-<code>src\Inventor\Qt\common\editors\SoQtMaterialEditor.cpp.in</code> 如下行
-</p>
-<pre class="example">
-#include &lt;Inventor/@Gui@/editors/So@Gui@MaterialEditor.h&gt;
-</pre>
-<p>
-变更为
-</p>
-<pre class="example">
-#include &lt;Inventor/@Gui@/So@Gui@MaterialEditor.h&gt;
-</pre></li>
-<li>其它一些直接从 msvc9 转换过来导致的 moc 生成的文件未能正常生成，从而导致文件缺失的错误，这些文件有：
-<ul class="org-ul">
-<li>src\Inventor\Qt\viewers\ExaminerViewer.cpp(59):
-Inventor/Qt/viewers/moc_SoQtExaminerViewerP.icc</li>
-<li>src\Inventor\Qt\viewers\FullViewer.cpp(67):
-Inventor/Qt/viewers/moc_SoQtFullViewerP.icc</li>
-<li>src\Inventor\Qt\viewers\PlaneViewer.cpp(50):
-Inventor/Qt/viewers/moc_SoQtPlaneViewerP.icc</li>
-<li>src\Inventor\Qt\SoQt.cpp(263): Inventor/Qt/moc_SoQtP.icc</li>
-<li>src\Inventor\Qt\SoQtComponent.cpp(44):
-Inventor/Qt/moc_SoQtComponentP.icc</li>
-<li>src\Inventor\Qt\SoQtGLWidget.cpp(84): Inventor/Qt/moc_SoQtGLWidgetP.icc</li>
-<li>src\Inventor\Qt\SoQtSignalThread.cpp(25):
-Inventor/Qt/moc_SoQtSignalThread.icc</li>
-</ul></li>
-<li><p>
-由 Qt moc 生成相应丢失的文件：
-</p>
-<pre class="example">
-moc -i -o &lt;output_moc_file&gt; &lt;header&gt;
-</pre></li>
-<li>如果编译 Debug 版，则可能出现的找不到 <code>coin3d.lib</code> 文件的链接错误，编译并安装一个 Debug 版本的 Coin3D 即可。</li>
-</ol>
-</div>
-</div>
-
-<div id="outline-container-orgheadline22" class="outline-5">
-<h5 id="orgheadline22">SoWin: Windows 7 + VS2010 Express</h5>
-<div class="outline-text-5" id="text-orgheadline22">
-<p>
-与 SoQt 安装类似。安装时出现的错误与警告：
-</p>
-<ol class="org-ol">
-<li>头文件缺失错误 <code>Inventor/Win/editors/SoWinColorEditor.h</code>
-<ul class="org-ul">
-<li><p>
-修改 <code>Inventor/Win/common/editors/</code> 目录下的
-<code>SoGuiMaterialEditor.cpp.in</code> 及 <code>SoGuiColorEditor.cpp.in</code> 文件，修改其中如下行内容：
-</p>
-<pre class="example">
-#include &lt;Inventor/@Gui@/editors/So@Gui@ColorEditor.h&gt;
-</pre>
-<p>
-修改为：
-</p>
-<pre class="example">
-#include &lt;Inventor/@Gui@/So@Gui@ColorEditor.h&gt;
-</pre></li>
-</ul></li>
-</ol>
-
-<p>
-安装完 SoWin 后可参考如下网址运行一个示例，看看你是否安装正确：
-</p>
-<ul class="org-ul">
-<li><a href="http://blog.csdn.net/robinhao/article/details/1770204">http://blog.csdn.net/robinhao/article/details/1770204</a></li>
-</ul>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgheadline23" class="outline-4">
-<h4 id="orgheadline23">X11 RayTracer Visual (Linux/Mac)</h4>
-<div class="outline-text-4" id="text-orgheadline23">
-<p>
-依赖 X11 开发包，适用于 Unix/Linux, 或者 Mac OS X 上的 XQuartz 平台，理论上也适用于 Windows 平台上的 Cygwin-X.
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgheadline25" class="outline-3">
-<h3 id="DEP-OPTS"><a id="orgheadline25"></a>推荐的相关软件</h3>
-<div class="outline-text-3" id="text-DEP-OPTS">
-<ul class="org-ul">
-<li>DAWN: postscript 引擎</li>
-<li>HepRApp Browser (使用 HepRep 图形驱动)</li>
-<li>WIRED4 JAS 插件 (配合 HepRep 图形驱动)</li>
-<li>VRML Browser (配置 VRML 图形驱动)</li>
-<li>OpenScientist 交互分析环境</li>
-<li>AIDA 接口 (配置 OpenScientist, iAIDA, JAS3 及 rAIDA)
-<ul class="org-ul">
-<li>iAIDA: <a href="http://iaida.dynalias.net/Intro.html">http://iaida.dynalias.net/Intro.html</a>
-<ul class="org-ul">
-<li>一个 C++ 的 AIDA 接口</li>
-</ul></li>
-<li>RAIDA: <a href="http://ilcsoft.desy.de/portal/software_packages/raida/">http://ilcsoft.desy.de/portal/software_packages/raida/</a>
-<ul class="org-ul">
-<li>基于 ROOT 的 AIDA 接口</li>
-<li>目前版本： v01-06-02</li>
-</ul></li>
-<li>AIDA: <a href="http://aida.freehep.org/">http://aida.freehep.org/</a>
-<ul class="org-ul">
-<li>最初的 Java 实现接口</li>
-<li>AIDA-JNI 使用 JNI (Java Native Interface) 技术让使用 AIDA 接口的 C++ 程序与 Java 实现 (JAIDA) 相链接工作。 Geant4 中最初使用 AIDAJNI。目前
-AIDAJNI 已经停止开发（停止在 3.2.x 版本）。</li>
-</ul></li>
-</ul></li>
-</ul>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgheadline28" class="outline-2">
-<h2 id="orgheadline28">几何设置</h2>
-<div class="outline-text-2" id="text-orgheadline28">
-</div><div id="outline-container-orgheadline27" class="outline-3">
-<h3 id="orgheadline27">如何用 GDML 几何设置敏感探测器 (Sensitive Detector)</h3>
-<div class="outline-text-3" id="text-orgheadline27">
-<ul class="org-ul">
-<li><a href="http://goo.gl/fsqVS">http://goo.gl/fsqVS</a>
-<ol class="org-ol">
-<li>在解析完 GDML 之后手动给 SD 赋值:
-<ul class="org-ul">
-<li>先初始化 SD 类</li>
-<li>获得待赋值的 Logical Volume 指针及 SD 的指针
-(<code>G4SDManager::FindSensitiveDetector()</code>)</li>
-<li>使用 <code>G4LogicalVolume::SetSensitiveDetector()</code></li>
-</ul></li>
-<li>使用 GDML 文件中的辅助信息 (参见 g4gogdml 示例):
-<ul class="org-ul">
-<li>GDML 处理器创建一个 map, 保存有 volume 的指针</li>
-<li>访问 map 中的辅助信息，比如 SD 及值</li>
-<li>进行实际的赋值</li>
-</ul></li>
-</ol></li>
-</ul>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgheadline29" class="outline-2">
-<h2 id="orgheadline29">物理过程</h2>
-</div>
-
-<div id="outline-container-orgheadline30" class="outline-2">
-<h2 id="orgheadline30">可视化</h2>
-</div>
-
-<div id="outline-container-orgheadline31" class="outline-2">
-<h2 id="orgheadline31">数据库</h2>
-<div class="outline-text-2" id="text-orgheadline31">
-<p>
-Geant4 中常用的数据库主要包括 Elastic, G4EMLOW, G4NDL, PhotonEvaporation,
-RadiativeDecay, 它们分别用于模拟不同的物理过程。
-</p>
-<ul class="org-ul">
-<li>Elastic &#x2013; 用于高能粒子之间的弹性散射模拟。</li>
-<li>G4EMLOW &#x2013; 低能电磁过程数据库。</li>
-<li>G4NDL &#x2013; <code>neutron_hp</code> 和 <code>isotope_production</code> 类别的过程数据库。</li>
-<li>RadiativeDecay &#x2013; 放射性衰变数据库。</li>
-</ul>
-</div>
-
-<div id="outline-container-orgheadline32" class="outline-3">
-<h3 id="orgheadline32">G4NDL</h3>
-<div class="outline-text-3" id="text-orgheadline32">
-<p>
-该评价数据主要用于 Geant4 中的中子强子相互作用过程和同位素产生的类别中。除了用于
-Geant4 的 <code>neutron_hp</code> 和 <code>isotope_production</code> 类别来模拟中子散射和同位素产生之外，该数据库不得做其它用途。如果希望将该数据库用于其它用途，请联系其 <a href="mailto:Hans-Peter.Wellisch@cern.ch%20">作者</a>。
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgheadline34" class="outline-2">
-<h2 id="orgheadline34">错误记录</h2>
-<div class="outline-text-2" id="text-orgheadline34">
-</div><div id="outline-container-orgheadline33" class="outline-3">
-<h3 id="orgheadline33">2012-12: Windows 7 + VS2010 + Coin3D</h3>
-<div class="outline-text-3" id="text-orgheadline33">
-<p>
-错误：
-</p>
-<pre class="example">
-2&gt;------ 已启动生成: 项目: exampleN02, 配置: Debug Win32 ------
-2&gt;exampleN02.obj : error LNK2019: 无法解析的外部符号 "public: __thiscall
- G4OpenInventorWin::G4OpenInventorWin(void)" (??0G4OpenInventorWin@@QAE@XZ)，
- 该符号在函数 "public: __thiscall G4OpenInventorWin32::G4OpenInventorWin32(void)"
- (??0G4OpenInventorWin32@@QAE@XZ) 中被引用
-2&gt;exampleN02.obj : error LNK2001: 无法解析的外部符号 "public: virtual
- class G4VSceneHandler * __thiscall G4OpenInventor::CreateSceneHandler(class
- G4String const &amp;)" (?CreateSceneHandler@G4OpenInventor@@UAEPAVG4VSceneHandler@@ABVG4String@@@Z)
-2&gt;exampleN02.obj : error LNK2001: 无法解析的外部符号 "public: virtual
- class G4VViewer * __thiscall G4OpenInventorWin::CreateViewer(class
- G4VSceneHandler &amp;,class G4String const &amp;)" (?CreateViewer@G4OpenInventorWin@@UAEPAVG4VViewer@@AAVG4VSceneHandler@@ABVG4String@@@Z)
-2&gt;exampleN02.obj : error LNK2001: 无法解析的外部符号 "private: virtual
- void __thiscall G4OpenInventorWin::Initialize(void)" (?Initialize@G4OpenInventorWin@@EAEXXZ)
-2&gt;exampleN02.obj : error LNK2019: 无法解析的外部符号 "public: virtual
- __thiscall G4OpenInventorWin::~G4OpenInventorWin(void)" (??1G4OpenInventorWin@@UAE@XZ)，
- 该符号在函数 "public: virtual __thiscall G4OpenInventorWin32::~G4OpenInventorWin32(void)" (??1G4OpenInventorWin32@@UAE@XZ) 中被引用
-2&gt;D:\Exaos\Utils\Geant4\Build\Debug-vc10\novice\N02\Debug\exampleN02.exe : fatal error LNK1120: 5 个无法解析的外部命令
-</pre>
-
-<p>
-参考：
-</p>
-<ul class="org-ul">
-<li><a href="http://hypernews.slac.stanford.edu/HyperNews/geant4/get/visualization/540.html?inline=-1">http://hypernews.slac.stanford.edu/HyperNews/geant4/get/visualization/540.html?inline=-1</a></li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div id="postamble" class="status">
-
-<script type="text/javascript" src="http://exaos.github.io/assets/js/pagetail.js"></script>
-<div id="disqus_thread"></div>
-<p>版权所有 ©2015: 心蛛 | Date:  | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.3.2), <a href="http://validator.w3.org/check?uri=referer">Validate</a>,
-<a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="88x31.png"/></a>
-<p><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></p>
-</div>
-</body>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh">
+    <head>
+        <!-- 2018-03-11 日 22:00 -->
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>心蛛的 GEANT4 笔记</title>
+        <meta name="generator" content="Org mode" />
+        <meta name="author" content="心蛛" />
+        <meta name="description" content="Level-2 for exporting to HTML"
+              />
+        <link rel="stylesheet" title="Standard" href="../../assets/css/worg.css" type="text/css" />
+        <link rel="alternate stylesheet" title="Zenburn" href="../../assets/css/worg-zenburn.css" type="text/css" />
+        <link rel="alternate stylesheet" title="Classic" href="../../assets/css/worg-classic.css" type="text/css" />
+        <script type="text/javascript">
+            /*
+            @licstart  The following is the entire license notice for the
+            JavaScript code in this tag.
+
+            Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+            The JavaScript code in this tag is free software: you can
+            redistribute it and/or modify it under the terms of the GNU
+            General Public License (GNU GPL) as published by the Free Software
+            Foundation, either version 3 of the License, or (at your option)
+            any later version.  The code is distributed WITHOUT ANY WARRANTY;
+            without even the implied warranty of MERCHANTABILITY or FITNESS
+            FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+            As additional permission under GNU GPL version 3 section 7, you
+            may distribute non-source (e.g., minimized or compacted) forms of
+            that code without the copy of the GNU GPL normally required by
+            section 4, provided you include this license notice and a URL
+            through which recipients can access the Corresponding Source.
+
+
+            @licend  The above is the entire license notice
+            for the JavaScript code in this tag.
+            */
+            <!--/*--><![CDATA[/*><!--*/
+            function CodeHighlightOn(elem, id)
+            {
+            var target = document.getElementById(id);
+            if(null != target) {
+            elem.cacheClassElem = elem.className;
+            elem.cacheClassTarget = target.className;
+            target.className = "code-highlighted";
+            elem.className   = "code-highlighted";
+            }
+            }
+            function CodeHighlightOff(elem, id)
+            {
+            var target = document.getElementById(id);
+            if(elem.cacheClassElem)
+            elem.className = elem.cacheClassElem;
+            if(elem.cacheClassTarget)
+            target.className = elem.cacheClassTarget;
+            }
+            /*]]>*///-->
+        </script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+            displayAlign: "center",
+            displayIndent: "0em",
+
+            "HTML-CSS": { scale: 100,
+            linebreaks: { automatic: "false" },
+            webFont: "TeX"
+            },
+            SVG: {scale: 100,
+            linebreaks: { automatic: "false" },
+            font: "TeX"},
+            NativeMML: {scale: 100},
+            TeX: { equationNumbers: {autoNumber: "AMS"},
+            MultLineWidth: "85%",
+            TagSide: "right",
+            TagIndent: ".8em"
+            }
+            });
+        </script>
+        <script type="text/javascript"
+                src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+    </head>
+    <body>
+        <div id="org-div-home-and-up">
+            <a accesskey="h" href="../index.html"> UP </a>
+            |
+            <a accesskey="H" href="../../index.html"> HOME </a>
+            </div><div id="content">
+            <h1 class="title">心蛛的 GEANT4 笔记</h1>
+            <div id="table-of-contents">
+                <h2>Table of Contents</h2>
+                <div id="text-table-of-contents">
+                    <ul>
+                        <li><a href="#org4a573b4">GEANT4 项目开发状态</a></li>
+                        <li><a href="#org17af095">点滴</a></li>
+                        <li><a href="#orgf8f0345">起步</a>
+                        <ul>
+                            <li><a href="#org61990b5">编译与安装 (Linux/Unix)</a></li>
+                            <li><a href="#orgd4f1368">设置运行环境 (Linux/Unix)</a></li>
+                            <li><a href="#orga6cb0be">编译及运行 (Linux/Unix)</a></li>
+                        </ul>
+                        </li>
+                        <li><a href="#orgc2dd8a6">详细的安装说明</a>
+                        <ul>
+                            <li><a href="#orga5bb78b">使用编译好的版本</a>
+                            <ul>
+                                <li><a href="#org4bcc0ab">Debian Linux 6/7 (Squeeze/Wheezy), Geant4 9.3</a></li>
+                                <li><a href="#org2b58474">Windows 7 + VS2010 + CMake 2.8, Geant4 9.6</a></li>
+                            </ul>
+                            </li>
+                            <li><a href="#org40df1ae">使用 CMake 编译安装 (G4 &gt;= 9.5, Linux/OSX)</a></li>
+                            <li><a href="#org235bacd">Windows 7 下使用 CMake + VS2010 Express, Geant4 9.6</a>
+                            <ul>
+                                <li><a href="#org68b548f">依赖的软件平台及库</a></li>
+                                <li><a href="#org98cf0d5">安装过程</a></li>
+                            </ul>
+                            </li>
+                            <li><a href="#DEP-3RD">依赖的库</a>
+                            <ul>
+                                <li><a href="#org7c88be5">GDML (All platforms)</a></li>
+                                <li><a href="#orgf4cd2eb">Qt4 (All platforms)</a></li>
+                                <li><a href="#org8cf6e9e">Motif UI (Linux/OSX)</a></li>
+                                <li><a href="#orge40afcd">X11 OpenGL Visualization (Linux/OSX)</a></li>
+                                <li><a href="#orgc45fe6c">WIN32 OpenGL (Windows)</a></li>
+                                <li><a href="#orga1cea0c">Open Inventor Visual (All)</a>
+                                <ul>
+                                    <li><a href="#org8f4b812">Coin3D: Windows + Visual Studio 2010</a></li>
+                                    <li><a href="#orgb6e32f4">SoQt: Windows VS2010 Express</a></li>
+                                    <li><a href="#org808ef03">SoWin: Windows 7 + VS2010 Express</a></li>
+                                </ul>
+                                </li>
+                                <li><a href="#org150266d">X11 RayTracer Visual (Linux/Mac)</a></li>
+                            </ul>
+                            </li>
+                            <li><a href="#DEP-OPTS">推荐的相关软件</a></li>
+                        </ul>
+                        </li>
+                        <li><a href="#org8c04197">几何设置</a>
+                        <ul>
+                            <li><a href="#org209a6f6">如何用 GDML 几何设置敏感探测器 (Sensitive Detector)</a></li>
+                        </ul>
+                        </li>
+                        <li><a href="#org7786850">物理过程</a></li>
+                        <li><a href="#org7532bfa">可视化</a></li>
+                        <li><a href="#orgdbbaa08">数据库</a>
+                        <ul>
+                            <li><a href="#org0ff3b3a">G4NDL</a></li>
+                        </ul>
+                        </li>
+                        <li><a href="#org0bd5e4a">错误记录</a>
+                        <ul>
+                            <li><a href="#org36ce1df">2012-12: Windows 7 + VS2010 + Coin3D</a></li>
+                        </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <p>
+                GEANT4 主页:
+            </p>
+            <ul class="org-ul">
+                <li><a href="http://www.geant4.org/">http://www.geant4.org/</a> 或者</li>
+                <li><a href="http://cern.ch/geant4">http://cern.ch/geant4</a></li>
+            </ul>
+
+            <div id="outline-container-org4a573b4" class="outline-2">
+                <h2 id="org4a573b4">GEANT4 项目开发状态</h2>
+                <div class="outline-text-2" id="text-org4a573b4">
+                    <ul class="org-ul">
+                        <li>2015-04-01: 10.01.p01 发布
+                        <ul class="org-ul">
+                            <li>全面支持 CMake 编译系统，废除对 GNUMake 的支持，添加了 <code>-DG4USE_STD11</code> 的编译选项，支持 C++11 的新特性。</li>
+                            <li>大量的 PhysicsList 等变更，详情参见 &#x2013; <a href="http://geant4.web.cern.ch/geant4/support/ReleaseNotes4.10.1.html">ReleaseNotes4.10.1</a></li>
+                        </ul></li>
+                        <li>2015-03-06: 9.6.p04 发布 &#x2013; 对 9.6 版本的一些 BUG 修正。</li>
+                        <li>2013-06-28: 10.0 BETA 发布
+                        <ul class="org-ul">
+                            <li>使用 10.0 之前先阅读多线程程序开发相关的说明:
+                            <a href="https://twiki.cern.ch/twiki/bin/view/Geant4/Geant4MTForApplicationDevelopers">Geant4MTForApplicationDevelopers</a></li>
+                            <li>主要变更 &#x2013; <a href="http://geant4.web.cern.ch/geant4/support/Beta4.10.0-1.txt">http://geant4.web.cern.ch/geant4/support/Beta4.10.0-1.txt</a>
+                            <ul class="org-ul">
+                                <li>正式支持多线程，相关的示例程序做了大幅度修改。</li>
+                                <li>支持变量/参数的影子检查。</li>
+                                <li>对 CLHEP 的调用做了较大修改，隐含的头文件包含被去除，在调用
+                                <code>SystemOfUnits</code> 和 <code>PhysicalConstants</code> 时要注意头文件包含。</li>
+                                <li>移除对旧的编译系统的支持，全面迁移到 CMake 上。</li>
+                                <li>移除一些过时的物理模型，更新了一些数据库。</li>
+                            </ul></li>
+                        </ul></li>
+                        <li>2013-05-24: 9.6.p02 发布</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="outline-container-org17af095" class="outline-2">
+                <h2 id="org17af095">点滴</h2>
+                <div class="outline-text-2" id="text-org17af095">
+                    <p>
+                        自从了解并自学了一点 <a href="http://cern.ch/geant4">Geant4</a> 之后，有很多人曾经问过我不少问题，大部分都是与安装、编译有关，还有一部分是 C++ 基础知识方面的问题。鲜有人问及深入一点的内容，比如：如何选择物理过程、物理过程的适用范围、如何选择高效的数据输出方式等。其实，那些基础问题在手册中仔细查找，都能够获得满意的答案。我想提醒一点：
+                    </p>
+                    <blockquote>
+                        <p>
+                            使用 Geant4, 除非你只是运行一下别人开发好的程序，否则，你就应该掌握作为一名程序员所需要的基本知识。无论是使用 GNU Make 还是 CMake, 无论是在 Linux/OSX 平台还是
+                            Windows 平台，你都需要对编程的基本流程了解，你都需要对自己的工具链熟悉。这儿的工具链包括你的操作系统常用工具、编译工具、编辑器、外围的库、调试工具等。
+                        </p>
+                    </blockquote>
+
+                    <p>
+                        Gean4 的用户分成三类：
+                    </p>
+                    <ul class="org-ul">
+                        <li>应用程序使用者，直接拿他人开发好的程序来运行，按他人设计的方式输入或调整参数即可。这类用户，请直接联系给你提供程序的人。</li>
+                        <li>应用程序开发者，在 Geant4 开发包的基础上自行设计应用程序的人。这类用户需要掌握基础的 C++ 编程技术、应用程序的编译技术等等。当然，在这些技术的基础上，你需要理解 Geant4 的基本框架，能够熟练调用相应的类库。这类用户，请详细阅读 Geant4 的开发者手册。
+                        <ul class="org-ul">
+                            <li><a href="http://cern.ch/geant4/UserDocumentation/UsersGuides/ForApplicationDeveloper/html/index.html">Application Developer's Guide</a></li>
+                        </ul></li>
+                        <li>框架拓展开发者，即在 Geant4 开发包的基础上添加原框架中未包含的功能。这类用户需要有较深厚的 C++ 及程序编译技术的使用经验，在此基础上能够熟练掌握 UML 及Geant4
+                        的框架结构。这类用户，请详细阅读 Geant4 的框架开发手册。
+                        <ul class="org-ul">
+                            <li><a href="http://cern.ch/geant4/UserDocumentation/UsersGuides/ForToolkitDeveloper/html/index.html">Toolkit Developer's Guide</a></li>
+                        </ul></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="outline-container-orgf8f0345" class="outline-2">
+                <h2 id="orgf8f0345">起步</h2>
+                <div class="outline-text-2" id="text-orgf8f0345">
+                    <p>
+                        Geant4 从 9.6 版本开始使用新的编译系统 CMake 来生成编译所需要的项目文件，比如
+                        Linux/Unix 下的 <code>Makefile</code> 或 <code>Visual Studio</code> 的“解决方案文件” (<code>.sln</code>) 等。
+                        Geant4 是一个程序开发框架，是给物理学领域的程序开发者使用的。它提供的预编译版本只支持少数几个平台: Scientific Linux CERN (SLC), Mac OS X, MS Windows. 对于其它的平台，比如集群系统 Rocks 以及版本繁多的各种 Linux 发行版本，均需要用户进行手动编译与安装。因此，Geant4 起步至少需要这样的几个步骤：
+                    </p>
+                    <ol class="org-ol">
+                        <li>编译与安装</li>
+                        <li>配置运行环境</li>
+                        <li>编译及运行用户代码</li>
+                    </ol>
+
+                    <p>
+                        作为起步，只对这三步做最简短的说明。详细的参见后面章节。
+                    </p>
+                </div>
+
+                <div id="outline-container-org61990b5" class="outline-3">
+                    <h3 id="org61990b5">编译与安装 (Linux/Unix)</h3>
+                    <div class="outline-text-3" id="text-org61990b5">
+                        <p>
+                            如果是 SLC、OS X 或 MS-Win 用户，可直接下载预编译的二进制库进行安装。
+                        </p>
+
+                        <p>
+                            用 CMake 从源码编译分成如下几步：
+                        </p>
+                        <ol class="org-ol">
+                            <li>解压源码。</li>
+                            <li><p>
+                                新创建一个编译目录，在此目录下调用 <code>cmake</code> (或 <code>cmake-gui</code>) 生成编译的项目文件。注意根据你的系统环境设置好 CMake 常用的参数。比如：
+                            </p>
+                            <pre class="example">
+                                cmake -DCMAKE_INSTALL_PREFIX=/opt/Geant4/10.01.p01-g++ \
+                                -DGEANT4_USE_GDML=ON -DGEANT4_INSTALL_DATADIR=/opt/Geant4/Data \
+                                -DGEANT4_USE_QT=ON -DGEANT4_USE_XM=ON -DGEANT4_USE_OPENGL_X11=ON \
+                                -DGEANT4_USE_RAYTRACER_X11=ON ../../Sources/geant4.10.01.p01
+
+                            </pre></li>
+                            <li>在编译目录下执行 <code>make &amp;&amp; make install</code></li>
+                        </ol>
+
+                        <p>
+                            Linux 下常见的 CMake 参数：
+                        </p>
+                        <dl class="org-dl">
+                            <dt><code>CMAKE_INSTALL_PREFIX</code></dt><dd>安装到的目录</dd>
+                            <dt><code>GEANT4_INSTALL_DATADIR</code></dt><dd>数据安装的位置</dd>
+                            <dt><code>GEANT4_USE_QT</code></dt><dd>是否使用 Qt 库</dd>
+                            <dt><code>GEANT4_USE_OPENGL_X11</code></dt><dd>是否使用 OpenGL X11 库</dd>
+                            <dt><code>GEANT4_USE_XM</code></dt><dd>是否使用 Motif 库</dd>
+                            <dt><code>GEANT4_USE_RAYTRACER_X11</code></dt><dd>是否使用径迹追踪</dd>
+                        </dl>
+                    </div>
+                </div>
+
+                <div id="outline-container-orgd4f1368" class="outline-3">
+                    <h3 id="orgd4f1368">设置运行环境 (Linux/Unix)</h3>
+                    <div class="outline-text-3" id="text-orgd4f1368">
+                        <p>
+                            从 9.6 版本开始，编译安装后会在 <code>&lt;prefix&gt;/bin/</code> 目录下生成这样的几个脚本程序：
+                        </p>
+                        <ul class="org-ul">
+                            <li><code>geant4-config</code> &#x2013; 生成一些用于应用程序编译的参数，与常见的 <code>*-config</code> 程序类似，比如: <code>geant4-config --cflags</code></li>
+                            <li><code>geant4.sh</code> &#x2013; 用于在与 sh 兼容的 shell 下执行 <code>source</code> 命令，提供 Geant4 的运行环境。注意，对 <code>ksh</code>, <code>zsh</code>, 需要进入到这个目录下执行。</li>
+                            <li><code>geant4.csh</code> &#x2013; 用于与 csh 兼容的 shell 下执行 <code>source</code> 命令。</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="outline-container-orga6cb0be" class="outline-3">
+                    <h3 id="orga6cb0be">编译及运行 (Linux/Unix)</h3>
+                    <div class="outline-text-3" id="text-orga6cb0be">
+                        <p>
+                            比如运行示例程序 N01, 可按如下方式：
+                        </p>
+                        <ul class="org-ul">
+                            <li>创建编译或运行目录</li>
+                            <li><p>
+                                在该目录下执行 cmake
+                            </p>
+                            <pre class="example">
+                                cmake -DGeant4_DIR=&lt;path-to-geant4-installed&gt; &lt;path-to&gt;/N01
+
+                            </pre></li>
+                            <li>执行 <code>make</code></li>
+                            <li><p>
+                                运行当前目录下生成的 <code>exampleN01</code>
+                            </p>
+                            <pre class="example">
+                                ./exampleN01
+
+                            </pre></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="outline-container-orgc2dd8a6" class="outline-2">
+                <h2 id="orgc2dd8a6">详细的安装说明</h2>
+                <div class="outline-text-2" id="text-orgc2dd8a6">
+                </div>
+                <div id="outline-container-orga5bb78b" class="outline-3">
+                    <h3 id="orga5bb78b">使用编译好的版本</h3>
+                    <div class="outline-text-3" id="text-orga5bb78b">
+                        <p>
+                            参见 <a href="http://geant4.web.cern.ch/geant4/UserDocumentation/UsersGuides/InstallationGuide/html/ch03.html">Geant4 Installation Manual Chapter 3</a>.
+                        </p>
+                    </div>
+
+                    <div id="outline-container-org4bcc0ab" class="outline-4">
+                        <h4 id="org4bcc0ab">Debian Linux 6/7 (Squeeze/Wheezy), Geant4 9.3</h4>
+                        <div class="outline-text-4" id="text-org4bcc0ab">
+                            <p>
+                                参见
+                            </p>
+                            <ul class="org-ul">
+                                <li><a href="http://wiki.debian.org/DebianScience/Geant4">http://wiki.debian.org/DebianScience/Geant4</a></li>
+                                <li><a href="http://lcg-heppkg.web.cern.ch/lcg-heppkg/debian/">http://lcg-heppkg.web.cern.ch/lcg-heppkg/debian/</a></li>
+                            </ul>
+
+                            <p>
+                                较新版本的 Geant4 在 Debian Squeeze (6.0) 下安装步骤如下：
+                            </p>
+                            <ol class="org-ol">
+                                <li><p>
+                                    添加 CERN 的软件源（提供 ROOT, GEANT4 等软件包）：
+                                </p>
+                                <pre class="example">
+                                    deb http://lcg-heppkg.web.cern.ch/lcg-heppkg/debian stable hep
+                                    deb-src http://lcg-heppkg.web.cern.ch/lcg-heppkg/debian stable hep
+
+                                </pre></li>
+                                <li><p>
+                                    更新软件源信息：
+                                </p>
+                                <pre class="example">
+                                    apt-get update
+
+                                </pre></li>
+                                <li><p>
+                                    安装软件源签名公钥：
+                                </p>
+                                <pre class="example">
+                                    apt-get install cern-archive-keyring
+
+                                </pre>
+                                <p>
+                                    忽略错误提示，直接安装。
+                                </p></li>
+                                <li><p>
+                                    安装 Geant4:
+                                </p>
+                                <pre class="example">
+                                    apt-get install geant4
+
+                                </pre></li>
+                            </ol>
+
+                            <p>
+                                CERN 软件源中打包的 Geant4 提供了三个脚本程序：
+                            </p>
+                            <ol class="org-ol">
+                                <li><code>g4run</code> &#x2013; 用于加载 Geant4 的运行环境来运行编译好的 G4 程序。</li>
+                                <li><code>g4env</code> &#x2013; 用于显示设置的 Geant4 运行环境。</li>
+                                <li><code>g4make</code> &#x2013; 用于加载安装的 Geant4 运行环境来编译源代码。</li>
+                            </ol>
+
+                            <p>
+                                因此，如果你使用 CERN 源中的 Geant4, 则运行很简单。假如你在 Geant4 的
+                                <code>examples/novice/N01</code> 目录下，按如下步骤编译并运行 Geant4 程序即可：
+                            </p>
+                            <ol class="org-ol">
+                                <li><p>
+                                    编译：
+                                </p>
+                                <pre class="example">
+                                    g4make
+
+                                </pre></li>
+                                <li><p>
+                                    执行
+                                </p>
+                                <pre class="example">
+                                    g4run exampleN01
+
+                                </pre></li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div id="outline-container-org2b58474" class="outline-4">
+                        <h4 id="org2b58474">Windows 7 + VS2010 + CMake 2.8, Geant4 9.6</h4>
+                        <div class="outline-text-4" id="text-org2b58474">
+                            <p>
+                                在 Windows 7 下，我使用的是 Visual Studio 2010 Express (你可以从 Microsoft 的网站下载并免费使用 Express 版本) 和 CMake 2.8.10。基本步骤如下：
+                            </p>
+                            <ol class="org-ol">
+                                <li>安装到 Visual Studio 2010 Express C++ 及 CMake 2.8.10.</li>
+                                <li>从 <a href="http://geant4.web.cern.ch/geant4/support/download.shtml">Geant4 下载</a> 页面上找到 Win32-VC100-7.zip 或者 Win32-VC100-7.exe, 解压或执行 .exe 文件，将之放置到相应的目录下，比如 <code>D:\Geant4\WIN32-VC100-7\</code>.</li>
+                                <li><p>
+                                    设置环境变量 <b>G4INSALL</b> 指向解压的目录。在桌面上右键点击“计算机”，从“属性”中选择“高级系统设置”，然后找到用户环境变量设置的地方，添加即可。在命令行下可简单如下：
+                                </p>
+                                <pre class="example">
+                                    setx G4INSTALL D:\Geant4\WIN32-VC100-7\
+                                    setx PATH %PATH%;%G4INSTALL%\bin
+
+                                </pre>
+                                <p>
+                                    如果出现命令行参数超出 255 个字符的错误，你按图形化的方法把
+                                    <code>%G4INSTALL%\bin</code> 添加到 <code>PATH</code> 环境变量即可。
+                                </p></li>
+                                <li><p>
+                                    打开 CMake GUI, 在 Source Code 对话框中设置好 novice/N01 的源码路径 (可使用系统对话框), 比如：
+                                </p>
+                                <pre class="example">
+                                    D:/Geant4/WIN32-VC100-7/share/Geant4-9.6.0/examples/novice/N01
+
+                                </pre>
+                                <p>
+                                    在 Build 中填好你想编译的路径（最好与源码路径分离开来），比如：
+                                </p>
+                                <pre class="example">
+                                    D:/Geant4/Codes/Examples-9.6/Novice/N01
+
+                                </pre></li>
+                                <li>在 CMake GUI 中点击 Configure, 出现的对话框要求你选择所生成的配置文件类型，对列表中选择 Visual Studio 10. 然后点击 "Configure".</li>
+                                <li>在中间的环境变量中会出现几个红色高亮"的选项，按你的系统环境修改，比如：
+                                <ul class="org-ul">
+                                    <li><code>CMAKE_INSTALL_PREFIX</code> &#x2013; D:/Geant4</li>
+                                    <li><code>Geant4_DIR</code> &#x2013; D:/Geant4/WIN32-VC100-7/lib/Geant4-9.6.0</li>
+                                </ul></li>
+                                <li><p>
+                                    再点击 "Configure", 直到红色项全变成白色，然后点击 "Generate", 在提示窗中会出现如下类似消息：
+                                </p>
+                                <pre class="example">
+                                    Confguring done
+                                    Generating done
+
+                                </pre></li>
+                                <li>用 Visual Studio C++ 打开你所生成的 VS10 解决方法文件，比如
+                                <code>D:/Geant4/Codes/Examples-9.6/Novice/N01/N01.sln</code></li>
+                                <li>然后在 VS10 中编译执行即可。此时生成 <code>INSTALL</code> 对象的话，会将
+                                <code>exampleN01.exe</code> 安装到 <code>D:\Geant4\bin</code> 目录下。然后你从命令行中执行即可（注意 <code>%G4INSTALL%\bin</code> 在你的 <code>PATH</code> 环境中）。</li>
+                            </ol>
+
+                            <p>
+                                <b>注意</b>, 由于 Geant4 网站提供的二进制包中没有包含有调试信息 (Release 版本), 因此，你如果用 Win32 Debug 配置去编译源码，可能会出现诸如 ".pdb" 文件找不到之类的错误，并且运行示例会出错。在 VS2010 中选择编译 Win32 Release 版本就可以了。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="outline-container-org40df1ae" class="outline-3">
+                    <h3 id="org40df1ae">使用 CMake 编译安装 (G4 &gt;= 9.5, Linux/OSX)</h3>
+                    <div class="outline-text-3" id="text-org40df1ae">
+                        <p>
+                            基本需要：
+                        </p>
+                        <ul class="org-ul">
+                            <li>CMake &gt;= 2.6.4</li>
+                            <li>Linux GCC (g++)</li>
+                            <li>Mac OS X GCC(g++): Xcode 3 or 4</li>
+                            <li>Windows: VS 2010 Express or higher</li>
+                            <li>Linux/Mac: make</li>
+                        </ul>
+
+                        <p>
+                            额外的需求参见 <a href="#DEP-3RD">依赖的库</a> 及 <a href="#DEP-OPTS">推荐的相关软件</a>。
+                        </p>
+
+                        <p>
+                            以 9.6 版本为例，安装过程如下：
+                        </p>
+                        <ol class="org-ol">
+                            <li><p>
+                                解压源码包：
+                            </p>
+                            <pre class="example">
+                                cd /path/to/
+                                tar -axvf geant4.9.6.tar.gz
+
+                            </pre></li>
+                            <li><p>
+                                创建专门的编译路径：
+                            </p>
+                            <pre class="example">
+                                cd /path/to
+                                mkdir geant4.9.6-build
+
+                            </pre></li>
+                            <li><p>
+                                配置并执行 CMake:
+                            </p>
+                            <pre class="example">
+                                cd /path/to/geant4.9.6-build
+                                cmake -DCMAKE_INSTALL_PREFIX=/path/to/g4.9.6-inst /path/to/geant4.9.6
+
+                            </pre></li>
+                            <li><p>
+                                数据库的设置：Geant4的 CMake 默认将数据库放在安装路径的
+                                <code>share/Geant4-9.6.0/data</code> 路径下。如果在执行 CMake 时加上参数
+                            </p>
+                            <pre class="example">
+                                cmake -DGEANT4_INSTALL_DATA=ON &lt;other-args&gt;
+
+                            </pre>
+                            <p>
+                                则会自动从网上下载依赖的数据包。也可以使用如下参数指定路径：
+                            </p>
+                            <pre class="example">
+                                cmake -DGEANT4_INSTALL_DATADIR=&lt;path-to-data&gt; &lt;other-args&gt;
+
+                            </pre>
+                            <p>
+                                这时，CMake 会自动从 <code>&lt;path-to-data&gt;</code> 路径下寻找你已经下载解压的数据库。
+                            </p></li>
+                            <li><p>
+                                编译：
+                            </p>
+                            <pre class="example">
+                                make
+
+                            </pre>
+                            <p>
+                                由于现在的机器大部分都拥有多个核心（至少双核以上），则可用如下参数加快编译速度：
+                            </p>
+                            <pre class="example">
+                                make -jN
+
+                            </pre>
+                            <p>
+                                其中的 N 是你希望的并行编译的进程数（比如双核的可设为 2）。如果想查看编译过程中的详细信息，可执行：
+                            </p>
+                            <pre class="example">
+                                make -jN VERBOSE=1
+
+                            </pre></li>
+                            <li><p>
+                                安装：
+                            </p>
+                            <pre class="example">
+                                make install
+
+                            </pre></li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div id="outline-container-org235bacd" class="outline-3">
+                    <h3 id="org235bacd">Windows 7 下使用 CMake + VS2010 Express, Geant4 9.6</h3>
+                    <div class="outline-text-3" id="text-org235bacd">
+                        <p>
+                            Geant4 9.4 及以前的安装脚本程序依赖于 GNU Make + awk + sed 等一系列 POSIX 工具，并且原先对 POSIX 平台的各种库依赖严重，这导致在 Windows 平台上编译安装 Geant4必须依赖 Cygwin 等 POSIX 环境。自从 Geant4 转向 CMake 之后，由于 CMake 能够与
+                            Visual Studio, XCode 等平台完美衔接，使得使用这些 IDE 编译 Geant4 不再那么麻烦。
+                            Geant4 9.5 之后在 Windows 平台上从源码安装的思路很简单：
+                        </p>
+                        <ol class="org-ol">
+                            <li>用 CMake 生成 Visual Studio 的“解决方案文件” (.sln).</li>
+                            <li>然后在 Visual Studio 中打开 .sln 文件进行编译安装即可。</li>
+                            <li>配置好环境 (PATH 等), 用 CMake 生成 Geant4 应用程序源码的 .sln 文件，再使用
+                            VS 打开进行编译、调试与运行。</li>
+                        </ol>
+                    </div>
+
+                    <div id="outline-container-org68b548f" class="outline-4">
+                        <h4 id="org68b548f">依赖的软件平台及库</h4>
+                        <div class="outline-text-4" id="text-org68b548f">
+                            <p>
+                                这儿仅仅是列表，详细的参见 <a href="#DEP-3RD">依赖的库</a>.
+                            </p>
+                            <ul class="org-ul">
+                                <li>Visual Studio: OpenGL included</li>
+                                <li>Xerces-C++:</li>
+                                <li>Qt4: 4.8.4 (QtCreator 2.6.0)</li>
+                                <li>Open Inventor:
+                                <ul class="org-ul">
+                                    <li>simage-1.7.0-bin-msvc9 (?)</li>
+                                    <li>SoWin-1.5.0 (?)</li>
+                                    <li>Coin-3.1.3-bin-msvc9 (?) [or -msvc9-amd64, -msvc8 ?]</li>
+                                    <li>Coin-3.1.3.zip</li>
+                                </ul></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div id="outline-container-org98cf0d5" class="outline-4">
+                        <h4 id="org98cf0d5">安装过程</h4>
+                        <div class="outline-text-4" id="text-org98cf0d5">
+                            <p>
+                                <b>在安装前，请先按前一节提示的软件平台及相关的库准备好。</b> 解压源码包
+                                <code>geant4.9.6.zip</code> 到指定的位置，本例中以我的为例：
+                            </p>
+                            <pre class="example">
+                                D:\Exaos\Utils\geant4\geant4.9.6
+
+                            </pre>
+                            <p>
+                                将此路径作为源码路径。
+                            </p>
+
+                            <p>
+                                尽管 CMake 可以从 Windows <code>cmd</code> 程序中执行，建议使用 CMake GUI 程序。整个安装过程使用 CMake GUI 和 Visual Studio, 相应的截屏可参见 <a href="http://www2.warwick.ac.uk/fac/sci/physics/staff/research/bmorgan/geant4/installingonwindows">WARWICK</a> 网站。
+                            </p>
+                            <ol class="org-ol">
+                                <li>打开 CMake (cmake-gui), 点击 <i>Browse Source &#x2026;</i> (浏览源码), 找到解压的路径并确认。</li>
+                                <li>创建一个路径来保存 Visual Studio 工程文件及编译中间文件。该路径不要与源码路径相同，也不要是其子目录。这里设置为
+                                <code>D:\Exaos\Utils\geant4\g4.9.6-build\</code>. 在 CMake GUI 中点 <i>Browse Build&#x2026;</i>
+                                (浏览编译目录) 按钮，找到创建的路径后并确认。(注意： CMake 在Windows 下使用前斜杠分隔路径。)</li>
+                                <li>点击 GUI 上的 <i>Configure</i> (配置) 按钮。</li>
+                                <li>在弹出窗口中选择 <b>Visual Studio 2010</b>. 确认 <i>Use default native compilers</i>
+                                (使用默认的本地编译器) 点选上，然后点击 <i>Finish</i> (结束) 按钮。</li>
+                                <li>CMake 开始检查特性并提供初始的配置。一切顺利，在主选项窗口会见红色高亮的条目，包含有 CMAKE 与 GEANT4. 红色不是出错，而是指有未配置的变量。在学习版本
+                                (Express Version) 的 Visual Studio 中你会在 GUI 底部的日志窗口中看到关于系统运行库缺失的警告，这个在标准安装中可以忽略。其它的错误会在日志窗口中报告。</li>
+                                <li>默认 CMake 配置编译安装 Geant4 到 <code>C:/Program Files/Geant4</code>. 如果你不想用这个目录或者无权限安装，则可以修改安装路径。点击中央选项中 <i>CMAKE</i> 条目旁边的箭头并展开所有 CMake 相关的指定配置选项，卷动到=CMAKE_INSTALL_PREFIX= 的位置，点击条目并编辑或者通过弹出的文件浏览窗修改路径。此例中修改到
+                                <code>D:/Exaos/Utils/geant4/g4.9.6-inst</code>. <br />
+                                假如需要额外的 Geant4 组件，点击中央选项窗口展开所有的 Geant4 配置选项，可参考安装说明的 2.3 节进行调整。</li>
+                                <li>修改任何选项后，则需要再次点击 <i>Configure</i> 按钮。结束之后，中间显示的选项列表应该显示白色。如果仍有红色条目显示，继续执行 <i>Configure</i> 直到所有都显示白色为止。</li>
+                                <li>点击 <i>Generate</i> 按钮生成 Visual Studio 工程文件。一切顺利，CMake 会生成最终的文件并在 GUI 底部日志窗口报告 <i>Configuring done</i>, <i>Genearting done</i>. 此时可关闭 CMake 图形界面。</li>
+                                <li>打开 Visual Studio, 选择 <i>Open Project</i> (打开工程). 此例中特指 Visual
+                                Studio 2010 Express, 但在其它版本中与之类似。浏览你的编译目录，打开
+                                Microsoft Visual Studio Solution 文件 Geant4.sln. 注意，配置、打开及解析解决方案 (solution) 中所有的文件需要花上一些时间。现在，如果你熟练的话就可以直接使用 MSBuild 命令行工具编译解决方案。但这个没有文档支持。</li>
+                                <li>默认 Visual Studio 解决方案编译成 Debug 配置，因此如果你需要优化的编译，可以从工具条 (Visual Studio 2010) 下拉菜单 <i>Solutions Configurations</i> (解决方案配置) 中选择 <i>Release</i> 选项。</li>
+                                <li>在 Solution Explorer (解决方案浏览器) 中右键选择 <i>INSTALL</i> 方案，从弹出菜单中选择 <i>Build</i>, 解决方案会开始编译并安装在前面选择的
+                                <code>CMAKE_INSTALL_PREFIX</code> 目录下。如果你希望编译不同的配置 (比如以前选择的是
+                                <i>Debug</i>, 现在想换成 <i>Release</i>), 直接按前一步中的提示修改配置方案，然后再次编译 <i>INSTALL</i> 方案。</li>
+                                <li>如果你看到成功提示，就可以退出 Visual Studio 了。</li>
+                            </ol>
+
+                            <p>
+                                使用 OpenInventor (Coin3D + SoWin) 编译的错误：
+                            </p>
+                            <ol class="org-ol">
+                                <li><p>
+                                    头文件定义错误：
+                                </p>
+                                <pre class="example">
+                                    D:\Exaos\Utils\Coin3D\3.1.3-VC10\include\Inventor/C/basic.h(288): fatal
+                                    error C1189: #error :  Define either COIN_DLL or COIN_NOT_DLL as
+                                    appropriate for your linkage! See Inventor/C/basic.h for further instructions.
+
+                                </pre>
+                                <p>
+                                    此错误可在 CMake 时修正，在高级选项中向 <code>CMAKE_CXX_FLAGS</code> 中添加新的定义：
+                                </p>
+                                <pre class="example">
+                                    -DCOIN_DLL -DSOWIN_DLL
+
+                                </pre></li>
+                                <li><p>
+                                    <code>G4OpenInventorWin.cc</code> 错误：
+                                </p>
+                                <pre class="example">
+                                    G4OpenInventorWin.cc(54): error C2039: “dispatchWin32Event”:
+                                    不是“G4Win32”的成员
+
+                                </pre>
+                                <p>
+                                    将 <code>dispatchWin32Event</code> 的字母 d 改为大写，参考：
+                                </p>
+                                <ul class="org-ul">
+                                    <li><a href="http://blog.sina.com.cn/s/blog_5de5580a0100yr4z.html">http://blog.sina.com.cn/s/blog_5de5580a0100yr4z.html</a></li>
+                                </ul></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="outline-container-org085eb6c" class="outline-3">
+                    <h3 id="DEP-3RD"><a id="org085eb6c"></a>依赖的库</h3>
+                    <div class="outline-text-3" id="text-DEP-3RD">
+                    </div>
+
+                    <div id="outline-container-org7c88be5" class="outline-4">
+                        <h4 id="org7c88be5">GDML (All platforms)</h4>
+                        <div class="outline-text-4" id="text-org7c88be5">
+                            <p>
+                                GDML 依赖的 XML 解析库：
+                            </p>
+                            <ul class="org-ul">
+                                <li>Xerces-C++: <a href="http://xerces.apache.org/xerces-c/download.cgi">http://xerces.apache.org/xerces-c/download.cgi</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div id="outline-container-orgf4cd2eb" class="outline-4">
+                        <h4 id="orgf4cd2eb">Qt4 (All platforms)</h4>
+                        <div class="outline-text-4" id="text-orgf4cd2eb">
+                            <ul class="org-ul">
+                                <li>Qt4 开发库: <a href="http://qt-project.org/downloads">http://qt-project.org/downloads</a></li>
+                                <li>OpenGL &#x2013; <a href="http://www.opengl.org/">http://www.opengl.org/</a></li>
+                                <li>MesaGL &#x2013; <a href="http://www.mesa3d.org/">http://www.mesa3d.org/</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div id="outline-container-org8cf6e9e" class="outline-4">
+                        <h4 id="org8cf6e9e">Motif UI (Linux/OSX)</h4>
+                        <div class="outline-text-4" id="text-org8cf6e9e">
+                            <ul class="org-ul">
+                                <li>Motif &#x2013; <a href="http://www.openmotif.org/">http://www.openmotif.org/</a></li>
+                                <li>OpenGL/MesaGL</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div id="outline-container-orge40afcd" class="outline-4">
+                        <h4 id="orge40afcd">X11 OpenGL Visualization (Linux/OSX)</h4>
+                        <div class="outline-text-4" id="text-orge40afcd">
+                            <ul class="org-ul">
+                                <li>X11 devel</li>
+                                <li>OpenGL/MesaGL</li>
+                                <li>XQuartz (OSX 10.8)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div id="outline-container-orgc45fe6c" class="outline-4">
+                        <h4 id="orgc45fe6c">WIN32 OpenGL (Windows)</h4>
+                        <div class="outline-text-4" id="text-orgc45fe6c">
+                            <ul class="org-ul">
+                                <li>OpenGL / MesaGL</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div id="outline-container-orga1cea0c" class="outline-4">
+                        <h4 id="orga1cea0c">Open Inventor Visual (All)</h4>
+                        <div class="outline-text-4" id="text-orga1cea0c">
+                            <p>
+                                Coin3D: <a href="https://bitbucket.org/Coin3D/coin/wiki/Home">https://bitbucket.org/Coin3D/coin/wiki/Home</a>
+                            </p>
+
+                            <p>
+                                Coin 是基于 OpenGL 的 3D 图形库，它源自 Open Inventor 2.1 API (目前 Coin 仍然与它兼容). Open Inventor (常简写为 OIV) 是一个最初由 SGI 开发的基于场景提供图像保持、渲染与模型操作的 C++ 类库。在它发布不久就成为科学与工程领域的 3D 图像显示与可视化模拟软件事实上的标准图形库。它也是 VRML1 文档标准的基础。目前有好几本与
+                                Open Inventor 相关主题的书，比如 <b>The Inventor Mentor</b>, <b>The Inventor
+                                Toolmaker</b>.
+                            </p>
+
+                            <p>
+                                Coin 是在 SGI Open Inventor 开源之前基于 OIV 库的 API 从头开发的，它未借用任何
+                                SGI OIV 的代码。 Coin 在 2000 年秋达到与 OIV 2.1 完全兼容的目标，此后添加了许多额外的特性，如支持文件格式 VRML97 等。
+                            </p>
+
+                            <p>
+                                Coin 网站提供的软件包如下：
+                            </p>
+                            <ul class="org-ul">
+                                <li>Coin &#x2013; Coin 的基础包</li>
+                                <li>SoWin &#x2013; Coin 与 Windows 平台的接口。</li>
+                                <li>SoXt &#x2013; Coin 与 X11 平台上 (Linux, OSX XQartz 或 Cygwin-X)</li>
+                                <li>SoQt &#x2013; Coin 的 Qt 接口，与 SGI 及 TGS Open Inventor 兼容。兼容
+                                Unix/Linux, Win32 及 Mac OS X 平台。</li>
+                                <li>Sc21 &#x2013; Objective-C++ 框架，是 Coin 库与 OSX UI 的接口。</li>
+                            </ul>
+                        </div>
+
+                        <div id="outline-container-org8f4b812" class="outline-5">
+                            <h5 id="org8f4b812">Coin3D: Windows + Visual Studio 2010</h5>
+                            <div class="outline-text-5" id="text-org8f4b812">
+                                <p>
+                                    在 Windows Visual Studio 2010 Express 上编译配置 Coin3D 可参考：
+                                </p>
+                                <ul class="org-ul">
+                                    <li><a href="http://te.ugm.ac.id/~wibirama/tutorial/coin3d/Tutorial_Coin3D_VS2010.pdf">http://te.ugm.ac.id/~wibirama/tutorial/coin3d/Tutorial_Coin3D_VS2010.pdf</a></li>
+                                    <li>www.cse.ohio-state.edu/~hwshen/681/Site/lab_help_files/windows_help.pdf</li>
+                                </ul>
+
+                                <p>
+                                    Windows + VS2010 Express 的安装步骤如下：
+                                </p>
+                                <ol class="org-ol">
+                                    <li>从 Coin3D 下载 zip 包并解压。</li>
+                                    <li>修改系统环境变量，添加 <code>COINDIR</code> 变量，指向你的 Coin3D 安装目录，比如我的系统上为 <code>D:\Exaos\Utils\Coin3D</code>.</li>
+                                    <li>将源码目录 <code>build\msvc9\</code> 拷贝一份并命名为 <code>msvc10</code>, 然后用 VS2010 打开拷贝目录下的 <code>coin3.sln</code> 项目解决方案文件。</li>
+                                    <li>此时直接编译 3.1.3 版本会有不少错误，按后面的介绍修正之。然后继续编译。</li>
+                                    <li>创建好你的 Coin3D 安装目录，在项目解决方案中生成 <code>coin3_install</code>, 则会自动安装到你预设的 <code>COINDIR</code> 路径下。</li>
+                                    <li>下载测试文件，测试你的安装是否可用：
+                                    <ul class="org-ul">
+                                        <li><a href="http://te.ugm.ac.id/~wibirama/tutorial/coin3d/test.7z">http://te.ugm.ac.id/~wibirama/tutorial/coin3d/test.7z</a></li>
+                                    </ul></li>
+                                </ol>
+
+                                <p>
+                                    在 VS2010 Express 上编译 Coin 3.1.3 主要问题有：
+                                </p>
+                                <ol class="org-ol">
+                                    <li><p>
+                                        错误 (error C2440) 为 <code>ScXMLStateMachine.cpp</code> 第 334 行:
+                                    </p>
+                                    <pre class="example">
+                                        transitions.push_back(PImpl::StateTransition(NULL, PRIVATE(this)-&gt;initializer.get()));
+
+                                    </pre>
+                                    <p>
+                                        其中的 <code>NULL</code> 应该为 <code>(ScXMLObject *)NULL</code>.
+                                    </p></li>
+                                    <li><p>
+                                        其余是 C4819 警告：
+                                    </p>
+                                    <pre class="example">
+                                        warning C4819: 该文件包含不能在当前代码页(936)中表示的字符
+
+                                    </pre>
+                                    <p>
+                                        出现这样的警告，将相应的文件打开，重新以 UTF-8 格式保存即可。另外修改 "工程
+                                        &#x2013;&gt; 属性 &#x2013;&gt; 配置属性 &#x2013;&gt; 常规 &#x2013;&gt; 字符集", 将之修改为 Unicode 字符集。
+                                    </p></li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div id="outline-container-orgb6e32f4" class="outline-5">
+                            <h5 id="orgb6e32f4">SoQt: Windows VS2010 Express</h5>
+                            <div class="outline-text-5" id="text-orgb6e32f4">
+                                <p>
+                                    编译安装完 Coin 3.1.3 后，可编译 SoQt 1.5.0，步骤与编译 Coin 类似，只不过要将对
+                                    Coin 及 Qt 的依赖关系添加到项目属性中，包括“包含目录”及“引用目录”。熟悉一下
+                                    VS2010, 你很快就知道如何去做，不辍述。
+                                </p>
+
+                                <p>
+                                    安装错误与警告等：
+                                </p>
+                                <ol class="org-ol">
+                                    <li><p>
+                                        一连串的引用头文件方式已过期警告，可忽略
+                                    </p>
+                                    <pre class="example">
+                                        warning : Inclusion of header files from include/Qt is deprecated.
+
+                                    </pre></li>
+                                    <li><p>
+                                        头文件缺失错误 (error C1083)
+                                    </p>
+                                    <pre class="example">
+                                        src\Inventor\Qt\editors\SoQtMaterialEditor.cpp(41): fatal error C1083:
+                                        无法打开包括文件:“Inventor/Qt/editors/SoQtMaterialEditor.h”
+                                        : No such file or directory
+
+                                    </pre>
+                                    <p>
+                                        此错误已经在 Mailing List 中有汇报：
+                                    </p>
+                                    <ul class="org-ul">
+                                        <li><a href="http://mailman.coin3d.org/pipermail/coin-discuss/2012-July/018438.html">http://mailman.coin3d.org/pipermail/coin-discuss/2012-July/018438.html</a></li>
+                                    </ul>
+                                    <p>
+                                        在源码目录 <code>src/Inventor/Qt/editors/old/</code> 下存在此文件，但开发组声明此目录下的代码已经陈旧，需要人力重新更新并实现 editor 组件。修改模版文件
+                                        <code>src\Inventor\Qt\common\editors\SoQtMaterialEditor.cpp.in</code> 如下行
+                                    </p>
+                                    <pre class="example">
+                                        #include &lt;Inventor/@Gui@/editors/So@Gui@MaterialEditor.h&gt;
+
+                                    </pre>
+                                    <p>
+                                        变更为
+                                    </p>
+                                    <pre class="example">
+                                        #include &lt;Inventor/@Gui@/So@Gui@MaterialEditor.h&gt;
+
+                                    </pre></li>
+                                    <li>其它一些直接从 msvc9 转换过来导致的 moc 生成的文件未能正常生成，从而导致文件缺失的错误，这些文件有：
+                                    <ul class="org-ul">
+                                        <li>src\Inventor\Qt\viewers\ExaminerViewer.cpp(59):
+                                        Inventor/Qt/viewers/moc_SoQtExaminerViewerP.icc</li>
+                                        <li>src\Inventor\Qt\viewers\FullViewer.cpp(67):
+                                        Inventor/Qt/viewers/moc_SoQtFullViewerP.icc</li>
+                                        <li>src\Inventor\Qt\viewers\PlaneViewer.cpp(50):
+                                        Inventor/Qt/viewers/moc_SoQtPlaneViewerP.icc</li>
+                                        <li>src\Inventor\Qt\SoQt.cpp(263): Inventor/Qt/moc_SoQtP.icc</li>
+                                        <li>src\Inventor\Qt\SoQtComponent.cpp(44):
+                                        Inventor/Qt/moc_SoQtComponentP.icc</li>
+                                        <li>src\Inventor\Qt\SoQtGLWidget.cpp(84): Inventor/Qt/moc_SoQtGLWidgetP.icc</li>
+                                        <li>src\Inventor\Qt\SoQtSignalThread.cpp(25):
+                                        Inventor/Qt/moc_SoQtSignalThread.icc</li>
+                                    </ul></li>
+                                    <li><p>
+                                        由 Qt moc 生成相应丢失的文件：
+                                    </p>
+                                    <pre class="example">
+                                        moc -i -o &lt;output_moc_file&gt; &lt;header&gt;
+
+                                    </pre></li>
+                                    <li>如果编译 Debug 版，则可能出现的找不到 <code>coin3d.lib</code> 文件的链接错误，编译并安装一个 Debug 版本的 Coin3D 即可。</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div id="outline-container-org808ef03" class="outline-5">
+                            <h5 id="org808ef03">SoWin: Windows 7 + VS2010 Express</h5>
+                            <div class="outline-text-5" id="text-org808ef03">
+                                <p>
+                                    与 SoQt 安装类似。安装时出现的错误与警告：
+                                </p>
+                                <ol class="org-ol">
+                                    <li>头文件缺失错误 <code>Inventor/Win/editors/SoWinColorEditor.h</code>
+                                    <ul class="org-ul">
+                                        <li><p>
+                                            修改 <code>Inventor/Win/common/editors/</code> 目录下的
+                                            <code>SoGuiMaterialEditor.cpp.in</code> 及 <code>SoGuiColorEditor.cpp.in</code> 文件，修改其中如下行内容：
+                                        </p>
+                                        <pre class="example">
+                                            #include &lt;Inventor/@Gui@/editors/So@Gui@ColorEditor.h&gt;
+
+                                        </pre>
+                                        <p>
+                                            修改为：
+                                        </p>
+                                        <pre class="example">
+                                            #include &lt;Inventor/@Gui@/So@Gui@ColorEditor.h&gt;
+
+                                        </pre></li>
+                                    </ul></li>
+                                </ol>
+
+                                <p>
+                                    安装完 SoWin 后可参考如下网址运行一个示例，看看你是否安装正确：
+                                </p>
+                                <ul class="org-ul">
+                                    <li><a href="http://blog.csdn.net/robinhao/article/details/1770204">http://blog.csdn.net/robinhao/article/details/1770204</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="outline-container-org150266d" class="outline-4">
+                        <h4 id="org150266d">X11 RayTracer Visual (Linux/Mac)</h4>
+                        <div class="outline-text-4" id="text-org150266d">
+                            <p>
+                                依赖 X11 开发包，适用于 Unix/Linux, 或者 Mac OS X 上的 XQuartz 平台，理论上也适用于 Windows 平台上的 Cygwin-X.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="outline-container-org2a1fcbc" class="outline-3">
+                    <h3 id="DEP-OPTS"><a id="org2a1fcbc"></a>推荐的相关软件</h3>
+                    <div class="outline-text-3" id="text-DEP-OPTS">
+                        <ul class="org-ul">
+                            <li>DAWN: postscript 引擎</li>
+                            <li>HepRApp Browser (使用 HepRep 图形驱动)</li>
+                            <li>WIRED4 JAS 插件 (配合 HepRep 图形驱动)</li>
+                            <li>VRML Browser (配置 VRML 图形驱动)</li>
+                            <li>OpenScientist 交互分析环境</li>
+                            <li>AIDA 接口 (配置 OpenScientist, iAIDA, JAS3 及 rAIDA)
+                            <ul class="org-ul">
+                                <li>iAIDA: <a href="http://iaida.dynalias.net/Intro.html">http://iaida.dynalias.net/Intro.html</a>
+                                <ul class="org-ul">
+                                    <li>一个 C++ 的 AIDA 接口</li>
+                                </ul></li>
+                                <li>RAIDA: <a href="http://ilcsoft.desy.de/portal/software_packages/raida/">http://ilcsoft.desy.de/portal/software_packages/raida/</a>
+                                <ul class="org-ul">
+                                    <li>基于 ROOT 的 AIDA 接口</li>
+                                    <li>目前版本： v01-06-02</li>
+                                </ul></li>
+                                <li>AIDA: <a href="http://aida.freehep.org/">http://aida.freehep.org/</a>
+                                <ul class="org-ul">
+                                    <li>最初的 Java 实现接口</li>
+                                    <li>AIDA-JNI 使用 JNI (Java Native Interface) 技术让使用 AIDA 接口的 C++ 程序与 Java 实现 (JAIDA) 相链接工作。 Geant4 中最初使用 AIDAJNI。目前
+                                    AIDAJNI 已经停止开发（停止在 3.2.x 版本）。</li>
+                                </ul></li>
+                            </ul></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="outline-container-org8c04197" class="outline-2">
+                <h2 id="org8c04197">几何设置</h2>
+                <div class="outline-text-2" id="text-org8c04197">
+                </div>
+                <div id="outline-container-org209a6f6" class="outline-3">
+                    <h3 id="org209a6f6">如何用 GDML 几何设置敏感探测器 (Sensitive Detector)</h3>
+                    <div class="outline-text-3" id="text-org209a6f6">
+                        <ul class="org-ul">
+                            <li><a href="http://goo.gl/fsqVS">http://goo.gl/fsqVS</a>
+                            <ol class="org-ol">
+                                <li>在解析完 GDML 之后手动给 SD 赋值:
+                                <ul class="org-ul">
+                                    <li>先初始化 SD 类</li>
+                                    <li>获得待赋值的 Logical Volume 指针及 SD 的指针
+                                    (<code>G4SDManager::FindSensitiveDetector()</code>)</li>
+                                    <li>使用 <code>G4LogicalVolume::SetSensitiveDetector()</code></li>
+                                </ul></li>
+                                <li>使用 GDML 文件中的辅助信息 (参见 g4gogdml 示例):
+                                <ul class="org-ul">
+                                    <li>GDML 处理器创建一个 map, 保存有 volume 的指针</li>
+                                    <li>访问 map 中的辅助信息，比如 SD 及值</li>
+                                    <li>进行实际的赋值</li>
+                                </ul></li>
+                            </ol></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="outline-container-org7786850" class="outline-2">
+                <h2 id="org7786850">物理过程</h2>
+            </div>
+
+            <div id="outline-container-org7532bfa" class="outline-2">
+                <h2 id="org7532bfa">可视化</h2>
+            </div>
+
+            <div id="outline-container-orgdbbaa08" class="outline-2">
+                <h2 id="orgdbbaa08">数据库</h2>
+                <div class="outline-text-2" id="text-orgdbbaa08">
+                    <p>
+                        Geant4 中常用的数据库主要包括 Elastic, G4EMLOW, G4NDL, PhotonEvaporation,
+                        RadiativeDecay, 它们分别用于模拟不同的物理过程。
+                    </p>
+                    <ul class="org-ul">
+                        <li>Elastic &#x2013; 用于高能粒子之间的弹性散射模拟。</li>
+                        <li>G4EMLOW &#x2013; 低能电磁过程数据库。</li>
+                        <li>G4NDL &#x2013; <code>neutron_hp</code> 和 <code>isotope_production</code> 类别的过程数据库。</li>
+                        <li>RadiativeDecay &#x2013; 放射性衰变数据库。</li>
+                    </ul>
+                </div>
+
+                <div id="outline-container-org0ff3b3a" class="outline-3">
+                    <h3 id="org0ff3b3a">G4NDL</h3>
+                    <div class="outline-text-3" id="text-org0ff3b3a">
+                        <p>
+                            该评价数据主要用于 Geant4 中的中子强子相互作用过程和同位素产生的类别中。除了用于
+                            Geant4 的 <code>neutron_hp</code> 和 <code>isotope_production</code> 类别来模拟中子散射和同位素产生之外，该数据库不得做其它用途。如果希望将该数据库用于其它用途，请联系其 <a href="mailto:Hans-Peter.Wellisch@cern.ch%20">作者</a>。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="outline-container-org0bd5e4a" class="outline-2">
+                <h2 id="org0bd5e4a">错误记录</h2>
+                <div class="outline-text-2" id="text-org0bd5e4a">
+                </div>
+                <div id="outline-container-org36ce1df" class="outline-3">
+                    <h3 id="org36ce1df">2012-12: Windows 7 + VS2010 + Coin3D</h3>
+                    <div class="outline-text-3" id="text-org36ce1df">
+                        <p>
+                            错误：
+                        </p>
+                        <pre class="example">
+                            2&gt;------ 已启动生成: 项目: exampleN02, 配置: Debug Win32 ------
+                            2&gt;exampleN02.obj : error LNK2019: 无法解析的外部符号 "public: __thiscall
+                            G4OpenInventorWin::G4OpenInventorWin(void)" (??0G4OpenInventorWin@@QAE@XZ)，
+                            该符号在函数 "public: __thiscall G4OpenInventorWin32::G4OpenInventorWin32(void)"
+                            (??0G4OpenInventorWin32@@QAE@XZ) 中被引用
+                            2&gt;exampleN02.obj : error LNK2001: 无法解析的外部符号 "public: virtual
+                            class G4VSceneHandler * __thiscall G4OpenInventor::CreateSceneHandler(class
+                            G4String const &amp;)" (?CreateSceneHandler@G4OpenInventor@@UAEPAVG4VSceneHandler@@ABVG4String@@@Z)
+                            2&gt;exampleN02.obj : error LNK2001: 无法解析的外部符号 "public: virtual
+                            class G4VViewer * __thiscall G4OpenInventorWin::CreateViewer(class
+                            G4VSceneHandler &amp;,class G4String const &amp;)" (?CreateViewer@G4OpenInventorWin@@UAEPAVG4VViewer@@AAVG4VSceneHandler@@ABVG4String@@@Z)
+                            2&gt;exampleN02.obj : error LNK2001: 无法解析的外部符号 "private: virtual
+                            void __thiscall G4OpenInventorWin::Initialize(void)" (?Initialize@G4OpenInventorWin@@EAEXXZ)
+                            2&gt;exampleN02.obj : error LNK2019: 无法解析的外部符号 "public: virtual
+                            __thiscall G4OpenInventorWin::~G4OpenInventorWin(void)" (??1G4OpenInventorWin@@UAE@XZ)，
+                            该符号在函数 "public: virtual __thiscall G4OpenInventorWin32::~G4OpenInventorWin32(void)" (??1G4OpenInventorWin32@@UAE@XZ) 中被引用
+                            2&gt;D:\Exaos\Utils\Geant4\Build\Debug-vc10\novice\N02\Debug\exampleN02.exe : fatal error LNK1120: 5 个无法解析的外部命令
+                        </pre>
+
+                        <p>
+                            参考：
+                        </p>
+                        <ul class="org-ul">
+                            <li><a href="http://hypernews.slac.stanford.edu/HyperNews/geant4/get/visualization/540.html?inline=-1">http://hypernews.slac.stanford.edu/HyperNews/geant4/get/visualization/540.html?inline=-1</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="postamble" class="status">
+            <p><a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="88x31.png"/></a></p><p>版权所有 ©2012-2018: 心蛛 | 日期: </p><p>Generated by <a href="https://www.gnu.org/software/emacs/">Emacs</a> 25.3.1 (<a href="https://orgmode.org">Org</a> mode 9.1.7), <a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+        </div>
+    </body>
 </html>

@@ -1,237 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
-<head>
-<!-- 2015-12-03 四 15:24 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>做个简单的朋友</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="心蛛" />
-<meta  name="description" content="Level-3 for exporting to HTML"
- />
-<link rel="stylesheet" title="Standard" href="../../../assets/css/worg.css" type="text/css" />
-<link rel="alternate stylesheet" title="Zenburn" href="../../../assets/css/worg-zenburn.css" type="text/css" />
-<link rel="alternate stylesheet" title="Classic" href="../../../assets/css/worg-classic.css" type="text/css" />
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh">
+    <head>
+        <!-- 2018-03-11 日 21:59 -->
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>做个简单的朋友</title>
+        <meta name="generator" content="Org mode" />
+        <meta name="author" content="心蛛" />
+        <meta name="description" content="Level-3 for exporting to HTML"
+              />
+        <link rel="stylesheet" title="Standard" href="../../../assets/css/worg.css" type="text/css" />
+        <link rel="alternate stylesheet" title="Zenburn" href="../../../assets/css/worg-zenburn.css" type="text/css" />
+        <link rel="alternate stylesheet" title="Classic" href="../../../assets/css/worg-classic.css" type="text/css" />
+        <script type="text/javascript">
+            /*
+            @licstart  The following is the entire license notice for the
+            JavaScript code in this tag.
 
-<script type="text/javascript" src="http://orgmode.org/org-info.js">
-/**
- *
- * @source: http://orgmode.org/org-info.js
- *
- * @licstart  The following is the entire license notice for the
- *  JavaScript code in http://orgmode.org/org-info.js.
- *
- * Copyright (C) 2012-2013 Free Software Foundation, Inc.
- *
- *
- * The JavaScript code in this tag is free software: you can
- * redistribute it and/or modify it under the terms of the GNU
- * General Public License (GNU GPL) as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option)
- * any later version.  The code is distributed WITHOUT ANY WARRANTY;
- * without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
- *
- * As additional permission under GNU GPL version 3 section 7, you
- * may distribute non-source (e.g., minimized or compacted) forms of
- * that code without the copy of the GNU GPL normally required by
- * section 4, provided you include this license notice and a URL
- * through which recipients can access the Corresponding Source.
- *
- * @licend  The above is the entire license notice
- * for the JavaScript code in http://orgmode.org/org-info.js.
- *
- */
-</script>
+            Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
-<script type="text/javascript">
+            The JavaScript code in this tag is free software: you can
+            redistribute it and/or modify it under the terms of the GNU
+            General Public License (GNU GPL) as published by the Free Software
+            Foundation, either version 3 of the License, or (at your option)
+            any later version.  The code is distributed WITHOUT ANY WARRANTY;
+            without even the implied warranty of MERCHANTABILITY or FITNESS
+            FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
 
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
+            As additional permission under GNU GPL version 3 section 7, you
+            may distribute non-source (e.g., minimized or compacted) forms of
+            that code without the copy of the GNU GPL normally required by
+            section 4, provided you include this license notice and a URL
+            through which recipients can access the Corresponding Source.
 
 
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+            @licend  The above is the entire license notice
+            for the JavaScript code in this tag.
+            */
+            <!--/*--><![CDATA[/*><!--*/
+            function CodeHighlightOn(elem, id)
+            {
+            var target = document.getElementById(id);
+            if(null != target) {
+            elem.cacheClassElem = elem.className;
+            elem.cacheClassTarget = target.className;
+            target.className = "code-highlighted";
+            elem.className   = "code-highlighted";
+            }
+            }
+            function CodeHighlightOff(elem, id)
+            {
+            var target = document.getElementById(id);
+            if(elem.cacheClassElem)
+            elem.className = elem.cacheClassElem;
+            if(elem.cacheClassTarget)
+            target.className = elem.cacheClassTarget;
+            }
+            /*]]>*///-->
+        </script>
+    </head>
+    <body>
+        <div id="org-div-home-and-up">
+            <a accesskey="h" href="../../index.html"> UP </a>
+            |
+            <a accesskey="H" href="../../../index.html"> HOME </a>
+            </div><div id="content">
+            <h1 class="title">做个简单的朋友</h1>
+            <p>
+                你会如何向孩子解释什么是朋友？逛微博也有一段时间了，见过一些朋友反目成仇的事情，还经常听到类似这样的话：“某某是你的朋友，你怎么能这样？”这样的质问在围绕着方舟子的话题中常见。有一段“每日七言”的感悟称“人与人相遇，大抵是始惊，次醉，渐迷，终醒”，这段话被广泛引用，也曾被某网友引用在对一段关系的感慨中。老遇见这样的话题不禁让人疑惑：什么是朋友？与朋友相关的词语很多，现在很流行网友，还有书友、棋友、至交、故交、世交、君子之交、酒肉之交、莫逆之交、金玉之交等等。如果把每个词语都解释一遍，那会是很长的篇幅。现在回到开头的问题：你会如何向孩子解释什么是朋友？
+            </p>
 
-<!--/*--><![CDATA[/*><!--*/
-org_html_manager.set("TOC_DEPTH", "4");
-org_html_manager.set("LINK_HOME", "../../../index.html");
-org_html_manager.set("LINK_UP", "../../index.html");
-org_html_manager.set("LOCAL_TOC", "1");
-org_html_manager.set("VIEW_BUTTONS", "0");
-org_html_manager.set("MOUSE_HINT", "underline");
-org_html_manager.set("FIXED_TOC", "0");
-org_html_manager.set("TOC", "0");
-org_html_manager.set("VIEW", "content");
-org_html_manager.setup();  // activate after the parameters are set
-/*]]>*///-->
-</script>
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
+            <p>
+                “好品格”网站[1]对于向五岁的孩子解释什么是“好朋友”有一些建议，简译如下：
+            </p>
+            <ul class="org-ul">
+                <li>好朋友会互相聆听；</li>
+                <li>好朋友不会互相推搡和伤害对方的感情；</li>
+                <li>好朋友会努力理解对方的感情和情绪；</li>
+                <li>好朋友会帮助对方解决问题；</li>
+                <li>好朋友会互相祝贺；</li>
+                <li>好朋友可以不赞成对方也不会伤害对方；</li>
+                <li>好朋友会相互依靠；</li>
+                <li>好朋友互相尊重；</li>
+                <li>好朋友是可信赖的；</li>
+                <li>好朋友给对方改变的空间；</li>
+                <li>好朋友会互相关照。</li>
+            </ul>
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+            <p>
+                这些针对孩子的解释很不错，简洁明了。而成人之间的朋友关系表面上看起来要复杂得多：昨天还在饭局上把酒言欢、称兄道弟，今天可能就会剑拔弩张、不死不休；有些人见谁都是朋友，会经常把“兄弟”之类的词挂在嘴边；“不够朋友”是一种很常见的指责，而很少有人去追问“什么是朋友”。
+            </p>
 
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+            <p>
+                社会是由人与关系构成的一个复杂空间，“朋友”只是关系的一种，其内涵与外延往往很模糊的，因人而异。抽象地说，朋友是一种关系的概括，通常带有褒义。从“好品格”的解释看来，我们可以从这样几个方面去分析“朋友”这种关系：
+            </p>
+            <ul class="org-ul">
+                <li>友谊的行为表现，即推荐做的事情与禁止做的事情。</li>
+                <li>友谊的效果，即造成的心理与实际后果。</li>
+            </ul>
 
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
+            <p>
+                从行为表现来看，朋友之间会互相帮助并禁止伤害，尤其是禁止故意伤害。这里面有个有意思的问题，当你不赞成朋友的观点时，而你预测这个“不赞成”会让他受伤，你还要不要直接说出来？聪明如你，肯定很容易想通这个问题的，就不辍述了。
+            </p>
 
+            <p>
+                从友谊的效果来看，通过相互帮助是可以解决一些问题的，通常是感情与情绪问题。我们很多的努力都是想让自己过得更好，这个“过得更好”指的是身体更健康、情绪更稳定、心态更积极乐观。人有社交的需求，除了家人及工作关系之外，友谊是满足这种需求的最佳补充。友谊的物质效果不是最重要的，情绪改善往往是主要目的。富翁会有穷朋友，不是因为物质，而是因为能够获得某种情绪上的满足。友谊当中的情感互助是相互的，而不是单方面的。
+            </p>
 
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
-</head>
-<body>
-<div id="org-div-home-and-up">
- <a accesskey="h" href="../../index.html"> UP </a>
- |
- <a accesskey="H" href="../../../index.html"> HOME </a>
-</div><div id="content">
-<h1 class="title">做个简单的朋友</h1>
-<p>
-你会如何向孩子解释什么是朋友？逛微博也有一段时间了，见过一些朋友反目成仇的事情，还经常听到类似这样的话：“某某是你的朋友，你怎么能这样？”这样的质问在围绕着方舟子的话题中常见。有一段“每日七言”的感悟称“人与人相遇，大抵是始惊，次醉，渐迷，终醒”，这段话被广泛引用，也曾被某网友引用在对一段关系的感慨中。老遇见这样的话题不禁让人疑惑：什么是朋友？与朋友相关的词语很多，现在很流行网友，还有书友、棋友、至交、故交、世交、君子之交、酒肉之交、莫逆之交、金玉之交等等。如果把每个词语都解释一遍，那会是很长的篇幅。现在回到开头的问题：你会如何向孩子解释什么是朋友？
-</p>
+            <p>
+                这样说来，朋友其实很简单，无非是友善的意图与相互的帮助。孩子很容易交朋友，因为孩子相对简单，识别彼此的意图也比较容易。成人之间的朋友关系相对复杂，因为双方了解彼此的意图并不是一件容易的事情，而且，了解也是分层次的。朋友关系是相对长久的，因为短暂的时间内很难看清楚一个人。有一段时间，受他人及影视作品的影响，觉得彼此之间称兄道弟的唤作朋友，很嗨。然而，大家都嗨的时候倒挺好，一旦有个别人不那么嗨时，就变成了矛盾冲突，你会发现，其实自己的观点、意见、感受在对方眼里屁都不是。交朋友有时很难，难在彼此缺乏了解，而在真正清楚彼此的意图之后，仍然能够彼此友善相待的，这才算得上朋友。成人之间交朋友不容易，算得上真正朋友的也挺少，但真正的朋友往往很长久。
+            </p>
 
-<p>
-“好品格”网站<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>对于向五岁的孩子解释什么是“好朋友”有一些建议，简译如下：
-</p>
-<ul class="org-ul">
-<li>好朋友会互相聆听；</li>
-<li>好朋友不会互相推搡和伤害对方的感情；</li>
-<li>好朋友会努力理解对方的感情和情绪；</li>
-<li>好朋友会帮助对方解决问题；</li>
-<li>好朋友会互相祝贺；</li>
-<li>好朋友可以不赞成对方也不会伤害对方；</li>
-<li>好朋友会相互依靠；</li>
-<li>好朋友互相尊重；</li>
-<li>好朋友是可信赖的；</li>
-<li>好朋友给对方改变的空间；</li>
-<li>好朋友会互相关照。</li>
-</ul>
+            <p>
+                朋友是一种关系。因为彼此有善意、愿意相互帮助才能形成朋友关系，这种关系是双方面的。我们经常听到这样的话，“大家都是朋友就算了”，或者“都是朋友何至于此”，等等。这些话无非是说，因为是朋友，才要对一些事情宽容、不追究，或者要谅解。在我看来，这恰恰颠倒了因果关系：是因为通过一些事情表现了足够的善意才形成了朋友，而不是因为朋友才需要表示善意。朋友关系不是拿来要挟、指责和出卖的，而是拿来让彼此从中获得满足的。
+            </p>
 
-<p>
-这些针对孩子的解释很不错，简洁明了。而成人之间的朋友关系表面上看起来要复杂得多：昨天还在饭局上把酒言欢、称兄道弟，今天可能就会剑拔弩张、不死不休；有些人见谁都是朋友，会经常把“兄弟”之类的词挂在嘴边；“不够朋友”是一种很常见的指责，而很少有人去追问“什么是朋友”。
-</p>
+            <p>
+                交朋友是通过一系列的行为来实施的，当然包括交谈这种语言行为。通过彼此释放善意、互相帮助，会逐步形成稳定的愉悦的关系，这就可以算是朋友了。彼此有善意的人还是挺多的，因此，朋友也不会少。然而，这样的关系往往比较短暂，有些人并不认为这种短暂的彼此好感算得上朋友，这算是一种看法吧。
+            </p>
 
-<p>
-社会是由人与关系构成的一个复杂空间，“朋友”只是关系的一种，其内涵与外延往往很模糊的，因人而异。抽象地说，朋友是一种关系的概括，通常带有褒义。从“好品格”的解释看来，我们可以从这样几个方面去分析“朋友”这种关系：
-</p>
-<ul class="org-ul">
-<li>友谊的行为表现，即推荐做的事情与禁止做的事情。</li>
-<li>友谊的效果，即造成的心理与实际后果。</li>
-</ul>
+            <p>
+                综上看来，除了那些针对儿童的朋友建议外，对于成人，个人以为，能够做到这些的算得上是朋友了：
+            </p>
+            <ul class="org-ul">
+                <li>愿意彼此了解，即便你一时不懂对方所言所为，也愿意花时间去理解或咨询。</li>
+                <li>除非有足够的证据表明了对方的恶意，一般情况下都会用善意来揣测对方。</li>
+                <li>表达不同看法，但不会因为观点不同而怀有敌意。</li>
+                <li>有能力有条件的情况下彼此帮助，而不是因为有回报才去帮助。</li>
+            </ul>
 
-<p>
-从行为表现来看，朋友之间会互相帮助并禁止伤害，尤其是禁止故意伤害。这里面有个有意思的问题，当你不赞成朋友的观点时，而你预测这个“不赞成”会让他受伤，你还要不要直接说出来？聪明如你，肯定很容易想通这个问题的，就不辍述了。
-</p>
+            <p>
+                作为一种良好的人际关系，朋友关系并不局限于特定的对象，它没有限制年龄、性别、职业、地域、信仰、观念等等。但我们会观察到朋友关系往往会有类似的局限，实际上，这是因为职业、地域、信仰、观念等等的影响才没有形成朋友。父母与孩子之间有天然的善意，然而，也会有很多因素导致这种善意消失。能够与孩子做成朋友，这样的亲子关系才是更健康的。伴侣或配偶之间首先能够成为朋友，这样的关系会更持久。
+            </p>
 
-<p>
-从友谊的效果来看，通过相互帮助是可以解决一些问题的，通常是感情与情绪问题。我们很多的努力都是想让自己过得更好，这个“过得更好”指的是身体更健康、情绪更稳定、心态更积极乐观。人有社交的需求，除了家人及工作关系之外，友谊是满足这种需求的最佳补充。友谊的物质效果不是最重要的，情绪改善往往是主要目的。富翁会有穷朋友，不是因为物质，而是因为能够获得某种情绪上的满足。友谊当中的情感互助是相互的，而不是单方面的。
-</p>
+            <p>
+                对于成人，如果你不把利用、恶意、贪心、嫉妒等等东西夹杂在人际关系中，其实，交朋友也没那么困难，维持朋友关系也没那么复杂。
+            </p>
 
-<p>
-这样说来，朋友其实很简单，无非是友善的意图与相互的帮助。孩子很容易交朋友，因为孩子相对简单，识别彼此的意图也比较容易。成人之间的朋友关系相对复杂，因为双方了解彼此的意图并不是一件容易的事情，而且，了解也是分层次的。朋友关系是相对长久的，因为短暂的时间内很难看清楚一个人。有一段时间，受他人及影视作品的影响，觉得彼此之间称兄道弟的唤作朋友，很嗨。然而，大家都嗨的时候倒挺好，一旦有个别人不那么嗨时，就变成了矛盾冲突，你会发现，其实自己的观点、意见、感受在对方眼里屁都不是。交朋友有时很难，难在彼此缺乏了解，而在真正清楚彼此的意图之后，仍然能够彼此友善相待的，这才算得上朋友。成人之间交朋友不容易，算得上真正朋友的也挺少，但真正的朋友往往很长久。
-</p>
+            <p>
+                做一个简单的朋友，友善会令你甘之如饴。
+            </p>
 
-<p>
-朋友是一种关系。因为彼此有善意、愿意相互帮助才能形成朋友关系，这种关系是双方面的。我们经常听到这样的话，“大家都是朋友就算了”，或者“都是朋友何至于此”，等等。这些话无非是说，因为是朋友，才要对一些事情宽容、不追究，或者要谅解。在我看来，这恰恰颠倒了因果关系：是因为通过一些事情表现了足够的善意才形成了朋友，而不是因为朋友才需要表示善意。朋友关系不是拿来要挟、指责和出卖的，而是拿来让彼此从中获得满足的。
-</p>
-
-<p>
-交朋友是通过一系列的行为来实施的，当然包括交谈这种语言行为。通过彼此释放善意、互相帮助，会逐步形成稳定的愉悦的关系，这就可以算是朋友了。彼此有善意的人还是挺多的，因此，朋友也不会少。然而，这样的关系往往比较短暂，有些人并不认为这种短暂的彼此好感算得上朋友，这算是一种看法吧。
-</p>
-
-<p>
-综上看来，除了那些针对儿童的朋友建议外，对于成人，个人以为，能够做到这些的算得上是朋友了：
-</p>
-<ul class="org-ul">
-<li>愿意彼此了解，即便你一时不懂对方所言所为，也愿意花时间去理解或咨询。</li>
-<li>除非有足够的证据表明了对方的恶意，一般情况下都会用善意来揣测对方。</li>
-<li>表达不同看法，但不会因为观点不同而怀有敌意。</li>
-<li>有能力有条件的情况下彼此帮助，而不是因为有回报才去帮助。</li>
-</ul>
-
-<p>
-作为一种良好的人际关系，朋友关系并不局限于特定的对象，它没有限制年龄、性别、职业、地域、信仰、观念等等。但我们会观察到朋友关系往往会有类似的局限，实际上，这是因为职业、地域、信仰、观念等等的影响才没有形成朋友。父母与孩子之间有天然的善意，然而，也会有很多因素导致这种善意消失。能够与孩子做成朋友，这样的亲子关系才是更健康的。伴侣或配偶之间首先能够成为朋友，这样的关系会更持久。
-</p>
-
-<p>
-对于成人，如果你不把利用、恶意、贪心、嫉妒等等东西夹杂在人际关系中，其实，交朋友也没那么困难，维持朋友关系也没那么复杂。
-</p>
-
-<p>
-做一个简单的朋友，友善会令你甘之如饴。
-</p>
-<div id="footnotes">
-<h2 class="footnotes">&#33050;&#27880;: </h2>
-<div id="text-footnotes">
-
-<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
-<a href="http://www.goodcharacter.com/YCC/BeingFriends.html">http://www.goodcharacter.com/YCC/BeingFriends.html</a>
-</p></div></div>
-
-
-</div>
-</div></div>
-<div id="postamble" class="status">
-
-<script type="text/javascript" src="http://exaos.github.io/assets/js/pagetail.js"></script>
-<div id="disqus_thread"></div>
-<p>版权所有 ©2015: 心蛛 | Date: <span class="timestamp-wrapper"><span class="timestamp">[2015-09-17 四]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.3.2), <a href="http://validator.w3.org/check?uri=referer">Validate</a>,
-<a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="88x31.png"/></a>
-<p><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></p>
-</div>
-</body>
+            <p>
+                [1] <a href="http://www.goodcharacter.com/YCC/BeingFriends.html">http://www.goodcharacter.com/YCC/BeingFriends.html</a>
+            </p>
+        </div>
+        <div id="postamble" class="status">
+            <p><a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="88x31.png"/></a></p><p>版权所有 ©2012-2018: 心蛛 | 日期: 2015-09-17 四 00:00</p><p>Generated by <a href="https://www.gnu.org/software/emacs/">Emacs</a> 25.3.1 (<a href="https://orgmode.org">Org</a> mode 9.1.7), <a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+        </div>
+    </body>
 </html>

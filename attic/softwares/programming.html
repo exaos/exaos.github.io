@@ -1,532 +1,467 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
-<head>
-<!-- 2015-12-03 四 15:24 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>编程类软件</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Exaos Lee" />
-<meta  name="description" content="Level-2 for exporting to HTML"
- />
-<link rel="stylesheet" title="Standard" href="../../assets/css/worg.css" type="text/css" />
-<link rel="alternate stylesheet" title="Zenburn" href="../../assets/css/worg-zenburn.css" type="text/css" />
-<link rel="alternate stylesheet" title="Classic" href="../../assets/css/worg-classic.css" type="text/css" />
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh">
+    <head>
+        <!-- 2018-03-11 日 21:58 -->
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>编程类软件</title>
+        <meta name="generator" content="Org mode" />
+        <meta name="author" content="Vivodo Lio" />
+        <meta name="description" content="Level-2 for exporting to HTML"
+              />
+        <link rel="stylesheet" title="Standard" href="../../assets/css/worg.css" type="text/css" />
+        <link rel="alternate stylesheet" title="Zenburn" href="../../assets/css/worg-zenburn.css" type="text/css" />
+        <link rel="alternate stylesheet" title="Classic" href="../../assets/css/worg-classic.css" type="text/css" />
+        <script type="text/javascript">
+            /*
+            @licstart  The following is the entire license notice for the
+            JavaScript code in this tag.
 
-<script type="text/javascript" src="http://orgmode.org/org-info.js">
-/**
- *
- * @source: http://orgmode.org/org-info.js
- *
- * @licstart  The following is the entire license notice for the
- *  JavaScript code in http://orgmode.org/org-info.js.
- *
- * Copyright (C) 2012-2013 Free Software Foundation, Inc.
- *
- *
- * The JavaScript code in this tag is free software: you can
- * redistribute it and/or modify it under the terms of the GNU
- * General Public License (GNU GPL) as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option)
- * any later version.  The code is distributed WITHOUT ANY WARRANTY;
- * without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
- *
- * As additional permission under GNU GPL version 3 section 7, you
- * may distribute non-source (e.g., minimized or compacted) forms of
- * that code without the copy of the GNU GPL normally required by
- * section 4, provided you include this license notice and a URL
- * through which recipients can access the Corresponding Source.
- *
- * @licend  The above is the entire license notice
- * for the JavaScript code in http://orgmode.org/org-info.js.
- *
- */
-</script>
+            Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
-<script type="text/javascript">
+            The JavaScript code in this tag is free software: you can
+            redistribute it and/or modify it under the terms of the GNU
+            General Public License (GNU GPL) as published by the Free Software
+            Foundation, either version 3 of the License, or (at your option)
+            any later version.  The code is distributed WITHOUT ANY WARRANTY;
+            without even the implied warranty of MERCHANTABILITY or FITNESS
+            FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
 
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
+            As additional permission under GNU GPL version 3 section 7, you
+            may distribute non-source (e.g., minimized or compacted) forms of
+            that code without the copy of the GNU GPL normally required by
+            section 4, provided you include this license notice and a URL
+            through which recipients can access the Corresponding Source.
 
 
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+            @licend  The above is the entire license notice
+            for the JavaScript code in this tag.
+            */
+            <!--/*--><![CDATA[/*><!--*/
+            function CodeHighlightOn(elem, id)
+            {
+            var target = document.getElementById(id);
+            if(null != target) {
+            elem.cacheClassElem = elem.className;
+            elem.cacheClassTarget = target.className;
+            target.className = "code-highlighted";
+            elem.className   = "code-highlighted";
+            }
+            }
+            function CodeHighlightOff(elem, id)
+            {
+            var target = document.getElementById(id);
+            if(elem.cacheClassElem)
+            elem.className = elem.cacheClassElem;
+            if(elem.cacheClassTarget)
+            target.className = elem.cacheClassTarget;
+            }
+            /*]]>*///-->
+        </script>
+    </head>
+    <body>
+        <div id="org-div-home-and-up">
+            <a accesskey="h" href="index.html"> UP </a>
+            |
+            <a accesskey="H" href="../../index.html"> HOME </a>
+            </div><div id="content">
+            <h1 class="title">编程类软件</h1>
+            <div id="table-of-contents">
+                <h2>Table of Contents</h2>
+                <div id="text-table-of-contents">
+                    <ul>
+                        <li><a href="#org330cf00">编译器套件、调试工具</a>
+                        <ul>
+                            <li><a href="#orgf4371c7">GCC</a></li>
+                            <li><a href="#orge544747">GDB</a></li>
+                            <li><a href="#orgfd08b84">Intel 编译套件</a>
+                            <ul>
+                                <li><a href="#org11453de">icc: Intel C++ Compiler</a></li>
+                                <li><a href="#orge1c0753">ifort: Intel Fortran Compiler</a></li>
+                                <li><a href="#orgf4fbf9a">idb: Intel debugger</a></li>
+                                <li><a href="#org47657e8">mkl: Intel Math Kernel Library</a></li>
+                            </ul>
+                            </li>
+                        </ul>
+                        </li>
+                        <li><a href="#orgd83c23f">编程语言</a>
+                        <ul>
+                            <li><a href="#org359eb56">C/C++</a>
+                            <ul>
+                                <li><a href="#org8d37d1b">clang</a></li>
+                            </ul>
+                            </li>
+                            <li><a href="#orgdc400cc">Fortran</a>
+                            <ul>
+                                <li><a href="#org27ec226">g95</a></li>
+                            </ul>
+                            </li>
+                            <li><a href="#orgdb85f13">Python</a>
+                            <ul>
+                                <li><a href="#org4deab37">Python</a></li>
+                                <li><a href="#orgbe714fe">ActivePython</a></li>
+                                <li><a href="#org0620377">Portable Python</a></li>
+                            </ul>
+                            </li>
+                            <li><a href="#orgf90363d">Shell</a>
+                            <ul>
+                                <li><a href="#org31cb525">zsh</a></li>
+                            </ul>
+                            </li>
+                            <li><a href="#org6b5cb26">Pascal</a>
+                            <ul>
+                                <li><a href="#org8e47a83">Free Pascal</a></li>
+                            </ul>
+                            </li>
+                            <li><a href="#org173887a">Functional Programming</a>
+                            <ul>
+                                <li><a href="#orge0b005e">SBCL &#x2013; Steel Bank Common Lisp</a></li>
+                                <li><a href="#org272b223">Clozure CL</a></li>
+                                <li><a href="#orge24b117">CMUCL</a></li>
+                                <li><a href="#org034c0be">GHC (Haskell)</a></li>
+                            </ul>
+                            </li>
+                            <li><a href="#org1fdbd0a">D 语言</a>
+                            <ul>
+                                <li><a href="#orgc8be0a1">dmd</a></li>
+                                <li><a href="#orgc4bf162">gdc</a></li>
+                                <li><a href="#org4588905">ldc</a></li>
+                            </ul>
+                            </li>
+                        </ul>
+                        </li>
+                        <li><a href="#org9b2e27d">版本控制工具</a>
+                        <ul>
+                            <li><a href="#org03a7e2c">subversion</a></li>
+                            <li><a href="#orgb2e9a73">git</a></li>
+                            <li><a href="#orgdcf979f">Mercurial</a></li>
+                        </ul>
+                        </li>
+                        <li><a href="#org3cf4529">项目编译系统</a>
+                        <ul>
+                            <li><a href="#orgd3b73ef">GNU Make</a></li>
+                            <li><a href="#org520c64a">CMake</a></li>
+                        </ul>
+                        </li>
+                        <li><a href="#orgc588309">程序开发库</a>
+                        <ul>
+                            <li><a href="#org557e311">qt</a></li>
+                            <li><a href="#orga343f87">gtk</a></li>
+                            <li><a href="#orgd5b347b">wxWidgets</a></li>
+                        </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
-<!--/*--><![CDATA[/*><!--*/
-org_html_manager.set("TOC_DEPTH", "4");
-org_html_manager.set("LINK_HOME", "../../index.html");
-org_html_manager.set("LINK_UP", "index.html");
-org_html_manager.set("LOCAL_TOC", "1");
-org_html_manager.set("VIEW_BUTTONS", "0");
-org_html_manager.set("MOUSE_HINT", "underline");
-org_html_manager.set("FIXED_TOC", "0");
-org_html_manager.set("TOC", "0");
-org_html_manager.set("VIEW", "content");
-org_html_manager.setup();  // activate after the parameters are set
-/*]]>*///-->
-</script>
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
+            <div id="outline-container-org330cf00" class="outline-2">
+                <h2 id="org330cf00">编译器套件、调试工具</h2>
+                <div class="outline-text-2" id="text-org330cf00">
+                </div>
+                <div id="outline-container-orgf4371c7" class="outline-3">
+                    <h3 id="orgf4371c7">GCC</h3>
+                    <div class="outline-text-3" id="text-orgf4371c7">
+                        <ul class="org-ul">
+                            <li>URL &#x2013; <a href="http://gcc.gnu.org/">http://gcc.gnu.org/</a></li>
+                            <li>GCC = the GNU Compiler Collection, 最流行的编程开发套，无须多言。</li>
+                        </ul>
+                    </div>
+                </div>
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+                <div id="outline-container-orge544747" class="outline-3">
+                    <h3 id="orge544747">GDB</h3>
+                    <div class="outline-text-3" id="text-orge544747">
+                        <ul class="org-ul">
+                            <li>URL &#x2013; <a href="http://www.gnu.org/software/gdb/">http://www.gnu.org/software/gdb/</a></li>
+                            <li>GDB: The GNU Project Debugger</li>
+                        </ul>
+                    </div>
+                </div>
 
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+                <div id="outline-container-orgfd08b84" class="outline-3">
+                    <h3 id="orgfd08b84">Intel 编译套件</h3>
+                    <div class="outline-text-3" id="text-orgfd08b84">
+                        <ul class="org-ul">
+                            <li>URL &#x2013; <a href="http://software.intel.com/en-us/intel-compilers/">http://software.intel.com/en-us/intel-compilers/</a></li>
+                        </ul>
+                    </div>
 
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
+                    <div id="outline-container-org11453de" class="outline-4">
+                        <h4 id="org11453de">icc: Intel C++ Compiler</h4>
+                    </div>
+                    <div id="outline-container-orge1c0753" class="outline-4">
+                        <h4 id="orge1c0753">ifort: Intel Fortran Compiler</h4>
+                    </div>
+                    <div id="outline-container-orgf4fbf9a" class="outline-4">
+                        <h4 id="orgf4fbf9a">idb: Intel debugger</h4>
+                    </div>
+                    <div id="outline-container-org47657e8" class="outline-4">
+                        <h4 id="org47657e8">mkl: Intel Math Kernel Library</h4>
+                    </div>
+                </div>
+            </div>
 
+            <div id="outline-container-orgd83c23f" class="outline-2">
+                <h2 id="orgd83c23f">编程语言</h2>
+                <div class="outline-text-2" id="text-orgd83c23f">
+                </div>
+                <div id="outline-container-org359eb56" class="outline-3">
+                    <h3 id="org359eb56">C/C++</h3>
+                    <div class="outline-text-3" id="text-org359eb56">
+                    </div>
+                    <div id="outline-container-org8d37d1b" class="outline-4">
+                        <h4 id="org8d37d1b">clang</h4>
+                        <div class="outline-text-4" id="text-org8d37d1b">
+                            <ul class="org-ul">
+                                <li>URL &#x2013; <a href="http://clang.llvm.org/">http://clang.llvm.org/</a></li>
+                                <li>简介：使用 LLVM 作为后端的 C/C++/Objective-C/Objective-C++ 编译器。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
-</head>
-<body>
-<div id="org-div-home-and-up">
- <a accesskey="h" href="index.html"> UP </a>
- |
- <a accesskey="H" href="../../index.html"> HOME </a>
-</div><div id="content">
-<h1 class="title">编程类软件</h1>
-<div id="table-of-contents">
-<h2>&#30446;&#24405;</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#orgheadline8">编译器套件、调试工具</a>
-<ul>
-<li><a href="#orgheadline1">GCC</a></li>
-<li><a href="#orgheadline2">GDB</a></li>
-<li><a href="#orgheadline3">Intel 编译套件</a>
-<ul>
-<li><a href="#orgheadline4">icc: Intel C++ Compiler</a></li>
-<li><a href="#orgheadline5">ifort: Intel Fortran Compiler</a></li>
-<li><a href="#orgheadline6">idb: Intel debugger</a></li>
-<li><a href="#orgheadline7">mkl: Intel Math Kernel Library</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#orgheadline30">编程语言</a>
-<ul>
-<li><a href="#orgheadline10">C/C++</a>
-<ul>
-<li><a href="#orgheadline9">clang</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline12">Fortran</a>
-<ul>
-<li><a href="#orgheadline11">g95</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline16">Python</a>
-<ul>
-<li><a href="#orgheadline13">Python</a></li>
-<li><a href="#orgheadline14">ActivePython</a></li>
-<li><a href="#orgheadline15">Portable Python</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline18">Shell</a>
-<ul>
-<li><a href="#orgheadline17">zsh</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline20">Pascal</a>
-<ul>
-<li><a href="#orgheadline19">Free Pascal</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline25">Functional Programming</a>
-<ul>
-<li><a href="#orgheadline21">SBCL &#x2013; Steel Bank Common Lisp</a></li>
-<li><a href="#orgheadline22">Clozure CL</a></li>
-<li><a href="#orgheadline23">CMUCL</a></li>
-<li><a href="#orgheadline24">GHC (Haskell)</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline29">D 语言</a>
-<ul>
-<li><a href="#orgheadline26">dmd</a></li>
-<li><a href="#orgheadline27">gdc</a></li>
-<li><a href="#orgheadline28">ldc</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#orgheadline34">版本控制工具</a>
-<ul>
-<li><a href="#orgheadline31">subversion</a></li>
-<li><a href="#orgheadline32">git</a></li>
-<li><a href="#orgheadline33">Mercurial</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline37">项目编译系统</a>
-<ul>
-<li><a href="#orgheadline35">GNU Make</a></li>
-<li><a href="#orgheadline36">CMake</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline41">程序开发库</a>
-<ul>
-<li><a href="#orgheadline38">qt</a></li>
-<li><a href="#orgheadline39">gtk</a></li>
-<li><a href="#orgheadline40">wxWidgets</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
+                <div id="outline-container-orgdc400cc" class="outline-3">
+                    <h3 id="orgdc400cc">Fortran</h3>
+                    <div class="outline-text-3" id="text-orgdc400cc">
+                    </div>
+                    <div id="outline-container-org27ec226" class="outline-4">
+                        <h4 id="org27ec226">g95</h4>
+                        <div class="outline-text-4" id="text-org27ec226">
+                            <ul class="org-ul">
+                                <li>URL &#x2013; <a href="http://www.g95.org/">http://www.g95.org/</a></li>
+                                <li>简介：Fortran 95/2003 编译器。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-<div id="outline-container-orgheadline8" class="outline-2">
-<h2 id="orgheadline8">编译器套件、调试工具</h2>
-<div class="outline-text-2" id="text-orgheadline8">
-</div><div id="outline-container-orgheadline1" class="outline-3">
-<h3 id="orgheadline1">GCC</h3>
-<div class="outline-text-3" id="text-orgheadline1">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://gcc.gnu.org/">http://gcc.gnu.org/</a></li>
-<li>GCC = the GNU Compiler Collection, 最流行的编程开发套，无须多言。</li>
-</ul>
-</div>
-</div>
+                <div id="outline-container-orgdb85f13" class="outline-3">
+                    <h3 id="orgdb85f13">Python</h3>
+                    <div class="outline-text-3" id="text-orgdb85f13">
+                    </div>
+                    <div id="outline-container-org4deab37" class="outline-4">
+                        <h4 id="org4deab37">Python</h4>
+                        <div class="outline-text-4" id="text-org4deab37">
+                            <ul class="org-ul">
+                                <li>URL &#x2013; <a href="http://www.python.org">http://www.python.org</a></li>
+                                <li>Python 语言的官方版本。</li>
+                            </ul>
+                        </div>
+                    </div>
 
-<div id="outline-container-orgheadline2" class="outline-3">
-<h3 id="orgheadline2">GDB</h3>
-<div class="outline-text-3" id="text-orgheadline2">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://www.gnu.org/software/gdb/">http://www.gnu.org/software/gdb/</a></li>
-<li>GDB: The GNU Project Debugger</li>
-</ul>
-</div>
-</div>
+                    <div id="outline-container-orgbe714fe" class="outline-4">
+                        <h4 id="orgbe714fe">ActivePython</h4>
+                        <div class="outline-text-4" id="text-orgbe714fe">
+                            <ul class="org-ul">
+                                <li>URL &#x2013; <a href="http://www.activestate.com/activepython/">http://www.activestate.com/activepython/</a></li>
+                                <li>由 ActiveState 公司编译打包发行的 Python 软件包。</li>
+                            </ul>
+                        </div>
+                    </div>
 
-<div id="outline-container-orgheadline3" class="outline-3">
-<h3 id="orgheadline3">Intel 编译套件</h3>
-<div class="outline-text-3" id="text-orgheadline3">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://software.intel.com/en-us/intel-compilers/">http://software.intel.com/en-us/intel-compilers/</a></li>
-</ul>
-</div>
+                    <div id="outline-container-org0620377" class="outline-4">
+                        <h4 id="org0620377">Portable Python</h4>
+                        <div class="outline-text-4" id="text-org0620377">
+                            <ul class="org-ul">
+                                <li>URL &#x2013; <a href="http://www.portablepython.com/">http://www.portablepython.com/</a></li>
+                                <li>适用于 USB 存储设备上的移动式 Python 编程环境，针对 Windows 平台。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-<div id="outline-container-orgheadline4" class="outline-4">
-<h4 id="orgheadline4">icc: Intel C++ Compiler</h4>
-</div>
-<div id="outline-container-orgheadline5" class="outline-4">
-<h4 id="orgheadline5">ifort: Intel Fortran Compiler</h4>
-</div>
-<div id="outline-container-orgheadline6" class="outline-4">
-<h4 id="orgheadline6">idb: Intel debugger</h4>
-</div>
-<div id="outline-container-orgheadline7" class="outline-4">
-<h4 id="orgheadline7">mkl: Intel Math Kernel Library</h4>
-</div>
-</div>
-</div>
+                <div id="outline-container-orgf90363d" class="outline-3">
+                    <h3 id="orgf90363d">Shell</h3>
+                    <div class="outline-text-3" id="text-orgf90363d">
+                    </div>
+                    <div id="outline-container-org31cb525" class="outline-4">
+                        <h4 id="org31cb525">zsh</h4>
+                        <div class="outline-text-4" id="text-org31cb525">
+                            <ul class="org-ul">
+                                <li>URL &#x2013; <a href="http://www.zsh.org/">http://www.zsh.org/</a></li>
+                                <li>集成了许多 bash, ksh 和 tcsh 中的特征的交互式 shell。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-<div id="outline-container-orgheadline30" class="outline-2">
-<h2 id="orgheadline30">编程语言</h2>
-<div class="outline-text-2" id="text-orgheadline30">
-</div><div id="outline-container-orgheadline10" class="outline-3">
-<h3 id="orgheadline10">C/C++</h3>
-<div class="outline-text-3" id="text-orgheadline10">
-</div><div id="outline-container-orgheadline9" class="outline-4">
-<h4 id="orgheadline9">clang</h4>
-<div class="outline-text-4" id="text-orgheadline9">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://clang.llvm.org/">http://clang.llvm.org/</a></li>
-<li>简介：使用 LLVM 作为后端的 C/C++/Objective-C/Objective-C++ 编译器。</li>
-</ul>
-</div>
-</div>
-</div>
+                <div id="outline-container-org6b5cb26" class="outline-3">
+                    <h3 id="org6b5cb26">Pascal</h3>
+                    <div class="outline-text-3" id="text-org6b5cb26">
+                    </div>
+                    <div id="outline-container-org8e47a83" class="outline-4">
+                        <h4 id="org8e47a83">Free Pascal</h4>
+                        <div class="outline-text-4" id="text-org8e47a83">
+                            <ul class="org-ul">
+                                <li>URL &#x2013; <a href="http://www.freepascal.org/">http://www.freepascal.org/</a></li>
+                                <li>Free Pascal (FPK) 是开源的 Pascal 编译器，支持 x86, PPC, ARM 及 Sparc 平台。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-<div id="outline-container-orgheadline12" class="outline-3">
-<h3 id="orgheadline12">Fortran</h3>
-<div class="outline-text-3" id="text-orgheadline12">
-</div><div id="outline-container-orgheadline11" class="outline-4">
-<h4 id="orgheadline11">g95</h4>
-<div class="outline-text-4" id="text-orgheadline11">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://www.g95.org/">http://www.g95.org/</a></li>
-<li>简介：Fortran 95/2003 编译器。</li>
-</ul>
-</div>
-</div>
-</div>
+                <div id="outline-container-org173887a" class="outline-3">
+                    <h3 id="org173887a">Functional Programming</h3>
+                    <div class="outline-text-3" id="text-org173887a">
+                    </div>
+                    <div id="outline-container-orge0b005e" class="outline-4">
+                        <h4 id="orge0b005e">SBCL &#x2013; Steel Bank Common Lisp</h4>
+                        <div class="outline-text-4" id="text-orge0b005e">
+                            <ul class="org-ul">
+                                <li>URL &#x2013; <a href="http://sbcl.sourceforge.net/">http://sbcl.sourceforge.net/</a></li>
+                                <li>简介：从 CMU CL 继承而来的 Common Lisp 开发套件。</li>
+                            </ul>
+                        </div>
+                    </div>
 
-<div id="outline-container-orgheadline16" class="outline-3">
-<h3 id="orgheadline16">Python</h3>
-<div class="outline-text-3" id="text-orgheadline16">
-</div><div id="outline-container-orgheadline13" class="outline-4">
-<h4 id="orgheadline13">Python</h4>
-<div class="outline-text-4" id="text-orgheadline13">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://www.python.org/">http://www.python.org/</a></li>
-<li>Python 语言的官方版本。</li>
-</ul>
-</div>
-</div>
+                    <div id="outline-container-org272b223" class="outline-4">
+                        <h4 id="org272b223">Clozure CL</h4>
+                        <div class="outline-text-4" id="text-org272b223">
+                            <ul class="org-ul">
+                                <li>URL &#x2013; <a href="http://www.clozure.com/clozurecl.html">http://www.clozure.com/clozurecl.html</a></li>
+                                <li>简介：继承 OpenMCL (原 Mac OS 上的 MCL) 而来的 Common Lisp 开发平台。</li>
+                            </ul>
+                        </div>
+                    </div>
 
-<div id="outline-container-orgheadline14" class="outline-4">
-<h4 id="orgheadline14">ActivePython</h4>
-<div class="outline-text-4" id="text-orgheadline14">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://www.activestate.com/activepython/">http://www.activestate.com/activepython/</a></li>
-<li>由 ActiveState 公司编译打包发行的 Python 软件包。</li>
-</ul>
-</div>
-</div>
+                    <div id="outline-container-orge24b117" class="outline-4">
+                        <h4 id="orge24b117">CMUCL</h4>
+                        <div class="outline-text-4" id="text-orge24b117">
+                            <ul class="org-ul">
+                                <li>URL &#x2013; <a href="http://www.cons.org/cmucl/">http://www.cons.org/cmucl/</a></li>
+                            </ul>
+                        </div>
+                    </div>
 
-<div id="outline-container-orgheadline15" class="outline-4">
-<h4 id="orgheadline15">Portable Python</h4>
-<div class="outline-text-4" id="text-orgheadline15">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://www.portablepython.com/">http://www.portablepython.com/</a></li>
-<li>适用于 USB 存储设备上的移动式 Python 编程环境，针对 Windows 平台。</li>
-</ul>
-</div>
-</div>
-</div>
+                    <div id="outline-container-org034c0be" class="outline-4">
+                        <h4 id="org034c0be">GHC (Haskell)</h4>
+                        <div class="outline-text-4" id="text-org034c0be">
+                            <ul class="org-ul">
+                                <li>URL &#x2013; <a href="http://www.haskell.org/">http://www.haskell.org/</a></li>
+                                <li>简介：Haskell 旗舰编译器。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-<div id="outline-container-orgheadline18" class="outline-3">
-<h3 id="orgheadline18">Shell</h3>
-<div class="outline-text-3" id="text-orgheadline18">
-</div><div id="outline-container-orgheadline17" class="outline-4">
-<h4 id="orgheadline17">zsh</h4>
-<div class="outline-text-4" id="text-orgheadline17">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://www.zsh.org/">http://www.zsh.org/</a></li>
-<li>集成了许多 bash, ksh 和 tcsh 中的特征的交互式 shell。</li>
-</ul>
-</div>
-</div>
-</div>
+                <div id="outline-container-org1fdbd0a" class="outline-3">
+                    <h3 id="org1fdbd0a">D 语言</h3>
+                    <div class="outline-text-3" id="text-org1fdbd0a">
+                    </div>
+                    <div id="outline-container-orgc8be0a1" class="outline-4">
+                        <h4 id="orgc8be0a1">dmd</h4>
+                        <div class="outline-text-4" id="text-orgc8be0a1">
+                            <ul class="org-ul">
+                                <li>URL &#x2013; <a href="http://www.digitalmars.com/d/">http://www.digitalmars.com/d/</a></li>
+                            </ul>
+                        </div>
+                    </div>
 
-<div id="outline-container-orgheadline20" class="outline-3">
-<h3 id="orgheadline20">Pascal</h3>
-<div class="outline-text-3" id="text-orgheadline20">
-</div><div id="outline-container-orgheadline19" class="outline-4">
-<h4 id="orgheadline19">Free Pascal</h4>
-<div class="outline-text-4" id="text-orgheadline19">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://www.freepascal.org/">http://www.freepascal.org/</a></li>
-<li>Free Pascal (FPK) 是开源的 Pascal 编译器，支持 x86, PPC, ARM 及 Sparc 平台。</li>
-</ul>
-</div>
-</div>
-</div>
+                    <div id="outline-container-orgc4bf162" class="outline-4">
+                        <h4 id="orgc4bf162">gdc</h4>
+                        <div class="outline-text-4" id="text-orgc4bf162">
+                            <ul class="org-ul">
+                                <li>URL &#x2013; <a href="http://dgcc.sourceforge.net/">http://dgcc.sourceforge.net/</a></li>
+                            </ul>
+                        </div>
+                    </div>
 
-<div id="outline-container-orgheadline25" class="outline-3">
-<h3 id="orgheadline25">Functional Programming</h3>
-<div class="outline-text-3" id="text-orgheadline25">
-</div><div id="outline-container-orgheadline21" class="outline-4">
-<h4 id="orgheadline21">SBCL &#x2013; Steel Bank Common Lisp</h4>
-<div class="outline-text-4" id="text-orgheadline21">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://sbcl.sourceforge.net/">http://sbcl.sourceforge.net/</a></li>
-<li>简介：从 CMU CL 继承而来的 Common Lisp 开发套件。</li>
-</ul>
-</div>
-</div>
+                    <div id="outline-container-org4588905" class="outline-4">
+                        <h4 id="org4588905">ldc</h4>
+                        <div class="outline-text-4" id="text-org4588905">
+                            <ul class="org-ul">
+                                <li>URL &#x2013; <a href="http://www.dsource.org/projects/ldc">http://www.dsource.org/projects/ldc</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-<div id="outline-container-orgheadline22" class="outline-4">
-<h4 id="orgheadline22">Clozure CL</h4>
-<div class="outline-text-4" id="text-orgheadline22">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://www.clozure.com/clozurecl.html">http://www.clozure.com/clozurecl.html</a></li>
-<li>简介：继承 OpenMCL (原 Mac OS 上的 MCL) 而来的 Common Lisp 开发平台。</li>
-</ul>
-</div>
-</div>
+            <div id="outline-container-org9b2e27d" class="outline-2">
+                <h2 id="org9b2e27d">版本控制工具</h2>
+                <div class="outline-text-2" id="text-org9b2e27d">
+                </div>
+                <div id="outline-container-org03a7e2c" class="outline-3">
+                    <h3 id="org03a7e2c">subversion</h3>
+                    <div class="outline-text-3" id="text-org03a7e2c">
+                        <ul class="org-ul">
+                            <li><a href="http://subversion.tigris.org/">http://subversion.tigris.org/</a></li>
+                            <li>备注
+                            <ul class="org-ul">
+                                <li>Windows 平台，参见 <a href="http://tortoisesvn.tigris.org/">TortoiseSVN</a></li>
+                            </ul></li>
+                        </ul>
+                    </div>
+                </div>
 
-<div id="outline-container-orgheadline23" class="outline-4">
-<h4 id="orgheadline23">CMUCL</h4>
-<div class="outline-text-4" id="text-orgheadline23">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://www.cons.org/cmucl/">http://www.cons.org/cmucl/</a></li>
-</ul>
-</div>
-</div>
+                <div id="outline-container-orgb2e9a73" class="outline-3">
+                    <h3 id="orgb2e9a73">git</h3>
+                    <div class="outline-text-3" id="text-orgb2e9a73">
+                        <ul class="org-ul">
+                            <li><a href="http://git-scm.com/">http://git-scm.com/</a></li>
+                            <li>Windows 平台
+                            <ul class="org-ul">
+                                <li>MsysGIT &#x2013; <a href="http://code.google.com/p/msysgit/">http://code.google.com/p/msysgit/</a></li>
+                                <li>TortoiseGit &#x2013; <a href="http://code.google.com/p/tortoisegit/">http://code.google.com/p/tortoisegit/</a></li>
+                            </ul></li>
+                        </ul>
+                    </div>
+                </div>
 
-<div id="outline-container-orgheadline24" class="outline-4">
-<h4 id="orgheadline24">GHC (Haskell)</h4>
-<div class="outline-text-4" id="text-orgheadline24">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://www.haskell.org/">http://www.haskell.org/</a></li>
-<li>简介：Haskell 旗舰编译器。</li>
-</ul>
-</div>
-</div>
-</div>
+                <div id="outline-container-orgdcf979f" class="outline-3">
+                    <h3 id="orgdcf979f">Mercurial</h3>
+                    <div class="outline-text-3" id="text-orgdcf979f">
+                        <ul class="org-ul">
+                            <li><a href="http://mercurial.selenic.com/">http://mercurial.selenic.com/</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
-<div id="outline-container-orgheadline29" class="outline-3">
-<h3 id="orgheadline29">D 语言</h3>
-<div class="outline-text-3" id="text-orgheadline29">
-</div><div id="outline-container-orgheadline26" class="outline-4">
-<h4 id="orgheadline26">dmd</h4>
-<div class="outline-text-4" id="text-orgheadline26">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://www.digitalmars.com/d/">http://www.digitalmars.com/d/</a></li>
-</ul>
-</div>
-</div>
+            <div id="outline-container-org3cf4529" class="outline-2">
+                <h2 id="org3cf4529">项目编译系统</h2>
+                <div class="outline-text-2" id="text-org3cf4529">
+                </div>
+                <div id="outline-container-orgd3b73ef" class="outline-3">
+                    <h3 id="orgd3b73ef">GNU Make</h3>
+                    <div class="outline-text-3" id="text-orgd3b73ef">
+                        <ul class="org-ul">
+                            <li><a href="http://www.gnu.org/software/make/">http://www.gnu.org/software/make/</a></li>
+                        </ul>
+                    </div>
+                </div>
 
-<div id="outline-container-orgheadline27" class="outline-4">
-<h4 id="orgheadline27">gdc</h4>
-<div class="outline-text-4" id="text-orgheadline27">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://dgcc.sourceforge.net/">http://dgcc.sourceforge.net/</a></li>
-</ul>
-</div>
-</div>
+                <div id="outline-container-org520c64a" class="outline-3">
+                    <h3 id="org520c64a">CMake</h3>
+                    <div class="outline-text-3" id="text-org520c64a">
+                        <ul class="org-ul">
+                            <li><a href="http://cmake.org/">http://cmake.org/</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
-<div id="outline-container-orgheadline28" class="outline-4">
-<h4 id="orgheadline28">ldc</h4>
-<div class="outline-text-4" id="text-orgheadline28">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://www.dsource.org/projects/ldc">http://www.dsource.org/projects/ldc</a></li>
-</ul>
-</div>
-</div>
-</div>
-</div>
+            <div id="outline-container-orgc588309" class="outline-2">
+                <h2 id="orgc588309">程序开发库</h2>
+                <div class="outline-text-2" id="text-orgc588309">
+                </div>
+                <div id="outline-container-org557e311" class="outline-3">
+                    <h3 id="org557e311">qt</h3>
+                </div>
 
-<div id="outline-container-orgheadline34" class="outline-2">
-<h2 id="orgheadline34">版本控制工具</h2>
-<div class="outline-text-2" id="text-orgheadline34">
-</div><div id="outline-container-orgheadline31" class="outline-3">
-<h3 id="orgheadline31">subversion</h3>
-<div class="outline-text-3" id="text-orgheadline31">
-<ul class="org-ul">
-<li><a href="http://subversion.tigris.org/">http://subversion.tigris.org/</a></li>
-<li>备注
-<ul class="org-ul">
-<li>Windows 平台，参见 <a href="http://tortoisesvn.tigris.org/">TortoiseSVN</a></li>
-</ul></li>
-</ul>
-</div>
-</div>
+                <div id="outline-container-orga343f87" class="outline-3">
+                    <h3 id="orga343f87">gtk</h3>
+                </div>
 
-<div id="outline-container-orgheadline32" class="outline-3">
-<h3 id="orgheadline32">git</h3>
-<div class="outline-text-3" id="text-orgheadline32">
-<ul class="org-ul">
-<li><a href="http://git-scm.com/">http://git-scm.com/</a></li>
-<li>Windows 平台
-<ul class="org-ul">
-<li>MsysGIT &#x2013; <a href="http://code.google.com/p/msysgit/">http://code.google.com/p/msysgit/</a></li>
-<li>TortoiseGit &#x2013; <a href="http://code.google.com/p/tortoisegit/">http://code.google.com/p/tortoisegit/</a></li>
-</ul></li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-orgheadline33" class="outline-3">
-<h3 id="orgheadline33">Mercurial</h3>
-<div class="outline-text-3" id="text-orgheadline33">
-<ul class="org-ul">
-<li><a href="http://mercurial.selenic.com/">http://mercurial.selenic.com/</a></li>
-</ul>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgheadline37" class="outline-2">
-<h2 id="orgheadline37">项目编译系统</h2>
-<div class="outline-text-2" id="text-orgheadline37">
-</div><div id="outline-container-orgheadline35" class="outline-3">
-<h3 id="orgheadline35">GNU Make</h3>
-<div class="outline-text-3" id="text-orgheadline35">
-<ul class="org-ul">
-<li><a href="http://www.gnu.org/software/make/">http://www.gnu.org/software/make/</a></li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-orgheadline36" class="outline-3">
-<h3 id="orgheadline36">CMake</h3>
-<div class="outline-text-3" id="text-orgheadline36">
-<ul class="org-ul">
-<li><a href="http://cmake.org/">http://cmake.org/</a></li>
-</ul>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgheadline41" class="outline-2">
-<h2 id="orgheadline41">程序开发库</h2>
-<div class="outline-text-2" id="text-orgheadline41">
-</div><div id="outline-container-orgheadline38" class="outline-3">
-<h3 id="orgheadline38">qt</h3>
-</div>
-
-<div id="outline-container-orgheadline39" class="outline-3">
-<h3 id="orgheadline39">gtk</h3>
-</div>
-
-<div id="outline-container-orgheadline40" class="outline-3">
-<h3 id="orgheadline40">wxWidgets</h3>
-</div>
-</div>
-</div>
-<div id="postamble" class="status">
-
-<script type="text/javascript" src="http://exaos.github.io/assets/js/pagetail.js"></script>
-<div id="disqus_thread"></div>
-<p>版权所有 ©2015: Exaos Lee | Date: <span class="timestamp-wrapper"><span class="timestamp">[2011-10-14 五]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.3.2), <a href="http://validator.w3.org/check?uri=referer">Validate</a>,
-<a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="88x31.png"/></a>
-<p><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></p>
-</div>
-</body>
+                <div id="outline-container-orgd5b347b" class="outline-3">
+                    <h3 id="orgd5b347b">wxWidgets</h3>
+                </div>
+            </div>
+        </div>
+        <div id="postamble" class="status">
+            <p><a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="88x31.png"/></a></p><p>版权所有 ©2012-2018: Vivodo Lio | 日期: 2011-10-14 五 00:00</p><p>Generated by <a href="https://www.gnu.org/software/emacs/">Emacs</a> 25.3.1 (<a href="https://orgmode.org">Org</a> mode 9.1.7), <a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+        </div>
+    </body>
 </html>

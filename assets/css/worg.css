@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Droid+Sans|Droid+Sans+Mono|Droid+Serif);
+/* @import url(http://fonts.googleapis.com/css?family=Droid+Sans|Droid+Sans+Mono|Droid+Serif); */
 
 @media all
 {
@@ -6,7 +6,7 @@
 	margin: 0;
 	font: 300 .9em/1.6em "Droid Serif", Cambria, Georgia, "DejaVu Serif", "&#x5FAE;&#x8F6F;&#x96C5;&#x9ED1;", "&#x5B8B;&#x4F53;", serif;
         /* background-image: url(http://orgmode.org/img/org-mode-unicorn-logo-worg.png); */
-        background-image: url(http://exaos.github.io/images/exaos-logo-80px.png);
+        /* background-image: url(http://exaos.github.io/images/exaos-logo-80px.png); */
 	background-attachment: fixed;
 	background-position: right bottom;
 	background-repeat: no-repeat;
@@ -18,34 +18,39 @@
 	line-height: 18pt;
 	color: black;
 	margin-top: 0;
-
     }
+
     body #content {
-	padding-top: 0px;
+	padding-top: 50px;
 	max-width: 80%;
 	min-width: 700px;
-	margin-left: 20px;
+	margin-left: 1em;
 	background-color: white;
 	padding: 2em;
 	/* box-shadow: 3px 3px 5px #888; */
     }
+
     body .title {
 	margin-left: 0px;
 	font-size: 22pt;
     }
 
     #org-div-home-and-up{
-	position: fixed;
-	right: 0;
-	top: 4em;
+	/* position: absolute; */
+        float: left;
+        width: 40em;
+	/* right: 0; */
+        /* left: 4em; */
+	top: 0;
     }
 
     /* TOC inspired by http://jashkenas.github.com/coffee-script */
     #table-of-contents {
 	font-size: 10pt;
-	position: fixed;
+        float: right;
+	/* position: fixed; */
 	right: 0em;
-	top: 0em;
+	top: -1em;
 	background: white;
 	line-height: 12pt;
 	text-align: right;
@@ -75,9 +80,9 @@
 	margin-top: -1.5em; }
 
     #license {
-      /* padding: .3em; */
-      /* border: 1px solid gray; */
-      background-color: #eeeeee;
+        /* padding: .3em; */
+        /* border: 1px solid gray; */
+        background-color: #eeeeee;
     }
 
     h1 {
@@ -105,7 +110,7 @@
     h4:before {
         content: "*** "
     }
-    */
+   */
 
     h2 {
 	font-family: "&#x5FAE;&#x8F6F;&#x96C5;&#x9ED1;",sans-serif;
@@ -129,6 +134,10 @@
 
     /* #A34D32;*/
 
+    /* text line */
+    p {
+        text-indent: 2em;
+    }
 
     .outline-text-3 {
 	margin-left: 0.9em;
@@ -162,7 +171,6 @@
     }
 
     .tag {
-
     }
 
     li {
@@ -243,9 +251,9 @@
 	margin-left:auto;
 	margin-right:auto;
 	padding:0.7em;
-    /* border:1px solid #CCC; */
-    /* border-radius:10px; */
-    /* -moz-border-radius:10px; */
+        /* border:1px solid #CCC; */
+        /* border-radius:10px; */
+        /* -moz-border-radius:10px; */
     }
     .org-info-box img {
 	float:left;
@@ -354,8 +362,6 @@
 	padding-bottom:10px;
 	margin-bottom:10px;
     }
-
-
 
     .org-info-search-highlight
     {
@@ -832,8 +838,7 @@
 	color: #bc8f8f;
     }
     .outline-text-1, .outline-text-2, .outline-text-3, .outline-text-4, .outline-text-5, .outline-text-6 {
-    /* Add more spacing between section. Padding, so that folding with org-info.js works as expected. */
-
+        /* Add more spacing between section. Padding, so that folding with org-info.js works as expected. */
     }
 
     .org-preprocessor {
@@ -944,9 +949,7 @@
 	z-index: -1000;
     }
 
-
 } /* END OF @media all */
-
 
 
 @media screen

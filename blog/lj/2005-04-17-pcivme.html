@@ -1,288 +1,215 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
-<head>
-<!-- 2015-12-03 四 15:24 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>PCIVME 在 Linux 下的驱动安装</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="心蛛" />
-<meta  name="description" content="Level-2 for exporting to HTML"
- />
-<link rel="stylesheet" title="Standard" href="../../assets/css/worg.css" type="text/css" />
-<link rel="alternate stylesheet" title="Zenburn" href="../../assets/css/worg-zenburn.css" type="text/css" />
-<link rel="alternate stylesheet" title="Classic" href="../../assets/css/worg-classic.css" type="text/css" />
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh">
+    <head>
+        <!-- 2018-03-11 日 21:59 -->
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>PCIVME 在 Linux 下的驱动安装</title>
+        <meta name="generator" content="Org mode" />
+        <meta name="author" content="心蛛" />
+        <meta name="description" content="Level-2 for exporting to HTML"
+              />
+        <link rel="stylesheet" title="Standard" href="../../assets/css/worg.css" type="text/css" />
+        <link rel="alternate stylesheet" title="Zenburn" href="../../assets/css/worg-zenburn.css" type="text/css" />
+        <link rel="alternate stylesheet" title="Classic" href="../../assets/css/worg-classic.css" type="text/css" />
+        <script type="text/javascript">
+            /*
+            @licstart  The following is the entire license notice for the
+            JavaScript code in this tag.
 
-<script type="text/javascript" src="http://orgmode.org/org-info.js">
-/**
- *
- * @source: http://orgmode.org/org-info.js
- *
- * @licstart  The following is the entire license notice for the
- *  JavaScript code in http://orgmode.org/org-info.js.
- *
- * Copyright (C) 2012-2013 Free Software Foundation, Inc.
- *
- *
- * The JavaScript code in this tag is free software: you can
- * redistribute it and/or modify it under the terms of the GNU
- * General Public License (GNU GPL) as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option)
- * any later version.  The code is distributed WITHOUT ANY WARRANTY;
- * without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
- *
- * As additional permission under GNU GPL version 3 section 7, you
- * may distribute non-source (e.g., minimized or compacted) forms of
- * that code without the copy of the GNU GPL normally required by
- * section 4, provided you include this license notice and a URL
- * through which recipients can access the Corresponding Source.
- *
- * @licend  The above is the entire license notice
- * for the JavaScript code in http://orgmode.org/org-info.js.
- *
- */
-</script>
+            Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
-<script type="text/javascript">
+            The JavaScript code in this tag is free software: you can
+            redistribute it and/or modify it under the terms of the GNU
+            General Public License (GNU GPL) as published by the Free Software
+            Foundation, either version 3 of the License, or (at your option)
+            any later version.  The code is distributed WITHOUT ANY WARRANTY;
+            without even the implied warranty of MERCHANTABILITY or FITNESS
+            FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
 
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
+            As additional permission under GNU GPL version 3 section 7, you
+            may distribute non-source (e.g., minimized or compacted) forms of
+            that code without the copy of the GNU GPL normally required by
+            section 4, provided you include this license notice and a URL
+            through which recipients can access the Corresponding Source.
 
 
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+            @licend  The above is the entire license notice
+            for the JavaScript code in this tag.
+            */
+            <!--/*--><![CDATA[/*><!--*/
+            function CodeHighlightOn(elem, id)
+            {
+            var target = document.getElementById(id);
+            if(null != target) {
+            elem.cacheClassElem = elem.className;
+            elem.cacheClassTarget = target.className;
+            target.className = "code-highlighted";
+            elem.className   = "code-highlighted";
+            }
+            }
+            function CodeHighlightOff(elem, id)
+            {
+            var target = document.getElementById(id);
+            if(elem.cacheClassElem)
+            elem.className = elem.cacheClassElem;
+            if(elem.cacheClassTarget)
+            target.className = elem.cacheClassTarget;
+            }
+            /*]]>*///-->
+        </script>
+    </head>
+    <body>
+        <div id="org-div-home-and-up">
+            <a accesskey="h" href="../index.html"> UP </a>
+            |
+            <a accesskey="H" href="../../index.html"> HOME </a>
+            </div><div id="content">
+            <h1 class="title">PCIVME 在 Linux 下的驱动安装</h1>
+            <div id="table-of-contents">
+                <h2>Table of Contents</h2>
+                <div id="text-table-of-contents">
+                    <ul>
+                        <li><a href="#org865bda8">兼容性</a></li>
+                        <li><a href="#orgdd91ac4">功能</a></li>
+                        <li><a href="#org471bffe">驱动程序的安装</a></li>
+                        <li><a href="#orgd900b45">安装共享库</a></li>
+                        <li><a href="#org5c3cd1a">检查安装结果</a></li>
+                        <li><a href="#org9865583">检查安装结果 2</a></li>
+                    </ul>
+                </div>
+            </div>
+            <p>
+                根据 ARW Elektronik, Germany 的 <a href="mailto:klaus.hitschler@gmx.de">Klaus Histchler</a> 所提供的 pcivme 驱动程序
+                (2004.08.13) 所配置。配置过程参照 ARW Elektronik, Germany 所提供的文档。
+            </p>
 
-<!--/*--><![CDATA[/*><!--*/
-org_html_manager.set("TOC_DEPTH", "4");
-org_html_manager.set("LINK_HOME", "../../index.html");
-org_html_manager.set("LINK_UP", "../index.html");
-org_html_manager.set("LOCAL_TOC", "1");
-org_html_manager.set("VIEW_BUTTONS", "0");
-org_html_manager.set("MOUSE_HINT", "underline");
-org_html_manager.set("FIXED_TOC", "0");
-org_html_manager.set("TOC", "0");
-org_html_manager.set("VIEW", "content");
-org_html_manager.setup();  // activate after the parameters are set
-/*]]>*///-->
-</script>
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
+            <p>
+                <code>pcivme-3.1.tar.gz</code> 驱动程序包中包含有这样几个文件：
+            </p>
+            <ul class="org-ul">
+                <li>Makefile &#x2013; 全局的 Makefile，用于编译驱动程序、库及测试程序。</li>
+                <li>doc &#x2013; 目录，存放一些文档及模板。</li>
+                <li>driver &#x2013; 目录，驱动源代码及安装脚本。其中 pcivme.h 是驱动程序的接口代码的头文件，而 pcivme_load 则是安装脚本（bash）。</li>
+                <li>lib &#x2013; 目录，存放着共享库的源代码。其中 pcivme_ni.h 是库接口代码的头文件。</li>
+                <li>pvmon &#x2013; 一个小的测试程序。</li>
+                <li>test &#x2013; 另一个小测试程序。</li>
+            </ul>
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+            <div id="outline-container-org865bda8" class="outline-2">
+                <h2 id="org865bda8">兼容性</h2>
+                <div class="outline-text-2" id="text-org865bda8">
+                    <p>
+                        已经测试过的平台：
+                    </p>
+                    <ul class="org-ul">
+                        <li>kernel 2.4.18 (SuSE 8.0)</li>
+                        <li>kernel 2.2.19 (SuSE 7.3)</li>
+                        <li>RedHat Linux 7.2</li>
+                        <li>kernel 2.6.5 (SuSE 9.1)</li>
+                    </ul>
 
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+                    <p>
+                        源代码与特定的 x86 硬件特征无关，应该能够在其它平台上编译。但还没有经过测试。在驱动程序目录下可以指定内核路径进行基本的交叉编译，比如：
+                    </p>
+                    <pre class="example">
+                        make KERNEL_LOCATION=&lt;你内核的位置&gt;
 
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
+                    </pre>
+                </div>
+            </div>
 
+            <div id="outline-container-orgdd91ac4" class="outline-2">
+                <h2 id="orgdd91ac4">功能</h2>
+                <div class="outline-text-2" id="text-orgdd91ac4">
+                    <p>
+                        驱动程序和共享库提供访问 PCIVME 接口的函数，利用接口函数的这些特性可以捕获 VME
+                        的中断。一些高速访问功能，比如 <code>autoread</code> 需要硬件上支持，……
+                    </p>
+                </div>
+            </div>
 
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
-</head>
-<body>
-<div id="org-div-home-and-up">
- <a accesskey="h" href="../index.html"> UP </a>
- |
- <a accesskey="H" href="../../index.html"> HOME </a>
-</div><div id="content">
-<h1 class="title">PCIVME 在 Linux 下的驱动安装</h1>
-<div id="table-of-contents">
-<h2>&#30446;&#24405;</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#orgheadline1">兼容性</a></li>
-<li><a href="#orgheadline2">功能</a></li>
-<li><a href="#orgheadline3">驱动程序的安装</a></li>
-<li><a href="#orgheadline4">安装共享库</a></li>
-<li><a href="#orgheadline5">检查安装结果</a></li>
-<li><a href="#orgheadline6">检查安装结果 2</a></li>
-</ul>
-</div>
-</div>
-<p>
-根据 ARW Elektronik, Germany 的 <a href="mailto:klaus.hitschler@gmx.de">Klaus Histchler</a> 所提供的 pcivme 驱动程序
-(2004.08.13) 所配置。配置过程参照 ARW Elektronik, Germany 所提供的文档。
-</p>
+            <div id="outline-container-org471bffe" class="outline-2">
+                <h2 id="org471bffe">驱动程序的安装</h2>
+                <div class="outline-text-2" id="text-org471bffe">
+                    <p>
+                        利用 root 用户来安装驱动程序。在安装目录下有一个 bash 脚本 <code>pcivme_load</code>, 调用此脚本来安装 VMEMM 模块。比如你的模块设置为 #1 （见跳线 J301&#x2026;J304），则可以这样执行
+                    </p>
+                    <pre class="example">
+                        # ./pcivme_load 1
 
-<p>
-<code>pcivme-3.1.tar.gz</code> 驱动程序包中包含有这样几个文件：
-</p>
-<ul class="org-ul">
-<li>Makefile &#x2013; 全局的 Makefile，用于编译驱动程序、库及测试程序。</li>
-<li>doc &#x2013; 目录，存放一些文档及模板。</li>
-<li>driver &#x2013; 目录，驱动源代码及安装脚本。其中 pcivme.h 是驱动程序的接口代码的头文件，而 pcivme_load 则是安装脚本（bash）。</li>
-<li>lib &#x2013; 目录，存放着共享库的源代码。其中 pcivme_ni.h 是库接口代码的头文件。</li>
-<li>pvmon &#x2013; 一个小的测试程序。</li>
-<li>test &#x2013; 另一个小测试程序。</li>
-</ul>
+                    </pre>
+                    <p>
+                        此命令安装驱动模块并创建设备节点 <code>/dev/vmemm_1</code>. 此处的 1 应该是出厂设置的模块号。如果你想卸载此模块，则可执行命令
+                    </p>
+                    <pre class="example">
+                        rmmod pcivme
 
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1">兼容性</h2>
-<div class="outline-text-2" id="text-orgheadline1">
-<p>
-已经测试过的平台：
-</p>
-<ul class="org-ul">
-<li>kernel 2.4.18 (SuSE 8.0)</li>
-<li>kernel 2.2.19 (SuSE 7.3)</li>
-<li>RedHat Linux 7.2</li>
-<li>kernel 2.6.5 (SuSE 9.1)</li>
-</ul>
+                    </pre>
+                </div>
+            </div>
 
-<p>
-源代码与特定的 x86 硬件特征无关，应该能够在其它平台上编译。但还没有经过测试。在驱动程序目录下可以指定内核路径进行基本的交叉编译，比如：
-</p>
-<pre class="example">
-make KERNEL_LOCATION=&lt;你内核的位置&gt;
-</pre>
-</div>
-</div>
+            <div id="outline-container-orgd900b45" class="outline-2">
+                <h2 id="orgd900b45">安装共享库</h2>
+                <div class="outline-text-2" id="text-orgd900b45">
+                    <p>
+                        共享库 <code>libpcivme.so</code> 提供访问 VME 总线的底层函数接口。你可以在文件
+                        <code>libpcivme.h</code> 中发现这些函数的原型。将文件 <code>libpcivme.so.x.x.x</code> 拷贝到你的
+                        <code>/usr/lib</code> 目录下，然后到 <code>/usr/lib</code> 下做两个符号链接：
+                    </p>
+                    <pre class="example">
+                        ln -sf libpcivme.so.x.x.x libpcivme.so.1
+                        ln -sf libpcivme.so.1 libpcivme.so
 
-<div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2">功能</h2>
-<div class="outline-text-2" id="text-orgheadline2">
-<p>
-驱动程序和共享库提供访问 PCIVME 接口的函数，利用接口函数的这些特性可以捕获 VME
-的中断。一些高速访问功能，比如 <code>autoread</code> 需要硬件上支持，……
-</p>
-</div>
-</div>
+                    </pre>
+                    <p>
+                        你可以到 lib 目录下执行 <code>make install</code> 来完成上述操作。但你必须要有 root 权限。
+                    </p>
+                </div>
+            </div>
 
-<div id="outline-container-orgheadline3" class="outline-2">
-<h2 id="orgheadline3">驱动程序的安装</h2>
-<div class="outline-text-2" id="text-orgheadline3">
-<p>
-利用 root 用户来安装驱动程序。在安装目录下有一个 bash 脚本 <code>pcivme_load</code>, 调用此脚本来安装 VMEMM 模块。比如你的模块设置为 #1 （见跳线 J301&#x2026;J304），则可以这样执行
-</p>
-<pre class="example">
-# ./pcivme_load 1
-</pre>
-<p>
-此命令安装驱动模块并创建设备节点 <code>/dev/vmemm_1</code>. 此处的 1 应该是出厂设置的模块号。如果你想卸载此模块，则可执行命令
-</p>
-<pre class="example">
-rmmod pcivme
-</pre>
-</div>
-</div>
-
-<div id="outline-container-orgheadline4" class="outline-2">
-<h2 id="orgheadline4">安装共享库</h2>
-<div class="outline-text-2" id="text-orgheadline4">
-<p>
-共享库 <code>libpcivme.so</code> 提供访问 VME 总线的底层函数接口。你可以在文件
-<code>libpcivme.h</code> 中发现这些函数的原型。将文件 <code>libpcivme.so.x.x.x</code> 拷贝到你的
-<code>/usr/lib</code> 目录下，然后到 <code>/usr/lib</code> 下做两个符号链接：
-</p>
-<pre class="example">
-ln -sf libpcivme.so.x.x.x libpcivme.so.1
-ln -sf libpcivme.so.1 libpcivme.so
-</pre>
-<p>
-你可以到 lib 目录下执行 <code>make install</code> 来完成上述操作。但你必须要有 root 权限。
-</p>
-</div>
-</div>
-
-<div id="outline-container-orgheadline5" class="outline-2">
-<h2 id="orgheadline5">检查安装结果</h2>
-<div class="outline-text-2" id="text-orgheadline5">
-<p>
-在 <code>test</code> 目录下执行命令 <code>simpleTest</code>. 可以用参数 <code>-?</code> 来查看调用的方法。可以用
-<code>Ctrl-C</code> 来终止程序。
-</p>
-</div>
-</div>
+            <div id="outline-container-org5c3cd1a" class="outline-2">
+                <h2 id="org5c3cd1a">检查安装结果</h2>
+                <div class="outline-text-2" id="text-org5c3cd1a">
+                    <p>
+                        在 <code>test</code> 目录下执行命令 <code>simpleTest</code>. 可以用参数 <code>-?</code> 来查看调用的方法。可以用
+                        <code>Ctrl-C</code> 来终止程序。
+                    </p>
+                </div>
+            </div>
 
 
-<div id="outline-container-orgheadline6" class="outline-2">
-<h2 id="orgheadline6">检查安装结果 2</h2>
-<div class="outline-text-2" id="text-orgheadline6">
-<p>
-执行命令 <code>cat /proc/pcivme</code> 的结果：
-</p>
-<pre class="example">
-PCIVME information. Version 3.0 of Mar 14 2005 from Klaus Hitschler.
----------------------
-Interfaces found : 1
-Major Number : 254
---- 1 ---------------
-LCR phys/virt/size : 0xdfafcf00/0xe01fef00/128
-Control phys/virt/size : 0xdfafe000/0xe0428000/4096
-VME phys/virt/size : 0xdfaff000/0xe0432000/4096
-Irq : 5
-VMEMM is or was : (software) connected.
-Module-Number : 1
-FPGA-Version : 1
-Systemcontroller : yes
-Word Mode : no
-IrqCount : 0
-Pending IrqStatus : none
-</pre>
-</div>
-</div>
-</div>
-<div id="postamble" class="status">
-
-<script type="text/javascript" src="http://exaos.github.io/assets/js/pagetail.js"></script>
-<div id="disqus_thread"></div>
-<p>版权所有 ©2015: 心蛛 | Date: <span class="timestamp-wrapper"><span class="timestamp">[2005-04-17 日 03:22]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.3.2), <a href="http://validator.w3.org/check?uri=referer">Validate</a>,
-<a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="88x31.png"/></a>
-<p><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></p>
-</div>
-</body>
+            <div id="outline-container-org9865583" class="outline-2">
+                <h2 id="org9865583">检查安装结果 2</h2>
+                <div class="outline-text-2" id="text-org9865583">
+                    <p>
+                        执行命令 <code>cat /proc/pcivme</code> 的结果：
+                    </p>
+                    <pre class="example">
+                        PCIVME information. Version 3.0 of Mar 14 2005 from Klaus Hitschler.
+                        ---------------------
+                        Interfaces found : 1
+                        Major Number : 254
+                        --- 1 ---------------
+                        LCR phys/virt/size : 0xdfafcf00/0xe01fef00/128
+                        Control phys/virt/size : 0xdfafe000/0xe0428000/4096
+                        VME phys/virt/size : 0xdfaff000/0xe0432000/4096
+                        Irq : 5
+                        VMEMM is or was : (software) connected.
+                        Module-Number : 1
+                        FPGA-Version : 1
+                        Systemcontroller : yes
+                        Word Mode : no
+                        IrqCount : 0
+                        Pending IrqStatus : none
+                    </pre>
+                </div>
+            </div>
+        </div>
+        <div id="postamble" class="status">
+            <p><a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="88x31.png"/></a></p><p>版权所有 ©2012-2018: 心蛛 | 日期: 2005-04-17 日 03:22</p><p>Generated by <a href="https://www.gnu.org/software/emacs/">Emacs</a> 25.3.1 (<a href="https://orgmode.org">Org</a> mode 9.1.7), <a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+        </div>
+    </body>
 </html>

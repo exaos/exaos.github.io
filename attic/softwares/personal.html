@@ -1,357 +1,281 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
-<head>
-<!-- 2015-12-03 四 15:24 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>个人事务处理类软件</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Exaos Lee" />
-<meta  name="description" content="Level-2 for exporting to HTML"
- />
-<link rel="stylesheet" title="Standard" href="../../assets/css/worg.css" type="text/css" />
-<link rel="alternate stylesheet" title="Zenburn" href="../../assets/css/worg-zenburn.css" type="text/css" />
-<link rel="alternate stylesheet" title="Classic" href="../../assets/css/worg-classic.css" type="text/css" />
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh">
+    <head>
+        <!-- 2018-03-11 日 21:58 -->
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>个人事务处理类软件</title>
+        <meta name="generator" content="Org mode" />
+        <meta name="author" content="Vivodo Lio" />
+        <meta name="description" content="Level-2 for exporting to HTML"
+              />
+        <link rel="stylesheet" title="Standard" href="../../assets/css/worg.css" type="text/css" />
+        <link rel="alternate stylesheet" title="Zenburn" href="../../assets/css/worg-zenburn.css" type="text/css" />
+        <link rel="alternate stylesheet" title="Classic" href="../../assets/css/worg-classic.css" type="text/css" />
+        <script type="text/javascript">
+            /*
+            @licstart  The following is the entire license notice for the
+            JavaScript code in this tag.
 
-<script type="text/javascript" src="http://orgmode.org/org-info.js">
-/**
- *
- * @source: http://orgmode.org/org-info.js
- *
- * @licstart  The following is the entire license notice for the
- *  JavaScript code in http://orgmode.org/org-info.js.
- *
- * Copyright (C) 2012-2013 Free Software Foundation, Inc.
- *
- *
- * The JavaScript code in this tag is free software: you can
- * redistribute it and/or modify it under the terms of the GNU
- * General Public License (GNU GPL) as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option)
- * any later version.  The code is distributed WITHOUT ANY WARRANTY;
- * without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
- *
- * As additional permission under GNU GPL version 3 section 7, you
- * may distribute non-source (e.g., minimized or compacted) forms of
- * that code without the copy of the GNU GPL normally required by
- * section 4, provided you include this license notice and a URL
- * through which recipients can access the Corresponding Source.
- *
- * @licend  The above is the entire license notice
- * for the JavaScript code in http://orgmode.org/org-info.js.
- *
- */
-</script>
+            Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
-<script type="text/javascript">
+            The JavaScript code in this tag is free software: you can
+            redistribute it and/or modify it under the terms of the GNU
+            General Public License (GNU GPL) as published by the Free Software
+            Foundation, either version 3 of the License, or (at your option)
+            any later version.  The code is distributed WITHOUT ANY WARRANTY;
+            without even the implied warranty of MERCHANTABILITY or FITNESS
+            FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
 
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
+            As additional permission under GNU GPL version 3 section 7, you
+            may distribute non-source (e.g., minimized or compacted) forms of
+            that code without the copy of the GNU GPL normally required by
+            section 4, provided you include this license notice and a URL
+            through which recipients can access the Corresponding Source.
 
 
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+            @licend  The above is the entire license notice
+            for the JavaScript code in this tag.
+            */
+            <!--/*--><![CDATA[/*><!--*/
+            function CodeHighlightOn(elem, id)
+            {
+            var target = document.getElementById(id);
+            if(null != target) {
+            elem.cacheClassElem = elem.className;
+            elem.cacheClassTarget = target.className;
+            target.className = "code-highlighted";
+            elem.className   = "code-highlighted";
+            }
+            }
+            function CodeHighlightOff(elem, id)
+            {
+            var target = document.getElementById(id);
+            if(elem.cacheClassElem)
+            elem.className = elem.cacheClassElem;
+            if(elem.cacheClassTarget)
+            target.className = elem.cacheClassTarget;
+            }
+            /*]]>*///-->
+        </script>
+    </head>
+    <body>
+        <div id="org-div-home-and-up">
+            <a accesskey="h" href="index.html"> UP </a>
+            |
+            <a accesskey="H" href="../../index.html"> HOME </a>
+            </div><div id="content">
+            <h1 class="title">个人事务处理类软件</h1>
+            <div id="table-of-contents">
+                <h2>Table of Contents</h2>
+                <div id="text-table-of-contents">
+                    <ul>
+                        <li><a href="#org62f59f1">日历及任务管理</a>
+                        <ul>
+                            <li><a href="#orge7d2f81">Osmo</a></li>
+                            <li><a href="#orgca9b05d">Task Coach</a></li>
+                        </ul>
+                        </li>
+                        <li><a href="#org6c8f417">联系人</a>
+                        <ul>
+                            <li><a href="#orgff84b00">Apple Contacts</a></li>
+                            <li><a href="#org2891bd6">ThunderBird Addressbook</a></li>
+                        </ul>
+                        </li>
+                        <li><a href="#org33f8e19">辅助思考或头脑风暴</a>
+                        <ul>
+                            <li><a href="#org9fe86ad">Xmind</a></li>
+                            <li><a href="#orgd21dc3d">PersonalBrain</a></li>
+                            <li><a href="#org8003bd9">FreeMind</a></li>
+                            <li><a href="#org8324d8f">vym - View Your Mind</a></li>
+                            <li><a href="#org0ab01ea">MindManager</a></li>
+                        </ul>
+                        </li>
+                        <li><a href="#orgdd4097a">GTD (Get-Things-Done)</a>
+                        <ul>
+                            <li><a href="#org954f63f">Emacs + org-mode</a></li>
+                            <li><a href="#orgbf866c4">Thinking Rock</a></li>
+                            <li><a href="#orgb8c899b">MyLifeOrganized</a></li>
+                            <li><a href="#org263fe0f">Chandler</a></li>
+                        </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
-<!--/*--><![CDATA[/*><!--*/
-org_html_manager.set("TOC_DEPTH", "4");
-org_html_manager.set("LINK_HOME", "../../index.html");
-org_html_manager.set("LINK_UP", "index.html");
-org_html_manager.set("LOCAL_TOC", "1");
-org_html_manager.set("VIEW_BUTTONS", "0");
-org_html_manager.set("MOUSE_HINT", "underline");
-org_html_manager.set("FIXED_TOC", "0");
-org_html_manager.set("TOC", "0");
-org_html_manager.set("VIEW", "content");
-org_html_manager.setup();  // activate after the parameters are set
-/*]]>*///-->
-</script>
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
+            <div id="outline-container-org62f59f1" class="outline-2">
+                <h2 id="org62f59f1">日历及任务管理</h2>
+                <div class="outline-text-2" id="text-org62f59f1">
+                    <p>
+                        一般使用系统自带或程序中附加的日历程序，比如 Emacs 中的 calender 插件。
+                    </p>
+                </div>
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+                <div id="outline-container-orge7d2f81" class="outline-3">
+                    <h3 id="orge7d2f81">Osmo</h3>
+                    <div class="outline-text-3" id="text-orge7d2f81">
+                        <ul class="org-ul">
+                            <li>URL &#x2013; <a href="http://clayo.org/osmo">http://clayo.org/osmo</a></li>
+                            <li>使用 GTK+ 界面，用 XML 作为数据存储格式。</li>
+                        </ul>
+                    </div>
+                </div>
 
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+                <div id="outline-container-orgca9b05d" class="outline-3">
+                    <h3 id="orgca9b05d">Task Coach</h3>
+                    <div class="outline-text-3" id="text-orgca9b05d">
+                        <ul class="org-ul">
+                            <li>URL &#x2013; <a href="http://www.taskcoach.org/">http://www.taskcoach.org/</a></li>
+                            <li>简介：简洁的任务管理器。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
+            <div id="outline-container-org6c8f417" class="outline-2">
+                <h2 id="org6c8f417">联系人</h2>
+                <div class="outline-text-2" id="text-org6c8f417">
+                </div>
+                <div id="outline-container-orgff84b00" class="outline-3">
+                    <h3 id="orgff84b00">Apple Contacts</h3>
+                    <div class="outline-text-3" id="text-orgff84b00">
+                        <p>
+                            Mac OS X 中自带的联系人管理程序。
+                        </p>
+                    </div>
+                </div>
 
+                <div id="outline-container-org2891bd6" class="outline-3">
+                    <h3 id="org2891bd6">ThunderBird Addressbook</h3>
+                    <div class="outline-text-3" id="text-org2891bd6">
+                        <p>
+                            ThunderBird 中自带的地址簿管理程序。
+                        </p>
+                    </div>
+                </div>
+            </div>
 
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
-</head>
-<body>
-<div id="org-div-home-and-up">
- <a accesskey="h" href="index.html"> UP </a>
- |
- <a accesskey="H" href="../../index.html"> HOME </a>
-</div><div id="content">
-<h1 class="title">个人事务处理类软件</h1>
-<div id="table-of-contents">
-<h2>&#30446;&#24405;</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#orgheadline1">日历及任务管理</a>
-<ul>
-<li><a href="#orgheadline2">Osmo</a></li>
-<li><a href="#orgheadline3">Task Coach</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline6">联系人</a>
-<ul>
-<li><a href="#orgheadline4">Apple Contacts</a></li>
-<li><a href="#orgheadline5">ThunderBird Addressbook</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline7">辅助思考或头脑风暴</a>
-<ul>
-<li><a href="#orgheadline8">Xmind</a></li>
-<li><a href="#orgheadline9">PersonalBrain</a></li>
-<li><a href="#orgheadline10">FreeMind</a></li>
-<li><a href="#orgheadline11">vym - View Your Mind</a></li>
-<li><a href="#orgheadline12">MindManager</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline13">GTD (Get-Things-Done)</a>
-<ul>
-<li><a href="#orgheadline14">Emacs + org-mode</a></li>
-<li><a href="#orgheadline15">Thinking Rock</a></li>
-<li><a href="#orgheadline16">MyLifeOrganized</a></li>
-<li><a href="#orgheadline17">Chandler</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
+            <div id="outline-container-org33f8e19" class="outline-2">
+                <h2 id="org33f8e19">辅助思考或头脑风暴</h2>
+                <div class="outline-text-2" id="text-org33f8e19">
+                    <ul class="org-ul">
+                        <li>头脑风暴 (Brainstorming 或叫集思广益) 是由 Alex Faickney Osborn 于 1953 年在
+                        <b>Applied Imagination</b> 一书中提出的群体创造性方法。</li>
+                        <li><a href="http://en.wikipedia.org/wiki/Brainstorming">Brainstorming at Wikipedia</a></li>
+                        <li><a href="http://zh.wikipedia.org/zh-cn/%E5%A4%B4%E8%84%91%E9%A3%8E%E6%9A%B4">维基百科－头脑风暴</a></li>
+                        <li>Osborn, A.F. (1963) <b>Applied imagination: Principles and procedures of
+                        creative problem solving (Third Revised Edition)</b>. New York, NY: Charles
+                        Scribner’s Son.</li>
+                    </ul>
+                </div>
 
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1">日历及任务管理</h2>
-<div class="outline-text-2" id="text-orgheadline1">
-<p>
-一般使用系统自带或程序中附加的日历程序，比如 Emacs 中的 calender 插件。
-</p>
-</div>
+                <div id="outline-container-org9fe86ad" class="outline-3">
+                    <h3 id="org9fe86ad">Xmind</h3>
+                    <div class="outline-text-3" id="text-org9fe86ad">
+                        <ul class="org-ul">
+                            <li>URL &#x2013; <a href="http://www.xmind.net/">http://www.xmind.net/</a></li>
+                            <li>Brainstorming and mind mapping software.</li>
+                            <li>基于 Eclipse 开发，支持 MS Windows, Mac OS X 和 Linux</li>
+                        </ul>
+                    </div>
+                </div>
 
-<div id="outline-container-orgheadline2" class="outline-3">
-<h3 id="orgheadline2">Osmo</h3>
-<div class="outline-text-3" id="text-orgheadline2">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://clayo.org/osmo">http://clayo.org/osmo</a></li>
-<li>使用 GTK+ 界面，用 XML 作为数据存储格式。</li>
-</ul>
-</div>
-</div>
+                <div id="outline-container-orgd21dc3d" class="outline-3">
+                    <h3 id="orgd21dc3d">PersonalBrain</h3>
+                    <div class="outline-text-3" id="text-orgd21dc3d">
+                        <ul class="org-ul">
+                            <li>URL &#x2013; <a href="http://www.thebrain.com/">http://www.thebrain.com/</a></li>
+                            <li>Mind Mappling Software, Brainstorming, GTD and Visual KM software.</li>
+                            <li>跨平台，支持 MS Windows, Mac OS X 和 Linux</li>
+                        </ul>
+                    </div>
+                </div>
 
-<div id="outline-container-orgheadline3" class="outline-3">
-<h3 id="orgheadline3">Task Coach</h3>
-<div class="outline-text-3" id="text-orgheadline3">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://www.taskcoach.org/">http://www.taskcoach.org/</a></li>
-<li>简介：简洁的任务管理器。</li>
-</ul>
-</div>
-</div>
-</div>
+                <div id="outline-container-org8003bd9" class="outline-3">
+                    <h3 id="org8003bd9">FreeMind</h3>
+                    <div class="outline-text-3" id="text-org8003bd9">
+                        <ul class="org-ul">
+                            <li>URL &#x2013; <a href="http://freemind.sourceforge.net/">http://freemind.sourceforge.net/</a></li>
+                        </ul>
+                    </div>
+                </div>
 
-<div id="outline-container-orgheadline6" class="outline-2">
-<h2 id="orgheadline6">联系人</h2>
-<div class="outline-text-2" id="text-orgheadline6">
-</div><div id="outline-container-orgheadline4" class="outline-3">
-<h3 id="orgheadline4">Apple Contacts</h3>
-<div class="outline-text-3" id="text-orgheadline4">
-<p>
-Mac OS X 中自带的联系人管理程序。
-</p>
-</div>
-</div>
+                <div id="outline-container-org8324d8f" class="outline-3">
+                    <h3 id="org8324d8f">vym - View Your Mind</h3>
+                    <div class="outline-text-3" id="text-org8324d8f">
+                        <ul class="org-ul">
+                            <li>URL &#x2013; <a href="http://www.insilmaril.de/vym/">http://www.insilmaril.de/vym/</a></li>
+                            <li>使用 Qt 库开发的辅助思考程序。</li>
+                        </ul>
+                    </div>
+                </div>
 
-<div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="orgheadline5">ThunderBird Addressbook</h3>
-<div class="outline-text-3" id="text-orgheadline5">
-<p>
-ThunderBird 中自带的地址簿管理程序。
-</p>
-</div>
-</div>
-</div>
+                <div id="outline-container-org0ab01ea" class="outline-3">
+                    <h3 id="org0ab01ea">MindManager</h3>
+                    <div class="outline-text-3" id="text-org0ab01ea">
+                        <ul class="org-ul">
+                            <li>由 <a href="http://www.mindjet.com/">Mindjet</a> 公司开发的思维导图工具。</li>
+                            <li>支持 MS Windows 及 Mac OS X</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
-<div id="outline-container-orgheadline7" class="outline-2">
-<h2 id="orgheadline7">辅助思考或头脑风暴</h2>
-<div class="outline-text-2" id="text-orgheadline7">
-<ul class="org-ul">
-<li>头脑风暴 (Brainstorming 或叫集思广益) 是由 Alex Faickney Osborn 于 1953 年在
-<b>Applied Imagination</b> 一书中提出的群体创造性方法。</li>
-<li><a href="http://en.wikipedia.org/wiki/Brainstorming">Brainstorming at Wikipedia</a></li>
-<li><a href="http://zh.wikipedia.org/zh-cn/%E5%A4%B4%E8%84%91%E9%A3%8E%E6%9A%B4">维基百科－头脑风暴</a></li>
-<li>Osborn, A.F. (1963) <b>Applied imagination: Principles and procedures of
-creative problem solving (Third Revised Edition)</b>. New York, NY: Charles
-Scribner’s Son.</li>
-</ul>
-</div>
+            <div id="outline-container-orgdd4097a" class="outline-2">
+                <h2 id="orgdd4097a">GTD (Get-Things-Done)</h2>
+                <div class="outline-text-2" id="text-orgdd4097a">
+                    <ul class="org-ul">
+                        <li>GTD 是一种时间管理方法，由美国咨询师 <a href="http://www.davidco.com/">David Allen</a> 发明，同时也是他的一本书的名称。这种时间管理方法的主要原则在于将头脑中的各项任务转移出来，通过辅助手段让自己的头脑能够集中注意力于当前最需要完成的事情，从而提高效率。</li>
+                        <li><a href="http://en.wikipedia.org/wiki/GTD">http://en.wikipedia.org/wiki/GTD</a></li>
+                        <li><a href="http://zh.wikipedia.org/wiki/GTD">http://zh.wikipedia.org/wiki/GTD</a></li>
+                        <li><b>Getting Things Done: The Art of Stress-Free Productivity</b>. Penguin
+                        Books. ISBN 0-14-200028-0.</li>
+                    </ul>
+                </div>
 
-<div id="outline-container-orgheadline8" class="outline-3">
-<h3 id="orgheadline8">Xmind</h3>
-<div class="outline-text-3" id="text-orgheadline8">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://www.xmind.net/">http://www.xmind.net/</a></li>
-<li>Brainstorming and mind mapping software.</li>
-<li>基于 Eclipse 开发，支持 MS Windows, Mac OS X 和 Linux</li>
-</ul>
-</div>
-</div>
+                <div id="outline-container-org954f63f" class="outline-3">
+                    <h3 id="org954f63f">Emacs + org-mode</h3>
+                    <div class="outline-text-3" id="text-org954f63f">
+                        <ul class="org-ul">
+                            <li>URL &#x2013; <a href="http://orgmode.org/">http://orgmode.org/</a></li>
+                            <li>个人喜爱的模式。</li>
+                        </ul>
+                    </div>
+                </div>
 
-<div id="outline-container-orgheadline9" class="outline-3">
-<h3 id="orgheadline9">PersonalBrain</h3>
-<div class="outline-text-3" id="text-orgheadline9">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://www.thebrain.com/">http://www.thebrain.com/</a></li>
-<li>Mind Mappling Software, Brainstorming, GTD and Visual KM software.</li>
-<li>跨平台，支持 MS Windows, Mac OS X 和 Linux</li>
-</ul>
-</div>
-</div>
+                <div id="outline-container-orgbf866c4" class="outline-3">
+                    <h3 id="orgbf866c4">Thinking Rock</h3>
+                    <div class="outline-text-3" id="text-orgbf866c4">
+                        <ul class="org-ul">
+                            <li>URL &#x2013; <a href="http://www.trgtd.com.au/">http://www.trgtd.com.au/</a></li>
+                            <li>如果你喜爱 Emacs 下的工具，当然更好。否则推荐你使用此款软件。</li>
+                        </ul>
+                    </div>
+                </div>
 
-<div id="outline-container-orgheadline10" class="outline-3">
-<h3 id="orgheadline10">FreeMind</h3>
-<div class="outline-text-3" id="text-orgheadline10">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://freemind.sourceforge.net/">http://freemind.sourceforge.net/</a></li>
-</ul>
-</div>
-</div>
+                <div id="outline-container-orgb8c899b" class="outline-3">
+                    <h3 id="orgb8c899b">MyLifeOrganized</h3>
+                    <div class="outline-text-3" id="text-orgb8c899b">
+                        <ul class="org-ul">
+                            <li>URL &#x2013; <a href="http://www.mylifeorganized.net/">http://www.mylifeorganized.net/</a></li>
+                        </ul>
+                    </div>
+                </div>
 
-<div id="outline-container-orgheadline11" class="outline-3">
-<h3 id="orgheadline11">vym - View Your Mind</h3>
-<div class="outline-text-3" id="text-orgheadline11">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://www.insilmaril.de/vym/">http://www.insilmaril.de/vym/</a></li>
-<li>使用 Qt 库开发的辅助思考程序。</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-orgheadline12" class="outline-3">
-<h3 id="orgheadline12">MindManager</h3>
-<div class="outline-text-3" id="text-orgheadline12">
-<ul class="org-ul">
-<li>由 <a href="http://www.mindjet.com/">Mindjet</a> 公司开发的思维导图工具。</li>
-<li>支持 MS Windows 及 Mac OS X</li>
-</ul>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgheadline13" class="outline-2">
-<h2 id="orgheadline13">GTD (Get-Things-Done)</h2>
-<div class="outline-text-2" id="text-orgheadline13">
-<ul class="org-ul">
-<li>GTD 是一种时间管理方法，由美国咨询师 <a href="http://www.davidco.com/">David Allen</a> 发明，同时也是他的一本书的名称。这种时间管理方法的主要原则在于将头脑中的各项任务转移出来，通过辅助手段让自己的头脑能够集中注意力于当前最需要完成的事情，从而提高效率。</li>
-<li><a href="http://en.wikipedia.org/wiki/GTD">http://en.wikipedia.org/wiki/GTD</a></li>
-<li><a href="http://zh.wikipedia.org/wiki/GTD">http://zh.wikipedia.org/wiki/GTD</a></li>
-<li><b>Getting Things Done: The Art of Stress-Free Productivity</b>. Penguin
-Books. ISBN 0-14-200028-0.</li>
-</ul>
-</div>
-
-<div id="outline-container-orgheadline14" class="outline-3">
-<h3 id="orgheadline14">Emacs + org-mode</h3>
-<div class="outline-text-3" id="text-orgheadline14">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://orgmode.org/">http://orgmode.org/</a></li>
-<li>个人喜爱的模式。</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-orgheadline15" class="outline-3">
-<h3 id="orgheadline15">Thinking Rock</h3>
-<div class="outline-text-3" id="text-orgheadline15">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://www.trgtd.com.au/">http://www.trgtd.com.au/</a></li>
-<li>如果你喜爱 Emacs 下的工具，当然更好。否则推荐你使用此款软件。</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-orgheadline16" class="outline-3">
-<h3 id="orgheadline16">MyLifeOrganized</h3>
-<div class="outline-text-3" id="text-orgheadline16">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://www.mylifeorganized.net/">http://www.mylifeorganized.net/</a></li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-orgheadline17" class="outline-3">
-<h3 id="orgheadline17">Chandler</h3>
-<div class="outline-text-3" id="text-orgheadline17">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://chandlerproject.org/">http://chandlerproject.org/</a></li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div id="postamble" class="status">
-
-<script type="text/javascript" src="http://exaos.github.io/assets/js/pagetail.js"></script>
-<div id="disqus_thread"></div>
-<p>版权所有 ©2015: Exaos Lee | Date: <span class="timestamp-wrapper"><span class="timestamp">[2011-10-14 五]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.3.2), <a href="http://validator.w3.org/check?uri=referer">Validate</a>,
-<a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="88x31.png"/></a>
-<p><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></p>
-</div>
-</body>
+                <div id="outline-container-org263fe0f" class="outline-3">
+                    <h3 id="org263fe0f">Chandler</h3>
+                    <div class="outline-text-3" id="text-org263fe0f">
+                        <ul class="org-ul">
+                            <li>URL &#x2013; <a href="http://chandlerproject.org/">http://chandlerproject.org/</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="postamble" class="status">
+            <p><a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="88x31.png"/></a></p><p>版权所有 ©2012-2018: Vivodo Lio | 日期: 2011-10-14 五 00:00</p><p>Generated by <a href="https://www.gnu.org/software/emacs/">Emacs</a> 25.3.1 (<a href="https://orgmode.org">Org</a> mode 9.1.7), <a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+        </div>
+    </body>
 </html>

@@ -1,352 +1,274 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
-<head>
-<!-- 2015-12-03 四 15:23 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>C++11 下的线程编程</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Exaos Lee" />
-<meta  name="description" content="Level-2 for exporting to HTML"
- />
-<link rel="stylesheet" title="Standard" href="../../assets/css/worg.css" type="text/css" />
-<link rel="alternate stylesheet" title="Zenburn" href="../../assets/css/worg-zenburn.css" type="text/css" />
-<link rel="alternate stylesheet" title="Classic" href="../../assets/css/worg-classic.css" type="text/css" />
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh">
+    <head>
+        <!-- 2018-03-11 日 22:00 -->
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>C++11 下的线程编程</title>
+        <meta name="generator" content="Org mode" />
+        <meta name="author" content="Vivodo Lio" />
+        <meta name="description" content="Level-2 for exporting to HTML"
+              />
+        <link rel="stylesheet" title="Standard" href="../../assets/css/worg.css" type="text/css" />
+        <link rel="alternate stylesheet" title="Zenburn" href="../../assets/css/worg-zenburn.css" type="text/css" />
+        <link rel="alternate stylesheet" title="Classic" href="../../assets/css/worg-classic.css" type="text/css" />
+        <script type="text/javascript">
+            /*
+            @licstart  The following is the entire license notice for the
+            JavaScript code in this tag.
 
-<script type="text/javascript" src="http://orgmode.org/org-info.js">
-/**
- *
- * @source: http://orgmode.org/org-info.js
- *
- * @licstart  The following is the entire license notice for the
- *  JavaScript code in http://orgmode.org/org-info.js.
- *
- * Copyright (C) 2012-2013 Free Software Foundation, Inc.
- *
- *
- * The JavaScript code in this tag is free software: you can
- * redistribute it and/or modify it under the terms of the GNU
- * General Public License (GNU GPL) as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option)
- * any later version.  The code is distributed WITHOUT ANY WARRANTY;
- * without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
- *
- * As additional permission under GNU GPL version 3 section 7, you
- * may distribute non-source (e.g., minimized or compacted) forms of
- * that code without the copy of the GNU GPL normally required by
- * section 4, provided you include this license notice and a URL
- * through which recipients can access the Corresponding Source.
- *
- * @licend  The above is the entire license notice
- * for the JavaScript code in http://orgmode.org/org-info.js.
- *
- */
-</script>
+            Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
-<script type="text/javascript">
+            The JavaScript code in this tag is free software: you can
+            redistribute it and/or modify it under the terms of the GNU
+            General Public License (GNU GPL) as published by the Free Software
+            Foundation, either version 3 of the License, or (at your option)
+            any later version.  The code is distributed WITHOUT ANY WARRANTY;
+            without even the implied warranty of MERCHANTABILITY or FITNESS
+            FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
 
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
+            As additional permission under GNU GPL version 3 section 7, you
+            may distribute non-source (e.g., minimized or compacted) forms of
+            that code without the copy of the GNU GPL normally required by
+            section 4, provided you include this license notice and a URL
+            through which recipients can access the Corresponding Source.
 
 
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+            @licend  The above is the entire license notice
+            for the JavaScript code in this tag.
+            */
+            <!--/*--><![CDATA[/*><!--*/
+            function CodeHighlightOn(elem, id)
+            {
+            var target = document.getElementById(id);
+            if(null != target) {
+            elem.cacheClassElem = elem.className;
+            elem.cacheClassTarget = target.className;
+            target.className = "code-highlighted";
+            elem.className   = "code-highlighted";
+            }
+            }
+            function CodeHighlightOff(elem, id)
+            {
+            var target = document.getElementById(id);
+            if(elem.cacheClassElem)
+            elem.className = elem.cacheClassElem;
+            if(elem.cacheClassTarget)
+            target.className = elem.cacheClassTarget;
+            }
+            /*]]>*///-->
+        </script>
+    </head>
+    <body>
+        <div id="org-div-home-and-up">
+            <a accesskey="h" href="../index.html"> UP </a>
+            |
+            <a accesskey="H" href="../../index.html"> HOME </a>
+            </div><div id="content">
+            <h1 class="title">C++11 下的线程编程</h1>
+            <div id="table-of-contents">
+                <h2>Table of Contents</h2>
+                <div id="text-table-of-contents">
+                    <ul>
+                        <li><a href="#org870df0a">用线程运行一个简单的函数</a></li>
+                        <li><a href="#org44184c2">异步执行 (async) 一个线程</a></li>
+                        <li><a href="#org6d161bd">参考</a></li>
+                    </ul>
+                </div>
+            </div>
+            <p>
+                C++11 中正式引入了标准类 <code>std::thread</code>, 也就是说，你编写使用线程的程序时不再需要使用 C 下面的 <b>pthread</b> 等 API, 可以直接用 C++11 标准的库来实现线程了。
+            </p>
 
-<!--/*--><![CDATA[/*><!--*/
-org_html_manager.set("TOC_DEPTH", "4");
-org_html_manager.set("LINK_HOME", "../../index.html");
-org_html_manager.set("LINK_UP", "../index.html");
-org_html_manager.set("LOCAL_TOC", "1");
-org_html_manager.set("VIEW_BUTTONS", "0");
-org_html_manager.set("MOUSE_HINT", "underline");
-org_html_manager.set("FIXED_TOC", "0");
-org_html_manager.set("TOC", "0");
-org_html_manager.set("VIEW", "content");
-org_html_manager.setup();  // activate after the parameters are set
-/*]]>*///-->
-</script>
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
+            <p>
+                本笔记的主要运行平台为 Debian Linux 7.1 (wheezy), gcc 4.7.2. 使用 GCC 编译笔记中的代码，需要注意：
+            </p>
+            <ul class="org-ul">
+                <li>如果 GCC 版本低于 4.7, 需要添加编译参数 <code>-std=gnu++0x -pthread</code></li>
+                <li>如果 GCC 版本在 4.7 以上，需要添加编译参数 <code>-std=c++11 -pthread</code></li>
+            </ul>
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+            <p>
+                GCC 各版本对 C++11 特性的支持情况参见: <a href="http://gcc.gnu.org/projects/cxx0x.html">http://gcc.gnu.org/projects/cxx0x.html</a>
+            </p>
 
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+            <div id="outline-container-org870df0a" class="outline-2">
+                <h2 id="org870df0a">用线程运行一个简单的函数</h2>
+                <div class="outline-text-2" id="text-org870df0a">
+                    <p>
+                        直接使用头文件 <code>&lt;thread&gt;</code> 中包含的标准类 <code>std::thread</code>, 示例如下：
+                    </p>
+                    <div class="org-src-container">
+                        <pre class="src src-c++"><span style="color: #94BFF3;">#include</span> <span style="color: #CC9393;">&lt;thread&gt;</span>
+                        <span style="color: #94BFF3;">#include</span> <span style="color: #CC9393;">&lt;iostream&gt;</span>
 
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
+                        <span style="color: #7CB8BB;">void</span> <span style="color: #93E0E3;">my_thread_func</span>()
+                        {
+                        <span style="color: #BFEBBF;">std</span>::cout&lt;&lt;<span style="color: #CC9393;">"hello"</span>&lt;&lt;<span style="color: #BFEBBF;">std</span>::endl;
+                        }
 
+                        <span style="color: #7CB8BB;">int</span> <span style="color: #93E0E3;">main</span>()
+                        {
+                        <span style="color: #BFEBBF;">std</span>::<span style="color: #7CB8BB;">thread</span> <span style="color: #93E0E3;">t</span>(my_thread_func);
+                        }
+                        </pre>
+                    </div>
 
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
-</head>
-<body>
-<div id="org-div-home-and-up">
- <a accesskey="h" href="../index.html"> UP </a>
- |
- <a accesskey="H" href="../../index.html"> HOME </a>
-</div><div id="content">
-<h1 class="title">C++11 下的线程编程</h1>
-<div id="table-of-contents">
-<h2>&#30446;&#24405;</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#orgheadline1">用线程运行一个简单的函数</a></li>
-<li><a href="#orgheadline2">异步执行 (async) 一个线程</a></li>
-<li><a href="#orgheadline3">参考</a></li>
-</ul>
-</div>
-</div>
-<p>
-C++11 中正式引入了标准类 <code>std::thread</code>, 也就是说，你编写使用线程的程序时不再需要使用 C 下面的 <b>pthread</b> 等 API, 可以直接用 C++11 标准的库来实现线程了。
-</p>
+                    <p>
+                        编译：
+                    </p>
+                    <pre class="example">
+                        g++ -std=c++11 -pthread a.cpp
 
-<p>
-本笔记的主要运行平台为 Debian Linux 7.1 (wheezy), gcc 4.7.2. 使用 GCC 编译笔记中的代码，需要注意：
-</p>
-<ul class="org-ul">
-<li>如果 GCC 版本低于 4.7, 需要添加编译参数 <code>-std=gnu++0x -pthread</code></li>
-<li>如果 GCC 版本在 4.7 以上，需要添加编译参数 <code>-std=c++11 -pthread</code></li>
-</ul>
+                    </pre>
 
-<p>
-GCC 各版本对 C++11 特性的支持情况参见: <a href="http://gcc.gnu.org/projects/cxx0x.html">http://gcc.gnu.org/projects/cxx0x.html</a>
-</p>
+                    <p>
+                        但执行后无任何输出。如果想获得线程的执行结果，需要将其连接 (joining) 起来，因此，上述代码需要在 <code>std::thread t(my_thread_func);</code> 声明之后添加一句：
+                    </p>
+                    <pre class="example">
+                        t.join();
 
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1">用线程运行一个简单的函数</h2>
-<div class="outline-text-2" id="text-orgheadline1">
-<p>
-直接使用头文件 <code>&lt;thread&gt;</code> 中包含的标准类 <code>std::thread</code>, 示例如下：
-</p>
-<div class="org-src-container">
+                    </pre>
 
-<pre class="src src-c++"><span style="color: #268bd2;">#include</span> <span style="color: #2aa198;">&lt;thread&gt;</span>
-<span style="color: #268bd2;">#include</span> <span style="color: #2aa198;">&lt;iostream&gt;</span>
+                    <p>
+                        要想让线程在指定地方结束，必须等待它完成。
+                    </p>
+                </div>
+            </div>
 
-<span style="color: #b58900;">void</span> <span style="color: #268bd2;">my_thread_func</span>()
-{
-  <span style="color: #268bd2; font-weight: bold;">std</span>::cout&lt;&lt;<span style="color: #2aa198;">"hello"</span>&lt;&lt;<span style="color: #268bd2; font-weight: bold;">std</span>::endl;
-}
+            <div id="outline-container-org44184c2" class="outline-2">
+                <h2 id="org44184c2">异步执行 (async) 一个线程</h2>
+                <div class="outline-text-2" id="text-org44184c2">
+                    <p>
+                        假如想让一个函数每隔 1 秒钟将全局计数器增加一个计数，又不想让这个函数影响到主线程的执行。那么可以用 <code>std::async</code> 来实现。例如：
+                    </p>
+                    <div class="org-src-container">
+                        <pre class="src src-c++"><span style="color: #94BFF3;">#include</span> <span style="color: #CC9393;">&lt;future&gt;</span>
+                        <span style="color: #94BFF3;">#include</span> <span style="color: #CC9393;">&lt;chrono&gt;</span>
+                        <span style="color: #94BFF3;">#include</span> <span style="color: #CC9393;">&lt;iostream&gt;</span>
 
-<span style="color: #b58900;">int</span> <span style="color: #268bd2;">main</span>()
-{
-  <span style="color: #268bd2; font-weight: bold;">std</span>::<span style="color: #b58900;">thread</span> <span style="color: #268bd2;">t</span>(my_thread_func);
-}
-</pre>
-</div>
+                        <span style="color: #F0DFAF; font-weight: bold;">static</span> <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">fCount</span>;
 
-<p>
-编译：
-</p>
-<pre class="example">
-g++ -std=c++11 -pthread a.cpp
-</pre>
+                        <span style="color: #7CB8BB;">void</span> <span style="color: #93E0E3;">called_from_async</span>() {
+                        fCount++;
+                        <span style="color: #BFEBBF;">std</span>::cout &lt;&lt; <span style="color: #CC9393;">"Async call: "</span> &lt;&lt; fCount &lt;&lt; <span style="color: #CC9393;">", "</span> &lt;&lt; asString(tp) &lt;&lt; <span style="color: #BFEBBF;">std</span>::endl;
+                        <span style="color: #BFEBBF;">std</span>::<span style="color: #BFEBBF;">this_thread</span>::sleep_for(<span style="color: #BFEBBF;">std</span>::<span style="color: #BFEBBF;">chrono</span>::seconds(1));
+                        called_from_async();
+                        }
 
-<p>
-但执行后无任何输出。如果想获得线程的执行结果，需要将其连接 (joining) 起来，因此，上述代码需要在 <code>std::thread t(my_thread_func);</code> 声明之后添加一句：
-</p>
-<pre class="example">
-t.join();
-</pre>
+                        <span style="color: #7CB8BB;">int</span> <span style="color: #93E0E3;">main</span>() {
+                        fCount = 0;
 
-<p>
-要想让线程在指定地方结束，必须等待它完成。
-</p>
-</div>
-</div>
+                        <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">called_from_async launched in a separate thread if possible</span>
+                        <span style="color: #BFEBBF;">std</span>::<span style="color: #7CB8BB;">future</span>&lt;<span style="color: #7CB8BB;">void</span>&gt; <span style="color: #93E0E3;">result</span>(<span style="color: #BFEBBF;">std</span>::<span style="color: #7CB8BB;">async</span>(<span style="color: #DFAF8F;">called_from_async</span>));
 
-<div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2">异步执行 (async) 一个线程</h2>
-<div class="outline-text-2" id="text-orgheadline2">
-<p>
-假如想让一个函数每隔 1 秒钟将全局计数器增加一个计数，又不想让这个函数影响到主线程的执行。那么可以用 <code>std::async</code> 来实现。例如：
-</p>
-<div class="org-src-container">
+                        <span style="color: #F0DFAF; font-weight: bold;">for</span>(<span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">i</span>=0; i&lt;20; i++) {
+                        <span style="color: #BFEBBF;">std</span>::cout &lt;&lt; <span style="color: #CC9393;">"Message from main: "</span> &lt;&lt; i &lt;&lt; <span style="color: #BFEBBF;">std</span>::endl;
+                        <span style="color: #BFEBBF;">std</span>::<span style="color: #BFEBBF;">this_thread</span>::sleep_for(<span style="color: #BFEBBF;">std</span>::<span style="color: #BFEBBF;">chrono</span>::seconds(1));
+                        }
 
-<pre class="src src-c++"><span style="color: #268bd2;">#include</span> <span style="color: #2aa198;">&lt;future&gt;</span>
-<span style="color: #268bd2;">#include</span> <span style="color: #2aa198;">&lt;chrono&gt;</span>
-<span style="color: #268bd2;">#include</span> <span style="color: #2aa198;">&lt;iostream&gt;</span>
+                        <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">Ensure that called_from_async is launched synchronously</span>
+                        <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">if it wasn't already launched</span>
+                        result.get();
 
-<span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">fCount</span>;
+                        <span style="color: #F0DFAF; font-weight: bold;">return</span> 0;
+                        }
+                        </pre>
+                    </div>
 
-<span style="color: #b58900;">void</span> <span style="color: #268bd2;">called_from_async</span>() {
-  fCount++;
-  <span style="color: #268bd2; font-weight: bold;">std</span>::cout &lt;&lt; <span style="color: #2aa198;">"Async call: "</span> &lt;&lt; fCount &lt;&lt; <span style="color: #2aa198;">", "</span> &lt;&lt; asString(tp) &lt;&lt; <span style="color: #268bd2; font-weight: bold;">std</span>::endl;
-  <span style="color: #268bd2; font-weight: bold;">std</span>::<span style="color: #268bd2; font-weight: bold;">this_thread</span>::sleep_for(<span style="color: #268bd2; font-weight: bold;">std</span>::<span style="color: #268bd2; font-weight: bold;">chrono</span>::seconds(1));
-  called_from_async();
-}
+                    <p>
+                        但上述程序中 <code>called_from_async</code> 并不会马上执行，而是等待中间的循环结束后，才开始。这是为什么呢？因为 <code>std:async</code> 的启动策略 (launch policy) 默认设置为
+                        <code>std::launch::any</code>, 意思是说，只有在你明确表示要等待其结果时才开始执行。如果要让函数立刻执行，则需要修改启动策略为 <code>std::launch::async</code>. 同样，如果你确实希望函数只须在 <code>get()</code> 被调用时才执行，则明确指定其启动策略为 <code>std::launch::sync</code>.
+                    </p>
 
-<span style="color: #b58900;">int</span> <span style="color: #268bd2;">main</span>() {
-  fCount = 0;
+                    <p>
+                        完整的程序如下：
+                    </p>
+                    <div class="org-src-container">
+                        <pre class="src src-c++"><span style="color: #94BFF3;">#include</span> <span style="color: #CC9393;">&lt;future&gt;</span>
+                        <span style="color: #94BFF3;">#include</span> <span style="color: #CC9393;">&lt;thread&gt;</span>
+                        <span style="color: #94BFF3;">#include</span> <span style="color: #CC9393;">&lt;chrono&gt;</span>
+                        <span style="color: #94BFF3;">#include</span> <span style="color: #CC9393;">&lt;iostream&gt;</span>
 
-  <span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">called_from_async launched in a separate thread if possible</span>
-  <span style="color: #268bd2; font-weight: bold;">std</span>::<span style="color: #b58900;">future</span>&lt;<span style="color: #b58900;">void</span>&gt; <span style="color: #268bd2;">result</span>(<span style="color: #268bd2; font-weight: bold;">std</span>::<span style="color: #b58900;">async</span>(<span style="color: #268bd2;">called_from_async</span>));
+                        <span style="color: #F0DFAF; font-weight: bold;">static</span> <span style="color: #7CB8BB;">bool</span> <span style="color: #DFAF8F;">fQuit</span>;
+                        <span style="color: #F0DFAF; font-weight: bold;">static</span> <span style="color: #7CB8BB;">int</span>  <span style="color: #DFAF8F;">fCount</span>;
 
-  <span style="color: #859900; font-weight: bold;">for</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">i</span>=0; i&lt;20; i++) {
-    <span style="color: #268bd2; font-weight: bold;">std</span>::cout &lt;&lt; <span style="color: #2aa198;">"Message from main: "</span> &lt;&lt; i &lt;&lt; <span style="color: #268bd2; font-weight: bold;">std</span>::endl;
-    <span style="color: #268bd2; font-weight: bold;">std</span>::<span style="color: #268bd2; font-weight: bold;">this_thread</span>::sleep_for(<span style="color: #268bd2; font-weight: bold;">std</span>::<span style="color: #268bd2; font-weight: bold;">chrono</span>::seconds(1));
-  }
+                        <span style="color: #BFEBBF;">std</span>::<span style="color: #7CB8BB;">string</span> <span style="color: #93E0E3;">asString</span> (<span style="color: #F0DFAF; font-weight: bold;">const</span> <span style="color: #BFEBBF;">std</span>::<span style="color: #BFEBBF;">chrono</span>::<span style="color: #BFEBBF;">system_clock</span>::<span style="color: #7CB8BB;">time_point</span>&amp; <span style="color: #DFAF8F;">tp</span>)
+                        {
+                        <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">convert to system time:</span>
+                        <span style="color: #BFEBBF;">std</span>::<span style="color: #7CB8BB;">time_t</span> <span style="color: #DFAF8F;">t</span> = <span style="color: #BFEBBF;">std</span>::<span style="color: #BFEBBF;">chrono</span>::<span style="color: #BFEBBF;">system_clock</span>::<span style="color: #7CB8BB;">to_time_t</span>(<span style="color: #DFAF8F;">tp</span>);
+                        <span style="color: #BFEBBF;">std</span>::<span style="color: #7CB8BB;">string</span> <span style="color: #DFAF8F;">ts</span> = <span style="color: #BFEBBF;">std</span>::ctime(&amp;t);<span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">convert to calendar time</span>
+                        ts.resize(ts.size()-1);         <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">skip trailing newline</span>
+                        <span style="color: #F0DFAF; font-weight: bold;">return</span> ts;
+                        }
 
-  <span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">Ensure that called_from_async is launched synchronously</span>
-  <span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">if it wasn't already launched</span>
-  result.get();
+                        <span style="color: #7CB8BB;">void</span> <span style="color: #93E0E3;">called_from_async</span>() {
+                        fCount++;
+                        <span style="color: #F0DFAF; font-weight: bold;">auto</span> <span style="color: #DFAF8F;">tp</span> = <span style="color: #BFEBBF;">std</span>::<span style="color: #BFEBBF;">chrono</span>::<span style="color: #BFEBBF;">system_clock</span>::now();
+                        <span style="color: #BFEBBF;">std</span>::cout &lt;&lt; <span style="color: #CC9393;">"Async call: "</span> &lt;&lt; fCount &lt;&lt; <span style="color: #CC9393;">", "</span> &lt;&lt; asString(tp) &lt;&lt; <span style="color: #BFEBBF;">std</span>::endl;
+                        <span style="color: #BFEBBF;">std</span>::<span style="color: #BFEBBF;">this_thread</span>::sleep_for(<span style="color: #BFEBBF;">std</span>::<span style="color: #BFEBBF;">chrono</span>::seconds(1));
 
-  <span style="color: #859900; font-weight: bold;">return</span> 0;
-}
-</pre>
-</div>
+                        <span style="color: #F0DFAF; font-weight: bold;">if</span>(<span style="color: #F0DFAF; font-weight: bold;">not</span> fQuit) called_from_async();
+                        }
 
-<p>
-但上述程序中 <code>called_from_async</code> 并不会马上执行，而是等待中间的循环结束后，才开始。这是为什么呢？因为 <code>std:async</code> 的启动策略 (launch policy) 默认设置为
-<code>std::launch::any</code>, 意思是说，只有在你明确表示要等待其结果时才开始执行。如果要让函数立刻执行，则需要修改启动策略为 <code>std::launch::async</code>. 同样，如果你确实希望函数只须在 <code>get()</code> 被调用时才执行，则明确指定其启动策略为 <code>std::launch::sync</code>.
-</p>
+                        <span style="color: #7CB8BB;">int</span> <span style="color: #93E0E3;">main</span>() {
+                        fCount = 0;
+                        fQuit  = <span style="color: #BFEBBF;">false</span>;
 
-<p>
-完整的程序如下：
-</p>
-<div class="org-src-container">
+                        <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">called_from_async launched in a separate thread if possible</span>
+                        <span style="color: #BFEBBF;">std</span>::<span style="color: #7CB8BB;">future</span>&lt;<span style="color: #7CB8BB;">void</span>&gt; <span style="color: #93E0E3;">result</span>(<span style="color: #BFEBBF;">std</span>::async(<span style="color: #BFEBBF;">std</span>::<span style="color: #BFEBBF;">launch</span>::async,called_from_async));
 
-<pre class="src src-c++"><span style="color: #268bd2;">#include</span> <span style="color: #2aa198;">&lt;future&gt;</span>
-<span style="color: #268bd2;">#include</span> <span style="color: #2aa198;">&lt;thread&gt;</span>
-<span style="color: #268bd2;">#include</span> <span style="color: #2aa198;">&lt;chrono&gt;</span>
-<span style="color: #268bd2;">#include</span> <span style="color: #2aa198;">&lt;iostream&gt;</span>
+                        <span style="color: #F0DFAF; font-weight: bold;">for</span>(<span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">i</span>=0; i&lt;20; i++) {
+                        <span style="color: #BFEBBF;">std</span>::cout &lt;&lt; <span style="color: #CC9393;">"Message from main: "</span> &lt;&lt; i &lt;&lt; <span style="color: #BFEBBF;">std</span>::endl;
+                        <span style="color: #BFEBBF;">std</span>::<span style="color: #BFEBBF;">this_thread</span>::sleep_for(<span style="color: #BFEBBF;">std</span>::<span style="color: #BFEBBF;">chrono</span>::seconds(1));
+                        }
 
-<span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">bool</span> <span style="color: #268bd2;">fQuit</span>;
-<span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">int</span>  <span style="color: #268bd2;">fCount</span>;
+                        <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">Ensure that called_from_async is launched synchronously</span>
+                        <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">if it wasn't already launched</span>
 
-<span style="color: #268bd2; font-weight: bold;">std</span>::<span style="color: #b58900;">string</span> <span style="color: #268bd2;">asString</span> (<span style="color: #859900; font-weight: bold;">const</span> <span style="color: #268bd2; font-weight: bold;">std</span>::<span style="color: #268bd2; font-weight: bold;">chrono</span>::<span style="color: #268bd2; font-weight: bold;">system_clock</span>::<span style="color: #b58900;">time_point</span>&amp; <span style="color: #268bd2;">tp</span>)
-{
-  <span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">convert to system time:</span>
-  <span style="color: #268bd2; font-weight: bold;">std</span>::<span style="color: #b58900;">time_t</span> <span style="color: #268bd2;">t</span> = <span style="color: #268bd2; font-weight: bold;">std</span>::<span style="color: #268bd2; font-weight: bold;">chrono</span>::<span style="color: #268bd2; font-weight: bold;">system_clock</span>::<span style="color: #b58900;">to_time_t</span>(<span style="color: #268bd2;">tp</span>);
-  <span style="color: #268bd2; font-weight: bold;">std</span>::<span style="color: #b58900;">string</span> <span style="color: #268bd2;">ts</span> = <span style="color: #268bd2; font-weight: bold;">std</span>::ctime(&amp;t);<span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">convert to calendar time</span>
-  ts.resize(ts.size()-1);         <span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">skip trailing newline</span>
-  <span style="color: #859900; font-weight: bold;">return</span> ts;
-}
+                        fQuit = <span style="color: #BFEBBF;">true</span>;
+                        result.get();
 
-<span style="color: #b58900;">void</span> <span style="color: #268bd2;">called_from_async</span>() {
-  fCount++;
-  <span style="color: #859900; font-weight: bold;">auto</span> <span style="color: #b58900;">tp</span> = <span style="color: #268bd2; font-weight: bold;">std</span>::<span style="color: #268bd2; font-weight: bold;">chrono</span>::<span style="color: #268bd2; font-weight: bold;">system_clock</span>::now();
-  <span style="color: #268bd2; font-weight: bold;">std</span>::cout &lt;&lt; <span style="color: #2aa198;">"Async call: "</span> &lt;&lt; fCount &lt;&lt; <span style="color: #2aa198;">", "</span> &lt;&lt; asString(tp) &lt;&lt; <span style="color: #268bd2; font-weight: bold;">std</span>::endl;
-  <span style="color: #268bd2; font-weight: bold;">std</span>::<span style="color: #268bd2; font-weight: bold;">this_thread</span>::sleep_for(<span style="color: #268bd2; font-weight: bold;">std</span>::<span style="color: #268bd2; font-weight: bold;">chrono</span>::seconds(1));
+                        <span style="color: #F0DFAF; font-weight: bold;">return</span> 0;
+                        }
+                    </pre>
+                </div>
 
-  <span style="color: #859900; font-weight: bold;">if</span>(<span style="color: #859900; font-weight: bold;">not</span> fQuit) called_from_async();
-}
+                <p>
+                    上述程序会在主程序输出消息的中间穿插着异步线程的输出结果，比如：
+                </p>
+                <pre class="example">
+                    $ ./a.out
+                    Message from main: 0
+                    Async call: 1, Wed Aug 21 15:27:26 2013
+                    Message from main: 1
+                    Async call: 2, Wed Aug 21 15:27:27 2013
+                    Message from main: 2
+                    Async call: 3, Wed Aug 21 15:27:28 2013
+                    Message from main: 3
+                    Async call: 4, Wed Aug 21 15:27:29 2013
+                    Message from main: 4
+                    ...
+                </pre>
+                <p>
+                    而这正是我想要的结果。
+                </p>
+            </div>
+        </div>
 
-<span style="color: #b58900;">int</span> <span style="color: #268bd2;">main</span>() {
-  fCount = 0;
-  fQuit  = <span style="color: #268bd2; font-weight: bold;">false</span>;
-
-  <span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">called_from_async launched in a separate thread if possible</span>
-  <span style="color: #268bd2; font-weight: bold;">std</span>::<span style="color: #b58900;">future</span>&lt;<span style="color: #b58900;">void</span>&gt; <span style="color: #268bd2;">result</span>(<span style="color: #268bd2; font-weight: bold;">std</span>::async(<span style="color: #268bd2; font-weight: bold;">std</span>::<span style="color: #268bd2; font-weight: bold;">launch</span>::async,called_from_async));
-
-  <span style="color: #859900; font-weight: bold;">for</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">i</span>=0; i&lt;20; i++) {
-    <span style="color: #268bd2; font-weight: bold;">std</span>::cout &lt;&lt; <span style="color: #2aa198;">"Message from main: "</span> &lt;&lt; i &lt;&lt; <span style="color: #268bd2; font-weight: bold;">std</span>::endl;
-    <span style="color: #268bd2; font-weight: bold;">std</span>::<span style="color: #268bd2; font-weight: bold;">this_thread</span>::sleep_for(<span style="color: #268bd2; font-weight: bold;">std</span>::<span style="color: #268bd2; font-weight: bold;">chrono</span>::seconds(1));
-  }
-
-  <span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">Ensure that called_from_async is launched synchronously</span>
-  <span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">if it wasn't already launched</span>
-
-  fQuit = <span style="color: #268bd2; font-weight: bold;">true</span>;
-  result.get();
-
-  <span style="color: #859900; font-weight: bold;">return</span> 0;
-}
-</pre>
-</div>
-
-<p>
-上述程序会在主程序输出消息的中间穿插着异步线程的输出结果，比如：
-</p>
-<pre class="example">
-$ ./a.out                              
-Message from main: 0
-Async call: 1, Wed Aug 21 15:27:26 2013
-Message from main: 1
-Async call: 2, Wed Aug 21 15:27:27 2013
-Message from main: 2
-Async call: 3, Wed Aug 21 15:27:28 2013
-Message from main: 3
-Async call: 4, Wed Aug 21 15:27:29 2013
-Message from main: 4
-...
-</pre>
-<p>
-而这正是我想要的结果。
-</p>
-</div>
-</div>
-
-<div id="outline-container-orgheadline3" class="outline-2">
-<h2 id="orgheadline3">参考</h2>
-<div class="outline-text-2" id="text-orgheadline3">
-<p>
-<a href="http://www.justsoftwaresolutions.co.uk/threading/multithreading-in-c++0x-part-1-starting-threads.html">http://www.justsoftwaresolutions.co.uk/threading/multithreading-in-c++0x-part-1-starting-threads.html</a>
-</p>
-</div>
-</div>
-</div>
-<div id="postamble" class="status">
-
-<script type="text/javascript" src="http://exaos.github.io/assets/js/pagetail.js"></script>
-<div id="disqus_thread"></div>
-<p>版权所有 ©2015: Exaos Lee | Date: <span class="timestamp-wrapper"><span class="timestamp">[2014-12-19 五]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.3.2), <a href="http://validator.w3.org/check?uri=referer">Validate</a>,
-<a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="88x31.png"/></a>
-<p><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></p>
-</div>
+        <div id="outline-container-org6d161bd" class="outline-2">
+            <h2 id="org6d161bd">参考</h2>
+            <div class="outline-text-2" id="text-org6d161bd">
+                <p>
+                    <a href="http://www.justsoftwaresolutions.co.uk/threading/multithreading-in-c++0x-part-1-starting-threads.html">http://www.justsoftwaresolutions.co.uk/threading/multithreading-in-c++0x-part-1-starting-threads.html</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div id="postamble" class="status">
+        <p><a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="88x31.png"/></a></p><p>版权所有 ©2012-2018: Vivodo Lio | 日期: 2014-12-19 五 00:00</p><p>Generated by <a href="https://www.gnu.org/software/emacs/">Emacs</a> 25.3.1 (<a href="https://orgmode.org">Org</a> mode 9.1.7), <a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+    </div>
 </body>
 </html>

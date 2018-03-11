@@ -1,214 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
-<head>
-<!-- 2015-12-03 四 15:23 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>你是真正的计算机高手吗？——兼议黑客</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="心蛛" />
-<meta  name="description" content="Level-2 for exporting to HTML"
- />
-<link rel="stylesheet" title="Standard" href="../../assets/css/worg.css" type="text/css" />
-<link rel="alternate stylesheet" title="Zenburn" href="../../assets/css/worg-zenburn.css" type="text/css" />
-<link rel="alternate stylesheet" title="Classic" href="../../assets/css/worg-classic.css" type="text/css" />
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh">
+    <head>
+        <!-- 2018-03-11 日 21:59 -->
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>你是真正的计算机高手吗？——兼议黑客</title>
+        <meta name="generator" content="Org mode" />
+        <meta name="author" content="心蛛" />
+        <meta name="description" content="Level-2 for exporting to HTML"
+              />
+        <link rel="stylesheet" title="Standard" href="../../assets/css/worg.css" type="text/css" />
+        <link rel="alternate stylesheet" title="Zenburn" href="../../assets/css/worg-zenburn.css" type="text/css" />
+        <link rel="alternate stylesheet" title="Classic" href="../../assets/css/worg-classic.css" type="text/css" />
+        <script type="text/javascript">
+            /*
+            @licstart  The following is the entire license notice for the
+            JavaScript code in this tag.
 
-<script type="text/javascript" src="http://orgmode.org/org-info.js">
-/**
- *
- * @source: http://orgmode.org/org-info.js
- *
- * @licstart  The following is the entire license notice for the
- *  JavaScript code in http://orgmode.org/org-info.js.
- *
- * Copyright (C) 2012-2013 Free Software Foundation, Inc.
- *
- *
- * The JavaScript code in this tag is free software: you can
- * redistribute it and/or modify it under the terms of the GNU
- * General Public License (GNU GPL) as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option)
- * any later version.  The code is distributed WITHOUT ANY WARRANTY;
- * without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
- *
- * As additional permission under GNU GPL version 3 section 7, you
- * may distribute non-source (e.g., minimized or compacted) forms of
- * that code without the copy of the GNU GPL normally required by
- * section 4, provided you include this license notice and a URL
- * through which recipients can access the Corresponding Source.
- *
- * @licend  The above is the entire license notice
- * for the JavaScript code in http://orgmode.org/org-info.js.
- *
- */
-</script>
+            Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
-<script type="text/javascript">
+            The JavaScript code in this tag is free software: you can
+            redistribute it and/or modify it under the terms of the GNU
+            General Public License (GNU GPL) as published by the Free Software
+            Foundation, either version 3 of the License, or (at your option)
+            any later version.  The code is distributed WITHOUT ANY WARRANTY;
+            without even the implied warranty of MERCHANTABILITY or FITNESS
+            FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
 
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
+            As additional permission under GNU GPL version 3 section 7, you
+            may distribute non-source (e.g., minimized or compacted) forms of
+            that code without the copy of the GNU GPL normally required by
+            section 4, provided you include this license notice and a URL
+            through which recipients can access the Corresponding Source.
 
 
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+            @licend  The above is the entire license notice
+            for the JavaScript code in this tag.
+            */
+            <!--/*--><![CDATA[/*><!--*/
+            function CodeHighlightOn(elem, id)
+            {
+            var target = document.getElementById(id);
+            if(null != target) {
+            elem.cacheClassElem = elem.className;
+            elem.cacheClassTarget = target.className;
+            target.className = "code-highlighted";
+            elem.className   = "code-highlighted";
+            }
+            }
+            function CodeHighlightOff(elem, id)
+            {
+            var target = document.getElementById(id);
+            if(elem.cacheClassElem)
+            elem.className = elem.cacheClassElem;
+            if(elem.cacheClassTarget)
+            target.className = elem.cacheClassTarget;
+            }
+            /*]]>*///-->
+        </script>
+    </head>
+    <body>
+        <div id="org-div-home-and-up">
+            <a accesskey="h" href="../index.html"> UP </a>
+            |
+            <a accesskey="H" href="../../index.html"> HOME </a>
+            </div><div id="content">
+            <h1 class="title">你是真正的计算机高手吗？——兼议黑客</h1>
+            <p>
+                伴随着信息时代产生的诸多新名词中，大家耳熟能详的一个就是——“黑客”。此词源自英文中的*hacker*, 其动词形式为 <b>hack</b>, 意指对计算机程序进行修改直到它工作满意为止，而 <b>hacker</b> 即指这么做的人。伴随 <b>hacker</b> 闻名的还有一个词 <b>cracker</b>, 中译通常为“骇客”。其动词为 <b>crack</b>, 意指“破坏，但并没有导致整体崩溃的结果”。显然，“骇客”是指那些用计算机技术来搞破坏的人。在中文里, hacker 和 cracker 通常被人们混为一谈，统称为“黑客”，用以指代那些俗称为“计算机高手”的人。为了避免以后行文中的误解，故于此先行澄清一下“黑客”以及所谓的“计算机高手”的所指。
+            </p>
 
-<!--/*--><![CDATA[/*><!--*/
-org_html_manager.set("TOC_DEPTH", "4");
-org_html_manager.set("LINK_HOME", "../../index.html");
-org_html_manager.set("LINK_UP", "../index.html");
-org_html_manager.set("LOCAL_TOC", "1");
-org_html_manager.set("VIEW_BUTTONS", "0");
-org_html_manager.set("MOUSE_HINT", "underline");
-org_html_manager.set("FIXED_TOC", "0");
-org_html_manager.set("TOC", "0");
-org_html_manager.set("VIEW", "content");
-org_html_manager.setup();  // activate after the parameters are set
-/*]]>*///-->
-</script>
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
+            <p>
+                鄙人不才，对计算机方面使用得稍微熟练一点，因此常常有人将我列为“高手”系列。从这种状况看来，所谓的“计算机高手”的通俗标准就是能够在计算机的某些使用方面熟练乃至精通的人了。但究竟什么是真正的“计算机高手”呢？并没有一个确切的标准。在我看来，计算机高手可以分为这样的几种：一般的熟练用户、一般的程序员和系统管理员、高级的程序员和管理员、黑客和系统开发者。从知识的掌握程度来看，分别为：掌握并熟知具体的应用程序的普通用户、掌握并熟练编程和系统维护的一般程序员和管理员、能够进行较高级别开发和维护的程序员和管理员、精通整个系统并且是系统创造者级别的开发者。即便如此说来，我们对于“高手”的概念仍然是模糊的。如果换一种思维方式，将计算机等同于我们日常使用的自行车，那么“高手”会是些什么样的人呢？如果等同于我们日常使用的螺丝刀呢？
+            </p>
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+            <p>
+                自参加工作之后，我常常听到大家对某某年轻人计算机很牛的称赞。而该年轻人往往听到这样的称赞之后表面上不说，内心沾沾自喜，久之由此形成一种虚荣；而他为了维护这种虚荣，往往在业余会投入更多的精力在计算机上—— Java 风行的时候，他会写上一些 Applet 程序并四处散播以自娱; .Net 风行的时候，他又会以 ASPX 加上 C# 的编程而自傲; Linux +
+                Apache + MySQL + PHP 开始流行的时候，他毫不犹豫地投身于 LAMP; ……然而不幸的是，计算机技术的更新远远快于他的转向速度，几年之后，他突然发现自己其实什么也没有深入，自己所学的东西永远在开始有点起色的时候已经“落伍”了！这个时代，计算机技术的更新就仿佛是街头女人的时尚令人眼花缭乱！面对如此迅速变幻的世界，他往往会感到一种疲惫与空虚。
+            </p>
 
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+            <p>
+                我也曾经接触过一些年纪较长的研究人员，和年轻人相比，他们给我是完全不同的感觉。我曾经有幸替黄盛年院士整理过计算机，和年轻人使用的机器比起来，他的系统内干净得只剩下自带的一些程序了。他半身瘫痪，就用唯一能够活动的右手在破旧的计算机上学习了五笔，并用一只手写出了自传《未湮灭的径迹》。曾经一位已经退休快七十的老师，每天在物理所已经基本废弃的 Alpha 机器上调试他的计算程序，而这样的程序使用的是许多计算机很棒的年轻人所不屑一顾的古老的 Fortran 语言。还有一位老师，也是近七十的人了，每天在调试他那四五万行的 Fortran 程序。他使用的是大多数人都不太喜欢用的 Linux + G77,
+                而他的程序在国际上被许多同行使用着。相比年轻人使用的 XP 系统, Visual Fortran 或
+                Visual C# 等，他们使用的是多么原始和古老的工具啊！可是，使用先进工具的人又究竟有多少先进的东西出来呢？
+            </p>
 
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
+            <p>
+                很惭愧，我曾经也是那样技术追风的年轻人。不过幸运的是，我追的不是盗版世界里的风向标——微软及其相关的产品，我追的是开源世界的风向标——Linux 。前前后后，我接触了试用了数百个软件，了解了尝试了数十种计算机语言，并对软件行业的动态耳熟能详。在追的过程中，我开始逐渐的反思一个问题——为什么 Linux 没有在中国产生？然后我发现了另一个更值得思考的问题——我们究竟需要计算机干些什么？
+            </p>
 
+            <p>
+                首先，我们需要的不是计算机本身，也不是软件本身，而是计算机能够满足我们的某种需要。计算机只是一个工具，它和我们每天大多数人上班所骑的自行车一样，送达目的地之后，除了维修，我们没有必要浪费更多的时间于此。因此，只有真正制造和维修的人才有可能成为工具的高手。或者说，计算机高手可以分为用户的高手和开发的高手两大类。就用户高手而言，用它高效地完成自己的工作才是标准。因此，那些技术追风的年轻人并不“高手”，因为他们并不理解自己的需求，亦或他们在“技术的时尚”中迷失了自我。而真正的用户高手是象黄院士以及我所接触的那些老师们，他们用计算机达成了自己的目标。
+            </p>
 
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
-</head>
-<body>
-<div id="org-div-home-and-up">
- <a accesskey="h" href="../index.html"> UP </a>
- |
- <a accesskey="H" href="../../index.html"> HOME </a>
-</div><div id="content">
-<h1 class="title">你是真正的计算机高手吗？——兼议黑客</h1>
-<p>
-伴随着信息时代产生的诸多新名词中，大家耳熟能详的一个就是——“黑客”。此词源自英文中的*hacker*, 其动词形式为 <b>hack</b>, 意指对计算机程序进行修改直到它工作满意为止，而 <b>hacker</b> 即指这么做的人。伴随 <b>hacker</b> 闻名的还有一个词 <b>cracker</b>, 中译通常为“骇客”。其动词为 <b>crack</b>, 意指“破坏，但并没有导致整体崩溃的结果”。显然，“骇客”是指那些用计算机技术来搞破坏的人。在中文里, hacker 和 cracker 通常被人们混为一谈，统称为“黑客”，用以指代那些俗称为“计算机高手”的人。为了避免以后行文中的误解，故于此先行澄清一下“黑客”以及所谓的“计算机高手”的所指。
-</p>
+            <p>
+                其次，就计算机本身而言，它已经构成了一个极其复杂的系统，这个系统包括软硬件已经非单人所能构造和发展。就计算机的开发高手而言，不是单兵作战的勇士，而是能够集结团队完成一个更大目标的组织者与领导者。从这个意义上来说，真正的开发高手寥寥无几，屈指数来，也只有 Linus Torwalds, Richard Stallman 等数人，他们是站在高手金塔顶端的“黑客”。
+            </p>
 
-<p>
-鄙人不才，对计算机方面使用得稍微熟练一点，因此常常有人将我列为“高手”系列。从这种状况看来，所谓的“计算机高手”的通俗标准就是能够在计算机的某些使用方面熟练乃至精通的人了。但究竟什么是真正的“计算机高手”呢？并没有一个确切的标准。在我看来，计算机高手可以分为这样的几种：一般的熟练用户、一般的程序员和系统管理员、高级的程序员和管理员、黑客和系统开发者。从知识的掌握程度来看，分别为：掌握并熟知具体的应用程序的普通用户、掌握并熟练编程和系统维护的一般程序员和管理员、能够进行较高级别开发和维护的程序员和管理员、精通整个系统并且是系统创造者级别的开发者。即便如此说来，我们对于“高手”的概念仍然是模糊的。如果换一种思维方式，将计算机等同于我们日常使用的自行车，那么“高手”会是些什么样的人呢？如果等同于我们日常使用的螺丝刀呢？
-</p>
+            <p>
+                Eric Steven Raymond 在他的 Hacker-Howto 中定义了几条“黑客”守则：
+            </p>
+            <ol class="org-ol">
+                <li>The world is full of fascinating problems waiting to be solved. <br />
+                这世上永远充满令人激动的待解问题</li>
+                <li>No problem should ever have to be solved twice. <br />
+                没有什么问题值得重复劳动</li>
+                <li>Boredem and drudgery are evil. <br />
+                讨厌乏味枯燥的事情</li>
+                <li>Freedom is good. <br />
+                自由无价</li>
+                <li>Attitude is no substitute for competence. <br />
+                行胜于言</li>
+            </ol>
+            <p>
+                我想，这几条“守则”已经鲜明地说明了什么才是真正的“黑客”。
+            </p>
 
-<p>
-自参加工作之后，我常常听到大家对某某年轻人计算机很牛的称赞。而该年轻人往往听到这样的称赞之后表面上不说，内心沾沾自喜，久之由此形成一种虚荣；而他为了维护这种虚荣，往往在业余会投入更多的精力在计算机上—— Java 风行的时候，他会写上一些 Applet 程序并四处散播以自娱; .Net 风行的时候，他又会以 ASPX 加上 C# 的编程而自傲; Linux +
-Apache + MySQL + PHP 开始流行的时候，他毫不犹豫地投身于 LAMP; ……然而不幸的是，计算机技术的更新远远快于他的转向速度，几年之后，他突然发现自己其实什么也没有深入，自己所学的东西永远在开始有点起色的时候已经“落伍”了！这个时代，计算机技术的更新就仿佛是街头女人的时尚令人眼花缭乱！面对如此迅速变幻的世界，他往往会感到一种疲惫与空虚。
-</p>
+            <p>
+                我不知道还有多少年轻人沉浸在“高手”的称号中沾沾自喜着，我曾经是这样的一员，只想以自己的经历和思考来大喝一声：“醒来！在真正的高手前看清自己的浅薄！”
+            </p>
 
-<p>
-我也曾经接触过一些年纪较长的研究人员，和年轻人相比，他们给我是完全不同的感觉。我曾经有幸替黄盛年院士整理过计算机，和年轻人使用的机器比起来，他的系统内干净得只剩下自带的一些程序了。他半身瘫痪，就用唯一能够活动的右手在破旧的计算机上学习了五笔，并用一只手写出了自传《未湮灭的径迹》。曾经一位已经退休快七十的老师，每天在物理所已经基本废弃的 Alpha 机器上调试他的计算程序，而这样的程序使用的是许多计算机很棒的年轻人所不屑一顾的古老的 Fortran 语言。还有一位老师，也是近七十的人了，每天在调试他那四五万行的 Fortran 程序。他使用的是大多数人都不太喜欢用的 Linux + G77,
-而他的程序在国际上被许多同行使用着。相比年轻人使用的 XP 系统, Visual Fortran 或
-Visual C# 等，他们使用的是多么原始和古老的工具啊！可是，使用先进工具的人又究竟有多少先进的东西出来呢？
-</p>
+            <p>
+                我不知道还有多少人将“骇客”和“黑客”混为一潭，我只是在阐述完“黑客”的真正含义之后说一声：请尊重以技术为生命的真正黑客！
+            </p>
 
-<p>
-很惭愧，我曾经也是那样技术追风的年轻人。不过幸运的是，我追的不是盗版世界里的风向标——微软及其相关的产品，我追的是开源世界的风向标——Linux 。前前后后，我接触了试用了数百个软件，了解了尝试了数十种计算机语言，并对软件行业的动态耳熟能详。在追的过程中，我开始逐渐的反思一个问题——为什么 Linux 没有在中国产生？然后我发现了另一个更值得思考的问题——我们究竟需要计算机干些什么？
-</p>
-
-<p>
-首先，我们需要的不是计算机本身，也不是软件本身，而是计算机能够满足我们的某种需要。计算机只是一个工具，它和我们每天大多数人上班所骑的自行车一样，送达目的地之后，除了维修，我们没有必要浪费更多的时间于此。因此，只有真正制造和维修的人才有可能成为工具的高手。或者说，计算机高手可以分为用户的高手和开发的高手两大类。就用户高手而言，用它高效地完成自己的工作才是标准。因此，那些技术追风的年轻人并不“高手”，因为他们并不理解自己的需求，亦或他们在“技术的时尚”中迷失了自我。而真正的用户高手是象黄院士以及我所接触的那些老师们，他们用计算机达成了自己的目标。
-</p>
-
-<p>
-其次，就计算机本身而言，它已经构成了一个极其复杂的系统，这个系统包括软硬件已经非单人所能构造和发展。就计算机的开发高手而言，不是单兵作战的勇士，而是能够集结团队完成一个更大目标的组织者与领导者。从这个意义上来说，真正的开发高手寥寥无几，屈指数来，也只有 Linus Torwalds, Richard Stallman 等数人，他们是站在高手金塔顶端的“黑客”。
-</p>
-
-<p>
-Eric Steven Raymond 在他的 Hacker-Howto 中定义了几条“黑客”守则：
-</p>
-<ol class="org-ol">
-<li>The world is full of fascinating problems waiting to be solved. <br  />
-这世上永远充满令人激动的待解问题</li>
-<li>No problem should ever have to be solved twice. <br  />
-没有什么问题值得重复劳动</li>
-<li>Boredem and drudgery are evil. <br  />
-讨厌乏味枯燥的事情</li>
-<li>Freedom is good. <br  />
-自由无价</li>
-<li>Attitude is no substitute for competence. <br  />
-行胜于言</li>
-</ol>
-<p>
-我想，这几条“守则”已经鲜明地说明了什么才是真正的“黑客”。
-</p>
-
-<p>
-我不知道还有多少年轻人沉浸在“高手”的称号中沾沾自喜着，我曾经是这样的一员，只想以自己的经历和思考来大喝一声：“醒来！在真正的高手前看清自己的浅薄！”
-</p>
-
-<p>
-我不知道还有多少人将“骇客”和“黑客”混为一潭，我只是在阐述完“黑客”的真正含义之后说一声：请尊重以技术为生命的真正黑客！
-</p>
-
-<p>
-你觉得自己是真正的计算机高手吗？是用户高手还是开发高手呢？
-</p>
-</div>
-<div id="postamble" class="status">
-
-<script type="text/javascript" src="http://exaos.github.io/assets/js/pagetail.js"></script>
-<div id="disqus_thread"></div>
-<p>版权所有 ©2015: 心蛛 | Date: <span class="timestamp-wrapper"><span class="timestamp">[2005-08-21 日 05:05]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.3.2), <a href="http://validator.w3.org/check?uri=referer">Validate</a>,
-<a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="88x31.png"/></a>
-<p><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></p>
-</div>
-</body>
+            <p>
+                你觉得自己是真正的计算机高手吗？是用户高手还是开发高手呢？
+            </p>
+        </div>
+        <div id="postamble" class="status">
+            <p><a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="88x31.png"/></a></p><p>版权所有 ©2012-2018: 心蛛 | 日期: 2005-08-21 日 05:05</p><p>Generated by <a href="https://www.gnu.org/software/emacs/">Emacs</a> 25.3.1 (<a href="https://orgmode.org">Org</a> mode 9.1.7), <a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+        </div>
+    </body>
 </html>

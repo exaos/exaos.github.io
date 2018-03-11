@@ -1,274 +1,200 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
-<head>
-<!-- 2015-12-03 四 15:24 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>我的编程笔记</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Exaos Lee" />
-<meta  name="description" content="Level-2 for exporting to HTML"
- />
-<link rel="stylesheet" title="Standard" href="../../assets/css/worg.css" type="text/css" />
-<link rel="alternate stylesheet" title="Zenburn" href="../../assets/css/worg-zenburn.css" type="text/css" />
-<link rel="alternate stylesheet" title="Classic" href="../../assets/css/worg-classic.css" type="text/css" />
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh">
+    <head>
+        <!-- 2018-03-11 日 21:58 -->
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>我的编程笔记</title>
+        <meta name="generator" content="Org mode" />
+        <meta name="author" content="Vivodo Lio" />
+        <meta name="description" content="Level-2 for exporting to HTML"
+              />
+        <link rel="stylesheet" title="Standard" href="../../assets/css/worg.css" type="text/css" />
+        <link rel="alternate stylesheet" title="Zenburn" href="../../assets/css/worg-zenburn.css" type="text/css" />
+        <link rel="alternate stylesheet" title="Classic" href="../../assets/css/worg-classic.css" type="text/css" />
+        <script type="text/javascript">
+            /*
+            @licstart  The following is the entire license notice for the
+            JavaScript code in this tag.
 
-<script type="text/javascript" src="http://orgmode.org/org-info.js">
-/**
- *
- * @source: http://orgmode.org/org-info.js
- *
- * @licstart  The following is the entire license notice for the
- *  JavaScript code in http://orgmode.org/org-info.js.
- *
- * Copyright (C) 2012-2013 Free Software Foundation, Inc.
- *
- *
- * The JavaScript code in this tag is free software: you can
- * redistribute it and/or modify it under the terms of the GNU
- * General Public License (GNU GPL) as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option)
- * any later version.  The code is distributed WITHOUT ANY WARRANTY;
- * without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
- *
- * As additional permission under GNU GPL version 3 section 7, you
- * may distribute non-source (e.g., minimized or compacted) forms of
- * that code without the copy of the GNU GPL normally required by
- * section 4, provided you include this license notice and a URL
- * through which recipients can access the Corresponding Source.
- *
- * @licend  The above is the entire license notice
- * for the JavaScript code in http://orgmode.org/org-info.js.
- *
- */
-</script>
+            Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
-<script type="text/javascript">
+            The JavaScript code in this tag is free software: you can
+            redistribute it and/or modify it under the terms of the GNU
+            General Public License (GNU GPL) as published by the Free Software
+            Foundation, either version 3 of the License, or (at your option)
+            any later version.  The code is distributed WITHOUT ANY WARRANTY;
+            without even the implied warranty of MERCHANTABILITY or FITNESS
+            FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
 
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
+            As additional permission under GNU GPL version 3 section 7, you
+            may distribute non-source (e.g., minimized or compacted) forms of
+            that code without the copy of the GNU GPL normally required by
+            section 4, provided you include this license notice and a URL
+            through which recipients can access the Corresponding Source.
 
 
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+            @licend  The above is the entire license notice
+            for the JavaScript code in this tag.
+            */
+            <!--/*--><![CDATA[/*><!--*/
+            function CodeHighlightOn(elem, id)
+            {
+            var target = document.getElementById(id);
+            if(null != target) {
+            elem.cacheClassElem = elem.className;
+            elem.cacheClassTarget = target.className;
+            target.className = "code-highlighted";
+            elem.className   = "code-highlighted";
+            }
+            }
+            function CodeHighlightOff(elem, id)
+            {
+            var target = document.getElementById(id);
+            if(elem.cacheClassElem)
+            elem.className = elem.cacheClassElem;
+            if(elem.cacheClassTarget)
+            target.className = elem.cacheClassTarget;
+            }
+            /*]]>*///-->
+        </script>
+    </head>
+    <body>
+        <div id="org-div-home-and-up">
+            <a accesskey="h" href="index.html"> UP </a>
+            |
+            <a accesskey="H" href="../../index.html"> HOME </a>
+            </div><div id="content">
+            <h1 class="title">我的编程笔记</h1>
+            <div id="table-of-contents">
+                <h2>Table of Contents</h2>
+                <div id="text-table-of-contents">
+                    <ul>
+                        <li><a href="#org17d720d">GNU 工具套件</a>
+                        <ul>
+                            <li><a href="#orga7d52d4">GDB</a></li>
+                            <li><a href="#orgc039a78">GNU Make</a></li>
+                        </ul>
+                        </li>
+                        <li><a href="#orgffdaaac">并行程序开发</a>
+                        <ul>
+                            <li><a href="#org1a9091a">Intel MPI</a></li>
+                            <li><a href="#org1ed7365">OpenMP</a></li>
+                            <li><a href="#org733e348">MPICH</a></li>
+                            <li><a href="#orgab6b2b8">Open MPI</a></li>
+                        </ul>
+                        </li>
+                        <li><a href="#orgdb0231d">版本控制工具</a></li>
+                        <li><a href="#org9ac1e86">编译系统</a>
+                        <ul>
+                            <li><a href="#orgc870a54">CMake</a></li>
+                        </ul>
+                        </li>
+                        <li><a href="#orga183550">Intel 编程套件</a></li>
+                        <li><a href="#org064d01b">集成开发环境</a></li>
+                    </ul>
+                </div>
+            </div>
 
-<!--/*--><![CDATA[/*><!--*/
-org_html_manager.set("TOC_DEPTH", "4");
-org_html_manager.set("LINK_HOME", "../../index.html");
-org_html_manager.set("LINK_UP", "index.html");
-org_html_manager.set("LOCAL_TOC", "1");
-org_html_manager.set("VIEW_BUTTONS", "0");
-org_html_manager.set("MOUSE_HINT", "underline");
-org_html_manager.set("FIXED_TOC", "0");
-org_html_manager.set("TOC", "0");
-org_html_manager.set("VIEW", "content");
-org_html_manager.setup();  // activate after the parameters are set
-/*]]>*///-->
-</script>
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
+            <div id="outline-container-org17d720d" class="outline-2">
+                <h2 id="org17d720d">GNU 工具套件</h2>
+                <div class="outline-text-2" id="text-org17d720d">
+                </div>
+                <div id="outline-container-orga7d52d4" class="outline-3">
+                    <h3 id="orga7d52d4">GDB</h3>
+                </div>
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+                <div id="outline-container-orgc039a78" class="outline-3">
+                    <h3 id="orgc039a78">GNU Make</h3>
+                </div>
+            </div>
 
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+            <div id="outline-container-orgffdaaac" class="outline-2">
+                <h2 id="orgffdaaac">并行程序开发</h2>
+                <div class="outline-text-2" id="text-orgffdaaac">
+                </div>
+                <div id="outline-container-org1a9091a" class="outline-3">
+                    <h3 id="org1a9091a">Intel MPI</h3>
+                    <div class="outline-text-3" id="text-org1a9091a">
+                        <ul class="org-ul">
+                            <li><a href="mynote-intelmpi.html">我的 Intel MPI 笔记</a></li>
+                        </ul>
+                    </div>
+                </div>
 
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
+                <div id="outline-container-org1ed7365" class="outline-3">
+                    <h3 id="org1ed7365">OpenMP</h3>
+                    <div class="outline-text-3" id="text-org1ed7365">
+                        <ul class="org-ul">
+                            <li>URL &#x2013; <a href="http://openmp.org/">http://openmp.org/</a></li>
+                            <li>参考文档
+                            <ul class="org-ul">
+                                <li><a href="http://en.wikipedia.org/wiki/OpenMP">http://en.wikipedia.org/wiki/OpenMP</a></li>
+                                <li><a href="http://gcc.gnu.org/projects/gomp/">http://gcc.gnu.org/projects/gomp/</a></li>
+                                <li>Google Books: Parallel programming in OpenMP (by Rohit Chandra)</li>
+                                <li><a href="https://computing.llnl.gov/tutorials/openMP/">https://computing.llnl.gov/tutorials/openMP/</a></li>
+                            </ul></li>
+                            <li>我的 OpenMP 笔记</li>
+                        </ul>
+                    </div>
+                </div>
 
+                <div id="outline-container-org733e348" class="outline-3">
+                    <h3 id="org733e348">MPICH</h3>
+                    <div class="outline-text-3" id="text-org733e348">
+                        <ul class="org-ul">
+                            <li>URL &#x2013; <a href="http://www.mcs.anl.gov/research/projects/mpich2/">http://www.mcs.anl.gov/research/projects/mpich2/</a></li>
+                            <li>参考文档
+                            <ul class="org-ul">
+                                <li><a href="http://wiki.mcs.anl.gov/mpich2/index.php">MPICH2 Wiki</a></li>
+                                <li><a href="http://www.ncsa.illinois.edu/UserInfo/Resources/Hardware/CommonDoc/mpich2_gdb.html">Compiling and Running with MPICH2 and GDB</a></li>
+                                <li><a href="http://wiki.lazarus.freepascal.org/MPICH">MPICH Lazarus' Wiki</a> &#x2013; 介绍了 FreePascal 与 MPI 结合使用的例子</li>
+                            </ul></li>
+                            <li><a href="mynote-mpich.html">我的 MPICH 笔记</a></li>
+                        </ul>
+                    </div>
+                </div>
 
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
-</head>
-<body>
-<div id="org-div-home-and-up">
- <a accesskey="h" href="index.html"> UP </a>
- |
- <a accesskey="H" href="../../index.html"> HOME </a>
-</div><div id="content">
-<h1 class="title">我的编程笔记</h1>
-<div id="table-of-contents">
-<h2>&#30446;&#24405;</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#orgheadline3">GNU 工具套件</a>
-<ul>
-<li><a href="#orgheadline1">GDB</a></li>
-<li><a href="#orgheadline2">GNU Make</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline8">并行程序开发</a>
-<ul>
-<li><a href="#orgheadline4">Intel MPI</a></li>
-<li><a href="#orgheadline5">OpenMP</a></li>
-<li><a href="#orgheadline6">MPICH</a></li>
-<li><a href="#orgheadline7">Open MPI</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline9">版本控制工具</a></li>
-<li><a href="#orgheadline11">编译系统</a>
-<ul>
-<li><a href="#orgheadline10">CMake</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline12">Intel 编程套件</a></li>
-<li><a href="#orgheadline13">集成开发环境</a></li>
-</ul>
-</div>
-</div>
+                <div id="outline-container-orgab6b2b8" class="outline-3">
+                    <h3 id="orgab6b2b8">Open MPI</h3>
+                    <div class="outline-text-3" id="text-orgab6b2b8">
+                        <ul class="org-ul">
+                            <li>URL &#x2013; <a href="http://www.open-mpi.org/">http://www.open-mpi.org/</a></li>
+                            <li>参考文档
+                            <ul class="org-ul">
+                                <li><a href="http://www.slac.stanford.edu/comp/unix/farm/mpi.html">http://www.slac.stanford.edu/comp/unix/farm/mpi.html</a></li>
+                            </ul></li>
+                            <li>我的 OpenMPI 笔记</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
-<div id="outline-container-orgheadline3" class="outline-2">
-<h2 id="orgheadline3">GNU 工具套件</h2>
-<div class="outline-text-2" id="text-orgheadline3">
-</div><div id="outline-container-orgheadline1" class="outline-3">
-<h3 id="orgheadline1">GDB</h3>
-</div>
+            <div id="outline-container-orgdb0231d" class="outline-2">
+                <h2 id="orgdb0231d">版本控制工具</h2>
+            </div>
 
-<div id="outline-container-orgheadline2" class="outline-3">
-<h3 id="orgheadline2">GNU Make</h3>
-</div>
-</div>
+            <div id="outline-container-org9ac1e86" class="outline-2">
+                <h2 id="org9ac1e86">编译系统</h2>
+                <div class="outline-text-2" id="text-org9ac1e86">
+                </div>
+                <div id="outline-container-orgc870a54" class="outline-3">
+                    <h3 id="orgc870a54">CMake</h3>
+                </div>
+            </div>
 
-<div id="outline-container-orgheadline8" class="outline-2">
-<h2 id="orgheadline8">并行程序开发</h2>
-<div class="outline-text-2" id="text-orgheadline8">
-</div><div id="outline-container-orgheadline4" class="outline-3">
-<h3 id="orgheadline4">Intel MPI</h3>
-<div class="outline-text-3" id="text-orgheadline4">
-<ul class="org-ul">
-<li><a href="mynote-intelmpi.html">我的 Intel MPI 笔记</a></li>
-</ul>
-</div>
-</div>
+            <div id="outline-container-orga183550" class="outline-2">
+                <h2 id="orga183550">Intel 编程套件</h2>
+            </div>
 
-<div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="orgheadline5">OpenMP</h3>
-<div class="outline-text-3" id="text-orgheadline5">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://openmp.org/">http://openmp.org/</a></li>
-<li>参考文档
-<ul class="org-ul">
-<li><a href="http://en.wikipedia.org/wiki/OpenMP">http://en.wikipedia.org/wiki/OpenMP</a></li>
-<li><a href="http://gcc.gnu.org/projects/gomp/">http://gcc.gnu.org/projects/gomp/</a></li>
-<li>Google Books: Parallel programming in OpenMP (by Rohit Chandra)</li>
-<li><a href="https://computing.llnl.gov/tutorials/openMP/">https://computing.llnl.gov/tutorials/openMP/</a></li>
-</ul></li>
-<li>我的 OpenMP 笔记</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="orgheadline6">MPICH</h3>
-<div class="outline-text-3" id="text-orgheadline6">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://www.mcs.anl.gov/research/projects/mpich2/">http://www.mcs.anl.gov/research/projects/mpich2/</a></li>
-<li>参考文档
-<ul class="org-ul">
-<li><a href="http://wiki.mcs.anl.gov/mpich2/index.php">MPICH2 Wiki</a></li>
-<li><a href="http://www.ncsa.illinois.edu/UserInfo/Resources/Hardware/CommonDoc/mpich2_gdb.html">Compiling and Running with MPICH2 and GDB</a></li>
-<li><a href="http://wiki.lazarus.freepascal.org/MPICH">MPICH Lazarus' Wiki</a> &#x2013; 介绍了 FreePascal 与 MPI 结合使用的例子</li>
-</ul></li>
-<li><a href="mynote-mpich.html">我的 MPICH 笔记</a></li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="orgheadline7">Open MPI</h3>
-<div class="outline-text-3" id="text-orgheadline7">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://www.open-mpi.org/">http://www.open-mpi.org/</a></li>
-<li>参考文档
-<ul class="org-ul">
-<li><a href="http://www.slac.stanford.edu/comp/unix/farm/mpi.html">http://www.slac.stanford.edu/comp/unix/farm/mpi.html</a></li>
-</ul></li>
-<li>我的 OpenMPI 笔记</li>
-</ul>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgheadline9" class="outline-2">
-<h2 id="orgheadline9">版本控制工具</h2>
-</div>
-
-<div id="outline-container-orgheadline11" class="outline-2">
-<h2 id="orgheadline11">编译系统</h2>
-<div class="outline-text-2" id="text-orgheadline11">
-</div><div id="outline-container-orgheadline10" class="outline-3">
-<h3 id="orgheadline10">CMake</h3>
-</div>
-</div>
-
-<div id="outline-container-orgheadline12" class="outline-2">
-<h2 id="orgheadline12">Intel 编程套件</h2>
-</div>
-
-<div id="outline-container-orgheadline13" class="outline-2">
-<h2 id="orgheadline13">集成开发环境</h2>
-</div>
-</div>
-<div id="postamble" class="status">
-
-<script type="text/javascript" src="http://exaos.github.io/assets/js/pagetail.js"></script>
-<div id="disqus_thread"></div>
-<p>版权所有 ©2015: Exaos Lee | Date: <span class="timestamp-wrapper"><span class="timestamp">[2011-10-14 五]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.3.2), <a href="http://validator.w3.org/check?uri=referer">Validate</a>,
-<a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="88x31.png"/></a>
-<p><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></p>
-</div>
-</body>
+            <div id="outline-container-org064d01b" class="outline-2">
+                <h2 id="org064d01b">集成开发环境</h2>
+            </div>
+        </div>
+        <div id="postamble" class="status">
+            <p><a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="88x31.png"/></a></p><p>版权所有 ©2012-2018: Vivodo Lio | 日期: 2011-10-14 五 00:00</p><p>Generated by <a href="https://www.gnu.org/software/emacs/">Emacs</a> 25.3.1 (<a href="https://orgmode.org">Org</a> mode 9.1.7), <a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+        </div>
+    </body>
 </html>

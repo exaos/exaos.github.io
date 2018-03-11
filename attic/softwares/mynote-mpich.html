@@ -1,315 +1,243 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
-<head>
-<!-- 2015-12-03 四 15:24 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>我的 MPICH 笔记</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Exaos Lee" />
-<meta  name="description" content="Level-2 for exporting to HTML"
- />
-<link rel="stylesheet" title="Standard" href="../../assets/css/worg.css" type="text/css" />
-<link rel="alternate stylesheet" title="Zenburn" href="../../assets/css/worg-zenburn.css" type="text/css" />
-<link rel="alternate stylesheet" title="Classic" href="../../assets/css/worg-classic.css" type="text/css" />
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh">
+    <head>
+        <!-- 2018-03-11 日 21:58 -->
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>我的 MPICH 笔记</title>
+        <meta name="generator" content="Org mode" />
+        <meta name="author" content="Vivodo Lio" />
+        <meta name="description" content="Level-2 for exporting to HTML"
+              />
+        <link rel="stylesheet" title="Standard" href="../../assets/css/worg.css" type="text/css" />
+        <link rel="alternate stylesheet" title="Zenburn" href="../../assets/css/worg-zenburn.css" type="text/css" />
+        <link rel="alternate stylesheet" title="Classic" href="../../assets/css/worg-classic.css" type="text/css" />
+        <script type="text/javascript">
+            /*
+            @licstart  The following is the entire license notice for the
+            JavaScript code in this tag.
 
-<script type="text/javascript" src="http://orgmode.org/org-info.js">
-/**
- *
- * @source: http://orgmode.org/org-info.js
- *
- * @licstart  The following is the entire license notice for the
- *  JavaScript code in http://orgmode.org/org-info.js.
- *
- * Copyright (C) 2012-2013 Free Software Foundation, Inc.
- *
- *
- * The JavaScript code in this tag is free software: you can
- * redistribute it and/or modify it under the terms of the GNU
- * General Public License (GNU GPL) as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option)
- * any later version.  The code is distributed WITHOUT ANY WARRANTY;
- * without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
- *
- * As additional permission under GNU GPL version 3 section 7, you
- * may distribute non-source (e.g., minimized or compacted) forms of
- * that code without the copy of the GNU GPL normally required by
- * section 4, provided you include this license notice and a URL
- * through which recipients can access the Corresponding Source.
- *
- * @licend  The above is the entire license notice
- * for the JavaScript code in http://orgmode.org/org-info.js.
- *
- */
-</script>
+            Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
-<script type="text/javascript">
+            The JavaScript code in this tag is free software: you can
+            redistribute it and/or modify it under the terms of the GNU
+            General Public License (GNU GPL) as published by the Free Software
+            Foundation, either version 3 of the License, or (at your option)
+            any later version.  The code is distributed WITHOUT ANY WARRANTY;
+            without even the implied warranty of MERCHANTABILITY or FITNESS
+            FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
 
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
+            As additional permission under GNU GPL version 3 section 7, you
+            may distribute non-source (e.g., minimized or compacted) forms of
+            that code without the copy of the GNU GPL normally required by
+            section 4, provided you include this license notice and a URL
+            through which recipients can access the Corresponding Source.
 
 
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+            @licend  The above is the entire license notice
+            for the JavaScript code in this tag.
+            */
+            <!--/*--><![CDATA[/*><!--*/
+            function CodeHighlightOn(elem, id)
+            {
+            var target = document.getElementById(id);
+            if(null != target) {
+            elem.cacheClassElem = elem.className;
+            elem.cacheClassTarget = target.className;
+            target.className = "code-highlighted";
+            elem.className   = "code-highlighted";
+            }
+            }
+            function CodeHighlightOff(elem, id)
+            {
+            var target = document.getElementById(id);
+            if(elem.cacheClassElem)
+            elem.className = elem.cacheClassElem;
+            if(elem.cacheClassTarget)
+            target.className = elem.cacheClassTarget;
+            }
+            /*]]>*///-->
+        </script>
+    </head>
+    <body>
+        <div id="org-div-home-and-up">
+            <a accesskey="h" href="index.html"> UP </a>
+            |
+            <a accesskey="H" href="../../index.html"> HOME </a>
+            </div><div id="content">
+            <h1 class="title">我的 MPICH 笔记</h1>
+            <div id="table-of-contents">
+                <h2>Table of Contents</h2>
+                <div id="text-table-of-contents">
+                    <ul>
+                        <li><a href="#org4e88e36">MPICH2 的初步使用</a>
+                        <ul>
+                            <li><a href="#org496bb6f">安装</a></li>
+                            <li><a href="#orge60ce5c">本地测试</a></li>
+                            <li><a href="#org4f7417d">集群测试</a></li>
+                        </ul>
+                        </li>
+                        <li><a href="#org966988b">MPICH2 的性能测试</a></li>
+                    </ul>
+                </div>
+            </div>
 
-<!--/*--><![CDATA[/*><!--*/
-org_html_manager.set("TOC_DEPTH", "4");
-org_html_manager.set("LINK_HOME", "../../index.html");
-org_html_manager.set("LINK_UP", "index.html");
-org_html_manager.set("LOCAL_TOC", "1");
-org_html_manager.set("VIEW_BUTTONS", "0");
-org_html_manager.set("MOUSE_HINT", "underline");
-org_html_manager.set("FIXED_TOC", "0");
-org_html_manager.set("TOC", "0");
-org_html_manager.set("VIEW", "content");
-org_html_manager.setup();  // activate after the parameters are set
-/*]]>*///-->
-</script>
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
+            <div id="outline-container-org4e88e36" class="outline-2">
+                <h2 id="org4e88e36">MPICH2 的初步使用</h2>
+                <div class="outline-text-2" id="text-org4e88e36">
+                </div>
+                <div id="outline-container-org496bb6f" class="outline-3">
+                    <h3 id="org496bb6f">安装</h3>
+                    <div class="outline-text-3" id="text-org496bb6f">
+                        <p>
+                            参考安装文档，并配置好运行环境。在 Rocks 系统上，可使用 mpi-selector 选择系统安装好的 MPICH 环境。
+                        </p>
+                    </div>
+                </div>
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+                <div id="outline-container-orge60ce5c" class="outline-3">
+                    <h3 id="orge60ce5c">本地测试</h3>
+                    <div class="outline-text-3" id="text-orge60ce5c">
+                        <ol class="org-ol">
+                            <li><p>
+                                启动 <b>mpd</b> 任务管理器
+                            </p>
+                            <pre class="example">
+                                $ mpd &amp;
 
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+                            </pre></li>
+                            <li><p>
+                                使用 <b>mpdtrace</b> 查看机器状态，其结果如下所示：
+                            </p>
+                            <pre class="example">
+                                $ mpdtrace
+                                node0
 
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
+                            </pre></li>
+                            <li><p>
+                                编写测试程序，比如 <code>mpihello.c</code>, 内容可以如下：
+                            </p>
+                            <div class="org-src-container">
+                                <pre class="src src-c"><span style="color: #94BFF3;">#include</span> <span style="color: #CC9393;">&lt;stdio.h&gt;</span>
+                                <span style="color: #94BFF3;">#include</span> <span style="color: #CC9393;">&lt;stdlib.h&gt;</span>
+                                <span style="color: #94BFF3;">#include</span> <span style="color: #CC9393;">&lt;mpi.h&gt;</span>
 
+                                <span style="color: #7CB8BB;">int</span> <span style="color: #93E0E3;">main</span>(<span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">argc</span>, <span style="color: #7CB8BB;">char</span> *<span style="color: #DFAF8F;">argv</span>[])
+                                {
+                                <span style="color: #7CB8BB;">int</span>  <span style="color: #DFAF8F;">numprocs</span>, <span style="color: #DFAF8F;">rank</span>, <span style="color: #DFAF8F;">namelen</span>;
+                                <span style="color: #7CB8BB;">char</span> <span style="color: #DFAF8F;">processor_name</span>[MPI_MAX_PROCESSOR_NAME];
 
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
-</head>
-<body>
-<div id="org-div-home-and-up">
- <a accesskey="h" href="index.html"> UP </a>
- |
- <a accesskey="H" href="../../index.html"> HOME </a>
-</div><div id="content">
-<h1 class="title">我的 MPICH 笔记</h1>
-<div id="table-of-contents">
-<h2>&#30446;&#24405;</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#orgheadline4">MPICH2 的初步使用</a>
-<ul>
-<li><a href="#orgheadline1">安装</a></li>
-<li><a href="#orgheadline2">本地测试</a></li>
-<li><a href="#orgheadline3">集群测试</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline5">MPICH2 的性能测试</a></li>
-</ul>
-</div>
-</div>
+                                MPI_Init(&amp;argc, &amp;argv);
+                                MPI_Comm_size(MPI_COMM_WORLD, &amp;numprocs);
+                                MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);
+                                MPI_Get_processor_name(processor_name, &amp;namelen);
 
-<div id="outline-container-orgheadline4" class="outline-2">
-<h2 id="orgheadline4">MPICH2 的初步使用</h2>
-<div class="outline-text-2" id="text-orgheadline4">
-</div><div id="outline-container-orgheadline1" class="outline-3">
-<h3 id="orgheadline1">安装</h3>
-<div class="outline-text-3" id="text-orgheadline1">
-<p>
-参考安装文档，并配置好运行环境。在 Rocks 系统上，可使用 mpi-selector 选择系统安装好的 MPICH 环境。
-</p>
-</div>
-</div>
+                                printf(<span style="color: #CC9393;">"Process %d on %s out of %d\n"</span>, rank, processor_name, numprocs);
 
-<div id="outline-container-orgheadline2" class="outline-3">
-<h3 id="orgheadline2">本地测试</h3>
-<div class="outline-text-3" id="text-orgheadline2">
-<ol class="org-ol">
-<li><p>
-启动 <b>mpd</b> 任务管理器
-</p>
-<pre class="example">
-$ mpd &amp;
-</pre></li>
-<li><p>
-使用 <b>mpdtrace</b> 查看机器状态，其结果如下所示：
-</p>
-<pre class="example">
-$ mpdtrace
- node0
-</pre></li>
-<li><p>
-编写测试程序，比如 <code>mpihello.c</code>, 内容可以如下：
-</p>
-<div class="org-src-container">
+                                MPI_Finalize();
 
-<pre class="src src-c"><span style="color: #268bd2;">#include</span> <span style="color: #2aa198;">&lt;stdio.h&gt;</span>
-<span style="color: #268bd2;">#include</span> <span style="color: #2aa198;">&lt;stdlib.h&gt;</span>
-<span style="color: #268bd2;">#include</span> <span style="color: #2aa198;">&lt;mpi.h&gt;</span>
+                                <span style="color: #F0DFAF; font-weight: bold;">return</span> EXIT_SUCCESS;
+                                }
+                                </pre>
+                            </div>
+                            <p>
+                                然后使用 <code>mpicc</code> 进行编译：
+                            </p>
+                            <pre class="example">
+                                $ mpicc -o mpihello mpihello.c
 
-<span style="color: #b58900;">int</span> <span style="color: #268bd2;">main</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">argc</span>, <span style="color: #b58900;">char</span> *<span style="color: #268bd2;">argv</span>[])
-{
-  <span style="color: #b58900;">int</span>  <span style="color: #268bd2;">numprocs</span>, <span style="color: #268bd2;">rank</span>, <span style="color: #268bd2;">namelen</span>;
-  <span style="color: #b58900;">char</span> <span style="color: #268bd2;">processor_name</span>[MPI_MAX_PROCESSOR_NAME];
+                            </pre></li>
+                            <li><p>
+                                使用命令 <code>mpirun</code> 运行编译后的程序
+                            </p>
+                            <pre class="example">
+                                $ mpirun -np 4 ./mpihello
+                                Process 1 on node0.hpc.cndc out of 4
+                                Process 2 on node0.hpc.cndc out of 4
+                                Process 0 on node0.hpc.cndc out of 4
+                                Process 3 on node0.hpc.cndc out of 4
+                            </pre>
+                            <p>
+                                其中参数 <code>-np</code> 表示需要使用的 CPU 数目。
+                            </p></li>
+                        </ol>
+                    </div>
+                </div>
 
-  MPI_Init(&amp;argc, &amp;argv);
-  MPI_Comm_size(MPI_COMM_WORLD, &amp;numprocs);
-  MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);
-  MPI_Get_processor_name(processor_name, &amp;namelen);
+                <div id="outline-container-org4f7417d" class="outline-3">
+                    <h3 id="org4f7417d">集群测试</h3>
+                    <div class="outline-text-3" id="text-org4f7417d">
+                        <ol class="org-ol">
+                            <li>与本地测试同样的步骤，第一步需要启动 mpd 任务守护进程。所不同的是并不是直接调用 mpd 进程，而是通过 mpdboot 来启动。
+                            <ol class="org-ol">
+                                <li><p>
+                                    首先，需要准备一份参与计算的机器列表文件，比如 <code>mpd.hosts</code>, 其内容大致如下：
+                                </p>
+                                <pre class="example">
+                                    compute-0-0
+                                    compute-0-1
+                                    compute-0-4
+                                    compute-0-2
+                                    compute-0-3
+                                    compute-0-5
+                                </pre>
+                                <p>
+                                    当然，需要在你的 <code>/etc/hosts</code> 文件中首先定义好所有的主机名。
+                                </p></li>
+                                <li><p>
+                                    然后执行 <code>mpdboot</code> 命令
+                                </p>
+                                <pre class="example">
+                                    $ mpdboot -n 6 -f mpd.hosts
 
-  printf(<span style="color: #2aa198;">"Process %d on %s out of %d\n"</span>, rank, processor_name, numprocs);
+                                </pre></li>
+                            </ol></li>
+                            <li><p>
+                                然后执行 <code>mpdtrace</code> 查看参与计算的节点是否打开
+                            </p>
+                            <pre class="example">
+                                $ mpdtrace
+                                node0
+                                compute-0-0
+                                compute-0-2
+                                compute-0-1
+                                compute-0-4
+                                compute-0-3
+                            </pre></li>
+                            <li><p>
+                                编译测试程序，比如 <code>mpich2</code> 中自带的示例 <code>cpi.c</code>:
+                            </p>
+                            <pre class="example">
+                                $ mpicc -o cpi cpi.c
 
-  MPI_Finalize();
+                            </pre></li>
+                            <li><p>
+                                使用 <code>mpirun</code> 执行编译后的程序
+                            </p>
+                            <pre class="example">
+                                $ mpirun -np 6 ./cpi
+                                Process 0 on node0.hpc.cndc
+                                Process 2 on compute-0-2.local
+                                Process 1 on compute-0-0.local
+                                Process 3 on compute-0-1.local
+                                Process 4 on compute-0-4.local
+                                Process 5 on compute-0-3.local
+                                pi is approximately 3.1416009869231249, Error is 0.0000083333333318
+                                wall clock time = 0.005853
+                            </pre></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
 
-  <span style="color: #859900; font-weight: bold;">return</span> EXIT_SUCCESS;
-}
-</pre>
-</div>
-<p>
-然后使用 <code>mpicc</code> 进行编译：
-</p>
-<pre class="example">
-$ mpicc -o mpihello mpihello.c
-</pre></li>
-<li><p>
-使用命令 <code>mpirun</code> 运行编译后的程序
-</p>
-<pre class="example">
-$ mpirun -np 4 ./mpihello
-Process 1 on node0.hpc.cndc out of 4
-Process 2 on node0.hpc.cndc out of 4
-Process 0 on node0.hpc.cndc out of 4
-Process 3 on node0.hpc.cndc out of 4
-</pre>
-<p>
-其中参数 <code>-np</code> 表示需要使用的 CPU 数目。
-</p></li>
-</ol>
-</div>
-</div>
-
-<div id="outline-container-orgheadline3" class="outline-3">
-<h3 id="orgheadline3">集群测试</h3>
-<div class="outline-text-3" id="text-orgheadline3">
-<ol class="org-ol">
-<li>与本地测试同样的步骤，第一步需要启动 mpd 任务守护进程。所不同的是并不是直接调用 mpd 进程，而是通过 mpdboot 来启动。
-<ol class="org-ol">
-<li><p>
-首先，需要准备一份参与计算的机器列表文件，比如 <code>mpd.hosts</code>, 其内容大致如下：
-</p>
-<pre class="example">
-compute-0-0
-compute-0-1
-compute-0-4
-compute-0-2
-compute-0-3
-compute-0-5
-</pre>
-<p>
-当然，需要在你的 <code>/etc/hosts</code> 文件中首先定义好所有的主机名。
-</p></li>
-<li><p>
-然后执行 <code>mpdboot</code> 命令
-</p>
-<pre class="example">
-$ mpdboot -n 6 -f mpd.hosts
-</pre></li>
-</ol></li>
-<li><p>
-然后执行 <code>mpdtrace</code> 查看参与计算的节点是否打开
-</p>
-<pre class="example">
-$ mpdtrace
-node0
-compute-0-0
-compute-0-2
-compute-0-1
-compute-0-4
-compute-0-3
-</pre></li>
-<li><p>
-编译测试程序，比如 <code>mpich2</code> 中自带的示例 <code>cpi.c</code>:
-</p>
-<pre class="example">
-$ mpicc -o cpi cpi.c
-</pre></li>
-<li><p>
-使用 <code>mpirun</code> 执行编译后的程序
-</p>
-<pre class="example">
-$ mpirun -np 6 ./cpi
-Process 0 on node0.hpc.cndc
-Process 2 on compute-0-2.local
-Process 1 on compute-0-0.local
-Process 3 on compute-0-1.local
-Process 4 on compute-0-4.local
-Process 5 on compute-0-3.local
-pi is approximately 3.1416009869231249, Error is 0.0000083333333318
-wall clock time = 0.005853
-</pre></li>
-</ol>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgheadline5" class="outline-2">
-<h2 id="orgheadline5">MPICH2 的性能测试</h2>
-</div>
-</div>
-<div id="postamble" class="status">
-
-<script type="text/javascript" src="http://exaos.github.io/assets/js/pagetail.js"></script>
-<div id="disqus_thread"></div>
-<p>版权所有 ©2015: Exaos Lee | Date: <span class="timestamp-wrapper"><span class="timestamp">[2011-10-14 五]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.3.2), <a href="http://validator.w3.org/check?uri=referer">Validate</a>,
-<a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="88x31.png"/></a>
-<p><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></p>
-</div>
-</body>
+            <div id="outline-container-org966988b" class="outline-2">
+                <h2 id="org966988b">MPICH2 的性能测试</h2>
+            </div>
+        </div>
+        <div id="postamble" class="status">
+            <p><a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="88x31.png"/></a></p><p>版权所有 ©2012-2018: Vivodo Lio | 日期: 2011-10-14 五 00:00</p><p>Generated by <a href="https://www.gnu.org/software/emacs/">Emacs</a> 25.3.1 (<a href="https://orgmode.org">Org</a> mode 9.1.7), <a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+        </div>
+    </body>
 </html>

@@ -1,415 +1,338 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
-<head>
-<!-- 2015-12-03 四 15:23 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>大数据之大不能只靠科学家</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="〖译〗心蛛" />
-<meta  name="description" content="Level-2 for exporting to HTML"
- />
-<link rel="stylesheet" title="Standard" href="../../assets/css/worg.css" type="text/css" />
-<link rel="alternate stylesheet" title="Zenburn" href="../../assets/css/worg-zenburn.css" type="text/css" />
-<link rel="alternate stylesheet" title="Classic" href="../../assets/css/worg-classic.css" type="text/css" />
-
-<script type="text/javascript" src="http://orgmode.org/org-info.js">
-/**
- *
- * @source: http://orgmode.org/org-info.js
- *
- * @licstart  The following is the entire license notice for the
- *  JavaScript code in http://orgmode.org/org-info.js.
- *
- * Copyright (C) 2012-2013 Free Software Foundation, Inc.
- *
- *
- * The JavaScript code in this tag is free software: you can
- * redistribute it and/or modify it under the terms of the GNU
- * General Public License (GNU GPL) as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option)
- * any later version.  The code is distributed WITHOUT ANY WARRANTY;
- * without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
- *
- * As additional permission under GNU GPL version 3 section 7, you
- * may distribute non-source (e.g., minimized or compacted) forms of
- * that code without the copy of the GNU GPL normally required by
- * section 4, provided you include this license notice and a URL
- * through which recipients can access the Corresponding Source.
- *
- * @licend  The above is the entire license notice
- * for the JavaScript code in http://orgmode.org/org-info.js.
- *
- */
-</script>
-
-<script type="text/javascript">
-
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-
-<!--/*--><![CDATA[/*><!--*/
-org_html_manager.set("TOC_DEPTH", "4");
-org_html_manager.set("LINK_HOME", "../../index.html");
-org_html_manager.set("LINK_UP", "../index.html");
-org_html_manager.set("LOCAL_TOC", "1");
-org_html_manager.set("VIEW_BUTTONS", "0");
-org_html_manager.set("MOUSE_HINT", "underline");
-org_html_manager.set("FIXED_TOC", "0");
-org_html_manager.set("TOC", "0");
-org_html_manager.set("VIEW", "content");
-org_html_manager.setup();  // activate after the parameters are set
-/*]]>*///-->
-</script>
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
-</head>
-<body>
-<div id="org-div-home-and-up">
- <a accesskey="h" href="../index.html"> UP </a>
- |
- <a accesskey="H" href="../../index.html"> HOME </a>
-</div><div id="content">
-<h1 class="title">大数据之大不能只靠科学家</h1>
-<div id="table-of-contents">
-<h2>&#30446;&#24405;</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#orgheadline1">大的“坏”科学</a></li>
-<li><a href="#orgheadline2">一起来吧！</a></li>
-<li><a href="#orgheadline3">备注</a></li>
-</ul>
-</div>
-</div>
-
-<div class="figure">
-<p><img src="http://www.wired.com/images_blogs/wiredscience/2013/10/JPL.jpg" alt="JPL.jpg" />
-</p>
-</div>
-
-<p>
-七年前，戴维德·施麦尔受邀设计一个雄心勃勃的数据计划——国家生态观测网络 (<a href="http://www.neoninc.org/">NEON</a>,
-National Ecological Observatory Network)，那时它不过是一个受自然科学基金资助的小项目。没有正式的组织、没有雇员、没有详细的科学计划。大胆地利用遥感、数据存储和计算机方面的一些新进展, NEON 尝试着解决生态学领域的大问题：全球气候变化、土地利用和生物多样性如何在整体上影响着自然界、计划的生态系统和生物圈？
-</p>
-
-<p>
-“我们对这个问题不太了解，”施麦尔说。
-</p>
-
-<p>
-在同时兼顾新项目和作为<a href="http://ncar.ucar.edu/">国家大气研究中心</a>高级科学家之初，施麦尔说，他对挑战的难度感到惊讶，也就是“用于应对关键科学问题所需要的各种测量的绝对数量”。在建立观测站和雇用员工之前，必须要对测量地点、测量内容、测量方法以及如何产生可用数据进行决策。
-</p>
-
-<p>
-施麦尔研究遍布全国的站点设置，布署受 NASA 启发的“老虎队”来研发精确的科学方法和数据处理需求。最终计划要雇用数十名不同背景的科学家；沿着美国大陆、阿拉斯加、夏威夷和波多黎各沿线建立一百多个数据处理点；每年展开约六千亿个原始测量，连续进行 30
-年；原始数据需要转换成更友好的“数据产品”并可以让科学家和公共自由访问。建立这个观测网络计划要四年多时间，约耗费 4.34 亿美金，还需要数百万美金的年度运行支出。
-</p>
-
-<p>
-2007 年，施麦尔成为 NEON 的首席科学家，第一个全职雇员。“很久以来，我一直对洲际规模的研究程序感兴趣，这始终是个数据密集型的活动，”他说。“设计一个在这样的规模下采集准确数据的系统，这样的机会是不可抗拒的。”
-</p>
-
-
-<div class="figure">
-<p><img src="http://www.wired.com/images_blogs/wiredscience/2013/10/SCHIMEL_MATTMAN.jpg" alt="SCHIMEL_MATTMAN.jpg" />
-</p>
-<p><span class="figure-number">&#22270;2&nbsp;</span> 戴维德·施麦尔（左），国家生态观测网络的前首席科学家，和克理斯·麦特曼，NASA喷气推进实验室的高级计算机科学家，他们认为跨学科合作对大数据项目非常关键。</p>
-</div>
-
-<p>
-这样跨学科的、大规模的观测或实验数据的类似分析，有时也叫“大科学”，有助于探究许多伟大的奥秘。什么是<a href="https://www.simonsfoundation.org/quanta/20130718-in-the-hunt-for-dark-matter-promises-to-keep/">暗物质</a>，它如何分布在整个宇宙中？在其它星球上会存在生命吗，又会如何适应其环境？遗传物质和疾病之间的联系是什么？地球气候在下个世纪及更久会如何变化？神经网络如何形成思维、记忆和良知？
-</p>
-
-<p>
-目前的数据很混乱，从生理和生命科学到汇集在 Google, Facebook 和 Twitter 上的用户产生内容，均是一种大规模的非结构的大杂烩的数据流，都需要新的灵活的数据库、大规模计算能力和复杂的算法才能够从它们当中榨出一点有意义的内容，马特·勒枚介绍说，他是互联网地址缩短和标签服务提供商 Bitly 的前产品经理。
-</p>
-
-<p>
-但是，“大数据并不神秘”，他在曼哈顿下城暑期数据库讲习班上这样提醒。不管你有多少数据，若理解不了就没有意义。
-</p>
-
-<p>
-对于 NEON 这样的项目，数据解释是一项复杂的工作。在早期，当数据与大规模物理和生物工程相比还属于中等规模时，项目团队就意识到了它的复杂程度。“NEON 对大数据的贡献不是在量上，”项目的数据产品主任助理<a href="http://www.neoninc.org/about/staff/steve-berukoff">史迪芬·贝努克夫</a>说。“它的贡献在数据成分的复杂程度和在空间、时间的分布上。”
-</p>
-
-<p>
-与气候科学中概略性的 20 个关键测量或者粒子物理中数量巨大但结构紧密的数据不同,
-NEON 需要持续追踪的量超过 500 个，从温度、土壤和水份测量到昆虫、鸟类、哺乳动物和微生物样品，再到遥感和航空成像。数据中的大部分是高度无结构的，很难解析——比如，分类学名称和行为观测，这些很容易引起争议，并需要修订。
-</p>
-
-<p>
-并且，同技术角度隐约可见的数据挑战一样，一些更大的挑战完全是非技术的。许多研究人员认为，未来的大数据科学项目和分析工具想要成功，只有联合具体科学、统计学、计算机科学、纯数学和灵巧的领导能力。在分布式计算（即将异常复杂的任务分散到一组计算机网络中）的大数据时代，要关注的问题是：分布式的科学如何引导整个研究人员网络的运转？
-</p>
-
-<p>
-“机器不可能组织数据科学的研究，”<a href="http://www.stat.berkeley.edu/~binyu/Site/Welcome.html">于斌</a>（音）说，她是加利福尼亚大学拍克利分校的统计学家，正在研究高维数据问题。“必须靠人来引导。”但是，她说，“目前没人知道谁在领导着数据科学。”
-</p>
-
-<p>
-于认为大学“非常封闭”，她说该科学的目标不仅仅是跨学科的研究，而更应该是没有屏障或分界的“超越学科界限的研究”。
-</p>
-
-<p>
-大科学项目“不可能由一个人完成，”<a href="http://www.bio.anl.gov/PI/gilbert.html">杰克·吉尔伯特</a>说，他是阿贡国家实验室的一名环境微生物学者，曾帮助 NEON 开发了分析土壤样品的标准，并计划在上线时继续使用该数据。“我们需要协同工作。这是个很大的问题。”
-</p>
-
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1">大的“坏”科学</h2>
-<div class="outline-text-2" id="text-orgheadline1">
-<p>
-生态学在传统上只涉及小型的、本地化的研究，检查有机体同环境的相互作用。但在应对区域性的或全球规模的基础问题上，微观系统的研究就跟古印度的寓言一样，六个盲人通过摸一个大象的不同部位来判断其体形。在<a href="http://en.wikipedia.org/wiki/John_Godfrey_Saxe">约翰·戈弗雷·萨克斯</a>所讲的故事中，盲人们得到了千差万别的结论，象可以像墙、矛、蛇、树、扇子或绳子。
-</p>
-
-<p>
-“我们缺失了关键的信息，就无法得到大的图像，”<a href="http://www.neoninc.org/about/staff/andrea-thorpe">安德丽亚·索普</a>说，她 37 岁，一名植物生态学家，去年以全球生态学主任助理加入了 NEON, 之前她对大量物种进行了小规模的研究。
-</p>
-
-<p>
-尽管在本地水平上小型研究提供了足够的深度和详细程度，但在特定类型的问题上仍然有其局限性并反映在研究者的特定方法学上，这使得在结果重现或与更大模型保持一致时很困难。
-</p>
-
-<p>
-“不可逃避的事实就是，生态系统实际存在的巨大冲突不可能在短期内由小型研究解决掉，”索普说。
-</p>
-
-<p>
-宏观系统，或者如施麦尔所称的“大”生态学，通过标准化的、大规模数据变得可行。他说，拥有大量丰富的数据，这将使科学家能够通过合作将真实世界的复杂性和多样性进行大尺度现象建模，而不是用简化的模型糊弄一下。
-</p>
-
-<p>
-生态学家大约于 50 年前第一次涉足了大数据的世界，这就是国际生物工程，它超越了学科的界限，涉及了数十个国家，尝试对大尺度系统进行建模。虽然，它受到了志愿者和国际合作伙伴的支持，但同时也受到传统生态学者的严厉苛责，他们对大数据模型和超大规模合作持怀疑态度。尽管此项目为类似 NEON 的新型合作方式开辟了道路，一些批评仍未消失。
-</p>
-
-<p>
-1969 年，28 岁的微生物生态学家托马斯·罗斯沃加入了 IBP 瑞典苔原生态群落研究区。有段时间生物学中几乎没有共同的研究，他说，如何让微生物学家与植物学家共事，如何让水文学家与气象学家共事，这些都是挑战。并且在冷战期间，外部的科学家无法访问俄国的站点，而同时俄国的却可以共享他们的工作。
-</p>
-
-<p>
-罗斯沃是<a href="http://www.icsu.org/">国际科学理事会</a>的前执行主任，现已退休，他说 IBP 工作塑造了他的职业生涯，使他成为一名国际性的科学家。苔原项目是一个联系特别紧密的国际社区，他说。“我们都很年轻并且单纯，这可能是优势。”他说，“我们对于应该如何做事情没有成见。”
-</p>
-
-<p>
-理想化的观念伴随着苛刻的批评。一些生物学家认为钱是浪费了，这样大规模的新的生态科学项目还没有坚实的理论基础。在某种程度上，罗斯沃说，批评家认为他和他的同事们“太年轻了，得到的钱太多了。”
-</p>
-
-<p>
-“这比生态学研究以往的开销都要大得多，”保罗·瑞瑟说，他是名植物生态学家，俄克拉荷马大学研究委员会主席，曾在 IBP 中研究草地生态系统。“人们习惯于获得五六万美金的资助，但在 IBP 中都是数百万美金。”
-</p>
-
-<p>
-批评家还认为大尺度数据驱动的模型不会起作用。多数的确是没用。但这些失败塑造了未来的项目，为科学家们指明了需要构建更大型的数据库，为他们的项目引入元数据——即那些在
-IBP 期间遍布在笔记本上的手录数据。
-</p>
-
-<div class="VIDEO">
-<source src="http://condenastl3cdn.cust.footprint.net/videos/524c9cfc57af82c438000004/low.webm" type="video/webm">
-<p>
-您的浏览器不支持视频。
-</p>
-
-</div>
-
-<p>
-IBP 还缺乏现代的遥感技术，更别提今天的计算能力、数据库、数据存储、远程通讯和互联网络。“IBP 在没有可用工具之前就下手大数据了，”瑞瑟说。
-</p>
-
-<p>
-并且，一些传统的特立独行的生态学者对加入一个这样结构化的项目感到很愤怒，因为在其中不允许他们选择自己的研究课题或者使用他们自己的方法。“整体研究都是精心安排的，”瑞瑟说。但是，瑞瑟指出，这样的项目培养了整整一代研究生，他们习惯于跨学科工作并擅长数学建模。
-</p>
-
-<p>
-无论 IBP 有多少不足，在今天，它的一些数据和模型仍然在使用着。它的开放合作和方法学的遗产仍然被如今的大型生态项目继承着，其中包括 NEON, 自 1980 年开始运行的长期生态研究网络 (<a href="http://www.lternet.edu/">Long Term Ecological Research Network</a>), 以及地球数据观测网络 (<a href="http://www.dataone.org/">Data
-Observation Network for Earth</a>) ——该项目提供了一个平台用于全球生态数据的共享和存档。
-</p>
-
-<p>
-50 年后，批评已经弱化。“这是过程的一部分，”罗斯沃说。他很兴奋地看到了在北极研究站中逐渐增强的合作，许多都源自于 IBP. “对于领域性研究可能怎么做和应该怎么做，我们确实塑造了发展的基础。”他说。
-</p>
-
-<p>
-目前，罗斯沃正忙于为一个新的大生态项目制订计划：一个瑞典版本的 NEON.
-</p>
-</div>
-</div>
-
-<div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2">一起来吧！</h2>
-<div class="outline-text-2" id="text-orgheadline2">
-<p>
-施麦尔的 NEON 基本思想部分成型于 30 年前，来自于他最初在 IBP 一个草地项目团队中做研究助理的经验。那时，他的职业生涯刚刚开始，他已经要与化学家、植物学家和微生物学家们一直共享实验室空间和资源。“对我而言，让人吃惊的是每个地方的工作方式都不同，”他说。“IBP 在那时很超前——从将数据和模型当作成果的态度，到团队合作和领导能力，都与个人做科研的方式截然不同。”
-</p>
-
-<p>
-在 NEON 团队的 66 名研究人员里，“没有两个人做着同样的事情，”贝鲁克夫说, 36 岁。具有计算机、软件工程、工程、天体物理等背景的人“从不同学科角度共同处理数据”，他觉得这个项目“有几分浑然天成的感觉。”
-</p>
-
-<p>
-但是，在一个多样性的团队中工作，研究人员必须乐于聆听和学习。“人们往往认为他们在谈论同一件事，实际上往往不是，”贝鲁克夫说。“或者他们在说同一件事，但讲述的方式完全不同。”
-</p>
-
-<p>
-尽管这样的差异提供了机会去学习不同领域的知识，他们“往往也会因为所讲述的与所听到的不匹配而受挫，”他说。“弥合分歧是项目成功的关键。”
-</p>
-
-
-<div class="figure">
-<p><img src="http://www.wired.com/images_blogs/wiredscience/2013/10/BIN_YU_036_web.jpg" alt="BIN_YU_036_web.jpg" />
-</p>
-<p><span class="figure-number">&#22270;3&nbsp;</span> 于斌，加利福尼亚大学拍克利分校的统计学家，希望数学家和统计学家能够成为大科学项目的智力领队</p>
-</div>
-
-<p>
-地球生态群系项目 (<a href="http://www.earthmicrobiome.org/">Earth Microbiome Project</a>) 是一项国际合作，在地图上绘制和研究来自全球的微生物样品，有数百位主要研究者共事。“我们偶尔会遇到一些人，他们不愿意分享数据，或者对参加后能获得什么很犹豫，”吉尔伯特说, 36 岁，自 2010 年加入该项目。“我们希望吸引到那些志同道合者。道不同不相谋。”
-</p>
-
-<p>
-多数志同道合者都是年轻的研究人员，他们也多数是“有相关技能来做事的人”，吉尔伯特说。“科研社区的主要任务完全受制于数据，”他说，“我们需要适应并超越数据大潮。”
-</p>
-
-<p>
-这种适应的一部分涉及到拥抱“开放科学”(<a href="http://www.nytimes.com/2012/01/17/science/open-science-challenges-journal-tradition-with-web-collaboration.html">open science</a>) 实践，包括使用开源的平台和数据分析工具，数据共享和科技刊物的开放式访问，克理斯·麦特曼说, 32 岁，他帮助开发了 Hadoop 的前身——Hadoop 是一个流行的开源数据分析架构，被 Yahoo, Amazon 和苹果这样的技术巨头们采用，也应用在 NEON 中。在分析海量的、混乱的数据时若不发展共享的工具，麦特曼说，每个新项目或新实验室就会浪费许多宝贵时间和资源用于重新造轮子。同样，共享数据和发表的结果可以避免重复研究。
-</p>
-
-<p>
-为达此目的，新成立的“研究数据联盟” (<a href="https://rd-alliance.org/">Research Data Alliance</a>) 的国际代表们在上个月的华盛顿会上为一个全球开放数据基础设施制订了计划。
-</p>
-
-<p>
-通过习惯于产生并利用开放数据及开放源码工具，年轻的科学家们已经成长起来了，他们“也正在迫使论文发表从‘公司统治’迅速转变到开放出版上”，施麦尔说, 58 岁。“这涉及到许多问题，这不可能仅仅用资源来解决，也非国际出版界能够控制得了。”
-</p>
-
-<p>
-在 NEON 进行的一项专业调查中，“80% 的参加者表示，在 20 年内有可能或者非常可能用到 NEON 的开放数据，”施麦尔说。“而年长的对照组中使用的可能性较小，支持态度也弱。相应地, NEON 的拓展策略不再集中于高级研究人员身上，而是愈加侧重于宣传并吸引那些有空闲时间的本科生。”
-</p>
-
-<p>
-于，伯克利的统计学家，希望数学家和统计学家将来成为大科学项目的智力领导者。但是“数学更加侧重于技术，并不鼓励人们去发展领导技能，”她说。“如果我们不去改变文化氛围，则可能会出现这种情况，你会无法在他们需要你的地方进行重要决策。”
-</p>
-
-<p>
-工程师习惯于攻克难题的团队协作，于说, 50 岁，但“数学家则惯于将人线性排列”来判断一个人的位置。“文化氛围必须改变才能够鼓励并培养年轻人从事有益的职业。这需要年长者来完成。”
-</p>
-
-<p>
-于建议数学系学生学习更多的计算机技能。她的学生们可以访问劳伦斯伯克利国家实验室的超级计算机，但有些人“却没有使用它的技能，”她说。“他们得学习。”
-</p>
-
-<p>
-当去年 NEON 进入基础建设阶段后，由于对研究和科学计划比施工和执行更有兴趣，施麦尔离开并投身到他的另一个大项目中去了。他成为了加利福尼亚州帕萨迪那的 NANA 喷射推进实验室的“碳与气候”项目的首席科学家，在那儿他正努力使用太空观测站进行全球性的碳预算和生态系统研究。
-</p>
-
-<p>
-“象施麦尔这样灵活的科学家对这些项目很重要，”麦特曼说。“他意识到，实际需要的就是一个正在成形的数据科学家阶层。”
-</p>
-
-<p>
-麦特曼，是在喷射推进实验室与施麦尔共事的高级计算机科学家，他认为在数据管理人员和科学家之间通常存在一个障碍。“如果你有一个计算机专业的学位，你会被认为是 IT 人员，”他说。“但在计算机科学中，你往往也学习了同样的数据——只不过应用在不同的对象上。”
-</p>
-
-<p>
-“我觉得自己并不一个 IT 人员，”麦特曼说。“一个大问题就是，我们是否雇用计算机科学家然后教会他们现成的科学知识，还是我们应该雇用那些物理和自然科学家然后教会他们计算机。”几年前，他多数雇用的是计算机科学家，但现在变成了雇用科学家并教会他们如何编程。
-</p>
-
-<p>
-将科学家、数学家和计算机科学家变成交叉数据科学家，这在教育上引起了数学、工程和技术领域越来越多的兴趣，麦特曼说。“整个就象是我们在接受世界的 Facebook 的挑战。要想在 Facebook 上发现谁顶了谁会费很多事，你要通过数据科学理解什么样的水预算能够支援一个可持续发展的星球，这也不容易。”
-</p>
-
-<p>
-学术激励系统也“必须来改变一下以方便评估交叉学科的研究”，于说。“对于处在交叉边界的人群很难评价，但这正是当前科学中非常激动人心的部分。”
-</p>
-</div>
-</div>
-
-<div id="outline-container-orgheadline3" class="outline-2">
-<h2 id="orgheadline3">备注</h2>
-<div class="outline-text-2" id="text-orgheadline3">
-<p>
-【文章来源】：
-</p>
-<ul class="org-ul">
-<li><b>Big Data Is Too Big for Scientists to Handle Alone</b>, BY THOMAS LIN, QUANTA
-MAGAZINE, 10.03.13 9:30 AM</li>
-<li><a href="http://www.wired.com/wiredscience/2013/10/big-data-science/">http://www.wired.com/wiredscience/2013/10/big-data-science/</a></li>
-</ul>
-</div>
-</div>
-</div>
-<div id="postamble" class="status">
-
-<script type="text/javascript" src="http://exaos.github.io/assets/js/pagetail.js"></script>
-<div id="disqus_thread"></div>
-<p>版权所有 ©2015: 〖译〗心蛛 | Date: <span class="timestamp-wrapper"><span class="timestamp">[2013-10-31 四]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.3.2), <a href="http://validator.w3.org/check?uri=referer">Validate</a>,
-<a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="88x31.png"/></a>
-<p><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></p>
-</div>
-</body>
-</html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh">
+    <head>
+        <!-- 2018-03-11 日 22:00 -->
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>大数据之大不能只靠科学家</title>
+        <meta name="generator" content="Org mode" />
+        <meta name="author" content="〖译〗心蛛" />
+        <meta name="description" content="Level-2 for exporting to HTML"
+              />
+        <link rel="stylesheet" title="Standard" href="../../assets/css/worg.css" type="text/css" />
+        <link rel="alternate stylesheet" title="Zenburn" href="../../assets/css/worg-zenburn.css" type="text/css" />
+        <link rel="alternate stylesheet" title="Classic" href="../../assets/css/worg-classic.css" type="text/css" />
+        <script type="text/javascript">
+            /*
+            @licstart  The following is the entire license notice for the
+            JavaScript code in this tag.
+
+            Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+            The JavaScript code in this tag is free software: you can
+            redistribute it and/or modify it under the terms of the GNU
+            General Public License (GNU GPL) as published by the Free Software
+            Foundation, either version 3 of the License, or (at your option)
+            any later version.  The code is distributed WITHOUT ANY WARRANTY;
+            without even the implied warranty of MERCHANTABILITY or FITNESS
+            FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+            As additional permission under GNU GPL version 3 section 7, you
+            may distribute non-source (e.g., minimized or compacted) forms of
+            that code without the copy of the GNU GPL normally required by
+            section 4, provided you include this license notice and a URL
+            through which recipients can access the Corresponding Source.
+
+
+            @licend  The above is the entire license notice
+            for the JavaScript code in this tag.
+            */
+            <!--/*--><![CDATA[/*><!--*/
+            function CodeHighlightOn(elem, id)
+            {
+            var target = document.getElementById(id);
+            if(null != target) {
+            elem.cacheClassElem = elem.className;
+            elem.cacheClassTarget = target.className;
+            target.className = "code-highlighted";
+            elem.className   = "code-highlighted";
+            }
+            }
+            function CodeHighlightOff(elem, id)
+            {
+            var target = document.getElementById(id);
+            if(elem.cacheClassElem)
+            elem.className = elem.cacheClassElem;
+            if(elem.cacheClassTarget)
+            target.className = elem.cacheClassTarget;
+            }
+            /*]]>*///-->
+        </script>
+    </head>
+    <body>
+        <div id="org-div-home-and-up">
+            <a accesskey="h" href="../index.html"> UP </a>
+            |
+            <a accesskey="H" href="../../index.html"> HOME </a>
+            </div><div id="content">
+            <h1 class="title">大数据之大不能只靠科学家</h1>
+            <div id="table-of-contents">
+                <h2>Table of Contents</h2>
+                <div id="text-table-of-contents">
+                    <ul>
+                        <li><a href="#orgff81a02">大的“坏”科学</a></li>
+                        <li><a href="#orgfceba9c">一起来吧！</a></li>
+                        <li><a href="#orgf8615f0">备注</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="figure">
+                <p><img src="http://www.wired.com/images_blogs/wiredscience/2013/10/JPL.jpg" alt="JPL.jpg" />
+                </p>
+            </div>
+
+            <p>
+                七年前，戴维德·施麦尔受邀设计一个雄心勃勃的数据计划——国家生态观测网络 (<a href="http://www.neoninc.org/">NEON</a>,
+                National Ecological Observatory Network)，那时它不过是一个受自然科学基金资助的小项目。没有正式的组织、没有雇员、没有详细的科学计划。大胆地利用遥感、数据存储和计算机方面的一些新进展, NEON 尝试着解决生态学领域的大问题：全球气候变化、土地利用和生物多样性如何在整体上影响着自然界、计划的生态系统和生物圈？
+            </p>
+
+            <p>
+                “我们对这个问题不太了解，”施麦尔说。
+            </p>
+
+            <p>
+                在同时兼顾新项目和作为<a href="http://ncar.ucar.edu/">国家大气研究中心</a>高级科学家之初，施麦尔说，他对挑战的难度感到惊讶，也就是“用于应对关键科学问题所需要的各种测量的绝对数量”。在建立观测站和雇用员工之前，必须要对测量地点、测量内容、测量方法以及如何产生可用数据进行决策。
+            </p>
+
+            <p>
+                施麦尔研究遍布全国的站点设置，布署受 NASA 启发的“老虎队”来研发精确的科学方法和数据处理需求。最终计划要雇用数十名不同背景的科学家；沿着美国大陆、阿拉斯加、夏威夷和波多黎各沿线建立一百多个数据处理点；每年展开约六千亿个原始测量，连续进行 30
+                年；原始数据需要转换成更友好的“数据产品”并可以让科学家和公共自由访问。建立这个观测网络计划要四年多时间，约耗费 4.34 亿美金，还需要数百万美金的年度运行支出。
+            </p>
+
+            <p>
+                2007 年，施麦尔成为 NEON 的首席科学家，第一个全职雇员。“很久以来，我一直对洲际规模的研究程序感兴趣，这始终是个数据密集型的活动，”他说。“设计一个在这样的规模下采集准确数据的系统，这样的机会是不可抗拒的。”
+            </p>
+
+
+            <div class="figure">
+                <p><img src="http://www.wired.com/images_blogs/wiredscience/2013/10/SCHIMEL_MATTMAN.jpg" alt="SCHIMEL_MATTMAN.jpg" />
+                </p>
+                <p><span class="figure-number">Figure 2: </span>戴维德·施麦尔（左），国家生态观测网络的前首席科学家，和克理斯·麦特曼，NASA喷气推进实验室的高级计算机科学家，他们认为跨学科合作对大数据项目非常关键。</p>
+            </div>
+
+            <p>
+                这样跨学科的、大规模的观测或实验数据的类似分析，有时也叫“大科学”，有助于探究许多伟大的奥秘。什么是<a href="https://www.simonsfoundation.org/quanta/20130718-in-the-hunt-for-dark-matter-promises-to-keep/">暗物质</a>，它如何分布在整个宇宙中？在其它星球上会存在生命吗，又会如何适应其环境？遗传物质和疾病之间的联系是什么？地球气候在下个世纪及更久会如何变化？神经网络如何形成思维、记忆和良知？
+            </p>
+
+            <p>
+                目前的数据很混乱，从生理和生命科学到汇集在 Google, Facebook 和 Twitter 上的用户产生内容，均是一种大规模的非结构的大杂烩的数据流，都需要新的灵活的数据库、大规模计算能力和复杂的算法才能够从它们当中榨出一点有意义的内容，马特·勒枚介绍说，他是互联网地址缩短和标签服务提供商 Bitly 的前产品经理。
+            </p>
+
+            <p>
+                但是，“大数据并不神秘”，他在曼哈顿下城暑期数据库讲习班上这样提醒。不管你有多少数据，若理解不了就没有意义。
+            </p>
+
+            <p>
+                对于 NEON 这样的项目，数据解释是一项复杂的工作。在早期，当数据与大规模物理和生物工程相比还属于中等规模时，项目团队就意识到了它的复杂程度。“NEON 对大数据的贡献不是在量上，”项目的数据产品主任助理<a href="http://www.neoninc.org/about/staff/steve-berukoff">史迪芬·贝努克夫</a>说。“它的贡献在数据成分的复杂程度和在空间、时间的分布上。”
+            </p>
+
+            <p>
+                与气候科学中概略性的 20 个关键测量或者粒子物理中数量巨大但结构紧密的数据不同,
+                NEON 需要持续追踪的量超过 500 个，从温度、土壤和水份测量到昆虫、鸟类、哺乳动物和微生物样品，再到遥感和航空成像。数据中的大部分是高度无结构的，很难解析——比如，分类学名称和行为观测，这些很容易引起争议，并需要修订。
+            </p>
+
+            <p>
+                并且，同技术角度隐约可见的数据挑战一样，一些更大的挑战完全是非技术的。许多研究人员认为，未来的大数据科学项目和分析工具想要成功，只有联合具体科学、统计学、计算机科学、纯数学和灵巧的领导能力。在分布式计算（即将异常复杂的任务分散到一组计算机网络中）的大数据时代，要关注的问题是：分布式的科学如何引导整个研究人员网络的运转？
+            </p>
+
+            <p>
+                “机器不可能组织数据科学的研究，”<a href="http://www.stat.berkeley.edu/~binyu/Site/Welcome.html">于斌</a>（音）说，她是加利福尼亚大学拍克利分校的统计学家，正在研究高维数据问题。“必须靠人来引导。”但是，她说，“目前没人知道谁在领导着数据科学。”
+            </p>
+
+            <p>
+                于认为大学“非常封闭”，她说该科学的目标不仅仅是跨学科的研究，而更应该是没有屏障或分界的“超越学科界限的研究”。
+            </p>
+
+            <p>
+                大科学项目“不可能由一个人完成，”<a href="http://www.bio.anl.gov/PI/gilbert.html">杰克·吉尔伯特</a>说，他是阿贡国家实验室的一名环境微生物学者，曾帮助 NEON 开发了分析土壤样品的标准，并计划在上线时继续使用该数据。“我们需要协同工作。这是个很大的问题。”
+            </p>
+
+            <div id="outline-container-orgff81a02" class="outline-2">
+                <h2 id="orgff81a02">大的“坏”科学</h2>
+                <div class="outline-text-2" id="text-orgff81a02">
+                    <p>
+                        生态学在传统上只涉及小型的、本地化的研究，检查有机体同环境的相互作用。但在应对区域性的或全球规模的基础问题上，微观系统的研究就跟古印度的寓言一样，六个盲人通过摸一个大象的不同部位来判断其体形。在<a href="http://en.wikipedia.org/wiki/John_Godfrey_Saxe">约翰·戈弗雷·萨克斯</a>所讲的故事中，盲人们得到了千差万别的结论，象可以像墙、矛、蛇、树、扇子或绳子。
+                    </p>
+
+                    <p>
+                        “我们缺失了关键的信息，就无法得到大的图像，”<a href="http://www.neoninc.org/about/staff/andrea-thorpe">安德丽亚·索普</a>说，她 37 岁，一名植物生态学家，去年以全球生态学主任助理加入了 NEON, 之前她对大量物种进行了小规模的研究。
+                    </p>
+
+                    <p>
+                        尽管在本地水平上小型研究提供了足够的深度和详细程度，但在特定类型的问题上仍然有其局限性并反映在研究者的特定方法学上，这使得在结果重现或与更大模型保持一致时很困难。
+                    </p>
+
+                    <p>
+                        “不可逃避的事实就是，生态系统实际存在的巨大冲突不可能在短期内由小型研究解决掉，”索普说。
+                    </p>
+
+                    <p>
+                        宏观系统，或者如施麦尔所称的“大”生态学，通过标准化的、大规模数据变得可行。他说，拥有大量丰富的数据，这将使科学家能够通过合作将真实世界的复杂性和多样性进行大尺度现象建模，而不是用简化的模型糊弄一下。
+                    </p>
+
+                    <p>
+                        生态学家大约于 50 年前第一次涉足了大数据的世界，这就是国际生物工程，它超越了学科的界限，涉及了数十个国家，尝试对大尺度系统进行建模。虽然，它受到了志愿者和国际合作伙伴的支持，但同时也受到传统生态学者的严厉苛责，他们对大数据模型和超大规模合作持怀疑态度。尽管此项目为类似 NEON 的新型合作方式开辟了道路，一些批评仍未消失。
+                    </p>
+
+                    <p>
+                        1969 年，28 岁的微生物生态学家托马斯·罗斯沃加入了 IBP 瑞典苔原生态群落研究区。有段时间生物学中几乎没有共同的研究，他说，如何让微生物学家与植物学家共事，如何让水文学家与气象学家共事，这些都是挑战。并且在冷战期间，外部的科学家无法访问俄国的站点，而同时俄国的却可以共享他们的工作。
+                    </p>
+
+                    <p>
+                        罗斯沃是<a href="http://www.icsu.org">国际科学理事会</a>的前执行主任，现已退休，他说 IBP 工作塑造了他的职业生涯，使他成为一名国际性的科学家。苔原项目是一个联系特别紧密的国际社区，他说。“我们都很年轻并且单纯，这可能是优势。”他说，“我们对于应该如何做事情没有成见。”
+                    </p>
+
+                    <p>
+                        理想化的观念伴随着苛刻的批评。一些生物学家认为钱是浪费了，这样大规模的新的生态科学项目还没有坚实的理论基础。在某种程度上，罗斯沃说，批评家认为他和他的同事们“太年轻了，得到的钱太多了。”
+                    </p>
+
+                    <p>
+                        “这比生态学研究以往的开销都要大得多，”保罗·瑞瑟说，他是名植物生态学家，俄克拉荷马大学研究委员会主席，曾在 IBP 中研究草地生态系统。“人们习惯于获得五六万美金的资助，但在 IBP 中都是数百万美金。”
+                    </p>
+
+                    <p>
+                        批评家还认为大尺度数据驱动的模型不会起作用。多数的确是没用。但这些失败塑造了未来的项目，为科学家们指明了需要构建更大型的数据库，为他们的项目引入元数据——即那些在
+                        IBP 期间遍布在笔记本上的手录数据。
+                    </p>
+
+                    <div class="VIDEO">
+                        <source src="http://condenastl3cdn.cust.footprint.net/videos/524c9cfc57af82c438000004/low.webm" type="video/webm">
+                            <p>
+                                您的浏览器不支持视频。
+                            </p>
+
+                        </div>
+
+                        <p>
+                            IBP 还缺乏现代的遥感技术，更别提今天的计算能力、数据库、数据存储、远程通讯和互联网络。“IBP 在没有可用工具之前就下手大数据了，”瑞瑟说。
+                        </p>
+
+                        <p>
+                            并且，一些传统的特立独行的生态学者对加入一个这样结构化的项目感到很愤怒，因为在其中不允许他们选择自己的研究课题或者使用他们自己的方法。“整体研究都是精心安排的，”瑞瑟说。但是，瑞瑟指出，这样的项目培养了整整一代研究生，他们习惯于跨学科工作并擅长数学建模。
+                        </p>
+
+                        <p>
+                            无论 IBP 有多少不足，在今天，它的一些数据和模型仍然在使用着。它的开放合作和方法学的遗产仍然被如今的大型生态项目继承着，其中包括 NEON, 自 1980 年开始运行的长期生态研究网络 (<a href="http://www.lternet.edu/">Long Term Ecological Research Network</a>), 以及地球数据观测网络 (<a href="http://www.dataone.org/">Data
+                            Observation Network for Earth</a>) ——该项目提供了一个平台用于全球生态数据的共享和存档。
+                        </p>
+
+                        <p>
+                            50 年后，批评已经弱化。“这是过程的一部分，”罗斯沃说。他很兴奋地看到了在北极研究站中逐渐增强的合作，许多都源自于 IBP. “对于领域性研究可能怎么做和应该怎么做，我们确实塑造了发展的基础。”他说。
+                        </p>
+
+                        <p>
+                            目前，罗斯沃正忙于为一个新的大生态项目制订计划：一个瑞典版本的 NEON.
+                        </p>
+                    </div>
+                </div>
+
+                <div id="outline-container-orgfceba9c" class="outline-2">
+                    <h2 id="orgfceba9c">一起来吧！</h2>
+                    <div class="outline-text-2" id="text-orgfceba9c">
+                        <p>
+                            施麦尔的 NEON 基本思想部分成型于 30 年前，来自于他最初在 IBP 一个草地项目团队中做研究助理的经验。那时，他的职业生涯刚刚开始，他已经要与化学家、植物学家和微生物学家们一直共享实验室空间和资源。“对我而言，让人吃惊的是每个地方的工作方式都不同，”他说。“IBP 在那时很超前——从将数据和模型当作成果的态度，到团队合作和领导能力，都与个人做科研的方式截然不同。”
+                        </p>
+
+                        <p>
+                            在 NEON 团队的 66 名研究人员里，“没有两个人做着同样的事情，”贝鲁克夫说, 36 岁。具有计算机、软件工程、工程、天体物理等背景的人“从不同学科角度共同处理数据”，他觉得这个项目“有几分浑然天成的感觉。”
+                        </p>
+
+                        <p>
+                            但是，在一个多样性的团队中工作，研究人员必须乐于聆听和学习。“人们往往认为他们在谈论同一件事，实际上往往不是，”贝鲁克夫说。“或者他们在说同一件事，但讲述的方式完全不同。”
+                        </p>
+
+                        <p>
+                            尽管这样的差异提供了机会去学习不同领域的知识，他们“往往也会因为所讲述的与所听到的不匹配而受挫，”他说。“弥合分歧是项目成功的关键。”
+                        </p>
+
+
+                        <div class="figure">
+                            <p><img src="http://www.wired.com/images_blogs/wiredscience/2013/10/BIN_YU_036_web.jpg" alt="BIN_YU_036_web.jpg" />
+                            </p>
+                            <p><span class="figure-number">Figure 3: </span>于斌，加利福尼亚大学拍克利分校的统计学家，希望数学家和统计学家能够成为大科学项目的智力领队</p>
+                        </div>
+
+                        <p>
+                            地球生态群系项目 (<a href="http://www.earthmicrobiome.org/">Earth Microbiome Project</a>) 是一项国际合作，在地图上绘制和研究来自全球的微生物样品，有数百位主要研究者共事。“我们偶尔会遇到一些人，他们不愿意分享数据，或者对参加后能获得什么很犹豫，”吉尔伯特说, 36 岁，自 2010 年加入该项目。“我们希望吸引到那些志同道合者。道不同不相谋。”
+                        </p>
+
+                        <p>
+                            多数志同道合者都是年轻的研究人员，他们也多数是“有相关技能来做事的人”，吉尔伯特说。“科研社区的主要任务完全受制于数据，”他说，“我们需要适应并超越数据大潮。”
+                        </p>
+
+                        <p>
+                            这种适应的一部分涉及到拥抱“开放科学”(<a href="http://www.nytimes.com/2012/01/17/science/open-science-challenges-journal-tradition-with-web-collaboration.html">open science</a>) 实践，包括使用开源的平台和数据分析工具，数据共享和科技刊物的开放式访问，克理斯·麦特曼说, 32 岁，他帮助开发了 Hadoop 的前身——Hadoop 是一个流行的开源数据分析架构，被 Yahoo, Amazon 和苹果这样的技术巨头们采用，也应用在 NEON 中。在分析海量的、混乱的数据时若不发展共享的工具，麦特曼说，每个新项目或新实验室就会浪费许多宝贵时间和资源用于重新造轮子。同样，共享数据和发表的结果可以避免重复研究。
+                        </p>
+
+                        <p>
+                            为达此目的，新成立的“研究数据联盟” (<a href="https://rd-alliance.org/">Research Data Alliance</a>) 的国际代表们在上个月的华盛顿会上为一个全球开放数据基础设施制订了计划。
+                        </p>
+
+                        <p>
+                            通过习惯于产生并利用开放数据及开放源码工具，年轻的科学家们已经成长起来了，他们“也正在迫使论文发表从‘公司统治’迅速转变到开放出版上”，施麦尔说, 58 岁。“这涉及到许多问题，这不可能仅仅用资源来解决，也非国际出版界能够控制得了。”
+                        </p>
+
+                        <p>
+                            在 NEON 进行的一项专业调查中，“80% 的参加者表示，在 20 年内有可能或者非常可能用到 NEON 的开放数据，”施麦尔说。“而年长的对照组中使用的可能性较小，支持态度也弱。相应地, NEON 的拓展策略不再集中于高级研究人员身上，而是愈加侧重于宣传并吸引那些有空闲时间的本科生。”
+                        </p>
+
+                        <p>
+                            于，伯克利的统计学家，希望数学家和统计学家将来成为大科学项目的智力领导者。但是“数学更加侧重于技术，并不鼓励人们去发展领导技能，”她说。“如果我们不去改变文化氛围，则可能会出现这种情况，你会无法在他们需要你的地方进行重要决策。”
+                        </p>
+
+                        <p>
+                            工程师习惯于攻克难题的团队协作，于说, 50 岁，但“数学家则惯于将人线性排列”来判断一个人的位置。“文化氛围必须改变才能够鼓励并培养年轻人从事有益的职业。这需要年长者来完成。”
+                        </p>
+
+                        <p>
+                            于建议数学系学生学习更多的计算机技能。她的学生们可以访问劳伦斯伯克利国家实验室的超级计算机，但有些人“却没有使用它的技能，”她说。“他们得学习。”
+                        </p>
+
+                        <p>
+                            当去年 NEON 进入基础建设阶段后，由于对研究和科学计划比施工和执行更有兴趣，施麦尔离开并投身到他的另一个大项目中去了。他成为了加利福尼亚州帕萨迪那的 NANA 喷射推进实验室的“碳与气候”项目的首席科学家，在那儿他正努力使用太空观测站进行全球性的碳预算和生态系统研究。
+                        </p>
+
+                        <p>
+                            “象施麦尔这样灵活的科学家对这些项目很重要，”麦特曼说。“他意识到，实际需要的就是一个正在成形的数据科学家阶层。”
+                        </p>
+
+                        <p>
+                            麦特曼，是在喷射推进实验室与施麦尔共事的高级计算机科学家，他认为在数据管理人员和科学家之间通常存在一个障碍。“如果你有一个计算机专业的学位，你会被认为是 IT 人员，”他说。“但在计算机科学中，你往往也学习了同样的数据——只不过应用在不同的对象上。”
+                        </p>
+
+                        <p>
+                            “我觉得自己并不一个 IT 人员，”麦特曼说。“一个大问题就是，我们是否雇用计算机科学家然后教会他们现成的科学知识，还是我们应该雇用那些物理和自然科学家然后教会他们计算机。”几年前，他多数雇用的是计算机科学家，但现在变成了雇用科学家并教会他们如何编程。
+                        </p>
+
+                        <p>
+                            将科学家、数学家和计算机科学家变成交叉数据科学家，这在教育上引起了数学、工程和技术领域越来越多的兴趣，麦特曼说。“整个就象是我们在接受世界的 Facebook 的挑战。要想在 Facebook 上发现谁顶了谁会费很多事，你要通过数据科学理解什么样的水预算能够支援一个可持续发展的星球，这也不容易。”
+                        </p>
+
+                        <p>
+                            学术激励系统也“必须来改变一下以方便评估交叉学科的研究”，于说。“对于处在交叉边界的人群很难评价，但这正是当前科学中非常激动人心的部分。”
+                        </p>
+                    </div>
+                </div>
+
+                <div id="outline-container-orgf8615f0" class="outline-2">
+                    <h2 id="orgf8615f0">备注</h2>
+                    <div class="outline-text-2" id="text-orgf8615f0">
+                        <p>
+                            【文章来源】：
+                        </p>
+                        <ul class="org-ul">
+                            <li><b>Big Data Is Too Big for Scientists to Handle Alone</b>, BY THOMAS LIN, QUANTA
+                            MAGAZINE, 10.03.13 9:30 AM</li>
+                            <li><a href="http://www.wired.com/wiredscience/2013/10/big-data-science/">http://www.wired.com/wiredscience/2013/10/big-data-science/</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="postamble" class="status">
+                <p><a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="88x31.png"/></a></p><p>版权所有 ©2012-2018: 〖译〗心蛛 | 日期: 2013-10-31 四 00:00</p><p>Generated by <a href="https://www.gnu.org/software/emacs/">Emacs</a> 25.3.1 (<a href="https://orgmode.org">Org</a> mode 9.1.7), <a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+            </div>
+        </body>
+    </html>

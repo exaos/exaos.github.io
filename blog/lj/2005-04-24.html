@@ -1,173 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
-<head>
-<!-- 2015-12-03 四 15:24 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>Emacs Carbon 越来越好用了</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="心蛛" />
-<meta  name="description" content="Level-2 for exporting to HTML"
- />
-<link rel="stylesheet" title="Standard" href="../../assets/css/worg.css" type="text/css" />
-<link rel="alternate stylesheet" title="Zenburn" href="../../assets/css/worg-zenburn.css" type="text/css" />
-<link rel="alternate stylesheet" title="Classic" href="../../assets/css/worg-classic.css" type="text/css" />
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh">
+    <head>
+        <!-- 2018-03-11 日 21:59 -->
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Emacs Carbon 越来越好用了</title>
+        <meta name="generator" content="Org mode" />
+        <meta name="author" content="心蛛" />
+        <meta name="description" content="Level-2 for exporting to HTML"
+              />
+        <link rel="stylesheet" title="Standard" href="../../assets/css/worg.css" type="text/css" />
+        <link rel="alternate stylesheet" title="Zenburn" href="../../assets/css/worg-zenburn.css" type="text/css" />
+        <link rel="alternate stylesheet" title="Classic" href="../../assets/css/worg-classic.css" type="text/css" />
+        <script type="text/javascript">
+            /*
+            @licstart  The following is the entire license notice for the
+            JavaScript code in this tag.
 
-<script type="text/javascript" src="http://orgmode.org/org-info.js">
-/**
- *
- * @source: http://orgmode.org/org-info.js
- *
- * @licstart  The following is the entire license notice for the
- *  JavaScript code in http://orgmode.org/org-info.js.
- *
- * Copyright (C) 2012-2013 Free Software Foundation, Inc.
- *
- *
- * The JavaScript code in this tag is free software: you can
- * redistribute it and/or modify it under the terms of the GNU
- * General Public License (GNU GPL) as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option)
- * any later version.  The code is distributed WITHOUT ANY WARRANTY;
- * without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
- *
- * As additional permission under GNU GPL version 3 section 7, you
- * may distribute non-source (e.g., minimized or compacted) forms of
- * that code without the copy of the GNU GPL normally required by
- * section 4, provided you include this license notice and a URL
- * through which recipients can access the Corresponding Source.
- *
- * @licend  The above is the entire license notice
- * for the JavaScript code in http://orgmode.org/org-info.js.
- *
- */
-</script>
+            Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
-<script type="text/javascript">
+            The JavaScript code in this tag is free software: you can
+            redistribute it and/or modify it under the terms of the GNU
+            General Public License (GNU GPL) as published by the Free Software
+            Foundation, either version 3 of the License, or (at your option)
+            any later version.  The code is distributed WITHOUT ANY WARRANTY;
+            without even the implied warranty of MERCHANTABILITY or FITNESS
+            FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
 
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
+            As additional permission under GNU GPL version 3 section 7, you
+            may distribute non-source (e.g., minimized or compacted) forms of
+            that code without the copy of the GNU GPL normally required by
+            section 4, provided you include this license notice and a URL
+            through which recipients can access the Corresponding Source.
 
 
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+            @licend  The above is the entire license notice
+            for the JavaScript code in this tag.
+            */
+            <!--/*--><![CDATA[/*><!--*/
+            function CodeHighlightOn(elem, id)
+            {
+            var target = document.getElementById(id);
+            if(null != target) {
+            elem.cacheClassElem = elem.className;
+            elem.cacheClassTarget = target.className;
+            target.className = "code-highlighted";
+            elem.className   = "code-highlighted";
+            }
+            }
+            function CodeHighlightOff(elem, id)
+            {
+            var target = document.getElementById(id);
+            if(elem.cacheClassElem)
+            elem.className = elem.cacheClassElem;
+            if(elem.cacheClassTarget)
+            target.className = elem.cacheClassTarget;
+            }
+            /*]]>*///-->
+        </script>
+    </head>
+    <body>
+        <div id="org-div-home-and-up">
+            <a accesskey="h" href="../index.html"> UP </a>
+            |
+            <a accesskey="H" href="../../index.html"> HOME </a>
+            </div><div id="content">
+            <h1 class="title">Emacs Carbon 越来越好用了</h1>
+            <p>
+                用 Emacs Carbon 22.0.50.1 已经快一个月了，比原来的 21.3.50 感觉好多了。这个版本是 MacEmacs JP 所支持的，参见: <a href="http://home.att.ne.jp/alpha/z123/emacs-mac-e.html">http://home.att.ne.jp/alpha/z123/emacs-mac-e.html</a>
+            </p>
 
-<!--/*--><![CDATA[/*><!--*/
-org_html_manager.set("TOC_DEPTH", "4");
-org_html_manager.set("LINK_HOME", "../../index.html");
-org_html_manager.set("LINK_UP", "../index.html");
-org_html_manager.set("LOCAL_TOC", "1");
-org_html_manager.set("VIEW_BUTTONS", "0");
-org_html_manager.set("MOUSE_HINT", "underline");
-org_html_manager.set("FIXED_TOC", "0");
-org_html_manager.set("TOC", "0");
-org_html_manager.set("VIEW", "content");
-org_html_manager.setup();  // activate after the parameters are set
-/*]]>*///-->
-</script>
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
+            <p>
+                中文的 MacEmacs 用户有多少呢？至少周围的 Emacs 用户都非常之少，目前只发现一个非常老的老师（七十了）在 Linux 和 Unix 下使用 Emacs （他是我见过的老师中少有的不会用 Windows 的人，呵呵～～）。尽管反感日本人，但他们的确在软件方面做了许多工作是我们国人应该感到惭愧的。我们一个中文文字标准都搞得那么乱， GB2312、GBK、GB18030、
+                ZH、Big5 等等，至今没有一款通用的免费字体 (zysong 18030 可能算是免费的字体了)，大家用的都还是微软系统中的 SimSun 。大部分的人都还不知道 UTF 编码为何物，而我们的支持 Unicode 编码的字库更缺乏。
+            </p>
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+            <p>
+                希望我们的汉字能够统一，繁体和简体得到统一，编码得到统一，字库得到统一。对于计算机而言，繁体字并不特别麻烦，反而熟悉繁体字，容易让我们认识古代的文字、继承古代的一些文明的东西。当然，更希望 Unicode 得到更好的发展，全世界的文字都能够包括在内，到时候就不必为各种编码和文字的事情费心了。
+            </p>
 
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+            <p>
+                Emacs 原来的 mule 对多国语言的支持中汉字算是最差的。希望这种状况越来越好。
+            </p>
 
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
-</head>
-<body>
-<div id="org-div-home-and-up">
- <a accesskey="h" href="../index.html"> UP </a>
- |
- <a accesskey="H" href="../../index.html"> HOME </a>
-</div><div id="content">
-<h1 class="title">Emacs Carbon 越来越好用了</h1>
-<p>
-用 Emacs Carbon 22.0.50.1 已经快一个月了，比原来的 21.3.50 感觉好多了。这个版本是 MacEmacs JP 所支持的，参见: <a href="http://home.att.ne.jp/alpha/z123/emacs-mac-e.html">http://home.att.ne.jp/alpha/z123/emacs-mac-e.html</a>
-</p>
-
-<p>
-中文的 MacEmacs 用户有多少呢？至少周围的 Emacs 用户都非常之少，目前只发现一个非常老的老师（七十了）在 Linux 和 Unix 下使用 Emacs （他是我见过的老师中少有的不会用 Windows 的人，呵呵～～）。尽管反感日本人，但他们的确在软件方面做了许多工作是我们国人应该感到惭愧的。我们一个中文文字标准都搞得那么乱， GB2312、GBK、GB18030、
-ZH、Big5 等等，至今没有一款通用的免费字体 (zysong 18030 可能算是免费的字体了)，大家用的都还是微软系统中的 SimSun 。大部分的人都还不知道 UTF 编码为何物，而我们的支持 Unicode 编码的字库更缺乏。
-</p>
-
-<p>
-希望我们的汉字能够统一，繁体和简体得到统一，编码得到统一，字库得到统一。对于计算机而言，繁体字并不特别麻烦，反而熟悉繁体字，容易让我们认识古代的文字、继承古代的一些文明的东西。当然，更希望 Unicode 得到更好的发展，全世界的文字都能够包括在内，到时候就不必为各种编码和文字的事情费心了。
-</p>
-
-<p>
-Emacs 原来的 mule 对多国语言的支持中汉字算是最差的。希望这种状况越来越好。
-</p>
-
-<p>
-很喜欢 Emacs Carbon，尽管是日本人做的对 CJK 支持的优化等工作，对于优秀的东西，我们应该好好学习。
-</p>
-</div>
-<div id="postamble" class="status">
-
-<script type="text/javascript" src="http://exaos.github.io/assets/js/pagetail.js"></script>
-<div id="disqus_thread"></div>
-<p>版权所有 ©2015: 心蛛 | Date: <span class="timestamp-wrapper"><span class="timestamp">[2005-04-24 日 18:38]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.3.2), <a href="http://validator.w3.org/check?uri=referer">Validate</a>,
-<a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="88x31.png"/></a>
-<p><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></p>
-</div>
-</body>
+            <p>
+                很喜欢 Emacs Carbon，尽管是日本人做的对 CJK 支持的优化等工作，对于优秀的东西，我们应该好好学习。
+            </p>
+        </div>
+        <div id="postamble" class="status">
+            <p><a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="88x31.png"/></a></p><p>版权所有 ©2012-2018: 心蛛 | 日期: 2005-04-24 日 18:38</p><p>Generated by <a href="https://www.gnu.org/software/emacs/">Emacs</a> 25.3.1 (<a href="https://orgmode.org">Org</a> mode 9.1.7), <a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+        </div>
+    </body>
 </html>

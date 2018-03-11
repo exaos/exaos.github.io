@@ -1,700 +1,623 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
-<head>
-<!-- 2015-12-03 四 15:23 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>心蛛的 ROOT 笔记</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Exaos Lee" />
-<meta  name="description" content="Level-2 for exporting to HTML"
- />
-<link rel="stylesheet" title="Standard" href="../../assets/css/worg.css" type="text/css" />
-<link rel="alternate stylesheet" title="Zenburn" href="../../assets/css/worg-zenburn.css" type="text/css" />
-<link rel="alternate stylesheet" title="Classic" href="../../assets/css/worg-classic.css" type="text/css" />
-
-<script type="text/javascript" src="http://orgmode.org/org-info.js">
-/**
- *
- * @source: http://orgmode.org/org-info.js
- *
- * @licstart  The following is the entire license notice for the
- *  JavaScript code in http://orgmode.org/org-info.js.
- *
- * Copyright (C) 2012-2013 Free Software Foundation, Inc.
- *
- *
- * The JavaScript code in this tag is free software: you can
- * redistribute it and/or modify it under the terms of the GNU
- * General Public License (GNU GPL) as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option)
- * any later version.  The code is distributed WITHOUT ANY WARRANTY;
- * without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
- *
- * As additional permission under GNU GPL version 3 section 7, you
- * may distribute non-source (e.g., minimized or compacted) forms of
- * that code without the copy of the GNU GPL normally required by
- * section 4, provided you include this license notice and a URL
- * through which recipients can access the Corresponding Source.
- *
- * @licend  The above is the entire license notice
- * for the JavaScript code in http://orgmode.org/org-info.js.
- *
- */
-</script>
-
-<script type="text/javascript">
-
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-
-<!--/*--><![CDATA[/*><!--*/
-org_html_manager.set("TOC_DEPTH", "4");
-org_html_manager.set("LINK_HOME", "../../index.html");
-org_html_manager.set("LINK_UP", "../index.html");
-org_html_manager.set("LOCAL_TOC", "1");
-org_html_manager.set("VIEW_BUTTONS", "0");
-org_html_manager.set("MOUSE_HINT", "underline");
-org_html_manager.set("FIXED_TOC", "0");
-org_html_manager.set("TOC", "0");
-org_html_manager.set("VIEW", "content");
-org_html_manager.setup();  // activate after the parameters are set
-/*]]>*///-->
-</script>
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
-</head>
-<body>
-<div id="org-div-home-and-up">
- <a accesskey="h" href="../index.html"> UP </a>
- |
- <a accesskey="H" href="../../index.html"> HOME </a>
-</div><div id="content">
-<h1 class="title">心蛛的 ROOT 笔记</h1>
-<div id="table-of-contents">
-<h2>&#30446;&#24405;</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#orgheadline1">基本信息</a></li>
-<li><a href="#orgheadline2">Debian 下的 ROOT</a></li>
-<li><a href="#orgheadline21">PyROOT</a>
-<ul>
-<li><a href="#orgheadline3">PyROOT 的基本使用</a>
-<ul>
-<li><a href="#orgheadline4">在 Python 中调用 ROOT 类</a></li>
-<li><a href="#orgheadline5">使用 STL 类</a></li>
-<li><a href="#orgheadline6">访问 ROOT 全局变量</a></li>
-<li><a href="#orgheadline7">从 C++ (CINT) 中访问 Python</a></li>
-<li><a href="#orgheadline8">回调 (callbacks)</a></li>
-<li><a href="#orgheadline9">CINT commands</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline10">内存管理</a>
-<ul>
-<li><a href="#orgheadline11">自动内存管理</a></li>
-<li><a href="#orgheadline12">手动内存管理</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline13">性能</a></li>
-<li><a href="#orgheadline16">使用 Python 函数</a>
-<ul>
-<li><a href="#orgheadline14">使用 Python 函数绘图</a></li>
-<li><a href="#orgheadline15">拟合谱</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline19">使用 Tree</a>
-<ul>
-<li><a href="#orgheadline17">访问现有的 Tree</a></li>
-<li><a href="#orgheadline18">写入 Tree</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline20">使用自己的类</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline22">我的 FAQ</a></li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1">基本信息</h2>
-<div class="outline-text-2" id="text-orgheadline1">
-<ul class="org-ul">
-<li>URL &#x2013; <a href="http://root.cern.ch/">http://root.cern.ch/</a></li>
-<li>论坛 &#x2013; <a href="http://root.cern.ch/phpBB3/">http://root.cern.ch/phpBB3/</a></li>
-<li>GitWeb &#x2013; <a href="http://root.cern.ch/gitweb">http://root.cern.ch/gitweb</a></li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2">Debian 下的 ROOT</h2>
-<div class="outline-text-2" id="text-orgheadline2">
-<p>
-Debian 7 (Wheezy):
-</p>
-<ul class="org-ul">
-<li>root-system: 5.34.00-2</li>
-<li>libroot-bindings-python5.34: 5.34.00-2</li>
-<li>libroot-bindings-python-dev: 5.34.00-2</li>
-<li><a href="http://packages.debian.org/wheezy/root-system">http://packages.debian.org/wheezy/root-system</a></li>
-</ul>
-
-<p>
-ROOT 文档：
-</p>
-<ul class="org-ul">
-<li>入门教材: <a href="http://root.cern.ch/download/doc/primer/ROOTPrimer.html">ROOT Primer</a></li>
-<li>参考手册: <a href="http://root.cern.ch/drupal/content/users-guide">ROOT User's Guide</a></li>
-<li>类库参考: <a href="http://root.cern.ch/drupal/content/reference-guide">ROOT Reference Guide</a></li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-orgheadline21" class="outline-2">
-<h2 id="orgheadline21">PyROOT</h2>
-<div class="outline-text-2" id="text-orgheadline21">
-</div><div id="outline-container-orgheadline3" class="outline-3">
-<h3 id="orgheadline3">PyROOT 的基本使用</h3>
-<div class="outline-text-3" id="text-orgheadline3">
-<p>
-<b>注意</b>: ROOT 6.0 以后将放弃使用 CINT, 而采用基于 LLVM 的 CLING, 因此，与 CINT 相关的内容只限于 ROOT 5 及以前的版本。
-</p>
-</div>
-
-<div id="outline-container-orgheadline4" class="outline-4">
-<h4 id="orgheadline4">在 Python 中调用 ROOT 类</h4>
-<div class="outline-text-4" id="text-orgheadline4">
-<p>
-在调用之前，需要加载 <code>ROOT</code> 包中的模块。示例：
-</p>
-<div class="org-src-container">
-
-<pre class="src src-python"><span style="color: #859900; font-weight: bold;">from</span> ROOT <span style="color: #859900; font-weight: bold;">import</span> TCanvas <span style="color: #93a1a1;"># available at startup</span>
-<span style="color: #657b83; background-color: #fdf6e3;">c</span>=TCanvas()
-
-<span style="color: #859900; font-weight: bold;">from</span> ROOT <span style="color: #859900; font-weight: bold;">import</span> TLorentzVector  <span style="color: #93a1a1;"># triggers auto-load of libPhysics</span>
-<span style="color: #657b83; background-color: #fdf6e3;">l</span> = TLorentzVector()
-</pre>
-</div>
-
-<p>
-或者 (不推荐) 这样用:
-</p>
-<div class="org-src-container">
-
-<pre class="src src-python"><span style="color: #859900; font-weight: bold;">from</span> ROOT <span style="color: #859900; font-weight: bold;">import</span> *
-<span style="color: #657b83; background-color: #fdf6e3;">c</span> = TCanvas()
-<span style="color: #657b83; background-color: #fdf6e3;">l</span> = TLorentzVector()
-</pre>
-</div>
-
-<p>
-最佳用法:
-</p>
-<div class="org-src-container">
-
-<pre class="src src-python"><span style="color: #859900; font-weight: bold;">import</span> ROOT
-
-<span style="color: #657b83; background-color: #fdf6e3;">c</span> = ROOT.TCanvas()
-<span style="color: #657b83; background-color: #fdf6e3;">l</span> = ROOT.TLorentzVector()
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgheadline5" class="outline-4">
-<h4 id="orgheadline5">使用 STL 类</h4>
-<div class="outline-text-4" id="text-orgheadline5">
-<p>
-不推荐在 Python 中使用 STL 类，因为 Python 中有相似的类存在，且功能之间有差异，易出错，在使用中需特别小心。
-</p>
-
-<p>
-使用模板类的方法很简单，将通用模板当成 meta class, 使用使用相应的参数实现这个
-meta class 即可，然后将实现的 (instantiated) 类当成普通的新类使用。示例:
-</p>
-<pre class="example">
-&gt;&gt;&gt; from ROOT import std
-&gt;&gt;&gt; v = std.vector(int)()
-&gt;&gt;&gt; for i in range(0,10):
-...    v.push_back(i)
-...
-&gt;&gt;&gt; for i in v:
-...     print i,
-1 2 3 4 5 6 7 8 9
-&gt;&gt;&gt;
-&gt;&gt;&gt; list(v)
-[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-&gt;&gt;&gt;
-</pre>
-
-<p>
-STL 的模板参数使用复杂类，比如 TCanvas 等，会出错。最好使用简单的数据类型，比如
-int, double 等。
-</p>
-</div>
-</div>
-
-<div id="outline-container-orgheadline6" class="outline-4">
-<h4 id="orgheadline6">访问 ROOT 全局变量</h4>
-<div class="outline-text-4" id="text-orgheadline6">
-<p>
-大部分全局变量可以直接从 ROOT.py 中导入，但一些通用模块 (通常如 <code>gMinuit</code> 等) 在程序开始时变未加载，只在相应的模块后续载入时才会存在 (也就是说，通过自动加载机制)。例如:
-</p>
-<pre class="example">
-&gt;&gt;&gt; from ROOT import *
-&gt;&gt;&gt; gROOT                              # directly available
-&lt;ROOT.TROOT object at 0x399c30&gt;
-&gt;&gt;&gt; gMinuit                            # library not yet loaded: not available
-Traceback (most recent call last):
-  File "&lt;stdin&gt;", line 1, in ?
-NameError: name 'gMinuit' is not defined
-&gt;&gt;&gt; TMinuit                            # use of TMinuit class forces auto-loading
-&lt;class '__main__.TMinuit'&gt;
-&gt;&gt;&gt; gMinuit                            # now gMinuit is available
-&lt;__main__.TMinuit object at 0x1458c70&gt;
-&gt;&gt;&gt; not not gMinuit                    # but it is the null pointer, until set
-False
-&gt;&gt;&gt; g = TMinuit()
-&gt;&gt;&gt; not not gMinuit
-True
-</pre>
-
-<p>
-可交互式地创建全局变量，也可以通过执行 CINT 宏，或者调用
-<code>gROOT.ProcessLine()</code>. 全局变量的使用与类相似：直接通过 <code>from ROOT import *~加载，或者从 ROOT 名称空间 (namespace) 中通过 ~import ROOT</code> 获得。
-</p>
-
-<p>
-5.08 版本以后, ROOT 全局变量的表现与 python 全局变量相同，这有时会有点反直观。由于它们是引用 (references), 它们只可以直接通过包含它们的模块进行改变。如下示例进行了展示:
-</p>
-<pre class="example">
-&gt;&gt;&gt; from ROOT import *
-&gt;&gt;&gt; print gDebug
-0
-&gt;&gt;&gt; gROOT.ProcessLine( 'gDebug = 7;' )
-&gt;&gt;&gt; print gDebug
-0                                 # local gDebug is unchanged
-&gt;&gt;&gt; gDebug = 5                    # changes _local_ reference only
-&gt;&gt;&gt; print gDebug
-5                                 # locally correct, but ...
-&gt;&gt;&gt; gROOT.ProcessLine( 'cout &lt;&lt; gDebug &lt;&lt; endl;' )
-7                                 # ... ROOT global unchanged
-&gt;&gt;&gt; import ROOT
-&gt;&gt;&gt; print ROOT.gDebug
-7                                 # still the old value (not '5')
-&gt;&gt;&gt; ROOT.gDebug = 3               # changes ROOT module reference
-&gt;&gt;&gt; gROOT.ProcessLine( 'cout &lt;&lt; gDebug &lt;&lt; endl;' )
-3                                 # ROOT global properly changed
-&gt;&gt;&gt;
-</pre>
-
-<p>
-上例同样说明 <code>import ROOT</code> 比 <code>from ROOT import *</code> 要更好些。
-</p>
-</div>
-</div>
-
-<div id="outline-container-orgheadline7" class="outline-4">
-<h4 id="orgheadline7">从 C++ (CINT) 中访问 Python</h4>
-<div class="outline-text-4" id="text-orgheadline7">
-<p>
-访问 Python 可通过 <b>TPython</b> 类，或者当 Python 对象或类在作用域内时直接使用。
-<b>TPython</b> 类大致如下：
-</p>
-<div class="org-src-container">
-
-<pre class="src src-c++"><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">TPython</span> {
-<span style="color: #859900; font-weight: bold;">public</span>:
-  <span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">load a Python script as if it were a macro</span>
-  <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">LoadMacro</span>(<span style="color: #859900; font-weight: bold;">const</span> <span style="color: #b58900;">char</span>* <span style="color: #268bd2;">name</span>);
-  <span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">execute a Python statement (e.g. "import ROOT")</span>
-  <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">Exec</span>(<span style="color: #859900; font-weight: bold;">const</span> <span style="color: #b58900;">char</span>* <span style="color: #268bd2;">cmd</span>);
-  <span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">evaluate a Python expression (e.g. "1+1")</span>
-  <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #859900; font-weight: bold;">const</span> <span style="color: #b58900;">TPyReturn</span>&amp; <span style="color: #268bd2;">Eval</span>(<span style="color: #859900; font-weight: bold;">const</span> <span style="color: #b58900;">char</span>* <span style="color: #268bd2;">expr</span>);
-  <span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">bind a ROOT object with, at the Python side, the name "label"</span>
-  <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">bool</span> <span style="color: #268bd2;">Bind</span>(<span style="color: #b58900;">TObject</span>* <span style="color: #268bd2;">obj</span>,<span style="color: #859900; font-weight: bold;">const</span> <span style="color: #b58900;">char</span>* <span style="color: #268bd2;">label</span>);
-  <span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">enter an interactive Python session (exit with ^D)</span>
-  <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">Prompt</span>();
-};
-</pre>
-</div>
-
-<p>
-<b>TPython</b> 的成员函数的详细解释:
-</p>
-<ul class="org-ul">
-<li><code>LoadMacro(const char* name)</code> &#x2013; 参数为 Python 文件名，载入后其中的新类自动可被 CINT 访问。由于 non-selective, 小心使用！</li>
-<li><code>ExecScript(const char* name, int argc=0, const char** argv=0)</code> &#x2013; 参数为
-Python 文件名，在私用的名字空间内调用以避免边界效应 (side-effects)。另外，可以通过添加命令行形式的参数，与在脚本中使用 <code>sys.argv</code> 参数相似。</li>
-<li><code>Exec(const char* cmd)</code> &#x2013; 参数为可执行的 Python 代码。没有返回值，但如果有问题（比如语法错误）会输出错误信息。</li>
-<li><code>Eval(const char* expr)</code> &#x2013; 参数为可执行的 Python 代码字符串 (表达式). 如果是内嵌类型 (int, long, float, double, const char*), 可访问的 Python 类型或者
-ROOT 类型，则返回表达式执行的结果。如果返回的是 ROOT 类型，需要对 <code>void*</code> 进行显式的强制转换 (explicit cast), 再赋值给本地指针 (可能存在类型不匹配), 而内嵌类型是自动转换 (如果可能) 成本地变量所需要的类型。</li>
-<li><code>Bind(TObject* obj, const char* label)</code> &#x2013; 将 CINT 中的 ROOT 对象转换成
-Python 解析器可接收的，在 Python 中变量名为 <code>label</code> 。</li>
-<li><code>Prompt()</code> &#x2013; 切换到 Python 提示符。</li>
-</ul>
-
-<p>
-ROOT v4.00/06 版本及以后, <code>TPython</code> 类在使用时自动加载，此前版本则需要在使用前先通过 <code>gSystem-&gt;Load()</code> 加载 <code>libPyROOT.so</code> 模块。
-</p>
-
-<p>
-使用一例: Python 模块如下
-</p>
-<div class="org-src-container">
-
-<pre class="src src-python"><span style="color: #859900; font-weight: bold;">print</span> <span style="color: #2aa198;">'creating class MyPyClass ... '</span>
-<span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">MyPyClass</span>:
-   <span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">__init__</span>(<span style="color: #859900; font-weight: bold;">self</span>):
-       <span style="color: #859900; font-weight: bold;">print</span> <span style="color: #2aa198;">'in MyPyClass.__init__'</span>
-       <span style="color: #859900; font-weight: bold;">self</span>._browser = <span style="color: #859900; font-weight: bold;">None</span>
-   <span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">gime</span>(<span style="color: #859900; font-weight: bold;">self</span>,what):
-       <span style="color: #859900; font-weight: bold;">return</span> what
-</pre>
-</div>
-
-<p>
-在 CINT session 中这样调用:
-</p>
-<pre class="example">
-root[] TPython::LoadMacro("MyPyClass.py");
-creating class MyPyClass ...
-root[] MyPyClass m;
-in MyPyClass.__init__
-root[] char* s = m.gime("aap");
-root[] s
-(char* 0x41ee7754)"aap"
-</pre>
-<p>
-注意, <code>LoadMacro()</code> 调用使用类自动可用。否则需要先调用 <code>gROOT-&gt;GetClass()</code> 。
-</p>
-</div>
-</div>
-
-<div id="outline-container-orgheadline8" class="outline-4">
-<h4 id="orgheadline8">回调 (callbacks)</h4>
-<div class="outline-text-4" id="text-orgheadline8">
-<p>
-从 CINT 中对 Python 进行回调，简单的方法是执行字符串。参见
-<code>tutorials/pyroot/demo.py</code> 示例。
-</p>
-</div>
-</div>
-
-<div id="outline-container-orgheadline9" class="outline-4">
-<h4 id="orgheadline9">CINT commands</h4>
-<div class="outline-text-4" id="text-orgheadline9">
-<p>
-在交互模式下, 使用 Python exception hook 来模拟一些 CINT 命令。这些命令有
-</p>
-<pre class="example">
-.q, .!, .x, .L, .cd, .ls, .pwd, .?, .help
-</pre>
-<p>
-注意, <code>.x</code> 命令对应的是 Python 的 <code>execfile()</code>, 因此只接收 Python 文件，而不是
-CINT 宏。
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgheadline10" class="outline-3">
-<h3 id="orgheadline10">内存管理</h3>
-<div class="outline-text-3" id="text-orgheadline10">
-<p>
-在 Python 解析器中对用户内存通过引用计数和垃圾回收 (对新类型对象，包括~PyROOT~
-对象) 进行管理。在 C++ 中，内存管理是手动进行的，或者通过应用程序特定的、定制的机制 (如 ROOT 中所使用的) 进行。尽管 <code>PyROOT</code> 理解 ROOT 的内存管理机制，仍然会有一些边界条件需要手动进行处理。 并且 <code>PyROOT</code> 对内存管理所采用的试探法
-(heuristics) 并非绝对可靠。对方法的一些详细了解因此变得重要。
-</p>
-</div>
-
-<div id="outline-container-orgheadline11" class="outline-4">
-<h4 id="orgheadline11">自动内存管理</h4>
-<div class="outline-text-4" id="text-orgheadline11">
-<p>
-有两种全局策略可用：试探式 (heuristics) 和严格式 (strict)。
-</p>
-
-<p>
-默认使用的是试探式，它采用如下两种规则：
-</p>
-<ol class="org-ol">
-<li>在 Python 解析器中创建的 ROOT 对象由 Python 拥有，当最后一次的 Python 引用消除后会被删除。然而，如果，该对象由非常量地址作为参数传递给 C++ 函数
-(除非该函数象成员函数中 <code>self</code> 那样使用它), 则放弃其所有权。</li>
-<li>来自 ROOT 调用的 ROOT 对象并非 Python 拥有，但在它传递给 Python 解析器之前，如果该类型是 <b>TObject</b> 类的派生类，它的 <code>must cleanup</code> 位必须置位。当对象离开 C++ 作用范围时, Python 对象必须改变类型，通常是 None。</li>
-</ol>
-
-<p>
-严格式策略与试探式不同，当对象作为参数传递给函数时, Python 从不放弃对象的所有权。这样则需要由开发者来阻止双边删除 (double deletes) 的发生。
-</p>
-
-<p>
-可通过如下命令
-</p>
-<pre class="example">
-ROOT.SetMemoryPolicy( ROOT.kMemoryStrict )
-</pre>
-<p>
-选择严格式策略，或通过如下选择试探式
-</p>
-<pre class="example">
-ROOT.SetMemoryPolicy( ROOT.kMemoryHeuristics )
-</pre>
-
-<p>
-对于图象对象需要特别注意: 当在当前 pad 上绘图时，对图象的引用保留着，但 <code>PyROOT</code>
-却不会立即知道，这需要开发者保留着对象甚至某个 Python 引用激活。参见
-<code>$ROOTSYS/tutorials/pyroot/zdemo.py</code> 中的示例。
-</p>
-
-<p>
-另外，也可以直接告诉 Python 放弃对某个独立实现的拥有权:
-</p>
-<pre class="example">
-o = ROOT.TObject()
-ROOT.SetOwnership( o, False ) # True to own, False to release
-</pre>
-</div>
-</div>
-
-<div id="outline-container-orgheadline12" class="outline-4">
-<h4 id="orgheadline12">手动内存管理</h4>
-<div class="outline-text-4" id="text-orgheadline12">
-<p>
-如果需要，可通过相关联的 <b>TClass</b> 显示式摧毁一个你拥有的 ROOT 对象:
-</p>
-<pre class="example">
-myobject.IsA().Destructor(myobject)
-</pre>
-<p>
-该命令向系统发送一个删除通知 (因此你不用再关心此时 Python 的引用计数之类的，对象会被删除，即使它的引用计数可能不会零), 并且释放相应内存。
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgheadline13" class="outline-3">
-<h3 id="orgheadline13">性能</h3>
-</div>
-
-<div id="outline-container-orgheadline16" class="outline-3">
-<h3 id="orgheadline16">使用 Python 函数</h3>
-<div class="outline-text-3" id="text-orgheadline16">
-</div><div id="outline-container-orgheadline14" class="outline-4">
-<h4 id="orgheadline14">使用 Python 函数绘图</h4>
-<div class="outline-text-4" id="text-orgheadline14">
-<div class="org-src-container">
-
-<pre class="src src-python"><span style="color: #859900; font-weight: bold;">from</span> ROOT <span style="color: #859900; font-weight: bold;">import</span> TF1, TCanvas
-
-<span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Linear</span>:
-   <span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">__call__</span>( <span style="color: #859900; font-weight: bold;">self</span>, x, par ):
-      <span style="color: #859900; font-weight: bold;">return</span> par[<span style="color: #657b83; background-color: #fdf6e3;">0</span>] + x[<span style="color: #657b83; background-color: #fdf6e3;">0</span>]*par[<span style="color: #657b83; background-color: #fdf6e3;">1</span>]
-
-<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">create a linear function with offset 5, and pitch 2</span>
-<span style="color: #657b83; background-color: #fdf6e3;">f</span> = TF1(<span style="color: #2aa198;">'pyf2'</span>,Linear(),-<span style="color: #657b83; background-color: #fdf6e3;">1</span>.,<span style="color: #657b83; background-color: #fdf6e3;">1</span>.,<span style="color: #657b83; background-color: #fdf6e3;">2</span>)
-f.SetParameters(<span style="color: #657b83; background-color: #fdf6e3;">5</span>.,<span style="color: #657b83; background-color: #fdf6e3;">2</span>.)
-
-<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">plot the function</span>
-<span style="color: #657b83; background-color: #fdf6e3;">c</span> = TCanvas()
-f.Draw()
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgheadline15" class="outline-4">
-<h4 id="orgheadline15">拟合谱</h4>
-<div class="outline-text-4" id="text-orgheadline15">
-<div class="org-src-container">
-
-<pre class="src src-python"><span style="color: #859900; font-weight: bold;">from</span> ROOT <span style="color: #859900; font-weight: bold;">import</span> TF1, TH1F, TCanvas
-
-<span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Linear</span>:
-   <span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">__call__</span>( <span style="color: #859900; font-weight: bold;">self</span>, x, par ):
-      <span style="color: #859900; font-weight: bold;">return</span> par[<span style="color: #657b83; background-color: #fdf6e3;">0</span>] + x[<span style="color: #657b83; background-color: #fdf6e3;">0</span>]*par[<span style="color: #657b83; background-color: #fdf6e3;">1</span>]
-
-<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">create a linear function for fitting</span>
-<span style="color: #657b83; background-color: #fdf6e3;">f</span> = TF1(<span style="color: #2aa198;">'pyf3'</span>,Linear(),-<span style="color: #657b83; background-color: #fdf6e3;">1</span>.,<span style="color: #657b83; background-color: #fdf6e3;">1</span>.,<span style="color: #657b83; background-color: #fdf6e3;">2</span>)
-
-<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">create and fill a histogram</span>
-<span style="color: #657b83; background-color: #fdf6e3;">h</span> = TH1F(<span style="color: #2aa198;">'h'</span>,<span style="color: #2aa198;">'test'</span>,<span style="color: #657b83; background-color: #fdf6e3;">100</span>,-<span style="color: #657b83; background-color: #fdf6e3;">1</span>.,<span style="color: #657b83; background-color: #fdf6e3;">1</span>.)
-<span style="color: #657b83; background-color: #fdf6e3;">f2</span> = TF1(<span style="color: #2aa198;">'cf2'</span>,<span style="color: #2aa198;">'6.+x*4.5'</span>,-<span style="color: #657b83; background-color: #fdf6e3;">1</span>.,<span style="color: #657b83; background-color: #fdf6e3;">1</span>.)
-h.FillRandom(<span style="color: #2aa198;">'cf2'</span>,<span style="color: #657b83; background-color: #fdf6e3;">10000</span>)
-
-<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">fit the histo with the python 'linear' function</span>
-h.Fit(f)
-
-<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">print results</span>
-<span style="color: #657b83; background-color: #fdf6e3;">par</span> = f.GetParameters()
-<span style="color: #859900; font-weight: bold;">print</span> <span style="color: #2aa198;">'fit results: const ='</span>,par[<span style="color: #657b83; background-color: #fdf6e3;">0</span>],<span style="color: #2aa198;">',pitch ='</span>,par[<span style="color: #657b83; background-color: #fdf6e3;">1</span>]
-</pre>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgheadline19" class="outline-3">
-<h3 id="orgheadline19">使用 Tree</h3>
-<div class="outline-text-3" id="text-orgheadline19">
-</div><div id="outline-container-orgheadline17" class="outline-4">
-<h4 id="orgheadline17">访问现有的 Tree</h4>
-<div class="outline-text-4" id="text-orgheadline17">
-<div class="org-src-container">
-
-<pre class="src src-python"><span style="color: #859900; font-weight: bold;">from</span> ROOT <span style="color: #859900; font-weight: bold;">import</span> TFile
-<span style="color: #859900; font-weight: bold;">from</span> ROOT <span style="color: #859900; font-weight: bold;">import</span> gDirectory
-
-<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">open the file</span>
-<span style="color: #657b83; background-color: #fdf6e3;">myfile</span> = TFile(<span style="color: #2aa198;">'tree1.root'</span>)
-
-<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">retrieve the ntuple of interest</span>
-<span style="color: #657b83; background-color: #fdf6e3;">mychain</span> = gDirectory.Get(<span style="color: #2aa198;">'t1'</span>)
-<span style="color: #657b83; background-color: #fdf6e3;">entries</span> = mychain.GetEntriesFast()
-
-<span style="color: #859900; font-weight: bold;">for</span> jentry <span style="color: #859900; font-weight: bold;">in</span> <span style="color: #657b83; font-weight: bold;">xrange</span>(entries):
-    <span style="color: #93a1a1;"># get the next tree in the chain and verify</span>
-    <span style="color: #657b83; background-color: #fdf6e3;">ientry</span> = mychain.LoadTree(jentry)
-    <span style="color: #859900; font-weight: bold;">if</span> ientry &lt; <span style="color: #657b83; background-color: #fdf6e3;">0</span>:
-        <span style="color: #859900; font-weight: bold;">break</span>
-
-    <span style="color: #93a1a1;"># copy next entry into memory and verify</span>
-    <span style="color: #657b83; background-color: #fdf6e3;">nb</span> = mychain.GetEntry(jentry)
-    <span style="color: #859900; font-weight: bold;">if</span> nb&lt;=<span style="color: #657b83; background-color: #fdf6e3;">0</span>:
-        <span style="color: #859900; font-weight: bold;">continue</span>
-    <span style="color: #93a1a1;"># use the values directly from the tree</span>
-    <span style="color: #657b83; background-color: #fdf6e3;">nEvent</span> = <span style="color: #657b83; font-weight: bold;">int</span>(mychain.ev)
-    <span style="color: #859900; font-weight: bold;">if</span> nEvent&lt;<span style="color: #657b83; background-color: #fdf6e3;">0</span>:
-        <span style="color: #859900; font-weight: bold;">continue</span>
-
-    <span style="color: #859900; font-weight: bold;">print</span> mychain.pz, <span style="color: #2aa198;">'='</span>, mychain.px*mychain.px, <span style="color: #2aa198;">'+'</span>, mychain.py*mychain.py
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgheadline18" class="outline-4">
-<h4 id="orgheadline18">写入 Tree</h4>
-<div class="outline-text-4" id="text-orgheadline18">
-<p>
-写入 TTree 在 Python 中有点复杂，不仅因为你需要 C++ 类以保证数据成员可以映射过去，除非你只使用内嵌类型。
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-python"><span style="color: #859900; font-weight: bold;">from</span> ROOT <span style="color: #859900; font-weight: bold;">import</span> TFile, TTree
-<span style="color: #859900; font-weight: bold;">from</span> array <span style="color: #859900; font-weight: bold;">import</span> array
-
-<span style="color: #657b83; background-color: #fdf6e3;">h</span> = TH1F(<span style="color: #2aa198;">'h1'</span>,<span style="color: #2aa198;">'test'</span>,<span style="color: #657b83; background-color: #fdf6e3;">100</span>,-<span style="color: #657b83; background-color: #fdf6e3;">10</span>.,<span style="color: #657b83; background-color: #fdf6e3;">10</span>.)
-<span style="color: #657b83; background-color: #fdf6e3;">f</span> = TFile(<span style="color: #2aa198;">'test.root'</span>,<span style="color: #2aa198;">'recreate'</span>)
-<span style="color: #657b83; background-color: #fdf6e3;">t</span> = TTree(<span style="color: #2aa198;">'t1'</span>,<span style="color: #2aa198;">'tree with histos'</span>)
-<span style="color: #657b83; background-color: #fdf6e3;">maxn</span> = <span style="color: #657b83; background-color: #fdf6e3;">10</span>
-<span style="color: #657b83; background-color: #fdf6e3;">n</span> = array(<span style="color: #2aa198;">'i'</span>,[<span style="color: #657b83; background-color: #fdf6e3;">0</span>])
-<span style="color: #657b83; background-color: #fdf6e3;">d</span> = array(<span style="color: #2aa198;">'f'</span>,maxn*[<span style="color: #657b83; background-color: #fdf6e3;">0</span>.])
-t.Branch(<span style="color: #2aa198;">'mynum'</span>,n,<span style="color: #2aa198;">'mynum/I'</span>)
-t.Branch(<span style="color: #2aa198;">'myval'</span>,d,<span style="color: #2aa198;">'myval[mynum]/F'</span>)
-
-<span style="color: #859900; font-weight: bold;">for</span> i <span style="color: #859900; font-weight: bold;">in</span> <span style="color: #657b83; font-weight: bold;">range</span>(<span style="color: #657b83; background-color: #fdf6e3;">25</span>):
-    <span style="color: #657b83; background-color: #fdf6e3;">n</span>[<span style="color: #657b83; background-color: #fdf6e3;">0</span>] = <span style="color: #657b83; font-weight: bold;">min</span>(i,maxn)
-    <span style="color: #859900; font-weight: bold;">for</span> j <span style="color: #859900; font-weight: bold;">in</span> <span style="color: #657b83; font-weight: bold;">range</span>(n[<span style="color: #657b83; background-color: #fdf6e3;">0</span>]):
-        <span style="color: #657b83; background-color: #fdf6e3;">d</span>[j] = i*<span style="color: #657b83; background-color: #fdf6e3;">0</span>.<span style="color: #657b83; background-color: #fdf6e3;">1</span>+j
-    t.Fill()
-
-f.Write()
-f.Close()
-</pre>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgheadline20" class="outline-3">
-<h3 id="orgheadline20">使用自己的类</h3>
-</div>
-</div>
-
-<div id="outline-container-orgheadline22" class="outline-2">
-<h2 id="orgheadline22">我的 FAQ</h2>
-</div>
-</div>
-<div id="postamble" class="status">
-
-<script type="text/javascript" src="http://exaos.github.io/assets/js/pagetail.js"></script>
-<div id="disqus_thread"></div>
-<p>版权所有 ©2015: Exaos Lee | Date:  | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.3.2), <a href="http://validator.w3.org/check?uri=referer">Validate</a>,
-<a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="88x31.png"/></a>
-<p><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></p>
-</div>
-</body>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh">
+    <head>
+        <!-- 2018-03-11 日 22:00 -->
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>心蛛的 ROOT 笔记</title>
+        <meta name="generator" content="Org mode" />
+        <meta name="author" content="Vivodo Lio" />
+        <meta name="description" content="Level-2 for exporting to HTML"
+              />
+        <link rel="stylesheet" title="Standard" href="../../assets/css/worg.css" type="text/css" />
+        <link rel="alternate stylesheet" title="Zenburn" href="../../assets/css/worg-zenburn.css" type="text/css" />
+        <link rel="alternate stylesheet" title="Classic" href="../../assets/css/worg-classic.css" type="text/css" />
+        <script type="text/javascript">
+            /*
+            @licstart  The following is the entire license notice for the
+            JavaScript code in this tag.
+
+            Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+            The JavaScript code in this tag is free software: you can
+            redistribute it and/or modify it under the terms of the GNU
+            General Public License (GNU GPL) as published by the Free Software
+            Foundation, either version 3 of the License, or (at your option)
+            any later version.  The code is distributed WITHOUT ANY WARRANTY;
+            without even the implied warranty of MERCHANTABILITY or FITNESS
+            FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+            As additional permission under GNU GPL version 3 section 7, you
+            may distribute non-source (e.g., minimized or compacted) forms of
+            that code without the copy of the GNU GPL normally required by
+            section 4, provided you include this license notice and a URL
+            through which recipients can access the Corresponding Source.
+
+
+            @licend  The above is the entire license notice
+            for the JavaScript code in this tag.
+            */
+            <!--/*--><![CDATA[/*><!--*/
+            function CodeHighlightOn(elem, id)
+            {
+            var target = document.getElementById(id);
+            if(null != target) {
+            elem.cacheClassElem = elem.className;
+            elem.cacheClassTarget = target.className;
+            target.className = "code-highlighted";
+            elem.className   = "code-highlighted";
+            }
+            }
+            function CodeHighlightOff(elem, id)
+            {
+            var target = document.getElementById(id);
+            if(elem.cacheClassElem)
+            elem.className = elem.cacheClassElem;
+            if(elem.cacheClassTarget)
+            target.className = elem.cacheClassTarget;
+            }
+            /*]]>*///-->
+        </script>
+    </head>
+    <body>
+        <div id="org-div-home-and-up">
+            <a accesskey="h" href="../index.html"> UP </a>
+            |
+            <a accesskey="H" href="../../index.html"> HOME </a>
+            </div><div id="content">
+            <h1 class="title">心蛛的 ROOT 笔记</h1>
+            <div id="table-of-contents">
+                <h2>Table of Contents</h2>
+                <div id="text-table-of-contents">
+                    <ul>
+                        <li><a href="#org363f9a4">基本信息</a></li>
+                        <li><a href="#orgecd6593">Debian 下的 ROOT</a></li>
+                        <li><a href="#org034d032">PyROOT</a>
+                        <ul>
+                            <li><a href="#org0faf3c1">PyROOT 的基本使用</a>
+                            <ul>
+                                <li><a href="#orgf415185">在 Python 中调用 ROOT 类</a></li>
+                                <li><a href="#org790fd22">使用 STL 类</a></li>
+                                <li><a href="#org84a22fb">访问 ROOT 全局变量</a></li>
+                                <li><a href="#orgfe50155">从 C++ (CINT) 中访问 Python</a></li>
+                                <li><a href="#orgc9994a6">回调 (callbacks)</a></li>
+                                <li><a href="#orgcb78cf8">CINT commands</a></li>
+                            </ul>
+                            </li>
+                            <li><a href="#org7a77dbe">内存管理</a>
+                            <ul>
+                                <li><a href="#org25c5c0b">自动内存管理</a></li>
+                                <li><a href="#org56976d3">手动内存管理</a></li>
+                            </ul>
+                            </li>
+                            <li><a href="#orga8c7556">性能</a></li>
+                            <li><a href="#org7b237a5">使用 Python 函数</a>
+                            <ul>
+                                <li><a href="#org04a2e7a">使用 Python 函数绘图</a></li>
+                                <li><a href="#org1a9ccea">拟合谱</a></li>
+                            </ul>
+                            </li>
+                            <li><a href="#org17a5dfc">使用 Tree</a>
+                            <ul>
+                                <li><a href="#org1939d29">访问现有的 Tree</a></li>
+                                <li><a href="#org917e761">写入 Tree</a></li>
+                            </ul>
+                            </li>
+                            <li><a href="#org5493264">使用自己的类</a></li>
+                        </ul>
+                        </li>
+                        <li><a href="#orgd0712d5">我的 FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="outline-container-org363f9a4" class="outline-2">
+                <h2 id="org363f9a4">基本信息</h2>
+                <div class="outline-text-2" id="text-org363f9a4">
+                    <ul class="org-ul">
+                        <li>URL &#x2013; <a href="http://root.cern.ch">http://root.cern.ch</a></li>
+                        <li>论坛 &#x2013; <a href="http://root.cern.ch/phpBB3/">http://root.cern.ch/phpBB3/</a></li>
+                        <li>GitWeb &#x2013; <a href="http://root.cern.ch/gitweb">http://root.cern.ch/gitweb</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="outline-container-orgecd6593" class="outline-2">
+                <h2 id="orgecd6593">Debian 下的 ROOT</h2>
+                <div class="outline-text-2" id="text-orgecd6593">
+                    <p>
+                        Debian 7 (Wheezy):
+                    </p>
+                    <ul class="org-ul">
+                        <li>root-system: 5.34.00-2</li>
+                        <li>libroot-bindings-python5.34: 5.34.00-2</li>
+                        <li>libroot-bindings-python-dev: 5.34.00-2</li>
+                        <li><a href="http://packages.debian.org/wheezy/root-system">http://packages.debian.org/wheezy/root-system</a></li>
+                    </ul>
+
+                    <p>
+                        ROOT 文档：
+                    </p>
+                    <ul class="org-ul">
+                        <li>入门教材: <a href="http://root.cern.ch/download/doc/primer/ROOTPrimer.html">ROOT Primer</a></li>
+                        <li>参考手册: <a href="http://root.cern.ch/drupal/content/users-guide">ROOT User's Guide</a></li>
+                        <li>类库参考: <a href="http://root.cern.ch/drupal/content/reference-guide">ROOT Reference Guide</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="outline-container-org034d032" class="outline-2">
+                <h2 id="org034d032">PyROOT</h2>
+                <div class="outline-text-2" id="text-org034d032">
+                </div>
+                <div id="outline-container-org0faf3c1" class="outline-3">
+                    <h3 id="org0faf3c1">PyROOT 的基本使用</h3>
+                    <div class="outline-text-3" id="text-org0faf3c1">
+                        <p>
+                            <b>注意</b>: ROOT 6.0 以后将放弃使用 CINT, 而采用基于 LLVM 的 CLING, 因此，与 CINT 相关的内容只限于 ROOT 5 及以前的版本。
+                        </p>
+                    </div>
+
+                    <div id="outline-container-orgf415185" class="outline-4">
+                        <h4 id="orgf415185">在 Python 中调用 ROOT 类</h4>
+                        <div class="outline-text-4" id="text-orgf415185">
+                            <p>
+                                在调用之前，需要加载 <code>ROOT</code> 包中的模块。示例：
+                            </p>
+                            <div class="org-src-container">
+                                <pre class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">from</span> ROOT <span style="color: #F0DFAF; font-weight: bold;">import</span> TCanvas <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">available at startup</span>
+                                <span style="color: #DFAF8F;">c</span>=TCanvas()
+
+                                <span style="color: #F0DFAF; font-weight: bold;">from</span> ROOT <span style="color: #F0DFAF; font-weight: bold;">import</span> TLorentzVector  <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">triggers auto-load of libPhysics</span>
+                                <span style="color: #DFAF8F;">l</span> = TLorentzVector()
+                                </pre>
+                            </div>
+
+                            <p>
+                                或者 (不推荐) 这样用:
+                            </p>
+                            <div class="org-src-container">
+                                <pre class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">from</span> ROOT <span style="color: #F0DFAF; font-weight: bold;">import</span> *
+                                <span style="color: #DFAF8F;">c</span> = TCanvas()
+                                <span style="color: #DFAF8F;">l</span> = TLorentzVector()
+                                </pre>
+                            </div>
+
+                            <p>
+                                最佳用法:
+                            </p>
+                            <div class="org-src-container">
+                                <pre class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">import</span> ROOT
+
+                                <span style="color: #DFAF8F;">c</span> = ROOT.TCanvas()
+                                <span style="color: #DFAF8F;">l</span> = ROOT.TLorentzVector()
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="outline-container-org790fd22" class="outline-4">
+                        <h4 id="org790fd22">使用 STL 类</h4>
+                        <div class="outline-text-4" id="text-org790fd22">
+                            <p>
+                                不推荐在 Python 中使用 STL 类，因为 Python 中有相似的类存在，且功能之间有差异，易出错，在使用中需特别小心。
+                            </p>
+
+                            <p>
+                                使用模板类的方法很简单，将通用模板当成 meta class, 使用使用相应的参数实现这个
+                                meta class 即可，然后将实现的 (instantiated) 类当成普通的新类使用。示例:
+                            </p>
+                            <pre class="example">
+                                &gt;&gt;&gt; from ROOT import std
+                                &gt;&gt;&gt; v = std.vector(int)()
+                                &gt;&gt;&gt; for i in range(0,10):
+                                ...    v.push_back(i)
+                                ...
+                                &gt;&gt;&gt; for i in v:
+                                ...     print i,
+                                1 2 3 4 5 6 7 8 9
+                                &gt;&gt;&gt;
+                                &gt;&gt;&gt; list(v)
+                                [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+                                &gt;&gt;&gt;
+                            </pre>
+
+                            <p>
+                                STL 的模板参数使用复杂类，比如 TCanvas 等，会出错。最好使用简单的数据类型，比如
+                                int, double 等。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div id="outline-container-org84a22fb" class="outline-4">
+                        <h4 id="org84a22fb">访问 ROOT 全局变量</h4>
+                        <div class="outline-text-4" id="text-org84a22fb">
+                            <p>
+                                大部分全局变量可以直接从 ROOT.py 中导入，但一些通用模块 (通常如 <code>gMinuit</code> 等) 在程序开始时变未加载，只在相应的模块后续载入时才会存在 (也就是说，通过自动加载机制)。例如:
+                            </p>
+                            <pre class="example">
+                                &gt;&gt;&gt; from ROOT import *
+                                &gt;&gt;&gt; gROOT                              # directly available
+                                &lt;ROOT.TROOT object at 0x399c30&gt;
+                                &gt;&gt;&gt; gMinuit                            # library not yet loaded: not available
+                                Traceback (most recent call last):
+                                File "&lt;stdin&gt;", line 1, in ?
+                                NameError: name 'gMinuit' is not defined
+                                &gt;&gt;&gt; TMinuit                            # use of TMinuit class forces auto-loading
+                                &lt;class '__main__.TMinuit'&gt;
+                                &gt;&gt;&gt; gMinuit                            # now gMinuit is available
+                                &lt;__main__.TMinuit object at 0x1458c70&gt;
+                                &gt;&gt;&gt; not not gMinuit                    # but it is the null pointer, until set
+                                False
+                                &gt;&gt;&gt; g = TMinuit()
+                                &gt;&gt;&gt; not not gMinuit
+                                True
+                            </pre>
+
+                            <p>
+                                可交互式地创建全局变量，也可以通过执行 CINT 宏，或者调用
+                                <code>gROOT.ProcessLine()</code>. 全局变量的使用与类相似：直接通过 <code>from ROOT import *~加载，或者从 ROOT 名称空间 (namespace) 中通过 ~import ROOT</code> 获得。
+                            </p>
+
+                            <p>
+                                5.08 版本以后, ROOT 全局变量的表现与 python 全局变量相同，这有时会有点反直观。由于它们是引用 (references), 它们只可以直接通过包含它们的模块进行改变。如下示例进行了展示:
+                            </p>
+                            <pre class="example">
+                                &gt;&gt;&gt; from ROOT import *
+                                &gt;&gt;&gt; print gDebug
+                                0
+                                &gt;&gt;&gt; gROOT.ProcessLine( 'gDebug = 7;' )
+                                &gt;&gt;&gt; print gDebug
+                                0                                 # local gDebug is unchanged
+                                &gt;&gt;&gt; gDebug = 5                    # changes _local_ reference only
+                                &gt;&gt;&gt; print gDebug
+                                5                                 # locally correct, but ...
+                                &gt;&gt;&gt; gROOT.ProcessLine( 'cout &lt;&lt; gDebug &lt;&lt; endl;' )
+                                7                                 # ... ROOT global unchanged
+                                &gt;&gt;&gt; import ROOT
+                                &gt;&gt;&gt; print ROOT.gDebug
+                                7                                 # still the old value (not '5')
+                                &gt;&gt;&gt; ROOT.gDebug = 3               # changes ROOT module reference
+                                &gt;&gt;&gt; gROOT.ProcessLine( 'cout &lt;&lt; gDebug &lt;&lt; endl;' )
+                                3                                 # ROOT global properly changed
+                                &gt;&gt;&gt;
+                            </pre>
+
+                            <p>
+                                上例同样说明 <code>import ROOT</code> 比 <code>from ROOT import *</code> 要更好些。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div id="outline-container-orgfe50155" class="outline-4">
+                        <h4 id="orgfe50155">从 C++ (CINT) 中访问 Python</h4>
+                        <div class="outline-text-4" id="text-orgfe50155">
+                            <p>
+                                访问 Python 可通过 <b>TPython</b> 类，或者当 Python 对象或类在作用域内时直接使用。
+                                <b>TPython</b> 类大致如下：
+                            </p>
+                            <div class="org-src-container">
+                                <pre class="src src-c++"><span style="color: #F0DFAF; font-weight: bold;">class</span> <span style="color: #7CB8BB;">TPython</span> {
+                                <span style="color: #F0DFAF; font-weight: bold;">public</span>:
+                                <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">load a Python script as if it were a macro</span>
+                                <span style="color: #F0DFAF; font-weight: bold;">static</span> <span style="color: #7CB8BB;">void</span> <span style="color: #93E0E3;">LoadMacro</span>(<span style="color: #F0DFAF; font-weight: bold;">const</span> <span style="color: #7CB8BB;">char</span>* <span style="color: #DFAF8F;">name</span>);
+                                <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">execute a Python statement (e.g. "import ROOT")</span>
+                                <span style="color: #F0DFAF; font-weight: bold;">static</span> <span style="color: #7CB8BB;">void</span> <span style="color: #93E0E3;">Exec</span>(<span style="color: #F0DFAF; font-weight: bold;">const</span> <span style="color: #7CB8BB;">char</span>* <span style="color: #DFAF8F;">cmd</span>);
+                                <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">evaluate a Python expression (e.g. "1+1")</span>
+                                <span style="color: #F0DFAF; font-weight: bold;">static</span> <span style="color: #F0DFAF; font-weight: bold;">const</span> <span style="color: #7CB8BB;">TPyReturn</span>&amp; <span style="color: #93E0E3;">Eval</span>(<span style="color: #F0DFAF; font-weight: bold;">const</span> <span style="color: #7CB8BB;">char</span>* <span style="color: #DFAF8F;">expr</span>);
+                                <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">bind a ROOT object with, at the Python side, the name "label"</span>
+                                <span style="color: #F0DFAF; font-weight: bold;">static</span> <span style="color: #7CB8BB;">bool</span> <span style="color: #93E0E3;">Bind</span>(<span style="color: #7CB8BB;">TObject</span>* <span style="color: #DFAF8F;">obj</span>,<span style="color: #F0DFAF; font-weight: bold;">const</span> <span style="color: #7CB8BB;">char</span>* <span style="color: #DFAF8F;">label</span>);
+                                <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">enter an interactive Python session (exit with ^D)</span>
+                                <span style="color: #F0DFAF; font-weight: bold;">static</span> <span style="color: #7CB8BB;">void</span> <span style="color: #93E0E3;">Prompt</span>();
+                                };
+
+                                </pre>
+                            </div>
+
+                            <p>
+                                <b>TPython</b> 的成员函数的详细解释:
+                            </p>
+                            <ul class="org-ul">
+                                <li><code>LoadMacro(const char* name)</code> &#x2013; 参数为 Python 文件名，载入后其中的新类自动可被 CINT 访问。由于 non-selective, 小心使用！</li>
+                                <li><code>ExecScript(const char* name, int argc=0, const char** argv=0)</code> &#x2013; 参数为
+                                Python 文件名，在私用的名字空间内调用以避免边界效应 (side-effects)。另外，可以通过添加命令行形式的参数，与在脚本中使用 <code>sys.argv</code> 参数相似。</li>
+                                <li><code>Exec(const char* cmd)</code> &#x2013; 参数为可执行的 Python 代码。没有返回值，但如果有问题（比如语法错误）会输出错误信息。</li>
+                                <li><code>Eval(const char* expr)</code> &#x2013; 参数为可执行的 Python 代码字符串 (表达式). 如果是内嵌类型 (int, long, float, double, const char*), 可访问的 Python 类型或者
+                                ROOT 类型，则返回表达式执行的结果。如果返回的是 ROOT 类型，需要对 <code>void*</code> 进行显式的强制转换 (explicit cast), 再赋值给本地指针 (可能存在类型不匹配), 而内嵌类型是自动转换 (如果可能) 成本地变量所需要的类型。</li>
+                                <li><code>Bind(TObject* obj, const char* label)</code> &#x2013; 将 CINT 中的 ROOT 对象转换成
+                                Python 解析器可接收的，在 Python 中变量名为 <code>label</code> 。</li>
+                                <li><code>Prompt()</code> &#x2013; 切换到 Python 提示符。</li>
+                            </ul>
+
+                            <p>
+                                ROOT v4.00/06 版本及以后, <code>TPython</code> 类在使用时自动加载，此前版本则需要在使用前先通过 <code>gSystem-&gt;Load()</code> 加载 <code>libPyROOT.so</code> 模块。
+                            </p>
+
+                            <p>
+                                使用一例: Python 模块如下
+                            </p>
+                            <div class="org-src-container">
+                                <pre class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">print</span> <span style="color: #CC9393;">'creating class MyPyClass ... '</span>
+                                <span style="color: #F0DFAF; font-weight: bold;">class</span> <span style="color: #7CB8BB;">MyPyClass</span>:
+                                <span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">__init__</span>(<span style="color: #F0DFAF; font-weight: bold;">self</span>):
+                                <span style="color: #F0DFAF; font-weight: bold;">print</span> <span style="color: #CC9393;">'in MyPyClass.__init__'</span>
+                                <span style="color: #F0DFAF; font-weight: bold;">self</span>._browser = <span style="color: #BFEBBF;">None</span>
+                                <span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">gime</span>(<span style="color: #F0DFAF; font-weight: bold;">self</span>,what):
+                                <span style="color: #F0DFAF; font-weight: bold;">return</span> what
+                                </pre>
+                            </div>
+
+                            <p>
+                                在 CINT session 中这样调用:
+                            </p>
+                            <pre class="example">
+                                root[] TPython::LoadMacro("MyPyClass.py");
+                                creating class MyPyClass ...
+                                root[] MyPyClass m;
+                                in MyPyClass.__init__
+                                root[] char* s = m.gime("aap");
+                                root[] s
+                                (char* 0x41ee7754)"aap"
+                            </pre>
+                            <p>
+                                注意, <code>LoadMacro()</code> 调用使用类自动可用。否则需要先调用 <code>gROOT-&gt;GetClass()</code> 。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div id="outline-container-orgc9994a6" class="outline-4">
+                        <h4 id="orgc9994a6">回调 (callbacks)</h4>
+                        <div class="outline-text-4" id="text-orgc9994a6">
+                            <p>
+                                从 CINT 中对 Python 进行回调，简单的方法是执行字符串。参见
+                                <code>tutorials/pyroot/demo.py</code> 示例。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div id="outline-container-orgcb78cf8" class="outline-4">
+                        <h4 id="orgcb78cf8">CINT commands</h4>
+                        <div class="outline-text-4" id="text-orgcb78cf8">
+                            <p>
+                                在交互模式下, 使用 Python exception hook 来模拟一些 CINT 命令。这些命令有
+                            </p>
+                            <pre class="example">
+                                .q, .!, .x, .L, .cd, .ls, .pwd, .?, .help
+
+                            </pre>
+                            <p>
+                                注意, <code>.x</code> 命令对应的是 Python 的 <code>execfile()</code>, 因此只接收 Python 文件，而不是
+                                CINT 宏。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="outline-container-org7a77dbe" class="outline-3">
+                    <h3 id="org7a77dbe">内存管理</h3>
+                    <div class="outline-text-3" id="text-org7a77dbe">
+                        <p>
+                            在 Python 解析器中对用户内存通过引用计数和垃圾回收 (对新类型对象，包括~PyROOT~
+                            对象) 进行管理。在 C++ 中，内存管理是手动进行的，或者通过应用程序特定的、定制的机制 (如 ROOT 中所使用的) 进行。尽管 <code>PyROOT</code> 理解 ROOT 的内存管理机制，仍然会有一些边界条件需要手动进行处理。 并且 <code>PyROOT</code> 对内存管理所采用的试探法
+                            (heuristics) 并非绝对可靠。对方法的一些详细了解因此变得重要。
+                        </p>
+                    </div>
+
+                    <div id="outline-container-org25c5c0b" class="outline-4">
+                        <h4 id="org25c5c0b">自动内存管理</h4>
+                        <div class="outline-text-4" id="text-org25c5c0b">
+                            <p>
+                                有两种全局策略可用：试探式 (heuristics) 和严格式 (strict)。
+                            </p>
+
+                            <p>
+                                默认使用的是试探式，它采用如下两种规则：
+                            </p>
+                            <ol class="org-ol">
+                                <li>在 Python 解析器中创建的 ROOT 对象由 Python 拥有，当最后一次的 Python 引用消除后会被删除。然而，如果，该对象由非常量地址作为参数传递给 C++ 函数
+                                (除非该函数象成员函数中 <code>self</code> 那样使用它), 则放弃其所有权。</li>
+                                <li>来自 ROOT 调用的 ROOT 对象并非 Python 拥有，但在它传递给 Python 解析器之前，如果该类型是 <b>TObject</b> 类的派生类，它的 <code>must cleanup</code> 位必须置位。当对象离开 C++ 作用范围时, Python 对象必须改变类型，通常是 None。</li>
+                            </ol>
+
+                            <p>
+                                严格式策略与试探式不同，当对象作为参数传递给函数时, Python 从不放弃对象的所有权。这样则需要由开发者来阻止双边删除 (double deletes) 的发生。
+                            </p>
+
+                            <p>
+                                可通过如下命令
+                            </p>
+                            <pre class="example">
+                                ROOT.SetMemoryPolicy( ROOT.kMemoryStrict )
+
+                            </pre>
+                            <p>
+                                选择严格式策略，或通过如下选择试探式
+                            </p>
+                            <pre class="example">
+                                ROOT.SetMemoryPolicy( ROOT.kMemoryHeuristics )
+
+                            </pre>
+
+                            <p>
+                                对于图象对象需要特别注意: 当在当前 pad 上绘图时，对图象的引用保留着，但 <code>PyROOT</code>
+                                却不会立即知道，这需要开发者保留着对象甚至某个 Python 引用激活。参见
+                                <code>$ROOTSYS/tutorials/pyroot/zdemo.py</code> 中的示例。
+                            </p>
+
+                            <p>
+                                另外，也可以直接告诉 Python 放弃对某个独立实现的拥有权:
+                            </p>
+                            <pre class="example">
+                                o = ROOT.TObject()
+                                ROOT.SetOwnership( o, False ) # True to own, False to release
+
+                            </pre>
+                        </div>
+                    </div>
+
+                    <div id="outline-container-org56976d3" class="outline-4">
+                        <h4 id="org56976d3">手动内存管理</h4>
+                        <div class="outline-text-4" id="text-org56976d3">
+                            <p>
+                                如果需要，可通过相关联的 <b>TClass</b> 显示式摧毁一个你拥有的 ROOT 对象:
+                            </p>
+                            <pre class="example">
+                                myobject.IsA().Destructor(myobject)
+
+                            </pre>
+                            <p>
+                                该命令向系统发送一个删除通知 (因此你不用再关心此时 Python 的引用计数之类的，对象会被删除，即使它的引用计数可能不会零), 并且释放相应内存。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="outline-container-orga8c7556" class="outline-3">
+                    <h3 id="orga8c7556">性能</h3>
+                </div>
+
+                <div id="outline-container-org7b237a5" class="outline-3">
+                    <h3 id="org7b237a5">使用 Python 函数</h3>
+                    <div class="outline-text-3" id="text-org7b237a5">
+                    </div>
+                    <div id="outline-container-org04a2e7a" class="outline-4">
+                        <h4 id="org04a2e7a">使用 Python 函数绘图</h4>
+                        <div class="outline-text-4" id="text-org04a2e7a">
+                            <div class="org-src-container">
+                                <pre class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">from</span> ROOT <span style="color: #F0DFAF; font-weight: bold;">import</span> TF1, TCanvas
+
+                                <span style="color: #F0DFAF; font-weight: bold;">class</span> <span style="color: #7CB8BB;">Linear</span>:
+                                <span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">__call__</span>( <span style="color: #F0DFAF; font-weight: bold;">self</span>, x, par ):
+                                <span style="color: #F0DFAF; font-weight: bold;">return</span> par[0] + x[0]*par[1]
+
+                                <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">create a linear function with offset 5, and pitch 2</span>
+                                <span style="color: #DFAF8F;">f</span> = TF1(<span style="color: #CC9393;">'pyf2'</span>,Linear(),-1.,1.,2)
+                                f.SetParameters(5.,2.)
+
+                                <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">plot the function</span>
+                                <span style="color: #DFAF8F;">c</span> = TCanvas()
+                                f.Draw()
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="outline-container-org1a9ccea" class="outline-4">
+                        <h4 id="org1a9ccea">拟合谱</h4>
+                        <div class="outline-text-4" id="text-org1a9ccea">
+                            <div class="org-src-container">
+                                <pre class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">from</span> ROOT <span style="color: #F0DFAF; font-weight: bold;">import</span> TF1, TH1F, TCanvas
+
+                                <span style="color: #F0DFAF; font-weight: bold;">class</span> <span style="color: #7CB8BB;">Linear</span>:
+                                <span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">__call__</span>( <span style="color: #F0DFAF; font-weight: bold;">self</span>, x, par ):
+                                <span style="color: #F0DFAF; font-weight: bold;">return</span> par[0] + x[0]*par[1]
+
+                                <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">create a linear function for fitting</span>
+                                <span style="color: #DFAF8F;">f</span> = TF1(<span style="color: #CC9393;">'pyf3'</span>,Linear(),-1.,1.,2)
+
+                                <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">create and fill a histogram</span>
+                                <span style="color: #DFAF8F;">h</span> = TH1F(<span style="color: #CC9393;">'h'</span>,<span style="color: #CC9393;">'test'</span>,100,-1.,1.)
+                                <span style="color: #DFAF8F;">f2</span> = TF1(<span style="color: #CC9393;">'cf2'</span>,<span style="color: #CC9393;">'6.+x*4.5'</span>,-1.,1.)
+                                h.FillRandom(<span style="color: #CC9393;">'cf2'</span>,10000)
+
+                                <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">fit the histo with the python 'linear' function</span>
+                                h.Fit(f)
+
+                                <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">print results</span>
+                                <span style="color: #DFAF8F;">par</span> = f.GetParameters()
+                                <span style="color: #F0DFAF; font-weight: bold;">print</span> <span style="color: #CC9393;">'fit results: const ='</span>,par[0],<span style="color: #CC9393;">',pitch ='</span>,par[1]
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="outline-container-org17a5dfc" class="outline-3">
+                    <h3 id="org17a5dfc">使用 Tree</h3>
+                    <div class="outline-text-3" id="text-org17a5dfc">
+                    </div>
+                    <div id="outline-container-org1939d29" class="outline-4">
+                        <h4 id="org1939d29">访问现有的 Tree</h4>
+                        <div class="outline-text-4" id="text-org1939d29">
+                            <div class="org-src-container">
+                                <pre class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">from</span> ROOT <span style="color: #F0DFAF; font-weight: bold;">import</span> TFile
+                                <span style="color: #F0DFAF; font-weight: bold;">from</span> ROOT <span style="color: #F0DFAF; font-weight: bold;">import</span> gDirectory
+
+                                <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">open the file</span>
+                                <span style="color: #DFAF8F;">myfile</span> = TFile(<span style="color: #CC9393;">'tree1.root'</span>)
+
+                                <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">retrieve the ntuple of interest</span>
+                                <span style="color: #DFAF8F;">mychain</span> = gDirectory.Get(<span style="color: #CC9393;">'t1'</span>)
+                                <span style="color: #DFAF8F;">entries</span> = mychain.GetEntriesFast()
+
+                                <span style="color: #F0DFAF; font-weight: bold;">for</span> jentry <span style="color: #F0DFAF; font-weight: bold;">in</span> <span style="color: #DCDCCC; font-weight: bold;">xrange</span>(entries):
+                                <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">get the next tree in the chain and verify</span>
+                                <span style="color: #DFAF8F;">ientry</span> = mychain.LoadTree(jentry)
+                                <span style="color: #F0DFAF; font-weight: bold;">if</span> ientry &lt; 0:
+                                <span style="color: #F0DFAF; font-weight: bold;">break</span>
+
+                                <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">copy next entry into memory and verify</span>
+                                <span style="color: #DFAF8F;">nb</span> = mychain.GetEntry(jentry)
+                                <span style="color: #F0DFAF; font-weight: bold;">if</span> nb&lt;=0:
+                                <span style="color: #F0DFAF; font-weight: bold;">continue</span>
+                                <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">use the values directly from the tree</span>
+                                <span style="color: #DFAF8F;">nEvent</span> = <span style="color: #DCDCCC; font-weight: bold;">int</span>(mychain.ev)
+                                <span style="color: #F0DFAF; font-weight: bold;">if</span> nEvent&lt;0:
+                                <span style="color: #F0DFAF; font-weight: bold;">continue</span>
+
+                                <span style="color: #F0DFAF; font-weight: bold;">print</span> mychain.pz, <span style="color: #CC9393;">'='</span>, mychain.px*mychain.px, <span style="color: #CC9393;">'+'</span>, mychain.py*mychain.py
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="outline-container-org917e761" class="outline-4">
+                        <h4 id="org917e761">写入 Tree</h4>
+                        <div class="outline-text-4" id="text-org917e761">
+                            <p>
+                                写入 TTree 在 Python 中有点复杂，不仅因为你需要 C++ 类以保证数据成员可以映射过去，除非你只使用内嵌类型。
+                            </p>
+
+                            <div class="org-src-container">
+                                <pre class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">from</span> ROOT <span style="color: #F0DFAF; font-weight: bold;">import</span> TFile, TTree
+                                <span style="color: #F0DFAF; font-weight: bold;">from</span> array <span style="color: #F0DFAF; font-weight: bold;">import</span> array
+
+                                <span style="color: #DFAF8F;">h</span> = TH1F(<span style="color: #CC9393;">'h1'</span>,<span style="color: #CC9393;">'test'</span>,100,-10.,10.)
+                                <span style="color: #DFAF8F;">f</span> = TFile(<span style="color: #CC9393;">'test.root'</span>,<span style="color: #CC9393;">'recreate'</span>)
+                                <span style="color: #DFAF8F;">t</span> = TTree(<span style="color: #CC9393;">'t1'</span>,<span style="color: #CC9393;">'tree with histos'</span>)
+                                <span style="color: #DFAF8F;">maxn</span> = 10
+                                <span style="color: #DFAF8F;">n</span> = array(<span style="color: #CC9393;">'i'</span>,[0])
+                                <span style="color: #DFAF8F;">d</span> = array(<span style="color: #CC9393;">'f'</span>,maxn*[0.])
+                                t.Branch(<span style="color: #CC9393;">'mynum'</span>,n,<span style="color: #CC9393;">'mynum/I'</span>)
+                                t.Branch(<span style="color: #CC9393;">'myval'</span>,d,<span style="color: #CC9393;">'myval[mynum]/F'</span>)
+
+                                <span style="color: #F0DFAF; font-weight: bold;">for</span> i <span style="color: #F0DFAF; font-weight: bold;">in</span> <span style="color: #DCDCCC; font-weight: bold;">range</span>(25):
+                                <span style="color: #DFAF8F;">n</span>[0] = <span style="color: #DCDCCC; font-weight: bold;">min</span>(i,maxn)
+                                <span style="color: #F0DFAF; font-weight: bold;">for</span> j <span style="color: #F0DFAF; font-weight: bold;">in</span> <span style="color: #DCDCCC; font-weight: bold;">range</span>(n[0]):
+                                <span style="color: #DFAF8F;">d</span>[j] = i*0.1+j
+                                t.Fill()
+
+                                f.Write()
+                                f.Close()
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="outline-container-org5493264" class="outline-3">
+                    <h3 id="org5493264">使用自己的类</h3>
+                </div>
+            </div>
+
+            <div id="outline-container-orgd0712d5" class="outline-2">
+                <h2 id="orgd0712d5">我的 FAQ</h2>
+            </div>
+        </div>
+        <div id="postamble" class="status">
+            <p><a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="88x31.png"/></a></p><p>版权所有 ©2012-2018: Vivodo Lio | 日期: </p><p>Generated by <a href="https://www.gnu.org/software/emacs/">Emacs</a> 25.3.1 (<a href="https://orgmode.org">Org</a> mode 9.1.7), <a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+        </div>
+    </body>
 </html>

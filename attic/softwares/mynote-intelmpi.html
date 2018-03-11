@@ -1,516 +1,454 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
-<head>
-<!-- 2015-12-03 四 15:24 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>我的 Intel MPI 笔记</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Exaos Lee" />
-<meta  name="description" content="Level-2 for exporting to HTML"
- />
-<link rel="stylesheet" title="Standard" href="../../assets/css/worg.css" type="text/css" />
-<link rel="alternate stylesheet" title="Zenburn" href="../../assets/css/worg-zenburn.css" type="text/css" />
-<link rel="alternate stylesheet" title="Classic" href="../../assets/css/worg-classic.css" type="text/css" />
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh">
+    <head>
+        <!-- 2018-03-11 日 21:58 -->
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>我的 Intel MPI 笔记</title>
+        <meta name="generator" content="Org mode" />
+        <meta name="author" content="Vivodo Lio" />
+        <meta name="description" content="Level-2 for exporting to HTML"
+              />
+        <link rel="stylesheet" title="Standard" href="../../assets/css/worg.css" type="text/css" />
+        <link rel="alternate stylesheet" title="Zenburn" href="../../assets/css/worg-zenburn.css" type="text/css" />
+        <link rel="alternate stylesheet" title="Classic" href="../../assets/css/worg-classic.css" type="text/css" />
+        <script type="text/javascript">
+            /*
+            @licstart  The following is the entire license notice for the
+            JavaScript code in this tag.
 
-<script type="text/javascript" src="http://orgmode.org/org-info.js">
-/**
- *
- * @source: http://orgmode.org/org-info.js
- *
- * @licstart  The following is the entire license notice for the
- *  JavaScript code in http://orgmode.org/org-info.js.
- *
- * Copyright (C) 2012-2013 Free Software Foundation, Inc.
- *
- *
- * The JavaScript code in this tag is free software: you can
- * redistribute it and/or modify it under the terms of the GNU
- * General Public License (GNU GPL) as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option)
- * any later version.  The code is distributed WITHOUT ANY WARRANTY;
- * without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
- *
- * As additional permission under GNU GPL version 3 section 7, you
- * may distribute non-source (e.g., minimized or compacted) forms of
- * that code without the copy of the GNU GPL normally required by
- * section 4, provided you include this license notice and a URL
- * through which recipients can access the Corresponding Source.
- *
- * @licend  The above is the entire license notice
- * for the JavaScript code in http://orgmode.org/org-info.js.
- *
- */
-</script>
+            Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
-<script type="text/javascript">
+            The JavaScript code in this tag is free software: you can
+            redistribute it and/or modify it under the terms of the GNU
+            General Public License (GNU GPL) as published by the Free Software
+            Foundation, either version 3 of the License, or (at your option)
+            any later version.  The code is distributed WITHOUT ANY WARRANTY;
+            without even the implied warranty of MERCHANTABILITY or FITNESS
+            FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
 
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
+            As additional permission under GNU GPL version 3 section 7, you
+            may distribute non-source (e.g., minimized or compacted) forms of
+            that code without the copy of the GNU GPL normally required by
+            section 4, provided you include this license notice and a URL
+            through which recipients can access the Corresponding Source.
 
 
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+            @licend  The above is the entire license notice
+            for the JavaScript code in this tag.
+            */
+            <!--/*--><![CDATA[/*><!--*/
+            function CodeHighlightOn(elem, id)
+            {
+            var target = document.getElementById(id);
+            if(null != target) {
+            elem.cacheClassElem = elem.className;
+            elem.cacheClassTarget = target.className;
+            target.className = "code-highlighted";
+            elem.className   = "code-highlighted";
+            }
+            }
+            function CodeHighlightOff(elem, id)
+            {
+            var target = document.getElementById(id);
+            if(elem.cacheClassElem)
+            elem.className = elem.cacheClassElem;
+            if(elem.cacheClassTarget)
+            target.className = elem.cacheClassTarget;
+            }
+            /*]]>*///-->
+        </script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+            displayAlign: "center",
+            displayIndent: "0em",
 
-<!--/*--><![CDATA[/*><!--*/
-org_html_manager.set("TOC_DEPTH", "4");
-org_html_manager.set("LINK_HOME", "../../index.html");
-org_html_manager.set("LINK_UP", "index.html");
-org_html_manager.set("LOCAL_TOC", "1");
-org_html_manager.set("VIEW_BUTTONS", "0");
-org_html_manager.set("MOUSE_HINT", "underline");
-org_html_manager.set("FIXED_TOC", "0");
-org_html_manager.set("TOC", "0");
-org_html_manager.set("VIEW", "content");
-org_html_manager.setup();  // activate after the parameters are set
-/*]]>*///-->
-</script>
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
+            "HTML-CSS": { scale: 100,
+            linebreaks: { automatic: "false" },
+            webFont: "TeX"
+            },
+            SVG: {scale: 100,
+            linebreaks: { automatic: "false" },
+            font: "TeX"},
+            NativeMML: {scale: 100},
+            TeX: { equationNumbers: {autoNumber: "AMS"},
+            MultLineWidth: "85%",
+            TagSide: "right",
+            TagIndent: ".8em"
+            }
+            });
+        </script>
+        <script type="text/javascript"
+                src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+    </head>
+    <body>
+        <div id="org-div-home-and-up">
+            <a accesskey="h" href="index.html"> UP </a>
+            |
+            <a accesskey="H" href="../../index.html"> HOME </a>
+            </div><div id="content">
+            <h1 class="title">我的 Intel MPI 笔记</h1>
+            <div id="table-of-contents">
+                <h2>Table of Contents</h2>
+                <div id="text-table-of-contents">
+                    <ul>
+                        <li><a href="#org85f5ab5">起步</a>
+                        <ul>
+                            <li><a href="#orgf5e66f1">使用流程</a></li>
+                            <li><a href="#org504a90f">安装</a></li>
+                            <li><a href="#orgb7e557a">起步</a></li>
+                            <li><a href="#org35600a2">编译和链接</a></li>
+                            <li><a href="#org81951a1">设置 MPD 守护进程</a></li>
+                            <li><a href="#orgc0403b2">选择网络结构</a></li>
+                            <li><a href="#org44acecf">运行 MPI 程序</a></li>
+                        </ul>
+                        </li>
+                        <li><a href="#org4d4e211">除错</a>
+                        <ul>
+                            <li><a href="#orgce62e24">安装</a></li>
+                            <li><a href="#org00f4821">MPD 设置</a></li>
+                            <li><a href="#org4b47f4c">编译运行</a></li>
+                        </ul>
+                        </li>
+                        <li><a href="#orgcb061de">参考</a></li>
+                    </ul>
+                </div>
+            </div>
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+            <div id="outline-container-org85f5ab5" class="outline-2">
+                <h2 id="org85f5ab5">起步</h2>
+                <div class="outline-text-2" id="text-org85f5ab5">
+                </div>
+                <div id="outline-container-orgf5e66f1" class="outline-3">
+                    <h3 id="orgf5e66f1">使用流程</h3>
+                    <div class="outline-text-3" id="text-orgf5e66f1">
+                        <div class="dot">
+                            <p>
+                                digraph intel_mpi_flowchart {
+                                compile [ shape=round, label="(只对程序开发者) 编译\n并链接应用程序" ];
+                                mpd_setup [ shape=Mrecord, label="{设置 MPD\n守护进程}"];
+                                net_setup [ shape=Mrecord, label="{选择网络\n结构或设备}"];
+                                run [ shape=record, label="运行你的 MPI 程序" ];
+                                compile -&gt; mpd_setup -&gt; net_setup -&gt; run;
+                                }
+                            </p>
 
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+                        </div>
+                    </div>
+                </div>
 
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
+                <div id="outline-container-org504a90f" class="outline-3">
+                    <h3 id="org504a90f">安装</h3>
+                    <div class="outline-text-3" id="text-org504a90f">
+                        <p>
+                            根据手册安装 Intel MPI 库，保正库、脚本和实用程序安装正常。
+                        </p>
+                    </div>
+                </div>
 
+                <div id="outline-container-orgb7e557a" class="outline-3">
+                    <h3 id="orgb7e557a">起步</h3>
+                    <div class="outline-text-3" id="text-orgb7e557a">
+                        <ol class="org-ol">
+                            <li>加载 <code>mpivars.[c]sh</code> 脚本 (或者以其它类似方式加载 Intel MPI 库的环境)。</li>
+                            <li>创建文本文件 <code>mpd.hosts</code> ，其中保存有集群的节点列表，每行一个名字</li>
+                            <li>(只针对开发者) 确保环境变量 PATH 中包含有相应的编译器，比如 icc。</li>
+                            <li><p>
+                                (只针对开发者) 使用适当的编译驱动编译测试程序，比如 <code>mpiicc</code>
+                            </p>
+                            <pre class="example">
+                                mpiicc -o test  test.c
 
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
+                            </pre></li>
+                            <li><p>
+                                使用 <code>mpirun</code> 运行测试程序
+                            </p>
+                            <pre class="example">
+                                mpirun -r ssh -f mpd.hosts -n &lt;# of processes&gt; ./test
 
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
-</script>
-<script type="text/javascript"
-        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
-</head>
-<body>
-<div id="org-div-home-and-up">
- <a accesskey="h" href="index.html"> UP </a>
- |
- <a accesskey="H" href="../../index.html"> HOME </a>
-</div><div id="content">
-<h1 class="title">我的 Intel MPI 笔记</h1>
-<div id="table-of-contents">
-<h2>&#30446;&#24405;</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#orgheadline8">起步</a>
-<ul>
-<li><a href="#orgheadline1">使用流程</a></li>
-<li><a href="#orgheadline2">安装</a></li>
-<li><a href="#orgheadline3">起步</a></li>
-<li><a href="#orgheadline4">编译和链接</a></li>
-<li><a href="#orgheadline5">设置 MPD 守护进程</a></li>
-<li><a href="#orgheadline6">选择网络结构</a></li>
-<li><a href="#orgheadline7">运行 MPI 程序</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline12">除错</a>
-<ul>
-<li><a href="#orgheadline9">安装</a></li>
-<li><a href="#orgheadline10">MPD 设置</a></li>
-<li><a href="#orgheadline11">编译运行</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline13">参考</a></li>
-</ul>
-</div>
-</div>
+                            </pre></li>
+                        </ol>
+                    </div>
+                </div>
 
-<div id="outline-container-orgheadline8" class="outline-2">
-<h2 id="orgheadline8">起步</h2>
-<div class="outline-text-2" id="text-orgheadline8">
-</div><div id="outline-container-orgheadline1" class="outline-3">
-<h3 id="orgheadline1">使用流程</h3>
-<div class="outline-text-3" id="text-orgheadline1">
-<div class="dot">
-<p>
-digraph intel_mpi_flowchart {
-   compile [ shape=round, label="(只对程序开发者) 编译\n并链接应用程序" ];
-   mpd_setup [ shape=Mrecord, label="{设置 MPD\n守护进程}"];
-   net_setup [ shape=Mrecord, label="{选择网络\n结构或设备}"];
-   run [ shape=record, label="运行你的 MPI 程序" ];
-   compile -&gt; mpd_setup -&gt; net_setup -&gt; run;
-}
-</p>
+                <div id="outline-container-org35600a2" class="outline-3">
+                    <h3 id="org35600a2">编译和链接</h3>
+                    <div class="outline-text-3" id="text-org35600a2">
+                        <p>
+                            (只针对开发者) 编译和链接 Intel MPI 库：
+                        </p>
+                        <ol class="org-ol">
+                            <li>保证在 <code>PATH</code> 环境变量中编译器设置正确。使用 Intel 编译器，注意
+                            <code>LD_LIBRARY_PATH</code> 环境变量中含有编译库的路径。</li>
+                            <li><p>
+                                通过相应的 <code>mpi</code> 命令编译 MPI 程序。比如调用 <code>mpicc</code> 使用 GNU C 编译器：
+                            </p>
+                            <pre class="example">
+                                mpicc &lt;path-to-test&gt;/test.c
 
-</div>
-</div>
-</div>
+                            </pre>
+                            <p>
+                                所以支持的编译器都有对应的以 <code>mpi</code> 开头的命令，比如 Intel Fortran (<code>ifort</code>)
+                                对应的为 <code>mpiifort</code>.
+                            </p></li>
+                        </ol>
+                    </div>
+                </div>
 
-<div id="outline-container-orgheadline2" class="outline-3">
-<h3 id="orgheadline2">安装</h3>
-<div class="outline-text-3" id="text-orgheadline2">
-<p>
-根据手册安装 Intel MPI 库，保正库、脚本和实用程序安装正常。
-</p>
-</div>
-</div>
+                <div id="outline-container-org81951a1" class="outline-3">
+                    <h3 id="org81951a1">设置 MPD 守护进程</h3>
+                    <div class="outline-text-3" id="text-org81951a1">
+                        <p>
+                            Intel MPI 库使用 Multi-Purpose Daemon (MPD) 任务调度机制。为运行使用 <code>mpiicc</code>
+                            (或类似) 编译的程序，首先需要设置好 MPD 守护进程。
+                        </p>
 
-<div id="outline-container-orgheadline3" class="outline-3">
-<h3 id="orgheadline3">起步</h3>
-<div class="outline-text-3" id="text-orgheadline3">
-<ol class="org-ol">
-<li>加载 <code>mpivars.[c]sh</code> 脚本 (或者以其它类似方式加载 Intel MPI 库的环境)。</li>
-<li>创建文本文件 <code>mpd.hosts</code> ，其中保存有集群的节点列表，每行一个名字</li>
-<li>(只针对开发者) 确保环境变量 PATH 中包含有相应的编译器，比如 icc。</li>
-<li><p>
-(只针对开发者) 使用适当的编译驱动编译测试程序，比如 <code>mpiicc</code>
-</p>
-<pre class="example">
-mpiicc -o test  test.c
-</pre></li>
-<li><p>
-使用 <code>mpirun</code> 运行测试程序
-</p>
-<pre class="example">
-mpirun -r ssh -f mpd.hosts -n &lt;# of processes&gt; ./test
-</pre></li>
-</ol>
-</div>
-</div>
+                        <p>
+                            与系统管理员为系统中所有用户启动一次 MPD 守护进程不同，用户需要启动和维护自己的一组 MPD 守护进程。这种设置增强了系统安全性，并为控制可执行程序的环境提供了更强的灵活性。
+                        </p>
 
-<div id="outline-container-orgheadline4" class="outline-3">
-<h3 id="orgheadline4">编译和链接</h3>
-<div class="outline-text-3" id="text-orgheadline4">
-<p>
-(只针对开发者) 编译和链接 Intel MPI 库：
-</p>
-<ol class="org-ol">
-<li>保证在 <code>PATH</code> 环境变量中编译器设置正确。使用 Intel 编译器，注意
-<code>LD_LIBRARY_PATH</code> 环境变量中含有编译库的路径。</li>
-<li><p>
-通过相应的 <code>mpi</code> 命令编译 MPI 程序。比如调用 <code>mpicc</code> 使用 GNU C 编译器：
-</p>
-<pre class="example">
-mpicc &lt;path-to-test&gt;/test.c
-</pre>
-<p>
-所以支持的编译器都有对应的以 <code>mpi</code> 开头的命令，比如 Intel Fortran (<code>ifort</code>)
-对应的为 <code>mpiifort</code>.
-</p></li>
-</ol>
-</div>
-</div>
+                        <p>
+                            设置守护进行的步骤如下：
+                        </p>
+                        <ol class="org-ol">
+                            <li>设置相应的环境变量和目录。比如，在 <code>.cshrc</code> 或 <code>.bashrc</code> 文件中：
+                            <ul class="org-ul">
+                                <li>保证 <code>PATH</code> 变量中包含有 <code>&lt;installdir&gt;/bin</code> 或者 Intel 64 位架构对应的
+                                <code>&lt;installdir&gt;/bin64</code> 目录，其中 <code>&lt;installdir&gt;</code> 指的是 MPI 的安装路径。可使用 Intel MPI 库中带有的 <code>mpivars.[c]sh</code> 来设置此变量。</li>
+                                <li>确保 <code>PATH</code> 中包含有的 Python 至少为 2.2 或以上版本。</li>
+                                <li>(只对开发者) 如果使用 Intel 编译器，确保 <code>LD_LIBRARY_PATH</code> 变量包含有编译器的库目录。可使用编译器中带有的 <code>{icc,ifort}*vars.[c]sh</code> 脚本来设置。</li>
+                                <li>设置应用程序所需要的其它环境变量。</li>
+                            </ul></li>
+                            <li><p>
+                                创建 <code>$HOME/.mpd.conf</code> 文件，设置 MPD 密码，需要在文件中写入一行：
+                            </p>
+                            <pre class="example">
+                                secretword=&lt;mpd secret word&gt;
 
-<div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="orgheadline5">设置 MPD 守护进程</h3>
-<div class="outline-text-3" id="text-orgheadline5">
-<p>
-Intel MPI 库使用 Multi-Purpose Daemon (MPD) 任务调度机制。为运行使用 <code>mpiicc</code>
-(或类似) 编译的程序，首先需要设置好 MPD 守护进程。
-</p>
+                            </pre>
+                            <p>
+                                不要使用 Linux 登陆密码。 <code>&lt;mpd secret word&gt;</code> 可为任意字符串，它仅仅在不同的集群用户对 MPD 守护进程进行控制时有用。
+                            </p></li>
+                            <li><p>
+                                使用 <code>chmod</code> 设置 <code>$HOME/.mpd.conf</code> 文件的权限，使得它只能被你自己读写：
+                            </p>
+                            <pre class="example">
+                                chmod 600 $HOME/.mpd.conf
 
-<p>
-与系统管理员为系统中所有用户启动一次 MPD 守护进程不同，用户需要启动和维护自己的一组 MPD 守护进程。这种设置增强了系统安全性，并为控制可执行程序的环境提供了更强的灵活性。
-</p>
+                            </pre></li>
+                            <li><p>
+                                保证你在集群的所有节点上 <code>rsh</code> 命令看到同样的 <code>PATH</code> 和 <code>.mpd.conf</code> 内容。比如在集群的所有节点上执行下面的命令：
+                            </p>
+                            <pre class="example">
+                                rsh &lt;node&gt; env
+                                rsh &lt;node&gt; cat $HOME/.mpd.conf
 
-<p>
-设置守护进行的步骤如下：
-</p>
-<ol class="org-ol">
-<li>设置相应的环境变量和目录。比如，在 <code>.cshrc</code> 或 <code>.bashrc</code> 文件中：
-<ul class="org-ul">
-<li>保证 <code>PATH</code> 变量中包含有 <code>&lt;installdir&gt;/bin</code> 或者 Intel 64 位架构对应的
-<code>&lt;installdir&gt;/bin64</code> 目录，其中 <code>&lt;installdir&gt;</code> 指的是 MPI 的安装路径。可使用 Intel MPI 库中带有的 <code>mpivars.[c]sh</code> 来设置此变量。</li>
-<li>确保 <code>PATH</code> 中包含有的 Python 至少为 2.2 或以上版本。</li>
-<li>(只对开发者) 如果使用 Intel 编译器，确保 <code>LD_LIBRARY_PATH</code> 变量包含有编译器的库目录。可使用编译器中带有的 <code>{icc,ifort}*vars.[c]sh</code> 脚本来设置。</li>
-<li>设置应用程序所需要的其它环境变量。</li>
-</ul></li>
-<li><p>
-创建 <code>$HOME/.mpd.conf</code> 文件，设置 MPD 密码，需要在文件中写入一行：
-</p>
-<pre class="example">
-secretword=&lt;mpd secret word&gt;
-</pre>
-<p>
-不要使用 Linux 登陆密码。 <code>&lt;mpd secret word&gt;</code> 可为任意字符串，它仅仅在不同的集群用户对 MPD 守护进程进行控制时有用。
-</p></li>
-<li><p>
-使用 <code>chmod</code> 设置 <code>$HOME/.mpd.conf</code> 文件的权限，使得它只能被你自己读写：
-</p>
-<pre class="example">
-chmod 600 $HOME/.mpd.conf
-</pre></li>
-<li><p>
-保证你在集群的所有节点上 <code>rsh</code> 命令看到同样的 <code>PATH</code> 和 <code>.mpd.conf</code> 内容。比如在集群的所有节点上执行下面的命令：
-</p>
-<pre class="example">
-rsh &lt;node&gt; env
-rsh &lt;node&gt; cat $HOME/.mpd.conf
-</pre>
-<p>
-保证每个节点都能够与其它任意节点连接。可使用安装中提供的 <code>sshconnectivity</code>
-脚本。该脚本使用提供所有节点列表的文件作为参数，每个节点一行：
-</p>
-<pre class="example">
-sshconnectivity.exp machines.LINUX
-</pre>
-<p>
-或集群使用的是 <code>ssh</code> 而不是 <code>rsh</code>, 可参考后面的注释 <sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup> 作相应的命令调整。
-</p></li>
-<li><p>
-创建文本文件 <code>mpd.hosts</code>, 其中列出了集群中所有的节点，每行一个主机名。比如：
-</p>
-<pre class="example">
-$ cat &gt; mpd.hosts
-node1
-node2
-...
-&lt;ctrl&gt;D
-</pre></li>
-<li><p>
-使用 <code>mpdallexit</code> 命令关闭上一次的 MPD 守护进程。
-</p>
-<pre class="example">
-mpdallexit
-</pre></li>
-<li><p>
-使用 <code>mpdboot</code> <sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup> 命令启动 MPD 守护进程。
-</p>
-<pre class="example">
-mpdboot -n &lt;#nodes&gt;
-</pre>
-<p>
-如果文件 <code>$PWD/mpd.hosts</code> 存在，则会被用作默认参数。如果没有主机名文件，启用 <code>mpdboot</code> 只会在本地机器上运行 MPD 守护进程。
-</p></li>
-<li><p>
-使用 <code>mpdtrace</code> 命令检查 MPD 守护进程的状态：
-</p>
-<pre class="example">
-mpdtrace
-</pre>
-<p>
-其输出结果应该为当前进行 MPD 守护进程的节点列表。该列表应该与 <code>mpd.hosts</code>
-文件中节点列表符合。
-</p></li>
-</ol>
-</div>
-</div>
+                            </pre>
+                            <p>
+                                保证每个节点都能够与其它任意节点连接。可使用安装中提供的 <code>sshconnectivity</code>
+                                脚本。该脚本使用提供所有节点列表的文件作为参数，每个节点一行：
+                            </p>
+                            <pre class="example">
+                                sshconnectivity.exp machines.LINUX
 
-<div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="orgheadline6">选择网络结构</h3>
-<div class="outline-text-3" id="text-orgheadline6">
-<p>
-Intel MPI 库会动态选择大部分适用的网络结构以便 MPI 进程之间进行通讯。欲选择特定的网络结构，需要设置环境变量 <code>I_MPI_DEVICE</code> 为下表中的某个值：
-</p>
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+                            </pre>
+                            <p>
+                                或集群使用的是 <code>ssh</code> 而不是 <code>rsh</code>, 可参考后面的注释 <sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup> 作相应的命令调整。
+                            </p></li>
+                            <li><p>
+                                创建文本文件 <code>mpd.hosts</code>, 其中列出了集群中所有的节点，每行一个主机名。比如：
+                            </p>
+                            <pre class="example">
+                                $ cat &gt; mpd.hosts
+                                node1
+                                node2
+                                ...
+                                &lt;ctrl&gt;D
+                            </pre></li>
+                            <li><p>
+                                使用 <code>mpdallexit</code> 命令关闭上一次的 MPD 守护进程。
+                            </p>
+                            <pre class="example">
+                                mpdallexit
+
+                            </pre></li>
+                            <li><p>
+                                使用 <code>mpdboot</code> <sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup> 命令启动 MPD 守护进程。
+                            </p>
+                            <pre class="example">
+                                mpdboot -n &lt;#nodes&gt;
+
+                            </pre>
+                            <p>
+                                如果文件 <code>$PWD/mpd.hosts</code> 存在，则会被用作默认参数。如果没有主机名文件，启用 <code>mpdboot</code> 只会在本地机器上运行 MPD 守护进程。
+                            </p></li>
+                            <li><p>
+                                使用 <code>mpdtrace</code> 命令检查 MPD 守护进程的状态：
+                            </p>
+                            <pre class="example">
+                                mpdtrace
+
+                            </pre>
+                            <p>
+                                其输出结果应该为当前进行 MPD 守护进程的节点列表。该列表应该与 <code>mpd.hosts</code>
+                                文件中节点列表符合。
+                            </p></li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div id="outline-container-orgc0403b2" class="outline-3">
+                    <h3 id="orgc0403b2">选择网络结构</h3>
+                    <div class="outline-text-3" id="text-orgc0403b2">
+                        <p>
+                            Intel MPI 库会动态选择大部分适用的网络结构以便 MPI 进程之间进行通讯。欲选择特定的网络结构，需要设置环境变量 <code>I_MPI_DEVICE</code> 为下表中的某个值：
+                        </p>
+                        <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
-<colgroup>
-<col  class="org-left" />
+                            <colgroup>
+                                <col  class="org-left" />
 
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left"><b>I_MPI_DEVICE 值</b></th>
-<th scope="col" class="org-left"><b>支持的结构</b></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left">sock</td>
-<td class="org-left">TCP/Ethernet/sockets</td>
-</tr>
+                                <col  class="org-left" />
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="org-left"><b>I_MPI_DEVICE 值</b></th>
+                                    <th scope="col" class="org-left"><b>支持的结构</b></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="org-left">sock</td>
+                                    <td class="org-left">TCP/Ethernet/sockets</td>
+                                </tr>
 
-<tr>
-<td class="org-left">shm</td>
-<td class="org-left">Shared memory only (no sockets)</td>
-</tr>
+                                <tr>
+                                    <td class="org-left">shm</td>
+                                    <td class="org-left">Shared memory only (no sockets)</td>
+                                </tr>
 
-<tr>
-<td class="org-left">ssm</td>
-<td class="org-left">TCP + shared memory <sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup></td>
-</tr>
+                                <tr>
+                                    <td class="org-left">ssm</td>
+                                    <td class="org-left">TCP + shared memory <sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup></td>
+                                </tr>
 
-<tr>
-<td class="org-left">rdma[:&lt;provider&gt;]</td>
-<td class="org-left">InfiniBand, Myrinet (via specified DAPL provider)</td>
-</tr>
+                                <tr>
+                                    <td class="org-left">rdma[:&lt;provider&gt;]</td>
+                                    <td class="org-left">InfiniBand, Myrinet (via specified DAPL provider)</td>
+                                </tr>
 
-<tr>
-<td class="org-left">rdssm[:&lt;provider&gt;]</td>
-<td class="org-left">TCP + shared memory + DAPL <sup><a id="fnr.4" class="footref" href="#fn.4">4</a></sup></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+                                <tr>
+                                    <td class="org-left">rdssm[:&lt;provider&gt;]</td>
+                                    <td class="org-left">TCP + shared memory + DAPL <sup><a id="fnr.4" class="footref" href="#fn.4">4</a></sup></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
-<div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="orgheadline7">运行 MPI 程序</h3>
-<div class="outline-text-3" id="text-orgheadline7">
-<p>
-运行使用 Intel MPI 库连接的程序，使用 <code>mpiexec</code> 命令：
-</p>
-<pre class="example">
-mpiexec -n &lt;# of processes&gt; ./myprog
-</pre>
-<p>
-使用 <code>-n</code> 参数设置进程数，这是 <code>mpiexec</code> 唯一需要明显指定的选项。
-</p>
+                <div id="outline-container-org44acecf" class="outline-3">
+                    <h3 id="org44acecf">运行 MPI 程序</h3>
+                    <div class="outline-text-3" id="text-org44acecf">
+                        <p>
+                            运行使用 Intel MPI 库连接的程序，使用 <code>mpiexec</code> 命令：
+                        </p>
+                        <pre class="example">
+                            mpiexec -n &lt;# of processes&gt; ./myprog
 
-<p>
-如果使用的网络结构与默认的不同，需要使用 <code>-genv</code> 选项来提供一个可以赋给
-<code>I_MPI_DEVICE</code> 变量的值。
-</p>
+                        </pre>
+                        <p>
+                            使用 <code>-n</code> 参数设置进程数，这是 <code>mpiexec</code> 唯一需要明显指定的选项。
+                        </p>
 
-<p>
-比如使用 <code>shm</code> 结构来运行 MPI 程序，可执行如下命令：
-</p>
-<pre class="example">
-mpiexec -genv I_MPI_DEVICE shm -n &lt;# of processes&gt; ./myprog
-</pre>
+                        <p>
+                            如果使用的网络结构与默认的不同，需要使用 <code>-genv</code> 选项来提供一个可以赋给
+                            <code>I_MPI_DEVICE</code> 变量的值。
+                        </p>
 
-<p>
-比如使用 <code>rdma</code> 结构来运行 MPI 程序，可执行如下命令：
-</p>
-<pre class="example">
-mpiexec -genv I_MPI_DEVICE rdma -n &lt;# of processes&gt; ./myprog
-</pre>
+                        <p>
+                            比如使用 <code>shm</code> 结构来运行 MPI 程序，可执行如下命令：
+                        </p>
+                        <pre class="example">
+                            mpiexec -genv I_MPI_DEVICE shm -n &lt;# of processes&gt; ./myprog
 
-<p>
-可以通过命令选择任何支持的设备。
-</p>
+                        </pre>
 
-<p>
-如果应用程序运行成功，可将其移动到使用不同结构的集群中，不需要重新链接程序。
-</p>
-</div>
-</div>
-</div>
+                        <p>
+                            比如使用 <code>rdma</code> 结构来运行 MPI 程序，可执行如下命令：
+                        </p>
+                        <pre class="example">
+                            mpiexec -genv I_MPI_DEVICE rdma -n &lt;# of processes&gt; ./myprog
 
-<div id="outline-container-orgheadline12" class="outline-2">
-<h2 id="orgheadline12">除错</h2>
-<div class="outline-text-2" id="text-orgheadline12">
-</div><div id="outline-container-orgheadline9" class="outline-3">
-<h3 id="orgheadline9">安装</h3>
-</div>
+                        </pre>
 
-<div id="outline-container-orgheadline10" class="outline-3">
-<h3 id="orgheadline10">MPD 设置</h3>
-</div>
+                        <p>
+                            可以通过命令选择任何支持的设备。
+                        </p>
 
-<div id="outline-container-orgheadline11" class="outline-3">
-<h3 id="orgheadline11">编译运行</h3>
-</div>
-</div>
+                        <p>
+                            如果应用程序运行成功，可将其移动到使用不同结构的集群中，不需要重新链接程序。
+                        </p>
+                    </div>
+                </div>
+            </div>
 
-<div id="outline-container-orgheadline13" class="outline-2">
-<h2 id="orgheadline13">参考</h2>
-<div class="outline-text-2" id="text-orgheadline13">
-<ul class="org-ul">
-<li><a href="http://software.intel.com/en-us/articles/intel-mpi-library-support-resources/">Intel MPI Support Resources</a></li>
-</ul>
-</div>
-</div>
-<div id="footnotes">
-<h2 class="footnotes">&#33050;&#27880;: </h2>
-<div id="text-footnotes">
+            <div id="outline-container-org4d4e211" class="outline-2">
+                <h2 id="org4d4e211">除错</h2>
+                <div class="outline-text-2" id="text-org4d4e211">
+                </div>
+                <div id="outline-container-orgce62e24" class="outline-3">
+                    <h3 id="orgce62e24">安装</h3>
+                </div>
 
-<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
-<b>注意</b>: 如果集群中使用 <code>ssh</code> 而不是 <code>rsh</code>, 需要确保任一节点与其它节点连接时都不需要密码。这需要参照系统管理手册。
-</p></div></div>
+                <div id="outline-container-org00f4821" class="outline-3">
+                    <h3 id="org00f4821">MPD 设置</h3>
+                </div>
 
-<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">
-<b>注意</b>: 如果集群中使用 <code>ssh</code> 而非 <code>rsh</code>, 在启动 <code>mpdboot</code> 时需要加上调用参数 <code>-r ssh</code> 或 <code>--rsh=ssh</code>.
-</p></div></div>
+                <div id="outline-container-org4b47f4c" class="outline-3">
+                    <h3 id="org4b47f4c">编译运行</h3>
+                </div>
+            </div>
 
-<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3">3</a></sup> <div class="footpara"><p class="footpara">
-for SMP clusters connected via Ethernet
-</p></div></div>
+            <div id="outline-container-orgcb061de" class="outline-2">
+                <h2 id="orgcb061de">参考</h2>
+                <div class="outline-text-2" id="text-orgcb061de">
+                    <ul class="org-ul">
+                        <li><a href="http://software.intel.com/en-us/articles/intel-mpi-library-support-resources/">Intel MPI Support Resources</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="footnotes">
+                <h2 class="footnotes">Footnotes: </h2>
+                <div id="text-footnotes">
 
-<div class="footdef"><sup><a id="fn.4" class="footnum" href="#fnr.4">4</a></sup> <div class="footpara"><p class="footpara">
-for SMP clusters connected via RDMA-capable fabrics
-</p>
+                    <div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+                    <b>注意</b>: 如果集群中使用 <code>ssh</code> 而不是 <code>rsh</code>, 需要确保任一节点与其它节点连接时都不需要密码。这需要参照系统管理手册。
+                    </p></div></div>
 
-<p class="footpara">
-要保证所选择的网络结构可用。比如，使用 <code>shm</code> 只有当所有进程可以通过共享内存进行通讯时才行；使用 <code>rdma</code> 只有当所有进程可以通过单一的 DAPL 相互通讯时才行。
-</p></div></div>
+                    <div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">
+                    <b>注意</b>: 如果集群中使用 <code>ssh</code> 而非 <code>rsh</code>, 在启动 <code>mpdboot</code> 时需要加上调用参数 <code>-r ssh</code> 或 <code>--rsh=ssh</code>.
+                    </p></div></div>
+
+                    <div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3">3</a></sup> <div class="footpara"><p class="footpara">
+                    for SMP clusters connected via Ethernet
+                    </p></div></div>
+
+                    <div class="footdef"><sup><a id="fn.4" class="footnum" href="#fnr.4">4</a></sup> <div class="footpara"><p class="footpara">
+                    for SMP clusters connected via RDMA-capable fabrics
+                </p>
+
+                <p class="footpara">
+                    要保证所选择的网络结构可用。比如，使用 <code>shm</code> 只有当所有进程可以通过共享内存进行通讯时才行；使用 <code>rdma</code> 只有当所有进程可以通过单一的 DAPL 相互通讯时才行。
+                    </p></div></div>
 
 
-</div>
-</div></div>
-<div id="postamble" class="status">
-
-<script type="text/javascript" src="http://exaos.github.io/assets/js/pagetail.js"></script>
-<div id="disqus_thread"></div>
-<p>版权所有 ©2015: Exaos Lee | Date: <span class="timestamp-wrapper"><span class="timestamp">[2011-10-14 五]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.3.2), <a href="http://validator.w3.org/check?uri=referer">Validate</a>,
-<a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="88x31.png"/></a>
-<p><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></p>
-</div>
-</body>
-</html>
+                </div>
+            </div></div>
+            <div id="postamble" class="status">
+                <p><a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="88x31.png"/></a></p><p>版权所有 ©2012-2018: Vivodo Lio | 日期: 2011-10-14 五 00:00</p><p>Generated by <a href="https://www.gnu.org/software/emacs/">Emacs</a> 25.3.1 (<a href="https://orgmode.org">Org</a> mode 9.1.7), <a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+            </div>
+        </body>
+    </html>

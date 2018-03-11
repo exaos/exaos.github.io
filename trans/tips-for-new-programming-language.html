@@ -1,222 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
-<head>
-<!-- 2015-12-03 四 15:23 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>(译) 怎样学习一门新的编程语言？</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Exaos Lee" />
-<meta  name="description" content="Level-1 for exporting to HTML"
- />
-<link rel="stylesheet" title="Standard" href="../assets/css/worg.css" type="text/css" />
-<link rel="alternate stylesheet" title="Zenburn" href="../assets/css/worg-zenburn.css" type="text/css" />
-<link rel="alternate stylesheet" title="Classic" href="../assets/css/worg-classic.css" type="text/css" />
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh">
+    <head>
+        <!-- 2018-03-11 日 22:00 -->
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>(译) 怎样学习一门新的编程语言？</title>
+        <meta name="generator" content="Org mode" />
+        <meta name="author" content="Vivodo Lio" />
+        <meta name="description" content="Level-1 for exporting to HTML"
+              />
+        <link rel="stylesheet" title="Standard" href="../assets/css/worg.css" type="text/css" />
+        <link rel="alternate stylesheet" title="Zenburn" href="../assets/css/worg-zenburn.css" type="text/css" />
+        <link rel="alternate stylesheet" title="Classic" href="../assets/css/worg-classic.css" type="text/css" />
+        <script type="text/javascript">
+            /*
+            @licstart  The following is the entire license notice for the
+            JavaScript code in this tag.
 
-<script type="text/javascript" src="http://orgmode.org/org-info.js">
-/**
- *
- * @source: http://orgmode.org/org-info.js
- *
- * @licstart  The following is the entire license notice for the
- *  JavaScript code in http://orgmode.org/org-info.js.
- *
- * Copyright (C) 2012-2013 Free Software Foundation, Inc.
- *
- *
- * The JavaScript code in this tag is free software: you can
- * redistribute it and/or modify it under the terms of the GNU
- * General Public License (GNU GPL) as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option)
- * any later version.  The code is distributed WITHOUT ANY WARRANTY;
- * without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
- *
- * As additional permission under GNU GPL version 3 section 7, you
- * may distribute non-source (e.g., minimized or compacted) forms of
- * that code without the copy of the GNU GPL normally required by
- * section 4, provided you include this license notice and a URL
- * through which recipients can access the Corresponding Source.
- *
- * @licend  The above is the entire license notice
- * for the JavaScript code in http://orgmode.org/org-info.js.
- *
- */
-</script>
+            Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
-<script type="text/javascript">
+            The JavaScript code in this tag is free software: you can
+            redistribute it and/or modify it under the terms of the GNU
+            General Public License (GNU GPL) as published by the Free Software
+            Foundation, either version 3 of the License, or (at your option)
+            any later version.  The code is distributed WITHOUT ANY WARRANTY;
+            without even the implied warranty of MERCHANTABILITY or FITNESS
+            FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
 
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
+            As additional permission under GNU GPL version 3 section 7, you
+            may distribute non-source (e.g., minimized or compacted) forms of
+            that code without the copy of the GNU GPL normally required by
+            section 4, provided you include this license notice and a URL
+            through which recipients can access the Corresponding Source.
 
 
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+            @licend  The above is the entire license notice
+            for the JavaScript code in this tag.
+            */
+            <!--/*--><![CDATA[/*><!--*/
+            function CodeHighlightOn(elem, id)
+            {
+            var target = document.getElementById(id);
+            if(null != target) {
+            elem.cacheClassElem = elem.className;
+            elem.cacheClassTarget = target.className;
+            target.className = "code-highlighted";
+            elem.className   = "code-highlighted";
+            }
+            }
+            function CodeHighlightOff(elem, id)
+            {
+            var target = document.getElementById(id);
+            if(elem.cacheClassElem)
+            elem.className = elem.cacheClassElem;
+            if(elem.cacheClassTarget)
+            target.className = elem.cacheClassTarget;
+            }
+            /*]]>*///-->
+        </script>
+    </head>
+    <body>
+        <div id="org-div-home-and-up">
+            <a accesskey="h" href="index.html"> UP </a>
+            |
+            <a accesskey="H" href="../index.html"> HOME </a>
+            </div><div id="content">
+            <h1 class="title">(译) 怎样学习一门新的编程语言？</h1>
+            <blockquote>
+                <p>
+                    根据 <a href="http://www.newsmth.net">水木清华</a>上的一个贴子，找到了这篇博文 <a href="http://www.dodgycoder.net/2013/02/how-to-learn-new-programming-language.html">"How to learn a new programming
+                    language"</a>, 觉得有必要向大家推荐一下。翻译如后。
+                </p>
+            </blockquote>
 
-<!--/*--><![CDATA[/*><!--*/
-org_html_manager.set("TOC_DEPTH", "4");
-org_html_manager.set("LINK_HOME", "../index.html");
-org_html_manager.set("LINK_UP", "index.html");
-org_html_manager.set("LOCAL_TOC", "1");
-org_html_manager.set("VIEW_BUTTONS", "0");
-org_html_manager.set("MOUSE_HINT", "underline");
-org_html_manager.set("FIXED_TOC", "0");
-org_html_manager.set("TOC", "0");
-org_html_manager.set("VIEW", "content");
-org_html_manager.setup();  // activate after the parameters are set
-/*]]>*///-->
-</script>
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
+            <p>
+                这儿有一些学习新的编程语言的技巧。它们的罗列无任何特别的顺序。希望至少有一个新技巧会帮助你精通下一门语言。
+            </p>
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+            <ol class="org-ol">
+                <li><b>造一点你当前确实需要的东西。</b> 这可以是你每天工作中会用到的工具，或者是一些在家里有用的东西。 <br />
+                考虑一下这些项目……
+                <ul class="org-ul">
+                    <li>写一个简单的单元测试框架。许多新语言刚发布时并没有直接可用的单元测试框架。这个项目可强迫你使用此语言所涉及到的领域，比如反射 (reflection) 和元编程
+                    (meta-programming). 一旦完成，它会直接用在你将来用这门语言开发的项目中。</li>
+                    <li>实现一个磁盘使用工具；它统计磁盘上所有目录的磁盘使用情况并输出到终端上。它不需要过度复杂的算法，但涉及了许多非常基础的内容：遍历、文件系统、命令行解析及输出格式。</li>
+                    <li>实现一个备份／归档脚本，带有命令行参数来排除一些特定扩展名的文件。它应该可备份到单个的 <code>.zip</code> 或 <code>.tar.gz</code> 文件中。这个项目涉及到如下内容：遍历、文件系统、命令行解析、压缩库和正规表达式。</li>
+                </ul></li>
+                <li><b>用新语言移植一个现有的知名程序。</b> 因为你是在移植程序，你已经有了程序设计可用，这使得你的大脑可专注于新语言的特性上。完成之后，当与旧语言的版本相比时，你有一个好的参照。</li>
+                <li><b>找本该语言的正规图书，尽快读完。</b> 目的不是为了记住所有内容，而是吸收该语言的思想与习惯。然后写一些小的但不是无意义的项目。当你卡壳时，希望可以回想起一点书中的内容，然后再回头去参考一下书本。 <br />
+                奥莱利 (<a href="http://www.oreilly.com.cn/">O'Reilly</a>) 出版的许多“技术手册” (in a Netshell) 和“尝鲜” (Head
+                First) 系列图书，读者的评价都很高——它们囊括了许多主流语言 (C, C++, C#,
+                Java, Python, JavaScript, PHP).</li>
+                <li><b>学习 (读书／教学) 与使用并举。</b> 用多而学少，你会得到许多低质量的代码。学多而用少，你则不会消化吸收从而抵达更高水平。</li>
+                <li><b>学习并参考公共源码库里的工作。</b> 从 <a href="https://github.com/">GitHub</a> 上找一个 100% 用这种语言开发的中型项目。阅读其代码并努力去理解它。要寻找那些由该语言设计者或知名专家开发的项目。 <br />
+                比如，对 <a href="http://golang.org/">Go</a> 语言，该语言标准库是用 Go 编写的并且是开源的，这儿是 <a href="http://golang.org/src/pkg/strings/strings.go">strings 库</a>
+                的一部分。另外, Brad Fitzpatrick 和其他一些 Go 开发组的成员在 GitHub 上还有好几个项目，你都可以阅读并从中学习，比如 <a href="https://github.com/bradfitz/gomemcache">Go client fo Memcache</a>. <br />
+                ［译注：国内访问 GitHub 不一定顺利。推荐一个服务器在国内的 Git 代码托管网站
+                <a href="https://gitcafe.com/">GitCafe</a>。］</li>
+                <li><b>投入大块的、不会被打断的时间</b>, 至少半天时间去学习新的语言。简单地说，每周半小时的课程没什么实际用处，因为大部分时间都用在回顾以前的学习上了。</li>
+                <li><b>学习一门语言不该是一个人在努力。</b> 有许多人犯过与你同样的错误，因此，当你卡壳时寻找帮助是克服困难的捷径。一些可用的在线帮助资源：语言特定的 IRC 通道,
+                StackOverflow, Twitter, Facebook 组, Quora, Google+, Google 讨论组。当你完成一个项目时，也可以提交已经完成的代码到这些论坛里；比你有经验的人会告诉你哪些部分可以提高或简化。 <br />
+                ［译注：国内这样的良好的讨论环境很少见。水木的技术版块稍好些。其它大部分论坛中最常见的就是直接找人帮忙做题型的，这种风气很坏，对促进共同提高没有帮助。因此，如果你学习新语言，最好还是把英文好好练习一下，多去 <a href="http://stackoverflow.com/">StackOverflow</a> 之类的地方。］</li>
+                <li><p>
+                    <b>使用一个带语法高亮的编辑器。</b> 经久不蓑的有 Vim 和 Emacs, 还有编辑器新秀如
+                    Sublime Text, 它们支持不一定所有但绝大部分编程语言的特性，以及几乎所有主流的操作系统。一些语言通常与特定的集成开发环境 (IDE) 关联；学习新语言时使用这些
+                    IDE 则是个好选择。通常有……
+                </p>
+                <ul class="org-ul">
+                    <li>Eclipse IDE 用于 Java 和 Android 开发。</li>
+                    <li>Xcode 用于 Objective-C 和 iOS 开发 (仅支持 Mac OS X).</li>
+                    <li>Visual Studio IDE 用于 C#, C++, VB.NET, F# (仅支持 Windows).</li>
+                </ul>
+                <p>
+                    所有上面罗列的 IDE 和编辑器要么完全免费，要么可以无限制试用。
+                </p></li>
+                <li><b>参与有实际用户和期限的实际项目</b> 是学习一门新语言的白热化的严格考验。如果真的想快速学习一门语言，考虑换一个使用该语言的工作。一旦你得到该工作，你将别无选择不得不快速上手。</li>
+                <li><p>
+                    最后一条来自 "<a href="http://www.amazon.com/gp/product/020161622X/ref=as_li_tf_tl?ie=UTF8&amp;tag=intsecdb-20&amp;linkCode=as2&amp;camp=217145&amp;creative=399369&amp;creativeASIN=020161622X">The Pragmatic Programmer</a>"<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup> 的技巧，技巧 #8 <b>Invert
+                    Regularyly in Your Knowledge Portfolio</b> (经常检查你的知识清单)
+                </p>
+                <blockquote>
+                    <p>
+                        “每年至少学习一门新语言。不同的语言解决同样问题的方式不同。通过学习几种不同的语言，你可以拓展自己的思路，避免陷入老套之中。另外，现在学习多种语言非常容易，感谢互联网上大量的自由的软件。”
+                    </p>
+                </blockquote></li>
+            </ol>
+            <div id="footnotes">
+                <h2 class="footnotes">Footnotes: </h2>
+                <div id="text-footnotes">
 
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
-</head>
-<body>
-<div id="org-div-home-and-up">
- <a accesskey="h" href="index.html"> UP </a>
- |
- <a accesskey="H" href="../index.html"> HOME </a>
-</div><div id="content">
-<h1 class="title">(译) 怎样学习一门新的编程语言？</h1>
-<blockquote>
-<p>
-根据 <a href="http://www.newsmth.net/">水木清华</a>上的一个贴子，找到了这篇博文 <a href="http://www.dodgycoder.net/2013/02/how-to-learn-new-programming-language.html">"How to learn a new programming
-language"</a>, 觉得有必要向大家推荐一下。翻译如后。
-</p>
-</blockquote>
-
-<p>
-这儿有一些学习新的编程语言的技巧。它们的罗列无任何特别的顺序。希望至少有一个新技巧会帮助你精通下一门语言。
-</p>
-
-<ol class="org-ol">
-<li><b>造一点你当前确实需要的东西。</b> 这可以是你每天工作中会用到的工具，或者是一些在家里有用的东西。 <br  />
-考虑一下这些项目……
-<ul class="org-ul">
-<li>写一个简单的单元测试框架。许多新语言刚发布时并没有直接可用的单元测试框架。这个项目可强迫你使用此语言所涉及到的领域，比如反射 (reflection) 和元编程
-(meta-programming). 一旦完成，它会直接用在你将来用这门语言开发的项目中。</li>
-<li>实现一个磁盘使用工具；它统计磁盘上所有目录的磁盘使用情况并输出到终端上。它不需要过度复杂的算法，但涉及了许多非常基础的内容：遍历、文件系统、命令行解析及输出格式。</li>
-<li>实现一个备份／归档脚本，带有命令行参数来排除一些特定扩展名的文件。它应该可备份到单个的 <code>.zip</code> 或 <code>.tar.gz</code> 文件中。这个项目涉及到如下内容：遍历、文件系统、命令行解析、压缩库和正规表达式。</li>
-</ul></li>
-<li><b>用新语言移植一个现有的知名程序。</b> 因为你是在移植程序，你已经有了程序设计可用，这使得你的大脑可专注于新语言的特性上。完成之后，当与旧语言的版本相比时，你有一个好的参照。</li>
-<li><b>找本该语言的正规图书，尽快读完。</b> 目的不是为了记住所有内容，而是吸收该语言的思想与习惯。然后写一些小的但不是无意义的项目。当你卡壳时，希望可以回想起一点书中的内容，然后再回头去参考一下书本。 <br  />
-奥莱利 (<a href="http://www.oreilly.com.cn/">O'Reilly</a>) 出版的许多“技术手册” (in a Netshell) 和“尝鲜” (Head
-First) 系列图书，读者的评价都很高——它们囊括了许多主流语言 (C, C++, C#,
-Java, Python, JavaScript, PHP).</li>
-<li><b>学习 (读书／教学) 与使用并举。</b> 用多而学少，你会得到许多低质量的代码。学多而用少，你则不会消化吸收从而抵达更高水平。</li>
-<li><b>学习并参考公共源码库里的工作。</b> 从 <a href="https://github.com/">GitHub</a> 上找一个 100% 用这种语言开发的中型项目。阅读其代码并努力去理解它。要寻找那些由该语言设计者或知名专家开发的项目。 <br  />
-比如，对 <a href="http://golang.org/">Go</a> 语言，该语言标准库是用 Go 编写的并且是开源的，这儿是 <a href="http://golang.org/src/pkg/strings/strings.go">strings 库</a>
-的一部分。另外, Brad Fitzpatrick 和其他一些 Go 开发组的成员在 GitHub 上还有好几个项目，你都可以阅读并从中学习，比如 <a href="https://github.com/bradfitz/gomemcache">Go client fo Memcache</a>. <br  />
-［译注：国内访问 GitHub 不一定顺利。推荐一个服务器在国内的 Git 代码托管网站
-<a href="https://gitcafe.com/">GitCafe</a>。］</li>
-<li><b>投入大块的、不会被打断的时间</b>, 至少半天时间去学习新的语言。简单地说，每周半小时的课程没什么实际用处，因为大部分时间都用在回顾以前的学习上了。</li>
-<li><b>学习一门语言不该是一个人在努力。</b> 有许多人犯过与你同样的错误，因此，当你卡壳时寻找帮助是克服困难的捷径。一些可用的在线帮助资源：语言特定的 IRC 通道,
-StackOverflow, Twitter, Facebook 组, Quora, Google+, Google 讨论组。当你完成一个项目时，也可以提交已经完成的代码到这些论坛里；比你有经验的人会告诉你哪些部分可以提高或简化。 <br  />
-［译注：国内这样的良好的讨论环境很少见。水木的技术版块稍好些。其它大部分论坛中最常见的就是直接找人帮忙做题型的，这种风气很坏，对促进共同提高没有帮助。因此，如果你学习新语言，最好还是把英文好好练习一下，多去 <a href="http://stackoverflow.com/">StackOverflow</a> 之类的地方。］</li>
-<li><p>
-<b>使用一个带语法高亮的编辑器。</b> 经久不蓑的有 Vim 和 Emacs, 还有编辑器新秀如
-Sublime Text, 它们支持不一定所有但绝大部分编程语言的特性，以及几乎所有主流的操作系统。一些语言通常与特定的集成开发环境 (IDE) 关联；学习新语言时使用这些
-IDE 则是个好选择。通常有……
-</p>
-<ul class="org-ul">
-<li>Eclipse IDE 用于 Java 和 Android 开发。</li>
-<li>Xcode 用于 Objective-C 和 iOS 开发 (仅支持 Mac OS X).</li>
-<li>Visual Studio IDE 用于 C#, C++, VB.NET, F# (仅支持 Windows).</li>
-</ul>
-<p>
-所有上面罗列的 IDE 和编辑器要么完全免费，要么可以无限制试用。
-</p></li>
-<li><b>参与有实际用户和期限的实际项目</b> 是学习一门新语言的白热化的严格考验。如果真的想快速学习一门语言，考虑换一个使用该语言的工作。一旦你得到该工作，你将别无选择不得不快速上手。</li>
-<li><p>
-最后一条来自 "<a href="http://www.amazon.com/gp/product/020161622X/ref=as_li_tf_tl?ie=UTF8&amp;tag=intsecdb-20&amp;linkCode=as2&amp;camp=217145&amp;creative=399369&amp;creativeASIN=020161622X">The Pragmatic Programmer</a>"<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup> 的技巧，技巧 #8 <b>Invert
-Regularyly in Your Knowledge Portfolio</b> (经常检查你的知识清单)
-</p>
-<blockquote>
-<p>
-“每年至少学习一门新语言。不同的语言解决同样问题的方式不同。通过学习几种不同的语言，你可以拓展自己的思路，避免陷入老套之中。另外，现在学习多种语言非常容易，感谢互联网上大量的自由的软件。”
-</p>
-</blockquote></li>
-</ol>
-<div id="footnotes">
-<h2 class="footnotes">&#33050;&#27880;: </h2>
-<div id="text-footnotes">
-
-<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
-The Pragmatic Programmer 中译本名为《<a href="http://www.amazon.cn/%E7%A8%8B%E5%BA%8F%E5%91%98%E4%BF%AE%E7%82%BC%E4%B9%8B%E9%81%93-%E4%BB%8E%E5%B0%8F%E5%B7%A5%E5%88%B0%E4%B8%93%E5%AE%B6-%E4%BA%A8%E7%89%B9/dp/B004GV08CY/ref=pd_cp_b_0">程序员修炼之道:从小工到专家</a>》。
-</p></div></div>
+                    <div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+                    The Pragmatic Programmer 中译本名为《<a href="http://www.amazon.cn/%E7%A8%8B%E5%BA%8F%E5%91%98%E4%BF%AE%E7%82%BC%E4%B9%8B%E9%81%93-%E4%BB%8E%E5%B0%8F%E5%B7%A5%E5%88%B0%E4%B8%93%E5%AE%B6-%E4%BA%A8%E7%89%B9/dp/B004GV08CY/ref=pd_cp_b_0">程序员修炼之道:从小工到专家</a>》。
+                    </p></div></div>
 
 
-</div>
-</div></div>
-<div id="postamble" class="status">
-
-<script type="text/javascript" src="http://exaos.github.io/assets/js/pagetail.js"></script>
-<div id="disqus_thread"></div>
-<p>版权所有 ©2015: Exaos Lee | Date: <span class="timestamp-wrapper"><span class="timestamp">[2013-02-03 日 18:59]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.3.2), <a href="http://validator.w3.org/check?uri=referer">Validate</a>,
-<a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="88x31.png"/></a>
-<p><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></p>
-</div>
-</body>
-</html>
+                </div>
+            </div></div>
+            <div id="postamble" class="status">
+                <p><a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="88x31.png"/></a></p><p>版权所有 ©2012-2018: Vivodo Lio | 日期: 2013-02-03 日 18:59</p><p>Generated by <a href="https://www.gnu.org/software/emacs/">Emacs</a> 25.3.1 (<a href="https://orgmode.org">Org</a> mode 9.1.7), <a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+            </div>
+        </body>
+    </html>

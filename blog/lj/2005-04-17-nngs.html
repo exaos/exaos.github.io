@@ -1,220 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
-<head>
-<!-- 2015-12-03 四 15:24 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>NNGS in CIAE 的安装</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="心蛛" />
-<meta  name="description" content="Level-2 for exporting to HTML"
- />
-<link rel="stylesheet" title="Standard" href="../../assets/css/worg.css" type="text/css" />
-<link rel="alternate stylesheet" title="Zenburn" href="../../assets/css/worg-zenburn.css" type="text/css" />
-<link rel="alternate stylesheet" title="Classic" href="../../assets/css/worg-classic.css" type="text/css" />
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh">
+    <head>
+        <!-- 2018-03-11 日 21:59 -->
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>NNGS in CIAE 的安装</title>
+        <meta name="generator" content="Org mode" />
+        <meta name="author" content="心蛛" />
+        <meta name="description" content="Level-2 for exporting to HTML"
+              />
+        <link rel="stylesheet" title="Standard" href="../../assets/css/worg.css" type="text/css" />
+        <link rel="alternate stylesheet" title="Zenburn" href="../../assets/css/worg-zenburn.css" type="text/css" />
+        <link rel="alternate stylesheet" title="Classic" href="../../assets/css/worg-classic.css" type="text/css" />
+        <script type="text/javascript">
+            /*
+            @licstart  The following is the entire license notice for the
+            JavaScript code in this tag.
 
-<script type="text/javascript" src="http://orgmode.org/org-info.js">
-/**
- *
- * @source: http://orgmode.org/org-info.js
- *
- * @licstart  The following is the entire license notice for the
- *  JavaScript code in http://orgmode.org/org-info.js.
- *
- * Copyright (C) 2012-2013 Free Software Foundation, Inc.
- *
- *
- * The JavaScript code in this tag is free software: you can
- * redistribute it and/or modify it under the terms of the GNU
- * General Public License (GNU GPL) as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option)
- * any later version.  The code is distributed WITHOUT ANY WARRANTY;
- * without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
- *
- * As additional permission under GNU GPL version 3 section 7, you
- * may distribute non-source (e.g., minimized or compacted) forms of
- * that code without the copy of the GNU GPL normally required by
- * section 4, provided you include this license notice and a URL
- * through which recipients can access the Corresponding Source.
- *
- * @licend  The above is the entire license notice
- * for the JavaScript code in http://orgmode.org/org-info.js.
- *
- */
-</script>
+            Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
-<script type="text/javascript">
+            The JavaScript code in this tag is free software: you can
+            redistribute it and/or modify it under the terms of the GNU
+            General Public License (GNU GPL) as published by the Free Software
+            Foundation, either version 3 of the License, or (at your option)
+            any later version.  The code is distributed WITHOUT ANY WARRANTY;
+            without even the implied warranty of MERCHANTABILITY or FITNESS
+            FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
 
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
+            As additional permission under GNU GPL version 3 section 7, you
+            may distribute non-source (e.g., minimized or compacted) forms of
+            that code without the copy of the GNU GPL normally required by
+            section 4, provided you include this license notice and a URL
+            through which recipients can access the Corresponding Source.
 
 
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+            @licend  The above is the entire license notice
+            for the JavaScript code in this tag.
+            */
+            <!--/*--><![CDATA[/*><!--*/
+            function CodeHighlightOn(elem, id)
+            {
+            var target = document.getElementById(id);
+            if(null != target) {
+            elem.cacheClassElem = elem.className;
+            elem.cacheClassTarget = target.className;
+            target.className = "code-highlighted";
+            elem.className   = "code-highlighted";
+            }
+            }
+            function CodeHighlightOff(elem, id)
+            {
+            var target = document.getElementById(id);
+            if(elem.cacheClassElem)
+            elem.className = elem.cacheClassElem;
+            if(elem.cacheClassTarget)
+            target.className = elem.cacheClassTarget;
+            }
+            /*]]>*///-->
+        </script>
+    </head>
+    <body>
+        <div id="org-div-home-and-up">
+            <a accesskey="h" href="../index.html"> UP </a>
+            |
+            <a accesskey="H" href="../../index.html"> HOME </a>
+            </div><div id="content">
+            <h1 class="title">NNGS in CIAE 的安装</h1>
+            <p>
+                在我们院内自己组的服务器上装了一个围棋服务器，可惜院内几乎没有人登陆。 :-( 还是简单记录一下吧。至少我努力去营造一个氛围，尽管应着瘳瘳。
+            </p>
 
-<!--/*--><![CDATA[/*><!--*/
-org_html_manager.set("TOC_DEPTH", "4");
-org_html_manager.set("LINK_HOME", "../../index.html");
-org_html_manager.set("LINK_UP", "../index.html");
-org_html_manager.set("LOCAL_TOC", "1");
-org_html_manager.set("VIEW_BUTTONS", "0");
-org_html_manager.set("MOUSE_HINT", "underline");
-org_html_manager.set("FIXED_TOC", "0");
-org_html_manager.set("TOC", "0");
-org_html_manager.set("VIEW", "content");
-org_html_manager.setup();  // activate after the parameters are set
-/*]]>*///-->
-</script>
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
+            <hr />
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+            <p>
+                NNGS in CIAE 的安装, crazycat | 2004年十二月26日, 00:07
+            </p>
 
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+            <p>
+                简记了在 NTOF 主机上安装围棋服务器的经过。
+            </p>
 
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
+            <p>
+                安装方法：
+            </p>
+            <ol class="org-ol">
+                <li>解压 <code>nngs-1.1.16</code> 和 <code>mlrate-1.2</code></li>
+                <li>将 <code>mlrate-1.2</code> 的源文件放在 nngs 目录下的 <code>mlrate/src</code> 目录下，否则在编译时会出现 include 的路径问题。</li>
+                <li><p>
+                    修改 <code>$NNGS/mlrate/src</code> 目录下的 Makefile 文件，在 <code>CFLAGS=...</code> 一行加上
+                </p>
+                <pre class="example">
+                    -D_BSD_SOURCE -D_POSIX_C_SOURCE=2
 
+                </pre></li>
+                <li>在 <code>$NNGS/mlrate/src</code> 目录下执行 make 命令</li>
+                <li>修改 <code>$NNGS/src</code> 下的 <code>nngsconfig.h</code> 和 <code>nngsmain.h</code> 文件，使之满足特定服务器的内容。</li>
+                <li>对其它的源文件做相应的修改，在 <code>$NNGS</code> 下执行 make 和 make install</li>
+                <li>在 <code>$NNGS/mlrate/src</code> 下执行 make install</li>
+                <li>服务器的后期配置及测试。</li>
+            </ol>
 
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
-</head>
-<body>
-<div id="org-div-home-and-up">
- <a accesskey="h" href="../index.html"> UP </a>
- |
- <a accesskey="H" href="../../index.html"> HOME </a>
-</div><div id="content">
-<h1 class="title">NNGS in CIAE 的安装</h1>
-<p>
-在我们院内自己组的服务器上装了一个围棋服务器，可惜院内几乎没有人登陆。 :-( 还是简单记录一下吧。至少我努力去营造一个氛围，尽管应着瘳瘳。
-</p>
+            <p>
+                问题：
+            </p>
+            <ol class="org-ol">
+                <li><code>-Wp,-lang-c89</code> 的定义 &#x2013; 修改 <code>configure.in</code>, <code>configure</code>, 注释掉相关的内容即可。</li>
+                <li><code>dmalloc.h</code> 不能使用，因此在 <code>./configure</code> 时不能加上 <code>enable-dmalloc</code> 的选项。</li>
+                <li><code>missing.h</code> 中注释掉 <code>ftruncate(int fd, off_t pos)</code> 的声明。</li>
+                <li><code>src/mink.c</code> 中对 <code>random</code> 的声明需要注释掉。</li>
+                <li><p>
+                    <code>mlrate</code> 的 Makefile 中不可以使用 gdbm 相关的内容，但必需要有声明
+                </p>
+                <pre class="example">
+                    -D_BSD_SOURCE -D_POSIX_C_SOURCE=2
 
-<hr />
+                </pre></li>
+            </ol>
 
-<p>
-NNGS in CIAE 的安装, crazycat | 2004年十二月26日, 00:07
-</p>
-
-<p>
-简记了在 NTOF 主机上安装围棋服务器的经过。
-</p>
-
-<p>
-安装方法：
-</p>
-<ol class="org-ol">
-<li>解压 <code>nngs-1.1.16</code> 和 <code>mlrate-1.2</code></li>
-<li>将 <code>mlrate-1.2</code> 的源文件放在 nngs 目录下的 <code>mlrate/src</code> 目录下，否则在编译时会出现 include 的路径问题。</li>
-<li><p>
-修改 <code>$NNGS/mlrate/src</code> 目录下的 Makefile 文件，在 <code>CFLAGS=...</code> 一行加上
-</p>
-<pre class="example">
--D_BSD_SOURCE -D_POSIX_C_SOURCE=2
-</pre></li>
-<li>在 <code>$NNGS/mlrate/src</code> 目录下执行 make 命令</li>
-<li>修改 <code>$NNGS/src</code> 下的 <code>nngsconfig.h</code> 和 <code>nngsmain.h</code> 文件，使之满足特定服务器的内容。</li>
-<li>对其它的源文件做相应的修改，在 <code>$NNGS</code> 下执行 make 和 make install</li>
-<li>在 <code>$NNGS/mlrate/src</code> 下执行 make install</li>
-<li>服务器的后期配置及测试。</li>
-</ol>
-
-<p>
-问题：
-</p>
-<ol class="org-ol">
-<li><code>-Wp,-lang-c89</code> 的定义 &#x2013; 修改 <code>configure.in</code>, <code>configure</code>, 注释掉相关的内容即可。</li>
-<li><code>dmalloc.h</code> 不能使用，因此在 <code>./configure</code> 时不能加上 <code>enable-dmalloc</code> 的选项。</li>
-<li><code>missing.h</code> 中注释掉 <code>ftruncate(int fd, off_t pos)</code> 的声明。</li>
-<li><code>src/mink.c</code> 中对 <code>random</code> 的声明需要注释掉。</li>
-<li><p>
-<code>mlrate</code> 的 Makefile 中不可以使用 gdbm 相关的内容，但必需要有声明
-</p>
-<pre class="example">
--D_BSD_SOURCE -D_POSIX_C_SOURCE=2
-</pre></li>
-</ol>
-
-<p>
-日志：
-</p>
-<ol class="org-ol">
-<li>2005.01.06 目前尚没有进行后期的配置与测试。</li>
-<li>2005.01.10
-<ul class="org-ul">
-<li>执行测试时出现 Segmentation fault，原因未清。</li>
-<li>更换 <code>missing.h</code> 中的 <code>ftruncate(...)</code> 为 <code>#include</code>, 结果——无效，同样出现
-Segmentation fault</li>
-</ul></li>
-<li>2005.01.10 14:00, 在 ntof 主机上
-<ul class="org-ul">
-<li>重新编译：通过！</li>
-<li>测试运行：通过！</li>
-<li>暂时将服务存放在 ntof 上，以用户 nngs (uid=gid=96) 运行此服务。</li>
-</ul></li>
-</ol>
-</div>
-<div id="postamble" class="status">
-
-<script type="text/javascript" src="http://exaos.github.io/assets/js/pagetail.js"></script>
-<div id="disqus_thread"></div>
-<p>版权所有 ©2015: 心蛛 | Date: <span class="timestamp-wrapper"><span class="timestamp">[2005-04-17 日 03:27]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.3.2), <a href="http://validator.w3.org/check?uri=referer">Validate</a>,
-<a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="88x31.png"/></a>
-<p><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></p>
-</div>
-</body>
+            <p>
+                日志：
+            </p>
+            <ol class="org-ol">
+                <li>2005.01.06 目前尚没有进行后期的配置与测试。</li>
+                <li>2005.01.10
+                <ul class="org-ul">
+                    <li>执行测试时出现 Segmentation fault，原因未清。</li>
+                    <li>更换 <code>missing.h</code> 中的 <code>ftruncate(...)</code> 为 <code>#include</code>, 结果——无效，同样出现
+                    Segmentation fault</li>
+                </ul></li>
+                <li>2005.01.10 14:00, 在 ntof 主机上
+                <ul class="org-ul">
+                    <li>重新编译：通过！</li>
+                    <li>测试运行：通过！</li>
+                    <li>暂时将服务存放在 ntof 上，以用户 nngs (uid=gid=96) 运行此服务。</li>
+                </ul></li>
+            </ol>
+        </div>
+        <div id="postamble" class="status">
+            <p><a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="88x31.png"/></a></p><p>版权所有 ©2012-2018: 心蛛 | 日期: 2005-04-17 日 03:27</p><p>Generated by <a href="https://www.gnu.org/software/emacs/">Emacs</a> 25.3.1 (<a href="https://orgmode.org">Org</a> mode 9.1.7), <a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+        </div>
+    </body>
 </html>

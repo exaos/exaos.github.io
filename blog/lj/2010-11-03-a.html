@@ -1,185 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
-<head>
-<!-- 2015-12-03 四 15:23 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>JSON 格式的数据与注释</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="心蛛" />
-<meta  name="description" content="Level-2 for exporting to HTML"
- />
-<link rel="stylesheet" title="Standard" href="../../assets/css/worg.css" type="text/css" />
-<link rel="alternate stylesheet" title="Zenburn" href="../../assets/css/worg-zenburn.css" type="text/css" />
-<link rel="alternate stylesheet" title="Classic" href="../../assets/css/worg-classic.css" type="text/css" />
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh">
+    <head>
+        <!-- 2018-03-11 日 21:59 -->
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>JSON 格式的数据与注释</title>
+        <meta name="generator" content="Org mode" />
+        <meta name="author" content="心蛛" />
+        <meta name="description" content="Level-2 for exporting to HTML"
+              />
+        <link rel="stylesheet" title="Standard" href="../../assets/css/worg.css" type="text/css" />
+        <link rel="alternate stylesheet" title="Zenburn" href="../../assets/css/worg-zenburn.css" type="text/css" />
+        <link rel="alternate stylesheet" title="Classic" href="../../assets/css/worg-classic.css" type="text/css" />
+        <script type="text/javascript">
+            /*
+            @licstart  The following is the entire license notice for the
+            JavaScript code in this tag.
 
-<script type="text/javascript" src="http://orgmode.org/org-info.js">
-/**
- *
- * @source: http://orgmode.org/org-info.js
- *
- * @licstart  The following is the entire license notice for the
- *  JavaScript code in http://orgmode.org/org-info.js.
- *
- * Copyright (C) 2012-2013 Free Software Foundation, Inc.
- *
- *
- * The JavaScript code in this tag is free software: you can
- * redistribute it and/or modify it under the terms of the GNU
- * General Public License (GNU GPL) as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option)
- * any later version.  The code is distributed WITHOUT ANY WARRANTY;
- * without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
- *
- * As additional permission under GNU GPL version 3 section 7, you
- * may distribute non-source (e.g., minimized or compacted) forms of
- * that code without the copy of the GNU GPL normally required by
- * section 4, provided you include this license notice and a URL
- * through which recipients can access the Corresponding Source.
- *
- * @licend  The above is the entire license notice
- * for the JavaScript code in http://orgmode.org/org-info.js.
- *
- */
-</script>
+            Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
-<script type="text/javascript">
+            The JavaScript code in this tag is free software: you can
+            redistribute it and/or modify it under the terms of the GNU
+            General Public License (GNU GPL) as published by the Free Software
+            Foundation, either version 3 of the License, or (at your option)
+            any later version.  The code is distributed WITHOUT ANY WARRANTY;
+            without even the implied warranty of MERCHANTABILITY or FITNESS
+            FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
 
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
+            As additional permission under GNU GPL version 3 section 7, you
+            may distribute non-source (e.g., minimized or compacted) forms of
+            that code without the copy of the GNU GPL normally required by
+            section 4, provided you include this license notice and a URL
+            through which recipients can access the Corresponding Source.
 
 
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+            @licend  The above is the entire license notice
+            for the JavaScript code in this tag.
+            */
+            <!--/*--><![CDATA[/*><!--*/
+            function CodeHighlightOn(elem, id)
+            {
+            var target = document.getElementById(id);
+            if(null != target) {
+            elem.cacheClassElem = elem.className;
+            elem.cacheClassTarget = target.className;
+            target.className = "code-highlighted";
+            elem.className   = "code-highlighted";
+            }
+            }
+            function CodeHighlightOff(elem, id)
+            {
+            var target = document.getElementById(id);
+            if(elem.cacheClassElem)
+            elem.className = elem.cacheClassElem;
+            if(elem.cacheClassTarget)
+            target.className = elem.cacheClassTarget;
+            }
+            /*]]>*///-->
+        </script>
+    </head>
+    <body>
+        <div id="org-div-home-and-up">
+            <a accesskey="h" href="../index.html"> UP </a>
+            |
+            <a accesskey="H" href="../../index.html"> HOME </a>
+            </div><div id="content">
+            <h1 class="title">JSON 格式的数据与注释</h1>
+            <p>
+                <a href="http://json.org/">JSON</a> 是一种基于文本的数据交换格式。使用中发觉一个缺陷，不支持注释（这点似乎与
+                <a href="https://code.google.com/p/protobuf/">Google ProtocolBuffers</a> 相似）。检索了一下，发现还有其它一些常用的文本格式的数据：
+            </p>
+            <ol class="org-ol">
+                <li><a href="http://yaml.org/">YAML</a> &#x2013; 严格地说， JSON 是 YAML 的一个子集。</li>
+                <li>Python 嵌套式数据结构</li>
+                <li>Windows 下的 .ini 格式，即常用的 config 格式。</li>
+                <li>Mac OS Property lists 格式 (与 JSON 类似)</li>
+            </ol>
 
-<!--/*--><![CDATA[/*><!--*/
-org_html_manager.set("TOC_DEPTH", "4");
-org_html_manager.set("LINK_HOME", "../../index.html");
-org_html_manager.set("LINK_UP", "../index.html");
-org_html_manager.set("LOCAL_TOC", "1");
-org_html_manager.set("VIEW_BUTTONS", "0");
-org_html_manager.set("MOUSE_HINT", "underline");
-org_html_manager.set("FIXED_TOC", "0");
-org_html_manager.set("TOC", "0");
-org_html_manager.set("VIEW", "content");
-org_html_manager.setup();  // activate after the parameters are set
-/*]]>*///-->
-</script>
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
+            <p>
+                目前 <a href="http://www.yaml.org/">YAML</a> 为 1.2 规范，其结构比 JSON 要复杂得多。日常使用中，比较简单的数据，使用 JSON 或者 <code>.ini</code> 格式就可以了。即便需要注释，也可以在读取文件后，把内容进行注释过滤，再交由 json 解析器处理即可。比如
+            </p>
+            <div class="org-src-container">
+                <pre class="src src-python"><span style="color: #DFAF8F;">f</span> = <span style="color: #F0DFAF; font-weight: bold;">lambda</span> x: <span style="color: #DCDCCC; font-weight: bold;">len</span>(x)&gt;0 <span style="color: #F0DFAF; font-weight: bold;">and</span> x[0]!=<span style="color: #CC9393;">"#"</span>
+                <span style="color: #DFAF8F;">ss</span> = <span style="color: #DCDCCC; font-weight: bold;">filter</span>(f, [l.strip <span style="color: #F0DFAF; font-weight: bold;">for</span> l <span style="color: #F0DFAF; font-weight: bold;">in</span> <span style="color: #DCDCCC; font-weight: bold;">open</span>(<span style="color: #CC9393;">"a.json"</span>,<span style="color: #CC9393;">"r"</span>).readlines()])
+                </pre>
+            </div>
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+            <p>
+                这样处理后的 <code>ss</code> 是一个包含字符串的 <b>list</b>, 其中所有以 "#" 开头的注释就全部去除了。然后，再执行
+            </p>
+            <pre class="example">
+                rdict = json.loads("\n".join(ss))
 
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+            </pre>
 
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
-</head>
-<body>
-<div id="org-div-home-and-up">
- <a accesskey="h" href="../index.html"> UP </a>
- |
- <a accesskey="H" href="../../index.html"> HOME </a>
-</div><div id="content">
-<h1 class="title">JSON 格式的数据与注释</h1>
-<p>
-<a href="http://json.org/">JSON</a> 是一种基于文本的数据交换格式。使用中发觉一个缺陷，不支持注释（这点似乎与
-<a href="https://code.google.com/p/protobuf/">Google ProtocolBuffers</a> 相似）。检索了一下，发现还有其它一些常用的文本格式的数据：
-</p>
-<ol class="org-ol">
-<li><a href="http://yaml.org/">YAML</a> &#x2013; 严格地说， JSON 是 YAML 的一个子集。</li>
-<li>Python 嵌套式数据结构</li>
-<li>Windows 下的 .ini 格式，即常用的 config 格式。</li>
-<li>Mac OS Property lists 格式 (与 JSON 类似)</li>
-</ol>
-
-<p>
-目前 <a href="http://www.yaml.org/">YAML</a> 为 1.2 规范，其结构比 JSON 要复杂得多。日常使用中，比较简单的数据，使用 JSON 或者 <code>.ini</code> 格式就可以了。即便需要注释，也可以在读取文件后，把内容进行注释过滤，再交由 json 解析器处理即可。比如
-</p>
-<div class="org-src-container">
-
-<pre class="src src-python"><span style="color: #657b83; background-color: #fdf6e3;">f</span> = <span style="color: #859900; font-weight: bold;">lambda</span> x: <span style="color: #657b83; font-weight: bold;">len</span>(x)&gt;<span style="color: #657b83; background-color: #fdf6e3;">0</span> <span style="color: #859900; font-weight: bold;">and</span> x[<span style="color: #657b83; background-color: #fdf6e3;">0</span>]!=<span style="color: #2aa198;">"#"</span>
-<span style="color: #657b83; background-color: #fdf6e3;">ss</span> = <span style="color: #657b83; font-weight: bold;">filter</span>(f, [l.strip <span style="color: #859900; font-weight: bold;">for</span> l <span style="color: #859900; font-weight: bold;">in</span> <span style="color: #657b83; font-weight: bold;">open</span>(<span style="color: #2aa198;">"a.json"</span>,<span style="color: #2aa198;">"r"</span>).readlines()])
-</pre>
-</div>
-
-<p>
-这样处理后的 <code>ss</code> 是一个包含字符串的 <b>list</b>, 其中所有以 "#" 开头的注释就全部去除了。然后，再执行
-</p>
-<pre class="example">
-rdict = json.loads("\n".join(ss))
-</pre>
-
-<p>
-这样，包含注释的 json 数据文件就可以正常解析了。当然，其中的注释符号也可以由 "#"
-换成其它，如 "//" 之类的。
-</p>
-</div>
-<div id="postamble" class="status">
-
-<script type="text/javascript" src="http://exaos.github.io/assets/js/pagetail.js"></script>
-<div id="disqus_thread"></div>
-<p>版权所有 ©2015: 心蛛 | Date: <span class="timestamp-wrapper"><span class="timestamp">[2010-11-03 三 02:25]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.3.2), <a href="http://validator.w3.org/check?uri=referer">Validate</a>,
-<a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="88x31.png"/></a>
-<p><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></p>
-</div>
-</body>
+            <p>
+                这样，包含注释的 json 数据文件就可以正常解析了。当然，其中的注释符号也可以由 "#"
+                换成其它，如 "//" 之类的。
+            </p>
+        </div>
+        <div id="postamble" class="status">
+            <p><a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="88x31.png"/></a></p><p>版权所有 ©2012-2018: 心蛛 | 日期: 2010-11-03 三 02:25</p><p>Generated by <a href="https://www.gnu.org/software/emacs/">Emacs</a> 25.3.1 (<a href="https://orgmode.org">Org</a> mode 9.1.7), <a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+        </div>
+    </body>
 </html>

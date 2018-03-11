@@ -1,202 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
-<head>
-<!-- 2015-12-03 四 15:23 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>HippoDraw 的安装手记</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="心蛛" />
-<meta  name="description" content="Level-2 for exporting to HTML"
- />
-<link rel="stylesheet" title="Standard" href="../../assets/css/worg.css" type="text/css" />
-<link rel="alternate stylesheet" title="Zenburn" href="../../assets/css/worg-zenburn.css" type="text/css" />
-<link rel="alternate stylesheet" title="Classic" href="../../assets/css/worg-classic.css" type="text/css" />
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh">
+    <head>
+        <!-- 2018-03-11 日 21:59 -->
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>HippoDraw 的安装手记</title>
+        <meta name="generator" content="Org mode" />
+        <meta name="author" content="心蛛" />
+        <meta name="description" content="Level-2 for exporting to HTML"
+              />
+        <link rel="stylesheet" title="Standard" href="../../assets/css/worg.css" type="text/css" />
+        <link rel="alternate stylesheet" title="Zenburn" href="../../assets/css/worg-zenburn.css" type="text/css" />
+        <link rel="alternate stylesheet" title="Classic" href="../../assets/css/worg-classic.css" type="text/css" />
+        <script type="text/javascript">
+            /*
+            @licstart  The following is the entire license notice for the
+            JavaScript code in this tag.
 
-<script type="text/javascript" src="http://orgmode.org/org-info.js">
-/**
- *
- * @source: http://orgmode.org/org-info.js
- *
- * @licstart  The following is the entire license notice for the
- *  JavaScript code in http://orgmode.org/org-info.js.
- *
- * Copyright (C) 2012-2013 Free Software Foundation, Inc.
- *
- *
- * The JavaScript code in this tag is free software: you can
- * redistribute it and/or modify it under the terms of the GNU
- * General Public License (GNU GPL) as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option)
- * any later version.  The code is distributed WITHOUT ANY WARRANTY;
- * without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
- *
- * As additional permission under GNU GPL version 3 section 7, you
- * may distribute non-source (e.g., minimized or compacted) forms of
- * that code without the copy of the GNU GPL normally required by
- * section 4, provided you include this license notice and a URL
- * through which recipients can access the Corresponding Source.
- *
- * @licend  The above is the entire license notice
- * for the JavaScript code in http://orgmode.org/org-info.js.
- *
- */
-</script>
+            Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
-<script type="text/javascript">
+            The JavaScript code in this tag is free software: you can
+            redistribute it and/or modify it under the terms of the GNU
+            General Public License (GNU GPL) as published by the Free Software
+            Foundation, either version 3 of the License, or (at your option)
+            any later version.  The code is distributed WITHOUT ANY WARRANTY;
+            without even the implied warranty of MERCHANTABILITY or FITNESS
+            FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
 
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
+            As additional permission under GNU GPL version 3 section 7, you
+            may distribute non-source (e.g., minimized or compacted) forms of
+            that code without the copy of the GNU GPL normally required by
+            section 4, provided you include this license notice and a URL
+            through which recipients can access the Corresponding Source.
 
 
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+            @licend  The above is the entire license notice
+            for the JavaScript code in this tag.
+            */
+            <!--/*--><![CDATA[/*><!--*/
+            function CodeHighlightOn(elem, id)
+            {
+            var target = document.getElementById(id);
+            if(null != target) {
+            elem.cacheClassElem = elem.className;
+            elem.cacheClassTarget = target.className;
+            target.className = "code-highlighted";
+            elem.className   = "code-highlighted";
+            }
+            }
+            function CodeHighlightOff(elem, id)
+            {
+            var target = document.getElementById(id);
+            if(elem.cacheClassElem)
+            elem.className = elem.cacheClassElem;
+            if(elem.cacheClassTarget)
+            target.className = elem.cacheClassTarget;
+            }
+            /*]]>*///-->
+        </script>
+    </head>
+    <body>
+        <div id="org-div-home-and-up">
+            <a accesskey="h" href="../index.html"> UP </a>
+            |
+            <a accesskey="H" href="../../index.html"> HOME </a>
+            </div><div id="content">
+            <h1 class="title">HippoDraw 的安装手记</h1>
+            <p>
+                需要的支持：
+            </p>
+            <ol class="org-ol">
+                <li>C++ -&#x2014; 3.4.5</li>
+                <li>Qt -&#x2014; 3.3.5, 4.0.1</li>
+                <li>Python -&#x2014; 2.4.2</li>
+                <li>Boost.Python -&#x2014; 1.33 (boost)</li>
+                <li>Minuit -&#x2014; 1.7.9, from CERN，安装在 /usr/local</li>
+                <li>FITS -&#x2014; cfitsio 2.510</li>
+                <li>WCSLIB -&#x2014; wcstools 3.6.2</li>
+                <li>Python numerical arrays -&#x2014; dev-python/numarray 1.5.0</li>
+                <li>PyFITS -&#x2014; ?</li>
+                <li>ROOT -&#x2014; /opt/root/current</li>
+                <li>SIP -&#x2014; ?</li>
+                <li>OpenGL -&#x2014; xorg-x11</li>
+            </ol>
 
-<!--/*--><![CDATA[/*><!--*/
-org_html_manager.set("TOC_DEPTH", "4");
-org_html_manager.set("LINK_HOME", "../../index.html");
-org_html_manager.set("LINK_UP", "../index.html");
-org_html_manager.set("LOCAL_TOC", "1");
-org_html_manager.set("VIEW_BUTTONS", "0");
-org_html_manager.set("MOUSE_HINT", "underline");
-org_html_manager.set("FIXED_TOC", "0");
-org_html_manager.set("TOC", "0");
-org_html_manager.set("VIEW", "content");
-org_html_manager.setup();  // activate after the parameters are set
-/*]]>*///-->
-</script>
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
+            <p>
+                配置：
+            </p>
+            <pre class="example">
+                ./configure --with-boost-version=1_33 \
+                --with-boost-include=/usr/include/boost --with-boost-lib=/usr/lib \
+                --with-minuit-include=/usr/local/include \
+                --with-minuit-lib=/usr/local/lib \
+                --with-minuit-libname=lcg_Minuit \
+                --with-cfitsio-include=/usr/include --with-cfitsio-lib=/usr/lib \
+                --with-wcslib-include=/usr/include --with-wcslib-lib=/usr/lib \
+                --with-root-include=`root-config --incdir` \
+                --with-root-lib=`root-config --libdir`
+            </pre>
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+            <p>
+                上述配置中，在 memes 上无法找到 libboost_python-gcc-1_33.so，做一个符号链接可以解决。另外，由于系统中存在两个版本的 QT，需要指定其中一个。决定使用 QT 3.3.5 版本。所以，配置的参数增加两个：&#x2013;with-Qt-dir=/usr/qt/3
+            </p>
 
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+            <p>
+                问题：
+            </p>
+            <ol class="org-ol">
+                <li>和 QT4 编译时，在 configure 阶段会出错。－－改用 qt 3</li>
+                <li>和 wcstools 一起工作时会出错。－－改用 wcslibs 4.2 版本，安装在 <i>usr/local</i> 下。</li>
+                <li>在 ld 时出错，找不到 -l ../lib/.libs/libhippo.so 。－－使用 &#x2013;with-Qt-lib=qt-mt</li>
+            </ol>
 
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
-</head>
-<body>
-<div id="org-div-home-and-up">
- <a accesskey="h" href="../index.html"> UP </a>
- |
- <a accesskey="H" href="../../index.html"> HOME </a>
-</div><div id="content">
-<h1 class="title">HippoDraw 的安装手记</h1>
-<p>
-需要的支持：
-</p>
-<ol class="org-ol">
-<li>C++ -&#x2014; 3.4.5</li>
-<li>Qt -&#x2014; 3.3.5, 4.0.1</li>
-<li>Python -&#x2014; 2.4.2</li>
-<li>Boost.Python -&#x2014; 1.33 (boost)</li>
-<li>Minuit -&#x2014; 1.7.9, from CERN，安装在 /usr/local</li>
-<li>FITS -&#x2014; cfitsio 2.510</li>
-<li>WCSLIB -&#x2014; wcstools 3.6.2</li>
-<li>Python numerical arrays -&#x2014; dev-python/numarray 1.5.0</li>
-<li>PyFITS -&#x2014; ?</li>
-<li>ROOT -&#x2014; /opt/root/current</li>
-<li>SIP -&#x2014; ?</li>
-<li>OpenGL -&#x2014; xorg-x11</li>
-</ol>
-
-<p>
-配置：
-</p>
-<pre class="example">
-./configure --with-boost-version=1_33 \
---with-boost-include=/usr/include/boost --with-boost-lib=/usr/lib \
---with-minuit-include=/usr/local/include \
---with-minuit-lib=/usr/local/lib \
---with-minuit-libname=lcg_Minuit \
---with-cfitsio-include=/usr/include --with-cfitsio-lib=/usr/lib \
---with-wcslib-include=/usr/include --with-wcslib-lib=/usr/lib \
---with-root-include=`root-config --incdir` \
---with-root-lib=`root-config --libdir`
-</pre>
-
-<p>
-上述配置中，在 memes 上无法找到 libboost_python-gcc-1_33.so，做一个符号链接可以解决。另外，由于系统中存在两个版本的 QT，需要指定其中一个。决定使用 QT 3.3.5 版本。所以，配置的参数增加两个：&#x2013;with-Qt-dir=/usr/qt/3
-</p>
-
-<p>
-问题：
-</p>
-<ol class="org-ol">
-<li>和 QT4 编译时，在 configure 阶段会出错。－－改用 qt 3</li>
-<li>和 wcstools 一起工作时会出错。－－改用 wcslibs 4.2 版本，安装在 <i>usr/local</i> 下。</li>
-<li>在 ld 时出错，找不到 -l ../lib/.libs/libhippo.so 。－－使用 &#x2013;with-Qt-lib=qt-mt</li>
-</ol>
-
-<p>
-成功安装了 HippoDraw！哈哈！！ 
-</p>
-</div>
-<div id="postamble" class="status">
-
-<script type="text/javascript" src="http://exaos.github.io/assets/js/pagetail.js"></script>
-<div id="disqus_thread"></div>
-<p>版权所有 ©2015: 心蛛 | Date: <span class="timestamp-wrapper"><span class="timestamp">[2006-03-09 四 22:14]</span></span> | Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.3.2), <a href="http://validator.w3.org/check?uri=referer">Validate</a>,
-<a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="88x31.png"/></a>
-<p><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></p>
-</div>
-</body>
+            <p>
+                成功安装了 HippoDraw！哈哈！！
+            </p>
+        </div>
+        <div id="postamble" class="status">
+            <p><a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="88x31.png"/></a></p><p>版权所有 ©2012-2018: 心蛛 | 日期: 2006-03-09 四 22:14</p><p>Generated by <a href="https://www.gnu.org/software/emacs/">Emacs</a> 25.3.1 (<a href="https://orgmode.org">Org</a> mode 9.1.7), <a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+        </div>
+    </body>
 </html>
